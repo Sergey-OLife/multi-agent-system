@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { test } from "node:test";
-import { routeRequest, routes } from "../src/index.js";
+import type { ProjectResumeDiagnostics } from "../src/index.js";
+import { loadProjectState, projectStatePath, routeRequest, routes } from "../src/index.js";
 
 test("FinalResult has the required baseline shape", () => {
   const result = routeRequest("Вычисти главу книги, добавь драматургии");
@@ -218,35 +219,39 @@ test("project_resume route exists and uses project_resume_agent", () => {
   assert.ok(result.usedAgents.includes("project_resume_agent"));
 });
 
-test("project_resume diagnostics contain resume state", () => {
+test("project_resume diagnostics are derived from project-state source", () => {
   const result = routeRequest("восстанови проект");
-  const projectResume = result.diagnostics.projectResume as {
-    currentVersion: string;
-    lastCompletedVersion: string;
-    lastMergedPr: string;
-    currentMilestone: string;
-    nextAction: string;
-    rawTextCommitted: boolean;
-    manualChapterUpload: boolean;
-  };
+  const projectState = loadProjectState();
+  const projectResume = result.diagnostics.projectResume as ProjectResumeDiagnostics;
 
-  assert.equal(projectResume.currentVersion, "v0.9");
-  assert.equal(projectResume.lastCompletedVersion, "v0.8");
-  assert.equal(projectResume.lastMergedPr, "PR #7 — v0.8 Add chapter processing artifact templates");
-  assert.equal(projectResume.currentMilestone, "v0.9 Add project resume protocol");
-  assert.equal(projectResume.nextAction, "v1.0 Process first Plotnikov chapter");
+  assert.deepEqual(projectResume, projectState);
+  assert.equal(projectResume.currentVersion, projectState.currentVersion);
+  assert.equal(projectResume.nextAction, projectState.nextAction);
   assert.equal(projectResume.rawTextCommitted, false);
   assert.equal(projectResume.manualChapterUpload, true);
 });
 
 
+test("agents.ts does not keep a duplicate hard-coded project resume payload", () => {
+  const agentsSource = readFileSync("src/agents.ts", "utf8");
+  const projectState = loadProjectState();
+
+  assert.equal(agentsSource.includes("function buildProjectResumeDiagnostics"), false);
+  assert.equal(agentsSource.includes(projectState.lastMergedPr), false);
+  assert.equal(agentsSource.includes(projectState.nextAction), false);
+  assert.equal(agentsSource.includes("rawTextCommitted: false"), false);
+  assert.equal(agentsSource.includes("manualChapterUpload: true"), false);
+});
+
 test("project resume handoff files exist and project-state records resume pointers", () => {
   assert.equal(existsSync("knowledge/05_agent_memory/handoff/restart-prompt.template.md"), true);
   assert.equal(existsSync("knowledge/05_agent_memory/handoff/latest-handoff.md"), true);
+  assert.equal(existsSync(projectStatePath), true);
   assert.equal(existsSync("knowledge/00_manifest/project-state.md"), true);
 
   const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
 
+  assert.ok(projectState.includes("project-state.json"));
   assert.ok(/currentVersion: v0\.9/.test(projectState));
   assert.ok(/lastCompletedVersion: v0\.8/.test(projectState));
   assert.ok(/lastMergedPr: PR #7 — v0\.8 Add chapter processing artifact templates/.test(projectState));
@@ -281,10 +286,12 @@ test("CLI smoke routes project resume prompts", () => {
 
   assert.equal(english.taskType, "project_resume");
   assert.equal(russian.taskType, "project_resume");
-  assert.equal(english.diagnostics.projectResume.currentVersion, "v0.9");
-  assert.equal(english.diagnostics.projectResume.lastCompletedVersion, "v0.8");
-  assert.equal(russian.diagnostics.projectResume.currentMilestone, "v0.9 Add project resume protocol");
-  assert.equal(russian.diagnostics.projectResume.nextAction, "v1.0 Process first Plotnikov chapter");
+  const projectState = loadProjectState();
+
+  assert.equal(english.diagnostics.projectResume.currentVersion, projectState.currentVersion);
+  assert.equal(english.diagnostics.projectResume.lastCompletedVersion, projectState.lastCompletedVersion);
+  assert.equal(russian.diagnostics.projectResume.currentMilestone, projectState.currentMilestone);
+  assert.equal(russian.diagnostics.projectResume.nextAction, projectState.nextAction);
   assert.equal(russian.diagnostics.projectResume.rawTextCommitted, false);
   assert.equal(russian.diagnostics.projectResume.manualChapterUpload, true);
 });
