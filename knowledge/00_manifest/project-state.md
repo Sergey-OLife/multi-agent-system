@@ -1,6 +1,6 @@
 # Project State
 
-This file is the stable project resume anchor for new chats and Codex starts. Use it before relying on prior conversation memory.
+This file is the human-readable mirror of `knowledge/00_manifest/project-state.json`, which is the machine-readable single source of truth for project resume diagnostics. Use these project-state files before relying on prior conversation memory.
 
 ## Current version
 
@@ -43,6 +43,7 @@ v1.0 Process first Plotnikov chapter
 
 ## Important paths
 
+- knowledge/00_manifest/project-state.json
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/handoff/latest-handoff.md
 - knowledge/00_manifest/sources.registry.json

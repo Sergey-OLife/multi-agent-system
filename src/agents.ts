@@ -1,3 +1,4 @@
+import { loadProjectState } from "./project-state.js";
 import { getSourceCardsByIds, getSourceIdsForTask, getSourceRegistryVersion } from "./source-registry.js";
 import type { Agent, AgentId, AgentResult, ContextPack, RoutingContext, SvodCheckResult, SynchronizationMap, TaskType } from "./types.js";
 
@@ -232,43 +233,6 @@ function buildSynchronizationMap(context: RoutingContext): SynchronizationMap {
   };
 }
 
-function buildProjectResumeDiagnostics(): Record<string, unknown> {
-  return {
-    currentVersion: "v0.9",
-    lastCompletedVersion: "v0.8",
-    lastMergedPr: "PR #7 — v0.8 Add chapter processing artifact templates",
-    currentMilestone: "v0.9 Add project resume protocol",
-    completedVersions: [
-      "v0.2 routing baseline",
-      "v0.3 foundation agents diagnostics",
-      "v0.4 knowledge hierarchy",
-      "v0.5 source cards registry",
-      "v0.6 contextologist to source registry",
-      "v0.7 manual chapter workflow structure",
-      "v0.8 chapter processing artifact templates"
-    ],
-    activeDecisions: [
-      "raw Plotnikov text is not committed to GitHub",
-      "Plotnikov is uploaded manually one chapter at a time",
-      "source cards are registry-based",
-      "project voice uses Тихий Мастер, not Каленчевский голос",
-      "direct internal confessional wording is not used in reader-facing book text",
-      "approved chapters require explicit user approval"
-    ],
-    pausedTasks: [],
-    nextAction: "v1.0 Process first Plotnikov chapter",
-    manualChapterUpload: true,
-    rawTextCommitted: false,
-    importantPaths: [
-      "knowledge/00_manifest/project-state.md",
-      "knowledge/05_agent_memory/handoff/latest-handoff.md",
-      "knowledge/00_manifest/sources.registry.json",
-      "book/00_manifest/chapter-status.example.json",
-      "knowledge/03_source_books/plotnikov/source-location.md"
-    ]
-  };
-}
-
 function result(agentId: AgentId, message: string, diagnostics: Record<string, unknown> = {}): AgentResult {
   return {
     agentId,
@@ -423,7 +387,7 @@ export const agents: Record<AgentId, Agent> = {
   project_resume_agent: {
     id: "project_resume_agent",
     run(context) {
-      const projectResume = buildProjectResumeDiagnostics();
+      const projectResume = loadProjectState();
       context.diagnostics.projectResume = projectResume;
       return result("project_resume_agent", "Project resume protocol loaded.", { projectResume });
     }
