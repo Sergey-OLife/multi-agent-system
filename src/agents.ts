@@ -1,3 +1,4 @@
+import { getSourceCardsByIds, getSourceIdsForTask, getSourceRegistryVersion } from "./source-registry.js";
 import type { Agent, AgentId, AgentResult, ContextPack, RoutingContext, SvodCheckResult, SynchronizationMap, TaskType } from "./types.js";
 
 const normalize = (value: string): string => value.toLocaleLowerCase("ru-RU");
@@ -63,9 +64,14 @@ export function classifyTask(input: string): TaskType {
 }
 
 
-function buildContextPack(taskType: TaskType): ContextPack {
+export function buildContextPack(taskType: TaskType): ContextPack {
+  const relevantSourceIds = getSourceIdsForTask(taskType);
+  const sourceCards = getSourceCardsByIds(relevantSourceIds);
   const common = {
     taskType,
+    registryVersion: getSourceRegistryVersion(),
+    relevantSourceIds,
+    sourceCards,
     activeRules: [
       "книга не должна быть пересказом Плотникова",
       "читатель считается новичком",
