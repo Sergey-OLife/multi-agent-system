@@ -1,4 +1,461 @@
 {
-  "version": "0.2.0",
-  "sources": []
+  "version": "0.3",
+  "sources": [
+    {
+      "source_id": "plotnikov_reasonable_network_marketing",
+      "title": "Разумный сетевой маркетинг",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/01_plotnikov_reasonable_network_marketing.md",
+      "priority_level": "core_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "yarnell_first_year_network_marketing",
+      "title": "Ваш первый год в сетевом маркетинге / First Year in Network Marketing",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/02_yarnell_first_year_network_marketing.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "kalenc_best_you_can_be_mlm",
+      "title": "Быть лучшим, каким ты можешь быть / The Greatest Opportunity in the History of the World / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/03_kalenc_best_you_can_be_mlm.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "bukhtiyarov_objections",
+      "title": "Работа с возражениями / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/04_bukhtiyarov_objections.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "kiyosaki_rich_dad_poor_dad",
+      "title": "Богатый папа, бедный папа",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/05_kiyosaki_rich_dad_poor_dad.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "kiyosaki_cashflow_quadrant",
+      "title": "Квадрант денежного потока",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/06_kiyosaki_cashflow_quadrant.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "gerber_e_myth",
+      "title": "Миф предпринимательства / The E-Myth Revisited",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/07_gerber_e_myth.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "arkhangelsky_time_drive",
+      "title": "Тайм-драйв",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/08_arkhangelsky_time_drive.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "canfield_hansen_hewitt_whole_life",
+      "title": "Цельная жизнь / The Power of Focus / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/09_canfield_hansen_hewitt_whole_life.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "mcgonigal_superbetter",
+      "title": "SuperBetter",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/10_mcgonigal_superbetter.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "aaron_beck_love_is_never_enough",
+      "title": "Одной любви недостаточно",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/11_aaron_beck_love_is_never_enough.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "aaron_beck_recovery_oriented_cognitive_therapy",
+      "title": "Когнитивная терапия, ориентированная на восстановление / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/12_aaron_beck_recovery_oriented_cognitive_therapy.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "judith_beck_cbt",
+      "title": "Когнитивно-поведенческая терапия. От основ к направлениям / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/13_judith_beck_cbt.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "waltman_codd_macfarr_moore_socratic_questioning",
+      "title": "Сократовские вопросы в психотерапии и консультировании / Socratic Questioning for Therapists and Counselors",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/14_waltman_codd_macfarr_moore_socratic_questioning.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "kamaletdinova_antonova_cbt_consulting",
+      "title": "КПТ-консультирование / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/15_kamaletdinova_antonova_cbt_consulting.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "kharitonov_cbt_manual",
+      "title": "Руководство по КПТ / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/16_kharitonov_cbt_manual.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "latypov_helping_people",
+      "title": "Помощь людям / to_verify",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/17_latypov_helping_people.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "km_psychology_academy",
+      "title": "K&M Psychology Academy materials",
+      "source_type": "psychology_framework",
+      "path": "knowledge/04_processed/source_cards/18_km_psychology_academy.md",
+      "priority_level": "supporting_material",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "khmelevskaya_style_reference",
+      "title": "Творчество Иоанны Хмелевской как стилевая оптика",
+      "source_type": "style_reference",
+      "path": "knowledge/04_processed/source_cards/19_khmelevskaya_style_reference.md",
+      "priority_level": "style_support",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "field_three_act_structure",
+      "title": "Трёхактная структура / screenplay structure",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/20_field_three_act_structure.md",
+      "priority_level": "dramaturgy_support",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "socratic_method_framework",
+      "title": "Сократовский подход как методическая рамка",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/21_socratic_method_source_card.md",
+      "priority_level": "core_method_framework",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "practical_mlm_ecology_framework",
+      "title": "Экологичная MLM-практика проекта",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/22_practical_mlm_ecology.md",
+      "priority_level": "active_svod_related",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "idea_amplifier_framework",
+      "title": "Усилитель идеи",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/23_idea_amplifier.md",
+      "priority_level": "core_project_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "protected_spaces_framework",
+      "title": "Защищённые пространства",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/24_protected_spaces_source_card.md",
+      "priority_level": "active_svod_related",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "plato_cave_framework",
+      "title": "Пещера Платона",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/25_plato_cave_framework.md",
+      "priority_level": "cultural_lens",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "hero_journey_framework",
+      "title": "Путешествие героя",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/26_hero_journey_framework.md",
+      "priority_level": "cultural_lens",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "simulacra_framework",
+      "title": "Симулякры и подмена реальности",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/27_simulacra_framework.md",
+      "priority_level": "cultural_lens",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "triz_framework",
+      "title": "ТРИЗ",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/28_triz_framework.md",
+      "priority_level": "method_support",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "disney_method_framework",
+      "title": "Метод Диснея",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/29_disney_method_framework.md",
+      "priority_level": "method_support",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "character_arc_framework",
+      "title": "Арка персонажа",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/30_character_arc_framework.md",
+      "priority_level": "dramaturgy_support",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "cyberpunk_framework",
+      "title": "Киберпанк как культурная рамка",
+      "source_type": "cultural_lens",
+      "path": "knowledge/04_processed/source_cards/31_cyberpunk_framework.md",
+      "priority_level": "optional_cultural_lens",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "descartes_square_framework",
+      "title": "Квадрат Декарта",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/32_descartes_square_framework.md",
+      "priority_level": "product_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "eisenhower_matrix_framework",
+      "title": "Матрица Эйзенхауэра",
+      "source_type": "method_framework",
+      "path": "knowledge/04_processed/source_cards/33_eisenhower_matrix_framework.md",
+      "priority_level": "product_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "inner_council_framework",
+      "title": "Внутренний совет",
+      "source_type": "project_method",
+      "path": "knowledge/04_processed/source_cards/34_inner_council_framework.md",
+      "priority_level": "core_project_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "thought_check_framework",
+      "title": "Проверка мысли",
+      "source_type": "project_method",
+      "path": "knowledge/04_processed/source_cards/35_thought_check_framework.md",
+      "priority_level": "core_project_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "quiet_master_framework",
+      "title": "Тихий Мастер",
+      "source_type": "style_reference",
+      "path": "knowledge/04_processed/source_cards/36_quiet_master_framework.md",
+      "priority_level": "core_project_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "quest_chapter_framework",
+      "title": "Квест главы",
+      "source_type": "project_method",
+      "path": "knowledge/04_processed/source_cards/37_quest_chapter_framework.md",
+      "priority_level": "core_project_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "svod_project_card",
+      "title": "Свод проекта «Разумное сообщество»",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/38_svod_project_card.md",
+      "priority_level": "active_svod",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "mvp_project_card",
+      "title": "MVP v1.1 / цифровой тренажёр «Разумное сообщество»",
+      "source_type": "mvp_document",
+      "path": "knowledge/04_processed/source_cards/39_mvp_project_card.md",
+      "priority_level": "active_mvp",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "context_sources_map_card",
+      "title": "Карта источников проекта «Разумное сообщество»",
+      "source_type": "source_map",
+      "path": "knowledge/04_processed/source_cards/40_context_sources_map_card.md",
+      "priority_level": "active_source_map",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "context_map_v14_card",
+      "title": "Карта контекстов источников",
+      "source_type": "source_map",
+      "path": "knowledge/04_processed/source_cards/41_context_map_v14_card.md",
+      "priority_level": "active_context_map",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "sync_packages_card",
+      "title": "Пакеты синхронизации проекта",
+      "source_type": "sync_package",
+      "path": "knowledge/04_processed/source_cards/42_sync_packages_card.md",
+      "priority_level": "active_sync_map",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "update_packages_card",
+      "title": "Пакеты обновления проекта",
+      "source_type": "update_package",
+      "path": "knowledge/04_processed/source_cards/43_update_packages_card.md",
+      "priority_level": "update_package",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "agent_specs_card",
+      "title": "Паспорта агентов проекта",
+      "source_type": "agent_spec",
+      "path": "knowledge/04_processed/source_cards/44_agent_specs_card.md",
+      "priority_level": "agent_spec",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "brochure_newcomer_route_card",
+      "title": "Брошюра маршрута новичка",
+      "source_type": "brochure_document",
+      "path": "knowledge/04_processed/source_cards/45_brochure_newcomer_route_card.md",
+      "priority_level": "project_document",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "localization_notes_card",
+      "title": "Локализация европейской версии продукта",
+      "source_type": "project_document",
+      "path": "knowledge/04_processed/source_cards/46_localization_notes_card.md",
+      "priority_level": "project_document",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "style_profile_card",
+      "title": "Профиль авторского стиля и взаимодействия",
+      "source_type": "project_document",
+      "path": "knowledge/04_processed/source_cards/47_style_profile_card.md",
+      "priority_level": "active_style_profile",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "spiritual_sphere_business_boundary_card",
+      "title": "Границы духовной сферы и бизнеса",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/48_spiritual_sphere_business_boundary_card.md",
+      "priority_level": "active_ethics_rule",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "book_continuity_export_protocol_card",
+      "title": "Протокол сохранения книги, архива и карты контекста",
+      "source_type": "workflow_protocol",
+      "path": "knowledge/04_processed/source_cards/49_book_continuity_export_protocol_card.md",
+      "priority_level": "workflow_protocol",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "materials_far_headlight_instruction_card",
+      "title": "Материалы как дальний свет фар",
+      "source_type": "source_map",
+      "path": "knowledge/04_processed/source_cards/50_materials_far_headlight_instruction_card.md",
+      "priority_level": "active_source_map",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "writer_rewrite_mode_legacy_card",
+      "title": "Старый режим переписывания книги — использовать осторожно",
+      "source_type": "project_document",
+      "path": "knowledge/04_processed/source_cards/51_writer_rewrite_mode_legacy_card.md",
+      "priority_level": "legacy_instruction",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "idea_amplifier_instruction_card",
+      "title": "Усилитель идеи — контент и главы без банальности",
+      "source_type": "project_method",
+      "path": "knowledge/04_processed/source_cards/52_idea_amplifier_instruction_card.md",
+      "priority_level": "core_project_method",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "print_ready_book_export_card",
+      "title": "Протокол печатной сборки книги",
+      "source_type": "workflow_protocol",
+      "path": "knowledge/04_processed/source_cards/53_print_ready_book_export_card.md",
+      "priority_level": "workflow_protocol",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "frequency_language_card",
+      "title": "Частотный язык",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/54_frequency_language_card.md",
+      "priority_level": "active_style_rule",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "money_authors_hill_clason_card",
+      "title": "Хилл и Клейсон как мост к взрослому отношению к деньгам",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/55_money_authors_hill_clason_card.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "ferrazzi_never_eat_alone_card",
+      "title": "Никогда не ешьте в одиночку",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/56_ferrazzi_never_eat_alone_card.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "client_followup_medical_caution_card",
+      "title": "Клиентское сопровождение, анкета и медицинская осторожность",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/57_client_followup_medical_caution_card.md",
+      "priority_level": "active_ethics_rule",
+      "processed_status": "initial_inventory_card_v0.1"
+    }
+  ]
 }
