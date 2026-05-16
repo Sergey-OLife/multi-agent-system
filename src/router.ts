@@ -13,7 +13,14 @@ export const routes: Partial<Record<TaskType, AgentId[]>> = {
     "ethics_guard",
     "response_composer"
   ],
-  social_post: ["task_classifier", "fact_risk_checker", "ethics_guard", "anti_cliche_editor", "response_composer"],
+  social_post: [
+    "task_classifier",
+    "contextologist",
+    "fact_risk_checker",
+    "ethics_guard",
+    "anti_cliche_editor",
+    "response_composer"
+  ],
   mvp_product: [
     "task_classifier",
     "contextologist",
@@ -25,6 +32,7 @@ export const routes: Partial<Record<TaskType, AgentId[]>> = {
   ],
   skill_development: [
     "task_classifier",
+    "contextologist",
     "mastery_tracker_agent",
     "fact_risk_checker",
     "ethics_guard",

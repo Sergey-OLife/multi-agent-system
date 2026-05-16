@@ -8,8 +8,16 @@ export type {
   RiskLevel,
   RoutingContext,
   SvodCheckResult,
+  SourceCardReference,
   SynchronizationMap,
   TaskType
 } from "./types.js";
-export { agents, classifyTask } from "./agents.js";
+export { agents, buildContextPack, classifyTask } from "./agents.js";
+export {
+  getAllRouteMappedSourceIds,
+  getSourceCardsByIds,
+  getSourceIdsForTask,
+  getSourceRegistryVersion,
+  sourceIdsByTaskType
+} from "./source-registry.js";
 export { routeRequest, routes } from "./router.js";

@@ -27,8 +27,20 @@ export type AgentId =
   | "mvp_method_architect"
   | "mastery_tracker_agent";
 
+export interface SourceCardReference {
+  source_id: string;
+  title: string;
+  source_type: string;
+  path: string;
+  priority_level: string;
+  processed_status: string;
+}
+
 export interface ContextPack {
   taskType: TaskType;
+  registryVersion: string;
+  relevantSourceIds: string[];
+  sourceCards: SourceCardReference[];
   relevantKnowledgeFolders: string[];
   activeRules: string[];
   sourcePriority: string[];
