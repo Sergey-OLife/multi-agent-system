@@ -35,9 +35,15 @@ declare module "node:assert/strict" {
 
 declare module "node:fs" {
   export function existsSync(path: string): boolean;
+  export function readdirSync(path: string): string[];
   export function readFileSync(path: string, encoding: "utf8"): string;
 }
 
 declare module "node:path" {
   export function join(...paths: string[]): string;
+}
+
+
+declare module "node:child_process" {
+  export function execFileSync(command: string, args: string[], options: { cwd?: string; encoding: "utf8" }): string;
 }
