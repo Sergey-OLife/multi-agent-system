@@ -15,3 +15,14 @@ This directory contains only processed, independent working artifacts for the bo
 Raw Plotnikov text and other raw books must not be placed in this directory. Do not commit books, PDFs, EPUBs, DJVUs, MOBIs, scans, full-text uploads, long quotes, or close retellings here.
 
 The expected workflow is manual chapter upload: the user provides one chapter from a private local copy, agents create independent processed artifacts, and only those artifacts are saved to GitHub.
+
+## Standard chapter artifact chain
+
+For each new manually uploaded chapter, use this fixed processing chain:
+
+1. plotnikov map
+2. sync package
+3. chapter draft
+4. reviewed chapter
+5. approved chapter
+6. update package
