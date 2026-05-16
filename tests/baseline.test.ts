@@ -55,3 +55,24 @@ test("requested product and mastery prompts use their routes", () => {
   assert.equal(mastery.taskType, "skill_development");
   assert.ok(mastery.usedAgents.includes("mastery_tracker_agent"));
 });
+
+test("MVP prompts that say построй stay on the MVP route", () => {
+  const result = routeRequest("Построй MVP приложения для маршрута новичка");
+
+  assert.equal(result.taskType, "mvp_product");
+  assert.ok(result.usedAgents.includes("mvp_method_architect"));
+  assert.notDeepEqual(result.usedAgents, routes.social_post);
+});
+
+test("построй, построить and построение are not social-post signals", () => {
+  assert.equal(routeRequest("Построй систему маршрутов").taskType, "general");
+  assert.equal(routeRequest("Построить архитектуру проекта").taskType, "general");
+  assert.equal(routeRequest("Построение маршрута работы").taskType, "general");
+});
+
+test("explicit social-post signals route to social_post", () => {
+  assert.equal(routeRequest("Напиши пост для Telegram").taskType, "social_post");
+  assert.equal(routeRequest("Сделай Reels для соцсетей").taskType, "social_post");
+  assert.equal(routeRequest("Подготовь карусель").taskType, "social_post");
+  assert.equal(routeRequest("Сделай публикацию").taskType, "social_post");
+});
