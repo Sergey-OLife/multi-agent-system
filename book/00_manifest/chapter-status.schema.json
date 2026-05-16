@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/multi-agent-system/chapter-status.schema.json",
+  "title": "Chapter Status Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chapters"],
+  "properties": {
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "chapter_id",
+          "title",
+          "status",
+          "source_sync",
+          "plotnikov_map",
+          "current_file",
+          "approved_at",
+          "notes"
+        ],
+        "properties": {
+          "chapter_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "reviewed", "approved", "exported"]
+          },
+          "source_sync": {
+            "type": "string",
+            "minLength": 1
+          },
+          "plotnikov_map": {
+            "type": "string",
+            "minLength": 1
+          },
+          "current_file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "approved_at": {
+            "type": ["string", "null"],
+            "format": "date-time"
+          },
+          "notes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
