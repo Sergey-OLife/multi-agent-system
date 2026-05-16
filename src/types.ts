@@ -27,6 +27,39 @@ export type AgentId =
   | "mvp_method_architect"
   | "mastery_tracker_agent";
 
+export interface ContextPack {
+  taskType: TaskType;
+  relevantKnowledgeFolders: string[];
+  activeRules: string[];
+  sourcePriority: string[];
+  requiredAgents: AgentId[];
+  forbiddenLeaks: string[];
+  contextDelta: string[];
+}
+
+export interface SvodCheckResult {
+  status: "passed" | "needs_revision" | "blocked";
+  violatedRules: string[];
+  riskyFragments: string[];
+  requiredRewrites: string[];
+  whatToPreserve: string[];
+  whatToRemove: string[];
+  svodDelta: string[];
+}
+
+export interface SynchronizationMap {
+  sourceBook: string;
+  sourceChapter: string | null;
+  sourcePages: string | null;
+  targetChapter: string | null;
+  integrationStatus: string;
+  plotnikovElementsToPreserve: string[];
+  synthesisLayers: string[];
+  mandatoryFormulas: string[];
+  nextWorkingPoint: string;
+  syncDelta: string[];
+}
+
 export interface AgentResult {
   agentId: AgentId;
   status: FinalStatus;
