@@ -1,5 +1,5 @@
 import { agents, classifyTask } from "./agents.js";
-import type { AgentId, FinalResult, RiskLevel, RoutingContext, TaskType } from "./types.js";
+import type { AgentId, AgentResult, FinalResult, FinalStatus, RiskLevel, RoutingContext, TaskType } from "./types.js";
 
 export const routes: Partial<Record<TaskType, AgentId[]>> = {
   chapter_editing: [
@@ -44,9 +44,10 @@ export function routeRequest(input: string): FinalResult {
   };
 
   const route = routes[initialTaskType] ?? routes.general ?? ["task_classifier", "response_composer"];
-  const agentResults = [];
+  const agentResults: AgentResult[] = [];
   const usedAgents: AgentId[] = [];
   const blockedBy: AgentId[] = [];
+  const revisionWarnings: AgentResult[] = [];
 
   for (const agentId of route) {
     const agentResult = agents[agentId].run(context);
@@ -70,16 +71,27 @@ export function routeRequest(input: string): FinalResult {
         agentResults
       };
     }
+
+    if (agentResult.status === "needs_revision") {
+      revisionWarnings.push(agentResult);
+    }
   }
 
+  const finalStatus: FinalStatus = revisionWarnings.length > 0 ? "needs_revision" : "ready";
+
   return {
-    status: "ready",
+    status: finalStatus,
     taskType: context.taskType,
     riskLevel: context.riskLevel,
     usedAgents,
     blockedBy,
     finalText: context.finalText,
-    diagnostics: context.diagnostics,
+    diagnostics: {
+      ...context.diagnostics,
+      ...(revisionWarnings.length > 0
+        ? { revisionWarnings: revisionWarnings.map((warning) => ({ agentId: warning.agentId, message: warning.message })) }
+        : {})
+    },
     agentResults
   };
 }

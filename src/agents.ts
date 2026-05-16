@@ -1,4 +1,4 @@
-import type { Agent, AgentId, AgentResult, RoutingContext, TaskType } from "./types.js";
+import type { Agent, AgentId, AgentResult, ContextPack, RoutingContext, SvodCheckResult, SynchronizationMap, TaskType } from "./types.js";
 
 const normalize = (value: string): string => value.toLocaleLowerCase("ru-RU");
 const wordBoundary = "[^\\p{L}\\p{N}_]";
@@ -35,6 +35,7 @@ function hasSocialPostSignal(text: string): boolean {
     text.includes("рилс") ||
     text.includes("карусель") ||
     hasWord(text, "публикация") ||
+    text.includes("публикаци") ||
     hasWord(text, "комментар")
   );
 }
@@ -42,7 +43,7 @@ function hasSocialPostSignal(text: string): boolean {
 export function classifyTask(input: string): TaskType {
   const text = normalize(input);
 
-  if (text.includes("глав") || text.includes("книг") || text.includes("драматург")) {
+  if (text.includes("глав") || text.includes("книг") || text.includes("драматург") || text.includes("плотников")) {
     return "chapter_editing";
   }
 
@@ -59,6 +60,153 @@ export function classifyTask(input: string): TaskType {
   }
 
   return "general";
+}
+
+
+function buildContextPack(taskType: TaskType): ContextPack {
+  const common = {
+    taskType,
+    activeRules: [
+      "книга не должна быть пересказом Плотникова",
+      "читатель считается новичком",
+      "служебный язык не должен попадать в читательский текст",
+      "человек не должен превращаться в лид, ресурс, чек или функцию плана",
+      "этика не должна съедать действие",
+      "предпринимательский напор не должен съедать человека"
+    ],
+    sourcePriority: [
+      "knowledge/00_manifest/source-priority.md",
+      "knowledge/02_project_rules",
+      "knowledge/04_processed",
+      "knowledge/05_agent_memory"
+    ],
+    forbiddenLeaks: [
+      "не переносить служебный язык в читательский текст",
+      "не делать пересказ Плотникова",
+      "не смешивать книгу, брошюру, MVP и внутренние документы"
+    ],
+    contextDelta: ["mock_context_pack_v0.3", `task_type:${taskType}`]
+  };
+
+  if (taskType === "chapter_editing") {
+    return {
+      ...common,
+      relevantKnowledgeFolders: [
+        "knowledge/02_project_rules/svod",
+        "knowledge/02_project_rules/sync_packages",
+        "knowledge/04_processed/plotnikov_map",
+        "knowledge/05_agent_memory/context_delta"
+      ],
+      requiredAgents: [
+        "svod_guard",
+        "synchronization_mapper",
+        "chapter_designer",
+        "plotnikov_motor",
+        "anti_cliche_editor"
+      ]
+    };
+  }
+
+  if (taskType === "mvp_product") {
+    return {
+      ...common,
+      relevantKnowledgeFolders: [
+        "knowledge/02_project_rules/mvp",
+        "knowledge/05_agent_memory/mvp_delta",
+        "knowledge/04_processed/context_packs"
+      ],
+      requiredAgents: ["svod_guard", "mvp_method_architect", "fact_risk_checker", "ethics_guard"],
+      contextDelta: ["mock_context_pack_v0.3", "task_type:mvp_product", "scope:mvp_route_for_newcomer"]
+    };
+  }
+
+  return {
+    ...common,
+    relevantKnowledgeFolders: ["knowledge/02_project_rules", "knowledge/05_agent_memory/context_delta"],
+    requiredAgents: ["svod_guard", "fact_risk_checker", "ethics_guard"]
+  };
+}
+
+function hasPlotnikovRetellingViolation(text: string): boolean {
+  const mentionsPlotnikov = text.includes("плотников");
+  const asksForRetelling = text.includes("перескаж") || text.includes("пересказ");
+  const asksForUnsafeAdaptation = text.includes("адаптируй") && text.includes("как") && text.includes("глав");
+  const chapterContext =
+    text.includes("глав") ||
+    text.includes("нашу") ||
+    text.includes("нашей") ||
+    text.includes("наша") ||
+    text.includes("нашeй");
+
+  return mentionsPlotnikov && chapterContext && (asksForRetelling || asksForUnsafeAdaptation);
+}
+
+function buildSvodCheck(input: string): SvodCheckResult {
+  const text = normalize(input);
+  const riskyFragments: string[] = [];
+  const violatedRules: string[] = [];
+  const requiredRewrites: string[] = [];
+  const whatToRemove: string[] = [];
+
+  if (hasPlotnikovRetellingViolation(text)) {
+    violatedRules.push("книга не должна быть пересказом Плотникова");
+    riskyFragments.push(input);
+    requiredRewrites.push("Сформулировать самостоятельную главу: сохранить только разрешённые принципы и драматургическую функцию, без пересказа источника.");
+    whatToRemove.push("прямой пересказ Плотникова под видом собственной главы");
+  }
+
+  return {
+    status: violatedRules.length > 0 ? "needs_revision" : "passed",
+    violatedRules,
+    riskyFragments,
+    requiredRewrites,
+    whatToPreserve: [
+      "уважение к читателю-новичку",
+      "самостоятельную авторскую рамку проекта",
+      "действие без манипуляции и обезличивания"
+    ],
+    whatToRemove,
+    svodDelta: violatedRules.length > 0 ? ["svod_warning:plotnikov_retelling_requested"] : ["svod_passed:no_explicit_violations"]
+  };
+}
+
+function hasSynchronizationSignal(input: string): boolean {
+  const text = normalize(input);
+  return text.includes("глав") || text.includes("книг") || text.includes("плотников") || text.includes("драматург");
+}
+
+function buildSynchronizationMap(context: RoutingContext): SynchronizationMap {
+  const hasSignal = hasSynchronizationSignal(context.input) || context.taskType === "chapter_editing";
+
+  return {
+    sourceBook: hasSignal ? "Алексей Плотников — Разумный сетевой маркетинг" : "",
+    sourceChapter: null,
+    sourcePages: null,
+    targetChapter: context.taskType === "chapter_editing" ? "mock_target_chapter" : null,
+    integrationStatus: hasSignal ? "mock_sync_required" : "mock_sync_not_required",
+    plotnikovElementsToPreserve: hasSignal
+      ? ["структурную роль напряжения", "практическую ориентацию без пересказа", "ясность для новичка"]
+      : [],
+    synthesisLayers: hasSignal
+      ? [
+          "Каленч",
+          "Гербер",
+          "Бек",
+          "McGonigal",
+          "Сократовский подход",
+          "защищённое пространство",
+          "Усилитель идеи",
+          "Хмелевская"
+        ]
+      : [],
+    mandatoryFormulas: hasSignal
+      ? ["не пересказывать источник", "отделять читательский текст от служебной карты", "сохранять человеческий масштаб"]
+      : [],
+    nextWorkingPoint: hasSignal
+      ? "Требуется актуальная карта синхронизации из knowledge/02_project_rules/sync_packages или knowledge/04_processed/plotnikov_map."
+      : "Синхронизация с картой Плотникова не требуется для текущего mock-маршрута.",
+    syncDelta: hasSignal ? ["sync_required:plotnikov_map_pending"] : ["sync_not_required"]
+  };
 }
 
 function result(agentId: AgentId, message: string, diagnostics: Record<string, unknown> = {}): AgentResult {
@@ -131,22 +279,44 @@ export const agents: Record<AgentId, Agent> = {
   contextologist: {
     id: "contextologist",
     run(context) {
-      context.diagnostics.context = { privateKnowledgeRequired: false };
-      return result("contextologist", "Context requirements mapped.");
+      const contextPack = buildContextPack(context.taskType);
+      context.diagnostics.contextPack = contextPack;
+      return result("contextologist", "Context requirements mapped.", { contextPack });
     }
   },
   svod_guard: {
     id: "svod_guard",
     run(context) {
-      context.diagnostics.svod = { contradictionsFound: false };
-      return result("svod_guard", "SVOD consistency checked.");
+      const svodCheck = buildSvodCheck(context.input);
+      context.diagnostics.svodCheck = svodCheck;
+
+      if (svodCheck.status === "needs_revision") {
+        return {
+          agentId: "svod_guard",
+          status: "needs_revision",
+          message: "SVOD check requires revision before ordinary ready output.",
+          diagnostics: { svodCheck }
+        };
+      }
+
+      if (svodCheck.status === "blocked") {
+        return {
+          agentId: "svod_guard",
+          status: "blocked",
+          message: "SVOD check blocked the request.",
+          diagnostics: { svodCheck }
+        };
+      }
+
+      return result("svod_guard", "SVOD consistency checked.", { svodCheck });
     }
   },
   synchronization_mapper: {
     id: "synchronization_mapper",
     run(context) {
-      context.diagnostics.synchronization = { mapped: true };
-      return result("synchronization_mapper", "Synchronization points mapped.");
+      const synchronizationMap = buildSynchronizationMap(context);
+      context.diagnostics.synchronizationMap = synchronizationMap;
+      return result("synchronization_mapper", "Synchronization points mapped.", { synchronizationMap });
     }
   },
   update_packager: {
