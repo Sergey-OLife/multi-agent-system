@@ -126,6 +126,42 @@ test("svod_guard adds svod check and warns on Plotnikov retelling request", () =
   assert.ok(svodCheck.requiredRewrites.length > 0);
 });
 
+test("svod_guard handles Plotnikov retelling variants", () => {
+  const variants = [
+    "перескажи Плотникова как главу",
+    "перескажи Плотникова для нашей главы",
+    "пересказать Плотникова в нашу главу",
+    "сделай пересказ Плотникова как главу"
+  ];
+
+  for (const prompt of variants) {
+    const result = routeRequest(prompt);
+    const svodCheck = result.diagnostics.svodCheck as {
+      status: string;
+      violatedRules: string[];
+      requiredRewrites: string[];
+    };
+
+    assert.equal(result.status, "needs_revision");
+    assert.equal(svodCheck.status, "needs_revision");
+    assert.ok(svodCheck.violatedRules.includes("книга не должна быть пересказом Плотникова"));
+    assert.ok(svodCheck.requiredRewrites.length > 0);
+  }
+});
+
+test("svod_guard allows Plotnikov synchronization references without retelling request", () => {
+  const result = routeRequest("используй карту Плотникова как источник синхронизации");
+  const svodCheck = result.diagnostics.svodCheck as {
+    status: string;
+    violatedRules: string[];
+  };
+
+  assert.notEqual(result.status, "blocked");
+  assert.notEqual(result.status, "needs_revision");
+  assert.equal(svodCheck.status, "passed");
+  assert.deepEqual(svodCheck.violatedRules, []);
+});
+
 test("synchronization_mapper adds synchronization map for chapter-related request", () => {
   const result = routeRequest("Вычисти главу книги, добавь драматургии");
   const synchronizationMap = result.diagnostics.synchronizationMap as {
