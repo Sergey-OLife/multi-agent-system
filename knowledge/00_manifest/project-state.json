@@ -1,8 +1,8 @@
 {
-  "currentVersion": "v1.2",
-  "lastCompletedVersion": "v1.2",
-  "lastMergedPr": "PR #11 — v1.2 Fix project-state path resolution",
-  "currentMilestone": "v1.2 Fix project-state path resolution",
+  "currentVersion": "v1.3",
+  "lastCompletedVersion": "v1.3",
+  "lastMergedPr": "PR #12 — v1.3 Add Russian review layer for artifacts",
+  "currentMilestone": "v1.3 Add Russian review layer for artifacts",
   "completedVersions": [
     "v0.2 routing baseline",
     "v0.3 foundation agents diagnostics",
@@ -14,7 +14,8 @@
     "v0.9 project resume protocol",
     "v1.0 Process Plotnikov preface map and sync package",
     "v1.1 Derive project resume diagnostics from project-state",
-    "v1.2 Fix project-state path resolution"
+    "v1.2 Fix project-state path resolution",
+    "v1.3 Add Russian review layer for artifacts"
   ],
   "activeDecisions": [
     "raw Plotnikov text is not committed to GitHub",
@@ -25,7 +26,7 @@
     "approved chapters require explicit user approval"
   ],
   "pausedTasks": [],
-  "nextAction": "v1.3 Add Russian review layer for artifacts",
+  "nextAction": "Review chapter_00_preface map and sync package",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -34,6 +35,8 @@
     "knowledge/05_agent_memory/handoff/latest-handoff.md",
     "knowledge/00_manifest/sources.registry.json",
     "book/00_manifest/chapter-status.example.json",
-    "knowledge/03_source_books/plotnikov/source-location.md"
+    "knowledge/03_source_books/plotnikov/source-location.md",
+    "knowledge/00_manifest/human-review-guide.md",
+    "knowledge/05_agent_memory/review_queue/review-index.md"
   ]
 }

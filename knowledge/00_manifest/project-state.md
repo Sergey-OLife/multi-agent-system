@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.2
-- lastCompletedVersion: v1.2
-- lastMergedPr: PR #11 — v1.2 Fix project-state path resolution
-- currentMilestone: v1.2 Fix project-state path resolution
+- currentVersion: v1.3
+- lastCompletedVersion: v1.3
+- lastMergedPr: PR #12 — v1.3 Add Russian review layer for artifacts
+- currentMilestone: v1.3 Add Russian review layer for artifacts
 
 ## Completed versions
 
@@ -22,6 +22,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.0 Process Plotnikov preface map and sync package
 - v1.1 Derive project resume diagnostics from project-state
 - v1.2 Fix project-state path resolution
+- v1.3 Add Russian review layer for artifacts
 
 ## Active decisions
 
@@ -38,7 +39,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-v1.3 Add Russian review layer for artifacts
+Review chapter_00_preface map and sync package
 
 ## Manual chapter upload
 
@@ -53,3 +54,5 @@ v1.3 Add Russian review layer for artifacts
 - knowledge/00_manifest/sources.registry.json
 - book/00_manifest/chapter-status.example.json
 - knowledge/03_source_books/plotnikov/source-location.md
+- knowledge/00_manifest/human-review-guide.md
+- knowledge/05_agent_memory/review_queue/review-index.md

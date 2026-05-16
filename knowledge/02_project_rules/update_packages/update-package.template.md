@@ -21,5 +21,9 @@ sections:
 - next_working_point
 
 Important:
-- the update package records only accepted changes;
-- do not declare a draft idea as a rule without a basis.
+- update package фиксирует только принятые изменения;
+- не объявлять черновую идею правилом без основания.
+- Human-readable content language: Russian.
+- Technical metadata keys may remain English.
+- Reader-facing and reviewer-facing explanations must be in Russian.
+- No English prose in meaning-bearing sections unless it is a source title, technical id, command, file path, or quoted term.

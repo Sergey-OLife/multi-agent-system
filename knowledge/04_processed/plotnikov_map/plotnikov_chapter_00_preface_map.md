@@ -4,109 +4,110 @@ metadata:
 - source_id: plotnikov_reasonable_network_marketing
 - source_title: Разумный сетевой маркетинг
 - source_chapter: От автора
-- source_range: uploaded preface pages 7–10
+- source_range: загруженное предисловие, страницы 7–10
 - processing_mode: manual_chapter_upload
 - upload_unit: one_chapter_at_a_time
 - raw_text_committed: false
 - created_at: 2026-05-16
-- processed_by: GPT-5.5 Thinking / v1.0 chapter workflow
+- processed_by: GPT-5.5 Thinking / v1.3 Russian review layer
 
 sections:
 
 ## source_function
 
-This source unit functions as an entry contract with the reader. It does not yet teach the first practical MLM technique. It frames why the book exists, who it is for, how practical the journey should be, and what kind of false expectations must be removed before the reader enters the main material.
+Этот фрагмент выполняет функцию входного договора с читателем. Он не даёт первую практическую технику MLM, а задаёт рамку: зачем существует книга, кому она может быть полезна, какой практичности читатель вправе ожидать и какие ложные ожидания нужно снять до входа в основной материал.
 
-The key function is not “author biography”. The key function is: before a person starts learning MLM, they must stop looking for a miracle script and accept a principles-and-repetition route.
+Главная функция здесь не в авторской биографии. Главная функция — перед началом обучения MLM остановить ожидание чудо-сценария и перевести читателя к пути принципов, повторения, проверки и личной ответственности.
 
 ## core_topic
 
-A practical book must begin by separating principles from magic. The reader is invited to enter a demanding, imperfect, action-based road rather than consume motivational fog.
+Практическая книга должна начинаться с отделения рабочих принципов от магического мышления. Читателя приглашают не в мотивационный туман, а в требовательную, несовершенную и проверяемую практику.
 
 ## practical_nodes
 
-- The reader is not assumed to be homogeneous. The source addresses several entry states: novice, worried relative, acting distributor, business leader, or observer.
-- Disagreement is normalized. The source does not require instant agreement; it allows thoughts to mature after reading.
-- The author grounds his right to speak in long practice and business results. In our project this must be transformed carefully: experience may justify responsibility, but trophies must not become pressure.
-- The strongest methodological node is the distinction between a guaranteed algorithm and working principles. MLM is framed as a field where rules increase the probability of safe arrival, but do not script every move.
-- The source rejects miracle methods and instant success formulas.
-- The book promises high practical density and uses assignments after chapters as a way to turn reading into action.
+- Читатель не считается однородным: возможны разные входные состояния — новичок, сомневающийся родственник, действующий дистрибьютор, лидер, наблюдатель.
+- Несогласие читателя допустимо: материал не требует мгновенной веры и оставляет место для созревания выводов после чтения.
+- Авторская практика в источнике служит основанием говорить о теме, но в нашем проекте это нужно преобразовать: опыт может означать ответственность, а не давление достижениями.
+- Методический узел — различие между гарантированным алгоритмом и рабочими принципами. Правила повышают безопасность пути, но не превращают MLM в автомат с гарантированным результатом.
+- Источник снимает ожидание чудо-метода и мгновенного успеха.
+- Логика заданий после глав важна как переход от чтения к действию, но у нас она должна стать безопасным `Квестом главы`, а не марафоном давления.
 
 ## tasks_or_exercises_detected
 
-- The preface establishes that each chapter will lead to an action task.
-- For our project, this supports the `Квест главы` model: one safe practical step after each chapter, without turning the book into a pressure marathon.
-- The first possible reader task for our independent opening is not a business task yet. It is a diagnostic entry task: “Why am I opening this book, and what am I not willing to sacrifice for business?”
+- Предисловие задаёт ожидание, что главы будут вести к практическому действию.
+- Для нашего проекта это поддерживает модель `Квест главы`: один небольшой, этичный и проверяемый шаг после смыслового блока.
+- Первый возможный шаг для независимого вступления — не бизнес-действие, а диагностика входа: зачем читатель открывает книгу и чем он не готов платить за деловой результат.
 
 ## language_energy
 
-- Direct address to the reader.
-- Strong anti-water stance.
-- Controlled provocation against fake certainty and guru language.
-- Practical, memoir-based authority.
-- Energetic promise of usefulness.
-- Risk: the energy can easily become triumphalist if copied too closely.
+- Прямой разговор с читателем.
+- Жёсткая установка против «воды» и пустой мотивации.
+- Осторожная провокация против ложной уверенности и языка гуру.
+- Практическая уверенность, основанная на опыте.
+- Обещание пользы через плотность и действие.
+- Риск: при копировании такая энергия легко превращается в триумфальность и самопрезентацию.
 
 ## what_to_preserve
 
-- The entry contract: this book is practical, not decorative.
-- Respect for the skeptical reader.
-- Permission not to agree instantly.
-- The refusal to sell miracle formulas.
-- The idea that principles matter more than perfect scripts.
-- The movement from reading toward action.
-- The demand for high usefulness per page.
-- The sober note: even successful people do not know a 100% guaranteed path.
+- Входной договор: книга должна быть практичной, а не декоративной.
+- Уважение к скептическому читателю.
+- Право читателя не соглашаться сразу.
+- Отказ продавать чудо-формулы.
+- Мысль о том, что принципы важнее идеального сценария.
+- Переход от чтения к действию.
+- Требование высокой полезности каждой смысловой единицы.
+- Трезвую оговорку: даже успешный практик не знает пути со стопроцентной гарантией.
 
 ## what_not_to_copy
 
-- Do not copy the author’s biography or results as narrative structure.
-- Do not reproduce the exact opening rhetoric, joke structure, or road-rule analogy as a visible borrowed frame.
-- Do not transfer the source’s self-positioning into our authorial voice.
-- Do not use income, travel, awards, or scale as proof that the reader should trust the book.
-- Do not write “Плотников пишет”, “по Плотникову”, or similar source-visible scaffolding in reader-facing text.
-- Do not let the opening become a disguised preface to another book.
+- Не брать биографию автора и список результатов как структуру вступления.
+- Не воспроизводить порядок аргументов, шутки, риторические ходы или заметные метафоры источника.
+- Не переносить авторскую самопрезентацию в голос нашей книги.
+- Не использовать доход, поездки, награды или масштаб как доказательство, что читатель обязан доверять тексту.
+- Не писать в читательском тексте «Плотников пишет», «по Плотникову» и подобные служебные подпорки.
+- Не превращать наше вступление в скрытое предисловие к чужой книге.
 
 ## retelling_risks
 
-- High risk if the future opening follows the same sequence: reader categories → author credentials → no magic → principles → high utility → assignments.
-- High risk if the future opening keeps the same authority mechanics: “I have results, therefore listen.”
-- Medium risk if the future opening uses the same contrast between theory and practice without transforming it into project language.
-- Medium risk if the future text repeats the same “no miracle” motif without a new dramatic situation.
+- Высокий риск, если будущее вступление повторит последовательность: типы читателей → авторские регалии → отказ от магии → принципы → высокая полезность → задания.
+- Высокий риск, если останется тот же механизм авторитета: «у меня есть результаты, значит, слушайте».
+- Средний риск, если противопоставление теории и практики будет перенесено без нового языка проекта.
+- Средний риск, если мотив «чуда не будет» повторится без самостоятельной драматической ситуации.
 
 ## ethical_risks
 
-- Trophy-based legitimacy can create hidden pressure: “successful person knows better”. Our project must replace this with earned responsibility and humility.
-- Anti-guru rhetoric can become a new guru pose. Our voice must not perform superiority.
-- A promise of high usefulness can become overclaiming if not tied to clear limits.
-- Reader motivation must not be built on shame, fear of poverty, contempt for ordinary work, or social comparison.
+- Легитимность через достижения может создавать скрытое давление: «успешный человек знает лучше». Наш проект должен заменить это ответственностью, ясностью и скромностью.
+- Антигуру-позиция может незаметно стать новой позой гуру. Голос проекта не должен играть в превосходство.
+- Обещание высокой пользы станет завышенным, если не указать границы и условия применения.
+- Мотивация читателя не должна строиться на стыде, страхе бедности, презрении к обычной работе или социальном сравнении.
 
 ## medical_or_financial_claim_risks
 
-- The source includes business-result and income-type claims in the broader preface context. Our reader-facing text should avoid using such claims unless independently verified and necessary.
-- Do not imply that MLM reliably produces financial independence.
-- Do not frame repetition as a guarantee of success.
-- Do not use personal results as transferable evidence for the reader.
+- Финансовые и бизнес-результаты нельзя использовать как переносимое доказательство для читателя.
+- Нельзя утверждать или намекать, что MLM надёжно приводит к финансовой независимости.
+- Нельзя подавать повторение действий как гарантию успеха.
+- Любое упоминание денег должно оставаться трезвым: возможность, труд, риск, отсутствие гарантии.
 
 ## possible_links_to_our_book
 
-- Possible target placement: `chapter_00` / introduction / “Перед входом”.
-- Main independent function: state what our book does not promise before stating what it gives.
-- Strong project angle: “Разумное сообщество is not a louder MLM manual; it is a safer way to think, act, test, serve, and build.”
-- Bridge to MVP/brochure: the book gives the map, the brochure gives the route, the trainer gives practice.
-- Bridge to `Тихий Мастер`: the opening voice should not shout, sell, or prove superiority; it should invite the reader into disciplined clarity.
-- Bridge to `Частотный язык`: no overloaded methodology in the opening; the reader must understand the contract after a tired evening.
+- Возможное место применения: `chapter_00_preface` / введение / «Перед входом».
+- Самостоятельная функция нашей главы: сначала сказать, чего книга не обещает, и только потом — что она даёт.
+- Сильный угол проекта: «Разумное сообщество» — не более громкий MLM-учебник, а более безопасный способ думать, действовать, проверять, служить и строить.
+- Мост к MVP и брошюре: книга даёт карту, брошюра — маршрут, тренажёр — практику.
+- Мост к `Тихий Мастер`: вступительный голос не кричит, не продаёт и не доказывает превосходство; он приглашает к дисциплинированной ясности.
+- Мост к `Частотный язык`: без перегруженной методологии; читатель должен понять договор даже после тяжёлого дня.
 
 ## required_svod_checks
 
-- The future chapter must be independent and must not become a retelling of the source.
-- Raw source text remains outside GitHub.
-- No direct internal confessional wording in reader-facing text.
-- No trophy-authority pressure.
-- No financial guarantee or “best opportunity for everyone” framing.
-- No reduction of people to leads, recruits, contracts, checks, or business functions.
-- Protected spaces remain protected; business must not be justified by intimacy, trust, or spiritual closeness.
+- Будущая глава должна быть самостоятельным текстом нашей книги, а не пересказом источника.
+- Сырой текст источника остаётся вне GitHub.
+- Запрещены длинные цитаты и близкий рерайт.
+- В читательский текст нельзя переносить внутреннюю исповедальную лексику проекта.
+- Нельзя использовать давление достижениями или авторскими трофеями.
+- Нельзя обещать финансовое спасение, универсальную возможность или гарантированный результат.
+- Нельзя сводить людей к лидам, рекрутам, чекам, контрактам или объёму структуры.
+- Защищённые пространства остаются защищёнными: дружба, семья, доверие, боль и духовная близость не становятся каналами бизнеса.
 
 ## next_working_point
 
-Use this map to create the sync package for `chapter_00_preface`. Do not proceed to chapter draft until the sync package fixes target function, synthesis layers, and guardrails.
+Следующий рабочий шаг — проверка этой карты и sync package пользователем. Создавать `chapter draft` можно только после явного approval пользователя по карте и sync package; `reviewed` и `approved` артефакты нельзя создавать без отдельных последующих разрешений.

@@ -27,7 +27,11 @@ sections:
 - next_working_point
 
 Important:
-- the map records the function of the material, not a retelling of the source text;
-- long direct quotations are forbidden;
-- close paraphrase of the source is forbidden;
-- raw source text is forbidden.
+- карта фиксирует функцию материала, а не пересказ исходного текста;
+- длинные прямые цитаты запрещены;
+- близкий рерайт источника запрещён;
+- сырой текст источника запрещён.
+- Human-readable content language: Russian.
+- Technical metadata keys may remain English.
+- Reader-facing and reviewer-facing explanations must be in Russian.
+- No English prose in meaning-bearing sections unless it is a source title, technical id, command, file path, or quoted term.

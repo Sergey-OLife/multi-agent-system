@@ -18,6 +18,10 @@ sections:
 - export_notes
 
 Important:
-- approved is created only after explicit user approval;
-- this is not a place for the raw source;
-- approved_text must be an independent text of the book.
+- approved создаётся только после явного approval пользователя;
+- это не место для сырого источника;
+- approved_text должен быть самостоятельным текстом книги.
+- Human-readable content language: Russian.
+- Technical metadata keys may remain English.
+- Reader-facing and reviewer-facing explanations must be in Russian.
+- No English prose in meaning-bearing sections unless it is a source title, technical id, command, file path, or quoted term.

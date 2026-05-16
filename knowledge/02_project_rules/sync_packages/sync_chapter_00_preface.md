@@ -13,53 +13,53 @@ sections:
 
 ## source_material_function
 
-The uploaded source unit serves as a preface-level reader contract. It introduces the book as a practical, experience-based route; removes expectations of instant certainty; rejects miracle methods; and prepares the reader for principles, repetition, and chapter tasks.
+Загруженный фрагмент работает как предисловный договор с читателем: он задаёт практическую рамку, снимает ожидание мгновенной уверенности, отказывается от чудо-методов и готовит читателя к принципам, повторению и заданиям после глав.
 
-The material is not to be used as plot, biography, or rhetorical template. It is a functional input for designing our own opening contract.
+Этот материал нельзя использовать как сюжет, биографию или риторический шаблон. Он является функциональным входом для проектирования нашего собственного вступительного договора.
 
 ## target_chapter_function
 
-Our `chapter_00_preface` must open the future book without copying the source’s authorial self-presentation. It should tell the reader what this book will and will not do.
+`chapter_00_preface` должна открыть будущую книгу без копирования авторской самопрезентации источника. Глава должна спокойно объяснить читателю, что эта книга будет делать и чего она не обещает.
 
-Target function:
-- lower the noise around MLM;
-- protect the reader from both cynicism and gullibility;
-- define the book as a route of mature action, not a motivational performance;
-- introduce the project’s voice: `Тихий Мастер`;
-- make clear that reading alone does not create mastery;
-- prepare the bridge to the brochure and practical route without turning the book into an app manual.
+Целевая функция:
+- снизить шум вокруг MLM;
+- защитить читателя и от цинизма, и от доверчивости;
+- определить книгу как маршрут зрелого действия, а не мотивационное выступление;
+- ввести голос проекта: `Тихий Мастер`;
+- показать, что одно чтение не создаёт мастерства;
+- подготовить мост к брошюре и практическому маршруту, не превращая книгу в инструкцию к приложению.
 
 ## what_we_take_as_function
 
-- Entry contract with the reader.
-- Anti-miracle stance.
-- Practical density as a requirement.
-- Respect for reader disagreement.
-- Principles over perfect scripts.
-- Assignment-after-chapter logic, transformed into `Квест главы`.
-- The idea that useful MLM education must be grounded in reality, not in slogans.
+- Входной договор с читателем.
+- Отказ от чудо-обещаний.
+- Практическую плотность как требование.
+- Уважение к несогласию читателя.
+- Принципы вместо идеальных скриптов.
+- Логику задания после главы, преобразованную в `Квест главы`.
+- Мысль о том, что полезное MLM-обучение должно опираться на реальность, а не на лозунги.
 
 ## what_we_do_not_take
 
-- The source’s biography and achievement list as proof mechanism.
-- The exact reader-category opening structure.
-- The exact metaphorical scaffolding.
-- The source’s rhythm, jokes, and rhetorical sequence.
-- Any financial result claims as persuasive evidence.
-- Any triumphalist MLM exceptionalism.
-- Any close paraphrase of the uploaded pages.
+- Биографию источника и список достижений как механизм доверия.
+- Точную структуру входа через категории читателей.
+- Заметные метафоры и риторические опоры источника.
+- Ритм, шутки и последовательность аргументов источника.
+- Финансовые результаты как убеждающее доказательство.
+- Триумфальность и исключительность MLM.
+- Любой близкий рерайт загруженных страниц.
 
 ## synthesis_layers
 
-- `quiet_master_framework`: calm authority, service without pressure, action without noise.
-- `frequency_language_card`: ordinary language, no expert fog, no heavy methodology in the opening.
-- `svod_project_card`: independence of the book, no retelling, active ethical guardrails.
-- `practical_mlm_ecology_framework`: person before transaction, trust before income, product and service before recruitment.
-- `protected_spaces_framework`: no use of family, friendship, spiritual closeness, or pain as business channels.
-- `spiritual_sphere_business_boundary_card`: business must stay separate from spiritual space and internal confessional language must not enter reader-facing text.
-- `quest_chapter_framework`: every chapter should leave one safe next step.
-- `thought_check_framework`: help reader distinguish fact, fear, expectation, and interpretation.
-- `khmelevskaya_style_reference`: allow living detail and quiet irony without imitating the author or mocking the reader.
+- `quiet_master_framework`: спокойный авторитет, служение без давления, действие без шума.
+- `frequency_language_card`: обычный язык, без экспертного тумана и тяжёлой методологии во вступлении.
+- `svod_project_card`: самостоятельность книги, запрет пересказа, активные этические ограничения.
+- `practical_mlm_ecology_framework`: человек раньше сделки, доверие раньше дохода, продукт и служение раньше рекрутинга.
+- `protected_spaces_framework`: семья, дружба, духовная близость и чужая боль не используются как бизнес-каналы.
+- `spiritual_sphere_business_boundary_card`: бизнес отделён от духовного пространства; внутренняя исповедальная лексика не выходит в читательский текст.
+- `quest_chapter_framework`: каждая глава оставляет один безопасный следующий шаг.
+- `thought_check_framework`: читателю помогают различать факт, страх, ожидание и интерпретацию.
+- `khmelevskaya_style_reference`: допускаются живая деталь и тихая ирония без имитации автора и без насмешки над читателем.
 
 ## relevant_source_ids
 
@@ -83,80 +83,79 @@ Target function:
 
 ## active_svod_rules
 
-- The future chapter must be an independent text of our book.
-- The source may shape function, not surface expression.
-- Do not store raw Plotnikov text in GitHub.
-- Do not use long quotations or close paraphrase.
-- Do not use direct internal confessional wording in reader-facing text.
-- Do not present MLM as guaranteed financial salvation.
-- Do not reduce people to leads, checks, contracts, or structure volume.
-- Do not turn service language into commercial pressure.
-- Do not put the MVP into the book as a product advertisement.
+- Будущая глава должна быть самостоятельным текстом нашей книги.
+- Источник может задавать функцию, но не поверхностное выражение.
+- Сырой текст Плотникова не хранится в GitHub.
+- Запрещены длинные цитаты и близкий рерайт.
+- В читательском тексте запрещена внутренняя исповедальная лексика.
+- MLM нельзя представлять как гарантированное финансовое спасение.
+- Людей нельзя сводить к лидам, чекам, контрактам или объёму структуры.
+- Язык служения нельзя превращать в коммерческое давление.
+- MVP нельзя вставлять в книгу как рекламируемый продукт.
 
 ## required_guardrails
 
-- If authorial credibility is needed, ground it in responsibility, clarity, and tested practice, not in trophy display.
-- If the chapter mentions money, keep it sober: possibility, effort, risk, no guarantee.
-- If the chapter mentions reader skepticism, do not insult the skeptic.
-- If the chapter mentions assignments, make them safe and small.
-- If the chapter mentions community, avoid recruitment hunger language.
-- If the chapter mentions spiritual or moral dimensions, use broad ethical language only.
+- Если нужен авторский авторитет, он должен опираться на ответственность, ясность и проверенную практику, а не на витрину достижений.
+- Если глава упоминает деньги, формулировка должна быть трезвой: возможность, труд, риск, отсутствие гарантии.
+- Если глава говорит о скепсисе, она не должна унижать скептика.
+- Если глава обещает задания, они должны быть малыми, безопасными и этичными.
+- Если глава говорит о сообществе, нельзя использовать голодный рекрутинговый язык.
+- Если затрагиваются духовные или моральные измерения, допустим только широкий этический язык без смешения духовного пространства с бизнесом.
 
 ## frequency_language_notes
 
-Use simple, strong Russian. Prefer concrete reader situations over methodological labels.
+Использовать простой, сильный русский язык. Предпочитать конкретные ситуации читателя методологическим ярлыкам.
 
-Avoid:
-- “трансформация сознания”;
-- “новая парадигма”;
-- “экосистема успеха”;
-- “выйти на новый уровень” unless anchored in a specific action;
-- “ценность” as a decorative word.
+Избегать:
+- «трансформация сознания»;
+- «новая парадигма»;
+- «экосистема успеха»;
+- «выйти на новый уровень», если это не привязано к конкретному действию;
+- декоративного слова «ценность» без точного смысла.
 
-Prefer:
-- “что вы делаете после прочтения страницы”;
-- “где вы проверяете себя”;
-- “когда разговор становится давлением”;
-- “что нельзя покупать ценой доверия”.
+Предпочитать:
+- «что вы делаете после прочтения страницы»;
+- «где вы проверяете себя»;
+- «когда разговор становится давлением»;
+- «что нельзя покупать ценой доверия».
 
 ## quiet_master_notes
 
-The opening should feel like a steady hand on the table, not a speaker on a stage.
+Вступление должно ощущаться как спокойная рука на столе, а не как спикер на сцене.
 
-The narrator’s authority comes from:
-- clean boundaries;
-- refusal to exaggerate;
-- ability to name the price of the road;
-- respect for the reader’s freedom;
-- practical next step.
+Авторитет рассказчика возникает из:
+- чистых границ;
+- отказа преувеличивать;
+- умения назвать цену пути;
+- уважения к свободе читателя;
+- ясного практического следующего шага.
 
-The `Тихий Мастер` asks at the threshold:
-- What are we promising?
-- What must we refuse to promise?
-- Who can be harmed if we speak too loudly?
-- What will the reader be able to do after this chapter that they could not do before?
+`Тихий Мастер` на пороге спрашивает:
+- что мы обещаем;
+- от каких обещаний обязаны отказаться;
+- кому можно навредить слишком громкой речью;
+- что читатель сможет сделать после главы такого, чего не мог сделать до неё.
 
 ## dramaturgy_notes
 
-Potential independent opening scene:
-A person opens a MLM book not because they believe, but because they are tired of two opposite lies: “this is all a scam” and “this will save your life quickly.” The first page must not recruit them. It must stop them at the door and say: enter only if you are ready to think and act honestly.
+Возможная самостоятельная вступительная сцена: человек открывает книгу об MLM не потому, что уже поверил, а потому что устал от двух противоположных неправд — «здесь всё обман» и «это быстро спасёт жизнь». Первая страница не должна рекрутировать. Она должна остановить читателя на пороге и сказать: входите только если готовы думать и действовать честно.
 
-Conflict:
-- old MLM noise vs mature business clarity;
-- hunger for quick certainty vs slow principles;
-- motivation as pressure vs inspiration as disciplined action;
-- book as consumption vs book as route.
+Конфликт:
+- старый MLM-шум против зрелой деловой ясности;
+- жажда быстрой определённости против медленных принципов;
+- мотивация как давление против вдохновения как дисциплинированного действия;
+- книга как потребление против книги как маршрут.
 
-Opening question:
-- “What do you expect this book to do for you — and what are you secretly hoping it will do instead of you?”
+Входной вопрос:
+- «Что вы ждёте от этой книги — и что тайно надеетесь переложить на неё вместо себя?»
 
 ## mvp_or_brochure_links
 
-- The preface supports the future onboarding screen of the trainer: book = map, brochure = route, app/trainer = practice.
-- The first MVP diagnostic can ask the reader to choose their entry state: skeptic, novice, tired distributor, leader, observer.
-- The first safe action can be a personal expectation check, not a sales action.
-- The brochure should later convert this opening contract into a route rule: no chapter is complete until one small ethical action is chosen.
+- Предисловная функция поддерживает будущий экран входа в тренажёр: книга = карта, брошюра = маршрут, тренажёр = практика.
+- Первая диагностика MVP может предложить выбрать входное состояние: скептик, новичок, уставший дистрибьютор, лидер, наблюдатель.
+- Первое безопасное действие — проверка ожиданий, а не продажа или рекрутинг.
+- Брошюра позже может превратить этот входной договор в правило маршрута: глава не завершена, пока не выбран один малый этичный шаг.
 
 ## next_working_point
 
-Next step is `chapter draft`, but only after user reviews this map and sync package. Do not create `reviewed` or `approved` artifacts until the user explicitly authorizes the next stage and later explicitly approves the chapter.
+Следующий разрешённый шаг — `chapter draft`, но только после явного approval пользователя по карте Плотникова и этому sync package. Нельзя создавать `reviewed chapter` или `approved chapter` без отдельного явного разрешения и последующего утверждения пользователя.
