@@ -1,0 +1,5 @@
+node_modules/
+dist/
+npm-debug.log*
+knowledge/01_raw_private/*
+!knowledge/01_raw_private/README_DO_NOT_COMMIT.md
