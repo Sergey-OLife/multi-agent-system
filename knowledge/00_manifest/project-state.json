@@ -1,8 +1,8 @@
 {
-  "currentVersion": "v1.3",
-  "lastCompletedVersion": "v1.3",
-  "lastMergedPr": "PR #12 — v1.3 Add Russian review layer for artifacts",
-  "currentMilestone": "v1.3 Add Russian review layer for artifacts",
+  "currentVersion": "v1.4",
+  "lastCompletedVersion": "v1.4",
+  "lastMergedPr": "PR #13 — v1.4 Add clickable review links",
+  "currentMilestone": "v1.4 Add clickable review links",
   "completedVersions": [
     "v0.2 routing baseline",
     "v0.3 foundation agents diagnostics",
@@ -15,7 +15,8 @@
     "v1.0 Process Plotnikov preface map and sync package",
     "v1.1 Derive project resume diagnostics from project-state",
     "v1.2 Fix project-state path resolution",
-    "v1.3 Add Russian review layer for artifacts"
+    "v1.3 Add Russian review layer for artifacts",
+    "v1.4 Add clickable review links"
   ],
   "activeDecisions": [
     "raw Plotnikov text is not committed to GitHub",
@@ -26,7 +27,7 @@
     "approved chapters require explicit user approval"
   ],
   "pausedTasks": [],
-  "nextAction": "Review chapter_00_preface map and sync package",
+  "nextAction": "User review of chapter_00_preface map and sync package",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [

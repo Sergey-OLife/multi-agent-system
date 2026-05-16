@@ -255,11 +255,12 @@ test("project resume handoff files exist and project-state records resume pointe
   const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
 
   assert.ok(projectState.includes("project-state.json"));
-  assert.ok(/currentVersion: v1\.3/.test(projectState));
-  assert.ok(/lastCompletedVersion: v1\.3/.test(projectState));
-  assert.ok(/lastMergedPr: PR #12 — v1\.3 Add Russian review layer for artifacts/.test(projectState));
-  assert.ok(/currentMilestone: v1\.3 Add Russian review layer for artifacts/.test(projectState));
+  assert.ok(/currentVersion: v1\.4/.test(projectState));
+  assert.ok(/lastCompletedVersion: v1\.4/.test(projectState));
+  assert.ok(/lastMergedPr: PR #13 — v1\.4 Add clickable review links/.test(projectState));
+  assert.ok(/currentMilestone: v1\.4 Add clickable review links/.test(projectState));
   assert.ok(/v1\.3 Add Russian review layer for artifacts/.test(projectState));
+  assert.ok(/v1\.4 Add clickable review links/.test(projectState));
 });
 
 interface CliProjectResumeResult {

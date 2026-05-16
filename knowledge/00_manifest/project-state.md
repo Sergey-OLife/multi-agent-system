@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.3
-- lastCompletedVersion: v1.3
-- lastMergedPr: PR #12 — v1.3 Add Russian review layer for artifacts
-- currentMilestone: v1.3 Add Russian review layer for artifacts
+- currentVersion: v1.4
+- lastCompletedVersion: v1.4
+- lastMergedPr: PR #13 — v1.4 Add clickable review links
+- currentMilestone: v1.4 Add clickable review links
 
 ## Completed versions
 
@@ -23,6 +23,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.1 Derive project resume diagnostics from project-state
 - v1.2 Fix project-state path resolution
 - v1.3 Add Russian review layer for artifacts
+- v1.4 Add clickable review links
 
 ## Active decisions
 
@@ -39,7 +40,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-Review chapter_00_preface map and sync package
+User review of chapter_00_preface map and sync package
 
 ## Manual chapter upload
 
