@@ -38,6 +38,7 @@ export const routes: Partial<Record<TaskType, AgentId[]>> = {
     "ethics_guard",
     "response_composer"
   ],
+  project_resume: ["task_classifier", "project_resume_agent", "response_composer"],
   general: ["task_classifier", "ethics_guard", "response_composer"]
 };
 

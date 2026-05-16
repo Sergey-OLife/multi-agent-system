@@ -7,6 +7,7 @@ export type TaskType =
   | "strategy"
   | "technical_specification"
   | "skill_development"
+  | "project_resume"
   | "general";
 
 export type RiskLevel = "low" | "medium" | "high";
@@ -25,7 +26,8 @@ export type AgentId =
   | "plotnikov_motor"
   | "anti_cliche_editor"
   | "mvp_method_architect"
-  | "mastery_tracker_agent";
+  | "mastery_tracker_agent"
+  | "project_resume_agent";
 
 export interface SourceCardReference {
   source_id: string;

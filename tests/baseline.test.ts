@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { existsSync, readFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { test } from "node:test";
 import { routeRequest, routes } from "../src/index.js";
 
@@ -205,4 +207,84 @@ test("MVP route receives mvp-related context pack folders", () => {
     "knowledge/04_processed/context_packs"
   ]);
   assert.ok(contextPack.requiredAgents.includes("mvp_method_architect"));
+});
+
+test("project_resume route exists and uses project_resume_agent", () => {
+  assert.deepEqual(routes.project_resume, ["task_classifier", "project_resume_agent", "response_composer"]);
+
+  const result = routeRequest("resume project");
+
+  assert.equal(result.taskType, "project_resume");
+  assert.ok(result.usedAgents.includes("project_resume_agent"));
+});
+
+test("project_resume diagnostics contain resume state", () => {
+  const result = routeRequest("восстанови проект");
+  const projectResume = result.diagnostics.projectResume as {
+    currentVersion: string;
+    lastCompletedVersion: string;
+    lastMergedPr: string;
+    currentMilestone: string;
+    nextAction: string;
+    rawTextCommitted: boolean;
+    manualChapterUpload: boolean;
+  };
+
+  assert.equal(projectResume.currentVersion, "v0.9");
+  assert.equal(projectResume.lastCompletedVersion, "v0.8");
+  assert.equal(projectResume.lastMergedPr, "PR #7 — v0.8 Add chapter processing artifact templates");
+  assert.equal(projectResume.currentMilestone, "v0.9 Add project resume protocol");
+  assert.equal(projectResume.nextAction, "v1.0 Process first Plotnikov chapter");
+  assert.equal(projectResume.rawTextCommitted, false);
+  assert.equal(projectResume.manualChapterUpload, true);
+});
+
+
+test("project resume handoff files exist and project-state records resume pointers", () => {
+  assert.equal(existsSync("knowledge/05_agent_memory/handoff/restart-prompt.template.md"), true);
+  assert.equal(existsSync("knowledge/05_agent_memory/handoff/latest-handoff.md"), true);
+  assert.equal(existsSync("knowledge/00_manifest/project-state.md"), true);
+
+  const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
+
+  assert.ok(/currentVersion: v0\.9/.test(projectState));
+  assert.ok(/lastCompletedVersion: v0\.8/.test(projectState));
+  assert.ok(/lastMergedPr: PR #7 — v0\.8 Add chapter processing artifact templates/.test(projectState));
+  assert.ok(/currentMilestone: v0\.9 Add project resume protocol/.test(projectState));
+  assert.ok(/v1\.0 Process first Plotnikov chapter/.test(projectState));
+});
+
+interface CliProjectResumeResult {
+  taskType: string;
+  diagnostics: {
+    projectResume: {
+      currentVersion: string;
+      lastCompletedVersion: string;
+      currentMilestone: string;
+      nextAction: string;
+      rawTextCommitted: boolean;
+      manualChapterUpload: boolean;
+    };
+  };
+}
+
+function parseNpmRunJson(stdout: string): CliProjectResumeResult {
+  const jsonStart = stdout.indexOf("{");
+
+  assert.notEqual(jsonStart, -1);
+  return JSON.parse(stdout.slice(jsonStart)) as CliProjectResumeResult;
+}
+
+test("CLI smoke routes project resume prompts", () => {
+  const english = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "--json", "resume project"], { encoding: "utf8" }));
+  const russian = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "--json", "восстанови проект"], { encoding: "utf8" }));
+
+  assert.equal(english.taskType, "project_resume");
+  assert.equal(russian.taskType, "project_resume");
+  assert.equal(english.diagnostics.projectResume.currentVersion, "v0.9");
+  assert.equal(english.diagnostics.projectResume.lastCompletedVersion, "v0.8");
+  assert.equal(russian.diagnostics.projectResume.currentMilestone, "v0.9 Add project resume protocol");
+  assert.equal(russian.diagnostics.projectResume.nextAction, "v1.0 Process first Plotnikov chapter");
+  assert.equal(russian.diagnostics.projectResume.rawTextCommitted, false);
+  assert.equal(russian.diagnostics.projectResume.manualChapterUpload, true);
 });
