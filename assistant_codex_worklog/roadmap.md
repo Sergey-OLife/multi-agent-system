@@ -2,6 +2,12 @@
 
 Эта дорожная карта описывает не книгу, а рабочий процесс с Codex и мультиагентной системой.
 
+## Последний checkpoint
+
+- Команда: `#checkpoint full`
+- Дата: 2026-05-16
+- Смысл: зафиксировать состояние после создания `assistant_codex_worklog/` и перед возможным перерывом.
+
 ## Уже завершено
 
 - v0.2 — routing baseline
@@ -17,13 +23,18 @@
 - v1.2 — Fix project-state path resolution
 - v1.3 — Add Russian review layer for artifacts
 - v1.4 — Add clickable review links
+- PR #14 — Add assistant Codex worklog
 
 ## Следующий ручной шаг
 
 Пользователь проверяет:
 
-- Plotnikov Map — chapter_00_preface
-- Sync Package — chapter_00_preface
+- [Plotnikov Map — chapter_00_preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/04_processed/plotnikov_map/plotnikov_chapter_00_preface_map.md)
+- [Sync Package — chapter_00_preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/02_project_rules/sync_packages/sync_chapter_00_preface.md)
+
+Через:
+
+- [Review Index](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/05_agent_memory/review_queue/review-index.md)
 
 Решение пользователя:
 
@@ -99,7 +110,8 @@
 - Полная система source location registry.
 - Более глубокая самообучаемость агентов через update packages.
 - Автоматическое обновление review queue при каждом новом map/sync package.
-- Отдельный `assistant_codex_worklog` checkpoint после каждой крупной серии PR.
+- Checkpoint после каждой крупной серии PR.
+- Полный перенос рабочей логики в новый чат через `restart-prompt.md`.
 
 ## Нельзя забыть
 
@@ -109,3 +121,4 @@
 - Давать пользователю кликабельные ссылки.
 - Все human-readable artifacts — на русском.
 - ChatGPT/Codex должен честно говорить, если полного материала нет.
+- Если Codex создал работу, но PR не виден — нажать `Создать PR` в той же задаче, а не создавать дубль.
