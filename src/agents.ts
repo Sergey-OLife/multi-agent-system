@@ -127,6 +127,20 @@ function buildContextPack(taskType: TaskType): ContextPack {
   };
 }
 
+function hasPlotnikovRetellingViolation(text: string): boolean {
+  const mentionsPlotnikov = text.includes("плотников");
+  const asksForRetelling = text.includes("перескаж") || text.includes("пересказ");
+  const asksForUnsafeAdaptation = text.includes("адаптируй") && text.includes("как") && text.includes("глав");
+  const chapterContext =
+    text.includes("глав") ||
+    text.includes("нашу") ||
+    text.includes("нашей") ||
+    text.includes("наша") ||
+    text.includes("нашeй");
+
+  return mentionsPlotnikov && chapterContext && (asksForRetelling || asksForUnsafeAdaptation);
+}
+
 function buildSvodCheck(input: string): SvodCheckResult {
   const text = normalize(input);
   const riskyFragments: string[] = [];
@@ -134,9 +148,9 @@ function buildSvodCheck(input: string): SvodCheckResult {
   const requiredRewrites: string[] = [];
   const whatToRemove: string[] = [];
 
-  if (text.includes("перескажи плотникова как нашу главу")) {
+  if (hasPlotnikovRetellingViolation(text)) {
     violatedRules.push("книга не должна быть пересказом Плотникова");
-    riskyFragments.push("перескажи Плотникова как нашу главу");
+    riskyFragments.push(input);
     requiredRewrites.push("Сформулировать самостоятельную главу: сохранить только разрешённые принципы и драматургическую функцию, без пересказа источника.");
     whatToRemove.push("прямой пересказ Плотникова под видом собственной главы");
   }
