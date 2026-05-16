@@ -1,5 +1,6 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 export interface ProjectResumeDiagnostics {
   currentVersion: string;
@@ -73,6 +74,30 @@ export function parseProjectState(projectStateJson: string): ProjectResumeDiagno
   };
 }
 
-export function loadProjectState(rootDir = process.cwd()): ProjectResumeDiagnostics {
-  return parseProjectState(readFileSync(join(rootDir, projectStatePath), "utf8"));
+function getProjectStateCandidatePaths(rootDir?: string): string[] {
+  if (rootDir !== undefined) {
+    return [join(rootDir, projectStatePath)];
+  }
+
+  const moduleDir = dirname(fileURLToPath(import.meta.url));
+
+  return [
+    join(moduleDir, "..", projectStatePath),
+    join(moduleDir, "..", "..", projectStatePath)
+  ];
+}
+
+export function resolveProjectStatePath(rootDir?: string): string {
+  const candidatePaths = getProjectStateCandidatePaths(rootDir);
+  const projectStateFile = candidatePaths.find((candidatePath) => existsSync(candidatePath));
+
+  if (projectStateFile === undefined) {
+    throw new Error(`Project state file not found. Tried: ${candidatePaths.join(", ")}`);
+  }
+
+  return projectStateFile;
+}
+
+export function loadProjectState(rootDir?: string): ProjectResumeDiagnostics {
+  return parseProjectState(readFileSync(resolveProjectStatePath(rootDir), "utf8"));
 }

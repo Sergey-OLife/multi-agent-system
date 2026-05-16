@@ -1,6 +1,9 @@
 import assert from "node:assert/strict";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
+import { dirname, join, resolve } from "node:path";
+import { tmpdir } from "node:os";
+import { fileURLToPath } from "node:url";
 import { test } from "node:test";
 import type { ProjectResumeDiagnostics } from "../src/index.js";
 import { loadProjectState, projectStatePath, routeRequest, routes } from "../src/index.js";
@@ -252,11 +255,11 @@ test("project resume handoff files exist and project-state records resume pointe
   const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
 
   assert.ok(projectState.includes("project-state.json"));
-  assert.ok(/currentVersion: v0\.9/.test(projectState));
-  assert.ok(/lastCompletedVersion: v0\.8/.test(projectState));
-  assert.ok(/lastMergedPr: PR #7 — v0\.8 Add chapter processing artifact templates/.test(projectState));
-  assert.ok(/currentMilestone: v0\.9 Add project resume protocol/.test(projectState));
-  assert.ok(/v1\.0 Process first Plotnikov chapter/.test(projectState));
+  assert.ok(/currentVersion: v1\.2/.test(projectState));
+  assert.ok(/lastCompletedVersion: v1\.2/.test(projectState));
+  assert.ok(/lastMergedPr: PR #11 — v1\.2 Fix project-state path resolution/.test(projectState));
+  assert.ok(/currentMilestone: v1\.2 Fix project-state path resolution/.test(projectState));
+  assert.ok(/v1\.3 Add Russian review layer for artifacts/.test(projectState));
 });
 
 interface CliProjectResumeResult {
@@ -271,6 +274,10 @@ interface CliProjectResumeResult {
       manualChapterUpload: boolean;
     };
   };
+}
+
+function getRepoRoot(): string {
+  return resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 }
 
 function parseNpmRunJson(stdout: string): CliProjectResumeResult {
@@ -294,4 +301,20 @@ test("CLI smoke routes project resume prompts", () => {
   assert.equal(russian.diagnostics.projectResume.nextAction, projectState.nextAction);
   assert.equal(russian.diagnostics.projectResume.rawTextCommitted, false);
   assert.equal(russian.diagnostics.projectResume.manualChapterUpload, true);
+});
+
+test("built CLI loads project-state from package location when launched outside the repo", () => {
+  const repoRoot = getRepoRoot();
+  const cliPath = join(repoRoot, "dist/src/cli.js");
+  const externalCwd = mkdtempSync(join(tmpdir(), "multi-agent-system-cli-"));
+  const stdout = execFileSync(process.execPath, [cliPath, "--json", "resume project"], {
+    cwd: externalCwd,
+    encoding: "utf8"
+  });
+  const result = parseNpmRunJson(stdout);
+  const projectState = loadProjectState();
+
+  assert.equal(result.taskType, "project_resume");
+  assert.equal(result.diagnostics.projectResume.currentVersion, projectState.currentVersion);
+  assert.equal(result.diagnostics.projectResume.nextAction, projectState.nextAction);
 });
