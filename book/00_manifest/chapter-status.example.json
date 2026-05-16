@@ -1,0 +1,14 @@
+{
+  "chapters": [
+    {
+      "chapter_id": "chapter_01",
+      "title": "Рабочее название",
+      "status": "draft",
+      "source_sync": "knowledge/02_project_rules/sync_packages/sync_chapter_01.md",
+      "plotnikov_map": "knowledge/04_processed/plotnikov_map/plotnikov_chapter_01_map.md",
+      "current_file": "book/01_drafts/chapter_01.md",
+      "approved_at": null,
+      "notes": []
+    }
+  ]
+}
