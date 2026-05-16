@@ -22,8 +22,12 @@ sections:
 - next_revision_tasks
 
 Important:
-- this is an independent text of our book;
-- do not insert service comments into main_text;
-- do not retell Plotnikov;
-- do not use direct internal confessional wording;
-- if the spiritual sphere is mentioned, use broad wording.
+- это самостоятельный текст нашей книги;
+- не вставлять служебные комментарии в main_text;
+- не пересказывать Плотникова;
+- не использовать прямую внутреннюю исповедальную лексику;
+- если упоминается духовная сфера, использовать только широкие формулировки.
+- Human-readable content language: Russian.
+- Technical metadata keys may remain English.
+- Reader-facing and reviewer-facing explanations must be in Russian.
+- No English prose in meaning-bearing sections unless it is a source title, technical id, command, file path, or quoted term.

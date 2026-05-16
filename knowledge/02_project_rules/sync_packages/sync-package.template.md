@@ -25,5 +25,9 @@ sections:
 - next_working_point
 
 Important:
-- the sync package is not a retelling;
-- it connects the source material function with our independent chapter.
+- sync package не является пересказом;
+- он связывает функцию исходного материала с нашей самостоятельной главой.
+- Human-readable content language: Russian.
+- Technical metadata keys may remain English.
+- Reader-facing and reviewer-facing explanations must be in Russian.
+- No English prose in meaning-bearing sections unless it is a source title, technical id, command, file path, or quoted term.

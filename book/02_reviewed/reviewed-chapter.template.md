@@ -20,5 +20,9 @@ sections:
 - approval_notes
 
 Important:
-- reviewed does not mean approved;
-- this file contains text after editorial review, but before explicit user approval.
+- reviewed не означает approved;
+- этот файл содержит текст после редакторской проверки, но до явного approval пользователя.
+- Human-readable content language: Russian.
+- Technical metadata keys may remain English.
+- Reader-facing and reviewer-facing explanations must be in Russian.
+- No English prose in meaning-bearing sections unless it is a source title, technical id, command, file path, or quoted term.
