@@ -10,6 +10,26 @@ Codex выполняет конкретные изменения в репози
 
 GitHub — источник правды по коду, структуре, состоянию проекта и рабочим артефактам.
 
+## Быстрая команда сохранения
+
+Команда:
+
+```text
+#checkpoint full
+```
+
+означает: сохранить полную текущую рабочую точку.
+
+При выполнении checkpoint нужно обновить:
+
+- `assistant_codex_worklog/current-state.md`;
+- `assistant_codex_worklog/roadmap.md`;
+- `assistant_codex_worklog/decision-log.md`;
+- при необходимости `assistant_codex_worklog/working-protocol.md`;
+- при необходимости `assistant_codex_worklog/restart-prompt.md`.
+
+Цель: чтобы при обрыве связи, перегрузе чата или переходе в новый чат можно было продолжить без потери контекста.
+
 ## Как работать с PR
 
 1. Если предыдущий PR смержен, следующая веха — новая задача Codex.
@@ -35,7 +55,8 @@ GitHub — источник правды по коду, структуре, со
 - plotnikov map;
 - sync package;
 - project-state;
-- source registry.
+- source registry;
+- assistant worklog files.
 
 ## Язык артефактов
 
@@ -91,6 +112,7 @@ GitHub — источник правды по коду, структуре, со
 4. Затем открыть:
    - `assistant_codex_worklog/current-state.md`;
    - `assistant_codex_worklog/roadmap.md`;
+   - `assistant_codex_worklog/working-protocol.md`;
    - `knowledge/00_manifest/project-state.md`;
    - `knowledge/05_agent_memory/review_queue/review-index.md`.
 

@@ -45,3 +45,27 @@
 - открыть Review Index;
 - проверить Plotnikov Map и Sync Package по `chapter_00_preface`;
 - дать approval / правки / reject.
+
+### 8. Введена команда checkpoint
+
+Решение: команда `#checkpoint full` означает сохранить полную рабочую точку в `assistant_codex_worklog/`.
+
+При таком checkpoint обновляются:
+
+- `current-state.md`;
+- `roadmap.md`;
+- `decision-log.md`;
+- при необходимости `working-protocol.md` и `restart-prompt.md`.
+
+Назначение: защитить работу от потери контекста при обрыве связи, перерыве, перегрузе чата или переходе в новый чат.
+
+### 9. Текущий checkpoint
+
+Checkpoint создан после merge PR #14.
+
+Зафиксировано:
+
+- папка `assistant_codex_worklog/` существует в main;
+- новая рабочая команда: `#checkpoint full`;
+- следующий ручной шаг не изменился: проверка `chapter_00_preface`;
+- `v1.5 Add source location registry for Google Drive` остаётся ближайшим техническим этапом после review или по отдельному решению.
