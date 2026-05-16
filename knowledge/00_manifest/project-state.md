@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v0.9
-- lastCompletedVersion: v0.8
-- lastMergedPr: PR #7 — v0.8 Add chapter processing artifact templates
-- currentMilestone: v0.9 Add project resume protocol
+- currentVersion: v1.2
+- lastCompletedVersion: v1.2
+- lastMergedPr: PR #11 — v1.2 Fix project-state path resolution
+- currentMilestone: v1.2 Fix project-state path resolution
 
 ## Completed versions
 
@@ -18,6 +18,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v0.6 contextologist to source registry
 - v0.7 manual chapter workflow structure
 - v0.8 chapter processing artifact templates
+- v0.9 project resume protocol
+- v1.0 Process Plotnikov preface map and sync package
+- v1.1 Derive project resume diagnostics from project-state
+- v1.2 Fix project-state path resolution
 
 ## Active decisions
 
@@ -34,7 +38,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-v1.0 Process first Plotnikov chapter
+v1.3 Add Russian review layer for artifacts
 
 ## Manual chapter upload
 

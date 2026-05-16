@@ -13,7 +13,7 @@ export type {
   TaskType
 } from "./types.js";
 export { agents, buildContextPack, classifyTask } from "./agents.js";
-export { loadProjectState, parseProjectState, projectStatePath } from "./project-state.js";
+export { loadProjectState, parseProjectState, projectStatePath, resolveProjectStatePath } from "./project-state.js";
 export type { ProjectResumeDiagnostics } from "./project-state.js";
 export {
   getAllRouteMappedSourceIds,
