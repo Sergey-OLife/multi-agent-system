@@ -1,5 +1,14 @@
+knowledge/01_raw_private/**
+!knowledge/01_raw_private/README_DO_NOT_COMMIT.md
+
+knowledge/06_work_inbox/incoming_materials/**
+!knowledge/06_work_inbox/incoming_materials/.gitkeep
+
+*.pdf
+*.epub
+*.mobi
+*.djvu
+
 node_modules/
 dist/
 npm-debug.log*
-knowledge/01_raw_private/*
-!knowledge/01_raw_private/README_DO_NOT_COMMIT.md
