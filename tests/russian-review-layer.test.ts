@@ -24,6 +24,8 @@ const templateFiles = [
 
 const rawBookExtensionPattern = /\.(pdf|epub|djvu|mobi)$/i;
 
+const githubBaseUrl = "https://github.com/Sergey-OLife/multi-agent-system/blob/main";
+
 const readProjectFile = (path: string): string => readFileSync(join(root, path), "utf8");
 
 const containsCyrillic = (content: string): boolean => /[А-Яа-яЁё]/.test(content);
@@ -39,6 +41,30 @@ test("review index exists and queues chapter_00_preface for user review", () => 
 
   assert.ok(reviewIndex.includes("chapter_00_preface"));
   assert.ok(reviewIndex.includes("needs_user_review"));
+});
+
+
+test("review index uses clickable GitHub links for queued chapter_00_preface files", () => {
+  const reviewIndex = readProjectFile(files.reviewIndex);
+  const expectedLinks = [
+    `[Plotnikov Map — chapter_00_preface](${githubBaseUrl}/${files.plotnikovMap})`,
+    `[Sync Package — chapter_00_preface](${githubBaseUrl}/${files.syncPackage})`,
+    `[Human Review Guide](${githubBaseUrl}/${files.humanReviewGuide})`
+  ];
+
+  for (const expectedLink of expectedLinks) {
+    assert.ok(reviewIndex.includes(expectedLink), `${files.reviewIndex} should include ${expectedLink}`);
+  }
+
+  assert.ok(reviewIndex.includes("https://github.com/Sergey-OLife/multi-agent-system/blob/main/"));
+});
+
+test("human review guide requires clickable Markdown links for review queue entries", () => {
+  const humanReviewGuide = readProjectFile(files.humanReviewGuide);
+
+  assert.ok(humanReviewGuide.includes("кликабельные Markdown-ссылки"));
+  assert.ok(humanReviewGuide.includes("кликабельная Markdown-ссылка обязательна"));
+  assert.ok(humanReviewGuide.includes("review-index.md"));
 });
 
 test("chapter_00_preface map and sync package exist", () => {

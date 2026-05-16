@@ -14,3 +14,5 @@ For each new manually uploaded chapter, use this fixed processing chain:
 4. reviewed chapter
 5. approved chapter
 6. update package
+
+Review queue entries must include clickable GitHub links.
