@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.6
-- lastCompletedVersion: v1.6
-- lastMergedPr: PR #17 — v1.5 Add source location registry for Google Drive
-- currentMilestone: v1.6 Train anti_cliche_editor on preface review case
+- currentVersion: v1.7
+- lastCompletedVersion: v1.7
+- lastMergedPr: PR #18 — v1.6 Train editor on preface review case
+- currentMilestone: v1.7 Add anti-cliche review map for chapter_00_preface
 
 ## Completed versions
 
@@ -26,6 +26,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.4 Add clickable review links
 - v1.5 Add source location registry for Google Drive
 - v1.6 Train anti_cliche_editor on preface review case
+- v1.7 Add anti-cliche review map for chapter_00_preface
 
 ## Active decisions
 
@@ -35,6 +36,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - source cards are registry-based
 - private Drive file IDs and URLs are not committed to the public repository
 - anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks
+- anti_cliche review maps do not modify drafts until user approves targeted revisions
 - project voice uses Тихий Мастер, not Каленчевский голос
 - direct internal confessional wording is not used in reader-facing book text
 - approved chapters require explicit user approval
@@ -45,7 +47,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-User review of chapter_00_preface draft
+User review of chapter_00_preface anti-cliche review map
 
 ## Manual chapter upload
 
@@ -63,6 +65,7 @@ User review of chapter_00_preface draft
 - knowledge/04_processed/editor_training/anti_cliche_editor/chapter_00_preface_case_001.md
 - knowledge/04_processed/source_cards/anti_cliche_editor_training_card.md
 - tests/editor-training.test.ts
+- book/00_manifest/review_notes/chapter_00_preface_anti_cliche_review.md
 - book/00_manifest/chapter-status.example.json
 - book/01_drafts/chapter_00_preface.md
 - knowledge/03_source_books/plotnikov/source-location.md
