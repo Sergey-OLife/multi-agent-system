@@ -255,12 +255,12 @@ test("project resume handoff files exist and project-state records resume pointe
   const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
 
   assert.ok(projectState.includes("project-state.json"));
-  assert.ok(/currentVersion: v1\.6/.test(projectState));
-  assert.ok(/lastCompletedVersion: v1\.6/.test(projectState));
-  assert.ok(/lastMergedPr: PR #17 — v1\.5 Add source location registry for Google Drive/.test(projectState));
-  assert.ok(/currentMilestone: v1\.6 Train anti_cliche_editor on preface review case/.test(projectState));
-  assert.ok(/v1\.5 Add source location registry for Google Drive/.test(projectState));
+  assert.ok(/currentVersion: v1\.7/.test(projectState));
+  assert.ok(/lastCompletedVersion: v1\.7/.test(projectState));
+  assert.ok(/lastMergedPr: PR #18 — v1\.6 Train editor on preface review case/.test(projectState));
+  assert.ok(/currentMilestone: v1\.7 Add anti-cliche review map for chapter_00_preface/.test(projectState));
   assert.ok(/v1\.6 Train anti_cliche_editor on preface review case/.test(projectState));
+  assert.ok(/v1\.7 Add anti-cliche review map for chapter_00_preface/.test(projectState));
 });
 
 interface CliProjectResumeResult {
