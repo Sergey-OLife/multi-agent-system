@@ -1,10 +1,10 @@
 {
   "currentVersion": "v2.4",
   "lastCompletedVersion": "v2.4",
-  "lastMergedPr": "PR #60 — Add approval gate keeper proposal",
-  "lastMergeCommit": "e41e9aa3367d23165798b8b87b73c34fb84a9a9a",
-  "currentMilestone": "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals",
-  "currentMode": "Agent Shipyard",
+  "lastMergedPr": "PR #62 — Add project state synchronizer proposal",
+  "lastMergeCommit": "9ffbe0e52f3b68e31ec425c311aacf3237d1ebb7",
+  "currentMilestone": "v2.4 Shipyard Modernization focus after Agent Shipyard P0 proposals",
+  "currentMode": "Agent Shipyard / Shipyard Modernization",
   "bookPaused": true,
   "completedVersions": [
     "v0.2 routing baseline",
@@ -32,18 +32,19 @@
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals"
   ],
   "recentPrs": [
-    "PR #56 — Add chat restart prompt length limit",
-    "PR #57 — Add workflow conductor agent proposal",
     "PR #58 — Add agent shipyard container registry",
     "PR #59 — Add agent registry librarian proposal",
-    "PR #60 — Add approval gate keeper proposal"
+    "PR #60 — Add approval gate keeper proposal",
+    "PR #62 — Add project state synchronizer proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
     "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until the agent shipyard is sufficiently built",
-    "current active mode is Agent Shipyard",
-    "first build the ship, then sail: do not continue the book automatically while the current focus is agent buildout",
+    "current active mode is Agent Shipyard with a temporary Shipyard Modernization subfocus",
+    "first build the ship, then sail: do not continue the book automatically while the current focus is agent buildout or shipyard modernization",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
+    "Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit",
+    "Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite",
     "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
     "uploaded project sources are raw/source material until audited through Source Intake Audit",
     "source cards are not proof that full sources were read",
@@ -60,6 +61,7 @@
     "workflow_conductor_agent is a proposal only, not activated",
     "agent_registry_librarian is a proposal only, not activated",
     "approval_gate_keeper is a proposal only, not activated",
+    "project_state_synchronizer is a proposal only, not activated",
     "agent architecture is Centralized Coordination + Peer-to-Peer communication",
     "materials architecture is Coordinator-based star + fully-connected semantic topology",
     "peer-to-peer signal is not a decision and does not bypass Sergey approval",
@@ -67,15 +69,17 @@
     "new agents may be proposed whenever there is a real separate function, but duplicates and false activations must be avoided"
   ],
   "pausedTasks": [
-    "Do not continue the book automatically while current mode is Agent Shipyard",
+    "Do not continue the book automatically while current mode is Agent Shipyard or Shipyard Modernization",
     "Do not create book/03_approved/chapter_00_preface.md until final approval",
     "Do not treat all uploaded project sources as fully audited",
     "Do not activate workflow_conductor_agent without controlled activation and separate approval",
     "Do not activate agent_registry_librarian without controlled activation and separate approval",
     "Do not activate approval_gate_keeper without controlled activation and separate approval",
-    "Do not create hard guardrails without separate approval and PR"
+    "Do not activate project_state_synchronizer without controlled activation and separate approval",
+    "Do not create hard guardrails without separate approval and PR",
+    "Do not start the next agent proposal until the first Shipyard Modernization focus and TypeScript optimization steps are handled or Sergey redirects"
   ],
-  "nextAction": "Create project_state_synchronizer proposal, unless Sergey chooses another agent or returns to the book explicitly",
+  "nextAction": "Enable incremental TypeScript builds as the first concrete Shipyard Modernization PR; then split TypeScript domain/engine/integration layers before adding a minimal Go core boundary",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -94,12 +98,18 @@
     "knowledge/05_agent_memory/agent_proposals/workflow_conductor_agent.md",
     "knowledge/05_agent_memory/agent_proposals/agent_registry_librarian.md",
     "knowledge/05_agent_memory/agent_proposals/approval_gate_keeper.md",
+    "knowledge/05_agent_memory/agent_proposals/project_state_synchronizer.md",
     "knowledge/05_agent_memory/workflow_layers/socratic_lantern_optional_layer.md",
     "knowledge/05_agent_memory/workflow_layers/ethical_persuasion_optional_layer.md",
     "knowledge/05_agent_memory/workflow_layers/cbt_thought_check_optional_layer.md",
     "knowledge/05_agent_memory/workflow_layers/source_intake_auditor_optional_layer.md",
     "knowledge/03_source_books/audits/source_intake_audit_template.md",
     "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md",
+    "tsconfig.json",
+    "package.json",
+    "src/types.ts",
+    "src/router.ts",
+    "src/agents.ts",
     "book/01_drafts/chapter_00_preface.md",
     "book/02_reviewed/chapter_00_preface.md"
   ],
@@ -131,14 +141,20 @@
     "proposalAgents": [
       "workflow_conductor_agent",
       "agent_registry_librarian",
-      "approval_gate_keeper"
+      "approval_gate_keeper",
+      "project_state_synchronizer"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "project_state_synchronizer",
+    "recommendedNextAgent": "checkpoint_compressor_agent",
     "alternativeNextAgents": [
-      "checkpoint_compressor_agent",
       "source_card_builder",
       "copyright_boundary_guard"
-    ]
+    ],
+    "shipyardModernization": {
+      "status": "focus_requested",
+      "languageDecision": "Go accepted for future core checks after TypeScript optimization and JSON boundary",
+      "nextTechnicalStep": "Enable incremental TypeScript builds",
+      "goCoreStrategy": "CLI first, JSON stdin/stdout, optional dev tool before runtime replacement"
+    }
   }
 }
