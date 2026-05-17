@@ -6,7 +6,8 @@
 
 - Команда: `#checkpoint full`
 - Дата: 2026-05-17
-- Смысл: зафиксировать состояние после PR #26, загрузки большой волны материалов в источники проекта и решения использовать Source Intake Audit перед включением источников в рабочую библиотеку.
+- Версия: `v2.2`
+- Смысл: зафиксировать состояние после сборки первого блока агентной среды: `socratic_lantern_agent` и `ethical_persuasion_guard` активированы как optional workflow layers.
 
 ## Уже завершено
 
@@ -29,8 +30,24 @@
 - v1.8 — Apply approved anti-cliche revisions to chapter_00_preface draft
 - v1.9 — Create reviewed chapter_00_preface artifact
 - v2.0 — Checkpoint Book Fast Track workflow
-- PR #26 — Add source intake and agent creation rules
 - v2.1 — Checkpoint project sources uploaded and Source Intake Audit ready
+- v2.2 — Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion
+
+## PR #31–45 summary
+
+- PR #31–33: registered first wave of living project docs and project source cards with cautious statuses.
+- PR #34: added `socratic_lantern_agent` proposal.
+- PR #35: added Socratic block targeted audit and Waltman/Codd duplicate check.
+- PR #36: added targeted reading notes for Waltman/Codd, Farnsworth, Overholser and preliminary duplicate result.
+- PR #37: added Socratic block status and source-location override.
+- PR #38: added controlled activation proposal for `socratic_lantern_agent`.
+- PR #39: added `+` / `++` shorthand protocol.
+- PR #40: activated `socratic_lantern_agent` as optional workflow layer.
+- PR #41: added `ethical_persuasion_guard` proposal.
+- PR #42: added automatic mergeability check rule and linked protocol addenda from restart path.
+- PR #43: added Cialdini targeted reading note and medical caution audit.
+- PR #44: added controlled activation proposal for `ethical_persuasion_guard`.
+- PR #45: activated `ethical_persuasion_guard` as optional workflow layer.
 
 ## Book Fast Track
 
@@ -59,6 +76,41 @@
 - Сводов, MVP и карт контекстов;
 - агентных паспортов, если они меняют маршруты или поведение системы.
 
+## Действующие optional workflow layers
+
+### `socratic_lantern_agent`
+
+Статус: active optional workflow layer.
+
+Роль: проверяет вопросы, диалоги, сцены выбора, наставничество и MVP-развилки.
+
+Формула:
+
+> Вопрос — это фонарь, а не поводок.
+
+Не является:
+
+- hard guardrail;
+- route-required режимом;
+- обязательной проверкой всех текстов.
+
+### `ethical_persuasion_guard`
+
+Статус: active optional workflow layer.
+
+Роль: проверяет влияние, продающие тексты, CTA, офферы, Olife/здоровье, срочность, авторитет, социальное доказательство и конструктивное давление.
+
+Формула:
+
+> Оставить огонь. Убрать дым.
+
+Не является:
+
+- hard guardrail;
+- route-required режимом;
+- анти-маркетинговым стерилизатором;
+- автоматической блокировкой текстов.
+
 ## Новая техническая линия: Source Intake Audit
 
 Сергей загрузил в источники проекта большую волну материалов. Их нельзя считать автоматически обработанной библиотекой.
@@ -77,20 +129,24 @@
 6. Указать роль источника, где можно использовать, где нельзя, зоны книги и агентные слои.
 7. Отметить, какие источники требуют отдельного агента или agent proposal.
 
-## Потенциальные агенты после аудита источников
+## Потенциальные агенты после v2.2
 
 Пока не создавать все автоматически. Проверять по реальной пользе.
 
 Кандидаты:
 
 - `source_intake_auditor` — аудит источников, дублей, карточек и статусов.
-- `socratic_lantern_agent` — вопрос как фонарь или поводок.
 - `cbt_thought_check_agent` — проверка мысли, когнитивных искажений, поспешных выводов.
-- `influence_ethics_guard` — честное влияние против манипуляции.
 - `emotion_compass_agent` — эмоция под реакцией без превращения главы в терапию.
 - `gameful_path_designer` — квесты, маршрут новичка и тренажёр без инфантильной геймификации.
 
-Количество агентов не ограничено. Ограничение — качество процесса.
+Рекомендуемый следующий технический агент:
+
+- `source_intake_auditor`, если цель — привести библиотеку в порядок.
+
+Альтернативный следующий тематический агент:
+
+- `cbt_thought_check_agent`, если цель — усилить психологическую точность глав, MVP-развилок и маршрута новичка.
 
 ## Текущий литературный шаг
 
@@ -116,16 +172,17 @@
 
 - от первой границы доверия;
 - к обещанию книги;
-- не «научим продавать правильно», а «будем учиться различать, где путь остаётся человеческим, а где человек становится средством».
+- не `научим продавать правильно`, а `будем учиться различать, где путь остаётся человеческим, а где человек становится средством`.
 
 ## Ближайшие технические планы
 
-- Провести Source Intake Audit первой волны источников.
-- Создать или обновить карточки источников для проектных документов и ключевых внешних материалов.
-- Определить, какие источники порождают отдельных агентов.
-- При необходимости создать `source_intake_auditor` как первый служебный агент аудита библиотеки.
-- Массово привязать source cards к Google Drive/source locations.
-- Проверить, нужно ли сохранить `reviewed` stage как optional, а не обязательную стадию.
+1. Создать/активировать `source_intake_auditor` или начать Source Intake Audit без отдельного агента.
+2. Провести Source Intake Audit первой волны источников.
+3. Создать или обновить карточки источников для проектных документов и ключевых внешних материалов.
+4. Определить, какие источники порождают отдельных агентов.
+5. Массово привязать source cards к source locations там, где это безопасно и не раскрывает private IDs.
+6. Рассмотреть `cbt_thought_check_agent` как следующий тематический слой.
+7. Вернуться к Введению через Book Fast Track, когда технический блок будет достаточно собран.
 
 ## Отложенные задачи
 
@@ -133,6 +190,7 @@
 - Автоматическое обновление review queue при новых map/sync package.
 - Полная интеграция Book Fast Track в agent routing.
 - Следующая глава Плотникова и наша глава 1 — после завершения читательской версии Введения или отдельного решения.
+- Hard guardrail activation для новых агентов — только отдельным approval и отдельным PR.
 
 ## Нельзя забыть
 
