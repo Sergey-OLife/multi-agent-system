@@ -1,9 +1,9 @@
 {
   "currentVersion": "v2.4",
   "lastCompletedVersion": "v2.4",
-  "lastMergedPr": "PR #67 — Extract agent context and diagnostics modules",
-  "lastMergeCommit": "df9600e1433d73d83a5f5258cdaa8afc4ad18c3e",
-  "currentMilestone": "v2.4 Shipyard Modernization after TypeScript layer split and Go-core contract",
+  "lastMergedPr": "PR #69 — Add import boundaries and public module entrypoints",
+  "lastMergeCommit": "087c28f6b48464365110ab643542c9eaa985d5af",
+  "currentMilestone": "v2.4 Shipyard Modernization after import boundaries enforcement",
   "currentMode": "Agent Shipyard / Shipyard Modernization",
   "bookPaused": true,
   "completedVersions": [
@@ -32,11 +32,11 @@
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals"
   ],
   "recentPrs": [
-    "PR #63 — Record shipyard modernization focus",
-    "PR #64 — Enable incremental TypeScript builds",
     "PR #65 — Split TypeScript domain and engine layers",
     "PR #66 — Add Go core API contract",
-    "PR #67 — Extract agent context and diagnostics modules"
+    "PR #67 — Extract agent context and diagnostics modules",
+    "PR #68 — Sync state after shipyard modernization PRs",
+    "PR #69 — Add import boundaries and public module entrypoints"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -50,6 +50,10 @@
     "TypeScript domain and engine layers have been introduced while compatibility entrypoints remain",
     "Go-core API contract is fixed as CLI plus JSON stdin/stdout before any Go runtime code is added",
     "agents.ts should remain a registry assembly point, not a dumping ground for context and diagnostics logic",
+    "Public module entrypoints now define layer access for domain, engine, diagnostics and orchestration",
+    "context-pack belongs to orchestration, not core-like engine, because it depends on source registry",
+    "Import boundaries are enforced by scripts/check-boundaries.mjs and npm test",
+    "Protected layers must not import filesystem, child process, registry/state, integrations or direct adapter side effects outside their allowed boundary",
     "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
     "uploaded project sources are raw/source material until audited through Source Intake Audit",
     "source cards are not proof that full sources were read",
@@ -84,7 +88,7 @@
     "Do not create hard guardrails without separate approval and PR",
     "Do not return to the agent proposal queue until Sergey redirects or the current modernization segment is checkpointed"
   ],
-  "nextAction": "Choose the next modernization branch: either split tsconfig into base/build/test configs, or create the first minimal Go-core sync-check CLI using the accepted core API contract",
+  "nextAction": "Split tsconfig into base/build/test configs now that TypeScript layer boundaries and import enforcement are in place; after that, create the first minimal Go-core sync-check CLI using the accepted core API contract",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -97,6 +101,7 @@
     "knowledge/00_manifest/project-state.json",
     "knowledge/00_manifest/project-state.md",
     "knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md",
+    "knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container.template.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md",
@@ -113,15 +118,20 @@
     "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md",
     "tsconfig.json",
     "package.json",
+    "scripts/check-boundaries.mjs",
+    "src/domain/index.ts",
     "src/domain/types.ts",
+    "src/engine/index.ts",
     "src/engine/classify-task.ts",
-    "src/engine/context-pack.ts",
     "src/engine/route-request.ts",
     "src/engine/routes.ts",
     "src/engine/text-utils.ts",
+    "src/diagnostics/index.ts",
     "src/diagnostics/anti-cliche.ts",
     "src/diagnostics/svod-check.ts",
     "src/diagnostics/sync-map.ts",
+    "src/orchestration/index.ts",
+    "src/orchestration/context-pack.ts",
     "src/router.ts",
     "src/agents.ts",
     "book/01_drafts/chapter_00_preface.md",
@@ -165,15 +175,16 @@
       "copyright_boundary_guard"
     ],
     "shipyardModernization": {
-      "status": "state_sync_after_pr67",
+      "status": "state_sync_after_pr69",
       "completedTechnicalSteps": [
         "incremental TypeScript builds",
         "domain and engine layer split",
         "Go-core API contract",
-        "context and diagnostics extraction from agents.ts"
+        "context and diagnostics extraction from agents.ts",
+        "import boundary enforcement and public module entrypoints"
       ],
       "languageDecision": "Go accepted for future core checks after TypeScript optimization and JSON boundary",
-      "nextTechnicalStep": "Choose tsconfig split or minimal Go-core sync-check CLI",
+      "nextTechnicalStep": "Split tsconfig into base/build/test configs before first Go-core sync-check CLI",
       "goCoreStrategy": "CLI first, JSON stdin/stdout, optional dev tool before runtime replacement"
     }
   }
