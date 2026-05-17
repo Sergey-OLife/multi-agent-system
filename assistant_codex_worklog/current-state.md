@@ -12,10 +12,10 @@
 
 ## Последний смерженный PR
 
-- PR #69 — `Add import boundaries and public module entrypoints`
+- PR #72 — `Add minimal Go core sync-check CLI`
 - Статус: merged
-- Merge commit: `087c28f6b48464365110ab643542c9eaa985d5af`
-- Смысл: добавлены public entrypoints слоёв, `context-pack` перенесён в `orchestration`, добавлен dependency-free import boundary checker, `lint:boundaries` встроен в `npm test`, правила границ зафиксированы документом.
+- Merge commit: `059496b556df463de3c1ad44915590efeabffa4c`
+- Смысл: добавлен первый optional Go-core dev-tool `sync-check` через JSON stdin/stdout; TypeScript runtime, routes, agents, source registry, guardrails и optional layers не менялись.
 
 ## Shipyard Modernization — что уже сделано
 
@@ -26,6 +26,9 @@
 - PR #67 — вынесены context и diagnostics модули из `agents.ts`.
 - PR #68 — синхронизировано состояние после PR #64–67.
 - PR #69 — добавлены import boundaries и public module entrypoints.
+- PR #70 — синхронизировано состояние после PR #69.
+- PR #71 — TypeScript configs разделены на `base/build/test`.
+- PR #72 — добавлен первый Go-core `sync-check` CLI.
 
 ## Актуальные proposal-агенты
 
@@ -50,7 +53,8 @@
 - Go принят как будущий кандидат для тяжёлых повторяемых проверок верфи.
 - Go не означает полный немедленный rewrite.
 - TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
-- Go-core вводится позже через CLI с JSON stdin/stdout.
+- Go-core вводится через CLI с JSON stdin/stdout.
+- Первый Go-core — optional dev-tool, не runtime replacement.
 - `agents.ts` не должен снова становиться складом контекста и диагностик.
 - Public entrypoints задают доступ к слоям.
 - `context-pack` находится в `orchestration`, потому что зависит от `source-registry`.
@@ -58,9 +62,7 @@
 
 ## Следующий безопасный технический шаг
 
-Разделить `tsconfig` на base/build/test configs, потому что границы слоёв уже закреплены.
-
-После этого следующий крупный шаг: первый минимальный Go-core `sync-check` CLI по принятому контракту.
+Добавить TypeScript dev wrapper, который готовит input envelope для `sync-check` и вызывает optional Go-core binary с ясным fallback, если Go/binary недоступны.
 
 ## Что временно не делаем
 

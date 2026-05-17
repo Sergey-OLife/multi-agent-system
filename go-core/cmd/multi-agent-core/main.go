@@ -140,6 +140,11 @@ func runSyncCheck(input InputEnvelope) OutputEnvelope {
 		return errorOutput(input.Command, "invalid_project_state_json", err.Error(), "Provide parseable project-state.json content.")
 	}
 
+	requireFile(&diagnostics, &requiredUpdates, projectStateMd, "missing_project_state_md", "knowledge/00_manifest/project-state.md", "project-state.md is required for sync-check mirror validation.")
+	requireFile(&diagnostics, &requiredUpdates, currentState, "missing_current_state", "assistant_codex_worklog/current-state.md", "current-state.md is required for sync-check handoff validation.")
+	requireFile(&diagnostics, &requiredUpdates, roadmap, "missing_roadmap", "assistant_codex_worklog/roadmap.md", "roadmap.md is required for sync-check handoff validation.")
+	requireFile(&diagnostics, &requiredUpdates, restartPrompt, "missing_restart_prompt", "assistant_codex_worklog/restart-prompt.md", "restart-prompt.md is required for sync-check handoff validation.")
+
 	checkTextContains(&diagnostics, &requiredUpdates, projectStateMd, "project_state_md_missing_last_pr", projectState.LastMergedPr, "project-state.md must mirror project-state.json lastMergedPr.")
 	checkTextContains(&diagnostics, &requiredUpdates, projectStateMd, "project_state_md_missing_merge_commit", projectState.LastMergeCommit, "project-state.md must mirror project-state.json lastMergeCommit.")
 	checkTextContains(&diagnostics, &requiredUpdates, currentState, "current_state_missing_last_pr", projectState.LastMergedPr, "current-state.md must mention the latest merged PR.")
@@ -196,6 +201,15 @@ func runSyncCheck(input InputEnvelope) OutputEnvelope {
 		BlockedActions:  unique(blockedActions),
 		SafeNextStep:    safeNextStep,
 	}
+}
+
+func requireFile(diagnostics *[]Diagnostic, requiredUpdates *[]string, file *InputFile, code string, path string, message string) {
+	if file != nil {
+		return
+	}
+
+	*diagnostics = append(*diagnostics, diagnostic("medium", code, path, message, fmt.Sprintf("Pass %s in files before declaring sync ready.", path)))
+	*requiredUpdates = append(*requiredUpdates, fmt.Sprintf("Provide %s.", path))
 }
 
 func checkTextContains(diagnostics *[]Diagnostic, requiredUpdates *[]string, file *InputFile, code string, expected string, message string) {

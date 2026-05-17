@@ -6,32 +6,31 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - currentVersion: v2.4
 - lastCompletedVersion: v2.4
-- lastMergedPr: PR #69 — Add import boundaries and public module entrypoints
-- lastMergeCommit: 087c28f6b48464365110ab643542c9eaa985d5af
-- currentMilestone: v2.4 Shipyard Modernization after import boundaries enforcement
+- lastMergedPr: PR #72 — Add minimal Go core sync-check CLI
+- lastMergeCommit: 059496b556df463de3c1ad44915590efeabffa4c
+- currentMilestone: v2.4 Shipyard Modernization after first Go-core sync-check CLI
 - currentMode: Agent Shipyard / Shipyard Modernization
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #65 — Split TypeScript domain and engine layers
-- PR #66 — Add Go core API contract
-- PR #67 — Extract agent context and diagnostics modules
 - PR #68 — Sync state after shipyard modernization PRs
 - PR #69 — Add import boundaries and public module entrypoints
+- PR #70 — Sync state after import boundaries PR
+- PR #71 — Split TypeScript configs for build and test
+- PR #72 — Add minimal Go core sync-check CLI
 
 ## Shipyard Modernization status
 
-Состояние после PR #69:
+Состояние после PR #72:
 
 - TypeScript incremental builds включены.
 - Введены слои `domain / engine / diagnostics / orchestration`.
-- Зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
-- Из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`.
-- `context-pack` перенесён из `engine` в `orchestration`, потому что зависит от `source-registry`.
-- Добавлены public module entrypoints для `domain`, `engine`, `diagnostics`, `orchestration`.
 - Import boundaries закреплены через `scripts/check-boundaries.mjs` и `npm run lint:boundaries`.
-- `npm test` теперь запускает boundary check перед build/tests.
+- TypeScript configs разделены на `base/build/test`.
+- Зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
+- Реализован первый Go-core `sync-check` CLI как optional dev-tool.
+- Go-core не заменяет TypeScript orchestrator и не является runtime center.
 
 ## Active decisions
 
@@ -42,11 +41,12 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
 - Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit.
 - Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite.
-- TypeScript incremental builds are enabled through tsconfig incremental and tsBuildInfoFile.
-- TypeScript domain and engine layers have been introduced while compatibility entrypoints remain.
-- Go-core API contract is fixed as CLI plus JSON stdin/stdout before any Go runtime code is added.
+- TypeScript domain, engine, diagnostics and orchestration layers have public entrypoints and import boundaries.
+- TypeScript configs are split into base/build/test configs after layer boundaries were enforced.
+- Go-core API contract is fixed as CLI plus JSON stdin/stdout.
+- The first Go-core implementation is `sync-check` as an optional dev-tool, not a runtime replacement.
+- Go-core `sync-check` reads JSON from stdin, writes JSON to stdout, does not call GitHub or LLM, and does not change files.
 - `agents.ts` should remain a registry assembly point, not a dumping ground for context and diagnostics logic.
-- Public module entrypoints now define layer access for domain, engine, diagnostics and orchestration.
 - `context-pack` belongs to orchestration, not core-like engine, because it depends on source registry.
 - Import boundaries are enforced by `scripts/check-boundaries.mjs` and `npm test`.
 - Protected layers must not import filesystem, child process, registry/state, integrations or direct adapter side effects outside their allowed boundary.
@@ -83,11 +83,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Do not treat all uploaded project sources as fully audited.
 - Do not activate proposal agents without controlled activation and separate approval.
 - Do not create hard guardrails without separate approval and PR.
-- Do not return to the agent proposal queue until Sergey redirects or the current modernization segment is checkpointed.
 
 ## Next action
 
-Split `tsconfig` into base/build/test configs now that TypeScript layer boundaries and import enforcement are in place. After that, create the first minimal Go-core `sync-check` CLI using the accepted core API contract.
+Add a TypeScript dev wrapper that prepares `sync-check` input and calls the optional Go-core binary with a clear fallback if it is unavailable.
 
 ## Chat writing state
 
@@ -112,10 +111,14 @@ Split `tsconfig` into base/build/test configs now that TypeScript layer boundari
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 - knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
-- knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
-- tsconfig.json
+- tsconfig.base.json
+- tsconfig.build.json
+- tsconfig.test.json
 - package.json
 - scripts/check-boundaries.mjs
+- go-core/go.mod
+- go-core/cmd/multi-agent-core/main.go
+- go-core/cmd/multi-agent-core/main_test.go
 - src/domain/index.ts
 - src/domain/types.ts
 - src/engine/index.ts

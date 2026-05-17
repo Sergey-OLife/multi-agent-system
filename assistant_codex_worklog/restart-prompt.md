@@ -24,8 +24,8 @@ GitHub — источник правды. Сначала открой:
 
 - currentVersion: v2.4.
 - lastCompletedVersion: v2.4.
-- lastMergedPr: PR #69 — Add import boundaries and public module entrypoints.
-- lastMergeCommit: 087c28f6b48464365110ab643542c9eaa985d5af.
+- lastMergedPr: PR #72 — Add minimal Go core sync-check CLI.
+- lastMergeCommit: 059496b556df463de3c1ad44915590efeabffa4c.
 - Текущий режим: Agent Shipyard / Shipyard Modernization.
 - Книга на паузе до отдельного решения Сергея.
 - Формула этапа: сначала модернизируем стапель, потом продолжаем строить агентов.
@@ -33,21 +33,23 @@ GitHub — источник правды. Сначала открой:
 Что сделано в Shipyard Modernization:
 
 - PR #63 — зафиксирован подфокус Shipyard Modernization.
-- PR #64 — включены incremental TypeScript builds: `incremental` + `tsBuildInfoFile`.
-- PR #65 — введены первые слои TypeScript: `domain / engine`, compatibility entrypoints сохранены.
+- PR #64 — включены incremental TypeScript builds.
+- PR #65 — введены первые слои TypeScript: `domain / engine`.
 - PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
 - PR #67 — из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`.
 - PR #68 — синхронизировано состояние после PR #64–67.
 - PR #69 — добавлены public module entrypoints и import boundary enforcement.
+- PR #70 — синхронизировано состояние после PR #69.
+- PR #71 — TypeScript configs разделены на `base/build/test`.
+- PR #72 — добавлен первый Go-core `sync-check` CLI.
 
 Shipyard Modernization rules:
 
 - Сначала граница ответственности, потом файловая структура, потом конфиг, потом Go.
-- Go принят как будущий кандидат для тяжёлых повторяемых проверок верфи, но не как немедленный rewrite.
-- Go-core вводить через CLI + JSON stdin/stdout, сначала как optional dev-tool.
+- Go-core вводить через CLI + JSON stdin/stdout как optional dev-tool до runtime replacement.
+- Первый Go-core — `sync-check`; он не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов.
 - `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
 - `context-pack` живёт в `orchestration`, не в core-like `engine`, потому что зависит от `source-registry`.
-- Public entrypoints: `domain`, `engine`, `diagnostics`, `orchestration`.
 - Import boundaries проверяются `scripts/check-boundaries.mjs`; `npm test` запускает boundary check перед build/tests.
 
 Активные optional workflow layers:
@@ -97,5 +99,5 @@ Proposal-only агенты:
 
 Следующий логичный шаг:
 
-Создать PR `Split tsconfig into base/build/test configs`, потому что TypeScript-слои и import boundaries уже закреплены. После этого — первый минимальный Go-core `sync-check` CLI по принятому contract.
+Создать PR с TypeScript dev wrapper для Go-core `sync-check`: TS готовит input envelope из state/worklog файлов, вызывает optional Go-core binary и имеет ясный fallback, если Go/binary недоступны.
 ```

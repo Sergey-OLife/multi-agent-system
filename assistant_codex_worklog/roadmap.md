@@ -40,11 +40,11 @@
 
 ## Recent PR summary
 
-- PR #65: split TypeScript domain and engine layers.
-- PR #66: added Go-core API contract.
-- PR #67: extracted agent context and diagnostics modules.
 - PR #68: synced state after shipyard modernization PRs.
 - PR #69: added import boundaries and public module entrypoints.
+- PR #70: synced state after import boundaries PR.
+- PR #71: split TypeScript configs for build and test.
+- PR #72: added minimal Go-core sync-check CLI.
 
 ## Agent Shipyard architecture
 
@@ -87,7 +87,7 @@ Proposal не является activation.
 
 ## Shipyard Modernization roadmap
 
-Сергей принял направление: Go использовать позже как ядро для тяжёлых повторяемых проверок, но сначала выжать максимум из текущего TypeScript-стека.
+Сергей принял направление: Go использовать как ядро для тяжёлых повторяемых проверок только после TypeScript-дисциплины и JSON boundary.
 
 ### PR A — Record Shipyard Modernization focus
 
@@ -113,25 +113,26 @@ Proposal не является activation.
 
 Статус: done via PR #69.
 
-Смысл:
-
-- public entrypoints задают доступ к `domain`, `engine`, `diagnostics`, `orchestration`;
-- `context-pack` перенесён в `orchestration`, потому что зависит от `source-registry`;
-- dependency-free checker `scripts/check-boundaries.mjs` валит нарушения слоёв;
-- `npm test` запускает boundary check перед build/tests;
-- это удерживает `agents.ts` в роли composition root, а не склада логики.
-
 ### PR G — Split tsconfig into base/build/test configs
 
-Статус: next safe step.
-
-Цель: сделать TypeScript-конфиги отражением уже закреплённых архитектурных границ, а не косметикой поверх старого комка.
+Статус: done via PR #71.
 
 ### PR H — Add minimal Go-core sync-check CLI
 
-Статус: after tsconfig split, unless Sergey chooses the product path earlier.
+Статус: done via PR #72.
 
-Цель: первый Go-core dev-tool по принятому `core_api_contract.md`.
+Смысл:
+
+- Go-core добавлен как optional dev-tool, а не runtime replacement;
+- первая команда — `sync-check`;
+- интерфейс — JSON stdin/stdout;
+- Go-core не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов.
+
+### PR I — Add TypeScript dev wrapper for sync-check
+
+Статус: next safe step.
+
+Цель: TypeScript готовит input envelope из текущих state/worklog файлов, вызывает optional Go-core binary, показывает JSON output и имеет ясный fallback, если Go/binary недоступны.
 
 ## Возврат к агентам
 
