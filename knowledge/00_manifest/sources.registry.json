@@ -1,5 +1,5 @@
 {
-  "version": "0.4",
+  "version": "0.5",
   "sources": [
     {
       "source_id": "plotnikov_reasonable_network_marketing",
@@ -455,6 +455,78 @@
       "source_type": "project_rule",
       "path": "knowledge/04_processed/source_cards/57_client_followup_medical_caution_card.md",
       "priority_level": "active_ethics_rule",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "farnsworth_socratic_method",
+      "title": "Метод Сократа: Искусство задавать вопросы о мире и о себе",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/58_farnsworth_socratic_method.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "overholser_socratic_psychotherapy",
+      "title": "Метод Сократа в психотерапии",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/59_overholser_socratic_psychotherapy.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "ilse_sand_emotion_compass",
+      "title": "Компас эмоций: Как разобраться в своих чувствах",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/60_ilse_sand_emotion_compass.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "freeman_dewolf_mental_errors",
+      "title": "Если бы да кабы... или 15 ментальных ошибок, которые мешают вам жить",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/61_freeman_dewolf_mental_errors.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "byron_katie_loving_what_is",
+      "title": "Любить то, что есть",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/62_byron_katie_loving_what_is.md",
+      "priority_level": "optional_supporting_lens",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "anxiety_fear_panic_workbook",
+      "title": "КПТ — страх, тревога, паника",
+      "source_type": "source_book_or_workbook",
+      "path": "knowledge/04_processed/source_cards/63_anxiety_fear_panic_workbook.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "eric_berne_people_play_games",
+      "title": "Люди, которые играют в игры / What Do You Say After You Say Hello!",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/64_eric_berne_people_play_games.md",
+      "priority_level": "supporting_source_book",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "cialdini_influence",
+      "title": "Психология влияния",
+      "source_type": "source_book",
+      "path": "knowledge/04_processed/source_cards/65_cialdini_influence.md",
+      "priority_level": "core_supporting_source",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "judith_beck_quotes_collection",
+      "title": "Золотой фонд цитат Джудит Бек",
+      "source_type": "quote_collection_or_training_extract",
+      "path": "knowledge/04_processed/source_cards/66_judith_beck_quotes_collection.md",
+      "priority_level": "low_supporting_reference",
       "processed_status": "initial_inventory_card_v0.1"
     },
     {

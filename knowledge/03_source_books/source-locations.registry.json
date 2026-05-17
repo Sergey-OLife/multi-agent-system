@@ -1,5 +1,5 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "updated_at": "2026-05-17",
   "registry_purpose": "Map source cards to the private Google Drive library without committing raw books, private Drive URLs, or Drive file IDs.",
   "private_library": {
@@ -94,6 +94,15 @@
     {"source_id":"frequency_language_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
     {"source_id":"money_authors_hill_clason_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
     {"source_id":"ferrazzi_never_eat_alone_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"client_followup_medical_caution_card","raw_location":"private_google_drive","drive_filename":"client_followup_medical_caution_card.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"}
+    {"source_id":"client_followup_medical_caution_card","raw_location":"private_google_drive","drive_filename":"client_followup_medical_caution_card.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
+    {"source_id":"farnsworth_socratic_method","raw_location":"uploaded_project_source","drive_filename":"Фарнсворт У.-Метод Сократа...-2023.rtf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"overholser_socratic_psychotherapy","raw_location":"uploaded_project_source","drive_filename":"Оверхолзер Д. - Метод Сократа в психотерапии - 2021.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"ilse_sand_emotion_compass","raw_location":"uploaded_project_source","drive_filename":"Санд_Илсе_—_Компас_эмоций_Как_разобраться_в_своих_чувствах_—_2018 (3).pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"freeman_dewolf_mental_errors","raw_location":"uploaded_project_source","drive_filename":"Фриман_Артур,_Девульф_Роуз_—_Если_бы_да_кабы_15_ментальных_ошибок.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"byron_katie_loving_what_is","raw_location":"uploaded_project_source","drive_filename":"_Байрон Кейти, Любить то, что есть.doc","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"anxiety_fear_panic_workbook","raw_location":"uploaded_project_source","drive_filename":"КПТ - страх, тревога, паника.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"eric_berne_people_play_games","raw_location":"uploaded_project_source","drive_filename":"Люди,_которые_играют_в_игры_книга_2_Эрик_Берн.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"cialdini_influence","raw_location":"uploaded_project_source","drive_filename":"Психология влияния_Чалдини.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
+    {"source_id":"judith_beck_quotes_collection","raw_location":"uploaded_project_source","drive_filename":"Золотой фонд цитат Джудит Бек.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"}
   ]
 }
