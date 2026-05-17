@@ -140,7 +140,7 @@ func runRegistryCheck(input InputEnvelope) OutputEnvelope {
 		requiredUpdates = append(requiredUpdates, "Restore parser-safe YAML root in agent_container_registry.md.")
 	}
 
-	if !strings.Contains(registry.Content, "workflow_conductor_agent") {
+	if !strings.Contains(registry.Content, "agent_id: \"workflow_conductor_agent\"") {
 		diagnostics = append(diagnostics, diagnostic("medium", "registry_missing_workflow_conductor", registry.Path, "workflow_conductor_agent container is missing.", "Restore workflow_conductor_agent container entry."))
 		requiredUpdates = append(requiredUpdates, "Restore workflow_conductor_agent registry entry.")
 	}
@@ -152,7 +152,7 @@ func runRegistryCheck(input InputEnvelope) OutputEnvelope {
 	if len(requiredUpdates) > 0 {
 		status = "needs_revision"
 		summary = "Registry structure issues were found."
-		safeNextStep = "Repair registry structure before continuing." 
+		safeNextStep = "Repair registry structure before continuing."
 	}
 
 	return OutputEnvelope{
