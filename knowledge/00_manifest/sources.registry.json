@@ -1,5 +1,5 @@
 {
-  "version": "0.5",
+  "version": "0.6",
   "sources": [
     {
       "source_id": "plotnikov_reasonable_network_marketing",
@@ -527,6 +527,30 @@
       "source_type": "quote_collection_or_training_extract",
       "path": "knowledge/04_processed/source_cards/66_judith_beck_quotes_collection.md",
       "priority_level": "low_supporting_reference",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "plotnikovsky_motor_project_rule",
+      "title": "Плотниковский мотор, коробка и карта входа",
+      "source_type": "project_rule",
+      "path": "knowledge/04_processed/source_cards/67_plotnikovsky_motor_project_rule.md",
+      "priority_level": "active_project_rule",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "interaction_profile_v1_card",
+      "title": "Profil Vzaimodeystviya v1.0",
+      "source_type": "project_document",
+      "path": "knowledge/04_processed/source_cards/68_interaction_profile_v1_card.md",
+      "priority_level": "active_style_profile",
+      "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "chapter_30_design_artifact",
+      "title": "Глава 30. Художественное проектирование v1",
+      "source_type": "chapter_design_artifact",
+      "path": "knowledge/04_processed/source_cards/69_chapter_30_design_artifact.md",
+      "priority_level": "chapter_design_support",
       "processed_status": "initial_inventory_card_v0.1"
     },
     {
