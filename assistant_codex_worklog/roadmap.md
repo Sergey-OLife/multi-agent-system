@@ -44,7 +44,7 @@
 - PR #70: synced state after import boundaries PR.
 - PR #71: split TypeScript configs for build and test.
 - PR #72: added minimal Go-core sync-check CLI.
-- PR #73: synced state after Go-core and tightened handoff file validation.
+- PR #73 — Sync state after Go core sync-check
 
 ## Agent Shipyard architecture
 
