@@ -1,12 +1,12 @@
 # Roadmap — Assistant × Codex
 
-Эта дорожная карта описывает не книгу, а рабочий процесс с Codex и мультиагентной системой.
+Эта дорожная карта описывает рабочий процесс с Codex, GitHub и мультиагентной системой после перехода к режиму `Book Fast Track`.
 
 ## Последний checkpoint
 
 - Команда: `#checkpoint full`
-- Дата: 2026-05-16
-- Смысл: зафиксировать состояние после создания `assistant_codex_worklog/` и перед возможным перерывом.
+- Дата: 2026-05-17
+- Смысл: зафиксировать состояние после PR #24 и после решения разделить строгий технический workflow и быстрый книжный workflow.
 
 ## Уже завершено
 
@@ -23,102 +23,91 @@
 - v1.2 — Fix project-state path resolution
 - v1.3 — Add Russian review layer for artifacts
 - v1.4 — Add clickable review links
-- PR #14 — Add assistant Codex worklog
+- v1.5 — Add source location registry for Google Drive
+- v1.6 — Train anti_cliche_editor on preface review case
+- v1.7 — Add anti-cliche review map for chapter_00_preface
+- v1.8 — Apply approved anti-cliche revisions to chapter_00_preface draft
+- v1.9 — Create reviewed chapter_00_preface artifact
+- PR #24 — `v1.9 Create reviewed preface chapter`
 
-## Следующий ручной шаг
+## Новое процессное решение
 
-Пользователь проверяет:
+### Book Fast Track
 
-- [Plotnikov Map — chapter_00_preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/04_processed/plotnikov_map/plotnikov_chapter_00_preface_map.md)
-- [Sync Package — chapter_00_preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/02_project_rules/sync_packages/sync_chapter_00_preface.md)
+Для глав книги больше не использовать тяжёлую цепочку GitHub-артефактов на каждый промежуточный шаг.
 
-Через:
+Правильный режим:
 
-- [Review Index](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/05_agent_memory/review_queue/review-index.md)
+1. Писать и редактировать главу в чате.
+2. Использовать агентов как внутренние редакторские слои, а не как отдельные файлы на каждый проход.
+3. Давать Сергею один цельный читательский текст и короткую редакторскую записку.
+4. GitHub использовать для фиксации принятого результата, а не для каждого промежуточного размышления.
+5. Один PR может фиксировать принятую главу или пакет из 1–2 глав.
 
-Решение пользователя:
+### Strict PR Workflow
 
-- approve — можно переходить к chapter draft;
-- needs changes — правим map/sync;
-- reject — не идём дальше.
+Остаётся обязательным для:
 
-## Ближайшие планы
+- кода;
+- маршрутов агентов;
+- guardrails;
+- source registries;
+- tests/baseline;
+- project-state;
+- working protocols;
+- source cards/training cases;
+- Сводов, MVP и карт контекстов.
 
-### v1.5 — Add source location registry for Google Drive
+## Текущий литературный шаг
 
-Цель: связать source cards с приватной библиотекой пользователя в Google Drive без загрузки raw books в GitHub.
+Продолжить `chapter_00_preface` в чате как читательскую версию Введения.
 
-Нужно создать:
+Не начинать с нового PR.
 
-- `knowledge/03_source_books/source-locations.registry.json`
-- `knowledge/03_source_books/source-location.template.md`
-- source-location entries для ключевых источников.
+Принятые решения по Введению:
 
-Правила:
+- Заголовок: `От автора: перед входом`
+- Начало: `Эта книга не обещает чудо — она даёт карту. И начинается с отказа.`
+- Формула: `Она не обещает, что вы быстро решите финансовые вопросы.`
+- Введение — морковка, а не ранний разбор кухни MLM.
+- В начале не перегружать читателя языком продаж.
+- Сначала человек, узнавание и доверие; инструменты, термины и кухня — позже.
+- Принята формула: `В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.`
 
-- raw books не коммитить;
-- приватные Google Drive ссылки не делать публичными без отдельного решения;
-- хранить только `raw_location: private_google_drive`, `drive_filename`, `raw_text_committed: false`;
-- если source card есть, но фрагмент не загружен, агент не имеет права делать вид, что читал книгу.
+## Следующий ход по книге
 
-### v1.6 — Process chapter_00_preface draft
+Продолжить текст после фрагмента про первую границу разумного сообщества.
 
-Только после approval map/sync package.
+Редакторский переход:
 
-Создаётся:
+- от первой границы доверия;
+- к обещанию книги;
+- не «научим продавать правильно», а «будем учиться различать, где путь остаётся человеческим, а где человек становится средством».
 
-- `book/01_drafts/chapter_00_preface.md`
+## Ближайшие технические планы
 
-Не создаётся:
+Только после возвращения к техническому режиму или по отдельному запросу:
 
-- reviewed;
-- approved;
-- update package.
-
-### v1.7 — Review chapter_00_preface draft
-
-Проверка по слоям:
-
-- Свод;
-- антибанальность;
-- драматургия;
-- Частотный язык;
-- Тихий Мастер;
-- духовная сфера без внутренней конфессиональной лексики;
-- отсутствие пересказа Плотникова.
-
-### v1.8 — Approve chapter_00_preface
-
-Только после явного approval пользователя.
-
-### v1.9 — Update package after chapter_00_preface
-
-Фиксация новых правил, изменений стиля, workflow, source usage.
-
-### v2.0 — Process Plotnikov chapter 01
-
-Пользователь загружает настоящую главу 1: `Найдите достаточную причину`.
-
-Сначала создаются только:
-
-- plotnikov map;
-- sync package.
+- обновить `project-state` под новый Book Fast Track;
+- при необходимости упростить chapter workflow templates;
+- проверить, нужно ли сохранять `reviewed` stage как optional, а не обязательную стадию;
+- привести `review-index.md` к новому режиму, чтобы он не заставлял читать дубли глав.
 
 ## Отложенные задачи
 
-- Массовая привязка всех 57 source cards к Google Drive.
-- Полная система source location registry.
+- Массовая привязка всех source cards к Google Drive.
 - Более глубокая самообучаемость агентов через update packages.
-- Автоматическое обновление review queue при каждом новом map/sync package.
-- Checkpoint после каждой крупной серии PR.
-- Полный перенос рабочей логики в новый чат через `restart-prompt.md`.
+- Автоматическое обновление review queue при новых map/sync package.
+- Полная интеграция Book Fast Track в agent routing.
+- Следующая глава Плотникова и наша глава 1 — после завершения читательской версии Введения или отдельного решения.
 
 ## Нельзя забыть
 
 - Не загружать raw books в GitHub.
 - Не хранить сырой текст Плотникова.
-- Не начинать draft без approval map/sync.
-- Давать пользователю кликабельные ссылки.
+- Не заставлять Сергея читать одно и то же несколько раз без редакторской необходимости.
+- В книжной работе сначала чатовая редактура, потом GitHub фиксация.
+- Давать кликабельные ссылки, если файл нужно открыть.
 - Все human-readable artifacts — на русском.
-- ChatGPT/Codex должен честно говорить, если полного материала нет.
-- Если Codex создал работу, но PR не виден — нажать `Создать PR` в той же задаче, а не создавать дубль.
+- Если полного материала нет, не делать вид, что источник прочитан.
+- Для кода и агентов сохранять строгий PR workflow.
