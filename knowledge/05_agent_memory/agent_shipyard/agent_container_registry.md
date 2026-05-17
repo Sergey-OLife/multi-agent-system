@@ -813,16 +813,15 @@ agent_container_registry:
 
 ## Первое ядро заполнения
 
-Первыми нужно довести до proposal:
+Следующими нужно довести до proposal:
 
-1. `project_state_synchronizer`
-2. `checkpoint_compressor_agent`
-3. `source_card_builder`
-4. `copyright_boundary_guard`
-5. `svod_guard`
-6. `contextologist_agent`
-7. `sergey_interaction_profiler`
-8. `author_style_memory_agent`
+1. `checkpoint_compressor_agent`
+2. `source_card_builder`
+3. `copyright_boundary_guard`
+4. `svod_guard`
+5. `contextologist_agent`
+6. `sergey_interaction_profiler`
+7. `author_style_memory_agent`
 
 `workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper` и `project_state_synchronizer` уже переведены из `container` в `proposal`, но не активированы.
 
