@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.5
-- lastCompletedVersion: v1.5
-- lastMergedPr: PR #16 — Create chapter_00_preface draft
-- currentMilestone: v1.5 Add source location registry for Google Drive
+- currentVersion: v1.6
+- lastCompletedVersion: v1.6
+- lastMergedPr: PR #17 — v1.5 Add source location registry for Google Drive
+- currentMilestone: v1.6 Train anti_cliche_editor on preface review case
 
 ## Completed versions
 
@@ -25,6 +25,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.3 Add Russian review layer for artifacts
 - v1.4 Add clickable review links
 - v1.5 Add source location registry for Google Drive
+- v1.6 Train anti_cliche_editor on preface review case
 
 ## Active decisions
 
@@ -33,6 +34,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Plotnikov is uploaded manually one chapter at a time for processed artifacts
 - source cards are registry-based
 - private Drive file IDs and URLs are not committed to the public repository
+- anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks
 - project voice uses Тихий Мастер, not Каленчевский голос
 - direct internal confessional wording is not used in reader-facing book text
 - approved chapters require explicit user approval
@@ -58,6 +60,9 @@ User review of chapter_00_preface draft
 - knowledge/00_manifest/sources.registry.json
 - knowledge/03_source_books/source-locations.registry.json
 - knowledge/03_source_books/source-location.template.md
+- knowledge/04_processed/editor_training/anti_cliche_editor/chapter_00_preface_case_001.md
+- knowledge/04_processed/source_cards/anti_cliche_editor_training_card.md
+- tests/editor-training.test.ts
 - book/00_manifest/chapter-status.example.json
 - book/01_drafts/chapter_00_preface.md
 - knowledge/03_source_books/plotnikov/source-location.md
