@@ -1,5 +1,5 @@
-import type { RoutingContext, SynchronizationMap } from "../types.js";
-import { normalize } from "../engine/text-utils.js";
+import type { RoutingContext, SynchronizationMap } from "../domain/index.js";
+import { normalize } from "../engine/index.js";
 
 function hasSynchronizationSignal(input: string): boolean {
   const text = normalize(input);
