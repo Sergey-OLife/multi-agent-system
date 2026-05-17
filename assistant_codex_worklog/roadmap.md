@@ -1,13 +1,16 @@
 # Roadmap — Assistant × Codex
 
-Эта дорожная карта описывает рабочий процесс с Codex, GitHub, мультиагентной системой, Book Fast Track и источниками проекта «Пишем книгу».
+Эта дорожная карта описывает рабочий процесс с Codex, GitHub, мультиагентной системой, Book Fast Track, источниками проекта «Пишем книгу» и текущей модернизацией агентной верфи.
 
-## Последний checkpoint
+## Текущий режим
 
-- Команда: `#checkpoint full`
-- Дата: 2026-05-17
-- Версия: `v2.4`
-- Смысл: зафиксировать переход в режим агентной верфи после создания архитектуры контейнеров и первых P0 proposal-агентов.
+`Agent Shipyard / Shipyard Modernization`
+
+Книга временно отложена. Текущий фокус — не продолжение глав и не следующий agent proposal, а модернизация верфи, чтобы дальнейшая агентная работа шла быстрее и чище.
+
+Рабочая формула:
+
+> Сначала модернизируем стапель, потом продолжаем строить агентов.
 
 ## Уже завершено
 
@@ -35,23 +38,12 @@
 - v2.3 — Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
 - v2.4 — Checkpoint Agent Shipyard architecture and first P0 proposals
 
-## PR #56–60 summary
+## Recent PR summary
 
-- PR #56: added chat restart prompt length limit — chat prompt up to 6000 chars; full `restart-prompt.md` may be longer.
-- PR #57: added `workflow_conductor_agent` proposal.
 - PR #58: added agent shipyard architecture: container template, parser-safe registry, hybrid coordination model, materials research topology.
 - PR #59: added `agent_registry_librarian` proposal and synchronized registry status.
 - PR #60: added `approval_gate_keeper` proposal and synchronized registry status.
-
-## Current mode: Agent Shipyard
-
-Книга временно отложена до появления необходимого набора агентов.
-
-Рабочая формула:
-
-> Сначала достраиваем корабль, потом плывём.
-
-Текущий фокус — не продолжение глав, а достройка агентной архитектуры.
+- PR #62: added `project_state_synchronizer` proposal and synchronized registry status.
 
 ## Agent Shipyard architecture
 
@@ -76,78 +68,112 @@
 - каждая связь должна иметь тип и ограничения;
 - полносвязность не отменяет source intake, dosage, fact-check, copyright boundary и approval.
 
-## Agent registry status
+## Proposal agents
 
-`agent_container_registry.md` — parser-safe YAML registry.
-
-- schema version: `1.2`.
-- 63 containers/candidates.
-- `workflow_conductor_agent`: proposal.
-- `agent_registry_librarian`: proposal.
-- `approval_gate_keeper`: proposal.
-- Остальные статусы — согласно registry.
+- `workflow_conductor_agent`: proposal, not activated.
+- `agent_registry_librarian`: proposal, not activated.
+- `approval_gate_keeper`: proposal, not activated.
+- `project_state_synchronizer`: proposal, not activated.
 
 Proposal не является activation.
 
 ## Active optional workflow layers
 
-### `socratic_lantern_agent`
+- `socratic_lantern_agent` — вопрос как фонарь, не поводок.
+- `ethical_persuasion_guard` — оставить огонь, убрать дым.
+- `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
+- `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
 
-Статус: active optional workflow layer.
+## Shipyard Modernization roadmap
 
-Формула:
+Сергей принял направление: Go использовать позже как ядро для тяжёлых повторяемых проверок, но сначала выжать максимум из текущего TypeScript-стека.
 
-> Вопрос — это фонарь, а не поводок.
+### PR A — Record Shipyard Modernization focus
 
-### `ethical_persuasion_guard`
+Цель: зафиксировать временный подфокус модернизации верфи после PR #62.
 
-Статус: active optional workflow layer.
+Изменения:
 
-Формула:
+- project-state `.json` / `.md`;
+- current-state;
+- roadmap;
+- decision-log.
 
-> Оставить огонь. Убрать дым.
+Статус: current step.
 
-### `cbt_thought_check_agent`
+### PR B — Enable incremental TypeScript builds
 
-Статус: active optional workflow layer.
+Цель: ускорить dev-loop без изменения runtime-поведения.
 
-Формула:
+План:
 
-> Мысль — это не приговор. Это гипотеза, которую можно проверить.
+- добавить `incremental: true` в `tsconfig.json`;
+- добавить `tsBuildInfoFile`;
+- сохранить `skipLibCheck: true`;
+- не включать `composite` до project references;
+- при необходимости добавить быстрый script для typecheck.
 
-Не терапия, не диагностика, не инструмент продаж. Лёгкий юмор допустим, клоунада нет.
+### PR C — Split TypeScript domain and engine layers
 
-### `source_intake_auditor`
+Цель: подготовить код к будущему Go-core без немедленного rewrite.
 
-Статус: active optional workflow layer.
+План:
 
-Формула:
+- выделить `src/domain`;
+- выделить `src/engine`;
+- выделить `src/integrations`;
+- не менять внешнее поведение CLI/router.
 
-> Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать.
+### PR D — Add core API contract for future Go engine
 
-Не hard guardrail, не route-required, не workflow conductor.
+Цель: зафиксировать JSON boundary перед Go.
 
-## New proposal agents
+План:
 
-### `workflow_conductor_agent`
+- описать input/output для `sync-check`, `registry-check`, `route-preview`, `checkpoint-check`;
+- не писать Go до утверждения контракта.
 
-Координатор ансамбля агентов. Не начальник системы.
+### PR E — Add minimal Go core sync-check CLI
 
-Должен решать: какие агенты нужны, в каком порядке, кто главный, где конфликт, где нужен `++`, что нельзя автоматизировать.
+Цель: доказать полезность Go на одном реальном сценарии.
 
-### `agent_registry_librarian`
+Первый сценарий:
 
-Библиотекарь агентов.
+- proposal exists, but registry/backlog still points to completed proposal step.
 
-Следит за дублями, статусами, registry sync и риском ложной активации.
+Принцип:
 
-### `approval_gate_keeper`
+- CLI first;
+- JSON stdin/stdout;
+- no HTTP/gRPC initially.
 
-Сторож approval-шлюза.
+### PR F — Wire Go sync-check as optional shipyard tool
 
-Формула:
+Цель: подключить Go-core как optional dev-tool, не ломая TypeScript runtime.
 
-> `+` двигает работу. `++` открывает конкретный шлюз. Ни один знак не даёт системе права решать шире контекста.
+План:
+
+- npm script or helper command;
+- clear fallback if Go binary is missing;
+- no route/guardrail changes.
+
+## Возврат к агентам
+
+Возврат к очереди agent proposals возможен после первых шагов модернизации:
+
+1. TypeScript build loop оптимизирован.
+2. Кодовые слои domain/engine/integrations намечены или выделены.
+3. Go boundary описан хотя бы как contract.
+
+После этого очередь:
+
+1. `checkpoint_compressor_agent`
+2. `source_card_builder`
+3. `copyright_boundary_guard`
+4. `svod_guard`
+5. `contextologist_agent`
+6. `sergey_interaction_profiler`
+7. `author_style_memory_agent`
 
 ## Strict PR Workflow
 
@@ -162,7 +188,8 @@ Proposal не является activation.
 - working protocols;
 - source cards/training cases;
 - Сводов, MVP и карт контекстов;
-- agent proposals / controlled activations / optional layers.
+- agent proposals / controlled activations / optional layers;
+- Shipyard Modernization changes.
 
 ## Book Fast Track
 
@@ -182,34 +209,6 @@ Proposal не является activation.
 - Если gates несколько — уточнить.
 - Если после `++` PR существенно изменён — нужен новый `++`.
 
-## Auto-merge
-
-Сергей включил `Allow auto-merge`.
-
-Это помогает, если PR ждёт checks/review, но не отменяет approval-gates. Merge/auto-merge только после понятного `++` и self-review.
-
-## Restart prompt rule
-
-- Чатовый restart prompt перед `#checkpoint full` — до 6000 знаков с пробелами.
-- `assistant_codex_worklog/restart-prompt.md` может быть длиннее.
-- Не вставлять в чатовый prompt большие фрагменты книги или raw source text.
-
-## Ближайшие технические планы
-
-1. Создать `project_state_synchronizer` proposal.
-2. Затем `checkpoint_compressor_agent` proposal.
-3. Затем `source_card_builder` proposal.
-4. Затем `copyright_boundary_guard` proposal.
-5. Затем `svod_guard`, `contextologist_agent`, `sergey_interaction_profiler`, `author_style_memory_agent`.
-6. После нескольких proposal — решить, какие из них переводить в controlled activation.
-
-## Отложенные задачи
-
-- Возврат к книге через Book Fast Track — только после отдельного решения Сергея.
-- Source Intake Audit первой волны источников.
-- Controlled activation для новых proposal-агентов.
-- Hard guardrail activation — только отдельным approval и отдельным PR.
-
 ## Нельзя забыть
 
 - Не загружать raw books в GitHub.
@@ -217,5 +216,4 @@ Proposal не является activation.
 - Не делать вид, что все загруженные источники уже проаудированы.
 - Не путать source card с прочитанным источником.
 - Все human-readable artifacts — на русском.
-- Для кода и агентов сохранять строгий PR workflow.
-- Давать кликабельные ссылки, если файл нужно открыть.
+- Для кода, агентов и модернизации сохранять строгий PR workflow.
