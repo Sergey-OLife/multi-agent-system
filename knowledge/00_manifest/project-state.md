@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.2
-- lastCompletedVersion: v2.2
-- lastMergedPr: PR #45 — Add ethical persuasion optional workflow layer
-- currentMilestone: v2.2 Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion
+- currentVersion: v2.3
+- lastCompletedVersion: v2.3
+- lastMergedPr: PR #54 — Add source intake auditor optional workflow layer
+- currentMilestone: v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
 
 ## Completed versions
 
@@ -32,6 +32,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v2.0 Checkpoint Book Fast Track workflow
 - v2.1 Checkpoint project sources uploaded and Source Intake Audit ready
 - v2.2 Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion
+- v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
 
 ## Active decisions
 
@@ -60,10 +61,15 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - `++` means approval for the current clear approval-gate
 - mergeability checks are automatic and do not require separate user confirmation
 - restart prompt must be sent in chat before checkpoint full begins
+- GitHub Actions workflow approval remains enabled unless Sergey explicitly decides otherwise
 - `socratic_lantern_agent` is active only as an optional workflow layer, not a hard guardrail
 - `ethical_persuasion_guard` is active only as an optional workflow layer, not a hard guardrail
+- `cbt_thought_check_agent` is active only as an optional workflow layer, not a hard guardrail or therapy mode
+- `source_intake_auditor` is active only as an optional workflow layer, not a hard guardrail or workflow conductor
 - Cialdini is used as a risk map for influence, not as a playbook for pressure
 - health and Olife communication must avoid medical promises, fear, guilt, fits-all claims, and doctor replacement
+- CBT sources are used as a precision-thinking scaffold, not therapy or diagnostics
+- source_intake_auditor prepares source orchestration fields for future workflow_conductor_agent, but approval remains with Sergey
 
 ## Active optional workflow layers
 
@@ -83,16 +89,31 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Removes: guilt, fear, fake urgency, pressure on family/health/spirituality, unchecked authority, baseless promises
 - Not: hard guardrail, route-required mode, anti-marketing sterilizer
 
+### `cbt_thought_check_agent`
+
+- Status: active optional workflow layer
+- Formula: `Мысль — это не приговор. Это гипотеза, которую можно проверить`
+- Applies to: internal monologues, fears, doubts, objections, MVP forks, fact/guess/emotion/conclusion checks
+- Not: hard guardrail, route-required mode, therapy, diagnostics, sales pressure tool
+
+### `source_intake_auditor`
+
+- Status: active optional workflow layer
+- Formula: `Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать`
+- Applies to: source status, duplicates, source cards, allowed/forbidden use, usability status, orchestration fields
+- Not: hard guardrail, route-required mode, workflow conductor, registry/project-state authority without approval
+
 ## Paused tasks
 
 - Do not create `book/03_approved/chapter_00_preface.md` until the new chat/editorial pass explicitly reaches final approval.
 - Do not start a new book PR before continuing the reader-facing preface in chat.
 - Do not treat all uploaded project sources as fully audited until Source Intake Audit is completed.
 - Do not activate any new hard guardrail without separate approval and PR.
+- Do not create `workflow_conductor_agent` as an active layer before proposal and separate approval.
 
 ## Next action
 
-Either create `source_intake_auditor` / begin Source Intake Audit, create `cbt_thought_check_agent`, or continue reader-facing `chapter_00_preface` in chat using Book Fast Track.
+Create `workflow_conductor_agent` proposal, or continue reader-facing `chapter_00_preface` in chat using Book Fast Track.
 
 ## Manual chapter upload
 
@@ -112,9 +133,11 @@ Either create `source_intake_auditor` / begin Source Intake Audit, create `cbt_t
 
 ## Source intake state
 
-- mode: ready_for_first_wave_audit
+- mode: optional_layer_active
 - uploadedProjectSources: true
 - audited: partial
+- template: knowledge/03_source_books/audits/source_intake_audit_template.md
+- pilotAudit: knowledge/03_source_books/audits/pilot_source_intake_audit_01.md
 - nextAuditName: Source Intake Audit: первая волна проектных источников
 
 Completed targeted notes:
@@ -123,11 +146,12 @@ Completed targeted notes:
 - `farnsworth_socratic_method_note_01`
 - `overholser_socratic_psychotherapy_note_01`
 - `cialdini_influence_note_01`
+- `judith_beck_cbt_basics_note_01`
+- `cbt_distortions_counseling_note_01`
 
 Candidate agents:
 
-- source_intake_auditor
-- cbt_thought_check_agent
+- workflow_conductor_agent
 - emotion_compass_agent
 - gameful_path_designer
 
@@ -147,10 +171,12 @@ Candidate agents:
 - knowledge/03_source_books/source-location.template.md
 - knowledge/05_agent_memory/workflow_layers/socratic_lantern_optional_layer.md
 - knowledge/05_agent_memory/workflow_layers/ethical_persuasion_optional_layer.md
-- knowledge/05_agent_memory/agent_proposals/socratic_lantern_agent.md
-- knowledge/05_agent_memory/agent_proposals/ethical_persuasion_guard.md
-- knowledge/03_source_books/targeted_reading_notes/cialdini_influence_note_01.md
-- knowledge/03_source_books/audits/ethical_persuasion_medical_caution_audit_01.md
+- knowledge/05_agent_memory/workflow_layers/cbt_thought_check_optional_layer.md
+- knowledge/05_agent_memory/workflow_layers/source_intake_auditor_optional_layer.md
+- knowledge/05_agent_memory/agent_proposals/cbt_thought_check_agent.md
+- knowledge/05_agent_memory/agent_proposals/source_intake_auditor.md
+- knowledge/03_source_books/audits/source_intake_audit_template.md
+- knowledge/03_source_books/audits/pilot_source_intake_audit_01.md
 - tests/baseline.test.ts
 - book/01_drafts/chapter_00_preface.md
 - book/02_reviewed/chapter_00_preface.md
