@@ -299,9 +299,29 @@ PR #69 смержен.
 - зафиксировать правила в `knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md`;
 - защищённые слои не должны импортировать filesystem, child process, registry/state, integrations или adapter side effects вне разрешённой границы.
 
-### 43. Следующая ветка модернизации после PR #69
+### 43. TypeScript configs split
 
-Следующий безопасный шаг:
+PR #71 смержен.
 
-1. split `tsconfig` на base/build/test configs;
-2. после этого первый минимальный Go-core `sync-check` CLI по принятому contract.
+Решение:
+
+- разделить TypeScript configs на `base/build/test`;
+- сохранить `tsconfig.json` как compatibility root;
+- не включать `composite` до project references;
+- оставить import boundaries в `npm test`.
+
+### 44. Первый Go-core sync-check CLI
+
+PR #72 смержен.
+
+Решение:
+
+- добавить `go-core` как optional dev-tool;
+- первая команда: `sync-check`;
+- интерфейс: JSON stdin/stdout;
+- Go-core не читает файлы сам, не ходит в GitHub, не вызывает LLM, не меняет state, не активирует агентов;
+- добавить `npm run test:core` для Go tests.
+
+### 45. Следующая ветка модернизации после PR #72
+
+Следующий безопасный шаг: TypeScript dev wrapper для Go-core `sync-check`, который готовит input envelope из state/worklog файлов, вызывает optional Go-core binary и имеет ясный fallback, если Go/binary недоступны.
