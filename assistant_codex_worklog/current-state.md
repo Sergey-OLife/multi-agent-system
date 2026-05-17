@@ -4,18 +4,26 @@
 
 ## Текущая рабочая точка
 
-После PR #62 проект остаётся в режиме `Agent Shipyard`, но внутри него открыт временный технический подфокус:
+Проект остаётся в режиме:
 
-> `Shipyard Modernization` — модернизировать верфь перед продолжением агентных proposal.
+> `Agent Shipyard / Shipyard Modernization`
 
 Книга остаётся на паузе. Возврат к книге — только по отдельному решению Сергея через Book Fast Track.
 
 ## Последний смерженный PR
 
-- PR #62 — `Add project state synchronizer proposal`
+- PR #67 — `Extract agent context and diagnostics modules`
 - Статус: merged
-- Merge commit: `9ffbe0e52f3b68e31ec425c311aacf3237d1ebb7`
-- Смысл: `project_state_synchronizer` добавлен как proposal и синхронизирован в `agent_container_registry.md`; агент не активирован.
+- Merge commit: `df9600e1433d73d83a5f5258cdaa8afc4ad18c3e`
+- Смысл: из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`; `agents.ts` стал ближе к роли сборщика agent registry.
+
+## Shipyard Modernization — что уже сделано
+
+- PR #63 — зафиксирован подфокус Shipyard Modernization.
+- PR #64 — включены incremental TypeScript builds через `incremental` и `tsBuildInfoFile`.
+- PR #65 — введены первые слои `domain / engine` и сохранены compatibility entrypoints.
+- PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
+- PR #67 — вынесены context и diagnostics модули из `agents.ts`.
 
 ## Актуальные proposal-агенты
 
@@ -31,41 +39,32 @@
 3. `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
 4. `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
 
-## Решение Сергея по модернизации
+## Архитектурная логика модернизации
 
-Принято направление: сначала оптимизировать текущий TypeScript-стек, затем постепенно вводить Go только там, где есть ясная граница и реальный выигрыш.
+Принята линия: сначала граница ответственности, потом файловая структура, потом конфиг, потом Go.
 
 Ключевые решения:
 
 - Go принят как будущий кандидат для тяжёлых повторяемых проверок верфи.
 - Go не означает полный немедленный rewrite.
 - TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
-- Первым техническим шагом должна стать оптимизация TypeScript build loop.
-- Go вводится позже через CLI с JSON stdin/stdout.
+- Go-core вводится позже через CLI с JSON stdin/stdout.
+- `agents.ts` не должен снова становиться складом контекста и диагностик.
 
-## Дорожная логика Shipyard Modernization
+## Следующий безопасный технический выбор
 
-1. Зафиксировать фокус модернизации верфи в state/worklog.
-2. Включить incremental TypeScript builds.
-3. Разделить TypeScript-слои: domain / engine / integrations.
-4. Зафиксировать JSON-контракт будущего Go-core.
-5. Добавить минимальный Go-core CLI для `sync-check`.
-6. Подключить Go-core как optional dev-tool.
-7. Вернуться к очереди агентных proposal.
+После синхронизации состояния возможны два нормальных пути:
 
-## Следующий безопасный технический шаг
+1. Разделить `tsconfig` на base/build/test configs.
+2. Создать первый минимальный Go-core `sync-check` CLI по принятому контракту.
 
-Создать PR `Enable incremental TypeScript builds`:
+Более осторожный путь: сначала `tsconfig` split, затем Go-core.
 
-- добавить `incremental` и `tsBuildInfoFile` в `tsconfig.json`;
-- сохранить `skipLibCheck: true`;
-- не включать `composite` до project references;
-- не менять runtime-поведение.
+Более продуктовый путь: сразу минимальный Go-core `sync-check`, если Сергей хочет быстрее проверить Go на реальной задаче.
 
 ## Что временно не делаем
 
-- Не создаём следующий agent proposal (`checkpoint_compressor_agent`), пока не зафиксирован первый шаг модернизации.
-- Не начинаем Go-core до TypeScript-оптимизации и JSON-boundary.
+- Не создаём следующий agent proposal (`checkpoint_compressor_agent`), пока Сергей не вернёт фокус к agent queue.
 - Не меняем routes/guardrails/optional layers.
 - Не продолжаем книгу автоматически.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.

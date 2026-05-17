@@ -6,44 +6,29 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - currentVersion: v2.4
 - lastCompletedVersion: v2.4
-- lastMergedPr: PR #62 — Add project state synchronizer proposal
-- lastMergeCommit: 9ffbe0e52f3b68e31ec425c311aacf3237d1ebb7
-- currentMilestone: v2.4 Shipyard Modernization focus after Agent Shipyard P0 proposals
+- lastMergedPr: PR #67 — Extract agent context and diagnostics modules
+- lastMergeCommit: df9600e1433d73d83a5f5258cdaa8afc4ad18c3e
+- currentMilestone: v2.4 Shipyard Modernization after TypeScript layer split and Go-core contract
 - currentMode: Agent Shipyard / Shipyard Modernization
 - bookPaused: true
 
-## Completed versions
-
-- v0.2 routing baseline
-- v0.3 foundation agents diagnostics
-- v0.4 knowledge hierarchy
-- v0.5 source cards registry
-- v0.6 contextologist to source registry
-- v0.7 manual chapter workflow structure
-- v0.8 chapter processing artifact templates
-- v0.9 project resume protocol
-- v1.0 Process Plotnikov preface map and sync package
-- v1.1 Derive project resume diagnostics from project-state
-- v1.2 Fix project-state path resolution
-- v1.3 Add Russian review layer for artifacts
-- v1.4 Add clickable review links
-- v1.5 Add source location registry for Google Drive
-- v1.6 Train anti_cliche_editor on preface review case
-- v1.7 Add anti-cliche review map for chapter_00_preface
-- v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft
-- v1.9 Create reviewed chapter_00_preface artifact
-- v2.0 Checkpoint Book Fast Track workflow
-- v2.1 Checkpoint project sources uploaded and Source Intake Audit ready
-- v2.2 Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion
-- v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
-- v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals
-
 ## Recent PRs
 
-- PR #58 — Add agent shipyard container registry
-- PR #59 — Add agent registry librarian proposal
-- PR #60 — Add approval gate keeper proposal
-- PR #62 — Add project state synchronizer proposal
+- PR #63 — Record shipyard modernization focus
+- PR #64 — Enable incremental TypeScript builds
+- PR #65 — Split TypeScript domain and engine layers
+- PR #66 — Add Go core API contract
+- PR #67 — Extract agent context and diagnostics modules
+
+## Shipyard Modernization status
+
+Состояние после PR #67:
+
+- TypeScript incremental builds включены.
+- Введены первые слои `domain / engine`.
+- Зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
+- Из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`.
+- `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
 
 ## Active decisions
 
@@ -54,6 +39,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
 - Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit.
 - Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite.
+- TypeScript incremental builds are enabled through tsconfig incremental and tsBuildInfoFile.
+- TypeScript domain and engine layers have been introduced while compatibility entrypoints remain.
+- Go-core API contract is fixed as CLI plus JSON stdin/stdout before any Go runtime code is added.
+- `agents.ts` should remain a registry assembly point, not a dumping ground for context and diagnostics logic.
 - Raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub.
 - Uploaded project sources are raw/source material until audited through Source Intake Audit.
 - Source cards are not proof that full sources were read.
@@ -63,116 +52,38 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - If a PR materially changes after `++`, a new `++` is required before merge.
 - If approval-gates are multiple, ask which gate is approved.
 - Allow auto-merge is enabled, but auto-merge does not bypass approval-gates.
-- `socratic_lantern_agent` is active only as an optional workflow layer, not a hard guardrail.
-- `ethical_persuasion_guard` is active only as an optional workflow layer, not a hard guardrail.
-- `cbt_thought_check_agent` is active only as an optional workflow layer, not a hard guardrail or therapy mode.
-- `source_intake_auditor` is active only as an optional workflow layer, not a hard guardrail or workflow conductor.
-- `workflow_conductor_agent` is a proposal only, not activated.
-- `agent_registry_librarian` is a proposal only, not activated.
-- `approval_gate_keeper` is a proposal only, not activated.
-- `project_state_synchronizer` is a proposal only, not activated.
-- Agent architecture is Centralized Coordination + Peer-to-Peer communication.
-- Materials architecture is Coordinator-based star + fully-connected semantic topology.
-- Peer-to-peer signal is not a decision and does not bypass Sergey approval.
-- Fully connected material topology does not bypass source intake, dosage, fact-check, copyright boundary or approval.
-- New agents may be proposed whenever there is a real separate function, but duplicates and false activations must be avoided.
-
-## Shipyard Modernization
-
-Status: focus requested by Sergey after PR #62.
-
-Purpose: modernize the shipyard before continuing the next agent proposal sequence.
-
-Accepted direction:
-
-- optimize the current TypeScript stack first;
-- add `incremental` TypeScript build support as the first concrete technical step;
-- separate TypeScript code into domain / engine / integrations before moving core logic;
-- accept Go as the future core language candidate for heavy repeatable checks;
-- introduce Go only behind a JSON stdin/stdout CLI boundary;
-- do not start a full rewrite.
-
-First concrete modernization step:
-
-> Enable incremental TypeScript builds.
-
-Future Go strategy:
-
-> CLI first, JSON stdin/stdout, optional dev tool before runtime replacement.
-
-## Active optional workflow layers
-
-### `socratic_lantern_agent`
-
-- Status: active optional workflow layer
-- Formula: `Вопрос — это фонарь, а не поводок`
-- Not: hard guardrail, route-required mode, mandatory check for all texts
-
-### `ethical_persuasion_guard`
-
-- Status: active optional workflow layer
-- Formula: `Оставить огонь. Убрать дым`
-- Not: hard guardrail, route-required mode, anti-marketing sterilizer
-
-### `cbt_thought_check_agent`
-
-- Status: active optional workflow layer
-- Formula: `Мысль — это не приговор. Это гипотеза, которую можно проверить`
-- Not: hard guardrail, route-required mode, therapy, diagnostics, sales pressure tool
-- Tone: light humor allowed, clowning forbidden
-
-### `source_intake_auditor`
-
-- Status: active optional workflow layer
-- Formula: `Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать`
-- Not: hard guardrail, route-required mode, workflow conductor, registry/project-state authority without approval
+- Proposal agents remain proposal only, not activated.
+- Active optional workflow layers remain optional only, not hard guardrails.
 
 ## Proposal agents
 
-### `workflow_conductor_agent`
+- `workflow_conductor_agent`: proposal only, not activated.
+- `agent_registry_librarian`: proposal only, not activated.
+- `approval_gate_keeper`: proposal only, not activated.
+- `project_state_synchronizer`: proposal only, not activated.
 
-- Status: proposal only
-- Role: coordinates agent workflow, order, conflicts and approval-gates
-- Not activated
+## Active optional workflow layers
 
-### `agent_registry_librarian`
-
-- Status: proposal only
-- Role: tracks duplicates, statuses, registry sync and false activation risk
-- Not activated
-
-### `approval_gate_keeper`
-
-- Status: proposal only
-- Role: protects `+ / ++` approval gates and prevents overbroad interpretation of approvals
-- Not activated
-
-### `project_state_synchronizer`
-
-- Status: proposal only
-- Role: keeps project-state, roadmap, current-state, restart prompt and registry from drifting apart
-- Not activated
+- `socratic_lantern_agent` — active optional workflow layer.
+- `ethical_persuasion_guard` — active optional workflow layer.
+- `cbt_thought_check_agent` — active optional workflow layer; not therapy, not diagnostics, not sales pressure tool.
+- `source_intake_auditor` — active optional workflow layer; not workflow conductor.
 
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Shipyard Modernization.
 - Do not create `book/03_approved/chapter_00_preface.md` until final approval.
 - Do not treat all uploaded project sources as fully audited.
-- Do not activate `workflow_conductor_agent` without controlled activation and separate approval.
-- Do not activate `agent_registry_librarian` without controlled activation and separate approval.
-- Do not activate `approval_gate_keeper` without controlled activation and separate approval.
-- Do not activate `project_state_synchronizer` without controlled activation and separate approval.
+- Do not activate proposal agents without controlled activation and separate approval.
 - Do not create hard guardrails without separate approval and PR.
-- Do not start the next agent proposal until the first Shipyard Modernization focus and TypeScript optimization steps are handled or Sergey redirects.
+- Do not return to the agent proposal queue until Sergey redirects or the current modernization segment is checkpointed.
 
 ## Next action
 
-Enable incremental TypeScript builds as the first concrete Shipyard Modernization PR; then split TypeScript domain/engine/integration layers before adding a minimal Go core boundary.
+Choose the next modernization branch:
 
-## Manual chapter upload
-
-- manualChapterUpload: true
-- rawTextCommitted: false
+1. split `tsconfig` into base/build/test configs;
+2. or create the first minimal Go-core `sync-check` CLI using the accepted core API contract.
 
 ## Chat writing state
 
@@ -185,15 +96,6 @@ Enable incremental TypeScript builds as the first concrete Shipyard Modernizatio
 - currentRule: Введение — морковка: сначала человек, узнавание и доверие; инструменты, термины и кухня MLM позже.
 - nextChatMove: Only after Sergey returns to the book: continue from the first boundary of разумное сообщество toward the promise of the book.
 
-## Source intake state
-
-- mode: optional_layer_active
-- uploadedProjectSources: true
-- audited: partial
-- template: knowledge/03_source_books/audits/source_intake_audit_template.md
-- pilotAudit: knowledge/03_source_books/audits/pilot_source_intake_audit_01.md
-- nextAuditName: Source Intake Audit: первая волна проектных источников
-
 ## Important paths
 
 - assistant_codex_worklog/current-state.md
@@ -204,23 +106,19 @@ Enable incremental TypeScript builds as the first concrete Shipyard Modernizatio
 - assistant_codex_worklog/protocol_addenda/*.md
 - knowledge/00_manifest/project-state.json
 - knowledge/00_manifest/project-state.md
-- knowledge/05_agent_memory/agent_shipyard/agent_container.template.md
+- knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 - knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
-- knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md
-- knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md
-- knowledge/05_agent_memory/agent_proposals/workflow_conductor_agent.md
-- knowledge/05_agent_memory/agent_proposals/agent_registry_librarian.md
-- knowledge/05_agent_memory/agent_proposals/approval_gate_keeper.md
-- knowledge/05_agent_memory/agent_proposals/project_state_synchronizer.md
-- knowledge/05_agent_memory/workflow_layers/socratic_lantern_optional_layer.md
-- knowledge/05_agent_memory/workflow_layers/ethical_persuasion_optional_layer.md
-- knowledge/05_agent_memory/workflow_layers/cbt_thought_check_optional_layer.md
-- knowledge/05_agent_memory/workflow_layers/source_intake_auditor_optional_layer.md
-- knowledge/03_source_books/audits/source_intake_audit_template.md
-- knowledge/03_source_books/audits/pilot_source_intake_audit_01.md
 - tsconfig.json
 - package.json
-- src/types.ts
+- src/domain/types.ts
+- src/engine/classify-task.ts
+- src/engine/context-pack.ts
+- src/engine/route-request.ts
+- src/engine/routes.ts
+- src/engine/text-utils.ts
+- src/diagnostics/anti-cliche.ts
+- src/diagnostics/svod-check.ts
+- src/diagnostics/sync-map.ts
 - src/router.ts
 - src/agents.ts
 - book/01_drafts/chapter_00_preface.md

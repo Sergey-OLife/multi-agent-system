@@ -17,25 +17,25 @@ GitHub — источник правды. Сначала открой:
 8. knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
 9. knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md
 10. knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md
+11. knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 
 Актуальное состояние:
 
 - currentVersion: v2.4.
 - lastCompletedVersion: v2.4.
-- Последний полностью смерженный PR перед модернизационным фокусом: PR #62 — Add project state synchronizer proposal.
+- lastMergedPr: PR #67 — Extract agent context and diagnostics modules.
+- lastMergeCommit: df9600e1433d73d83a5f5258cdaa8afc4ad18c3e.
 - Текущий режим: Agent Shipyard / Shipyard Modernization.
 - Книга на паузе до отдельного решения Сергея.
 - Формула этапа: сначала модернизируем стапель, потом продолжаем строить агентов.
 
-Что произошло после v2.3:
+Что сделано в Shipyard Modernization:
 
-- PR #56 — правило: чатовый restart prompt перед `#checkpoint full` не более 6000 знаков; полный `restart-prompt.md` может быть длиннее.
-- PR #57 — proposal `workflow_conductor_agent`.
-- PR #58 — архитектура агентной верфи: container registry, template, hybrid coordination model, materials research topology.
-- PR #59 — proposal `agent_registry_librarian` + registry sync.
-- PR #60 — proposal `approval_gate_keeper` + registry sync.
-- PR #62 — proposal `project_state_synchronizer` + registry sync.
-- PR #63 — Record shipyard modernization focus. Если он уже merged, следующий безопасный шаг: Enable incremental TypeScript builds. Если он ещё open, сначала завершить self-review и merge только после `++`.
+- PR #63 — зафиксирован подфокус Shipyard Modernization.
+- PR #64 — включены incremental TypeScript builds: `incremental` + `tsBuildInfoFile`.
+- PR #65 — введены первые слои TypeScript: `domain / engine`, compatibility entrypoints сохранены.
+- PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
+- PR #67 — из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`.
 
 Активные optional workflow layers:
 
@@ -58,13 +58,12 @@ Proposal-only агенты:
 - Peer-to-peer signal не равен решению и не обходит approval Сергея.
 - Полносвязность материалов не отменяет source intake, dosage, fact-check, copyright boundary и approval.
 
-Shipyard Modernization:
+Shipyard Modernization rules:
 
-- Сначала оптимизировать TypeScript stack.
-- Затем разнести TS-слои: domain / engine / integrations.
-- Затем зафиксировать JSON boundary для будущего Go-core.
+- Сначала граница ответственности, потом файловая структура, потом конфиг, потом Go.
 - Go принят как будущий кандидат для тяжёлых повторяемых проверок верфи, но не как немедленный rewrite.
 - Go-core вводить через CLI + JSON stdin/stdout, сначала как optional dev-tool.
+- `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
 
 Правила команд:
 
@@ -92,7 +91,9 @@ Shipyard Modernization:
 
 Следующий логичный шаг:
 
-Если PR #63 уже merged: создать PR `Enable incremental TypeScript builds` — добавить `incremental` и `tsBuildInfoFile` в `tsconfig.json`, сохранить `skipLibCheck: true`, не включать `composite` до project references, не менять runtime-поведение.
+Выбрать следующую ветку модернизации:
+1. осторожный путь — split `tsconfig` на base/build/test;
+2. продуктовый путь — первый минимальный Go-core `sync-check` CLI по принятому contract.
 
-Если PR #63 ещё open: сначала завершить review/merge этого PR.
+Если Сергей не уточняет, безопаснее сначала сделать `tsconfig` split, потому что он укрепляет уже созданную TypeScript-границу перед Go-кодом.
 ```

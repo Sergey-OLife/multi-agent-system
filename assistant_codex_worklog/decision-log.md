@@ -243,4 +243,54 @@ PR #62 смержен.
 - затем добавить минимальный Go CLI как optional dev-tool;
 - не продолжать следующий agent proposal, пока не зафиксирован первый шаг модернизации или Сергей не перенаправит работу.
 
-Следующий конкретный технический шаг: enable incremental TypeScript builds.
+### 38. TypeScript build loop получил incremental compilation
+
+PR #64 смержен.
+
+Решение:
+
+- включить `incremental`;
+- добавить `tsBuildInfoFile`;
+- сохранить `skipLibCheck`;
+- не включать `composite` до project references.
+
+### 39. TypeScript получил первые domain / engine слои
+
+PR #65 смержен.
+
+Решение:
+
+- вынести доменные типы в `src/domain/types.ts`;
+- сохранить `src/types.ts` как compatibility re-export;
+- вынести classifier, routes, route-request и text-utils в `src/engine`;
+- сохранить внешний router wrapper.
+
+### 40. Зафиксирован Go-core API contract
+
+PR #66 смержен.
+
+Решение:
+
+- первый формат интеграции Go-core: CLI + JSON stdin/stdout;
+- первые команды: `sync-check`, `registry-check`, `route-preview`, `checkpoint-check`;
+- Go-core не читает GitHub напрямую, не вызывает LLM, не меняет файлы и не активирует агентов;
+- HTTP/gRPC не используются на первом этапе.
+
+### 41. `agents.ts` очищен от context и diagnostics блоков
+
+PR #67 смержен.
+
+Решение:
+
+- вынести `context-pack` в `src/engine/context-pack.ts`;
+- вынести `svod-check`, `sync-map`, `anti-cliche diagnostics` в `src/diagnostics`;
+- `agents.ts` должен оставаться сборщиком agent registry, а не складом логики.
+
+### 42. Следующая ветка модернизации после PR #67
+
+Нужно выбрать следующий путь:
+
+1. осторожный путь — split `tsconfig` на base/build/test configs;
+2. продуктовый путь — первый минимальный Go-core `sync-check` CLI по принятому contract.
+
+Если Сергей не уточняет, безопаснее сначала сделать `tsconfig` split.
