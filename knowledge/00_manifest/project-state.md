@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.4
-- lastCompletedVersion: v1.4
-- lastMergedPr: PR #13 — v1.4 Add clickable review links
-- currentMilestone: v1.4 Add clickable review links
+- currentVersion: v1.5
+- lastCompletedVersion: v1.5
+- lastMergedPr: PR #16 — Create chapter_00_preface draft
+- currentMilestone: v1.5 Add source location registry for Google Drive
 
 ## Completed versions
 
@@ -24,12 +24,15 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.2 Fix project-state path resolution
 - v1.3 Add Russian review layer for artifacts
 - v1.4 Add clickable review links
+- v1.5 Add source location registry for Google Drive
 
 ## Active decisions
 
 - raw Plotnikov text is not committed to GitHub
-- Plotnikov is uploaded manually one chapter at a time
+- Plotnikov is available in private Google Drive for navigation and dosage only
+- Plotnikov is uploaded manually one chapter at a time for processed artifacts
 - source cards are registry-based
+- private Drive file IDs and URLs are not committed to the public repository
 - project voice uses Тихий Мастер, not Каленчевский голос
 - direct internal confessional wording is not used in reader-facing book text
 - approved chapters require explicit user approval
@@ -53,6 +56,8 @@ User review of chapter_00_preface draft
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/handoff/latest-handoff.md
 - knowledge/00_manifest/sources.registry.json
+- knowledge/03_source_books/source-locations.registry.json
+- knowledge/03_source_books/source-location.template.md
 - book/00_manifest/chapter-status.example.json
 - book/01_drafts/chapter_00_preface.md
 - knowledge/03_source_books/plotnikov/source-location.md
