@@ -4,7 +4,7 @@ import { routeRequest } from "../src/index.js";
 
 test("anti_cliche_editor detects tired phrases and moral abstractions in chapter text", () => {
   const result = routeRequest(
-    "Вступление. В жизни так не работает. Она будет учить видеть человека. Человек важнее сделки. Скепсис не враг. Честность, доверие, совесть, границы и ответственность важны."
+    "Глава: Вступление. В жизни так не работает. Она будет учить видеть человека. Человек важнее сделки. Скепсис не враг. Честность, доверие, совесть, границы и ответственность важны."
   );
   const antiCliche = result.diagnostics.antiCliche as {
     detectedCliches: string[];
@@ -36,7 +36,7 @@ test("anti_cliche_editor flags repeated not-this-but-that contrast pattern", () 
 
 test("anti_cliche_editor treats marketing vocabulary in preface as register risk", () => {
   const result = routeRequest(
-    "Вступление: человек не обязан быть удобным для вашей воронки. Скрипт не должен вырезать живого собеседника."
+    "Глава: Вступление. Человек не обязан быть удобным для вашей воронки. Скрипт не должен вырезать живого собеседника."
   );
   const antiCliche = result.diagnostics.antiCliche as {
     registerRisks: { term: string; risk: string }[];
