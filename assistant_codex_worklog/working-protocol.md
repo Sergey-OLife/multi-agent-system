@@ -21,6 +21,7 @@ GitHub — источник правды по коду, структуре, со
 На текущий момент особенно важны:
 
 - `restart_prompt_before_checkpoint.md` — перед `#checkpoint full` сначала дать Сергею restart prompt в чате;
+- `chat_restart_prompt_length_limit.md` — чатовый restart prompt перед checkpoint должен быть до 6000 знаков с пробелами; лимит не относится к файлу `restart-prompt.md`;
 - `plus_approval_shorthand.md` — `+` означает продолжение без approval, `++` означает approval текущего понятного approval-gate;
 - `auto_mergeability_check.md` — перепроверка mergeability открытого PR не требует отдельного подтверждения.
 
@@ -149,6 +150,10 @@ ChatGPT может создавать отдельных агентов в лю�
 означает: сохранить полную текущую рабочую точку.
 
 Перед выполнением `#checkpoint full` обязательно сначала прислать Сергею корректный restart prompt для следующего чистого чата. Checkpoint не начинается, пока prompt не отправлен в чате.
+
+Чатовый restart prompt перед checkpoint должен быть компактным: до 6000 знаков с пробелами. Это ограничение не относится к файлу `assistant_codex_worklog/restart-prompt.md`, который может быть подробным рабочим документом.
+
+Чатовый prompt не должен включать большие фрагменты книги, сырой текст источников или длинный пересказ состояния проекта. Вместо этого он должен давать пути к GitHub-файлам, текущую точку, первый следующий шаг и 1–2 предложения книжного контекста только при необходимости.
 
 При выполнении checkpoint нужно обновить:
 
@@ -319,6 +324,8 @@ ChatGPT может сам выполнить merge только для техн�
    - `assistant_codex_worklog/protocol_addenda/*.md`;
    - `knowledge/00_manifest/project-state.md`;
    - `knowledge/05_agent_memory/review_queue/review-index.md`.
+
+Если перезапуск делается через prompt, который ChatGPT выдаёт в чате перед checkpoint, этот prompt должен быть до 6000 знаков с пробелами и не должен заменять собой файлы GitHub.
 
 ## Что делать после возвращения
 
