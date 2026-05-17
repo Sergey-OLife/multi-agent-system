@@ -290,7 +290,7 @@ function parseNpmRunJson(stdout: string): CliProjectResumeResult {
 
 test("CLI smoke routes project resume prompts", () => {
   const english = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "--json", "resume project"], { encoding: "utf8" }));
-  const russian = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "json", "восстанови проект"], { encoding: "utf8" }));
+  const russian = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "--json", "восстанови проект"], { encoding: "utf8" }));
 
   assert.equal(english.taskType, "project_resume");
   assert.equal(russian.taskType, "project_resume");
