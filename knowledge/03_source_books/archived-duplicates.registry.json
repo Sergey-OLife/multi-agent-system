@@ -1,55 +1,60 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "updated_at": "2026-05-17",
-  "purpose": "Исключить некорректные дубли из индексации агентами и source-location workflow.",
+  "purpose": "Зафиксировать некорректные .docx-дубли, которые были удалены из private Drive и не должны индексироваться при повторном появлении.",
+  "drive_check_status": "duplicate_docx_files_removed_from_private_folder",
   "rules": [
     "Если есть нативный Google Doc и одноимённый .docx-дубль, основным считается нативный Google Doc.",
     ".docx-дубли с тем же source_id не использовать как source location для агентов.",
-    "Если .docx-дубль пустой, перенос не нужен; он считается архивным мусором.",
-    "Если .docx-дубль содержит пользовательский материал, переносить его в основной Google Doc только после проверки. Если автоматический перенос заблокирован, требуется ручной перенос пользователем.",
+    "Если удалённый .docx-дубль появится снова, он должен оставаться вне индексации до ручной проверки.",
     "Не коммитить Drive file IDs или приватные Drive URLs в GitHub.",
-    "Не использовать архивные дубли в future source indexing."
+    "Не использовать удалённые или архивные дубли в future source indexing."
   ],
-  "archived_duplicates": [
+  "removed_duplicates": [
     {
       "duplicate_filename": "field_three_act_structure.docx",
       "canonical_filename": "field_three_act_structure",
       "source_id": "field_three_act_structure",
-      "duplicate_status": "empty_docx_duplicate",
+      "last_known_duplicate_status": "empty_docx_duplicate",
+      "current_status": "deleted_from_private_drive_by_user",
       "content_transfer_status": "not_needed_empty",
-      "indexing_rule": "do_not_index"
+      "indexing_rule": "do_not_index_if_reappears"
     },
     {
       "duplicate_filename": "socratic_method_framework.docx",
       "canonical_filename": "socratic_method_framework",
       "source_id": "socratic_method_framework",
-      "duplicate_status": "empty_docx_duplicate",
+      "last_known_duplicate_status": "empty_docx_duplicate",
+      "current_status": "deleted_from_private_drive_by_user",
       "content_transfer_status": "not_needed_empty",
-      "indexing_rule": "do_not_index"
+      "indexing_rule": "do_not_index_if_reappears"
     },
     {
       "duplicate_filename": "practical_mlm_ecology_framework.docx",
       "canonical_filename": "practical_mlm_ecology_framework",
       "source_id": "practical_mlm_ecology_framework",
-      "duplicate_status": "empty_docx_duplicate",
+      "last_known_duplicate_status": "empty_docx_duplicate",
+      "current_status": "deleted_from_private_drive_by_user",
       "content_transfer_status": "not_needed_empty",
-      "indexing_rule": "do_not_index"
+      "indexing_rule": "do_not_index_if_reappears"
     },
     {
       "duplicate_filename": "idea_amplifier_framework.docx",
       "canonical_filename": "idea_amplifier_framework",
       "source_id": "idea_amplifier_framework",
-      "duplicate_status": "contains_user_prompt_material",
-      "content_transfer_status": "manual_review_required; automatic verbatim transfer blocked by tool safety; safe note added to canonical Google Doc",
-      "indexing_rule": "do_not_index"
+      "last_known_duplicate_status": "contained_user_prompt_material",
+      "current_status": "deleted_from_private_drive_by_user",
+      "content_transfer_status": "manual_review_was_required_before_delete; canonical Google Doc contains safe note about removed duplicate",
+      "indexing_rule": "do_not_index_if_reappears"
     },
     {
       "duplicate_filename": "khmelevskaya_style_reference.docx",
       "canonical_filename": "khmelevskaya_style_reference",
       "source_id": "khmelevskaya_style_reference",
-      "duplicate_status": "content_duplicate_of_canonical_google_doc",
+      "last_known_duplicate_status": "content_duplicate_of_canonical_google_doc",
+      "current_status": "deleted_from_private_drive_by_user",
       "content_transfer_status": "not_needed_canonical_contains_material",
-      "indexing_rule": "do_not_index"
+      "indexing_rule": "do_not_index_if_reappears"
     }
   ]
 }
