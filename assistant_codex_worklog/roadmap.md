@@ -40,11 +40,11 @@
 
 ## Recent PR summary
 
-- PR #63: recorded Shipyard Modernization focus.
-- PR #64: enabled incremental TypeScript builds.
 - PR #65: split TypeScript domain and engine layers.
 - PR #66: added Go-core API contract.
 - PR #67: extracted agent context and diagnostics modules.
+- PR #68: synced state after shipyard modernization PRs.
+- PR #69: added import boundaries and public module entrypoints.
 
 ## Agent Shipyard architecture
 
@@ -109,18 +109,29 @@ Proposal не является activation.
 
 Статус: done via PR #67.
 
-Смысл: `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
+### PR F — Enforce import boundaries and public module entrypoints
 
-### PR F — Choose next modernization branch
+Статус: done via PR #69.
 
-Возможные направления:
+Смысл:
 
-1. `tsconfig` split: base/build/test configs.
-2. Minimal Go-core `sync-check` CLI по принятому contract.
+- public entrypoints задают доступ к `domain`, `engine`, `diagnostics`, `orchestration`;
+- `context-pack` перенесён в `orchestration`, потому что зависит от `source-registry`;
+- dependency-free checker `scripts/check-boundaries.mjs` валит нарушения слоёв;
+- `npm test` запускает boundary check перед build/tests;
+- это удерживает `agents.ts` в роли composition root, а не склада логики.
 
-Более осторожный путь: сначала `tsconfig` split, затем Go-core.
+### PR G — Split tsconfig into base/build/test configs
 
-Более продуктовый путь: сразу минимальный Go-core `sync-check`, чтобы проверить Go на реальной задаче stale state / registry drift.
+Статус: next safe step.
+
+Цель: сделать TypeScript-конфиги отражением уже закреплённых архитектурных границ, а не косметикой поверх старого комка.
+
+### PR H — Add minimal Go-core sync-check CLI
+
+Статус: after tsconfig split, unless Sergey chooses the product path earlier.
+
+Цель: первый Go-core dev-tool по принятому `core_api_contract.md`.
 
 ## Возврат к агентам
 

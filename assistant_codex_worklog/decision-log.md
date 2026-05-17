@@ -286,11 +286,22 @@ PR #67 смержен.
 - вынести `svod-check`, `sync-map`, `anti-cliche diagnostics` в `src/diagnostics`;
 - `agents.ts` должен оставаться сборщиком agent registry, а не складом логики.
 
-### 42. Следующая ветка модернизации после PR #67
+### 42. Import boundaries закреплены кодом
 
-Нужно выбрать следующий путь:
+PR #69 смержен.
 
-1. осторожный путь — split `tsconfig` на base/build/test configs;
-2. продуктовый путь — первый минимальный Go-core `sync-check` CLI по принятому contract.
+Решение:
 
-Если Сергей не уточняет, безопаснее сначала сделать `tsconfig` split.
+- добавить public entrypoints для `domain`, `engine`, `diagnostics`, `orchestration`;
+- перенести `context-pack` из `engine` в `orchestration`, потому что он зависит от `source-registry`;
+- добавить dependency-free checker `scripts/check-boundaries.mjs`;
+- встроить `lint:boundaries` в `npm test`;
+- зафиксировать правила в `knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md`;
+- защищённые слои не должны импортировать filesystem, child process, registry/state, integrations или adapter side effects вне разрешённой границы.
+
+### 43. Следующая ветка модернизации после PR #69
+
+Следующий безопасный шаг:
+
+1. split `tsconfig` на base/build/test configs;
+2. после этого первый минимальный Go-core `sync-check` CLI по принятому contract.

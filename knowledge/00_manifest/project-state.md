@@ -6,29 +6,32 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - currentVersion: v2.4
 - lastCompletedVersion: v2.4
-- lastMergedPr: PR #67 — Extract agent context and diagnostics modules
-- lastMergeCommit: df9600e1433d73d83a5f5258cdaa8afc4ad18c3e
-- currentMilestone: v2.4 Shipyard Modernization after TypeScript layer split and Go-core contract
+- lastMergedPr: PR #69 — Add import boundaries and public module entrypoints
+- lastMergeCommit: 087c28f6b48464365110ab643542c9eaa985d5af
+- currentMilestone: v2.4 Shipyard Modernization after import boundaries enforcement
 - currentMode: Agent Shipyard / Shipyard Modernization
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #63 — Record shipyard modernization focus
-- PR #64 — Enable incremental TypeScript builds
 - PR #65 — Split TypeScript domain and engine layers
 - PR #66 — Add Go core API contract
 - PR #67 — Extract agent context and diagnostics modules
+- PR #68 — Sync state after shipyard modernization PRs
+- PR #69 — Add import boundaries and public module entrypoints
 
 ## Shipyard Modernization status
 
-Состояние после PR #67:
+Состояние после PR #69:
 
 - TypeScript incremental builds включены.
-- Введены первые слои `domain / engine`.
+- Введены слои `domain / engine / diagnostics / orchestration`.
 - Зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
 - Из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`.
-- `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
+- `context-pack` перенесён из `engine` в `orchestration`, потому что зависит от `source-registry`.
+- Добавлены public module entrypoints для `domain`, `engine`, `diagnostics`, `orchestration`.
+- Import boundaries закреплены через `scripts/check-boundaries.mjs` и `npm run lint:boundaries`.
+- `npm test` теперь запускает boundary check перед build/tests.
 
 ## Active decisions
 
@@ -43,6 +46,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - TypeScript domain and engine layers have been introduced while compatibility entrypoints remain.
 - Go-core API contract is fixed as CLI plus JSON stdin/stdout before any Go runtime code is added.
 - `agents.ts` should remain a registry assembly point, not a dumping ground for context and diagnostics logic.
+- Public module entrypoints now define layer access for domain, engine, diagnostics and orchestration.
+- `context-pack` belongs to orchestration, not core-like engine, because it depends on source registry.
+- Import boundaries are enforced by `scripts/check-boundaries.mjs` and `npm test`.
+- Protected layers must not import filesystem, child process, registry/state, integrations or direct adapter side effects outside their allowed boundary.
 - Raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub.
 - Uploaded project sources are raw/source material until audited through Source Intake Audit.
 - Source cards are not proof that full sources were read.
@@ -80,10 +87,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-Choose the next modernization branch:
-
-1. split `tsconfig` into base/build/test configs;
-2. or create the first minimal Go-core `sync-check` CLI using the accepted core API contract.
+Split `tsconfig` into base/build/test configs now that TypeScript layer boundaries and import enforcement are in place. After that, create the first minimal Go-core `sync-check` CLI using the accepted core API contract.
 
 ## Chat writing state
 
@@ -107,18 +111,24 @@ Choose the next modernization branch:
 - knowledge/00_manifest/project-state.json
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
+- knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
 - knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
 - tsconfig.json
 - package.json
+- scripts/check-boundaries.mjs
+- src/domain/index.ts
 - src/domain/types.ts
+- src/engine/index.ts
 - src/engine/classify-task.ts
-- src/engine/context-pack.ts
 - src/engine/route-request.ts
 - src/engine/routes.ts
 - src/engine/text-utils.ts
+- src/diagnostics/index.ts
 - src/diagnostics/anti-cliche.ts
 - src/diagnostics/svod-check.ts
 - src/diagnostics/sync-map.ts
+- src/orchestration/index.ts
+- src/orchestration/context-pack.ts
 - src/router.ts
 - src/agents.ts
 - book/01_drafts/chapter_00_preface.md
