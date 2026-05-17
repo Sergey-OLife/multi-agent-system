@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-05-17",
+  "purpose": "Исключить некорректные дубли из индексации агентами и source-location workflow.",
+  "rules": [
+    "Если есть нативный Google Doc и одноимённый .docx-дубль, основным считается нативный Google Doc.",
+    ".docx-дубли с тем же source_id не использовать как source location для агентов.",
+    "Если .docx-дубль пустой, перенос не нужен; он считается архивным мусором.",
+    "Если .docx-дубль содержит пользовательский материал, переносить его в основной Google Doc только после проверки. Если автоматический перенос заблокирован, требуется ручной перенос пользователем.",
+    "Не коммитить Drive file IDs или приватные Drive URLs в GitHub.",
+    "Не использовать архивные дубли в future source indexing."
+  ],
+  "archived_duplicates": [
+    {
+      "duplicate_filename": "field_three_act_structure.docx",
+      "canonical_filename": "field_three_act_structure",
+      "source_id": "field_three_act_structure",
+      "duplicate_status": "empty_docx_duplicate",
+      "content_transfer_status": "not_needed_empty",
+      "indexing_rule": "do_not_index"
+    },
+    {
+      "duplicate_filename": "socratic_method_framework.docx",
+      "canonical_filename": "socratic_method_framework",
+      "source_id": "socratic_method_framework",
+      "duplicate_status": "empty_docx_duplicate",
+      "content_transfer_status": "not_needed_empty",
+      "indexing_rule": "do_not_index"
+    },
+    {
+      "duplicate_filename": "practical_mlm_ecology_framework.docx",
+      "canonical_filename": "practical_mlm_ecology_framework",
+      "source_id": "practical_mlm_ecology_framework",
+      "duplicate_status": "empty_docx_duplicate",
+      "content_transfer_status": "not_needed_empty",
+      "indexing_rule": "do_not_index"
+    },
+    {
+      "duplicate_filename": "idea_amplifier_framework.docx",
+      "canonical_filename": "idea_amplifier_framework",
+      "source_id": "idea_amplifier_framework",
+      "duplicate_status": "contains_user_prompt_material",
+      "content_transfer_status": "manual_review_required; automatic verbatim transfer blocked by tool safety; safe note added to canonical Google Doc",
+      "indexing_rule": "do_not_index"
+    },
+    {
+      "duplicate_filename": "khmelevskaya_style_reference.docx",
+      "canonical_filename": "khmelevskaya_style_reference",
+      "source_id": "khmelevskaya_style_reference",
+      "duplicate_status": "content_duplicate_of_canonical_google_doc",
+      "content_transfer_status": "not_needed_canonical_contains_material",
+      "indexing_rule": "do_not_index"
+    }
+  ]
+}
