@@ -1,163 +1,217 @@
 # Agent Proposal — source_intake_auditor
 
-Статус: proposal / не включён в маршруты
 Дата: 2026-05-17
+Статус: proposal / не включён в маршруты
+agent_id: `source_intake_auditor`
 
-## 1. agent_id
+## 1. Причина появления
 
-`source_intake_auditor`
+В проект загружено много источников: КПТ, Бек, сократический метод, эмоции, влияние, драматический треугольник, SuperBetter, Своды, MVP-документы и рабочие карты.
 
-## 2. Назначение
+Загруженный файл не равен рабочему источнику. Источник становится рабочим только после проверки материала, карточки, роли, ограничений, дублей и следующего действия.
 
-Проверять каждый новый или уже названный источник перед тем, как он становится рабочей частью библиотеки проекта.
+`source_intake_auditor` нужен как входной контроль библиотеки, чтобы система не ссылалась на источник, который только назван, но не проаудирован.
 
-Агент нужен не для чтения книг вместо человека и не для хранения raw source text. Его задача — не позволять системе делать вид, что источник уже рабочий, если у него нет материала, карточки, роли и правил применения.
+## 2. Главная формула
 
-## 3. Входные данные
+> Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать.
 
-- название источника;
-- файл или список файлов в приватной библиотеке пользователя;
-- существующий `source_id`, если есть;
-- текущая source card, если есть;
-- запись в `sources.registry.json`, если есть;
-- запись в `source-locations.registry.json`, если есть;
-- пользовательский контекст: зачем источник нужен проекту;
-- возможный агентный слой, который источник может поддерживать.
+## 3. Назначение
 
-## 4. Выходные данные
+Агент должен:
 
-Агент возвращает короткий audit record:
+- инвентаризировать источники;
+- проверять наличие материала;
+- находить дубли;
+- отличать рабочий файл от пустой оболочки;
+- проверять или предлагать source card;
+- присваивать статус пригодности;
+- определять роль источника;
+- фиксировать allowed use и forbidden use;
+- связывать источник с зонами книги;
+- связывать источник с агентными слоями;
+- отмечать риск неправильного применения;
+- предлагать next action;
+- готовить данные для будущего `workflow_conductor_agent`.
 
-```yaml
-source_id: string
-canonical_title: string
-material_status: usable_now | needs_enrichment | needs_upload | placeholder | archive_duplicate | needs_native_doc | source_card_only
-registry_status: registered | missing_from_sources_registry | missing_from_source_locations | inconsistent
-source_card_status: exists_sufficient | exists_thin | missing | outdated
-usage_role: string
-allowed_use:
-  - string
-forbidden_use:
-  - string
-book_zones:
-  - string
-agent_layers:
-  - string
-next_action: string
-risk_notes:
-  - string
+## 4. Чего агент не делает
+
+Агент не должен:
+
+- сам включать новых агентов в маршруты;
+- сам назначать hard guardrails;
+- сам переводить proposal в optional layer;
+- редактировать книгу;
+- решать стратегию главы;
+- подменять будущий `workflow_conductor_agent`;
+- делать вид, что источник прочитан полностью, если был только targeted reading;
+- добавлять в GitHub полные книги, PDF/EPUB/DJVU/MOBI или сырой текст источников.
+
+## 5. Связь с будущим агентом-дирижёром
+
+`source_intake_auditor` готовит партитуру источников.
+
+`workflow_conductor_agent` в будущем будет дирижировать агентами.
+
+Approval остаётся у Сергея.
+
+Поэтому аудитор обязан выдавать поля, удобные для оркестровки:
+
+- `recommended_agent_layers`;
+- `candidate_new_agents`;
+- `conflict_zones`;
+- `activation_risk`;
+- `orchestration_notes`;
+- `requires_approval_gate`.
+
+Это не даёт аудитору власть над маршрутом. Это даёт будущему дирижёру чистые ноты вместо хаотичных источников.
+
+## 6. Входные данные
+
+Агент принимает:
+
+- имя источника;
+- путь к файлу;
+- source card;
+- список загруженных файлов;
+- source registry entry;
+- source location entry;
+- метаданные;
+- результаты поиска по репозиторию;
+- фрагмент источника, если он загружен вручную;
+- список потенциальных дублей;
+- проектную задачу, для которой источник хотят использовать.
+
+## 7. Выходные данные
+
+Обычный формат:
+
+```text
+Source Intake: источник найден / не найден. Статус: ... Роль: ... Можно использовать для: ... Нельзя использовать для: ... Дубли: ... Следующий шаг: ...
 ```
 
-## 5. Когда вызывать
+Технический формат:
 
-Вызывать, когда:
+```yaml
+source_intake_audit:
+  status: applied
+  source_id: string
+  source_title: string
+  material_presence: found | missing | partial | unknown
+  source_card_status: exists | missing | placeholder | needs_update
+  source_location_status: exists | missing | private_only | needs_update
+  duplicate_status: none | suspected | confirmed | archive_duplicate
+  usability_status: usable_now | needs_enrichment | needs_upload | needs_native_doc | placeholder | archive_duplicate
+  usage_role:
+    - book_context | agent_source | style_lens | mvp_design | ethics_guardrail | reference_only | archive
+  allowed_use:
+    - string
+  forbidden_use:
+    - string
+  book_zones:
+    - preface | chapter | appendix | mvp | training | none
+  agent_layers:
+    existing:
+      - string
+    recommended_agent_layers:
+      - string
+    candidate_new_agents:
+      - string
+  conflict_zones:
+    - string
+  activation_risk: low | medium | high
+  requires_approval_gate: true | false
+  orchestration_notes:
+    - string
+  next_action:
+    - create_card | update_card | add_location | targeted_reading | full_audit | archive_duplicate | request_upload | no_action
+```
 
-- пользователь загружает новый источник;
-- источник впервые упоминается как опора для книги, MVP, брошюры или агента;
-- создаётся новый агент из книги/метода/автора;
-- source card есть, но непонятно, есть ли полный материал;
-- найден дубль файла;
-- проектный документ меняет статус living rule;
-- нужно отличить рабочий источник от красивого названия.
+## 8. Основные проверки
 
-## 6. Когда не вызывать
+1. Материал реально доступен или есть только название/карточка?
+2. Файл содержит рабочий материал или является оболочкой?
+3. Есть ли тот же источник в другом формате или под другим названием?
+4. Есть ли карточка и отражает ли она реальное состояние?
+5. Источник нужен для книги, агента, MVP, стиля, этики, справки или архива?
+6. Что из источника нельзя переносить напрямую?
+7. Каких агентов источник усиливает, каких может породить и где возможен конфликт?
 
-Не вызывать, когда:
+## 9. Статусы пригодности
 
-- задача чисто редакторская и не требует нового источника;
-- источник уже прошёл аудит и задача использует только разрешённую роль;
-- пользователь просит быстро отредактировать текст без опоры на библиотеку;
-- источник нужен только как кратко названная культурная аналогия, без доказательной нагрузки.
+- `usable_now` — есть материал, карточка, роль и понятные запреты.
+- `needs_enrichment` — можно использовать осторожно, но карточка или ограничения требуют доработки.
+- `needs_upload` — источник назван, но материала нет или он недоступен.
+- `needs_native_doc` — материал есть, но нужен более удобный или точный формат.
+- `placeholder` — есть только оболочка, название или идея источника.
+- `archive_duplicate` — источник является дублем и должен быть связан с основным экземпляром.
 
-## 7. Source dependencies
+## 10. Связь с активными агентами
 
-- `knowledge/00_manifest/sources.registry.json`
-- `knowledge/03_source_books/source-locations.registry.json`
-- `knowledge/03_source_books/source-location.template.md`
-- `knowledge/04_processed/source_cards/*`
-- `assistant_codex_worklog/working-protocol.md`
-- `knowledge/00_manifest/project-state.md`
+Если источник связан с вопросами, диалогами и сценами выбора, он может усиливать `socratic_lantern_agent`.
 
-## 8. Guardrails
+Если источник связан с влиянием, продажами, CTA, авторитетом, срочностью, здоровьем или Olife, он может усиливать `ethical_persuasion_guard`.
 
-Запрещено:
+Если источник связан с мышлением, КПТ, тревогой, автоматическими выводами и проверкой мысли, он может усиливать `cbt_thought_check_agent`.
 
-- коммитить raw books, PDF, EPUB, сканы или полный сырой текст;
-- коммитить private Drive file IDs или private Drive URLs;
-- заявлять, что источник прочитан, если доступна только карточка;
-- превращать source card в доказательство;
-- создавать агента на основе источника без карточки и правила применения;
-- смешивать разные версии одного источника без canonical source_id;
-- использовать терапевтические источники как клиническую рекомендацию для читателя книги.
+## 11. Approval-gates
 
-## 9. Связь с существующими агентами
+Агент должен помечать, где требуется approval Сергея.
 
-`source_intake_auditor` стоит перед остальными агентами, если агент зависит от источника.
+Approval нужен, если аудит предлагает:
 
-Он не заменяет:
+- создать нового агента;
+- включить агента в optional layer;
+- изменить маршруты;
+- изменить guardrails;
+- изменить source registry;
+- изменить project-state;
+- использовать спорный источник в книге;
+- перенести клинический, духовный, медицинский, финансовый или маркетингово-рискованный материал в рабочую систему.
 
-- `svod_guard` — тот проверяет соответствие Своду;
-- `ethics_guard` — тот проверяет давление/манипуляцию;
-- `anti_cliche_editor` — тот чистит банальность;
-- `contextologist` — тот собирает смысловой контекст;
-- будущих тематических агентов.
+## 12. Тестовые сценарии
 
-Он решает более раннюю задачу: можно ли вообще считать источник рабочим и на каких условиях.
-
-## 10. Риск дублирования
-
-Риск умеренный.
-
-Похожая функция частично есть у contextologist/source registry, но там фокус шире. Новый агент оправдан, потому что после загрузки большой библиотеки появилась повторяемая операция: проверять не текст главы, а статус источника.
-
-## 11. Тестовый сценарий
-
-### Сценарий 1: источник есть в реестре и в private location
-
-Вход: `waltman_codd_macfarr_moore_socratic_questioning`
-
-Ожидаемый вывод:
-
-- `material_status: usable_now` или `needs_enrichment` после проверки конкретного файла;
-- `registry_status: registered`;
-- `source_card_status: exists_sufficient` или `exists_thin`;
-- next_action: проверить дубли и закрепить canonical source_id.
-
-### Сценарий 2: источник загружен, но нет отдельной карточки
-
-Вход: `Фарнсворт — Метод Сократа`
-
-Ожидаемый вывод:
-
-- `registry_status: missing_from_sources_registry`;
-- `source_card_status: missing`;
-- next_action: создать source card и source-location entry без Drive ID/URL.
-
-### Сценарий 3: проектный документ есть как living doc, но в registry not_registered
-
-Вход: `Svod V4.docx`
+### A. Новый источник без карточки
 
 Ожидаемый вывод:
 
-- `registry_status: inconsistent`;
-- `material_status: needs_enrichment` или `needs_native_doc`;
-- next_action: синхронизировать source card, source-location и project-state.
+- source_card_status: missing;
+- next_action: create_card;
+- нельзя использовать как рабочий источник.
 
-## 12. Критерии качества
+### B. Карточка есть, материала нет
 
-Хороший результат агента:
+Ожидаемый вывод:
 
-- короткий;
-- проверяемый;
-- не делает лишних выводов;
-- отделяет материал от карточки;
-- отделяет полный источник от цитатника;
-- указывает запреты применения;
-- предлагает следующий технический шаг;
-- не превращает аудит в литературную рецензию.
+- material_presence: missing;
+- usability_status: needs_upload;
+- запрет: не делать вид, что источник прочитан.
+
+### C. Источник может породить агента
+
+Ожидаемый вывод:
+
+- candidate_new_agents заполнен;
+- requires_approval_gate: true;
+- next_action: agent proposal, не activation.
+
+### D. Источник усиливает существующего агента
+
+Ожидаемый вывод:
+
+- recommended_agent_layers заполнен;
+- activation_risk оценён;
+- orchestration_notes добавлены.
 
 ## 13. Решение по маршрутам
 
-На этом этапе агент является proposal и внутренним служебным слоем.
+На этом этапе агент остаётся proposal.
 
-Для включения в маршруты, guardrails или автоматический workflow требуется отдельное approval Сергея и отдельный PR.
+Перед controlled activation нужны:
+
+1. Source Intake Audit template;
+2. pilot audit первой небольшой группы источников;
+3. controlled activation proposal;
+4. отдельное approval Сергея.
+
+Рекомендуемый будущий режим: optional workflow layer, не hard guardrail и не workflow conductor.
