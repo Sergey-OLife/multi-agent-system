@@ -52,6 +52,38 @@ func TestRunSyncCheckReady(t *testing.T) {
 	}
 }
 
+func TestRunSyncCheckRequiresHandoffFiles(t *testing.T) {
+	input := InputEnvelope{
+		SchemaVersion: schemaVersion,
+		Command:       "sync-check",
+		Files: []InputFile{
+			{
+				Path: "knowledge/00_manifest/project-state.json",
+				Kind: "project_state_json",
+				Content: `{
+					"lastMergedPr":"PR #71 — Split TypeScript configs for build and test",
+					"lastMergeCommit":"c2c9a7fdebaaf91483acfbf97cdcb7e6c9090ed9",
+					"currentMode":"Agent Shipyard / Shipyard Modernization",
+					"bookPaused":true,
+					"nextAction":"Create first minimal Go-core sync-check CLI"
+				}`,
+			},
+		},
+	}
+
+	output := runSyncCheck(input)
+
+	if output.Status != "needs_revision" {
+		t.Fatalf("expected needs_revision, got %s", output.Status)
+	}
+
+	for _, code := range []string{"missing_project_state_md", "missing_current_state", "missing_roadmap", "missing_restart_prompt"} {
+		if !hasDiagnostic(output.Diagnostics, code) {
+			t.Fatalf("expected %s diagnostic, got %#v", code, output.Diagnostics)
+		}
+	}
+}
+
 func TestRunSyncCheckDetectsStaleRestartPrompt(t *testing.T) {
 	input := InputEnvelope{
 		SchemaVersion: schemaVersion,
