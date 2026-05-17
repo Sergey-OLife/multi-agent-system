@@ -80,7 +80,7 @@ type ProjectState struct {
 
 func main() {
 	if len(os.Args) < 2 {
-		writeOutput(errorOutput("", "missing_command", "Missing command.", "Run multi-agent-core sync-check."))
+		writeOutput(errorOutput("", "missing_command", "Missing command.", "Run multi-agent-core sync-check or registry-check."))
 		os.Exit(1)
 	}
 
@@ -102,16 +102,68 @@ func main() {
 		os.Exit(1)
 	}
 
-	if command != "sync-check" {
-		writeOutput(errorOutput(command, "unsupported_command", "Only sync-check is implemented in the first Go-core PR.", "Use sync-check."))
+	var output OutputEnvelope
+
+	switch command {
+	case "sync-check":
+		output = runSyncCheck(input)
+	case "registry-check":
+		output = runRegistryCheck(input)
+	default:
+		writeOutput(errorOutput(command, "unsupported_command", "Unsupported Go-core command.", "Use sync-check or registry-check."))
 		os.Exit(1)
 	}
 
-	output := runSyncCheck(input)
 	writeOutput(output)
 
 	if output.Status == "blocked" || output.Status == "error" {
 		os.Exit(1)
+	}
+}
+
+func runRegistryCheck(input InputEnvelope) OutputEnvelope {
+	diagnostics := make([]Diagnostic, 0)
+	requiredUpdates := make([]string, 0)
+
+	if input.SchemaVersion != schemaVersion {
+		return errorOutput(input.Command, "invalid_schema_version", "Invalid or missing schemaVersion.", "Provide schemaVersion: core-api.v1.")
+	}
+
+	registry := findFile(input.Files, "agent_container_registry", "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md")
+
+	if registry == nil {
+		return errorOutput(input.Command, "missing_agent_registry", "Missing agent_container_registry input file.", "Pass agent_container_registry.md in files.")
+	}
+
+	if !strings.Contains(registry.Content, "agent_container_registry:") {
+		diagnostics = append(diagnostics, diagnostic("medium", "registry_missing_yaml_root", registry.Path, "Registry YAML root was not found.", "Keep parser-safe YAML root in the registry file."))
+		requiredUpdates = append(requiredUpdates, "Restore parser-safe YAML root in agent_container_registry.md.")
+	}
+
+	if !strings.Contains(registry.Content, "workflow_conductor_agent") {
+		diagnostics = append(diagnostics, diagnostic("medium", "registry_missing_workflow_conductor", registry.Path, "workflow_conductor_agent container is missing.", "Restore workflow_conductor_agent container entry."))
+		requiredUpdates = append(requiredUpdates, "Restore workflow_conductor_agent registry entry.")
+	}
+
+	status := "ready"
+	summary := "Agent registry structure is available."
+	safeNextStep := "Continue with the next planned shipyard step."
+
+	if len(requiredUpdates) > 0 {
+		status = "needs_revision"
+		summary = "Registry structure issues were found."
+		safeNextStep = "Repair registry structure before continuing." 
+	}
+
+	return OutputEnvelope{
+		SchemaVersion:   schemaVersion,
+		Command:         input.Command,
+		Status:          status,
+		Summary:         summary,
+		Diagnostics:     diagnostics,
+		RequiredUpdates: unique(requiredUpdates),
+		BlockedActions:  []string{},
+		SafeNextStep:    safeNextStep,
 	}
 }
 
