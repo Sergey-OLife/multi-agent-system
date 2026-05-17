@@ -19,9 +19,10 @@ GitHub — источник правды по состоянию системы.
 
 Актуальное состояние на момент restart:
 
-- currentVersion: v2.2.
-- lastCompletedVersion: v2.2.
-- lastMergedPr: PR #45 — Add ethical persuasion optional workflow layer.
+- currentVersion: v2.3.
+- lastCompletedVersion: v2.3.
+- lastMergedPr: PR #54 — Add source intake auditor optional workflow layer.
+- GitHub — источник правды по состоянию системы.
 - Book Fast Track действует для написания глав.
 - Для книги: сначала пишем и редактируем в чате, агенты работают как внутренние редакторские слои, GitHub фиксирует только принятый результат.
 - Для технических частей: строгий PR workflow.
@@ -31,45 +32,84 @@ GitHub — источник правды по состоянию системы.
 - `+` означает продолжить следующий безопасный шаг, но не approval.
 - `++` означает approval текущего понятного approval-gate.
 - Перепроверка mergeability открытого PR выполняется автоматически, без отдельного подтверждения.
+- GitHub Actions workflow approval не отключать без отдельного решения Сергея: текущий ручной барьер считается частью безопасности.
 
-Последняя крупная техническая веха:
-
-Завершён блок формирования двух ключевых optional workflow layers:
+Текущая активная четвёрка optional workflow layers:
 
 1. `socratic_lantern_agent`
-   - активирован как optional workflow layer;
-   - не hard guardrail;
-   - не route-required;
-   - рабочая формула: «Вопрос — это фонарь, а не поводок»;
-   - применяется в задачах про вопросы, диалоги, сцены выбора, наставничество и MVP-развилки.
+   - формула: `Вопрос — это фонарь, а не поводок`;
+   - применяется к вопросам, диалогам, сценам выбора, наставничеству, MVP-развилкам;
+   - не hard guardrail.
 
 2. `ethical_persuasion_guard`
-   - активирован как optional workflow layer;
+   - формула: `Оставить огонь. Убрать дым`;
+   - применяется к продающим текстам, CTA, офферам, Olife/здоровью, срочности, авторитету, социальному доказательству и конструктивному давлению;
+   - не hard guardrail.
+
+3. `cbt_thought_check_agent`
+   - формула: `Мысль — это не приговор. Это гипотеза, которую можно проверить`;
+   - применяется к внутренним монологам, страхам, сомнениям, возражениям, MVP-развилкам и проверке факта/догадки/эмоции/вывода;
+   - не hard guardrail;
+   - не терапия;
+   - не диагностика;
+   - не инструмент продаж.
+
+4. `source_intake_auditor`
+   - формула: `Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать`;
+   - применяется к проверке статуса источников, дублей, source cards, allowed/forbidden use, usability status, orchestration fields;
    - не hard guardrail;
    - не route-required;
-   - рабочая формула: «Оставить огонь. Убрать дым»;
-   - сохраняет убеждение, CTA, предпринимательский импульс и конструктивное давление;
-   - убирает вину, страх, ложную срочность, давление на семью/здоровье/духовность, авторитет без проверки и обещания без основания;
-   - применяется в задачах про продающие тексты, офферы, CTA, Olife/здоровье, срочность, авторитет, социальное доказательство и конструктивное давление.
+   - не `workflow_conductor_agent`;
+   - не меняет registry/project-state без approval;
+   - не активирует агентов без approval;
+   - не запускает автоматический аудит всех источников без отдельного плана.
 
-Ключевые PR после предыдущего checkpoint:
+PR после v2.2:
 
-- PR #31–33: living project docs/source cards and update package/profiling work.
-- PR #34–40: socratic_lantern_agent proposal, audits, targeted reading notes, duplicate check, controlled activation, optional workflow layer.
-- PR #41: ethical_persuasion_guard proposal.
-- PR #42: automatic mergeability check rule + protocol addenda linked from restart path.
-- PR #43: Cialdini targeted reading note + medical caution audit.
-- PR #44: ethical_persuasion_guard controlled activation proposal.
-- PR #45: ethical_persuasion_guard optional workflow layer.
+- PR #47 — `cbt_thought_check_agent` proposal.
+- PR #48 — Judith Beck / CBT targeted reading notes + pseudotherapy boundary audit.
+- PR #49 — `cbt_thought_check_agent` controlled activation proposal.
+- PR #50 — `cbt_thought_check_agent` optional workflow layer.
+- PR #51 — `source_intake_auditor` proposal with orchestration fields.
+- PR #52 — Source Intake Audit template + pilot audit.
+- PR #53 — `source_intake_auditor` controlled activation proposal.
+- PR #54 — `source_intake_auditor` optional workflow layer.
 
-Следующий логичный технический шаг:
+Архитектурное решение по оркестровке:
 
-1. Создать/активировать `source_intake_auditor`, если цель — привести библиотеку в порядок.
-2. Либо начать Source Intake Audit первой волны источников без отдельного агента.
-3. Либо перейти к `cbt_thought_check_agent`, если цель — усилить психологическую точность глав, MVP-развилок и маршрута новичка.
-4. Либо вернуться к книге через Book Fast Track.
+- `source_intake_auditor` не является царём агентов.
+- Он готовит “партитуру источников”.
+- Будущий `workflow_conductor_agent` должен дирижировать агентами.
+- Approval остаётся у Сергея.
+- В `source_intake_auditor` уже заложены orchestration fields:
+  - `recommended_agent_layers`;
+  - `candidate_new_agents`;
+  - `conflict_zones`;
+  - `activation_risk`;
+  - `orchestration_notes`;
+  - `requires_approval_gate`.
 
-Текущий литературный фокус:
+Следующий наиболее эффективный шаг после checkpoint:
+
+1. Создать `workflow_conductor_agent` proposal.
+2. Не активировать сразу.
+3. Описать его как координатора ансамбля:
+   - каких агентов подключить;
+   - в каком порядке;
+   - кто главный, кто вспомогательный;
+   - где конфликт слоёв;
+   - где нужен `++`;
+   - что нельзя автоматизировать.
+4. Затем controlled activation proposal.
+5. Затем optional workflow layer, но не hard guardrail.
+
+Важно:
+
+- `workflow_conductor_agent` не должен получать право самостоятельно менять registry, project-state, guardrails, маршруты или активировать агентов без approval.
+- Он должен координировать, а не управлять системой вместо Сергея.
+- Если возникает конфликт между скоростью и безопасностью, approval-gate выше автоматизации.
+
+Текущий литературный фокус остаётся прежним:
 
 Продолжить `chapter_00_preface` в чате как читательскую версию Введения, без metadata и служебных блоков.
 
@@ -82,7 +122,7 @@ GitHub — источник правды по состоянию системы.
 - Сначала человек, узнавание и доверие; инструменты и термины — позже.
 - Принята формула: `В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.`
 
-Последний принятый фрагмент:
+Последний принятый фрагмент по Введению:
 
 Разумное сообщество начинается там, где чужое доверие перестаёт быть вашим инструментом.
 
@@ -120,16 +160,17 @@ GitHub — источник правды по состоянию системы.
 
 Но именно на таких границах потом держится всё остальное.
 
-Следующий ход:
+Следующий ход по книге:
 Продолжить от первой границы к обещанию книги: не `научим продавать правильно`, а `будем учиться различать, где путь остаётся человеческим, а где человек становится средством`.
 
 Главные правила:
-- Давай кликабельные GitHub-ссылки на файлы, если их нужно открыть.
-- Не загружай raw books в GitHub.
-- Не храни сырой текст Плотникова.
-- Не делай вид, что все загруженные источники уже проаудированы.
+
+- Не загружать raw books в GitHub.
+- Не хранить сырой текст Плотникова.
+- Не делать вид, что все загруженные источники уже проаудированы.
 - Human-readable review artifacts должны быть на русском.
-- Если source card есть, но полного материала нет, не делай вид, что источник прочитан.
+- Если source card есть, но полного материала нет, не делать вид, что источник прочитан.
 - Для книги: не начинать с нового PR, сначала продолжить текст в чате.
 - Для кода/агентов/реестров: использовать строгий PR workflow.
+- Давать кликабельные GitHub-ссылки, если файл нужно открыть.
 ```
