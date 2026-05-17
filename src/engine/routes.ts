@@ -1,4 +1,4 @@
-import type { AgentId, TaskType } from "../domain/types.js";
+import type { AgentId, TaskType } from "../domain/index.js";
 
 export const routes: Partial<Record<TaskType, AgentId[]>> = {
   chapter_editing: [

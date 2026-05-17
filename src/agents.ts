@@ -1,14 +1,11 @@
-import { buildAntiClicheDiagnostics } from "./diagnostics/anti-cliche.js";
-import { buildSvodCheck } from "./diagnostics/svod-check.js";
-import { buildSynchronizationMap } from "./diagnostics/sync-map.js";
-import { buildContextPack } from "./engine/context-pack.js";
-import { classifyTask } from "./engine/classify-task.js";
-import { normalize } from "./engine/text-utils.js";
+import { buildAntiClicheDiagnostics, buildSvodCheck, buildSynchronizationMap } from "./diagnostics/index.js";
+import { classifyTask, normalize } from "./engine/index.js";
+import { buildContextPack } from "./orchestration/index.js";
 import { loadProjectState } from "./project-state.js";
-import type { Agent, AgentId, AgentResult, RoutingContext } from "./types.js";
+import type { Agent, AgentId, AgentResult, RoutingContext } from "./domain/index.js";
 
-export { classifyTask } from "./engine/classify-task.js";
-export { buildContextPack } from "./engine/context-pack.js";
+export { classifyTask } from "./engine/index.js";
+export { buildContextPack } from "./orchestration/index.js";
 
 function result(agentId: AgentId, message: string, diagnostics: Record<string, unknown> = {}): AgentResult {
   return {

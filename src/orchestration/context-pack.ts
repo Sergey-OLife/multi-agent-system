@@ -1,5 +1,5 @@
 import { getSourceCardsByIds, getSourceIdsForTask, getSourceRegistryVersion } from "../source-registry.js";
-import type { ContextPack, TaskType } from "../types.js";
+import type { ContextPack, TaskType } from "../domain/index.js";
 
 export function buildContextPack(taskType: TaskType): ContextPack {
   const relevantSourceIds = getSourceIdsForTask(taskType);

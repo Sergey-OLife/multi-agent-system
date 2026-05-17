@@ -1,4 +1,4 @@
-import type { TaskType } from "../domain/types.js";
+import type { TaskType } from "../domain/index.js";
 import { hasWord, normalize } from "./text-utils.js";
 
 function hasMvpSignal(text: string): boolean {

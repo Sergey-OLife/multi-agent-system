@@ -1,4 +1,4 @@
-import { collectMatches, countRegexMatches, normalize } from "../engine/text-utils.js";
+import { collectMatches, countRegexMatches, normalize } from "../engine/index.js";
 
 export function buildAntiClicheDiagnostics(input: string): Record<string, unknown> {
   const text = normalize(input);

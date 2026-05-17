@@ -1,5 +1,5 @@
-import type { SvodCheckResult } from "../types.js";
-import { normalize } from "../engine/text-utils.js";
+import type { SvodCheckResult } from "../domain/index.js";
+import { normalize } from "../engine/index.js";
 
 function hasPlotnikovRetellingViolation(text: string): boolean {
   const mentionsPlotnikov = text.includes("плотников");
