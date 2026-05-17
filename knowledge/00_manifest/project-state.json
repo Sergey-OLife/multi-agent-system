@@ -1,9 +1,9 @@
 {
   "currentVersion": "v2.4",
   "lastCompletedVersion": "v2.4",
-  "lastMergedPr": "PR #62 — Add project state synchronizer proposal",
-  "lastMergeCommit": "9ffbe0e52f3b68e31ec425c311aacf3237d1ebb7",
-  "currentMilestone": "v2.4 Shipyard Modernization focus after Agent Shipyard P0 proposals",
+  "lastMergedPr": "PR #67 — Extract agent context and diagnostics modules",
+  "lastMergeCommit": "df9600e1433d73d83a5f5258cdaa8afc4ad18c3e",
+  "currentMilestone": "v2.4 Shipyard Modernization after TypeScript layer split and Go-core contract",
   "currentMode": "Agent Shipyard / Shipyard Modernization",
   "bookPaused": true,
   "completedVersions": [
@@ -32,10 +32,11 @@
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals"
   ],
   "recentPrs": [
-    "PR #58 — Add agent shipyard container registry",
-    "PR #59 — Add agent registry librarian proposal",
-    "PR #60 — Add approval gate keeper proposal",
-    "PR #62 — Add project state synchronizer proposal"
+    "PR #63 — Record shipyard modernization focus",
+    "PR #64 — Enable incremental TypeScript builds",
+    "PR #65 — Split TypeScript domain and engine layers",
+    "PR #66 — Add Go core API contract",
+    "PR #67 — Extract agent context and diagnostics modules"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -45,6 +46,10 @@
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit",
     "Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite",
+    "TypeScript incremental builds are enabled through tsconfig incremental and tsBuildInfoFile",
+    "TypeScript domain and engine layers have been introduced while compatibility entrypoints remain",
+    "Go-core API contract is fixed as CLI plus JSON stdin/stdout before any Go runtime code is added",
+    "agents.ts should remain a registry assembly point, not a dumping ground for context and diagnostics logic",
     "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
     "uploaded project sources are raw/source material until audited through Source Intake Audit",
     "source cards are not proof that full sources were read",
@@ -77,9 +82,9 @@
     "Do not activate approval_gate_keeper without controlled activation and separate approval",
     "Do not activate project_state_synchronizer without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR",
-    "Do not start the next agent proposal until the first Shipyard Modernization focus and TypeScript optimization steps are handled or Sergey redirects"
+    "Do not return to the agent proposal queue until Sergey redirects or the current modernization segment is checkpointed"
   ],
-  "nextAction": "Enable incremental TypeScript builds as the first concrete Shipyard Modernization PR; then split TypeScript domain/engine/integration layers before adding a minimal Go core boundary",
+  "nextAction": "Choose the next modernization branch: either split tsconfig into base/build/test configs, or create the first minimal Go-core sync-check CLI using the accepted core API contract",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -91,6 +96,7 @@
     "assistant_codex_worklog/protocol_addenda/*.md",
     "knowledge/00_manifest/project-state.json",
     "knowledge/00_manifest/project-state.md",
+    "knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container.template.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md",
@@ -107,7 +113,15 @@
     "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md",
     "tsconfig.json",
     "package.json",
-    "src/types.ts",
+    "src/domain/types.ts",
+    "src/engine/classify-task.ts",
+    "src/engine/context-pack.ts",
+    "src/engine/route-request.ts",
+    "src/engine/routes.ts",
+    "src/engine/text-utils.ts",
+    "src/diagnostics/anti-cliche.ts",
+    "src/diagnostics/svod-check.ts",
+    "src/diagnostics/sync-map.ts",
     "src/router.ts",
     "src/agents.ts",
     "book/01_drafts/chapter_00_preface.md",
@@ -151,9 +165,15 @@
       "copyright_boundary_guard"
     ],
     "shipyardModernization": {
-      "status": "focus_requested",
+      "status": "state_sync_after_pr67",
+      "completedTechnicalSteps": [
+        "incremental TypeScript builds",
+        "domain and engine layer split",
+        "Go-core API contract",
+        "context and diagnostics extraction from agents.ts"
+      ],
       "languageDecision": "Go accepted for future core checks after TypeScript optimization and JSON boundary",
-      "nextTechnicalStep": "Enable incremental TypeScript builds",
+      "nextTechnicalStep": "Choose tsconfig split or minimal Go-core sync-check CLI",
       "goCoreStrategy": "CLI first, JSON stdin/stdout, optional dev tool before runtime replacement"
     }
   }
