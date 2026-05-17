@@ -1,5 +1,5 @@
 {
-  "version": "1.3",
+  "version": "1.4",
   "updated_at": "2026-05-17",
   "registry_purpose": "Map source cards to the private Google Drive library without committing raw books, private Drive URLs, or Drive file IDs.",
   "private_library": {
@@ -38,71 +38,488 @@
     "source_card_only_or_external_drive_search": "Not registered in this folder; a similar document may exist elsewhere in Drive but is not registered."
   },
   "entries": [
-    {"source_id":"plotnikov_reasonable_network_marketing","raw_location":"private_google_drive","drive_filename":"plotnikov_reasonable_network_marketing.pdf","access_status":"available_private_file","usage_rule":"full_context_navigation_and_dosage_only"},
-    {"source_id":"yarnell_first_year_network_marketing","raw_location":"private_google_drive","drive_filename":"yarnell_first_year_network_marketing.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"kalenc_best_you_can_be_mlm","raw_location":"private_google_drive","drive_filename":"kalenc_best_you_can_be_mlm.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"bukhtiyarov_objections","raw_location":"private_google_drive","drive_filename":"bukhtiyarov_objections.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"kiyosaki_rich_dad_poor_dad","raw_location":"private_google_drive","drive_filename":"kiyosaki_rich_dad_poor_dad.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"kiyosaki_cashflow_quadrant","raw_location":"private_google_drive","drive_filename":"kiyosaki_cashflow_quadrant.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"gerber_e_myth","raw_location":"private_google_drive","drive_filename":"gerber_e_myth.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"arkhangelsky_time_drive","raw_location":"private_google_drive","drive_filename":"arkhangelsky_time_drive.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"canfield_hansen_hewitt_whole_life","raw_location":"private_google_drive","drive_filename":"canfield_hansen_hewitt_whole_life.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"mcgonigal_superbetter","raw_location":"private_google_drive","drive_filename":"mcgonigal_superbetter.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"aaron_beck_love_is_never_enough","raw_location":"private_google_drive","drive_filename":"aaron_beck_love_is_never_enough.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"aaron_beck_recovery_oriented_cognitive_therapy","raw_location":"private_google_drive","drive_filename":"aaron_beck_recovery_oriented_cognitive_therapy.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"judith_beck_cbt","raw_location":"private_google_drive","drive_filename":"judith_beck_cbt.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"waltman_codd_macfarr_moore_socratic_questioning","raw_location":"private_google_drive","drive_filename":"waltman_codd_macfarr_moore_socratic_questioning.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"kamaletdinova_antonova_cbt_consulting","raw_location":"private_google_drive","drive_filename":"kamaletdinova_antonova_cbt_consulting.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"kharitonov_cbt_manual","raw_location":"private_google_drive","drive_filename":"kharitonov_cbt_manual.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"latypov_helping_people","raw_location":"private_google_drive","drive_filename":"latypov_helping_people.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"km_psychology_academy","raw_location":"private_google_drive","drive_filename":"km_psychology_academy.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"khmelevskaya_style_reference","raw_location":"private_google_drive","drive_filename":"khmelevskaya_style_reference","access_status":"private_doc_present_content_not_verified","usage_rule":"internal_style_reference_after_review"},
-    {"source_id":"field_three_act_structure","raw_location":"private_google_drive","drive_filename":"field_three_act_structure","access_status":"seeded_from_source_card_needs_review","usage_rule":"seeded_project_spec_needs_review"},
-    {"source_id":"socratic_method_framework","raw_location":"private_google_drive","drive_filename":"socratic_method_framework","access_status":"seeded_from_source_card_needs_review","usage_rule":"seeded_project_spec_needs_review"},
-    {"source_id":"practical_mlm_ecology_framework","raw_location":"private_google_drive","drive_filename":"practical_mlm_ecology_framework","access_status":"seeded_from_source_card_needs_review","usage_rule":"seeded_project_spec_needs_review"},
-    {"source_id":"idea_amplifier_framework","raw_location":"private_google_drive","drive_filename":"idea_amplifier_framework","access_status":"seeded_from_source_card_needs_review","usage_rule":"seeded_project_spec_needs_review"},
-    {"source_id":"protected_spaces_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"plato_cave_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"hero_journey_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"simulacra_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"triz_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"disney_method_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"character_arc_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"cyberpunk_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"descartes_square_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"eisenhower_matrix_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"inner_council_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"thought_check_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"quiet_master_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"quest_chapter_framework","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"svod_project_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"mvp_project_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"context_sources_map_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"context_map_v14_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"sync_packages_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"update_packages_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"agent_specs_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"brochure_newcomer_route_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"localization_notes_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"living_project_doc_needs_sync"},
-    {"source_id":"style_profile_card","raw_location":"private_google_drive","drive_filename":"style_profile_card.txt","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"spiritual_sphere_business_boundary_card","raw_location":"private_google_drive","drive_filename":"spiritual_sphere_business_boundary_card.txt","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"book_continuity_export_protocol_card","raw_location":"private_google_drive","drive_filename":"book_continuity_export_protocol_card.txt","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"materials_far_headlight_instruction_card","raw_location":"private_google_drive","drive_filename":"materials_far_headlight_instruction_card.txt","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"writer_rewrite_mode_legacy_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"idea_amplifier_instruction_card","raw_location":"private_google_drive","drive_filename":"idea_amplifier_instruction_card.txt","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"print_ready_book_export_card","raw_location":"private_google_drive","drive_filename":"print_ready_book_export_card.txt","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"frequency_language_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"money_authors_hill_clason_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"ferrazzi_never_eat_alone_card","raw_location":"not_registered","drive_filename":null,"access_status":"not_found_in_private_folder","usage_rule":"source_card_only"},
-    {"source_id":"client_followup_medical_caution_card","raw_location":"private_google_drive","drive_filename":"client_followup_medical_caution_card.pdf","access_status":"available_private_file","usage_rule":"may_use_as_private_project_source_after_reading"},
-    {"source_id":"farnsworth_socratic_method","raw_location":"uploaded_project_source","drive_filename":"Фарнсворт У.-Метод Сократа...-2023.rtf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"overholser_socratic_psychotherapy","raw_location":"uploaded_project_source","drive_filename":"Оверхолзер Д. - Метод Сократа в психотерапии - 2021.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"ilse_sand_emotion_compass","raw_location":"uploaded_project_source","drive_filename":"Санд_Илсе_—_Компас_эмоций_Как_разобраться_в_своих_чувствах_—_2018 (3).pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"freeman_dewolf_mental_errors","raw_location":"uploaded_project_source","drive_filename":"Фриман_Артур,_Девульф_Роуз_—_Если_бы_да_кабы_15_ментальных_ошибок.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"byron_katie_loving_what_is","raw_location":"uploaded_project_source","drive_filename":"_Байрон Кейти, Любить то, что есть.doc","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"anxiety_fear_panic_workbook","raw_location":"uploaded_project_source","drive_filename":"КПТ - страх, тревога, паника.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"eric_berne_people_play_games","raw_location":"uploaded_project_source","drive_filename":"Люди,_которые_играют_в_игры_книга_2_Эрик_Берн.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"cialdini_influence","raw_location":"uploaded_project_source","drive_filename":"Психология влияния_Чалдини.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"},
-    {"source_id":"judith_beck_quotes_collection","raw_location":"uploaded_project_source","drive_filename":"Золотой фонд цитат Джудит Бек.pdf","access_status":"source_card_only_until_reviewed","usage_rule":"may_use_as_private_source_after_targeted_reading"}
+    {
+      "source_id": "plotnikov_reasonable_network_marketing",
+      "raw_location": "private_google_drive",
+      "drive_filename": "plotnikov_reasonable_network_marketing.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "full_context_navigation_and_dosage_only"
+    },
+    {
+      "source_id": "yarnell_first_year_network_marketing",
+      "raw_location": "private_google_drive",
+      "drive_filename": "yarnell_first_year_network_marketing.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "kalenc_best_you_can_be_mlm",
+      "raw_location": "private_google_drive",
+      "drive_filename": "kalenc_best_you_can_be_mlm.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "bukhtiyarov_objections",
+      "raw_location": "private_google_drive",
+      "drive_filename": "bukhtiyarov_objections.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "kiyosaki_rich_dad_poor_dad",
+      "raw_location": "private_google_drive",
+      "drive_filename": "kiyosaki_rich_dad_poor_dad.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "kiyosaki_cashflow_quadrant",
+      "raw_location": "private_google_drive",
+      "drive_filename": "kiyosaki_cashflow_quadrant.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "gerber_e_myth",
+      "raw_location": "private_google_drive",
+      "drive_filename": "gerber_e_myth.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "arkhangelsky_time_drive",
+      "raw_location": "private_google_drive",
+      "drive_filename": "arkhangelsky_time_drive.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "canfield_hansen_hewitt_whole_life",
+      "raw_location": "private_google_drive",
+      "drive_filename": "canfield_hansen_hewitt_whole_life.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "mcgonigal_superbetter",
+      "raw_location": "private_google_drive",
+      "drive_filename": "mcgonigal_superbetter.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "aaron_beck_love_is_never_enough",
+      "raw_location": "private_google_drive",
+      "drive_filename": "aaron_beck_love_is_never_enough.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "aaron_beck_recovery_oriented_cognitive_therapy",
+      "raw_location": "private_google_drive",
+      "drive_filename": "aaron_beck_recovery_oriented_cognitive_therapy.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "judith_beck_cbt",
+      "raw_location": "private_google_drive",
+      "drive_filename": "judith_beck_cbt.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "waltman_codd_macfarr_moore_socratic_questioning",
+      "raw_location": "private_google_drive",
+      "drive_filename": "waltman_codd_macfarr_moore_socratic_questioning.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "kamaletdinova_antonova_cbt_consulting",
+      "raw_location": "private_google_drive",
+      "drive_filename": "kamaletdinova_antonova_cbt_consulting.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "kharitonov_cbt_manual",
+      "raw_location": "private_google_drive",
+      "drive_filename": "kharitonov_cbt_manual.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "latypov_helping_people",
+      "raw_location": "private_google_drive",
+      "drive_filename": "latypov_helping_people.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "km_psychology_academy",
+      "raw_location": "private_google_drive",
+      "drive_filename": "km_psychology_academy.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "khmelevskaya_style_reference",
+      "raw_location": "private_google_drive",
+      "drive_filename": "khmelevskaya_style_reference",
+      "access_status": "private_doc_present_content_not_verified",
+      "usage_rule": "internal_style_reference_after_review"
+    },
+    {
+      "source_id": "field_three_act_structure",
+      "raw_location": "private_google_drive",
+      "drive_filename": "field_three_act_structure",
+      "access_status": "seeded_from_source_card_needs_review",
+      "usage_rule": "seeded_project_spec_needs_review"
+    },
+    {
+      "source_id": "socratic_method_framework",
+      "raw_location": "private_google_drive",
+      "drive_filename": "socratic_method_framework",
+      "access_status": "seeded_from_source_card_needs_review",
+      "usage_rule": "seeded_project_spec_needs_review"
+    },
+    {
+      "source_id": "practical_mlm_ecology_framework",
+      "raw_location": "private_google_drive",
+      "drive_filename": "practical_mlm_ecology_framework",
+      "access_status": "seeded_from_source_card_needs_review",
+      "usage_rule": "seeded_project_spec_needs_review"
+    },
+    {
+      "source_id": "idea_amplifier_framework",
+      "raw_location": "private_google_drive",
+      "drive_filename": "idea_amplifier_framework",
+      "access_status": "seeded_from_source_card_needs_review",
+      "usage_rule": "seeded_project_spec_needs_review"
+    },
+    {
+      "source_id": "protected_spaces_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "plato_cave_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "hero_journey_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "simulacra_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "triz_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "disney_method_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "character_arc_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "cyberpunk_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "descartes_square_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "eisenhower_matrix_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "inner_council_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "thought_check_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "quiet_master_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "quest_chapter_framework",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "svod_project_card",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Svod V4.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "mvp_project_card",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Mvp V1.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "context_sources_map_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "context_map_v14_card",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Karta Kontekstov Istochnikov V1.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "sync_packages_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "update_packages_card",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Paket Obnovleniya V20 Profil Vzaimodeystviya V1.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "agent_specs_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "brochure_newcomer_route_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "localization_notes_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "living_project_doc_needs_sync"
+    },
+    {
+      "source_id": "style_profile_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "style_profile_card.txt",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "spiritual_sphere_business_boundary_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "spiritual_sphere_business_boundary_card.txt",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "book_continuity_export_protocol_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "book_continuity_export_protocol_card.txt",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "materials_far_headlight_instruction_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "materials_far_headlight_instruction_card.txt",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "writer_rewrite_mode_legacy_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "idea_amplifier_instruction_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "idea_amplifier_instruction_card.txt",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "print_ready_book_export_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "print_ready_book_export_card.txt",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "frequency_language_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "money_authors_hill_clason_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "ferrazzi_never_eat_alone_card",
+      "raw_location": "not_registered",
+      "drive_filename": null,
+      "access_status": "not_found_in_private_folder",
+      "usage_rule": "source_card_only"
+    },
+    {
+      "source_id": "client_followup_medical_caution_card",
+      "raw_location": "private_google_drive",
+      "drive_filename": "client_followup_medical_caution_card.pdf",
+      "access_status": "available_private_file",
+      "usage_rule": "may_use_as_private_project_source_after_reading"
+    },
+    {
+      "source_id": "farnsworth_socratic_method",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Фарнсворт У.-Метод Сократа...-2023.rtf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "overholser_socratic_psychotherapy",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Оверхолзер Д. - Метод Сократа в психотерапии - 2021.pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "ilse_sand_emotion_compass",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Санд_Илсе_—_Компас_эмоций_Как_разобраться_в_своих_чувствах_—_2018 (3).pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "freeman_dewolf_mental_errors",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Фриман_Артур,_Девульф_Роуз_—_Если_бы_да_кабы_15_ментальных_ошибок.pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "byron_katie_loving_what_is",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "_Байрон Кейти, Любить то, что есть.doc",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "anxiety_fear_panic_workbook",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "КПТ - страх, тревога, паника.pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "eric_berne_people_play_games",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Люди,_которые_играют_в_игры_книга_2_Эрик_Берн.pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "cialdini_influence",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Психология влияния_Чалдини.pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "judith_beck_quotes_collection",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Золотой фонд цитат Джудит Бек.pdf",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "may_use_as_private_source_after_targeted_reading"
+    },
+    {
+      "source_id": "plotnikovsky_motor_project_rule",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Plotnikovsky Motor V1.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "internal_project_doc_after_review"
+    },
+    {
+      "source_id": "interaction_profile_v1_card",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Paket Obnovleniya V20 Profil Vzaimodeystviya V1.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "internal_project_doc_after_review"
+    },
+    {
+      "source_id": "chapter_30_design_artifact",
+      "raw_location": "uploaded_project_source",
+      "drive_filename": "Glava 30 Hud Proektirovanie V1.docx",
+      "access_status": "source_card_only_until_reviewed",
+      "usage_rule": "internal_project_doc_after_review"
+    }
   ]
 }
