@@ -21,7 +21,7 @@
 
 ```yaml
 agent_container_registry:
-  schema_version: "1.1"
+  schema_version: "1.2"
   status: "architecture_map / containers_only / parser_safe_yaml"
   architecture_mode: "Agent Shipyard"
   current_project_mode: "Книга на паузе; сначала достраиваем агентную архитектуру."
@@ -71,12 +71,13 @@ agent_container_registry:
     - agent_id: "approval_gate_keeper"
       working_name_ru: "Сторож approval-шлюза"
       group: "Управление кораблём"
-      status: "container"
+      status: "proposal"
       ship_role: "deck_watch"
       why_needed: "Разделяет +, ++, безопасный шаг и смысловое approval."
       main_formula: "Подтверждение нужно для решения, а не для технической проверки."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/approval_gate_keeper.md"
       activation_risk: "medium"
       approval_gate: true
 
@@ -813,16 +814,15 @@ agent_container_registry:
 
 Первыми нужно довести до proposal:
 
-1. `approval_gate_keeper`
-2. `project_state_synchronizer`
-3. `checkpoint_compressor_agent`
-4. `source_card_builder`
-5. `copyright_boundary_guard`
-6. `svod_guard`
-7. `contextologist_agent`
-8. `sergey_interaction_profiler`
-9. `author_style_memory_agent`
+1. `project_state_synchronizer`
+2. `checkpoint_compressor_agent`
+3. `source_card_builder`
+4. `copyright_boundary_guard`
+5. `svod_guard`
+6. `contextologist_agent`
+7. `sergey_interaction_profiler`
+8. `author_style_memory_agent`
 
-`agent_registry_librarian` уже переведён из `container` в `proposal`, но не активирован.
+`agent_registry_librarian` и `approval_gate_keeper` уже переведены из `container` в `proposal`, но не активированы.
 
 Этот список не окончательный. Сергей может добавлять новых агентов. ChatGPT также может предлагать новых агентов, если видит функциональную дыру, повторяющийся сбой или риск для корабля.
