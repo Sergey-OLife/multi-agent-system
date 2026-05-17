@@ -1,0 +1,36 @@
+name: Sync Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go-core/go.mod
+
+      - name: Build Go-core binary
+        run: go build -o multi-agent-core ./cmd/multi-agent-core
+        working-directory: go-core
+
+      - name: Run sync-check
+        run: npm run sync-check
