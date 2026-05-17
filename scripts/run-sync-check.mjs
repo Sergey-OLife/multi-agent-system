@@ -6,26 +6,35 @@ import { resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 
 const schemaVersion = 'core-api.v1';
-const wrapperCommand = 'sync-check';
+const wrapperCommand = process.argv[2] ?? 'sync-check';
 const repoRoot = process.cwd();
 const defaultBinaryPath = resolve(repoRoot, 'go-core/multi-agent-core');
 const binaryPath = process.env.MULTI_AGENT_CORE_BIN
   ? resolve(repoRoot, process.env.MULTI_AGENT_CORE_BIN)
   : defaultBinaryPath;
 
-const commands = {
-  'sync-check': {
-    binaryCommand: 'sync-check',
-  },
-};
-
-const requiredFiles = [
+const syncCheckFiles = [
   ['knowledge/00_manifest/project-state.json', 'project_state_json'],
   ['knowledge/00_manifest/project-state.md', 'project_state_md'],
   ['assistant_codex_worklog/current-state.md', 'current_state'],
   ['assistant_codex_worklog/roadmap.md', 'roadmap'],
   ['assistant_codex_worklog/restart-prompt.md', 'restart_prompt'],
 ];
+
+const registryCheckFiles = [
+  ['knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md', 'agent_container_registry'],
+];
+
+const commands = {
+  'sync-check': {
+    binaryCommand: 'sync-check',
+    fileSpecs: syncCheckFiles,
+  },
+  'registry-check': {
+    binaryCommand: 'registry-check',
+    fileSpecs: registryCheckFiles,
+  },
+};
 
 const commandConfig = commands[wrapperCommand];
 
@@ -39,7 +48,7 @@ if (!commandConfig) {
   process.exit(1);
 }
 
-const { files, warnings } = collectFiles(requiredFiles);
+const { files, warnings } = collectFiles(commandConfig.fileSpecs);
 const projectState = parseProjectState(
   files.find((file) => file.kind === 'project_state_json')?.content,
 );
@@ -70,7 +79,7 @@ function collectFiles(fileSpecs) {
         severity: 'medium',
         code: `wrapper_missing_${kind}`,
         file: path,
-        message: `${path} was not found while building the sync-check envelope.`,
+        message: `${path} was not found while building the core envelope.`,
         suggestedFix: `Restore ${path} or run the wrapper from repository root.`,
       });
       continue;
