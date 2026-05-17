@@ -24,8 +24,8 @@ GitHub — источник правды. Сначала открой:
 
 - currentVersion: v2.4.
 - lastCompletedVersion: v2.4.
-- lastMergedPr: PR #72 — Add minimal Go core sync-check CLI.
-- lastMergeCommit: 059496b556df463de3c1ad44915590efeabffa4c.
+- lastMergedPr: PR #73 — Sync state after Go core sync-check.
+- lastMergeCommit: efa728d33e1fdb7d1a42615670dc3446dc0745c2.
 - Текущий режим: Agent Shipyard / Shipyard Modernization.
 - Книга на паузе до отдельного решения Сергея.
 - Формула этапа: сначала модернизируем стапель, потом продолжаем строить агентов.
@@ -42,12 +42,14 @@ GitHub — источник правды. Сначала открой:
 - PR #70 — синхронизировано состояние после PR #69.
 - PR #71 — TypeScript configs разделены на `base/build/test`.
 - PR #72 — добавлен первый Go-core `sync-check` CLI.
+- PR #73 — синхронизировано состояние после Go-core; `sync-check` теперь требует handoff-файлы перед статусом `ready`.
 
 Shipyard Modernization rules:
 
 - Сначала граница ответственности, потом файловая структура, потом конфиг, потом Go.
 - Go-core вводить через CLI + JSON stdin/stdout как optional dev-tool до runtime replacement.
 - Первый Go-core — `sync-check`; он не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов.
+- `sync-check` должен получать `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`; иначе `needs_revision`, не `ready`.
 - `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
 - `context-pack` живёт в `orchestration`, не в core-like `engine`, потому что зависит от `source-registry`.
 - Import boundaries проверяются `scripts/check-boundaries.mjs`; `npm test` запускает boundary check перед build/tests.
