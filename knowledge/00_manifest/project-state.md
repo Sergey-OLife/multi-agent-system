@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.9
-- lastCompletedVersion: v1.9
-- lastMergedPr: PR #23 — v1.8 Apply approved anti-cliche revisions to preface draft
-- currentMilestone: v1.9 Create reviewed chapter_00_preface artifact
+- currentVersion: v2.0
+- lastCompletedVersion: v2.0
+- lastMergedPr: PR #24 — v1.9 Create reviewed preface chapter
+- currentMilestone: v2.0 Checkpoint Book Fast Track workflow
 
 ## Completed versions
 
@@ -29,6 +29,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.7 Add anti-cliche review map for chapter_00_preface
 - v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft
 - v1.9 Create reviewed chapter_00_preface artifact
+- v2.0 Checkpoint Book Fast Track workflow
 
 ## Active decisions
 
@@ -42,6 +43,9 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - user approved all targeted anti-cliche revisions for chapter_00_preface draft
 - user approved revised chapter_00_preface draft for reviewed-stage processing
 - chapter_00_preface reviewed artifact exists but approved artifact is not created yet
+- Book Fast Track is the default mode for writing chapters in chat before GitHub fixation
+- for book chapters, agents operate as internal editorial layers rather than separate PR artifacts for every pass
+- strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, and context maps
 - every new PR must pass mandatory double self-review before being given to the user as ready
 - when the user must inspect a file, responses must include a clickable GitHub link to that file
 - project voice uses Тихий Мастер, not Каленчевский голос
@@ -50,20 +54,36 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Paused tasks
 
-- None recorded.
+- Do not create `book/03_approved/chapter_00_preface.md` until the new chat/editorial pass explicitly reaches final approval.
+- Do not start a new book PR before continuing the reader-facing preface in chat.
 
 ## Next action
 
-User review of reviewed chapter_00_preface artifact
+Continue reader-facing chapter_00_preface in chat using Book Fast Track
 
 ## Manual chapter upload
 
 - manualChapterUpload: true
 - rawTextCommitted: false
 
+## Chat writing state
+
+- chapterId: chapter_00_preface
+- mode: Book Fast Track
+- readerTitle: От автора: перед входом
+- acceptedOpening: Эта книга не обещает чудо — она даёт карту. И начинается с отказа.
+- acceptedFinanceLine: Она не обещает, что вы быстро решите финансовые вопросы.
+- acceptedTrustLine: В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.
+- currentRule: Введение — морковка: сначала человек, узнавание и доверие; инструменты, термины и кухня MLM позже.
+- nextChatMove: Continue from the first boundary of разумное сообщество toward the promise of the book: learn to distinguish where the path remains human and where a person becomes a means.
+
 ## Important paths
 
+- assistant_codex_worklog/current-state.md
+- assistant_codex_worklog/roadmap.md
+- assistant_codex_worklog/decision-log.md
 - assistant_codex_worklog/working-protocol.md
+- assistant_codex_worklog/restart-prompt.md
 - knowledge/00_manifest/project-state.json
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/handoff/latest-handoff.md
