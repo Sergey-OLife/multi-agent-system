@@ -26,4 +26,5 @@ User decision:
 pending
 
 Next allowed step:
-reviewed chapter only after explicit user approval or explicit revision request for the draft
+- If the user requests revisions, keep `chapter_00_preface` in the draft/revision loop and update `book/01_drafts/chapter_00_preface.md`.
+- Create a `reviewed chapter` only after explicit user approval of the draft as ready for reviewed-stage processing.
