@@ -5,9 +5,7 @@
 ```text
 Продолжаем проект Sergey-OLife/multi-agent-system в проекте «Пишем книгу».
 
-GitHub — источник правды по состоянию системы. Не восстанавливай контекст по памяти старого чата как главному источнику.
-
-Сначала открой и используй как рабочие якоря:
+GitHub — источник правды по состоянию системы. Сначала открой и используй как рабочие якоря:
 
 1. assistant_codex_worklog/restart-prompt.md
 2. assistant_codex_worklog/current-state.md
@@ -15,162 +13,75 @@ GitHub — источник правды по состоянию системы.
 4. assistant_codex_worklog/working-protocol.md
 5. assistant_codex_worklog/protocol_addenda/*.md
 6. knowledge/00_manifest/project-state.md
-7. knowledge/05_agent_memory/review_queue/review-index.md
+7. knowledge/00_manifest/project-state.json
+8. knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
+9. knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md
+10. knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md
 
-Актуальное состояние на момент restart:
+Актуальное состояние:
 
-- currentVersion: v2.3.
-- lastCompletedVersion: v2.3.
-- lastMergedPr: PR #54 — Add source intake auditor optional workflow layer.
-- GitHub — источник правды по состоянию системы.
-- Book Fast Track действует для написания глав.
-- Для книги: сначала пишем и редактируем в чате, агенты работают как внутренние редакторские слои, GitHub фиксирует только принятый результат.
-- Для технических частей: строгий PR workflow.
-- Загруженные источники проекта считаются сырьём, пока не прошли Source Intake Audit.
-- Raw books, PDF/EPUB/DJVU/MOBI и сырой текст источников не коммитить в GitHub.
-- Перед `#checkpoint full` сначала нужно прислать restart prompt в чате.
-- `+` означает продолжить следующий безопасный шаг, но не approval.
-- `++` означает approval текущего понятного approval-gate.
-- Перепроверка mergeability открытого PR выполняется автоматически, без отдельного подтверждения.
-- GitHub Actions workflow approval не отключать без отдельного решения Сергея: текущий ручной барьер считается частью безопасности.
+- currentVersion: v2.4.
+- lastCompletedVersion: v2.4.
+- lastMergedPr: PR #60 — Add approval gate keeper proposal.
+- Текущий режим: Agent Shipyard / агентная верфь.
+- Книга на паузе до отдельного решения Сергея.
+- Рабочая метафора: сначала достраиваем корабль, потом плывём; даже попугай на борту не лишняя деталь, если он помнит опасные фразы капитана.
 
-Текущая активная четвёрка optional workflow layers:
+Что произошло после v2.3:
 
-1. `socratic_lantern_agent`
-   - формула: `Вопрос — это фонарь, а не поводок`;
-   - применяется к вопросам, диалогам, сценам выбора, наставничеству, MVP-развилкам;
-   - не hard guardrail.
+- PR #56 — правило: чатовый restart prompt перед `#checkpoint full` не более 6000 знаков; полный `restart-prompt.md` может быть длиннее.
+- PR #57 — создан proposal `workflow_conductor_agent`.
+- PR #58 — создана архитектура агентной верфи: контейнерный registry, шаблон контейнера, hybrid coordination model, materials research topology.
+- PR #59 — создан proposal `agent_registry_librarian`; registry синхронизирован.
+- PR #60 — создан proposal `approval_gate_keeper`; registry синхронизирован.
 
-2. `ethical_persuasion_guard`
-   - формула: `Оставить огонь. Убрать дым`;
-   - применяется к продающим текстам, CTA, офферам, Olife/здоровью, срочности, авторитету, социальному доказательству и конструктивному давлению;
-   - не hard guardrail.
+Активные optional workflow layers остаются прежними:
 
-3. `cbt_thought_check_agent`
-   - формула: `Мысль — это не приговор. Это гипотеза, которую можно проверить`;
-   - применяется к внутренним монологам, страхам, сомнениям, возражениям, MVP-развилкам и проверке факта/догадки/эмоции/вывода;
-   - не hard guardrail;
-   - не терапия;
-   - не диагностика;
-   - не инструмент продаж.
+1. `socratic_lantern_agent` — вопрос как фонарь, не поводок.
+2. `ethical_persuasion_guard` — оставить огонь, убрать дым.
+3. `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж; лёгкий юмор допустим, клоунада нет.
+4. `source_intake_auditor` — источник не работает, пока не ясны место, роль, ограничения и запреты; не workflow conductor.
 
-4. `source_intake_auditor`
-   - формула: `Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать`;
-   - применяется к проверке статуса источников, дублей, source cards, allowed/forbidden use, usability status, orchestration fields;
-   - не hard guardrail;
-   - не route-required;
-   - не `workflow_conductor_agent`;
-   - не меняет registry/project-state без approval;
-   - не активирует агентов без approval;
-   - не запускает автоматический аудит всех источников без отдельного плана.
+Новые proposal-агенты, НЕ activation:
 
-PR после v2.2:
+- `workflow_conductor_agent` — координатор ансамбля агентов. Определяет, кто входит в задачу, в каком порядке, где конфликт слоёв, где нужен `++`, что нельзя автоматизировать. Не меняет routes/guardrails/project-state/source registry сам.
+- `agent_registry_librarian` — библиотекарь агентов. Следит за дублями, статусами, registry sync и ложной активацией.
+- `approval_gate_keeper` — сторож approval-шлюза. Формула: `+` двигает работу; `++` открывает конкретный шлюз; ни один знак не даёт системе права решать шире контекста.
 
-- PR #47 — `cbt_thought_check_agent` proposal.
-- PR #48 — Judith Beck / CBT targeted reading notes + pseudotherapy boundary audit.
-- PR #49 — `cbt_thought_check_agent` controlled activation proposal.
-- PR #50 — `cbt_thought_check_agent` optional workflow layer.
-- PR #51 — `source_intake_auditor` proposal with orchestration fields.
-- PR #52 — Source Intake Audit template + pilot audit.
-- PR #53 — `source_intake_auditor` controlled activation proposal.
-- PR #54 — `source_intake_auditor` optional workflow layer.
+Зафиксированная архитектура:
 
-Архитектурное решение по оркестровке:
+- Agent system: Centralized Coordination + Peer-to-Peer communication.
+- Materials: Coordinator-based star + fully-connected semantic topology.
+- Peer-to-peer signal не равен решению и не обходит approval Сергея.
+- Полносвязность материалов не отменяет source intake, dosage, fact-check, copyright boundary и approval.
 
-- `source_intake_auditor` не является царём агентов.
-- Он готовит “партитуру источников”.
-- Будущий `workflow_conductor_agent` должен дирижировать агентами.
-- Approval остаётся у Сергея.
-- В `source_intake_auditor` уже заложены orchestration fields:
-  - `recommended_agent_layers`;
-  - `candidate_new_agents`;
-  - `conflict_zones`;
-  - `activation_risk`;
-  - `orchestration_notes`;
-  - `requires_approval_gate`.
+Правила команд:
 
-Следующий наиболее эффективный шаг после checkpoint:
+- `+` — продолжить следующий безопасный шаг, не approval.
+- `++` — approval текущего понятного approval-gate.
+- Если gates несколько — уточнить.
+- Если после `++` PR существенно изменён — нужен новый `++`.
+- Auto-merge в репозитории включён, но не отменяет approval-gates.
 
-1. Создать `workflow_conductor_agent` proposal.
-2. Не активировать сразу.
-3. Описать его как координатора ансамбля:
-   - каких агентов подключить;
-   - в каком порядке;
-   - кто главный, кто вспомогательный;
-   - где конфликт слоёв;
-   - где нужен `++`;
-   - что нельзя автоматизировать.
-4. Затем controlled activation proposal.
-5. Затем optional workflow layer, но не hard guardrail.
+Строгий PR workflow обязателен для кода, агентов, маршрутов, guardrails, source registries, tests/baseline, project-state, working protocols, source cards, Сводов, MVP и agent proposals/activations.
 
-Важно:
+Книга:
 
-- `workflow_conductor_agent` не должен получать право самостоятельно менять registry, project-state, guardrails, маршруты или активировать агентов без approval.
-- Он должен координировать, а не управлять системой вместо Сергея.
-- Если возникает конфликт между скоростью и безопасностью, approval-gate выше автоматизации.
+- Не продолжать книгу автоматически: текущий режим — агентная верфь.
+- Последний книжный фокус: `chapter_00_preface`, читательское Введение `От автора: перед входом`.
+- Возврат к книге только по отдельному решению Сергея через Book Fast Track: сначала чатовая редактура, потом GitHub фиксирует принятый результат.
+- Не создавать `book/03_approved/chapter_00_preface.md` без финального approval.
 
-Текущий литературный фокус остаётся прежним:
+Запреты:
 
-Продолжить `chapter_00_preface` в чате как читательскую версию Введения, без metadata и служебных блоков.
+- Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
+- Не делать вид, что все загруженные источники проаудированы.
+- Не путать source card с прочитанным источником.
+- Не активировать новые hard guardrails без отдельного решения Сергея.
 
-Принятые решения по Введению:
-- Заголовок: `От автора: перед входом`.
-- Начало: `Эта книга не обещает чудо — она даёт карту. И начинается с отказа.`
-- Формула: `Она не обещает, что вы быстро решите финансовые вопросы.`
-- Введение — морковка, а не ранний разбор кухни MLM.
-- В начале не перегружать читателя языком продаж.
-- Сначала человек, узнавание и доверие; инструменты и термины — позже.
-- Принята формула: `В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.`
+Следующий логичный шаг:
 
-Последний принятый фрагмент по Введению:
+Создать `project_state_synchronizer` proposal. Причина: после merge PR состояние должно синхронизироваться между main, registry, roadmap, restart prompt и project-state.
 
-Разумное сообщество начинается там, где чужое доверие перестаёт быть вашим инструментом.
-
-Но даже эту фразу легко понять неправильно. Доверие — не украшение отношений и не красивое слово для спокойной главы.
-
-В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.
-
-Иногда человек верит не потому, что всё понял.
-
-А потому что вы ему симпатичны.
-
-Потому что вы говорите уверенно.
-
-Потому что он не хочет вас обидеть.
-
-Потому что устал спорить.
-
-Потому что надеется: раз вы говорите спокойно, значит, вы уже всё проверили.
-
-И вот здесь начинается настоящая проверка.
-
-Не там, где вам возражают. Возражение хотя бы звучит вслух. Проверка начинается там, где человек уже почти согласен, но вы видите: он ещё не до конца понял, на что соглашается.
-
-Можно пройти мимо этого момента.
-
-Можно сказать себе: «Он взрослый, сам решит».
-
-Можно порадоваться, что разговор идёт легко.
-
-А можно остановиться и объяснить так, чтобы у человека осталось право не согласиться без неловкости.
-
-Вот это и есть первая граница разумного сообщества.
-
-Не громкая. Не героическая. Почти незаметная.
-
-Но именно на таких границах потом держится всё остальное.
-
-Следующий ход по книге:
-Продолжить от первой границы к обещанию книги: не `научим продавать правильно`, а `будем учиться различать, где путь остаётся человеческим, а где человек становится средством`.
-
-Главные правила:
-
-- Не загружать raw books в GitHub.
-- Не хранить сырой текст Плотникова.
-- Не делать вид, что все загруженные источники уже проаудированы.
-- Human-readable review artifacts должны быть на русском.
-- Если source card есть, но полного материала нет, не делать вид, что источник прочитан.
-- Для книги: не начинать с нового PR, сначала продолжить текст в чате.
-- Для кода/агентов/реестров: использовать строгий PR workflow.
-- Давать кликабельные GitHub-ссылки, если файл нужно открыть.
+Альтернативы по отдельному решению Сергея: `checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, controlled activation для уже созданных proposal-агентов или возврат к книге через Book Fast Track.
 ```

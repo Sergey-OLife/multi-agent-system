@@ -1,8 +1,11 @@
 {
-  "currentVersion": "v2.3",
-  "lastCompletedVersion": "v2.3",
-  "lastMergedPr": "PR #54 — Add source intake auditor optional workflow layer",
-  "currentMilestone": "v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor",
+  "currentVersion": "v2.4",
+  "lastCompletedVersion": "v2.4",
+  "lastMergedPr": "PR #60 — Add approval gate keeper proposal",
+  "lastMergeCommit": "e41e9aa3367d23165798b8b87b73c34fb84a9a9a",
+  "currentMilestone": "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals",
+  "currentMode": "Agent Shipyard",
+  "bookPaused": true,
   "completedVersions": [
     "v0.2 routing baseline",
     "v0.3 foundation agents diagnostics",
@@ -25,52 +28,54 @@
     "v2.0 Checkpoint Book Fast Track workflow",
     "v2.1 Checkpoint project sources uploaded and Source Intake Audit ready",
     "v2.2 Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion",
-    "v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor"
+    "v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor",
+    "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals"
+  ],
+  "recentPrs": [
+    "PR #56 — Add chat restart prompt length limit",
+    "PR #57 — Add workflow conductor agent proposal",
+    "PR #58 — Add agent shipyard container registry",
+    "PR #59 — Add agent registry librarian proposal",
+    "PR #60 — Add approval gate keeper proposal"
   ],
   "activeDecisions": [
-    "raw Plotnikov text is not committed to GitHub",
-    "Plotnikov is available in private Google Drive for navigation and dosage only",
-    "Plotnikov is uploaded manually one chapter at a time for processed artifacts",
-    "source cards are registry-based",
-    "private Drive file IDs and URLs are not committed to the public repository",
-    "anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks",
-    "anti_cliche review maps do not modify drafts until user approves targeted revisions",
-    "chapter_00_preface reviewed artifact exists but approved artifact is not created yet",
-    "Book Fast Track is the default mode for writing chapters in chat before GitHub fixation",
-    "for book chapters, agents operate as internal editorial layers rather than separate PR artifacts for every pass",
-    "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, and context maps",
-    "Source Intake Audit is required before treating newly uploaded project materials as working library sources",
-    "project source uploads are raw/source material until audited for Drive presence, duplicates, empty shells, source cards, usage roles, allowed use, forbidden use, book zones, agent layers, and next action",
-    "ChatGPT may create separate agents whenever project logic requires it or a new agent significantly improves work quality",
-    "agent count is not capped; the limit is process quality, avoiding chaos, duplication, and unnecessary slowdown",
-    "new agents that change routes, guardrails, or system behavior require explicit user approval before merge",
-    "every new PR must pass mandatory double self-review before being given to the user as ready",
-    "when the user must inspect a file, responses must include a clickable GitHub link to that file",
-    "project voice uses Тихий Мастер, not Каленчевский голос",
-    "direct internal confessional wording is not used in reader-facing book text",
-    "approved chapters require explicit user approval",
+    "GitHub is the source of truth for project state",
+    "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until the agent shipyard is sufficiently built",
+    "current active mode is Agent Shipyard",
+    "first build the ship, then sail: do not continue the book automatically while the current focus is agent buildout",
+    "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
+    "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
+    "uploaded project sources are raw/source material until audited through Source Intake Audit",
+    "source cards are not proof that full sources were read",
+    "chat restart prompt before checkpoint full must be no more than 6000 characters with spaces; full restart-prompt.md may be longer",
     "+ means continue the next safe step, not approval",
-    "++ means approval for the current clear approval-gate",
-    "mergeability checks are automatic and do not require separate user confirmation",
-    "restart prompt must be sent in chat before checkpoint full begins",
-    "GitHub Actions workflow approval remains enabled unless Sergey explicitly decides otherwise",
+    "++ means approval for the current clear approval-gate only",
+    "if a PR materially changes after ++, a new ++ is required before merge",
+    "if approval-gates are multiple, ask which gate is approved",
+    "Allow auto-merge is enabled, but auto-merge does not bypass approval-gates",
     "socratic_lantern_agent is active only as an optional workflow layer, not a hard guardrail",
     "ethical_persuasion_guard is active only as an optional workflow layer, not a hard guardrail",
     "cbt_thought_check_agent is active only as an optional workflow layer, not a hard guardrail or therapy mode",
     "source_intake_auditor is active only as an optional workflow layer, not a hard guardrail or workflow conductor",
-    "Cialdini is used as a risk map for influence, not as a playbook for pressure",
-    "health and Olife communication must avoid medical promises, fear, guilt, fits-all claims, and doctor replacement",
-    "CBT sources are used as a precision-thinking scaffold, not therapy or diagnostics",
-    "source_intake_auditor prepares source orchestration fields for future workflow_conductor_agent, but approval remains with Sergey"
+    "workflow_conductor_agent is a proposal only, not activated",
+    "agent_registry_librarian is a proposal only, not activated",
+    "approval_gate_keeper is a proposal only, not activated",
+    "agent architecture is Centralized Coordination + Peer-to-Peer communication",
+    "materials architecture is Coordinator-based star + fully-connected semantic topology",
+    "peer-to-peer signal is not a decision and does not bypass Sergey approval",
+    "fully connected material topology does not bypass source intake, dosage, fact-check, copyright boundary or approval",
+    "new agents may be proposed whenever there is a real separate function, but duplicates and false activations must be avoided"
   ],
   "pausedTasks": [
-    "Do not create book/03_approved/chapter_00_preface.md until the new chat/editorial pass explicitly reaches final approval",
-    "Do not start a new book PR before continuing the reader-facing preface in chat",
-    "Do not treat all uploaded project sources as fully audited until Source Intake Audit is completed",
-    "Do not activate any new hard guardrail without separate approval and PR",
-    "Do not create workflow_conductor_agent as an active layer before proposal and separate approval"
+    "Do not continue the book automatically while current mode is Agent Shipyard",
+    "Do not create book/03_approved/chapter_00_preface.md until final approval",
+    "Do not treat all uploaded project sources as fully audited",
+    "Do not activate workflow_conductor_agent without controlled activation and separate approval",
+    "Do not activate agent_registry_librarian without controlled activation and separate approval",
+    "Do not activate approval_gate_keeper without controlled activation and separate approval",
+    "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Create workflow_conductor_agent proposal, or continue reader-facing chapter_00_preface in chat using Book Fast Track",
+  "nextAction": "Create project_state_synchronizer proposal, unless Sergey chooses another agent or returns to the book explicitly",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -82,32 +87,31 @@
     "assistant_codex_worklog/protocol_addenda/*.md",
     "knowledge/00_manifest/project-state.json",
     "knowledge/00_manifest/project-state.md",
-    "knowledge/05_agent_memory/handoff/latest-handoff.md",
-    "knowledge/00_manifest/sources.registry.json",
-    "knowledge/03_source_books/source-locations.registry.json",
-    "knowledge/03_source_books/source-location.template.md",
+    "knowledge/05_agent_memory/agent_shipyard/agent_container.template.md",
+    "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
+    "knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md",
+    "knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md",
+    "knowledge/05_agent_memory/agent_proposals/workflow_conductor_agent.md",
+    "knowledge/05_agent_memory/agent_proposals/agent_registry_librarian.md",
+    "knowledge/05_agent_memory/agent_proposals/approval_gate_keeper.md",
     "knowledge/05_agent_memory/workflow_layers/socratic_lantern_optional_layer.md",
     "knowledge/05_agent_memory/workflow_layers/ethical_persuasion_optional_layer.md",
     "knowledge/05_agent_memory/workflow_layers/cbt_thought_check_optional_layer.md",
     "knowledge/05_agent_memory/workflow_layers/source_intake_auditor_optional_layer.md",
-    "knowledge/05_agent_memory/agent_proposals/cbt_thought_check_agent.md",
-    "knowledge/05_agent_memory/agent_proposals/source_intake_auditor.md",
     "knowledge/03_source_books/audits/source_intake_audit_template.md",
     "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md",
-    "tests/baseline.test.ts",
     "book/01_drafts/chapter_00_preface.md",
-    "book/02_reviewed/chapter_00_preface.md",
-    "knowledge/05_agent_memory/review_queue/review-index.md"
+    "book/02_reviewed/chapter_00_preface.md"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
-    "mode": "Book Fast Track",
+    "mode": "Book Fast Track paused",
     "readerTitle": "От автора: перед входом",
     "acceptedOpening": "Эта книга не обещает чудо — она даёт карту. И начинается с отказа.",
     "acceptedFinanceLine": "Она не обещает, что вы быстро решите финансовые вопросы.",
     "acceptedTrustLine": "В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.",
     "currentRule": "Введение — морковка: сначала человек, узнавание и доверие; инструменты, термины и кухня MLM позже.",
-    "nextChatMove": "Continue from the first boundary of разумное сообщество toward the promise of the book: learn to distinguish where the path remains human and where a person becomes a means."
+    "nextChatMove": "Only after Sergey returns to the book: continue from the first boundary of разумное сообщество toward the promise of the book."
   },
   "sourceIntakeState": {
     "mode": "optional_layer_active",
@@ -115,20 +119,7 @@
     "audited": "partial",
     "template": "knowledge/03_source_books/audits/source_intake_audit_template.md",
     "pilotAudit": "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md",
-    "nextAuditName": "Source Intake Audit: первая волна проектных источников",
-    "completedTargetedNotes": [
-      "waltman_codd_socratic_questioning_note_01",
-      "farnsworth_socratic_method_note_01",
-      "overholser_socratic_psychotherapy_note_01",
-      "cialdini_influence_note_01",
-      "judith_beck_cbt_basics_note_01",
-      "cbt_distortions_counseling_note_01"
-    ],
-    "candidateAgents": [
-      "workflow_conductor_agent",
-      "emotion_compass_agent",
-      "gameful_path_designer"
-    ]
+    "nextAuditName": "Source Intake Audit: первая волна проектных источников"
   },
   "agentState": {
     "optionalWorkflowLayersActive": [
@@ -137,8 +128,17 @@
       "cbt_thought_check_agent",
       "source_intake_auditor"
     ],
+    "proposalAgents": [
+      "workflow_conductor_agent",
+      "agent_registry_librarian",
+      "approval_gate_keeper"
+    ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "workflow_conductor_agent",
-    "alternativeNextAgent": "continue chapter_00_preface via Book Fast Track"
+    "recommendedNextAgent": "project_state_synchronizer",
+    "alternativeNextAgents": [
+      "checkpoint_compressor_agent",
+      "source_card_builder",
+      "copyright_boundary_guard"
+    ]
   }
 }
