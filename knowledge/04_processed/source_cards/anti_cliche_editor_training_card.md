@@ -6,6 +6,7 @@ metadata:
 - source_type: internal_agent_training_card
 - priority_level: high
 - processed_status: active
+- copyright_status: internal_project_material_no_raw_third_party_text
 - primary_case: knowledge/04_processed/editor_training/anti_cliche_editor/chapter_00_preface_case_001.md
 - created_at: 2026-05-17
 
