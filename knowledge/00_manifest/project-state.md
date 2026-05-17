@@ -40,7 +40,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-User review of chapter_00_preface map and sync package
+User review of chapter_00_preface draft
 
 ## Manual chapter upload
 
@@ -54,6 +54,7 @@ User review of chapter_00_preface map and sync package
 - knowledge/05_agent_memory/handoff/latest-handoff.md
 - knowledge/00_manifest/sources.registry.json
 - book/00_manifest/chapter-status.example.json
+- book/01_drafts/chapter_00_preface.md
 - knowledge/03_source_books/plotnikov/source-location.md
 - knowledge/00_manifest/human-review-guide.md
 - knowledge/05_agent_memory/review_queue/review-index.md
