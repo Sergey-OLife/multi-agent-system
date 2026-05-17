@@ -1,84 +1,111 @@
 # Current State — Assistant × Codex
 
-Дата фиксации: 2026-05-16
+Дата фиксации: 2026-05-17
 
-Эта фиксация описывает не содержание книги, а состояние нашей совместной работы с Codex и репозиторием.
+Эта фиксация описывает текущее состояние совместной работы Сергей ↔ ChatGPT ↔ GitHub/Codex после утренней работы над `chapter_00_preface` и перехода к ускоренному режиму написания книги.
 
 ## Последний checkpoint
 
 - Команда: `#checkpoint full`
-- Дата: 2026-05-16
-- Статус: создана отдельная рабочая память `assistant_codex_worklog/` и зафиксирована текущая точка восстановления.
+- Дата: 2026-05-17
+- Статус: фиксируется новый рабочий режим `Book Fast Track`.
 
 ## Последний смерженный PR
 
-- PR #14 — `Add assistant Codex worklog`
+- PR #24 — `v1.9 Create reviewed preface chapter`
 - Статус: merged
-- Смысл: создана отдельная папка рабочей памяти ChatGPT ↔ Сергей ↔ Codex, не относящаяся напрямую к книге.
+- Merge commit: `ad3ffae966e0db8ea317f93824c9b2426735d90f`
+- Смысл: создан `book/02_reviewed/chapter_00_preface.md` как reviewed-stage artifact.
 
-## Последний продуктовый этап Codex
+## Важная процессная поправка
 
-- PR #13 — `v1.4 Add clickable review links`
-- Статус: merged
-- Смысл: `review-index.md` стал пультом проверки с кликабельными GitHub-ссылками.
+Утренний workflow оказался слишком тяжёлым для живой работы над книгой.
 
-## Текущая версия процесса
+Причина: глава проходила через слишком много GitHub-стадий и пользователь несколько раз читал почти один и тот же текст.
 
-- currentVersion: v1.4
-- assistant_worklog_version: checkpoint-2026-05-16-full
-- next manual action: пользователь проверяет `chapter_00_preface` через review index.
+Новое решение:
 
-## Текущие главные ссылки
+- код, агенты, маршруты, guardrails, source registries, tests и project-state идут через строгий PR-процесс;
+- главы книги сначала пишутся и редактируются в чате быстрым редакторским циклом;
+- GitHub используется для фиксации принятого результата, а не как место написания каждой промежуточной версии;
+- reviewed/approved стадии не создаются автоматически как дубли, если они не дают реальной редакторской пользы.
 
-- [Assistant Worklog README](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/README.md)
-- [Restart Prompt](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/restart-prompt.md)
-- [Current State](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/current-state.md)
-- [Roadmap](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/roadmap.md)
+## Текущий литературный фокус
+
+Продолжаем `chapter_00_preface` в чате, но уже как читательскую версию Введения, без metadata и служебных блоков.
+
+Зафиксированные решения по Введению:
+
+- Заголовок читательской версии: `От автора: перед входом`
+- Начало: `Эта книга не обещает чудо — она даёт карту. И начинается с отказа.`
+- Правка смысла: `Она не обещает, что вы быстро решите финансовые вопросы.`
+- Правило входа: Введение — это морковка, а не разбор кухни MLM.
+- В начале нельзя перегружать читателя языком продаж.
+- Термины индустрии — позже; сначала человек, узнавание и спокойное доверие.
+- Сильный фрагмент принят: `В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.`
+
+## Последний принятый фрагмент в чате
+
+```text
+Разумное сообщество начинается там, где чужое доверие перестаёт быть вашим инструментом.
+
+Но даже эту фразу легко понять неправильно. Доверие — не украшение отношений и не красивое слово для спокойной главы.
+
+В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.
+
+Иногда человек верит не потому, что всё понял.
+
+А потому что вы ему симпатичны.
+
+Потому что вы говорите уверенно.
+
+Потому что он не хочет вас обидеть.
+
+Потому что устал спорить.
+
+Потому что надеется: раз вы говорите спокойно, значит, вы уже всё проверили.
+
+И вот здесь начинается настоящая проверка.
+
+Не там, где вам возражают. Возражение хотя бы звучит вслух. Проверка начинается там, где человек уже почти согласен, но вы видите: он ещё не до конца понял, на что соглашается.
+
+Можно пройти мимо этого момента.
+
+Можно сказать себе: «Он взрослый, сам решит».
+
+Можно порадоваться, что разговор идёт легко.
+
+А можно остановиться и объяснить так, чтобы у человека осталось право не согласиться без неловкости.
+
+Вот это и есть первая граница разумного сообщества.
+
+Не громкая. Не героическая. Почти незаметная.
+
+Но именно на таких границах потом держится всё остальное.
+```
+
+Следующий редакторский ход в чате: перевести от первой границы к обещанию книги — не «научим продавать правильно», а «будем учиться различать, где путь остаётся человеческим, а где человек становится средством».
+
+## Текущее состояние GitHub-артефактов
+
+- `book/01_drafts/chapter_00_preface.md` существует.
+- `book/02_reviewed/chapter_00_preface.md` существует.
+- `book/03_approved/chapter_00_preface.md` не создан.
+- Не создавать approved artifact автоматически: сначала закончить читательскую версию в чате и получить отдельное финальное решение.
+
+## Главные ссылки
+
 - [Working Protocol](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/working-protocol.md)
-- [Decision Log](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/decision-log.md)
-- [Review Index](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/05_agent_memory/review_queue/review-index.md)
-- [Plotnikov Map — chapter_00_preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/04_processed/plotnikov_map/plotnikov_chapter_00_preface_map.md)
-- [Sync Package — chapter_00_preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/02_project_rules/sync_packages/sync_chapter_00_preface.md)
-- [Human Review Guide](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/00_manifest/human-review-guide.md)
+- [Restart Prompt](https://github.com/Sergey-OLife/multi-agent-system/blob/main/assistant_codex_worklog/restart-prompt.md)
 - [Project State](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/00_manifest/project-state.md)
+- [Review Index](https://github.com/Sergey-OLife/multi-agent-system/blob/main/knowledge/05_agent_memory/review_queue/review-index.md)
+- [Reviewed Preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/book/02_reviewed/chapter_00_preface.md)
+- [Draft Preface](https://github.com/Sergey-OLife/multi-agent-system/blob/main/book/01_drafts/chapter_00_preface.md)
 
-## Что сейчас надо сделать после возвращения
+## Что делать после возвращения
 
-1. Открыть Review Index.
-2. Проверить русифицированные файлы:
-   - Plotnikov Map — chapter_00_preface;
-   - Sync Package — chapter_00_preface.
-3. Принять одно из решений:
-   - `approve` — можно делать chapter draft;
-   - `needs changes` — перечислить правки;
-   - `reject` — не переходить к draft.
-
-## Активные решения
-
-- Полные книги не загружаются в GitHub.
-- Сырой Плотников не хранится в репозитории.
-- Плотников загружается вручную, по одной главе.
-- Все human-readable review artifacts должны быть на русском.
-- В ответах пользователю нужно давать кликабельные GitHub-ссылки, а не только пути.
-- `review-index.md` должен быть главным пультом проверки.
-- `project-state.json` — машинный single source of truth для resume diagnostics.
-- `project-state.md` — человекочитаемое зеркало.
-- Для новых чатов использовать restart prompt из `assistant_codex_worklog/` и проектные файлы состояния.
-- Команда `#checkpoint full` означает: обновить рабочую память, roadmap, decision log и при необходимости protocol/restart prompt.
-
-## Отложено
-
-- Google Drive private source library.
-- `v1.5 Add source location registry for Google Drive`.
-- Массовая привязка 57 source cards к файлам на Google Drive.
-- Chapter draft по `chapter_00_preface` — только после approval map/sync.
-- Настоящая глава 1 Плотникова — после завершения работы с предисловием или отдельного решения.
-
-## Что не относится к этой папке
-
-- Эта папка не хранит карту Плотникова как источник.
-- Эта папка не хранит черновики книги.
-- Эта папка не хранит raw materials.
-- Эта папка не заменяет `knowledge/00_manifest/project-state.json`.
-
-Она только помогает восстановить нашу рабочую линию: Сергей ↔ ChatGPT ↔ Codex.
+1. Не начинать с нового PR по книге.
+2. Продолжить Введение в чате с последнего принятого фрагмента.
+3. Использовать агентов как внутренние редакторские слои, а не как отдельные документы на каждый шаг.
+4. После сильной читательской версии сделать один аккуратный GitHub PR для фиксации результата.
+5. Для кода/агентов/реестров продолжать строгий PR workflow.
