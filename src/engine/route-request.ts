@@ -1,4 +1,4 @@
-import type { Agent, AgentId, AgentResult, FinalResult, FinalStatus, RiskLevel, RoutingContext, TaskType } from "../domain/types.js";
+import type { Agent, AgentId, AgentResult, FinalResult, FinalStatus, RiskLevel, RoutingContext, TaskType } from "../domain/index.js";
 import { classifyTask } from "./classify-task.js";
 import { routes } from "./routes.js";
 
