@@ -6,7 +6,7 @@
 
 `Agent Shipyard / Shipyard Modernization`
 
-Книга временно отложена. Текущий фокус — не продолжение глав и не следующий agent proposal, а модернизация верфи, чтобы дальнейшая агентная работа шла быстрее и чище.
+Книга временно отложена. Текущий фокус — модернизация верфи, чтобы дальнейшая агентная работа шла быстрее и чище.
 
 Рабочая формула:
 
@@ -40,10 +40,11 @@
 
 ## Recent PR summary
 
-- PR #58: added agent shipyard architecture: container template, parser-safe registry, hybrid coordination model, materials research topology.
-- PR #59: added `agent_registry_librarian` proposal and synchronized registry status.
-- PR #60: added `approval_gate_keeper` proposal and synchronized registry status.
-- PR #62: added `project_state_synchronizer` proposal and synchronized registry status.
+- PR #63: recorded Shipyard Modernization focus.
+- PR #64: enabled incremental TypeScript builds.
+- PR #65: split TypeScript domain and engine layers.
+- PR #66: added Go-core API contract.
+- PR #67: extracted agent context and diagnostics modules.
 
 ## Agent Shipyard architecture
 
@@ -90,82 +91,42 @@ Proposal не является activation.
 
 ### PR A — Record Shipyard Modernization focus
 
-Цель: зафиксировать временный подфокус модернизации верфи после PR #62.
-
-Изменения:
-
-- project-state `.json` / `.md`;
-- current-state;
-- roadmap;
-- decision-log.
-
-Статус: current step.
+Статус: done via PR #63.
 
 ### PR B — Enable incremental TypeScript builds
 
-Цель: ускорить dev-loop без изменения runtime-поведения.
-
-План:
-
-- добавить `incremental: true` в `tsconfig.json`;
-- добавить `tsBuildInfoFile`;
-- сохранить `skipLibCheck: true`;
-- не включать `composite` до project references;
-- при необходимости добавить быстрый script для typecheck.
+Статус: done via PR #64.
 
 ### PR C — Split TypeScript domain and engine layers
 
-Цель: подготовить код к будущему Go-core без немедленного rewrite.
-
-План:
-
-- выделить `src/domain`;
-- выделить `src/engine`;
-- выделить `src/integrations`;
-- не менять внешнее поведение CLI/router.
+Статус: done via PR #65.
 
 ### PR D — Add core API contract for future Go engine
 
-Цель: зафиксировать JSON boundary перед Go.
+Статус: done via PR #66.
 
-План:
+### PR E — Extract context and diagnostics modules from agents.ts
 
-- описать input/output для `sync-check`, `registry-check`, `route-preview`, `checkpoint-check`;
-- не писать Go до утверждения контракта.
+Статус: done via PR #67.
 
-### PR E — Add minimal Go core sync-check CLI
+Смысл: `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
 
-Цель: доказать полезность Go на одном реальном сценарии.
+### PR F — Choose next modernization branch
 
-Первый сценарий:
+Возможные направления:
 
-- proposal exists, but registry/backlog still points to completed proposal step.
+1. `tsconfig` split: base/build/test configs.
+2. Minimal Go-core `sync-check` CLI по принятому contract.
 
-Принцип:
+Более осторожный путь: сначала `tsconfig` split, затем Go-core.
 
-- CLI first;
-- JSON stdin/stdout;
-- no HTTP/gRPC initially.
-
-### PR F — Wire Go sync-check as optional shipyard tool
-
-Цель: подключить Go-core как optional dev-tool, не ломая TypeScript runtime.
-
-План:
-
-- npm script or helper command;
-- clear fallback if Go binary is missing;
-- no route/guardrail changes.
+Более продуктовый путь: сразу минимальный Go-core `sync-check`, чтобы проверить Go на реальной задаче stale state / registry drift.
 
 ## Возврат к агентам
 
-Возврат к очереди agent proposals возможен после первых шагов модернизации:
+Возврат к очереди agent proposals возможен после отдельного решения Сергея.
 
-1. TypeScript build loop оптимизирован.
-2. Кодовые слои domain/engine/integrations намечены или выделены.
-3. Go boundary описан хотя бы как contract.
-
-После этого очередь:
+Очередь:
 
 1. `checkpoint_compressor_agent`
 2. `source_card_builder`
