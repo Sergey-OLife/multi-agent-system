@@ -1,9 +1,9 @@
 {
   "currentVersion": "v2.4",
   "lastCompletedVersion": "v2.4",
-  "lastMergedPr": "PR #72 — Add minimal Go core sync-check CLI",
-  "lastMergeCommit": "059496b556df463de3c1ad44915590efeabffa4c",
-  "currentMilestone": "v2.4 Shipyard Modernization after first Go-core sync-check CLI",
+  "lastMergedPr": "PR #73 — Sync state after Go core sync-check",
+  "lastMergeCommit": "efa728d33e1fdb7d1a42615670dc3446dc0745c2",
+  "currentMilestone": "v2.4 Full checkpoint after first Go-core sync-check and state sync",
   "currentMode": "Agent Shipyard / Shipyard Modernization",
   "bookPaused": true,
   "completedVersions": [
@@ -32,11 +32,11 @@
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals"
   ],
   "recentPrs": [
-    "PR #68 — Sync state after shipyard modernization PRs",
     "PR #69 — Add import boundaries and public module entrypoints",
     "PR #70 — Sync state after import boundaries PR",
     "PR #71 — Split TypeScript configs for build and test",
-    "PR #72 — Add minimal Go core sync-check CLI"
+    "PR #72 — Add minimal Go core sync-check CLI",
+    "PR #73 — Sync state after Go core sync-check"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -46,16 +46,15 @@
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit",
     "Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite",
-    "TypeScript incremental builds are enabled through tsconfig incremental and tsBuildInfoFile",
     "TypeScript domain, engine, diagnostics and orchestration layers have public entrypoints and import boundaries",
     "TypeScript configs are split into base/build/test configs after layer boundaries were enforced",
     "Go-core API contract is fixed as CLI plus JSON stdin/stdout",
     "The first Go-core implementation is sync-check as an optional dev-tool, not a runtime replacement",
     "Go-core sync-check reads JSON from stdin, writes JSON to stdout, does not call GitHub or LLM, and does not change files",
+    "sync-check must receive project-state.md, current-state.md, roadmap.md and restart-prompt.md before declaring state ready",
     "agents.ts should remain a registry assembly point, not a dumping ground for context and diagnostics logic",
     "context-pack belongs to orchestration, not core-like engine, because it depends on source registry",
     "Import boundaries are enforced by scripts/check-boundaries.mjs and npm test",
-    "Protected layers must not import filesystem, child process, registry/state, integrations or direct adapter side effects outside their allowed boundary",
     "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
     "uploaded project sources are raw/source material until audited through Source Intake Audit",
     "source cards are not proof that full sources were read",
@@ -76,17 +75,13 @@
     "agent architecture is Centralized Coordination + Peer-to-Peer communication",
     "materials architecture is Coordinator-based star + fully-connected semantic topology",
     "peer-to-peer signal is not a decision and does not bypass Sergey approval",
-    "fully connected material topology does not bypass source intake, dosage, fact-check, copyright boundary or approval",
-    "new agents may be proposed whenever there is a real separate function, but duplicates and false activations must be avoided"
+    "fully connected material topology does not bypass source intake, dosage, fact-check, copyright boundary or approval"
   ],
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Shipyard Modernization",
     "Do not create book/03_approved/chapter_00_preface.md until final approval",
     "Do not treat all uploaded project sources as fully audited",
-    "Do not activate workflow_conductor_agent without controlled activation and separate approval",
-    "Do not activate agent_registry_librarian without controlled activation and separate approval",
-    "Do not activate approval_gate_keeper without controlled activation and separate approval",
-    "Do not activate project_state_synchronizer without controlled activation and separate approval",
+    "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
   "nextAction": "Add a TypeScript dev wrapper that prepares sync-check input and calls the optional Go-core binary with a clear fallback if it is unavailable",
@@ -112,22 +107,11 @@
     "go-core/cmd/multi-agent-core/main.go",
     "go-core/cmd/multi-agent-core/main_test.go",
     "src/domain/index.ts",
-    "src/domain/types.ts",
     "src/engine/index.ts",
-    "src/engine/classify-task.ts",
-    "src/engine/route-request.ts",
-    "src/engine/routes.ts",
-    "src/engine/text-utils.ts",
     "src/diagnostics/index.ts",
-    "src/diagnostics/anti-cliche.ts",
-    "src/diagnostics/svod-check.ts",
-    "src/diagnostics/sync-map.ts",
     "src/orchestration/index.ts",
-    "src/orchestration/context-pack.ts",
     "src/router.ts",
-    "src/agents.ts",
-    "book/01_drafts/chapter_00_preface.md",
-    "book/02_reviewed/chapter_00_preface.md"
+    "src/agents.ts"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
@@ -144,8 +128,7 @@
     "uploadedProjectSources": true,
     "audited": "partial",
     "template": "knowledge/03_source_books/audits/source_intake_audit_template.md",
-    "pilotAudit": "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md",
-    "nextAuditName": "Source Intake Audit: первая волна проектных источников"
+    "pilotAudit": "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md"
   },
   "agentState": {
     "optionalWorkflowLayersActive": [
@@ -167,7 +150,7 @@
       "copyright_boundary_guard"
     ],
     "shipyardModernization": {
-      "status": "state_sync_after_pr72",
+      "status": "checkpoint_full_after_pr73",
       "completedTechnicalSteps": [
         "incremental TypeScript builds",
         "domain and engine layer split",
@@ -175,7 +158,8 @@
         "context and diagnostics extraction from agents.ts",
         "import boundary enforcement and public module entrypoints",
         "split TypeScript configs into base/build/test",
-        "first minimal Go-core sync-check CLI"
+        "first minimal Go-core sync-check CLI",
+        "sync-check handoff file validation"
       ],
       "languageDecision": "Go accepted for future core checks after TypeScript optimization and JSON boundary",
       "nextTechnicalStep": "Add TypeScript dev wrapper for Go-core sync-check input and invocation",
