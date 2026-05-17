@@ -255,12 +255,12 @@ test("project resume handoff files exist and project-state records resume pointe
   const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
 
   assert.ok(projectState.includes("project-state.json"));
-  assert.ok(/currentVersion: v1\.9/.test(projectState));
-  assert.ok(/lastCompletedVersion: v1\.9/.test(projectState));
-  assert.ok(/lastMergedPr: PR #23 — v1\.8 Apply approved anti-cliche revisions to preface draft/.test(projectState));
-  assert.ok(/currentMilestone: v1\.9 Create reviewed chapter_00_preface artifact/.test(projectState));
-  assert.ok(/v1\.8 Apply approved anti-cliche revisions to chapter_00_preface draft/.test(projectState));
+  assert.ok(/currentVersion: v2\.0/.test(projectState));
+  assert.ok(/lastCompletedVersion: v2\.0/.test(projectState));
+  assert.ok(/lastMergedPr: PR #24 — v1\.9 Create reviewed preface chapter/.test(projectState));
+  assert.ok(/currentMilestone: v2\.0 Checkpoint Book Fast Track workflow/.test(projectState));
   assert.ok(/v1\.9 Create reviewed chapter_00_preface artifact/.test(projectState));
+  assert.ok(/v2\.0 Checkpoint Book Fast Track workflow/.test(projectState));
 });
 
 interface CliProjectResumeResult {
@@ -290,7 +290,7 @@ function parseNpmRunJson(stdout: string): CliProjectResumeResult {
 
 test("CLI smoke routes project resume prompts", () => {
   const english = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "--json", "resume project"], { encoding: "utf8" }));
-  const russian = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "--json", "восстанови проект"], { encoding: "utf8" }));
+  const russian = parseNpmRunJson(execFileSync("npm", ["run", "dev", "--", "json", "восстанови проект"], { encoding: "utf8" }));
 
   assert.equal(english.taskType, "project_resume");
   assert.equal(russian.taskType, "project_resume");
