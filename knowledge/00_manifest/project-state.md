@@ -6,23 +6,23 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - currentVersion: v2.4
 - lastCompletedVersion: v2.4
-- lastMergedPr: PR #72 — Add minimal Go core sync-check CLI
-- lastMergeCommit: 059496b556df463de3c1ad44915590efeabffa4c
-- currentMilestone: v2.4 Shipyard Modernization after first Go-core sync-check CLI
+- lastMergedPr: PR #73 — Sync state after Go core sync-check
+- lastMergeCommit: efa728d33e1fdb7d1a42615670dc3446dc0745c2
+- currentMilestone: v2.4 Full checkpoint after first Go-core sync-check and state sync
 - currentMode: Agent Shipyard / Shipyard Modernization
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #68 — Sync state after shipyard modernization PRs
 - PR #69 — Add import boundaries and public module entrypoints
 - PR #70 — Sync state after import boundaries PR
 - PR #71 — Split TypeScript configs for build and test
 - PR #72 — Add minimal Go core sync-check CLI
+- PR #73 — Sync state after Go core sync-check
 
 ## Shipyard Modernization status
 
-Состояние после PR #72:
+Состояние после PR #73:
 
 - TypeScript incremental builds включены.
 - Введены слои `domain / engine / diagnostics / orchestration`.
@@ -30,6 +30,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - TypeScript configs разделены на `base/build/test`.
 - Зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
 - Реализован первый Go-core `sync-check` CLI как optional dev-tool.
+- `sync-check` теперь не может вернуть `ready`, если не переданы handoff-файлы: `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`.
 - Go-core не заменяет TypeScript orchestrator и не является runtime center.
 
 ## Active decisions
@@ -46,10 +47,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Go-core API contract is fixed as CLI plus JSON stdin/stdout.
 - The first Go-core implementation is `sync-check` as an optional dev-tool, not a runtime replacement.
 - Go-core `sync-check` reads JSON from stdin, writes JSON to stdout, does not call GitHub or LLM, and does not change files.
+- `sync-check` must receive project-state.md, current-state.md, roadmap.md and restart-prompt.md before declaring state ready.
 - `agents.ts` should remain a registry assembly point, not a dumping ground for context and diagnostics logic.
 - `context-pack` belongs to orchestration, not core-like engine, because it depends on source registry.
 - Import boundaries are enforced by `scripts/check-boundaries.mjs` and `npm test`.
-- Protected layers must not import filesystem, child process, registry/state, integrations or direct adapter side effects outside their allowed boundary.
 - Raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub.
 - Uploaded project sources are raw/source material until audited through Source Intake Audit.
 - Source cards are not proof that full sources were read.
@@ -120,19 +121,8 @@ Add a TypeScript dev wrapper that prepares `sync-check` input and calls the opti
 - go-core/cmd/multi-agent-core/main.go
 - go-core/cmd/multi-agent-core/main_test.go
 - src/domain/index.ts
-- src/domain/types.ts
 - src/engine/index.ts
-- src/engine/classify-task.ts
-- src/engine/route-request.ts
-- src/engine/routes.ts
-- src/engine/text-utils.ts
 - src/diagnostics/index.ts
-- src/diagnostics/anti-cliche.ts
-- src/diagnostics/svod-check.ts
-- src/diagnostics/sync-map.ts
 - src/orchestration/index.ts
-- src/orchestration/context-pack.ts
 - src/router.ts
 - src/agents.ts
-- book/01_drafts/chapter_00_preface.md
-- book/02_reviewed/chapter_00_preface.md
