@@ -1,11 +1,11 @@
 # Core API Contract — Future Go Engine
 
 Дата: 2026-05-17
-Статус: contract_draft / no_go_code_yet
+Статус: first_sync_check_implemented / optional_dev_tool
 
-Этот документ фиксирует границу между TypeScript-оболочкой и будущим Go-core.
+Этот документ фиксирует границу между TypeScript-оболочкой и Go-core.
 
-Go-core не заменяет всю систему. Он должен выполнять тяжёлые, повторяемые и хорошо структурированные проверки верфи. TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
+Go-core не заменяет всю систему. Он выполняет тяжёлые, повторяемые и хорошо структурированные проверки верфи. TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
 
 ## 1. Главная формула
 
@@ -25,7 +25,7 @@ CLI + JSON stdin/stdout
 
 Причина: для текущего репозитория нужен простой локальный инструмент проверки, а не второй сервисный слой.
 
-## 3. Будущая команда
+## 3. Команда
 
 Рабочее имя бинарника:
 
@@ -39,13 +39,13 @@ multi-agent-core
 multi-agent-core <command> < input.json > output.json
 ```
 
-Первые команды:
+Текущее состояние команд:
 
 ```text
-sync-check
-registry-check
-route-preview
-checkpoint-check
+sync-check — implemented in go-core/cmd/multi-agent-core
+registry-check — planned
+route-preview — planned
+checkpoint-check — planned
 ```
 
 ## 4. Общий envelope входа
@@ -59,7 +59,7 @@ checkpoint-check
   "context": {
     "currentMode": "Agent Shipyard / Shipyard Modernization",
     "currentTask": "string",
-    "lastMergedPr": "PR #65 — Split TypeScript domain and engine layers",
+    "lastMergedPr": "PR #72 — Add minimal Go core sync-check CLI",
     "lastMergeCommit": "string",
     "approvalState": {
       "plusReceived": false,
@@ -95,8 +95,8 @@ checkpoint-check
   "diagnostics": [
     {
       "severity": "medium",
-      "code": "registry_backlog_stale",
-      "file": "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
+      "code": "restart_prompt_missing_last_pr",
+      "file": "assistant_codex_worklog/restart-prompt.md",
       "message": "string",
       "suggestedFix": "string"
     }
@@ -140,21 +140,27 @@ critical
 - `current-state.md`;
 - `roadmap.md`;
 - `restart-prompt.md`;
-- `agent_container_registry.md`;
+- optional `agent_container_registry.md`;
 - metadata последнего merged PR.
 
 Проверки v1:
 
+- `schemaVersion` должен быть `core-api.v1`;
+- CLI command должен совпадать с `input.command`;
+- `project-state.json` должен быть передан как input file;
 - `lastMergedPr` совпадает между project-state `.json` и `.md`;
 - `lastMergeCommit` совпадает между project-state `.json` и `.md`;
-- `nextAction` не указывает на уже выполненный шаг;
-- `restart-prompt.md` не указывает старый lastMergedPr;
-- `currentMode` не конфликтует с Book Fast Track pause;
-- proposal-файл не противоречит registry status.
+- `current-state.md`, `roadmap.md`, `restart-prompt.md` должны упоминать актуальный `lastMergedPr`;
+- `context.lastMergedPr` и `context.lastMergeCommit` не должны расходиться с `project-state.json`, если переданы;
+- `nextAction` не должен указывать на уже выполненный шаг;
+- `currentMode` не должен конфликтовать с `bookPaused`;
+- если registry не передан, sync-check возвращает low diagnostic и продолжает остальные проверки.
 
 ## 7. Command: registry-check
 
 Назначение: проверить агентный registry.
+
+Статус: planned.
 
 Минимальный вход:
 
@@ -177,11 +183,13 @@ critical
 proposal exists, but registry/backlog still points to completed proposal step
 ```
 
-Этот сценарий уже проявлялся в PR #62 и должен стать первым Go-core testdata.
+Этот сценарий уже проявлялся в PR #62 и должен стать testdata для registry-check.
 
 ## 8. Command: route-preview
 
 Назначение: показать, какие агенты и слои будут участвовать в задаче, без выполнения LLM и без изменения файлов.
+
+Статус: planned.
 
 Минимальный вход:
 
@@ -202,6 +210,8 @@ proposal exists, but registry/backlog still points to completed proposal step
 ## 9. Command: checkpoint-check
 
 Назначение: проверить готовность к `#checkpoint full`.
+
+Статус: planned.
 
 Минимальный вход:
 
@@ -278,12 +288,11 @@ Go-core должен:
 - становиться hard guardrail;
 - принимать решения за Сергея.
 
-## 13. Минимальный критерий готовности к первому Go PR
+## 13. Минимальный критерий следующего Go-core PR
 
-Можно писать первый Go PR только после того, как:
+Следующий Go-core PR допустим только если:
 
-1. этот контракт смержен;
-2. TypeScript domain/engine split уже смержен;
-3. первая команда ограничена `sync-check` или `registry-check`;
-4. есть testdata для сценария stale registry/backlog;
-5. TypeScript-интеграция остаётся optional dev-tool.
+1. текущий `sync-check` остаётся optional dev-tool;
+2. TypeScript-интеграция не скрывает статусы `blocked` или `needs_revision`;
+3. новые команды используют тот же envelope;
+4. registry/checkpoint/route logic добавляются отдельно, без расширения полномочий Go-core.
