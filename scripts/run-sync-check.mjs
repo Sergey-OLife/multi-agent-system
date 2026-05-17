@@ -99,7 +99,7 @@ if (!existsSync(binaryPath)) {
     },
   });
 
-  process.exit(0);
+  process.exit(1);
 }
 
 const child = spawnSync(binaryPath, [command], {
@@ -134,7 +134,7 @@ if (child.error) {
     },
   });
 
-  process.exit(0);
+  process.exit(1);
 }
 
 let parsed;
@@ -173,7 +173,7 @@ try {
 
 output({
   ...parsed,
-  diagnostics: [...wrapperWarnings, ...(parsed.diagnostics ?? [])],
+  diagnostics: [...wrapperWarnings, ...(Array.isArray(parsed.diagnostics) ? parsed.diagnostics : [])],
   transport: {
     ok: child.status === 0,
     exitCode: child.status,
