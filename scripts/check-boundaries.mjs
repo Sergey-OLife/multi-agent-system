@@ -6,7 +6,7 @@ const srcRoot = join(root, "src");
 const violations = [];
 
 const sideEffectImports = ["fs", "node:fs", "node:fs/promises", "child_process", "node:child_process"];
-const domainEntrypoints = ["../domain/index.js", "../domain/types.js"];
+const domainEntrypoints = ["../domain/index.js"];
 
 function toPosix(path) {
   return path.split(sep).join("/");
@@ -69,7 +69,7 @@ function check(file, layer, importPath) {
       fail(file, importPath, "engine must stay independent from registry, state, diagnostics, orchestration and agents");
     }
     if (importPath.startsWith("../domain/") && !domainEntrypoints.includes(importPath)) {
-      fail(file, importPath, "engine must import domain through a public domain entrypoint");
+      fail(file, importPath, "engine must import domain through ../domain/index.js");
     }
   }
 
@@ -78,7 +78,7 @@ function check(file, layer, importPath) {
       fail(file, importPath, "diagnostics must not import registry, state or integrations");
     }
     if (importPath.startsWith("../domain/") && !domainEntrypoints.includes(importPath)) {
-      fail(file, importPath, "diagnostics must import domain through a public domain entrypoint");
+      fail(file, importPath, "diagnostics must import domain through ../domain/index.js");
     }
     if (importPath.startsWith("../engine/") && importPath !== "../engine/index.js") {
       fail(file, importPath, "diagnostics must import engine through ../engine/index.js");
@@ -87,7 +87,7 @@ function check(file, layer, importPath) {
 
   if (layer === "orchestration") {
     if (importPath.startsWith("../domain/") && !domainEntrypoints.includes(importPath)) {
-      fail(file, importPath, "orchestration must import domain through a public domain entrypoint");
+      fail(file, importPath, "orchestration must import domain through ../domain/index.js");
     }
     if (importPath.startsWith("../engine/") && importPath !== "../engine/index.js") {
       fail(file, importPath, "orchestration must import engine through ../engine/index.js");
