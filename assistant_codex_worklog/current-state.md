@@ -12,16 +12,16 @@
 
 ## Последний смерженный PR
 
-- PR #72 — `Add minimal Go core sync-check CLI`
+- PR #73 — `Sync state after Go core sync-check`
 - Статус: merged
-- Merge commit: `059496b556df463de3c1ad44915590efeabffa4c`
-- Смысл: добавлен первый optional Go-core dev-tool `sync-check` через JSON stdin/stdout; TypeScript runtime, routes, agents, source registry, guardrails и optional layers не менялись.
+- Merge commit: `efa728d33e1fdb7d1a42615670dc3446dc0745c2`
+- Смысл: синхронизированы state/worklog/core contract после PR #71–72; `sync-check` ужесточён и больше не может объявить состояние `ready`, если handoff-файлы не переданы.
 
-## Shipyard Modernization — что уже сделано
+## Что завершено в пакете Shipyard Modernization
 
 - PR #63 — зафиксирован подфокус Shipyard Modernization.
-- PR #64 — включены incremental TypeScript builds через `incremental` и `tsBuildInfoFile`.
-- PR #65 — введены первые слои `domain / engine` и сохранены compatibility entrypoints.
+- PR #64 — включены incremental TypeScript builds.
+- PR #65 — введены первые слои `domain / engine`.
 - PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
 - PR #67 — вынесены context и diagnostics модули из `agents.ts`.
 - PR #68 — синхронизировано состояние после PR #64–67.
@@ -29,6 +29,7 @@
 - PR #70 — синхронизировано состояние после PR #69.
 - PR #71 — TypeScript configs разделены на `base/build/test`.
 - PR #72 — добавлен первый Go-core `sync-check` CLI.
+- PR #73 — синхронизировано состояние после Go-core и закрыта дыра с отсутствующими handoff files.
 
 ## Актуальные proposal-агенты
 
@@ -50,15 +51,14 @@
 
 Ключевые решения:
 
-- Go принят как будущий кандидат для тяжёлых повторяемых проверок верфи.
-- Go не означает полный немедленный rewrite.
 - TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
 - Go-core вводится через CLI с JSON stdin/stdout.
 - Первый Go-core — optional dev-tool, не runtime replacement.
 - `agents.ts` не должен снова становиться складом контекста и диагностик.
 - Public entrypoints задают доступ к слоям.
 - `context-pack` находится в `orchestration`, потому что зависит от `source-registry`.
-- Import boundaries теперь проверяются кодом перед тестами.
+- Import boundaries проверяются кодом перед тестами.
+- `sync-check` должен получать `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`; иначе результат `needs_revision`, не `ready`.
 
 ## Следующий безопасный технический шаг
 
