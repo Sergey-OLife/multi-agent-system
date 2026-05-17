@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.0
-- lastCompletedVersion: v2.0
-- lastMergedPr: PR #24 — v1.9 Create reviewed preface chapter
-- currentMilestone: v2.0 Checkpoint Book Fast Track workflow
+- currentVersion: v2.1
+- lastCompletedVersion: v2.1
+- lastMergedPr: PR #26 — Add source intake and agent creation rules
+- currentMilestone: v2.1 Checkpoint project sources uploaded and Source Intake Audit ready
 
 ## Completed versions
 
@@ -30,6 +30,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft
 - v1.9 Create reviewed chapter_00_preface artifact
 - v2.0 Checkpoint Book Fast Track workflow
+- v2.1 Checkpoint project sources uploaded and Source Intake Audit ready
 
 ## Active decisions
 
@@ -40,12 +41,15 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - private Drive file IDs and URLs are not committed to the public repository
 - anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks
 - anti_cliche review maps do not modify drafts until user approves targeted revisions
-- user approved all targeted anti-cliche revisions for chapter_00_preface draft
-- user approved revised chapter_00_preface draft for reviewed-stage processing
 - chapter_00_preface reviewed artifact exists but approved artifact is not created yet
 - Book Fast Track is the default mode for writing chapters in chat before GitHub fixation
 - for book chapters, agents operate as internal editorial layers rather than separate PR artifacts for every pass
 - strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, and context maps
+- Source Intake Audit is required before treating newly uploaded project materials as working library sources
+- project source uploads are raw/source material until audited for Drive presence, duplicates, empty shells, source cards, usage roles, allowed use, forbidden use, book zones, agent layers, and next action
+- ChatGPT may create separate agents whenever project logic requires it or a new agent significantly improves work quality
+- agent count is not capped; the limit is process quality, avoiding chaos, duplication, and unnecessary slowdown
+- new agents that change routes, guardrails, or system behavior require explicit user approval before merge
 - every new PR must pass mandatory double self-review before being given to the user as ready
 - when the user must inspect a file, responses must include a clickable GitHub link to that file
 - project voice uses Тихий Мастер, not Каленчевский голос
@@ -56,10 +60,11 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - Do not create `book/03_approved/chapter_00_preface.md` until the new chat/editorial pass explicitly reaches final approval.
 - Do not start a new book PR before continuing the reader-facing preface in chat.
+- Do not treat all uploaded project sources as fully audited until Source Intake Audit is completed.
 
 ## Next action
 
-Continue reader-facing chapter_00_preface in chat using Book Fast Track
+Either continue reader-facing chapter_00_preface in chat using Book Fast Track or begin Source Intake Audit for the first wave of project sources.
 
 ## Manual chapter upload
 
@@ -77,6 +82,22 @@ Continue reader-facing chapter_00_preface in chat using Book Fast Track
 - currentRule: Введение — морковка: сначала человек, узнавание и доверие; инструменты, термины и кухня MLM позже.
 - nextChatMove: Continue from the first boundary of разумное сообщество toward the promise of the book: learn to distinguish where the path remains human and where a person becomes a means.
 
+## Source intake state
+
+- mode: ready_for_first_wave_audit
+- uploadedProjectSources: true
+- audited: false
+- nextAuditName: Source Intake Audit: первая волна проектных источников
+
+Candidate agents:
+
+- source_intake_auditor
+- socratic_lantern_agent
+- cbt_thought_check_agent
+- influence_ethics_guard
+- emotion_compass_agent
+- gameful_path_designer
+
 ## Important paths
 
 - assistant_codex_worklog/current-state.md
@@ -92,7 +113,7 @@ Continue reader-facing chapter_00_preface in chat using Book Fast Track
 - knowledge/03_source_books/source-location.template.md
 - knowledge/04_processed/editor_training/anti_cliche_editor/chapter_00_preface_case_001.md
 - knowledge/04_processed/source_cards/anti_cliche_editor_training_card.md
-- tests/editor-training.test.ts
+- tests/baseline.test.ts
 - book/00_manifest/review_notes/chapter_00_preface_anti_cliche_review.md
 - book/00_manifest/chapter-status.example.json
 - book/01_drafts/chapter_00_preface.md
