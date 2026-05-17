@@ -84,12 +84,13 @@ agent_container_registry:
     - agent_id: "project_state_synchronizer"
       working_name_ru: "Синхронизатор состояния проекта"
       group: "Управление кораблём"
-      status: "container"
+      status: "proposal"
       ship_role: "navigation"
       why_needed: "Удерживает project-state, roadmap, current-state, restart-prompt и review-index в согласии."
       main_formula: "Состояние проекта не должно жить в пяти версиях сразу."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/project_state_synchronizer.md"
       activation_risk: "medium"
       approval_gate: true
 
@@ -823,6 +824,6 @@ agent_container_registry:
 7. `sergey_interaction_profiler`
 8. `author_style_memory_agent`
 
-`agent_registry_librarian` и `approval_gate_keeper` уже переведены из `container` в `proposal`, но не активированы.
+`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper` и `project_state_synchronizer` уже переведены из `container` в `proposal`, но не активированы.
 
 Этот список не окончательный. Сергей может добавлять новых агентов. ChatGPT также может предлагать новых агентов, если видит функциональную дыру, повторяющийся сбой или риск для корабля.
