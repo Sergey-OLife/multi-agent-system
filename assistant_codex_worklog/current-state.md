@@ -12,7 +12,7 @@
 
 ## Последний смерженный PR
 
-- PR #73 — `Sync state after Go core sync-check`
+- PR #73 — Sync state after Go core sync-check
 - Статус: merged
 - Merge commit: `efa728d33e1fdb7d1a42615670dc3446dc0745c2`
 - Смысл: синхронизированы state/worklog/core contract после PR #71–72; `sync-check` ужесточён и больше не может объявить состояние `ready`, если handoff-файлы не переданы.
