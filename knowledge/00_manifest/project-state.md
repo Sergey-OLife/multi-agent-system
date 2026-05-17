@@ -38,6 +38,8 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks
 - anti_cliche review maps do not modify drafts until user approves targeted revisions
 - every new PR must pass mandatory double self-review before being given to the user as ready
+- ChatGPT may merge only technical PRs after double self-review; book meaning, agent logic, and new user-voice materials require explicit Sergey approval
+- if a PR category is mixed, the stricter explicit-approval rule applies
 - project voice uses Тихий Мастер, not Каленчевский голос
 - direct internal confessional wording is not used in reader-facing book text
 - approved chapters require explicit user approval
