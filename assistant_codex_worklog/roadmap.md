@@ -6,8 +6,8 @@
 
 - Команда: `#checkpoint full`
 - Дата: 2026-05-17
-- Версия: `v2.2`
-- Смысл: зафиксировать состояние после сборки первого блока агентной среды: `socratic_lantern_agent` и `ethical_persuasion_guard` активированы как optional workflow layers.
+- Версия: `v2.3`
+- Смысл: зафиксировать состояние после расширения optional agent environment до четырёх активных слоёв: Socratic Lantern, Ethical Persuasion, CBT Thought Check, Source Intake Auditor.
 
 ## Уже завершено
 
@@ -32,22 +32,18 @@
 - v2.0 — Checkpoint Book Fast Track workflow
 - v2.1 — Checkpoint project sources uploaded and Source Intake Audit ready
 - v2.2 — Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion
+- v2.3 — Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
 
-## PR #31–45 summary
+## PR #47–54 summary
 
-- PR #31–33: registered first wave of living project docs and project source cards with cautious statuses.
-- PR #34: added `socratic_lantern_agent` proposal.
-- PR #35: added Socratic block targeted audit and Waltman/Codd duplicate check.
-- PR #36: added targeted reading notes for Waltman/Codd, Farnsworth, Overholser and preliminary duplicate result.
-- PR #37: added Socratic block status and source-location override.
-- PR #38: added controlled activation proposal for `socratic_lantern_agent`.
-- PR #39: added `+` / `++` shorthand protocol.
-- PR #40: activated `socratic_lantern_agent` as optional workflow layer.
-- PR #41: added `ethical_persuasion_guard` proposal.
-- PR #42: added automatic mergeability check rule and linked protocol addenda from restart path.
-- PR #43: added Cialdini targeted reading note and medical caution audit.
-- PR #44: added controlled activation proposal for `ethical_persuasion_guard`.
-- PR #45: activated `ethical_persuasion_guard` as optional workflow layer.
+- PR #47: added `cbt_thought_check_agent` proposal.
+- PR #48: added Judith Beck / CBT targeted reading notes and pseudotherapy boundary audit.
+- PR #49: added controlled activation proposal for `cbt_thought_check_agent`.
+- PR #50: activated `cbt_thought_check_agent` as optional workflow layer.
+- PR #51: added `source_intake_auditor` proposal with orchestration fields for future `workflow_conductor_agent`.
+- PR #52: added Source Intake Audit template and pilot audit.
+- PR #53: added controlled activation proposal for `source_intake_auditor`.
+- PR #54: activated `source_intake_auditor` as optional workflow layer.
 
 ## Book Fast Track
 
@@ -82,71 +78,106 @@
 
 Статус: active optional workflow layer.
 
-Роль: проверяет вопросы, диалоги, сцены выбора, наставничество и MVP-развилки.
-
 Формула:
 
 > Вопрос — это фонарь, а не поводок.
 
-Не является:
+Применение: вопросы, диалоги, сцены выбора, наставничество, MVP-развилки.
 
-- hard guardrail;
-- route-required режимом;
-- обязательной проверкой всех текстов.
+Не является hard guardrail, route-required режимом или обязательной проверкой всех текстов.
 
 ### `ethical_persuasion_guard`
 
 Статус: active optional workflow layer.
 
-Роль: проверяет влияние, продающие тексты, CTA, офферы, Olife/здоровье, срочность, авторитет, социальное доказательство и конструктивное давление.
-
 Формула:
 
 > Оставить огонь. Убрать дым.
 
-Не является:
+Применение: влияние, продающие тексты, CTA, офферы, Olife/здоровье, срочность, авторитет, социальное доказательство и конструктивное давление.
 
-- hard guardrail;
-- route-required режимом;
-- анти-маркетинговым стерилизатором;
-- автоматической блокировкой текстов.
+Не является hard guardrail, route-required режимом, анти-маркетинговым стерилизатором или автоматической блокировкой текстов.
 
-## Новая техническая линия: Source Intake Audit
+### `cbt_thought_check_agent`
 
-Сергей загрузил в источники проекта большую волну материалов. Их нельзя считать автоматически обработанной библиотекой.
+Статус: active optional workflow layer.
 
-Следующий технический блок:
+Формула:
 
-`Source Intake Audit: первая волна проектных источников`
+> Мысль — это не приговор. Это гипотеза, которую можно проверить.
 
-Задачи блока:
+Применение: внутренние монологи, страхи, сомнения, возражения, MVP-развилки, проверка факта/догадки/эмоции/вывода.
 
-1. Составить инвентарь загруженных материалов.
-2. Проверить, какие уже есть в Google Drive/source locations.
-3. Найти дубли, пустые оболочки и неразобранные файлы.
-4. Уточнить статус каждого источника: `usable_now`, `needs_enrichment`, `needs_upload`, `placeholder`, `archive_duplicate`, `needs_native_doc`.
-5. Создать/обновить карточки источников.
-6. Указать роль источника, где можно использовать, где нельзя, зоны книги и агентные слои.
-7. Отметить, какие источники требуют отдельного агента или agent proposal.
+Не является hard guardrail, route-required режимом, терапией, диагностикой или инструментом продаж.
 
-## Потенциальные агенты после v2.2
+### `source_intake_auditor`
 
-Пока не создавать все автоматически. Проверять по реальной пользе.
+Статус: active optional workflow layer.
+
+Формула:
+
+> Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать.
+
+Применение: проверка статуса источника, дубли, source cards, allowed/forbidden use, usability status, orchestration fields.
+
+Не является hard guardrail, route-required режимом или `workflow_conductor_agent`.
+
+## GitHub Actions safety
+
+Не отключать `Require approval for workflow runs` / GitHub Actions workflow approval без отдельного решения Сергея.
+
+Текущий ручной барьер `Approve and run workflows` считается частью безопасности, потому что AI/agent PR не должен автоматически получать доступ к секретам и критическим workflows.
+
+## Source Intake Audit
+
+Source Intake Audit теперь имеет:
+
+- `source_intake_auditor` proposal;
+- Source Intake Audit template;
+- pilot audit первой небольшой группы источников;
+- controlled activation proposal;
+- optional workflow layer.
+
+Аудитор может применяться без отдельного вопроса для локальной проверки источника, но не может сам менять registry/project-state или активировать агентов без approval.
+
+## Архитектурная линия: будущий `workflow_conductor_agent`
+
+Сергей зафиксировал потребность в агенте-дирижёре / агенте-оркестранте.
+
+Разделение:
+
+- `source_intake_auditor` готовит партитуру источников;
+- будущий `workflow_conductor_agent` дирижирует агентами;
+- approval остаётся у Сергея.
+
+Следующий наиболее эффективный технический блок:
+
+`workflow_conductor_agent` proposal.
+
+Он должен быть координатором ансамбля, но не системой самоуправления.
+
+Он должен отвечать:
+
+1. Какие агенты нужны в задаче?
+2. В каком порядке они работают?
+3. Кто главный, кто вспомогательный?
+4. Где конфликт между слоями?
+5. Где нужен `++`?
+6. Что нельзя автоматизировать?
+
+Не включать его сразу как optional layer. Сначала proposal, потом controlled activation, потом отдельное approval.
+
+## Потенциальные агенты после v2.3
 
 Кандидаты:
 
-- `source_intake_auditor` — аудит источников, дублей, карточек и статусов.
-- `cbt_thought_check_agent` — проверка мысли, когнитивных искажений, поспешных выводов.
+- `workflow_conductor_agent` — координатор ансамбля агентов в конкретной задаче.
 - `emotion_compass_agent` — эмоция под реакцией без превращения главы в терапию.
 - `gameful_path_designer` — квесты, маршрут новичка и тренажёр без инфантильной геймификации.
 
-Рекомендуемый следующий технический агент:
+Рекомендуемый следующий агент:
 
-- `source_intake_auditor`, если цель — привести библиотеку в порядок.
-
-Альтернативный следующий тематический агент:
-
-- `cbt_thought_check_agent`, если цель — усилить психологическую точность глав, MVP-развилок и маршрута новичка.
+- `workflow_conductor_agent`.
 
 ## Текущий литературный шаг
 
@@ -176,13 +207,12 @@
 
 ## Ближайшие технические планы
 
-1. Создать/активировать `source_intake_auditor` или начать Source Intake Audit без отдельного агента.
-2. Провести Source Intake Audit первой волны источников.
-3. Создать или обновить карточки источников для проектных документов и ключевых внешних материалов.
-4. Определить, какие источники порождают отдельных агентов.
-5. Массово привязать source cards к source locations там, где это безопасно и не раскрывает private IDs.
-6. Рассмотреть `cbt_thought_check_agent` как следующий тематический слой.
-7. Вернуться к Введению через Book Fast Track, когда технический блок будет достаточно собран.
+1. Создать `workflow_conductor_agent` proposal.
+2. Проверить его на риск самозахвата власти.
+3. Зафиксировать, что approval остаётся у Сергея.
+4. После proposal — controlled activation proposal.
+5. После отдельного approval — optional workflow layer, не hard guardrail.
+6. Потом продолжить Source Intake Audit первой волны источников или вернуться к Введению через Book Fast Track.
 
 ## Отложенные задачи
 
