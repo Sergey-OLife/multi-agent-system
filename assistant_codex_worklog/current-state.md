@@ -2,55 +2,63 @@
 
 Дата фиксации: 2026-05-17
 
-Эта фиксация описывает состояние совместной работы Сергей ↔ ChatGPT ↔ GitHub/Codex после сборки первого полноценного блока агентной среды для проекта «Пишем книгу».
+Эта фиксация описывает состояние совместной работы Сергей ↔ ChatGPT ↔ GitHub/Codex после расширения агентной среды до четырёх active optional workflow layers.
 
 ## Последний checkpoint
 
 - Команда: `#checkpoint full`
 - Дата: 2026-05-17
-- Статус: фиксируется состояние после PR #45.
-- Версия состояния: `v2.2`
+- Статус: фиксируется состояние после PR #54.
+- Версия состояния: `v2.3`
 
 ## Последний смерженный PR
 
-- PR #45 — `Add ethical persuasion optional workflow layer`
+- PR #54 — `Add source intake auditor optional workflow layer`
 - Статус: merged
-- Merge commit: `954c162e5c7384fa525d2b1d0bfa33f54567469a`
-- Смысл: `ethical_persuasion_guard` активирован как optional workflow layer, не hard guardrail и не route-required.
+- Merge commit: `e872be364fd40f80dfc956117cd3748d2393bd51`
+- Смысл: `source_intake_auditor` активирован как optional workflow layer, не hard guardrail, не route-required и не `workflow_conductor_agent`.
 
 ## Крупная завершённая веха
 
-Завершён блок формирования двух ключевых optional workflow layers:
+Завершён блок формирования четырёх ключевых optional workflow layers:
 
 1. `socratic_lantern_agent`
    - активен как optional workflow layer;
    - не hard guardrail;
    - не route-required;
-   - рабочая формула: `Вопрос — это фонарь, а не поводок`;
-   - применяется в задачах про вопросы, диалоги, сцены выбора, наставничество и MVP-развилки.
+   - формула: `Вопрос — это фонарь, а не поводок`.
 
 2. `ethical_persuasion_guard`
    - активен как optional workflow layer;
    - не hard guardrail;
    - не route-required;
-   - рабочая формула: `Оставить огонь. Убрать дым`;
-   - применяется в задачах про продающие тексты, офферы, CTA, Olife/здоровье, срочность, авторитет, социальное доказательство и конструктивное давление.
+   - формула: `Оставить огонь. Убрать дым`.
 
-## PR #31–45: что было сделано после v2.1
+3. `cbt_thought_check_agent`
+   - активен как optional workflow layer;
+   - не hard guardrail;
+   - не route-required;
+   - не терапевтический и не диагностический режим;
+   - формула: `Мысль — это не приговор. Это гипотеза, которую можно проверить`.
 
-- PR #31–33: зарегистрирована первая волна living project docs и проектных источников с осторожным статусом.
-- PR #34: создан proposal `socratic_lantern_agent`.
-- PR #35: добавлен targeted audit сократического блока и duplicate check Waltman/Codd.
-- PR #36: добавлены targeted reading notes по Waltman/Codd, Farnsworth, Overholser и preliminary duplicate result.
-- PR #37: добавлен status/override слой сократического блока.
-- PR #38: добавлен controlled activation proposal для `socratic_lantern_agent`.
-- PR #39: зафиксировано правило коротких команд `+` и `++`.
-- PR #40: `socratic_lantern_agent` активирован как optional workflow layer.
-- PR #41: создан proposal `ethical_persuasion_guard`.
-- PR #42: зафиксировано правило автоматической проверки mergeability и подключение `protocol_addenda/*.md` к restart path.
-- PR #43: добавлены `cialdini_influence_note_01.md` и `ethical_persuasion_medical_caution_audit_01.md`.
-- PR #44: добавлен controlled activation proposal для `ethical_persuasion_guard`.
-- PR #45: `ethical_persuasion_guard` активирован как optional workflow layer.
+4. `source_intake_auditor`
+   - активен как optional workflow layer;
+   - не hard guardrail;
+   - не route-required;
+   - не `workflow_conductor_agent`;
+   - не меняет registry/project-state без approval;
+   - формула: `Источник не работает, пока не понятно, что это, где лежит, зачем нужен и чего из него нельзя брать`.
+
+## PR #47–54: что было сделано после v2.2
+
+- PR #47: создан proposal `cbt_thought_check_agent`.
+- PR #48: добавлены targeted reading notes по Джудит Бек / КПТ и `cbt_pseudotherapy_boundary_audit_01.md`.
+- PR #49: добавлен controlled activation proposal для `cbt_thought_check_agent`.
+- PR #50: `cbt_thought_check_agent` активирован как optional workflow layer.
+- PR #51: создан proposal `source_intake_auditor` с orchestration fields для будущего `workflow_conductor_agent`.
+- PR #52: добавлены `source_intake_audit_template.md` и `pilot_source_intake_audit_01.md`.
+- PR #53: добавлен controlled activation proposal для `source_intake_auditor`.
+- PR #54: `source_intake_auditor` активирован как optional workflow layer.
 
 ## Действующие процессные правила
 
@@ -79,20 +87,46 @@ Checkpoint rule:
 - перед `#checkpoint full` сначала нужно дать Сергею корректный restart prompt в чате;
 - checkpoint начинается только после этого.
 
+GitHub Actions:
+
+- GitHub Actions workflow approval не отключать без отдельного решения Сергея;
+- текущий ручной барьер `Approve and run workflows` считается частью безопасности;
+- автоматизация не должна давать AI/agent PR доступ к секретам и критическим workflow без человеческого контроля.
+
 ## Source Intake Audit
 
-Сергей загрузил в источники проекта большую волну материалов. Они остаются загруженным сырьём, пока не пройдут Source Intake Audit.
+Source Intake Audit теперь имеет:
 
-При добавлении или проверке источника нужно:
-
-1. Проверить, есть ли материал в Google Drive или source locations.
-2. Проверить, не является ли найденный файл пустой оболочкой.
-3. Проверить, есть ли карточка источника в GitHub и насколько она подробна.
-4. Если материала нет, создать/предложить карточку со статусом `missing`, `placeholder` или `needs_upload`.
-5. Если материал есть, проверить его пригодность: `usable_now`, `needs_enrichment`, `archive_duplicate`, `needs_native_doc`.
-6. Для каждого источника указать `usage_role`, `allowed_use`, `forbidden_use`, `book_zones`, `agent_layers`, `next_action`.
+- agent proposal;
+- template;
+- pilot audit;
+- controlled activation proposal;
+- optional workflow layer.
 
 Источник не считается рабочим только потому, что он назван. Он считается рабочим, когда есть материал, карточка, роль и правило применения.
+
+`source_intake_auditor` может применяться как optional layer, но не имеет права автоматически менять source registry, project-state или активировать агентов без approval.
+
+## Архитектурное решение по оркестровке
+
+Сергей зафиксировал, что нужен будущий агент-дирижёр / агент-оркестрант.
+
+Разделение:
+
+- `source_intake_auditor` готовит партитуру источников;
+- будущий `workflow_conductor_agent` дирижирует агентами;
+- approval остаётся у Сергея.
+
+В `source_intake_auditor` уже заложены orchestration fields:
+
+- `recommended_agent_layers`;
+- `candidate_new_agents`;
+- `conflict_zones`;
+- `activation_risk`;
+- `orchestration_notes`;
+- `requires_approval_gate`.
+
+Следующий наиболее эффективный технический шаг: создать proposal `workflow_conductor_agent`, без немедленной активации.
 
 ## Текущая карта агентов
 
@@ -100,17 +134,14 @@ Checkpoint rule:
 
 - `socratic_lantern_agent` — вопрос как фонарь, не поводок.
 - `ethical_persuasion_guard` — честное убеждение: оставить огонь, убрать дым.
+- `cbt_thought_check_agent` — мысль как проверяемая гипотеза, не приговор.
+- `source_intake_auditor` — входной контроль источников и подготовка orchestration fields.
 
 Кандидаты на следующие агенты:
 
-- `source_intake_auditor` — служебный агент для проверки источников, дублей, пустых оболочек, карточек и ролей.
-- `cbt_thought_check_agent` — проверка мысли, когнитивных искажений и поспешных выводов.
-- `emotion_compass_agent` — помогает видеть эмоцию под реакцией, не превращая текст в терапию.
-- `gameful_path_designer` — переводит идеи книги в квесты, маршрут новичка и тренажёр без инфантильной геймификации.
-
-Рекомендуемый следующий технический агент: `source_intake_auditor`, если цель — привести библиотеку в порядок.
-
-Альтернативный следующий тематический агент: `cbt_thought_check_agent`, если цель — усилить психологическую точность глав, MVP-развилок и маршрута новичка.
+- `workflow_conductor_agent` — координатор ансамбля агентов в конкретной задаче.
+- `emotion_compass_agent` — эмоция под реакцией без превращения главы в терапию.
+- `gameful_path_designer` — квесты, маршрут новичка и тренажёр без инфантильной геймификации.
 
 ## Текущий литературный фокус
 
@@ -177,8 +208,8 @@ Checkpoint rule:
 
 ## Что делать после возвращения
 
-1. Если задача — писать книгу: не начинать с нового PR, продолжить Введение в чате с последнего принятого фрагмента.
-2. Если задача — источники: продолжить Source Intake Audit и/или создать `source_intake_auditor`.
-3. Если задача — агенты: следующий разумный кандидат `source_intake_auditor` или `cbt_thought_check_agent`.
-4. Использовать `socratic_lantern_agent` и `ethical_persuasion_guard` как optional workflow layers, не как hard guardrails.
+1. Если задача — агенты: следующий разумный кандидат `workflow_conductor_agent` proposal.
+2. Если задача — писать книгу: не начинать с нового PR, продолжить Введение в чате с последнего принятого фрагмента.
+3. Если задача — источники: использовать `source_intake_auditor` как optional layer и не считать источники полностью проаудированными без audit record.
+4. Использовать активные optional workflow layers как внутренние слои, не как hard guardrails.
 5. Для кода/агентов/реестров продолжать строгий PR workflow.
