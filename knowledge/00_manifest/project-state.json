@@ -1,8 +1,8 @@
 {
-  "currentVersion": "v1.8",
-  "lastCompletedVersion": "v1.8",
-  "lastMergedPr": "PR #22 — Clarify file reference format in responses",
-  "currentMilestone": "v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft",
+  "currentVersion": "v1.9",
+  "lastCompletedVersion": "v1.9",
+  "lastMergedPr": "PR #23 — v1.8 Apply approved anti-cliche revisions to preface draft",
+  "currentMilestone": "v1.9 Create reviewed chapter_00_preface artifact",
   "completedVersions": [
     "v0.2 routing baseline",
     "v0.3 foundation agents diagnostics",
@@ -20,7 +20,8 @@
     "v1.5 Add source location registry for Google Drive",
     "v1.6 Train anti_cliche_editor on preface review case",
     "v1.7 Add anti-cliche review map for chapter_00_preface",
-    "v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft"
+    "v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft",
+    "v1.9 Create reviewed chapter_00_preface artifact"
   ],
   "activeDecisions": [
     "raw Plotnikov text is not committed to GitHub",
@@ -31,6 +32,8 @@
     "anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks",
     "anti_cliche review maps do not modify drafts until user approves targeted revisions",
     "user approved all targeted anti-cliche revisions for chapter_00_preface draft",
+    "user approved revised chapter_00_preface draft for reviewed-stage processing",
+    "chapter_00_preface reviewed artifact exists but approved artifact is not created yet",
     "every new PR must pass mandatory double self-review before being given to the user as ready",
     "when the user must inspect a file, responses must include a clickable GitHub link to that file",
     "project voice uses Тихий Мастер, not Каленчевский голос",
@@ -38,7 +41,7 @@
     "approved chapters require explicit user approval"
   ],
   "pausedTasks": [],
-  "nextAction": "User review of revised chapter_00_preface draft",
+  "nextAction": "User review of reviewed chapter_00_preface artifact",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -55,6 +58,7 @@
     "book/00_manifest/review_notes/chapter_00_preface_anti_cliche_review.md",
     "book/00_manifest/chapter-status.example.json",
     "book/01_drafts/chapter_00_preface.md",
+    "book/02_reviewed/chapter_00_preface.md",
     "knowledge/03_source_books/plotnikov/source-location.md",
     "knowledge/00_manifest/human-review-guide.md",
     "knowledge/05_agent_memory/review_queue/review-index.md"
