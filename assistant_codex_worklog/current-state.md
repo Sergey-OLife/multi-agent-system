@@ -12,10 +12,10 @@
 
 ## Последний смерженный PR
 
-- PR #67 — `Extract agent context and diagnostics modules`
+- PR #69 — `Add import boundaries and public module entrypoints`
 - Статус: merged
-- Merge commit: `df9600e1433d73d83a5f5258cdaa8afc4ad18c3e`
-- Смысл: из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`; `agents.ts` стал ближе к роли сборщика agent registry.
+- Merge commit: `087c28f6b48464365110ab643542c9eaa985d5af`
+- Смысл: добавлены public entrypoints слоёв, `context-pack` перенесён в `orchestration`, добавлен dependency-free import boundary checker, `lint:boundaries` встроен в `npm test`, правила границ зафиксированы документом.
 
 ## Shipyard Modernization — что уже сделано
 
@@ -24,6 +24,8 @@
 - PR #65 — введены первые слои `domain / engine` и сохранены compatibility entrypoints.
 - PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
 - PR #67 — вынесены context и diagnostics модули из `agents.ts`.
+- PR #68 — синхронизировано состояние после PR #64–67.
+- PR #69 — добавлены import boundaries и public module entrypoints.
 
 ## Актуальные proposal-агенты
 
@@ -50,17 +52,15 @@
 - TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
 - Go-core вводится позже через CLI с JSON stdin/stdout.
 - `agents.ts` не должен снова становиться складом контекста и диагностик.
+- Public entrypoints задают доступ к слоям.
+- `context-pack` находится в `orchestration`, потому что зависит от `source-registry`.
+- Import boundaries теперь проверяются кодом перед тестами.
 
-## Следующий безопасный технический выбор
+## Следующий безопасный технический шаг
 
-После синхронизации состояния возможны два нормальных пути:
+Разделить `tsconfig` на base/build/test configs, потому что границы слоёв уже закреплены.
 
-1. Разделить `tsconfig` на base/build/test configs.
-2. Создать первый минимальный Go-core `sync-check` CLI по принятому контракту.
-
-Более осторожный путь: сначала `tsconfig` split, затем Go-core.
-
-Более продуктовый путь: сразу минимальный Go-core `sync-check`, если Сергей хочет быстрее проверить Go на реальной задаче.
+После этого следующий крупный шаг: первый минимальный Go-core `sync-check` CLI по принятому контракту.
 
 ## Что временно не делаем
 
