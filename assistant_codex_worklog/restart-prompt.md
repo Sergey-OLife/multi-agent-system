@@ -5,51 +5,72 @@
 ```text
 Продолжаем проект Sergey-OLife/multi-agent-system в проекте «Пишем книгу».
 
+GitHub — источник правды по состоянию системы. Не восстанавливай контекст по памяти старого чата как главному источнику.
+
 Сначала открой и используй как рабочие якоря:
 
-1. assistant_codex_worklog/current-state.md
-2. assistant_codex_worklog/roadmap.md
-3. assistant_codex_worklog/working-protocol.md
-4. assistant_codex_worklog/protocol_addenda/*.md
-5. knowledge/00_manifest/project-state.md
-6. knowledge/05_agent_memory/review_queue/review-index.md
+1. assistant_codex_worklog/restart-prompt.md
+2. assistant_codex_worklog/current-state.md
+3. assistant_codex_worklog/roadmap.md
+4. assistant_codex_worklog/working-protocol.md
+5. assistant_codex_worklog/protocol_addenda/*.md
+6. knowledge/00_manifest/project-state.md
+7. knowledge/05_agent_memory/review_queue/review-index.md
 
-Не восстанавливай контекст по памяти старого чата как главному источнику. Главный источник правды по состоянию системы — GitHub.
+Актуальное состояние на момент restart:
 
-Текущая последняя зафиксированная точка:
-- PR #26 смержен.
-- currentVersion: v2.1.
-- Book Fast Track остаётся рабочим режимом для книги.
-- В `working-protocol.md` добавлены Source Intake Audit и правило создания агентов из источников/логики проекта.
-- Сергей загрузил в источники проекта «Пишем книгу» большую волну материалов.
-- Эти материалы считаются загруженным сырьём, а не полностью проаудированной библиотекой.
+- currentVersion: v2.2.
+- lastCompletedVersion: v2.2.
+- lastMergedPr: PR #45 — Add ethical persuasion optional workflow layer.
+- Book Fast Track действует для написания глав.
+- Для книги: сначала пишем и редактируем в чате, агенты работают как внутренние редакторские слои, GitHub фиксирует только принятый результат.
+- Для технических частей: строгий PR workflow.
+- Загруженные источники проекта считаются сырьём, пока не прошли Source Intake Audit.
+- Raw books, PDF/EPUB/DJVU/MOBI и сырой текст источников не коммитить в GitHub.
+- Перед `#checkpoint full` сначала нужно прислать restart prompt в чате.
+- `+` означает продолжить следующий безопасный шаг, но не approval.
+- `++` означает approval текущего понятного approval-gate.
+- Перепроверка mergeability открытого PR выполняется автоматически, без отдельного подтверждения.
 
-Главное процессное решение:
-- Код, агенты, маршруты, guardrails, source registries, tests и project-state — через строгий PR workflow.
-- Главы книги — сначала быстрый редакторский цикл в чате.
-- Агенты используются как внутренние редакторские слои внутри ответа, а не как отдельные GitHub-артефакты на каждый шаг.
-- GitHub фиксирует уже принятый результат, а не каждую промежуточную мысль.
-- Не заставлять Сергея читать один и тот же текст несколько раз без редакторской необходимости.
+Последняя крупная техническая веха:
 
-Загруженные в проект источники:
-- КПТ / Бек / Джудит Бек / восстановительно-ориентированная когнитивная терапия.
-- Сократовский метод: Фарнсворт, Оверхолзер, Уолтман/Кодд/Макфарр/Мур.
-- Эмоции, тревога, когнитивные искажения, драматический треугольник.
-- Чалдини и влияние.
-- SuperBetter / Jane McGonigal.
-- Проектные документы: `Svod v4.1`, `Plotnikovsky Motor V1`, `Paket Obnovleniya v20 + Profil Vzaimodeystviya`, `Karta Kontekstov Istochnikov v1.2`, `MVP v1.1`, художественное проектирование главы 30.
+Завершён блок формирования двух ключевых optional workflow layers:
 
-Source Intake Audit:
-При добавлении или проверке источника нужно проверить Drive/source locations, дубли, пустые оболочки, карточку в GitHub, статус пригодности, `usage_role`, `allowed_use`, `forbidden_use`, `book_zones`, `agent_layers`, `next_action`.
+1. `socratic_lantern_agent`
+   - активирован как optional workflow layer;
+   - не hard guardrail;
+   - не route-required;
+   - рабочая формула: «Вопрос — это фонарь, а не поводок»;
+   - применяется в задачах про вопросы, диалоги, сцены выбора, наставничество и MVP-развилки.
 
-Новый источник не считается рабочим только потому, что он назван. Он считается рабочим, когда есть материал, карточка, роль и правило применения.
+2. `ethical_persuasion_guard`
+   - активирован как optional workflow layer;
+   - не hard guardrail;
+   - не route-required;
+   - рабочая формула: «Оставить огонь. Убрать дым»;
+   - сохраняет убеждение, CTA, предпринимательский импульс и конструктивное давление;
+   - убирает вину, страх, ложную срочность, давление на семью/здоровье/духовность, авторитет без проверки и обещания без основания;
+   - применяется в задачах про продающие тексты, офферы, CTA, Olife/здоровье, срочность, авторитет, социальное доказательство и конструктивное давление.
 
-Создание агентов:
-ChatGPT может создавать отдельных агентов в любой момент, если этого требует логика проекта или если новый агент значительно улучшит качество работы. Количество агентов не ограничено. Ограничение только процессное: агент должен усиливать систему, не дублировать существующих, иметь вход/выход и не тормозить работу.
+Ключевые PR после предыдущего checkpoint:
 
-Если агент меняет маршруты, guardrails или поведение системы — требуется явное approval Сергея перед merge. Если это паспорт, proposal или внутренний редакторский слой без включения в маршруты — можно подготовить без отдельного предварительного запроса, с самопроверкой и объяснением пользы.
+- PR #31–33: living project docs/source cards and update package/profiling work.
+- PR #34–40: socratic_lantern_agent proposal, audits, targeted reading notes, duplicate check, controlled activation, optional workflow layer.
+- PR #41: ethical_persuasion_guard proposal.
+- PR #42: automatic mergeability check rule + protocol addenda linked from restart path.
+- PR #43: Cialdini targeted reading note + medical caution audit.
+- PR #44: ethical_persuasion_guard controlled activation proposal.
+- PR #45: ethical_persuasion_guard optional workflow layer.
+
+Следующий логичный технический шаг:
+
+1. Создать/активировать `source_intake_auditor`, если цель — привести библиотеку в порядок.
+2. Либо начать Source Intake Audit первой волны источников без отдельного агента.
+3. Либо перейти к `cbt_thought_check_agent`, если цель — усилить психологическую точность глав, MVP-развилок и маршрута новичка.
+4. Либо вернуться к книге через Book Fast Track.
 
 Текущий литературный фокус:
+
 Продолжить `chapter_00_preface` в чате как читательскую версию Введения, без metadata и служебных блоков.
 
 Принятые решения по Введению:
@@ -101,10 +122,6 @@ ChatGPT может создавать отдельных агентов в лю�
 
 Следующий ход:
 Продолжить от первой границы к обещанию книги: не `научим продавать правильно`, а `будем учиться различать, где путь остаётся человеческим, а где человек становится средством`.
-
-Два допустимых следующих направления:
-1. Писать книгу: продолжить Введение в чате, не начиная новый PR.
-2. Работать с источниками: начать `Source Intake Audit: первая волна проектных источников`.
 
 Главные правила:
 - Давай кликабельные GitHub-ссылки на файлы, если их нужно открыть.
