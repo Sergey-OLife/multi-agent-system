@@ -10,8 +10,9 @@
 1. assistant_codex_worklog/current-state.md
 2. assistant_codex_worklog/roadmap.md
 3. assistant_codex_worklog/working-protocol.md
-4. knowledge/00_manifest/project-state.md
-5. knowledge/05_agent_memory/review_queue/review-index.md
+4. assistant_codex_worklog/protocol_addenda/*.md
+5. knowledge/00_manifest/project-state.md
+6. knowledge/05_agent_memory/review_queue/review-index.md
 
 Не восстанавливай контекст по памяти старого чата как главному источнику. Главный источник правды по состоянию системы — GitHub.
 
