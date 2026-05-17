@@ -36,12 +36,14 @@ test("chapter-status.example.json parses as JSON", () => {
   assert.doesNotThrow(() => JSON.parse(readProjectFile("book/00_manifest/chapter-status.example.json")));
 });
 
-test("source-location.md records manual Plotnikov processing mode", () => {
+test("source-location.md records Plotnikov private Drive navigation and manual upload mode", () => {
   const sourceLocation = readProjectFile("knowledge/03_source_books/plotnikov/source-location.md");
 
   assert.ok(sourceLocation.includes("raw_text_committed: false"));
-  assert.ok(sourceLocation.includes("processing_mode: manual_chapter_upload"));
+  assert.ok(sourceLocation.includes("processing_mode: full_context_navigation_plus_manual_chapter_upload"));
   assert.ok(sourceLocation.includes("upload_unit: one_chapter_at_a_time"));
+  assert.ok(sourceLocation.includes("usage_rule: full_context_navigation_and_dosage_only"));
+  assert.ok(sourceLocation.includes("use_full_book_as_navigation_map"));
 });
 
 test("no raw book extensions are committed", () => {
