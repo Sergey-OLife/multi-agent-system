@@ -220,8 +220,27 @@ PR #60 смержен.
 - `+` не merge approval;
 - `++` открывает только текущий понятный gate.
 
-### 36. Следующий рекомендуемый технический агент после v2.4
+### 36. `project_state_synchronizer` создан как proposal
 
-Следующий P0-кандидат ядра верфи — `project_state_synchronizer`.
+PR #62 смержен.
 
-Причина: после серии PR состояние проекта может расходиться между фактическим `main`, registry, roadmap, restart prompt и project-state.
+Решение:
+
+- синхронизатор состояния проекта следит, чтобы main, registry, roadmap, restart prompt, current-state и project-state не расходились;
+- не активирован;
+- registry синхронизирован: status `proposal`, next_action `controlled_activation`;
+- первый практический use-case — проверка согласованности project state после merge/checkpoint.
+
+### 37. Начата Shipyard Modernization
+
+Решение Сергея: принять Go как будущий кандидат для ядра тяжёлых повторяемых проверок, но не начинать полный rewrite.
+
+Правило этапа:
+
+- сначала оптимизировать TypeScript build loop;
+- затем разнести TypeScript-слои domain / engine / integrations;
+- затем зафиксировать JSON boundary для будущего Go-core;
+- затем добавить минимальный Go CLI как optional dev-tool;
+- не продолжать следующий agent proposal, пока не зафиксирован первый шаг модернизации или Сергей не перенаправит работу.
+
+Следующий конкретный технический шаг: enable incremental TypeScript builds.
