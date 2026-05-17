@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "sources": [
     {
       "source_id": "plotnikov_reasonable_network_marketing",
@@ -456,6 +456,14 @@
       "path": "knowledge/04_processed/source_cards/57_client_followup_medical_caution_card.md",
       "priority_level": "active_ethics_rule",
       "processed_status": "initial_inventory_card_v0.1"
+    },
+    {
+      "source_id": "anti_cliche_editor_training_card",
+      "title": "Anti-Cliche Editor Training Card",
+      "source_type": "internal_agent_training_card",
+      "path": "knowledge/04_processed/source_cards/anti_cliche_editor_training_card.md",
+      "priority_level": "high",
+      "processed_status": "active"
     }
   ]
 }
