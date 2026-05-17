@@ -37,6 +37,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - private Drive file IDs and URLs are not committed to the public repository
 - anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks
 - anti_cliche review maps do not modify drafts until user approves targeted revisions
+- every new PR must pass mandatory double self-review before being given to the user as ready
 - project voice uses Тихий Мастер, not Каленчевский голос
 - direct internal confessional wording is not used in reader-facing book text
 - approved chapters require explicit user approval
@@ -56,6 +57,7 @@ User review of chapter_00_preface anti-cliche review map
 
 ## Important paths
 
+- assistant_codex_worklog/working-protocol.md
 - knowledge/00_manifest/project-state.json
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/handoff/latest-handoff.md
