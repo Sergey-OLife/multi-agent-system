@@ -5,7 +5,8 @@ const root = process.cwd();
 const srcRoot = join(root, "src");
 const violations = [];
 
-const sideEffectImports = ["fs", "node:fs", "node:fs/promises", "child_process", "node:child_process"];
+const fsPromisesImport = "fs" + "/promises";
+const sideEffectImports = ["fs", fsPromisesImport, "node:fs", "node:fs/promises", "child_process", "node:child_process"];
 const domainEntrypoints = ["../domain/index.js"];
 
 function toPosix(path) {
