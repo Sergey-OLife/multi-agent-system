@@ -40,11 +40,11 @@
 
 ## Recent PR summary
 
-- PR #68: synced state after shipyard modernization PRs.
 - PR #69: added import boundaries and public module entrypoints.
 - PR #70: synced state after import boundaries PR.
 - PR #71: split TypeScript configs for build and test.
 - PR #72: added minimal Go-core sync-check CLI.
+- PR #73: synced state after Go-core and tightened handoff file validation.
 
 ## Agent Shipyard architecture
 
@@ -121,14 +121,19 @@ Proposal не является activation.
 
 Статус: done via PR #72.
 
+### PR I — Sync state after Go-core and tighten handoff validation
+
+Статус: done via PR #73.
+
 Смысл:
 
 - Go-core добавлен как optional dev-tool, а не runtime replacement;
 - первая команда — `sync-check`;
 - интерфейс — JSON stdin/stdout;
-- Go-core не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов.
+- Go-core не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов;
+- `sync-check` требует handoff-файлы перед статусом `ready`.
 
-### PR I — Add TypeScript dev wrapper for sync-check
+### PR J — Add TypeScript dev wrapper for sync-check
 
 Статус: next safe step.
 
