@@ -13,6 +13,7 @@
     "typecheck:test": "tsc -p tsconfig.test.json --noEmit",
     "lint:boundaries": "node scripts/check-boundaries.mjs",
     "test": "npm run lint:boundaries --silent && npm run build --silent && node --test dist/tests/*.test.js",
+    "test:core": "cd go-core && go test ./...",
     "dev": "npm run build --silent && node dist/src/cli.js"
   },
   "devDependencies": {
