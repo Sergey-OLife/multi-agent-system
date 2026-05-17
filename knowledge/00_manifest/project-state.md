@@ -4,10 +4,10 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v1.7
-- lastCompletedVersion: v1.7
-- lastMergedPr: PR #18 — v1.6 Train editor on preface review case
-- currentMilestone: v1.7 Add anti-cliche review map for chapter_00_preface
+- currentVersion: v1.8
+- lastCompletedVersion: v1.8
+- lastMergedPr: PR #22 — Clarify file reference format in responses
+- currentMilestone: v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft
 
 ## Completed versions
 
@@ -27,6 +27,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - v1.5 Add source location registry for Google Drive
 - v1.6 Train anti_cliche_editor on preface review case
 - v1.7 Add anti-cliche review map for chapter_00_preface
+- v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft
 
 ## Active decisions
 
@@ -37,7 +38,9 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - private Drive file IDs and URLs are not committed to the public repository
 - anti_cliche_editor must distinguish tired cliches, correct declarations, strong scene replacements, and stylish register risks
 - anti_cliche review maps do not modify drafts until user approves targeted revisions
+- user approved all targeted anti-cliche revisions for chapter_00_preface draft
 - every new PR must pass mandatory double self-review before being given to the user as ready
+- when the user must inspect a file, responses must include a clickable GitHub link to that file
 - project voice uses Тихий Мастер, not Каленчевский голос
 - direct internal confessional wording is not used in reader-facing book text
 - approved chapters require explicit user approval
@@ -48,7 +51,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-User review of chapter_00_preface anti-cliche review map
+User review of revised chapter_00_preface draft
 
 ## Manual chapter upload
 
