@@ -10,6 +10,20 @@ Codex/GitHub выполняет и фиксирует конкретные из�
 
 GitHub — источник правды по коду, структуре, состоянию проекта и рабочим артефактам.
 
+## Обязательные protocol addenda
+
+При запуске или перезапуске чата вместе с этим файлом нужно открыть и учесть все файлы из:
+
+`assistant_codex_worklog/protocol_addenda/*.md`
+
+Эти addenda являются частью рабочего протокола. Если addendum помечен как обязательное правило, он действует наравне с этим файлом, даже если ещё не втянут в основной текст `working-protocol.md`.
+
+На текущий момент особенно важны:
+
+- `restart_prompt_before_checkpoint.md` — перед `#checkpoint full` сначала дать Сергею restart prompt в чате;
+- `plus_approval_shorthand.md` — `+` означает продолжение без approval, `++` означает approval текущего понятного approval-gate;
+- `auto_mergeability_check.md` — перепроверка mergeability открытого PR не требует отдельного подтверждения.
+
 ## Book Fast Track для глав книги
 
 Главы книги пишутся и редактируются сначала в чате, а не через цепочку PR на каждый промежуточный слой.
@@ -134,6 +148,8 @@ ChatGPT может создавать отдельных агентов в лю�
 
 означает: сохранить полную текущую рабочую точку.
 
+Перед выполнением `#checkpoint full` обязательно сначала прислать Сергею корректный restart prompt для следующего чистого чата. Checkpoint не начинается, пока prompt не отправлен в чате.
+
 При выполнении checkpoint нужно обновить:
 
 - `assistant_codex_worklog/current-state.md`;
@@ -158,6 +174,28 @@ ChatGPT может создавать отдельных агентов в лю�
    - какие файлы изменены;
    - прошли ли build/typecheck/tests, если применимо;
    - не добавлены ли raw book files.
+
+## Автоматическая проверка mergeability
+
+Перепроверка mergeability открытого PR не требует отдельного подтверждения Сергея.
+
+ChatGPT сам проверяет mergeability:
+
+- после создания PR, если статус сначала промежуточный;
+- перед просьбой о `++`;
+- после `+`, если следующий безопасный шаг — проверка PR;
+- после `++`, перед merge;
+- если PR был открыт несколько шагов назад.
+
+Эта проверка не является approval и не разрешает merge. Для merge всё равно нужен `++`, если PR попадает под approval-gate.
+
+## Короткие команды Сергея
+
+`+` означает: продолжай следующий логичный безопасный шаг по текущему плану, но это не approval.
+
+`++` означает: approval текущего понятного approval-gate и разрешение выполнить следующий ожидаемый merge/approval action.
+
+Если одновременно есть несколько approval-gates, `++` требует уточнения. Если пользователь пишет номер PR вместе с `++`, например `41 ++`, это approval именно этого PR.
 
 ## Обязательная двойная самопроверка PR
 
@@ -278,6 +316,7 @@ ChatGPT может сам выполнить merge только для техн�
    - `assistant_codex_worklog/current-state.md`;
    - `assistant_codex_worklog/roadmap.md`;
    - `assistant_codex_worklog/working-protocol.md`;
+   - `assistant_codex_worklog/protocol_addenda/*.md`;
    - `knowledge/00_manifest/project-state.md`;
    - `knowledge/05_agent_memory/review_queue/review-index.md`.
 
