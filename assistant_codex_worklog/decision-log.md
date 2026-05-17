@@ -296,8 +296,7 @@ PR #69 смержен.
 - перенести `context-pack` из `engine` в `orchestration`, потому что он зависит от `source-registry`;
 - добавить dependency-free checker `scripts/check-boundaries.mjs`;
 - встроить `lint:boundaries` в `npm test`;
-- зафиксировать правила в `knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md`;
-- защищённые слои не должны импортировать filesystem, child process, registry/state, integrations или adapter side effects вне разрешённой границы.
+- зафиксировать правила в `knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md`.
 
 ### 43. TypeScript configs split
 
@@ -322,6 +321,18 @@ PR #72 смержен.
 - Go-core не читает файлы сам, не ходит в GitHub, не вызывает LLM, не меняет state, не активирует агентов;
 - добавить `npm run test:core` для Go tests.
 
-### 45. Следующая ветка модернизации после PR #72
+### 45. Sync-check больше не объявляет ready без handoff files
+
+PR #73 смержен.
+
+Решение:
+
+- `sync-check` должен получать `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`;
+- если handoff-файлы не переданы, возвращать `needs_revision`, не `ready`;
+- добавить тест на запуск только с `project-state.json`.
+
+### 46. Full checkpoint after Go-core sync-check
+
+Checkpoint фиксирует состояние после PR #73.
 
 Следующий безопасный шаг: TypeScript dev wrapper для Go-core `sync-check`, который готовит input envelope из state/worklog файлов, вызывает optional Go-core binary и имеет ясный fallback, если Go/binary недоступны.
