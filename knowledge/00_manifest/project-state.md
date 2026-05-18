@@ -4,26 +4,26 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.14
-- lastCompletedVersion: v2.14
-- lastMergedPr: PR #101 — Add repository hygiene audit and ledger protocol
-- lastMergeCommit: ade6c257aea62866e7985873bb02f6a8e09881b1
-- currentMilestone: v2.14 Repository hygiene audit and ledger protocol synced
+- currentVersion: v2.15
+- lastCompletedVersion: v2.15
+- lastMergedPr: PR #102 — Sync state after repository hygiene audit
+- lastMergeCommit: 4db41f8305928fae94add0231c9fc35b7d6fb521
+- currentMilestone: v2.15 Checkpoint full after repository hygiene state sync
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #95 — Sync state after svod guard proposal
-- PR #96 — Add contextologist agent proposal
 - PR #97 — Sync state after contextologist proposal
 - PR #98 — Checkpoint full after contextologist state sync
 - PR #100 — Add repository hygiene audit and ledger protocol [closed superseded]
 - PR #101 — Add repository hygiene audit and ledger protocol
+- PR #102 — Sync state after repository hygiene audit
+- PR #103 — Checkpoint full after repository hygiene state sync
 
 ## Repository hygiene
 
-Repository hygiene audit is now available:
+Repository hygiene audit is available:
 
 ```bash
 npm run hygiene:audit
@@ -59,7 +59,7 @@ Its role is to restore the project map before a move. It does not command the ro
 - GitHub is the source of truth for project state.
 - Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
 - Current active mode is Agent Shipyard / Agent Queue.
-- Repository hygiene audit is now available as `npm run hygiene:audit`.
+- Repository hygiene audit is available as `npm run hygiene:audit`.
 - Repository hygiene ledger is GitHub issue #99.
 - Branch hygiene cleanup remains cleanup_needed, not completed.
 - `checkpoint_compressor_agent` is a proposal only, not activated.
