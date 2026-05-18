@@ -16,15 +16,16 @@
 - v2.10 — Copyright boundary guard proposal synced
 - v2.11 — Svod guard proposal synced
 - v2.12 — Contextologist proposal synced
+- v2.13 — Checkpoint full after contextologist state sync
 
 ## Recent PR summary
 
-- PR #92 — Add copyright boundary guard agent proposal.
 - PR #93 — Sync state after copyright boundary guard proposal.
 - PR #94 — Add svod guard agent proposal.
 - PR #95 — Sync state after svod guard proposal.
 - PR #96 — Add contextologist agent proposal.
 - PR #97 — Sync state after contextologist proposal.
+- PR #98 — Checkpoint full after contextologist state sync.
 
 ## Shipyard Modernization result
 
@@ -62,6 +63,14 @@ Proposal не является activation.
 - `ethical_persuasion_guard` — оставить огонь, убрать дым.
 - `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
 - `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
+
+## Branch hygiene
+
+После PR #97 остались stale merged branches.
+
+Уборка нужна, но текущий GitHub tool surface не имеет явной безопасной операции delete branch. Не использовать force-ref workaround.
+
+Stale branches отмечены в `project-state` и комментарии PR #97.
 
 ## Возврат к агентам
 

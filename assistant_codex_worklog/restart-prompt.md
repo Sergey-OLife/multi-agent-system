@@ -25,10 +25,10 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.12.
-- lastCompletedVersion: v2.12.
-- lastMergedPr: PR #96 — Add contextologist agent proposal.
-- lastMergeCommit: 3cb815653115665b104c7d59bec635f01368077e.
+- currentVersion: v2.13.
+- lastCompletedVersion: v2.13.
+- lastMergedPr: PR #97 — Sync state after contextologist proposal.
+- lastMergeCommit: 52388d39fb2d3b5e965b5718df3bccc0259857b8.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -52,6 +52,14 @@ Active optional workflow layers:
 - ethical_persuasion_guard.
 - cbt_thought_check_agent.
 - source_intake_auditor.
+
+Branch hygiene:
+
+- PR #97 merged.
+- Several merged/stale branches remain.
+- Current GitHub tool surface has no explicit safe delete-branch operation.
+- Do not use force-ref workaround.
+- Clean up stale branches manually in GitHub UI or through future explicit delete-branch tool.
 
 Правила:
 
