@@ -4,11 +4,11 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.15
-- lastCompletedVersion: v2.15
-- lastMergedPr: PR #102 — Sync state after repository hygiene audit
-- lastMergeCommit: 4db41f8305928fae94add0231c9fc35b7d6fb521
-- currentMilestone: v2.15 Checkpoint full after repository hygiene state sync
+- currentVersion: v2.16
+- lastCompletedVersion: v2.16
+- lastMergedPr: PR #104 — Add review depth protocol and profiler proposal
+- lastMergeCommit: c4125030eef986eb489b28122275d493997fc636
+- currentMilestone: v2.16 Review depth protocol and Sergey interaction profiler proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
@@ -20,6 +20,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - PR #101 — Add repository hygiene audit and ledger protocol
 - PR #102 — Sync state after repository hygiene audit
 - PR #103 — Checkpoint full after repository hygiene state sync
+- PR #104 — Add review depth protocol and profiler proposal
 
 ## Repository hygiene
 
@@ -44,21 +45,26 @@ Rule:
 
 ## Current agent queue status
 
-`contextologist_agent` is proposal only, not activated and not a hard guardrail.
+`sergey_interaction_profiler` is proposal only, not activated and not a hard guardrail.
 
-- Proposal path: `knowledge/05_agent_memory/agent_proposals/contextologist_agent.md`
-- Registry status: `proposal`
-- Next action in registry: `controlled_activation`
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md`
 - Activation: no
 - Hard guardrail: no
 
-Its role is to restore the project map before a move. It does not command the route, change state or replace `workflow_conductor_agent`.
+Its role is editorial memory, drift diagnostics and contextual style mapping. It observes editorial decisions and failure patterns, but does not imitate Sergey, replace the editor, block merges or become an authority layer.
+
+`review_depth_protocol` is now active operational protocol.
+
+- Protocol path: `knowledge/07_operations/review_depth_protocol.md`
+- It defines L1/L2/L3 review depth, semantic discipline for `+`, `++`, `+++`, and anti-overengineering doctrine.
 
 ## Active decisions
 
 - GitHub is the source of truth for project state.
 - Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
 - Current active mode is Agent Shipyard / Agent Queue.
+- Shipyard Modernization stability gate is passed.
+- Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Repository hygiene audit is available as `npm run hygiene:audit`.
 - Repository hygiene ledger is GitHub issue #99.
 - Branch hygiene cleanup remains cleanup_needed, not completed.
@@ -67,6 +73,9 @@ Its role is to restore the project map before a move. It does not command the ro
 - `copyright_boundary_guard` is a proposal only, not activated and not a hard guardrail.
 - `svod_guard` is a proposal only, not activated and not a hard guardrail.
 - `contextologist_agent` is a proposal only, not activated and not a hard guardrail.
+- `sergey_interaction_profiler` is a proposal only, not activated and not a hard guardrail.
+- `review_depth_protocol` defines L1/L2/L3 agent review depth, semantic discipline for `+`, `++`, `+++`, and anti-overengineering doctrine.
+- Next agent queue candidate after profiler proposal is `author_style_memory_agent` unless Sergey chooses a different agent.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -82,6 +91,7 @@ Its role is to restore the project map before a move. It does not command the ro
 - `copyright_boundary_guard`: proposal only, not activated.
 - `svod_guard`: proposal only, not activated.
 - `contextologist_agent`: proposal only, not activated.
+- `sergey_interaction_profiler`: proposal only, not activated.
 
 ## Active optional workflow layers
 
@@ -101,7 +111,7 @@ Its role is to restore the project map before a move. It does not command the ro
 
 ## Next action
 
-Prepare `sergey_interaction_profiler` proposal without activation.
+Prepare `author_style_memory_agent` proposal without activation, unless Sergey chooses a different agent.
 
 ## Chat writing state
 
@@ -130,5 +140,7 @@ Prepare `sergey_interaction_profiler` proposal without activation.
 - knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
 - knowledge/05_agent_memory/agent_proposals/svod_guard.md
 - knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
+- knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md
+- knowledge/07_operations/review_depth_protocol.md
 - knowledge/07_operations/repository_hygiene_protocol.md
 - scripts/hygiene-audit.mjs

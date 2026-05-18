@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.15",
-  "lastCompletedVersion": "v2.15",
-  "lastMergedPr": "PR #102 — Sync state after repository hygiene audit",
-  "lastMergeCommit": "4db41f8305928fae94add0231c9fc35b7d6fb521",
-  "currentMilestone": "v2.15 Checkpoint full after repository hygiene state sync",
+  "currentVersion": "v2.16",
+  "lastCompletedVersion": "v2.16",
+  "lastMergedPr": "PR #104 — Add review depth protocol and profiler proposal",
+  "lastMergeCommit": "c4125030eef986eb489b28122275d493997fc636",
+  "currentMilestone": "v2.16 Review depth protocol and Sergey interaction profiler proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -15,7 +15,8 @@
     "v2.12 Contextologist proposal synced",
     "v2.13 Checkpoint full after contextologist state sync",
     "v2.14 Repository hygiene audit and ledger protocol synced",
-    "v2.15 Checkpoint full after repository hygiene state sync"
+    "v2.15 Checkpoint full after repository hygiene state sync",
+    "v2.16 Review depth protocol and Sergey interaction profiler proposal synced"
   ],
   "recentPrs": [
     "PR #97 — Sync state after contextologist proposal",

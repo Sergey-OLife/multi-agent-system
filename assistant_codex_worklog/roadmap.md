@@ -19,6 +19,7 @@
 - v2.13 — Checkpoint full after contextologist state sync
 - v2.14 — Repository hygiene audit and ledger protocol synced
 - v2.15 — Checkpoint full after repository hygiene state sync
+- v2.16 — Review depth protocol and Sergey interaction profiler proposal synced
 
 ## Recent PR summary
 
@@ -28,6 +29,7 @@
 - PR #101 — Add repository hygiene audit and ledger protocol.
 - PR #102 — Sync state after repository hygiene audit.
 - PR #103 — Checkpoint full after repository hygiene state sync.
+- PR #104 — Add review depth protocol and profiler proposal.
 
 ## Shipyard Modernization result
 
@@ -44,6 +46,20 @@ GitHub фиксирует.
 ```
 
 Новый modernization work допускается только при конкретном bug/compatibility risk.
+
+## Review depth protocol
+
+Добавлен active operational protocol:
+
+- L1 — Functional review.
+- L2 — Workflow review.
+- L3 — Epistemic review.
+- Delayed systemic harm principle.
+- Diminishing returns rule.
+- Semantic discipline для `+`, `++`, `+++`.
+- Anti-overengineering doctrine.
+- Bounded continuation principle.
+- Text compression rule.
 
 ## Repository hygiene
 
@@ -77,6 +93,7 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 - `copyright_boundary_guard`: proposal, not activated.
 - `svod_guard`: proposal, not activated.
 - `contextologist_agent`: proposal, not activated.
+- `sergey_interaction_profiler`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -91,15 +108,14 @@ Proposal не является activation.
 
 Очередь:
 
-1. `sergey_interaction_profiler`
-2. `author_style_memory_agent`
+1. `author_style_memory_agent`
 
-`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard` и `contextologist_agent` уже доведены до proposal, но не активированы.
+`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent` и `sergey_interaction_profiler` уже доведены до proposal, но не активированы.
 
 Следующий безопасный шаг:
 
 ```text
-prepare sergey_interaction_profiler proposal without activation
+prepare author_style_memory_agent proposal without activation
 ```
 
 ## Strict PR Workflow
@@ -134,6 +150,7 @@ prepare sergey_interaction_profiler proposal without activation
 
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
+- `+++` — выполнить ближайшее уже grounded safe action, не обход approval-gates.
 - Если gates несколько — уточнить.
 - Если после `++` PR существенно изменён — нужен новый `++`.
 
