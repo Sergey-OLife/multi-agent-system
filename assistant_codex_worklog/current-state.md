@@ -12,10 +12,10 @@
 
 ## Последний смерженный PR
 
-- PR #96 — Add contextologist agent proposal
+- PR #97 — Sync state after contextologist proposal
 - Статус: merged
-- Merge commit: `3cb815653115665b104c7d59bec635f01368077e`
-- Смысл: создан proposal `contextologist_agent` и синхронизирован registry status.
+- Merge commit: `52388d39fb2d3b5e965b5718df3bccc0259857b8`
+- Смысл: state sync после `contextologist_agent` proposal.
 
 ## Agent queue status
 
@@ -44,6 +44,14 @@
 3. `cbt_thought_check_agent` — optional workflow layer; not therapy, not diagnostics.
 4. `source_intake_auditor` — optional workflow layer; not workflow conductor.
 
+## Branch hygiene
+
+После PR #97 остались stale merged branches. Они не влияют на runtime, Go/TS, registry, state, routes, guardrails или книгу, но раздувают branch list.
+
+Текущий GitHub tool surface не даёт явной безопасной операции delete branch. Не использовать force-ref workaround.
+
+Очистка должна быть выполнена вручную в GitHub UI или через явный delete-branch tool, если он появится.
+
 ## Следующий безопасный шаг
 
 Подготовить `sergey_interaction_profiler` как proposal без activation.
@@ -60,6 +68,7 @@
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не меняем routes/guardrails/optional layers.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
+- Не заявляем, что branch cleanup выполнен, пока ветки не удалены реально.
 
 ## Короткие команды
 
