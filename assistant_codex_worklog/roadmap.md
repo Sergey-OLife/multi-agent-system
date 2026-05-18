@@ -6,7 +6,7 @@
 
 `Agent Shipyard / Agent Queue`
 
-Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус возвращается к очереди агентов.
+Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — очередь агентов.
 
 Рабочая формула:
 
@@ -40,14 +40,15 @@
 - v2.5 — Checkpoint Go-core validation loop and schema pressure contract
 - v2.6 — Checkpoint restart-prompt-first protocol correction
 - v2.7 — Shipyard Modernization stability gate passed
+- v2.8 — Checkpoint compressor proposal synced
 
 ## Recent PR summary
 
-- PR #82 — Document schema pressure invariants for Go-core envelope.
-- PR #84 — Checkpoint full after restart prompt protocol correction.
 - PR #85 — Add focused Go-core schema pressure tests.
 - PR #86 — Add bug response and compatibility protocol.
 - PR #87 — Checkpoint full: Shipyard Modernization stability gate passed.
+- PR #88 — Add checkpoint compressor agent proposal.
+- PR #89 — Sync state after checkpoint compressor proposal.
 
 ## Shipyard Modernization result
 
@@ -98,6 +99,7 @@ GitHub фиксирует.
 - `agent_registry_librarian`: proposal, not activated.
 - `approval_gate_keeper`: proposal, not activated.
 - `project_state_synchronizer`: proposal, not activated.
+- `checkpoint_compressor_agent`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -112,45 +114,25 @@ Proposal не является activation.
 
 Статус: sufficiently stable / pause by default.
 
-Технический коридор завершён:
-
-- PR #63 — Record Shipyard Modernization focus.
-- PR #64 — Enable incremental TypeScript builds.
-- PR #65 — Split TypeScript domain and engine layers.
-- PR #66 — Add core API contract for future Go engine.
-- PR #67 — Extract context and diagnostics modules from agents.ts.
-- PR #69 — Enforce import boundaries and public module entrypoints.
-- PR #71 — Split tsconfig into base/build/test configs.
-- PR #72 — Add minimal Go-core sync-check CLI.
-- PR #73 — Sync state after Go-core and tighten handoff validation.
-- PR #75 — Add TypeScript dev wrapper for sync-check.
-- PR #76 — Add sync-check wrapper contract.
-- PR #77 — Add minimal sync-check CI workflow.
-- PR #78 — Extract minimal transport helpers.
-- PR #79 — Add registry-check Go command.
-- PR #81 — Add Go validation primitives and pressure tests.
-- PR #82 — Document schema pressure invariants.
-- PR #85 — Add focused schema pressure tests.
-- PR #86 — Add bug response and compatibility protocol.
-
 Новый modernization work допускается только при конкретном bug/compatibility risk.
 
 ## Возврат к агентам
 
 Очередь:
 
-1. `checkpoint_compressor_agent`
-2. `source_card_builder`
-3. `copyright_boundary_guard`
-4. `svod_guard`
-5. `contextologist_agent`
-6. `sergey_interaction_profiler`
-7. `author_style_memory_agent`
+1. `source_card_builder`
+2. `copyright_boundary_guard`
+3. `svod_guard`
+4. `contextologist_agent`
+5. `sergey_interaction_profiler`
+6. `author_style_memory_agent`
+
+`checkpoint_compressor_agent` уже доведён до proposal, но не активирован.
 
 Следующий безопасный шаг:
 
 ```text
-prepare checkpoint_compressor_agent proposal without activation
+prepare source_card_builder proposal without activation
 ```
 
 ## Strict PR Workflow

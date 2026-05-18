@@ -4,7 +4,7 @@
 
 ## Текущая рабочая точка
 
-Проект возвращается из подфокуса модернизации в режим:
+Проект остаётся в режиме:
 
 > `Agent Shipyard / Agent Queue`
 
@@ -12,24 +12,22 @@
 
 ## Последний смерженный PR
 
-- PR #86 — Add bug response and compatibility protocol
+- PR #88 — Add checkpoint compressor agent proposal
 - Статус: merged
-- Merge commit: `80f2df5f8e8bf1f8dbb272fd88056a57ecf615a3`
-- Смысл: добавлен lightweight protocol реакции на будущие баги и compatibility changes.
+- Merge commit: `7700ee89a5865136e824c35856fbe5ebdd299a97`
+- Смысл: создан proposal `checkpoint_compressor_agent` и синхронизирован registry status.
+
+## Agent queue status
+
+`checkpoint_compressor_agent` теперь proposal only, не activation.
+
+Его роль: сжимать restart prompt до 6000 знаков и удерживать checkpoint/restart continuity.
+
+Он не меняет project-state, roadmap, registry, routes, guardrails, PRs и не активирует агентов.
 
 ## Stability gate
 
-Shipyard Modernization stability gate считается пройденным.
-
-Проверено и зафиксировано:
-
-- TypeScript остаётся orchestration shell.
-- Go-core стал deterministic validation spine behind JSON stdin/stdout.
-- Go-core commands: `sync-check`, `registry-check`.
-- Wrapper владеет transport, не validation meaning.
-- CI проверяет minimal sync-check path.
-- Schema pressure tests добавлены без JSON Schema/protobuf/OpenAPI framework.
-- Bug response protocol удерживает порядок: classify → failing test/fixture → narrow fix → framework only after repeated proven pain.
+Shipyard Modernization stability gate passed.
 
 Рабочая формула:
 
@@ -41,53 +39,24 @@ LLM думает.
 GitHub фиксирует.
 ```
 
-## Что завершено в пакете Shipyard Modernization
-
-- PR #63 — зафиксирован подфокус Shipyard Modernization.
-- PR #64 — включены incremental TypeScript builds.
-- PR #65 — введены первые слои `domain / engine`.
-- PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
-- PR #67 — вынесены context и diagnostics модули из `agents.ts`.
-- PR #69 — добавлены import boundaries и public module entrypoints.
-- PR #71 — TypeScript configs разделены на `base/build/test`.
-- PR #72 — добавлен первый Go-core `sync-check` CLI.
-- PR #73 — закрыта дыра с отсутствующими handoff files.
-- PR #75 — добавлен TypeScript sync-check dev wrapper skeleton.
-- PR #76 — добавлен sync-check wrapper contract document.
-- PR #77 — добавлен minimal sync-check CI workflow.
-- PR #78 — вынесены minimal transport helpers.
-- PR #79 — добавлен второй Go-core command `registry-check`.
-- PR #81 — добавлены minimal Go validation primitives and pressure tests.
-- PR #82 — documented schema pressure invariants for Go-core envelope.
-- PR #83 — full checkpoint after schema pressure contract.
-- PR #84 — restart-prompt-first protocol correction checkpoint.
-- PR #85 — focused Go-core schema pressure tests.
-- PR #86 — bug response and compatibility protocol.
-
 ## Актуальные proposal-агенты
 
 - `workflow_conductor_agent` — proposal only, не activation.
 - `agent_registry_librarian` — proposal only, не activation.
 - `approval_gate_keeper` — proposal only, не activation.
 - `project_state_synchronizer` — proposal only, не activation.
+- `checkpoint_compressor_agent` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
-1. `socratic_lantern_agent` — вопрос как фонарь, не поводок.
-2. `ethical_persuasion_guard` — оставить огонь, убрать дым.
-3. `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
-4. `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
+1. `socratic_lantern_agent` — optional workflow layer.
+2. `ethical_persuasion_guard` — optional workflow layer.
+3. `cbt_thought_check_agent` — optional workflow layer; not therapy, not diagnostics.
+4. `source_intake_auditor` — optional workflow layer; not workflow conductor.
 
 ## Следующий безопасный шаг
 
-Вернуться к agent queue и подготовить `checkpoint_compressor_agent` как proposal без activation.
-
-Почему именно он:
-
-- уже был реальный сбой с checkpoint/restart prompt;
-- система стала плотнее;
-- будущие переходы между чатами требуют сжатия без потери смысловой точки;
-- агент должен помогать с checkpoint/restart continuity, но не менять project-state самостоятельно.
+Подготовить `source_card_builder` как proposal без activation.
 
 ## Что временно не делаем
 

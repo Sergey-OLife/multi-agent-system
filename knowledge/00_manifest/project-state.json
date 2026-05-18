@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.7",
-  "lastCompletedVersion": "v2.7",
-  "lastMergedPr": "PR #86 — Add bug response and compatibility protocol",
-  "lastMergeCommit": "80f2df5f8e8bf1f8dbb272fd88056a57ecf615a3",
-  "currentMilestone": "v2.7 Shipyard Modernization stability gate passed",
+  "currentVersion": "v2.8",
+  "lastCompletedVersion": "v2.8",
+  "lastMergedPr": "PR #88 — Add checkpoint compressor agent proposal",
+  "lastMergeCommit": "7700ee89a5865136e824c35856fbe5ebdd299a97",
+  "currentMilestone": "v2.8 Checkpoint compressor proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -32,24 +32,29 @@
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals",
     "v2.5 Checkpoint Go-core validation loop and schema pressure contract",
     "v2.6 Checkpoint restart-prompt-first protocol correction",
-    "v2.7 Shipyard Modernization stability gate passed"
+    "v2.7 Shipyard Modernization stability gate passed",
+    "v2.8 Checkpoint compressor proposal synced"
   ],
   "recentPrs": [
-    "PR #82 — Document schema pressure invariants for Go-core envelope",
-    "PR #84 — Checkpoint full after restart prompt protocol correction",
     "PR #85 — Add focused Go-core schema pressure tests",
     "PR #86 — Add bug response and compatibility protocol",
-    "PR #87 — Checkpoint full: Shipyard Modernization stability gate passed"
+    "PR #87 — Checkpoint full: Shipyard Modernization stability gate passed",
+    "PR #88 — Add checkpoint compressor agent proposal",
+    "PR #89 — Sync state after checkpoint compressor proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
     "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision",
     "Shipyard Modernization stability gate is passed after Go-core schema pressure tests and bug response compatibility protocol",
-    "current active mode returns to Agent Shipyard / Agent Queue",
+    "current active mode is Agent Shipyard / Agent Queue",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout",
     "Go-core is the system spine, not a full replacement for TypeScript",
     "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
+    "checkpoint_compressor_agent is a proposal only, not activated",
+    "checkpoint_compressor_agent compresses restart prompts as a start key, not an archive",
+    "checkpoint_compressor_agent does not change project-state, roadmap, registry, PRs, routes or guardrails",
+    "next agent queue candidate after checkpoint_compressor_agent is source_card_builder",
     "Go-core commands currently include sync-check and registry-check",
     "sync-check validates project state and handoff files",
     "registry-check validates structural registry signals only; it does not activate agents or orchestrate workflows",
@@ -87,7 +92,7 @@
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Return to the agent queue and prepare checkpoint_compressor_agent proposal without activation",
+  "nextAction": "Prepare source_card_builder agent proposal without activation",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -99,6 +104,8 @@
     "assistant_codex_worklog/protocol_addenda/*.md",
     "knowledge/00_manifest/project-state.json",
     "knowledge/00_manifest/project-state.md",
+    "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
+    "knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md",
     "knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md",
     "knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md",
     "knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md",
@@ -147,13 +154,14 @@
       "workflow_conductor_agent",
       "agent_registry_librarian",
       "approval_gate_keeper",
-      "project_state_synchronizer"
+      "project_state_synchronizer",
+      "checkpoint_compressor_agent"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "checkpoint_compressor_agent",
+    "recommendedNextAgent": "source_card_builder",
     "alternativeNextAgents": [
-      "source_card_builder",
-      "copyright_boundary_guard"
+      "copyright_boundary_guard",
+      "svod_guard"
     ],
     "shipyardModernization": {
       "status": "stability_gate_passed",
