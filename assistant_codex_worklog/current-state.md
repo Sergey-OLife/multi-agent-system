@@ -12,32 +12,18 @@
 
 ## Последний смерженный PR
 
-- PR #88 — Add checkpoint compressor agent proposal
+- PR #90 — Add source card builder agent proposal
 - Статус: merged
-- Merge commit: `7700ee89a5865136e824c35856fbe5ebdd299a97`
-- Смысл: создан proposal `checkpoint_compressor_agent` и синхронизирован registry status.
+- Merge commit: `eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4`
+- Смысл: создан proposal `source_card_builder` и синхронизирован registry status.
 
 ## Agent queue status
 
-`checkpoint_compressor_agent` теперь proposal only, не activation.
+`source_card_builder` теперь proposal only, не activation.
 
-Его роль: сжимать restart prompt до 6000 знаков и удерживать checkpoint/restart continuity.
+Его роль: создавать паспорт применения источника после source intake.
 
-Он не меняет project-state, roadmap, registry, routes, guardrails, PRs и не активирует агентов.
-
-## Stability gate
-
-Shipyard Modernization stability gate passed.
-
-Рабочая формула:
-
-```text
-Go проверяет.
-TypeScript соединяет.
-LLM думает.
-Сергей утверждает.
-GitHub фиксирует.
-```
+Ключевое ограничение: source card не доказывает, что источник полностью прочитан.
 
 ## Актуальные proposal-агенты
 
@@ -46,6 +32,7 @@ GitHub фиксирует.
 - `approval_gate_keeper` — proposal only, не activation.
 - `project_state_synchronizer` — proposal only, не activation.
 - `checkpoint_compressor_agent` — proposal only, не activation.
+- `source_card_builder` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -56,7 +43,13 @@ GitHub фиксирует.
 
 ## Следующий безопасный шаг
 
-Подготовить `source_card_builder` как proposal без activation.
+Подготовить `copyright_boundary_guard` как proposal без activation.
+
+Почему он следующий:
+
+- уже появились source intake и source cards;
+- следующий риск — близкий рерайт, длинные цитаты и raw source leaks;
+- copyright boundary должен появиться до массового создания source cards.
 
 ## Что временно не делаем
 
@@ -64,7 +57,6 @@ GitHub фиксирует.
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не меняем routes/guardrails/optional layers.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
-- Не вводим новые modernization layers без конкретного bug/compatibility риска.
 
 ## Короткие команды
 
