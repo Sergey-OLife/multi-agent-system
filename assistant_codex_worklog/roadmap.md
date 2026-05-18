@@ -6,7 +6,7 @@
 
 `Agent Shipyard / Agent Queue`
 
-Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — очередь агентов.
+Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — очередь агентов и разблокировка PR #116.
 
 ## Уже завершено
 
@@ -23,15 +23,16 @@
 - v2.17 — Checkpoint full after profiler state sync
 - v2.18 — Author style memory proposal synced
 - v2.19 — Banality alarm proposal synced
+- v2.20 — Conversation archive capture protocol synced
 
 ## Recent PR summary
 
-- PR #104 — Add review depth protocol and profiler proposal.
-- PR #110 — Sync state after profiler proposal.
-- PR #111 — Checkpoint full after profiler state sync.
 - PR #112 — Add author style memory agent proposal.
 - PR #114 — Add banality alarm agent proposal.
 - PR #115 — Sync state after banality alarm proposal.
+- PR #117 — Add registry sync workflow.
+- PR #118 — Add conversation archive capture protocol.
+- PR #119 — Sync state after conversation archive protocol.
 
 ## Shipyard Modernization result
 
@@ -63,6 +64,30 @@ Active operational protocol:
 - Bounded continuation principle.
 - Text compression rule.
 
+## Conversation archive
+
+Conversation archive is active as a separate human interaction archive:
+
+- `knowledge/08_conversation_archive/README.md`
+- `knowledge/08_conversation_archive/archive_governance_protocol.md`
+- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
+- `knowledge/08_conversation_archive/index.md`
+- `knowledge/08_conversation_archive/chat_archives/`
+
+Audit:
+
+```bash
+npm run archive:audit
+```
+
+Rules:
+
+- preserve conversation seeds, not raw chat;
+- do not duplicate project-state / roadmap / issue / proposal / registry;
+- add archive entries only when something would otherwise be lost;
+- during future `#checkpoint full`, run a short checkpoint capture check;
+- long-lived observations about Sergey interaction style are allowed, but not as psychological diagnosis.
+
 ## Repository hygiene
 
 Доступно:
@@ -83,6 +108,24 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 - stale branches фиксируются в issue #99, если нет безопасного branch cleanup tool;
 - не использовать branch-ref workarounds;
 - не выдавать cleanup за completed до фактической уборки.
+
+## Registry sync workflow
+
+Manual workflow available:
+
+- `.github/workflows/registry-sync.yml`
+
+Use it to update agent registry through deterministic `npm run registry:sync`, not manual full replacement.
+
+Immediate use-case:
+
+```text
+PR #116 — Add anti-cliche editor proposal [draft/blocked]
+target_branch: agent-proposal-anti-cliche-editor
+agent_id: anti_cliche_editor
+proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
+dry_run: true first, then false
+```
 
 ## Proposal agents
 
@@ -110,20 +153,15 @@ Proposal не является activation.
 
 ## Возврат к агентам
 
-Очередь:
+Текущий ближайший шаг — не новый agent proposal, а разблокировка PR #116 через Registry Sync workflow.
 
-1. `anti_cliche_editor`
-2. `plotnikov_motor_agent`
-3. `one_strike_chapter_agent`
-4. `telegram_voice_editor`
+После PR #116:
 
-`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent`, `sergey_interaction_profiler`, `author_style_memory_agent` и `banality_alarm_agent` уже доведены до proposal, но не активированы.
-
-Следующий безопасный шаг:
-
-```text
-prepare anti_cliche_editor proposal without activation
-```
+1. `anti_cliche_editor` state sync.
+2. Затем следующий агент по очереди, если Сергей не выберет иначе:
+   - `plotnikov_motor_agent`
+   - `one_strike_chapter_agent`
+   - `telegram_voice_editor`
 
 ## Strict PR Workflow
 
@@ -140,6 +178,7 @@ prepare anti_cliche_editor proposal without activation
 - Сводов, MVP и карт контекстов;
 - agent proposals / controlled activations / optional layers;
 - repository hygiene protocols;
+- conversation archive protocols;
 - Shipyard Modernization changes.
 
 ## Book Fast Track
@@ -168,5 +207,6 @@ prepare anti_cliche_editor proposal without activation
 - Не делать вид, что все загруженные источники уже проаудированы.
 - Не путать source card с прочитанным источником.
 - Не считать branch cleanup завершённым, пока issue #99 не обновлён после реальной уборки.
+- Не превращать conversation archive в raw transcript dump.
 - Все human-readable artifacts — на русском.
 - Для кода, агентов и модернизации сохранять строгий PR workflow.
