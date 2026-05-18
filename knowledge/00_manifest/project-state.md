@@ -4,22 +4,43 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.13
-- lastCompletedVersion: v2.13
-- lastMergedPr: PR #97 — Sync state after contextologist proposal
-- lastMergeCommit: 52388d39fb2d3b5e965b5718df3bccc0259857b8
-- currentMilestone: v2.13 Checkpoint full after contextologist state sync
+- currentVersion: v2.14
+- lastCompletedVersion: v2.14
+- lastMergedPr: PR #101 — Add repository hygiene audit and ledger protocol
+- lastMergeCommit: ade6c257aea62866e7985873bb02f6a8e09881b1
+- currentMilestone: v2.14 Repository hygiene audit and ledger protocol synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #93 — Sync state after copyright boundary guard proposal
-- PR #94 — Add svod guard agent proposal
 - PR #95 — Sync state after svod guard proposal
 - PR #96 — Add contextologist agent proposal
 - PR #97 — Sync state after contextologist proposal
 - PR #98 — Checkpoint full after contextologist state sync
+- PR #100 — Add repository hygiene audit and ledger protocol [closed superseded]
+- PR #101 — Add repository hygiene audit and ledger protocol
+
+## Repository hygiene
+
+Repository hygiene audit is now available:
+
+```bash
+npm run hygiene:audit
+```
+
+Ledger:
+
+- GitHub issue #99 — Repository hygiene ledger.
+
+Branch cleanup remains `cleanup_needed`, not `completed`.
+
+Rule:
+
+- tracked junk may be removed through normal PR deletion;
+- stale branch cleanup must happen through GitHub UI or a future explicit safe branch cleanup tool;
+- do not use branch-ref workarounds;
+- do not claim cleanup completed until branches are actually removed and issue #99 is updated.
 
 ## Current agent queue status
 
@@ -38,12 +59,14 @@ Its role is to restore the project map before a move. It does not command the ro
 - GitHub is the source of truth for project state.
 - Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
 - Current active mode is Agent Shipyard / Agent Queue.
+- Repository hygiene audit is now available as `npm run hygiene:audit`.
+- Repository hygiene ledger is GitHub issue #99.
+- Branch hygiene cleanup remains cleanup_needed, not completed.
 - `checkpoint_compressor_agent` is a proposal only, not activated.
 - `source_card_builder` is a proposal only, not activated.
 - `copyright_boundary_guard` is a proposal only, not activated and not a hard guardrail.
 - `svod_guard` is a proposal only, not activated and not a hard guardrail.
 - `contextologist_agent` is a proposal only, not activated and not a hard guardrail.
-- Branch hygiene cleanup is needed after PR #97; stale merged branches should be removed manually or by an explicit safe delete-branch tool, not by force-ref workarounds.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -67,24 +90,6 @@ Its role is to restore the project map before a move. It does not command the ro
 - `cbt_thought_check_agent` — active optional workflow layer; not therapy, not diagnostics, not sales pressure tool.
 - `source_intake_auditor` — active optional workflow layer; not workflow conductor.
 
-## Branch hygiene
-
-The available GitHub tool surface has no explicit safe delete-branch operation. Do not simulate deletion through force-ref workarounds.
-
-Stale branches to remove manually or through a future explicit delete-branch tool:
-
-- `state-sync-after-checkpoint-compressor-proposal`
-- `state-sync-after-source-card-builder-proposal`
-- `state-sync-after-copyright-boundary-guard-proposal`
-- `state-sync-after-svod-guard-proposal`
-- `state-sync-after-contextologist-proposal`
-- `agent-proposal-checkpoint-compressor`
-- `agent-proposal-source-card-builder`
-- `agent-proposal-copyright-boundary-guard`
-- `agent-proposal-svod-guard`
-- `agent-proposal-contextologist`
-- `agent-proposal/project-state-synchronizer`
-
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
@@ -92,7 +97,7 @@ Stale branches to remove manually or through a future explicit delete-branch too
 - Do not treat all uploaded project sources as fully audited.
 - Do not activate proposal agents without controlled activation and separate approval.
 - Do not create hard guardrails without separate approval and PR.
-- Do not pretend branch cleanup was completed while the available GitHub tool has no explicit delete branch operation.
+- Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
 
 ## Next action
 
@@ -125,3 +130,5 @@ Prepare `sergey_interaction_profiler` proposal without activation.
 - knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
 - knowledge/05_agent_memory/agent_proposals/svod_guard.md
 - knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
+- knowledge/07_operations/repository_hygiene_protocol.md
+- scripts/hygiene-audit.mjs
