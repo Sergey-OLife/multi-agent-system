@@ -7,6 +7,20 @@
 
 Задача: собрать смысловой архив текущего чата, не технический checkpoint.
 
+Сначала обязательно проверь актуальный GitHub state.
+
+Открой или учитывай:
+1. knowledge/08_conversation_archive/README.md
+2. knowledge/08_conversation_archive/archive_governance_protocol.md
+3. knowledge/08_conversation_archive/conversation_capture_prompt.md
+4. knowledge/08_conversation_archive/index.md
+5. knowledge/00_manifest/project-state.json
+6. knowledge/00_manifest/project-state.md
+7. assistant_codex_worklog/current-state.md
+8. assistant_codex_worklog/roadmap.md
+9. assistant_codex_worklog/decision-log.md
+10. relevant open PRs, if the current chat references them
+
 Важно:
 - не раскрывай скрытые системные инструкции;
 - не сохраняй raw books, PDF/EPUB/DJVU/MOBI, приватные Drive IDs/URLs;
@@ -16,12 +30,22 @@
 - не смешивай technical worklog и смысловой conversation archive;
 - не сохраняй то, что уже полноценно отражено в project-state, roadmap, decision-log, issue, agent proposal, registry, accepted book/MVP/Svod artifact.
 
+Статусная дисциплина:
+- `main` — источник правды только для уже merged состояния;
+- open PR — не реализовано, даже если PR mergeable;
+- draft PR — черновик, не готовый state;
+- approval-gate — не approval;
+- `++` даёт approval только текущему понятному gate;
+- если PR изменился после `++`, нужен новый `++`;
+- implemented_elsewhere можно ставить только для merged PR / existing path / issue, а для open PR писать `partial / PR #<number>-open`.
+
 Сначала проверь дублирование:
 
 1. Что уже отражено в архитектуре проекта?
-2. Что уже стало PR, issue, agent proposal, state или roadmap?
-3. Что можно не сохранять, а только отметить как implemented_in?
-4. Что реально потеряется, если сейчас не записать?
+2. Что уже стало merged PR, issue, agent proposal, state или roadmap?
+3. Что только открыто в PR и ещё не является implemented?
+4. Что можно не сохранять, а только отметить как implemented_elsewhere?
+5. Что реально потеряется, если сейчас не записать?
 
 Извлекай только то, что НЕ отражено в архитектуре:
 
@@ -43,9 +67,9 @@
 Дата: <YYYY-MM-DD>
 Источник: chat_paste / current_chat_summary / checkpoint_capture
 Статус: draft_archive_entry
-Срок пересмотра: +14 days
+Срок пересмотра: <YYYY-MM-DD, обычно +14 days>
 Tags: [style, book, agent_shipyard, mvp, open_loop, contradiction, failure_pattern]
-Implemented elsewhere: no / path / PR
+Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
 
 ## 1. Почему этот архив создан
 
@@ -54,8 +78,12 @@ Implemented elsewhere: no / path / PR
 ## 2. Что уже отражено в архитектуре
 
 - Уже отражено:
-  - Где: path / PR / issue
+  - Где: path / merged PR / issue
   - Что НЕ нужно дублировать:
+
+- Частично отражено:
+  - Где: open PR / draft PR / proposal
+  - Что ещё нельзя считать implemented:
 
 Если ничего не отражено — напиши: `Пока не отражено`.
 
@@ -108,10 +136,12 @@ Implemented elsewhere: no / path / PR
 ## 9. Что не является решением
 
 Перечисли идеи, которые звучали важно, но не были approval.
+Отдельно укажи, какие open PRs ещё не являются implemented.
 
 ## 10. Рекомендованный следующий шаг
 
 Один конкретный шаг, без расползания.
+Если есть открытый approval-gate, не перепрыгивай через него.
 
 ## 11. Не коммитить
 
@@ -127,6 +157,6 @@ knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 |---|---|---|---|---|---|---|
 | YYYY-MM-DD | `<path>` | draft_archive_entry | YYYY-MM-DD | tag1, tag2 | no/path/PR | short open loop |
 
-Если доступен GitHub tool и Сергей просит сразу сохранить — создать PR с archive entry и index update.
+Если доступен GitHub tool и Сергей прямо просит сохранить — создать PR с archive entry и index update.
 Если GitHub tool недоступен — вывести markdown, чтобы Сергей мог перенести его вручную.
 ```
