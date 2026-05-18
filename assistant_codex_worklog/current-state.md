@@ -12,10 +12,10 @@
 
 ## Последний смерженный PR
 
-- PR #101 — Add repository hygiene audit and ledger protocol
+- PR #102 — Sync state after repository hygiene audit
 - Статус: merged
-- Merge commit: `ade6c257aea62866e7985873bb02f6a8e09881b1`
-- Смысл: добавлен постоянный repository hygiene audit и ledger protocol.
+- Merge commit: `4db41f8305928fae94add0231c9fc35b7d6fb521`
+- Смысл: state sync после добавления repository hygiene audit и ledger protocol.
 
 ## Repository hygiene
 
