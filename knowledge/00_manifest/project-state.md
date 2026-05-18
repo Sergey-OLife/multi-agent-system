@@ -4,33 +4,34 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.11
-- lastCompletedVersion: v2.11
-- lastMergedPr: PR #94 — Add svod guard agent proposal
-- lastMergeCommit: 538a3cf937d159b7595155b2018a414ecc8620e5
-- currentMilestone: v2.11 Svod guard proposal synced
+- currentVersion: v2.12
+- lastCompletedVersion: v2.12
+- lastMergedPr: PR #96 — Add contextologist agent proposal
+- lastMergeCommit: 3cb815653115665b104c7d59bec635f01368077e
+- currentMilestone: v2.12 Contextologist proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #91 — Sync state after source card builder proposal
 - PR #92 — Add copyright boundary guard agent proposal
 - PR #93 — Sync state after copyright boundary guard proposal
 - PR #94 — Add svod guard agent proposal
 - PR #95 — Sync state after svod guard proposal
+- PR #96 — Add contextologist agent proposal
+- PR #97 — Sync state after contextologist proposal
 
 ## Current agent queue status
 
-`svod_guard` is now proposal only, not activated and not a hard guardrail.
+`contextologist_agent` is now proposal only, not activated and not a hard guardrail.
 
-- Proposal path: `knowledge/05_agent_memory/agent_proposals/svod_guard.md`
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/contextologist_agent.md`
 - Registry status: `proposal`
 - Next action in registry: `controlled_activation`
 - Activation: no
 - Hard guardrail: no
 
-Its role is to check alignment with the accepted Svod. It does not rewrite the Svod and does not give final approval instead of Sergey.
+Its role is to restore the project map before a move. It does not command the route, change state or replace `workflow_conductor_agent`.
 
 ## Active decisions
 
@@ -41,6 +42,7 @@ Its role is to check alignment with the accepted Svod. It does not rewrite the S
 - `source_card_builder` is a proposal only, not activated.
 - `copyright_boundary_guard` is a proposal only, not activated and not a hard guardrail.
 - `svod_guard` is a proposal only, not activated and not a hard guardrail.
+- `contextologist_agent` is a proposal only, not activated and not a hard guardrail.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -55,6 +57,7 @@ Its role is to check alignment with the accepted Svod. It does not rewrite the S
 - `source_card_builder`: proposal only, not activated.
 - `copyright_boundary_guard`: proposal only, not activated.
 - `svod_guard`: proposal only, not activated.
+- `contextologist_agent`: proposal only, not activated.
 
 ## Active optional workflow layers
 
@@ -73,7 +76,7 @@ Its role is to check alignment with the accepted Svod. It does not rewrite the S
 
 ## Next action
 
-Prepare `contextologist_agent` proposal without activation.
+Prepare `sergey_interaction_profiler` proposal without activation.
 
 ## Chat writing state
 
@@ -101,3 +104,4 @@ Prepare `contextologist_agent` proposal without activation.
 - knowledge/05_agent_memory/agent_proposals/source_card_builder.md
 - knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
 - knowledge/05_agent_memory/agent_proposals/svod_guard.md
+- knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
