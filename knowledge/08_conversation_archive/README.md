@@ -26,7 +26,8 @@ Conversation archive не является:
 - registry;
 - checkpoint;
 - заменой GitHub issue;
-- местом для raw books, PDF, EPUB, DJVU, MOBI или приватных ссылок.
+- местом для raw books, PDF, EPUB, DJVU, MOBI или приватных ссылок;
+- местом для полного текста переписки.
 
 ## Главное правило
 
@@ -40,6 +41,38 @@ Conversation archive не является:
 - куда вернуться;
 - какие формулировки или наблюдения могут пригодиться.
 
+## Правило недублирования архитектуры
+
+Не архивировать то, что уже полноценно отражено в:
+
+- `knowledge/00_manifest/project-state.json`;
+- `knowledge/00_manifest/project-state.md`;
+- `assistant_codex_worklog/current-state.md`;
+- `assistant_codex_worklog/roadmap.md`;
+- `assistant_codex_worklog/decision-log.md`;
+- agent proposal;
+- registry;
+- GitHub issue;
+- accepted book/MVP/Svod artifact.
+
+Если мысль уже реализована, в archive entry допустима только короткая пометка:
+
+```text
+Реализовано в: <path or PR>
+Не дублировать содержание.
+```
+
+## Правило добавления
+
+Archive entry добавляется, а не переписывает историю.
+
+Исключения:
+
+- исправить явную ошибку;
+- добавить ссылку `implemented_in`;
+- сменить статус на `implemented_elsewhere`, `stale`, `superseded`, `long_lived_observation`;
+- сократить запись через cleanup PR.
+
 ## Срок жизни
 
 Рабочее правило: архивный элемент живёт минимум 14 дней.
@@ -50,6 +83,8 @@ Conversation archive не является:
 - оставить как long-lived observation;
 - закрыть как stale;
 - удалить только отдельным cleanup PR.
+
+Если запись относится к стилю общения Сергея, устойчивым failure-patterns, противоречиям книги или сильным формулам, её можно хранить дольше 14 дней как `long_lived_observation`.
 
 ## Где хранить записи
 
@@ -65,6 +100,46 @@ knowledge/08_conversation_archive/chat_archives/YYYY-MM-DD_short-topic.md
 knowledge/08_conversation_archive/chat_archives/2026-05-18_registry-sync-and-lost-dialogue.md
 ```
 
+## Индекс
+
+`index.md` — не дубль архива, а навигационная карта.
+
+Он должен хранить только короткие строки:
+
+- archive entry;
+- статус;
+- review date;
+- tags;
+- куда перенесено, если перенесено;
+- что ещё открыто.
+
+## Checkpoint capture rule
+
+Во время будущего `#checkpoint full` нужно выполнять короткую проверку:
+
+```text
+Есть ли в этом чате смысловые идеи, противоречия, стильовые наблюдения или open loops,
+которые НЕ отражены в project-state/roadmap/decision-log/agent proposals/issues?
+```
+
+Если нет — ничего не добавлять.
+
+Если да — добавить короткий archive entry в `knowledge/08_conversation_archive/chat_archives/` и обновить `index.md`.
+
+Checkpoint не должен превращаться в автоматическую свалку переписки.
+
+## Ограничения размера
+
+Один archive entry должен быть коротким:
+
+- ориентир: до 200 строк;
+- без полного текста переписки;
+- без больших цитат;
+- без raw source material;
+- без повторения того, что уже отражено в архитектуре.
+
+Если тема большая, лучше создать несколько коротких entries по смысловым узлам, чем один тяжёлый файл.
+
 ## Когда использовать
 
 Использовать, когда Сергей говорит:
@@ -75,7 +150,8 @@ knowledge/08_conversation_archive/chat_archives/2026-05-18_registry-sync-and-los
 - «собери идеи из этого чата»;
 - «сделай архив разговора»;
 - «там была мысль, которую мы ещё не реализовали»;
-- «это касается моего стиля общения».
+- «это касается моего стиля общения»;
+- `#checkpoint full`, если в чате есть незафиксированные смысловые хвосты.
 
 ## Как использовать потом
 
@@ -84,6 +160,7 @@ knowledge/08_conversation_archive/chat_archives/2026-05-18_registry-sync-and-los
 1. project-state;
 2. roadmap/current-state;
 3. relevant agent proposals;
-4. conversation archive.
+4. conversation archive index;
+5. relevant archive entries.
 
 Архив не имеет власти над проектом. Он даёт материал для внимания.
