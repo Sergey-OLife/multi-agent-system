@@ -6,7 +6,7 @@
 
 `Agent Shipyard / Agent Queue`
 
-Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — очередь агентов и разблокировка PR #116.
+Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — state sync после PR #116 и подготовка следующего proposal-агента.
 
 ## Уже завершено
 
@@ -24,15 +24,54 @@
 - v2.18 — Author style memory proposal synced
 - v2.19 — Banality alarm proposal synced
 - v2.20 — Conversation archive capture protocol synced
+- v2.21 — Anti-cliche editor proposal synced
 
 ## Recent PR summary
 
-- PR #112 — Add author style memory agent proposal.
-- PR #114 — Add banality alarm agent proposal.
 - PR #115 — Sync state after banality alarm proposal.
 - PR #117 — Add registry sync workflow.
 - PR #118 — Add conversation archive capture protocol.
 - PR #119 — Sync state after conversation archive protocol.
+- PR #116 — Add anti-cliche editor proposal.
+- PR #120 — Sync state after anti-cliche editor proposal.
+
+## Anti-cliche editor
+
+`anti_cliche_editor` is proposal only, not activated and not a hard guardrail.
+
+Merged in PR #116:
+
+- `knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md`
+- `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`
+- `knowledge/07_operations/registry_mutation_protocol.md`
+
+Core role:
+
+```text
+Убрать умно звучащее пустое. Оставить точное и живое.
+```
+
+The agent helps classify and sharpen:
+
+- cliche;
+- commonplace;
+- pseudo-depth;
+- plastic advertising voice;
+- moralizing;
+- manual voice;
+- bureaucracy;
+- vague claims;
+- overpolished AI tone.
+
+## Registry mutation protocol
+
+Active operational protocol:
+
+- registry changes must use deterministic tooling when available;
+- manual full replacement of large registry is not the normal path;
+- dry-run first, then apply;
+- if local command is unavailable, use approved runner/workflow path;
+- registry sync is complete only after proposal file exists, registry status/next_action/proposal_path are updated, diff is checked, and no activation was smuggled in.
 
 ## Shipyard Modernization result
 
@@ -49,6 +88,8 @@ GitHub фиксирует.
 ```
 
 Новый modernization work допускается только при конкретном bug/compatibility risk.
+
+Отдельная уязвимость остаётся для будущего улучшения: manual `workflow_dispatch` можно заменить label-triggered registry sync workflow, но это отдельный workflow PR и не должно блокировать текущий state sync.
 
 ## Review depth protocol
 
@@ -109,24 +150,6 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 - не использовать branch-ref workarounds;
 - не выдавать cleanup за completed до фактической уборки.
 
-## Registry sync workflow
-
-Manual workflow available:
-
-- `.github/workflows/registry-sync.yml`
-
-Use it to update agent registry through deterministic `npm run registry:sync`, not manual full replacement.
-
-Immediate use-case:
-
-```text
-PR #116 — Add anti-cliche editor proposal [draft/blocked]
-target_branch: agent-proposal-anti-cliche-editor
-agent_id: anti_cliche_editor
-proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
-dry_run: true first, then false
-```
-
 ## Proposal agents
 
 - `workflow_conductor_agent`: proposal, not activated.
@@ -141,6 +164,7 @@ dry_run: true first, then false
 - `sergey_interaction_profiler`: proposal, not activated.
 - `author_style_memory_agent`: proposal, not activated.
 - `banality_alarm_agent`: proposal, not activated.
+- `anti_cliche_editor`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -153,15 +177,17 @@ Proposal не является activation.
 
 ## Возврат к агентам
 
-Текущий ближайший шаг — не новый agent proposal, а разблокировка PR #116 через Registry Sync workflow.
+Текущий ближайший шаг после state sync:
 
-После PR #116:
+1. Создать `conversation_archive_librarian` proposal only, если Сергей не выберет другой шаг.
+2. Не активировать его сразу.
+3. После 2–3 реальных archive entries решить, нужен ли optional workflow layer.
 
-1. `anti_cliche_editor` state sync.
-2. Затем следующий агент по очереди, если Сергей не выберет иначе:
-   - `plotnikov_motor_agent`
-   - `one_strike_chapter_agent`
-   - `telegram_voice_editor`
+Альтернативные следующие агенты, если Сергей выберет книжный/редакторский порядок:
+
+- `plotnikov_motor_agent`
+- `one_strike_chapter_agent`
+- `telegram_voice_editor`
 
 ## Strict PR Workflow
 
