@@ -12,19 +12,30 @@
 
 ## Последний смерженный PR
 
-- PR #104 — Add review depth protocol and profiler proposal
+- PR #110 — Sync state after profiler proposal
 - Статус: merged
-- Merge commit: `c4125030eef986eb489b28122275d493997fc636`
-- Смысл: добавлены `knowledge/07_operations/review_depth_protocol.md` и `knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md`.
+- Merge commit: `f9223e9698dc3dcdb16948effb894131ab14d36e`
+- Смысл: state/worklog/registry sync после PR #104.
 
-## Что зафиксировал PR #104
+## Что зафиксировал PR #110
 
-- `review_depth_protocol` — active operational protocol.
-- L1/L2/L3 review depth.
-- Semantic discipline для `+`, `++`, `+++`.
-- Anti-overengineering doctrine.
-- `sergey_interaction_profiler` — proposal only, не activation, не route element, не hard guardrail.
-- Profiler работает как editorial memory / drift diagnostics / contextual style mapping proposal.
+- `currentVersion`: v2.16.
+- `sergey_interaction_profiler` зафиксирован как proposal only, не activation, не hard guardrail.
+- Registry block для `sergey_interaction_profiler` переведён из `container` в `proposal`.
+- `review_depth_protocol` остаётся active operational protocol.
+- Следующий safe step после checkpoint: `author_style_memory_agent` proposal without activation.
+
+## Текущий checkpoint
+
+Идёт `#checkpoint full` после PR #110.
+
+Checkpoint фиксирует:
+
+- `currentVersion`: v2.17.
+- `lastCompletedVersion`: v2.17.
+- `lastMergedPr`: PR #110 — Sync state after profiler proposal.
+- `lastMergeCommit`: `f9223e9698dc3dcdb16948effb894131ab14d36e`.
+- `currentMilestone`: v2.17 Checkpoint full after profiler state sync.
 
 ## Repository hygiene
 
@@ -54,6 +65,8 @@ npm run hygiene:audit
 
 Ограничение: он не имитирует личность Сергея, не подменяет редактора, не блокирует merge, не навязывает композиционные схемы и не становится authority layer.
 
+`author_style_memory_agent` остаётся container. Следующий safe step — подготовить его proposal без activation, если Сергей не выберет другой агент.
+
 ## Актуальные proposal-агенты
 
 - `workflow_conductor_agent` — proposal only, не activation.
@@ -74,13 +87,14 @@ npm run hygiene:audit
 3. `cbt_thought_check_agent` — optional workflow layer; not therapy, not diagnostics.
 4. `source_intake_auditor` — optional workflow layer; not workflow conductor.
 
-## Следующий безопасный шаг
+## Следующий безопасный шаг после checkpoint
 
 Подготовить `author_style_memory_agent` как proposal без activation, если Сергей не выберет другой агент.
 
 Почему он следующий:
 
 - `sergey_interaction_profiler` уже оформлен как proposal;
+- registry синхронизирован;
 - следующий контейнер ядра заполнения — `author_style_memory_agent`;
 - он должен хранить вкус текста и авторские паттерны как рабочую память, а не как жёсткий канон.
 
