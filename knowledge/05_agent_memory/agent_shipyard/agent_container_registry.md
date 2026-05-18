@@ -122,12 +122,13 @@ agent_container_registry:
     - agent_id: "source_card_builder"
       working_name_ru: "Создатель карточек источников"
       group: "Источники и доказательная дисциплина"
-      status: "container"
+      status: "proposal"
       ship_role: "archive"
       why_needed: "Создаёт и обновляет карточки источников после аудита."
       main_formula: "Карточка источника — не доказательство, а паспорт применения."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/source_card_builder.md"
       activation_risk: "medium"
       approval_gate: true
 
@@ -816,14 +817,12 @@ agent_container_registry:
 
 Следующими нужно довести до proposal:
 
-1. `checkpoint_compressor_agent`
-2. `source_card_builder`
-3. `copyright_boundary_guard`
-4. `svod_guard`
-5. `contextologist_agent`
-6. `sergey_interaction_profiler`
-7. `author_style_memory_agent`
+1. `copyright_boundary_guard`
+2. `svod_guard`
+3. `contextologist_agent`
+4. `sergey_interaction_profiler`
+5. `author_style_memory_agent`
 
-`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper` и `project_state_synchronizer` уже переведены из `container` в `proposal`, но не активированы.
+`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent` и `source_card_builder` уже переведены из `container` в `proposal`, но не активированы.
 
 Этот список не окончательный. Сергей может добавлять новых агентов. ChatGPT также может предлагать новых агентов, если видит функциональную дыру, повторяющийся сбой или риск для корабля.
