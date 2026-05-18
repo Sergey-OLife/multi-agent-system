@@ -197,12 +197,13 @@ agent_container_registry:
     - agent_id: "contextologist_agent"
       working_name_ru: "Контекстолог"
       group: "Смысловой каркас книги"
-      status: "container"
+      status: "proposal"
       ship_role: "cartographer"
       why_needed: "Восстанавливает систему проекта, не даёт отвечать с хвоста."
       main_formula: "Сначала карта, потом ход."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/contextologist_agent.md"
       activation_risk: "medium"
       approval_gate: true
 
@@ -819,10 +820,9 @@ agent_container_registry:
 
 Следующими нужно довести до proposal:
 
-1. `contextologist_agent`
-2. `sergey_interaction_profiler`
-3. `author_style_memory_agent`
+1. `sergey_interaction_profiler`
+2. `author_style_memory_agent`
 
-`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard` и `svod_guard` уже переведены из `container` в `proposal`, но не активированы.
+`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard` и `contextologist_agent` уже переведены из `container` в `proposal`, но не активированы.
 
 Этот список не окончательный. Сергей может добавлять новых агентов. ChatGPT также может предлагать новых агентов, если видит функциональную дыру, повторяющийся сбой или риск для корабля.
