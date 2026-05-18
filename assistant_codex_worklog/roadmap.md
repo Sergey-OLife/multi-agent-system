@@ -38,14 +38,30 @@
 - v2.3 — Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
 - v2.4 — Checkpoint Agent Shipyard architecture and first P0 proposals
 - v2.5 — Checkpoint Go-core validation loop and schema pressure contract
+- v2.6 — Checkpoint restart-prompt-first protocol correction
 
 ## Recent PR summary
 
-- PR #78 — Extract minimal sync-check transport helpers.
 - PR #79 — Add minimal registry-check Go command.
 - PR #81 — Add minimal Go validation primitives and pressure tests.
 - PR #82 — Document schema pressure invariants for Go-core envelope.
 - PR #83 — Checkpoint full after schema pressure contract.
+- PR #84 — Checkpoint full after restart prompt protocol correction.
+
+## Process correction
+
+After PR #83 Sergey pointed out that the restart prompt had not been sent in chat before the previous checkpoint.
+
+Decision:
+
+- rule already existed in `working-protocol.md`;
+- previous issue was assistant noncompliance, not missing policy;
+- checkpoint order is now explicitly treated as hard working sequence:
+
+```text
+prompt first
+GitHub second
+```
 
 ## Agent Shipyard architecture
 
@@ -130,84 +146,45 @@ Proposal не является activation.
 
 Статус: done via PR #75.
 
-Смысл:
-
-- TypeScript готовит input envelope;
-- wrapper вызывает optional Go-core binary;
-- fallback возвращает `unavailable`, но не fake-ready;
-- wrapper остаётся transport shell.
-
 ### PR K — Add sync-check wrapper contract
 
 Статус: done via PR #76.
-
-Смысл:
-
-- зафиксированы stdout/stderr rules;
-- allowed statuses;
-- exit-code semantics;
-- transport failure vs validation failure;
-- fallback behavior.
 
 ### PR L — Add minimal sync-check CI workflow
 
 Статус: done via PR #77.
 
-Смысл:
-
-- Go-core validation loop встроен в CI;
-- skipped validation больше не выглядит successful pass;
-- CI не стал orchestration layer.
-
 ### PR M — Extract minimal transport helpers
 
 Статус: done via PR #78.
-
-Смысл:
-
-- wrapper получил minimal command registry;
-- transport extraction не стала plugin framework.
 
 ### PR N — Add registry-check Go command
 
 Статус: done via PR #79.
 
-Смысл:
-
-- второй реальный Go-core command;
-- transport пережил второй use-case;
-- registry-check structural, not orchestration.
-
 ### PR O — Add Go validation primitives and pressure tests
 
 Статус: done via PR #81.
-
-Смысл:
-
-- small semantic primitives;
-- pressure tests на bad states;
-- no validator framework.
 
 ### PR P — Document schema pressure invariants
 
 Статус: done via PR #82.
 
-Смысл:
-
-- implicit envelope invariants зафиксированы текстом;
-- semantic assumptions made explicit before runtime enforcement;
-- no JSON Schema/protobuf/OpenAPI framework.
-
 ### PR Q — Checkpoint full after schema pressure contract
+
+Статус: done via PR #83.
+
+### PR R — Checkpoint full after restart prompt protocol correction
 
 Статус: current checkpoint PR.
 
 Смысл:
 
-- синхронизировать state/worklog/restart prompt после PR #82;
-- зафиксировать следующий безопасный шаг: focused schema pressure tests.
+- зафиксировать рабочую точку после PR #83;
+- закрепить, что restart-prompt-first rule already existed and must be obeyed;
+- сохранить следующий safe step: focused schema pressure tests.
 
-### PR R — Add focused schema pressure tests
+### PR S — Add focused schema pressure tests
 
 Статус: next safe step after checkpoint merge.
 
