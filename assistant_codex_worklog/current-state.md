@@ -12,18 +12,51 @@
 
 ## Последний смерженный PR
 
-- PR #114 — Add banality alarm agent proposal
+- PR #118 — Add conversation archive capture protocol
 - Статус: merged
-- Merge commit: `5f65e6fee8a0e3dc47b9e80ea947b71e19b2a575`
-- Смысл: добавлен `knowledge/05_agent_memory/agent_proposals/banality_alarm_agent.md`, registry синхронизирован.
+- Merge commit: `4f8096378daa55755690a348d455cc780dee17a9`
+- Смысл: добавлен отдельный conversation archive layer для смысловых следов диалогов, которые не должны теряться между чатами.
 
-## Что зафиксировал PR #114
+## Что зафиксировал PR #118
 
-- `banality_alarm_agent` — proposal only, не activation, не route element, не hard guardrail.
-- Registry block для `banality_alarm_agent` переведён из `container` в `proposal`.
-- Добавлен `proposal_path`.
-- `next_action` в registry: `controlled_activation`.
-- Книга не продолжалась.
+- `knowledge/08_conversation_archive/README.md`
+- `knowledge/08_conversation_archive/archive_governance_protocol.md`
+- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
+- `knowledge/08_conversation_archive/index.md`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-18_lost-dialogue-and-idea-archive.md`
+- `scripts/archive-audit.mjs`
+- `npm run archive:audit`
+
+Conversation archive не является project-state, approval-log или technical checkpoint.
+
+Он сохраняет только смысловые зерна:
+
+- идеи, которые иначе потеряются;
+- противоречия;
+- open loops;
+- наблюдения о стиле взаимодействия;
+- ошибки ChatGPT;
+- сильные формулы;
+- указатели на то, где мысль реализована.
+
+Запрещено сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
+
+## Registry sync workflow
+
+PR #117 смержен ранее и добавил:
+
+- `.github/workflows/registry-sync.yml`
+
+Его нужно использовать для разблокировки PR #116:
+
+```text
+target_branch: agent-proposal-anti-cliche-editor
+agent_id: anti_cliche_editor
+proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
+dry_run: true сначала, затем false
+```
+
+PR #116 остаётся заблокирован до registry sync.
 
 ## Repository hygiene
 
@@ -49,9 +82,7 @@ npm run hygiene:audit
 
 `banality_alarm_agent` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: быстро сигналить о банальности, рекламной пластмассе, методичке, слишком ИИ-голосе, потере мотора, псевдоглубине, декоративной морали и расплывчатых утверждениях.
-
-Ограничение: он не переписывает весь текст, не заменяет `anti_cliche_editor`, `author_style_memory_agent`, `plotnikov_motor_agent`, `one_strike_chapter_agent` или живую редактуру Сергея.
+`anti_cliche_editor` proposal PR #116 открыт, но blocked/draft до registry sync через workflow или approved runner path.
 
 ## Актуальные proposal-агенты
 
@@ -77,13 +108,17 @@ npm run hygiene:audit
 
 ## Следующий безопасный шаг
 
-Подготовить `anti_cliche_editor` как proposal без activation, если Сергей не выберет другой агент.
+Разблокировать PR #116 через Registry Sync workflow:
 
-Почему он следующий:
+```text
+workflow: Registry Sync
+target_branch: agent-proposal-anti-cliche-editor
+agent_id: anti_cliche_editor
+proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
+dry_run: true first
+```
 
-- `banality_alarm_agent` теперь умеет быстро сигналить о сбое;
-- нужен полноценный редакторский агент, который не просто кричит «пластмасса», а классифицирует и перетачивает клише;
-- он должен работать глубже, чем сигнализация, но не превращаться в переписывание всей книги без запроса.
+После успешного dry-run повторить с `dry_run: false`, проверить PR #116, снять draft, проверить changed files/mergeability/comments.
 
 ## Что временно не делаем
 
@@ -92,6 +127,7 @@ npm run hygiene:audit
 - Не меняем routes/guardrails/optional layers.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не заявляем, что branch cleanup выполнен, пока ветки не удалены реально.
+- Не превращаем conversation archive в raw transcript dump.
 
 ## Короткие команды
 
