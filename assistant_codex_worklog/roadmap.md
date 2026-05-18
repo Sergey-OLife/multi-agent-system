@@ -20,16 +20,15 @@
 - v2.14 — Repository hygiene audit and ledger protocol synced
 - v2.15 — Checkpoint full after repository hygiene state sync
 - v2.16 — Review depth protocol and Sergey interaction profiler proposal synced
+- v2.17 — Checkpoint full after profiler state sync
 
 ## Recent PR summary
 
-- PR #97 — Sync state after contextologist proposal.
-- PR #98 — Checkpoint full after contextologist state sync.
-- PR #100 — Add repository hygiene audit and ledger protocol [closed superseded].
 - PR #101 — Add repository hygiene audit and ledger protocol.
 - PR #102 — Sync state after repository hygiene audit.
 - PR #103 — Checkpoint full after repository hygiene state sync.
 - PR #104 — Add review depth protocol and profiler proposal.
+- PR #110 — Sync state after profiler proposal.
 
 ## Shipyard Modernization result
 
@@ -49,7 +48,7 @@ GitHub фиксирует.
 
 ## Review depth protocol
 
-Добавлен active operational protocol:
+Active operational protocol:
 
 - L1 — Functional review.
 - L2 — Workflow review.
