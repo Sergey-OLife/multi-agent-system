@@ -12,18 +12,18 @@
 
 ## Последний смерженный PR
 
-- PR #92 — Add copyright boundary guard agent proposal
+- PR #94 — Add svod guard agent proposal
 - Статус: merged
-- Merge commit: `fc81c223bbf45093697550c588fd4a7b696e5da1`
-- Смысл: создан proposal `copyright_boundary_guard` и синхронизирован registry status.
+- Merge commit: `538a3cf937d159b7595155b2018a414ecc8620e5`
+- Смысл: создан proposal `svod_guard` и синхронизирован registry status.
 
 ## Agent queue status
 
-`copyright_boundary_guard` теперь proposal only, не activation и не hard guardrail.
+`svod_guard` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: защищать проект от raw source text, длинных цитат, близкого рерайта, private source locations и source leaks.
+Его роль: проверять согласие текста, главы, MVP-модуля или agent proposal с принятым Сводом.
 
-Ограничение: это не юридическое заключение и не замена профессиональной юридической проверки.
+Ограничение: он не переписывает Свод и не даёт финальное approval вместо Сергея.
 
 ## Актуальные proposal-агенты
 
@@ -34,6 +34,7 @@
 - `checkpoint_compressor_agent` — proposal only, не activation.
 - `source_card_builder` — proposal only, не activation.
 - `copyright_boundary_guard` — proposal only, не activation.
+- `svod_guard` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -44,13 +45,13 @@
 
 ## Следующий безопасный шаг
 
-Подготовить `svod_guard` как proposal без activation.
+Подготовить `contextologist_agent` как proposal без activation.
 
 Почему он следующий:
 
-- source boundary уже получил proposal-предохранители;
-- следующий риск — текст может не спорить с источниками, но спорить со своим Сводом;
-- `svod_guard` должен держать внутренний позвоночник книги, главы, MVP и агентной системы.
+- после source guards и Svod guard нужна карта контекста;
+- проект плотный: книга, MVP, агенты, Go-core, source intake и state rules уже связаны;
+- `contextologist_agent` должен восстанавливать систему проекта перед ходом, чтобы не отвечать с хвоста.
 
 ## Что временно не делаем
 
