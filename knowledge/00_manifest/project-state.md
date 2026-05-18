@@ -4,36 +4,44 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.5
-- lastCompletedVersion: v2.5
-- lastMergedPr: PR #82 — Document schema pressure invariants for Go-core envelope
-- lastMergeCommit: a49de76ba93dd10cbad498e9962b049725c83d17
-- currentMilestone: v2.5 Full checkpoint after Go-core transport, registry-check, semantic primitives and schema pressure contract
+- currentVersion: v2.6
+- lastCompletedVersion: v2.6
+- lastMergedPr: PR #83 — Checkpoint full after schema pressure contract
+- lastMergeCommit: d2e3e66b57375c8ec8fe46d4e7180bb8f7731b1f
+- currentMilestone: v2.6 Full checkpoint after restart-prompt-first protocol correction
 - currentMode: Agent Shipyard / Shipyard Modernization
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #78 — Extract minimal sync-check transport helpers
 - PR #79 — Add minimal registry-check Go command
 - PR #81 — Add minimal Go validation primitives and pressure tests
 - PR #82 — Document schema pressure invariants for Go-core envelope
 - PR #83 — Checkpoint full after schema pressure contract
+- PR #84 — Checkpoint full after restart prompt protocol correction
 
 ## Shipyard Modernization status
 
-Состояние после PR #82:
+Состояние после PR #83:
 
 - TypeScript остаётся orchestration shell.
 - Go-core стал deterministic validation layer behind JSON stdin/stdout.
 - `sync-check` и `registry-check` существуют как реальные Go-core commands.
-- TypeScript wrapper теперь transport shell: file collection, binary invocation, stdout parsing, unavailable fallback.
+- TypeScript wrapper остаётся transport shell: file collection, binary invocation, stdout parsing, unavailable fallback.
 - Minimal Sync Check CI workflow запускает Go-core validation loop.
-- Transport extraction удержана без orchestration framework.
 - `registry-check` проверяет structural registry signal, не активирует агентов.
 - Go validation primitives добавлены маленьким слоем, без validator framework.
 - Pressure tests проверяют bad states: registry identity, blocked project state, status priority.
 - Schema pressure invariants documented before runtime enforcement.
+
+## Process correction
+
+После вопроса Сергея зафиксировано:
+
+- правило `restart prompt first` уже было в `working-protocol.md`;
+- предыдущий сбой был assistant noncompliance, не missing policy;
+- при `#checkpoint full` сначала даётся restart prompt в чат;
+- только после этого выполняются GitHub-операции.
 
 ## Active decisions
 
@@ -44,14 +52,12 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
 - TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout.
 - Go-core commands currently include `sync-check` and `registry-check`.
-- `sync-check` validates project state and handoff files.
-- `registry-check` validates structural registry signals only; it does not activate agents or orchestrate workflows.
-- Wrapper owns transport, file collection, binary invocation, stdout parsing and unavailable fallback, not validation meaning.
+- Wrapper owns transport, not validation meaning.
 - Go-core validation loop is part of CI through the minimal Sync Check workflow.
 - Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine.
-- `blocked` outranks `needs_revision`; `needs_revision` outranks `ready`; `error` is contract/runtime failure; `unavailable` is wrapper/transport-level.
 - Go-core envelope invariants are documented as internal API assumptions before runtime enforcement.
 - Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until pressure tests show real need.
+- Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
 
