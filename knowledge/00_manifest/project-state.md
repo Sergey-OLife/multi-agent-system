@@ -4,34 +4,36 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.4
-- lastCompletedVersion: v2.4
-- lastMergedPr: PR #73 — Sync state after Go core sync-check
-- lastMergeCommit: efa728d33e1fdb7d1a42615670dc3446dc0745c2
-- currentMilestone: v2.4 Full checkpoint after first Go-core sync-check and state sync
+- currentVersion: v2.5
+- lastCompletedVersion: v2.5
+- lastMergedPr: PR #82 — Document schema pressure invariants for Go-core envelope
+- lastMergeCommit: a49de76ba93dd10cbad498e9962b049725c83d17
+- currentMilestone: v2.5 Full checkpoint after Go-core transport, registry-check, semantic primitives and schema pressure contract
 - currentMode: Agent Shipyard / Shipyard Modernization
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #69 — Add import boundaries and public module entrypoints
-- PR #70 — Sync state after import boundaries PR
-- PR #71 — Split TypeScript configs for build and test
-- PR #72 — Add minimal Go core sync-check CLI
-- PR #73 — Sync state after Go core sync-check
+- PR #78 — Extract minimal sync-check transport helpers
+- PR #79 — Add minimal registry-check Go command
+- PR #81 — Add minimal Go validation primitives and pressure tests
+- PR #82 — Document schema pressure invariants for Go-core envelope
+- PR #83 — Checkpoint full after schema pressure contract
 
 ## Shipyard Modernization status
 
-Состояние после PR #73:
+Состояние после PR #82:
 
-- TypeScript incremental builds включены.
-- Введены слои `domain / engine / diagnostics / orchestration`.
-- Import boundaries закреплены через `scripts/check-boundaries.mjs` и `npm run lint:boundaries`.
-- TypeScript configs разделены на `base/build/test`.
-- Зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
-- Реализован первый Go-core `sync-check` CLI как optional dev-tool.
-- `sync-check` теперь не может вернуть `ready`, если не переданы handoff-файлы: `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`.
-- Go-core не заменяет TypeScript orchestrator и не является runtime center.
+- TypeScript остаётся orchestration shell.
+- Go-core стал deterministic validation layer behind JSON stdin/stdout.
+- `sync-check` и `registry-check` существуют как реальные Go-core commands.
+- TypeScript wrapper теперь transport shell: file collection, binary invocation, stdout parsing, unavailable fallback.
+- Minimal Sync Check CI workflow запускает Go-core validation loop.
+- Transport extraction удержана без orchestration framework.
+- `registry-check` проверяет structural registry signal, не активирует агентов.
+- Go validation primitives добавлены маленьким слоем, без validator framework.
+- Pressure tests проверяют bad states: registry identity, blocked project state, status priority.
+- Schema pressure invariants documented before runtime enforcement.
 
 ## Active decisions
 
@@ -40,26 +42,16 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 - Current active mode is Agent Shipyard with a temporary Shipyard Modernization subfocus.
 - First build the ship, then sail: do not continue the book automatically while the current focus is agent buildout or shipyard modernization.
 - Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
-- Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit.
-- Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite.
-- TypeScript domain, engine, diagnostics and orchestration layers have public entrypoints and import boundaries.
-- TypeScript configs are split into base/build/test configs after layer boundaries were enforced.
-- Go-core API contract is fixed as CLI plus JSON stdin/stdout.
-- The first Go-core implementation is `sync-check` as an optional dev-tool, not a runtime replacement.
-- Go-core `sync-check` reads JSON from stdin, writes JSON to stdout, does not call GitHub or LLM, and does not change files.
-- `sync-check` must receive project-state.md, current-state.md, roadmap.md and restart-prompt.md before declaring state ready.
-- `agents.ts` should remain a registry assembly point, not a dumping ground for context and diagnostics logic.
-- `context-pack` belongs to orchestration, not core-like engine, because it depends on source registry.
-- Import boundaries are enforced by `scripts/check-boundaries.mjs` and `npm test`.
-- Raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub.
-- Uploaded project sources are raw/source material until audited through Source Intake Audit.
-- Source cards are not proof that full sources were read.
-- Chat restart prompt before checkpoint full must be no more than 6000 characters with spaces; full restart-prompt.md may be longer.
-- `+` means continue the next safe step, not approval.
-- `++` means approval for the current clear approval-gate only.
-- If a PR materially changes after `++`, a new `++` is required before merge.
-- If approval-gates are multiple, ask which gate is approved.
-- Allow auto-merge is enabled, but auto-merge does not bypass approval-gates.
+- TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout.
+- Go-core commands currently include `sync-check` and `registry-check`.
+- `sync-check` validates project state and handoff files.
+- `registry-check` validates structural registry signals only; it does not activate agents or orchestrate workflows.
+- Wrapper owns transport, file collection, binary invocation, stdout parsing and unavailable fallback, not validation meaning.
+- Go-core validation loop is part of CI through the minimal Sync Check workflow.
+- Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine.
+- `blocked` outranks `needs_revision`; `needs_revision` outranks `ready`; `error` is contract/runtime failure; `unavailable` is wrapper/transport-level.
+- Go-core envelope invariants are documented as internal API assumptions before runtime enforcement.
+- Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until pressure tests show real need.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
 
@@ -87,7 +79,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-Add a TypeScript dev wrapper that prepares `sync-check` input and calls the optional Go-core binary with a clear fallback if it is unavailable.
+Add focused Go-core schema pressure tests for malformed envelopes and contract edge cases without introducing a schema framework.
 
 ## Chat writing state
 
@@ -112,14 +104,15 @@ Add a TypeScript dev wrapper that prepares `sync-check` input and calls the opti
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 - knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
-- tsconfig.base.json
-- tsconfig.build.json
-- tsconfig.test.json
+- knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md
+- .github/workflows/sync-check.yml
 - package.json
+- scripts/run-sync-check.mjs
 - scripts/check-boundaries.mjs
 - go-core/go.mod
 - go-core/cmd/multi-agent-core/main.go
 - go-core/cmd/multi-agent-core/main_test.go
+- go-core/cmd/multi-agent-core/validation_primitives.go
 - src/domain/index.ts
 - src/engine/index.ts
 - src/diagnostics/index.ts
