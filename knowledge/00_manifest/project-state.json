@@ -1,23 +1,24 @@
 {
-  "currentVersion": "v2.10",
-  "lastCompletedVersion": "v2.10",
-  "lastMergedPr": "PR #92 — Add copyright boundary guard agent proposal",
-  "lastMergeCommit": "fc81c223bbf45093697550c588fd4a7b696e5da1",
-  "currentMilestone": "v2.10 Copyright boundary guard proposal synced",
+  "currentVersion": "v2.11",
+  "lastCompletedVersion": "v2.11",
+  "lastMergedPr": "PR #94 — Add svod guard agent proposal",
+  "lastMergeCommit": "538a3cf937d159b7595155b2018a414ecc8620e5",
+  "currentMilestone": "v2.11 Svod guard proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
     "v2.7 Shipyard Modernization stability gate passed",
     "v2.8 Checkpoint compressor proposal synced",
     "v2.9 Source card builder proposal synced",
-    "v2.10 Copyright boundary guard proposal synced"
+    "v2.10 Copyright boundary guard proposal synced",
+    "v2.11 Svod guard proposal synced"
   ],
   "recentPrs": [
-    "PR #89 — Sync state after checkpoint compressor proposal",
-    "PR #90 — Add source card builder agent proposal",
     "PR #91 — Sync state after source card builder proposal",
     "PR #92 — Add copyright boundary guard agent proposal",
-    "PR #93 — Sync state after copyright boundary guard proposal"
+    "PR #93 — Sync state after copyright boundary guard proposal",
+    "PR #94 — Add svod guard agent proposal",
+    "PR #95 — Sync state after svod guard proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -28,9 +29,9 @@
     "checkpoint_compressor_agent is a proposal only, not activated",
     "source_card_builder is a proposal only, not activated",
     "copyright_boundary_guard is a proposal only, not activated and not a hard guardrail",
-    "copyright_boundary_guard protects against raw source text, long quotes, close paraphrase, private source locations and source leaks",
-    "copyright_boundary_guard is not legal advice and does not replace professional legal review",
-    "next agent queue candidate after copyright_boundary_guard is svod_guard",
+    "svod_guard is a proposal only, not activated and not a hard guardrail",
+    "svod_guard checks alignment with the accepted Svod; it does not rewrite the Svod and does not give final approval instead of Sergey",
+    "next agent queue candidate after svod_guard is contextologist_agent",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",
@@ -49,7 +50,7 @@
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Prepare svod_guard agent proposal without activation",
+  "nextAction": "Prepare contextologist_agent proposal without activation",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -64,7 +65,8 @@
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md",
     "knowledge/05_agent_memory/agent_proposals/source_card_builder.md",
-    "knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md"
+    "knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md",
+    "knowledge/05_agent_memory/agent_proposals/svod_guard.md"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
@@ -90,13 +92,14 @@
       "project_state_synchronizer",
       "checkpoint_compressor_agent",
       "source_card_builder",
-      "copyright_boundary_guard"
+      "copyright_boundary_guard",
+      "svod_guard"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "svod_guard",
+    "recommendedNextAgent": "contextologist_agent",
     "alternativeNextAgents": [
-      "contextologist_agent",
-      "sergey_interaction_profiler"
+      "sergey_interaction_profiler",
+      "author_style_memory_agent"
     ],
     "shipyardModernization": {
       "status": "stability_gate_passed",
