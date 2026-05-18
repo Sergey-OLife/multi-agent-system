@@ -23,17 +23,18 @@ GitHub — источник правды. Сначала открой:
 14. knowledge/05_agent_memory/agent_proposals/svod_guard.md
 15. knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
 16. knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md
-17. knowledge/07_operations/review_depth_protocol.md
-18. knowledge/07_operations/repository_hygiene_protocol.md
-19. scripts/hygiene-audit.mjs
+17. knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md
+18. knowledge/07_operations/review_depth_protocol.md
+19. knowledge/07_operations/repository_hygiene_protocol.md
+20. scripts/hygiene-audit.mjs
 
 Актуальное состояние:
 
-- currentVersion: v2.17.
-- lastCompletedVersion: v2.17.
-- lastMergedPr: PR #110 — Sync state after profiler proposal.
-- lastMergeCommit: f9223e9698dc3dcdb16948effb894131ab14d36e.
-- currentMilestone: v2.17 Checkpoint full after profiler state sync.
+- currentVersion: v2.18.
+- lastCompletedVersion: v2.18.
+- lastMergedPr: PR #112 — Add author style memory agent proposal.
+- lastMergeCommit: c5c3cf43951b3d32d46c5f37d994f66d941dd138.
+- currentMilestone: v2.18 Author style memory proposal synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -65,6 +66,7 @@ Proposal agents:
 - svod_guard.
 - contextologist_agent.
 - sergey_interaction_profiler.
+- author_style_memory_agent.
 
 Active optional workflow layers:
 
@@ -84,5 +86,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare author_style_memory_agent proposal without activation, unless Sergey chooses a different agent.
+Prepare banality_alarm_agent proposal without activation, unless Sergey chooses a different agent.
 ```
