@@ -4,59 +4,63 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.6
-- lastCompletedVersion: v2.6
-- lastMergedPr: PR #83 — Checkpoint full after schema pressure contract
-- lastMergeCommit: d2e3e66b57375c8ec8fe46d4e7180bb8f7731b1f
-- currentMilestone: v2.6 Full checkpoint after restart-prompt-first protocol correction
-- currentMode: Agent Shipyard / Shipyard Modernization
+- currentVersion: v2.7
+- lastCompletedVersion: v2.7
+- lastMergedPr: PR #86 — Add bug response and compatibility protocol
+- lastMergeCommit: 80f2df5f8e8bf1f8dbb272fd88056a57ecf615a3
+- currentMilestone: v2.7 Shipyard Modernization stability gate passed
+- currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #79 — Add minimal registry-check Go command
-- PR #81 — Add minimal Go validation primitives and pressure tests
 - PR #82 — Document schema pressure invariants for Go-core envelope
-- PR #83 — Checkpoint full after schema pressure contract
 - PR #84 — Checkpoint full after restart prompt protocol correction
+- PR #85 — Add focused Go-core schema pressure tests
+- PR #86 — Add bug response and compatibility protocol
+- PR #87 — Checkpoint full: Shipyard Modernization stability gate passed
 
 ## Shipyard Modernization status
 
-Состояние после PR #83:
+Состояние после PR #86:
 
+- Shipyard Modernization stability gate passed.
 - TypeScript остаётся orchestration shell.
-- Go-core стал deterministic validation layer behind JSON stdin/stdout.
+- Go-core стал deterministic validation spine behind JSON stdin/stdout.
 - `sync-check` и `registry-check` существуют как реальные Go-core commands.
 - TypeScript wrapper остаётся transport shell: file collection, binary invocation, stdout parsing, unavailable fallback.
 - Minimal Sync Check CI workflow запускает Go-core validation loop.
 - `registry-check` проверяет structural registry signal, не активирует агентов.
 - Go validation primitives добавлены маленьким слоем, без validator framework.
-- Pressure tests проверяют bad states: registry identity, blocked project state, status priority.
-- Schema pressure invariants documented before runtime enforcement.
+- Schema pressure invariants documented and pressure-tested without schema framework.
+- Bug response compatibility protocol зафиксирован: classify, failing test/fixture, narrow fix, framework only after repeated proven pain.
 
-## Process correction
+## Layer formula
 
-После вопроса Сергея зафиксировано:
+```text
+Go проверяет.
+TypeScript соединяет.
+LLM думает.
+Сергей утверждает.
+GitHub фиксирует.
+```
 
-- правило `restart prompt first` уже было в `working-protocol.md`;
-- предыдущий сбой был assistant noncompliance, не missing policy;
-- при `#checkpoint full` сначала даётся restart prompt в чат;
-- только после этого выполняются GitHub-операции.
+Go-core — позвоночник системы, не полный replacement TypeScript.
 
 ## Active decisions
 
 - GitHub is the source of truth for project state.
-- Book Fast Track remains the writing mode for book chapters, but the book is currently paused until the agent shipyard is sufficiently built.
-- Current active mode is Agent Shipyard with a temporary Shipyard Modernization subfocus.
-- First build the ship, then sail: do not continue the book automatically while the current focus is agent buildout or shipyard modernization.
+- Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
+- Current active mode returns to Agent Shipyard / Agent Queue.
 - Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
 - TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout.
 - Go-core commands currently include `sync-check` and `registry-check`.
 - Wrapper owns transport, not validation meaning.
 - Go-core validation loop is part of CI through the minimal Sync Check workflow.
 - Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine.
-- Go-core envelope invariants are documented as internal API assumptions before runtime enforcement.
-- Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until pressure tests show real need.
+- Go-core envelope invariants are documented and pressure-tested without schema framework.
+- Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until repeated proven pain appears.
+- Bug response protocol: classify bug, add minimal failing test or fixture, make narrow fix, consider framework only after repeated proven pain.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -77,7 +81,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Paused tasks
 
-- Do not continue the book automatically while current mode is Agent Shipyard or Shipyard Modernization.
+- Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
 - Do not create `book/03_approved/chapter_00_preface.md` until final approval.
 - Do not treat all uploaded project sources as fully audited.
 - Do not activate proposal agents without controlled activation and separate approval.
@@ -85,7 +89,7 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Next action
 
-Add focused Go-core schema pressure tests for malformed envelopes and contract edge cases without introducing a schema framework.
+Return to the agent queue and prepare `checkpoint_compressor_agent` proposal without activation.
 
 ## Chat writing state
 
@@ -111,6 +115,7 @@ Add focused Go-core schema pressure tests for malformed envelopes and contract e
 - knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 - knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
 - knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md
+- knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md
 - .github/workflows/sync-check.yml
 - package.json
 - scripts/run-sync-check.mjs
@@ -118,6 +123,7 @@ Add focused Go-core schema pressure tests for malformed envelopes and contract e
 - go-core/go.mod
 - go-core/cmd/multi-agent-core/main.go
 - go-core/cmd/multi-agent-core/main_test.go
+- go-core/cmd/multi-agent-core/schema_pressure_test.go
 - go-core/cmd/multi-agent-core/validation_primitives.go
 - src/domain/index.ts
 - src/engine/index.ts
