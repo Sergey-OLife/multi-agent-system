@@ -159,12 +159,13 @@ agent_container_registry:
     - agent_id: "copyright_boundary_guard"
       working_name_ru: "Страж авторских границ"
       group: "Источники и доказательная дисциплина"
-      status: "container"
+      status: "proposal"
       ship_role: "deck_watch"
       why_needed: "Защищает проект от близкого рерайта, длинных цитат и raw book leaks."
       main_formula: "Источник помогает думать, но не становится нашим текстом."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md"
       activation_risk: "high"
       approval_gate: true
 
@@ -817,12 +818,11 @@ agent_container_registry:
 
 Следующими нужно довести до proposal:
 
-1. `copyright_boundary_guard`
-2. `svod_guard`
-3. `contextologist_agent`
-4. `sergey_interaction_profiler`
-5. `author_style_memory_agent`
+1. `svod_guard`
+2. `contextologist_agent`
+3. `sergey_interaction_profiler`
+4. `author_style_memory_agent`
 
-`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent` и `source_card_builder` уже переведены из `container` в `proposal`, но не активированы.
+`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent`, `source_card_builder` и `copyright_boundary_guard` уже переведены из `container` в `proposal`, но не активированы.
 
 Этот список не окончательный. Сергей может добавлять новых агентов. ChatGPT также может предлагать новых агентов, если видит функциональную дыру, повторяющийся сбой или риск для корабля.
