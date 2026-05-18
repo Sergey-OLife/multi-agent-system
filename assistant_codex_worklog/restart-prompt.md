@@ -35,11 +35,11 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.21.
-- lastCompletedVersion: v2.21.
-- lastMergedPr: PR #116 — Add anti-cliche editor proposal.
-- lastMergeCommit: 26d77624c640d1594b2e41aeaae0643959c250b4.
-- currentMilestone: v2.21 Anti-cliche editor proposal synced.
+- currentVersion: v2.22.
+- lastCompletedVersion: v2.22.
+- lastMergedPr: PR #121 — Archive repository contract risks.
+- lastMergeCommit: cc8e2f2216e518871b35c3aa48c91fdbc6bb4943.
+- currentMilestone: v2.22 Archive risks and capture prompt refresh synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -49,11 +49,23 @@ Conversation archive — важный слой восстановления ко
 - Это не project-state, не approval-log и не technical checkpoint.
 - Он хранит смысловые зерна из чатов, которые иначе теряются между ветками и окнами общения.
 - При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй не только state/roadmap, но и `knowledge/08_conversation_archive/index.md` + релевантные entries.
+- Relevant entry now exists: `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`.
 - Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
 - Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
 - Audit доступен: `npm run archive:audit`.
 - Future `#checkpoint full` должен включать short checkpoint capture check: есть ли смысловые open loops, не отражённые в architecture?
 - При capture учитывать open PRs отдельно: open PR не равен implemented.
+
+Repository contract risks archived:
+
+- root `README.md` / repository architecture contract needed;
+- source-of-truth map needed;
+- `scripts/` boundary needed so scripts do not become a second informal core;
+- `main` branch protection action item needed;
+- future knowledge/protocol consistency checks needed;
+- label-triggered registry sync may replace manual `workflow_dispatch` later.
+
+These are archived risks and recommended work items, not implementation approval.
 
 Anti-cliche editor:
 
@@ -122,12 +134,7 @@ Active optional workflow layers:
 - Не активировать hard guardrails или proposal agents без отдельного решения.
 - Перед любым будущим `#checkpoint full` сначала выдать compact restart prompt в чат.
 
-Текущие открытые хвосты:
-
-- PR #121 — Archive repository contract risks — open; нужен `++` перед merge.
-- После PR #121 recommended next step: `Add repository architecture contract`, если Сергей не выберет другой шаг.
-
 Следующий логичный шаг:
 
-Сначала закрыть PR #121, затем подготовить repository architecture contract или `conversation_archive_librarian` proposal — в зависимости от выбора Сергея.
+Prepare `Add repository architecture contract` PR unless Sergey chooses `conversation_archive_librarian` proposal first.
 ```

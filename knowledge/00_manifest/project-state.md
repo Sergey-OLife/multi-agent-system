@@ -4,26 +4,49 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.21
-- lastCompletedVersion: v2.21
-- lastMergedPr: PR #116 — Add anti-cliche editor proposal
-- lastMergeCommit: 26d77624c640d1594b2e41aeaae0643959c250b4
-- currentMilestone: v2.21 Anti-cliche editor proposal synced
+- currentVersion: v2.22
+- lastCompletedVersion: v2.22
+- lastMergedPr: PR #121 — Archive repository contract risks
+- lastMergeCommit: cc8e2f2216e518871b35c3aa48c91fdbc6bb4943
+- currentMilestone: v2.22 Archive risks and capture prompt refresh synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #115 — Sync state after banality alarm proposal
-- PR #117 — Add registry sync workflow
 - PR #118 — Add conversation archive capture protocol
 - PR #119 — Sync state after conversation archive protocol
 - PR #116 — Add anti-cliche editor proposal
 - PR #120 — Sync state after anti-cliche editor proposal
+- PR #122 — Refresh conversation capture prompt and restart handoff
+- PR #121 — Archive repository contract risks
+
+## Archive risks and capture refresh
+
+PR #122 refreshed the universal conversation capture prompt and restart handoff.
+
+Key rule:
+
+- `main` is the source of truth only for merged state;
+- open PR is not implemented;
+- draft PR is not ready state;
+- approval-gate is not approval;
+- archive capture must check relevant open PRs when the chat references them.
+
+PR #121 archived repository contract risks:
+
+- root `README.md` / repository architecture contract needed;
+- source-of-truth map needed;
+- `scripts/` boundary needed so scripts do not become a second informal core;
+- `main` branch protection action item needed;
+- future knowledge/protocol consistency checks needed;
+- label-triggered registry sync may replace manual `workflow_dispatch` later.
+
+These are archived risks and recommended work items, not implementation approval.
 
 ## Anti-cliche editor
 
-`anti_cliche_editor` is now proposal only, not activated and not a hard guardrail.
+`anti_cliche_editor` is proposal only, not activated and not a hard guardrail.
 
 - Proposal path: `knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md`
 - Registry status: `proposal`
@@ -55,6 +78,7 @@ Important paths:
 - `knowledge/08_conversation_archive/conversation_capture_prompt.md`
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
 - `scripts/archive-audit.mjs`
 
 Audit command:
@@ -62,6 +86,8 @@ Audit command:
 ```bash
 npm run archive:audit
 ```
+
+Conversation archive is a significant context recovery layer. For forgotten ideas, contradictions, plans, interaction style, or “what next?” questions, check `index.md` and relevant entries after state/roadmap.
 
 ## Repository hygiene
 
@@ -97,7 +123,10 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Shipyard Modernization stability gate is passed.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Conversation archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint.
+- Conversation archive is a significant context recovery layer and must be checked for forgotten ideas, contradictions, plans, interaction style and what-next questions.
 - Archive audit is available as `npm run archive:audit`.
+- Conversation capture must distinguish merged main state from open PRs; open PR is not implemented.
+- Repository architecture contract is a recommended next step but not yet approved as an implementation PR.
 - Registry sync workflow is available as manual `workflow_dispatch` after PR #117.
 - Registry mutation protocol is active: registry changes must use deterministic tooling rather than manual full replacement when tooling is available.
 - `anti_cliche_editor` is a proposal only, not activated and not a hard guardrail.
@@ -113,7 +142,7 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Repository hygiene audit is available as `npm run hygiene:audit`.
 - Repository hygiene ledger is GitHub issue #99.
 - Branch hygiene cleanup remains cleanup_needed, not completed.
-- Next agent queue candidate after `anti_cliche_editor` is `conversation_archive_librarian`, unless Sergey chooses a different agent.
+- Next recommended work item is Add repository architecture contract unless Sergey chooses conversation_archive_librarian first.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -150,10 +179,11 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Do not create hard guardrails without separate approval and PR.
 - Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
 - Do not let conversation archive become a raw transcript dump.
+- Do not treat repository architecture contract recommendation as already approved.
 
 ## Next action
 
-Prepare `conversation_archive_librarian` proposal without activation, unless Sergey chooses a different agent or first asks to improve registry workflow automation.
+Prepare `Add repository architecture contract` PR unless Sergey chooses `conversation_archive_librarian` proposal first.
 
 ## Chat writing state
 
