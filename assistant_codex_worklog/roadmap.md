@@ -18,15 +18,16 @@
 - v2.12 — Contextologist proposal synced
 - v2.13 — Checkpoint full after contextologist state sync
 - v2.14 — Repository hygiene audit and ledger protocol synced
+- v2.15 — Checkpoint full after repository hygiene state sync
 
 ## Recent PR summary
 
-- PR #95 — Sync state after svod guard proposal.
-- PR #96 — Add contextologist agent proposal.
 - PR #97 — Sync state after contextologist proposal.
 - PR #98 — Checkpoint full after contextologist state sync.
 - PR #100 — Add repository hygiene audit and ledger protocol [closed superseded].
 - PR #101 — Add repository hygiene audit and ledger protocol.
+- PR #102 — Sync state after repository hygiene audit.
+- PR #103 — Checkpoint full after repository hygiene state sync.
 
 ## Shipyard Modernization result
 
@@ -46,7 +47,7 @@ GitHub фиксирует.
 
 ## Repository hygiene
 
-Теперь доступно:
+Доступно:
 
 ```bash
 npm run hygiene:audit
