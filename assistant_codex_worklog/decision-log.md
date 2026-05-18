@@ -417,3 +417,87 @@ PR #82 смержен.
 Checkpoint фиксирует состояние после PR #82.
 
 Следующий безопасный шаг: focused Go-core schema pressure tests для malformed envelopes и contract edge cases без schema framework.
+
+### 55. `checkpoint_compressor_agent` создан как proposal
+
+PR #88 смержен.
+
+Решение:
+
+- агент сжимает restart prompt как стартовый ключ, а не архив;
+- не активирован;
+- registry синхронизирован: status `proposal`, next_action `controlled_activation`.
+
+### 56. `source_card_builder` создан как proposal
+
+PR #90 смержен.
+
+Решение:
+
+- карточка источника — паспорт применения, не доказательство прочтения;
+- не активирован;
+- registry синхронизирован.
+
+### 57. `copyright_boundary_guard` создан как proposal
+
+PR #92 смержен.
+
+Решение:
+
+- источник помогает думать, но не становится нашим текстом;
+- не юридическое заключение;
+- не активирован и не hard guardrail.
+
+### 58. `svod_guard` создан как proposal
+
+PR #94 смержен.
+
+Решение:
+
+- Свод задаёт правила, текст не должен спорить с собственным позвоночником;
+- агент не переписывает Свод и не даёт approval вместо Сергея;
+- не активирован и не hard guardrail.
+
+### 59. `contextologist_agent` создан как proposal
+
+PR #96 смержен.
+
+Решение:
+
+- сначала карта, потом ход;
+- агент восстанавливает контекст проекта перед шагом;
+- не командует маршрутом, не меняет state, не заменяет `workflow_conductor_agent`;
+- не активирован и не hard guardrail.
+
+### 60. State sync после `contextologist_agent`
+
+PR #97 смержен.
+
+Решение:
+
+- state/worklog/restart prompt указывают на PR #96/97;
+- следующий safe step — `sergey_interaction_profiler` proposal without activation.
+
+### 61. Branch hygiene после PR #97
+
+Проверка показала stale merged branches после серии proposal/state-sync PR.
+
+Решение:
+
+- ветки не влияют на runtime, Go/TS, registry, state, routes, guardrails или книгу;
+- текущий GitHub tool surface не имеет явной безопасной операции delete branch;
+- не использовать force-ref workaround;
+- очистить stale branches вручную в GitHub UI или будущим явным delete-branch tool;
+- не заявлять, что cleanup выполнен, пока ветки реально не удалены.
+
+### 62. Checkpoint full after contextologist state sync
+
+PR #98 подготовлен как checkpoint после PR #97.
+
+Решение:
+
+- зафиксировать v2.13;
+- подтвердить режим `Agent Shipyard / Agent Queue`;
+- книга остаётся на паузе;
+- следующий safe step — `sergey_interaction_profiler` proposal without activation;
+- branch hygiene зафиксирована как cleanup_needed, не как completed.
