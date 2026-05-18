@@ -492,7 +492,7 @@ PR #97 смержен.
 
 ### 62. Checkpoint full after contextologist state sync
 
-PR #98 подготовлен как checkpoint после PR #97.
+PR #98 смержен.
 
 Решение:
 
@@ -501,3 +501,40 @@ PR #98 подготовлен как checkpoint после PR #97.
 - книга остаётся на паузе;
 - следующий safe step — `sergey_interaction_profiler` proposal without activation;
 - branch hygiene зафиксирована как cleanup_needed, не как completed.
+
+### 63. Repository hygiene audit and ledger protocol
+
+PR #101 смержен.
+
+Решение:
+
+- добавить `npm run hygiene:audit`;
+- добавить `scripts/hygiene-audit.mjs`;
+- добавить `knowledge/07_operations/repository_hygiene_protocol.md`;
+- создать issue #99 как единый Repository hygiene ledger;
+- tracked junk проверять повторяемо;
+- веточный cleanup фиксировать в ledger, если нет безопасного branch cleanup tool;
+- не использовать branch-ref workarounds;
+- не считать cleanup completed до фактической уборки.
+
+### 64. State sync after repository hygiene audit
+
+PR #102 смержен.
+
+Решение:
+
+- state/worklog/restart prompt указывают на PR #101/102;
+- branch cleanup остаётся cleanup_needed, not completed;
+- следующий safe step остаётся `sergey_interaction_profiler` proposal without activation.
+
+### 65. Checkpoint full after repository hygiene state sync
+
+PR #103 подготовлен как checkpoint после PR #102.
+
+Решение:
+
+- зафиксировать v2.15;
+- подтвердить режим `Agent Shipyard / Agent Queue`;
+- repository hygiene audit активен как инструмент проверки;
+- branch cleanup остаётся cleanup_needed в issue #99;
+- следующий safe step — `sergey_interaction_profiler` proposal without activation.
