@@ -6,7 +6,7 @@
 
 `Agent Shipyard / Agent Queue`
 
-Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — state sync после PR #116 и подготовка следующего proposal-агента.
+Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус — state sync после PR #121/#122 и выбор между repository architecture contract и `conversation_archive_librarian` proposal.
 
 ## Уже завершено
 
@@ -25,15 +25,40 @@
 - v2.19 — Banality alarm proposal synced
 - v2.20 — Conversation archive capture protocol synced
 - v2.21 — Anti-cliche editor proposal synced
+- v2.22 — Archive risks and capture prompt refresh synced
 
 ## Recent PR summary
 
-- PR #115 — Sync state after banality alarm proposal.
-- PR #117 — Add registry sync workflow.
 - PR #118 — Add conversation archive capture protocol.
 - PR #119 — Sync state after conversation archive protocol.
 - PR #116 — Add anti-cliche editor proposal.
 - PR #120 — Sync state after anti-cliche editor proposal.
+- PR #122 — Refresh conversation capture prompt and restart handoff.
+- PR #121 — Archive repository contract risks.
+
+## Archive risks and capture refresh
+
+PR #122 refreshed the universal conversation capture prompt and restart handoff.
+
+Key rule:
+
+```text
+main — источник правды только для merged state.
+open PR ≠ implemented.
+draft PR ≠ ready state.
+approval-gate ≠ approval.
+```
+
+PR #121 archived repository contract risks:
+
+- root `README.md` / repository architecture contract needed;
+- source-of-truth map needed;
+- `scripts/` boundary needed so scripts do not become a second informal core;
+- `main` branch protection action item needed;
+- future knowledge/protocol consistency checks needed;
+- label-triggered registry sync may replace manual `workflow_dispatch` later.
+
+These are archived risks and recommended work items, not implementation approval.
 
 ## Anti-cliche editor
 
@@ -50,18 +75,6 @@ Core role:
 ```text
 Убрать умно звучащее пустое. Оставить точное и живое.
 ```
-
-The agent helps classify and sharpen:
-
-- cliche;
-- commonplace;
-- pseudo-depth;
-- plastic advertising voice;
-- moralizing;
-- manual voice;
-- bureaucracy;
-- vague claims;
-- overpolished AI tone.
 
 ## Registry mutation protocol
 
@@ -89,7 +102,11 @@ GitHub фиксирует.
 
 Новый modernization work допускается только при конкретном bug/compatibility risk.
 
-Отдельная уязвимость остаётся для будущего улучшения: manual `workflow_dispatch` можно заменить label-triggered registry sync workflow, но это отдельный workflow PR и не должно блокировать текущий state sync.
+Отдельные future improvements:
+
+- manual `workflow_dispatch` можно заменить label-triggered registry sync workflow;
+- repository architecture contract должен описать границы Go-core / TS-orchestrator / scripts;
+- branch protection для `main` нужно вынести отдельным action item.
 
 ## Review depth protocol
 
@@ -114,6 +131,7 @@ Conversation archive is active as a separate human interaction archive:
 - `knowledge/08_conversation_archive/conversation_capture_prompt.md`
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
 
 Audit:
 
@@ -127,7 +145,8 @@ Rules:
 - do not duplicate project-state / roadmap / issue / proposal / registry;
 - add archive entries only when something would otherwise be lost;
 - during future `#checkpoint full`, run a short checkpoint capture check;
-- long-lived observations about Sergey interaction style are allowed, but not as psychological diagnosis.
+- long-lived observations about Sergey interaction style are allowed, but not as psychological diagnosis;
+- check archive index and relevant entries for forgotten ideas, contradictions, plans and interaction-style questions.
 
 ## Repository hygiene
 
@@ -175,15 +194,19 @@ Proposal не является activation.
 - `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
 - `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
 
-## Возврат к агентам
+## Возврат к агентам / архитектуре
 
-Текущий ближайший шаг после state sync:
+Текущий ближайший recommended work item:
 
-1. Создать `conversation_archive_librarian` proposal only, если Сергей не выберет другой шаг.
-2. Не активировать его сразу.
-3. После 2–3 реальных archive entries решить, нужен ли optional workflow layer.
+1. Создать `Add repository architecture contract` PR, если Сергей не выберет другой шаг.
+2. Не включать туда branch protection implementation, label-triggered workflow и integration tests.
+3. Их оформить как следующие независимые задачи.
 
-Альтернативные следующие агенты, если Сергей выберет книжный/редакторский порядок:
+Альтернативный агентский шаг:
+
+- `conversation_archive_librarian` proposal only.
+
+Альтернативные книжно-редакторские агенты:
 
 - `plotnikov_motor_agent`
 - `one_strike_chapter_agent`
@@ -234,5 +257,6 @@ Proposal не является activation.
 - Не путать source card с прочитанным источником.
 - Не считать branch cleanup завершённым, пока issue #99 не обновлён после реальной уборки.
 - Не превращать conversation archive в raw transcript dump.
+- Не считать repository architecture contract уже approved.
 - Все human-readable artifacts — на русском.
 - Для кода, агентов и модернизации сохранять строгий PR workflow.
