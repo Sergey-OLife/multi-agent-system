@@ -12,18 +12,17 @@
 
 ## Последний смерженный PR
 
-- PR #112 — Add author style memory agent proposal
+- PR #114 — Add banality alarm agent proposal
 - Статус: merged
-- Merge commit: `c5c3cf43951b3d32d46c5f37d994f66d941dd138`
-- Смысл: добавлен `knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md`, registry синхронизирован.
+- Merge commit: `5f65e6fee8a0e3dc47b9e80ea947b71e19b2a575`
+- Смысл: добавлен `knowledge/05_agent_memory/agent_proposals/banality_alarm_agent.md`, registry синхронизирован.
 
-## Что зафиксировал PR #112
+## Что зафиксировал PR #114
 
-- `author_style_memory_agent` — proposal only, не activation, не route element, не hard guardrail.
-- Registry block для `author_style_memory_agent` переведён из `container` в `proposal`.
+- `banality_alarm_agent` — proposal only, не activation, не route element, не hard guardrail.
+- Registry block для `banality_alarm_agent` переведён из `container` в `proposal`.
 - Добавлен `proposal_path`.
 - `next_action` в registry: `controlled_activation`.
-- Automatic memory writes не добавлялись.
 - Книга не продолжалась.
 
 ## Repository hygiene
@@ -48,11 +47,11 @@ npm run hygiene:audit
 
 ## Agent queue status
 
-`author_style_memory_agent` теперь proposal only, не activation и не hard guardrail.
+`banality_alarm_agent` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: хранить подтверждённые editorial style decisions, formula memory, rhythm memory, scene/object memory, failure-pattern memory и counterexamples без превращения стиля в канон.
+Его роль: быстро сигналить о банальности, рекламной пластмассе, методичке, слишком ИИ-голосе, потере мотора, псевдоглубине, декоративной морали и расплывчатых утверждениях.
 
-Ограничение: он не имитирует Сергея, не пишет вместо автора, не блокирует merge, не создаёт automatic memory writes и не заменяет живую редактуру.
+Ограничение: он не переписывает весь текст, не заменяет `anti_cliche_editor`, `author_style_memory_agent`, `plotnikov_motor_agent`, `one_strike_chapter_agent` или живую редактуру Сергея.
 
 ## Актуальные proposal-агенты
 
@@ -67,6 +66,7 @@ npm run hygiene:audit
 - `contextologist_agent` — proposal only, не activation.
 - `sergey_interaction_profiler` — proposal only, не activation.
 - `author_style_memory_agent` — proposal only, не activation.
+- `banality_alarm_agent` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -77,13 +77,13 @@ npm run hygiene:audit
 
 ## Следующий безопасный шаг
 
-Подготовить `banality_alarm_agent` как proposal без activation, если Сергей не выберет другой агент.
+Подготовить `anti_cliche_editor` как proposal без activation, если Сергей не выберет другой агент.
 
 Почему он следующий:
 
-- `author_style_memory_agent` уже оформлен как proposal;
-- следующий ближайший контейнер в группе «Профиль взаимодействия и авторская память» — `banality_alarm_agent`;
-- он должен быть коротким сигнализатором повторяющихся сбоев: банальность, пластмасса, методичка, слишком ИИ, потеря мотора.
+- `banality_alarm_agent` теперь умеет быстро сигналить о сбое;
+- нужен полноценный редакторский агент, который не просто кричит «пластмасса», а классифицирует и перетачивает клише;
+- он должен работать глубже, чем сигнализация, но не превращаться в переписывание всей книги без запроса.
 
 ## Что временно не делаем
 
