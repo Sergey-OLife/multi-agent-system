@@ -22,15 +22,17 @@ GitHub — источник правды. Сначала открой:
 13. knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
 14. knowledge/05_agent_memory/agent_proposals/svod_guard.md
 15. knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
-16. knowledge/07_operations/repository_hygiene_protocol.md
-17. scripts/hygiene-audit.mjs
+16. knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md
+17. knowledge/07_operations/review_depth_protocol.md
+18. knowledge/07_operations/repository_hygiene_protocol.md
+19. scripts/hygiene-audit.mjs
 
 Актуальное состояние:
 
-- currentVersion: v2.15.
-- lastCompletedVersion: v2.15.
-- lastMergedPr: PR #102 — Sync state after repository hygiene audit.
-- lastMergeCommit: 4db41f8305928fae94add0231c9fc35b7d6fb521.
+- currentVersion: v2.16.
+- lastCompletedVersion: v2.16.
+- lastMergedPr: PR #104 — Add review depth protocol and profiler proposal.
+- lastMergeCommit: c4125030eef986eb489b28122275d493997fc636.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -40,6 +42,14 @@ Repository hygiene:
 - Issue #99 — Repository hygiene ledger.
 - Branch cleanup остаётся cleanup_needed, не completed.
 - Не использовать branch-ref workarounds.
+
+Operational protocol:
+
+- `review_depth_protocol` активен как operational protocol.
+- L1/L2/L3 review depth.
+- `+` — следующий grounded safe step, не approval.
+- `++` — approval текущего понятного approval-gate.
+- `+++` — ближайшее уже grounded safe action, не обход approval-gates.
 
 Proposal agents:
 
@@ -52,6 +62,7 @@ Proposal agents:
 - copyright_boundary_guard.
 - svod_guard.
 - contextologist_agent.
+- sergey_interaction_profiler.
 
 Active optional workflow layers:
 
@@ -62,9 +73,7 @@ Active optional workflow layers:
 
 Правила:
 
-- `+` — следующий безопасный шаг, не approval.
-- `++` — approval текущего понятного approval-gate.
-- Если после `++` PR существенно изменён — нужен новый `++`.
+- Proposal не является activation.
 - Strict PR workflow обязателен для кода, агентов, guardrails, registries, project-state, source cards, MVP, Сводов, repository hygiene и Shipyard Modernization.
 - Не продолжать книгу автоматически.
 - Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
@@ -72,5 +81,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare sergey_interaction_profiler proposal without activation.
+Prepare author_style_memory_agent proposal without activation, unless Sergey chooses a different agent.
 ```
