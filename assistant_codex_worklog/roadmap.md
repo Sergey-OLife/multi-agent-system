@@ -17,15 +17,16 @@
 - v2.11 — Svod guard proposal synced
 - v2.12 — Contextologist proposal synced
 - v2.13 — Checkpoint full after contextologist state sync
+- v2.14 — Repository hygiene audit and ledger protocol synced
 
 ## Recent PR summary
 
-- PR #93 — Sync state after copyright boundary guard proposal.
-- PR #94 — Add svod guard agent proposal.
 - PR #95 — Sync state after svod guard proposal.
 - PR #96 — Add contextologist agent proposal.
 - PR #97 — Sync state after contextologist proposal.
 - PR #98 — Checkpoint full after contextologist state sync.
+- PR #100 — Add repository hygiene audit and ledger protocol [closed superseded].
+- PR #101 — Add repository hygiene audit and ledger protocol.
 
 ## Shipyard Modernization result
 
@@ -42,6 +43,27 @@ GitHub фиксирует.
 ```
 
 Новый modernization work допускается только при конкретном bug/compatibility risk.
+
+## Repository hygiene
+
+Теперь доступно:
+
+```bash
+npm run hygiene:audit
+```
+
+Единый ledger:
+
+- Issue #99 — Repository hygiene ledger.
+
+Branch cleanup остаётся `cleanup_needed`, не `completed`.
+
+Правило:
+
+- tracked junk удаляется через нормальный PR;
+- stale branches фиксируются в issue #99, если нет безопасного branch cleanup tool;
+- не использовать branch-ref workarounds;
+- не выдавать cleanup за completed до фактической уборки.
 
 ## Proposal agents
 
@@ -63,14 +85,6 @@ Proposal не является activation.
 - `ethical_persuasion_guard` — оставить огонь, убрать дым.
 - `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
 - `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
-
-## Branch hygiene
-
-После PR #97 остались stale merged branches.
-
-Уборка нужна, но текущий GitHub tool surface не имеет явной безопасной операции delete branch. Не использовать force-ref workaround.
-
-Stale branches отмечены в `project-state` и комментарии PR #97.
 
 ## Возврат к агентам
 
@@ -101,6 +115,7 @@ prepare sergey_interaction_profiler proposal without activation
 - source cards/training cases;
 - Сводов, MVP и карт контекстов;
 - agent proposals / controlled activations / optional layers;
+- repository hygiene protocols;
 - Shipyard Modernization changes.
 
 ## Book Fast Track
@@ -127,5 +142,6 @@ prepare sergey_interaction_profiler proposal without activation
 - Не хранить сырой текст Плотникова.
 - Не делать вид, что все загруженные источники уже проаудированы.
 - Не путать source card с прочитанным источником.
+- Не считать branch cleanup завершённым, пока issue #99 не обновлён после реальной уборки.
 - Все human-readable artifacts — на русском.
 - Для кода, агентов и модернизации сохранять строгий PR workflow.
