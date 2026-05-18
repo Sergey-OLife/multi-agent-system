@@ -1,61 +1,36 @@
 {
-  "currentVersion": "v2.9",
-  "lastCompletedVersion": "v2.9",
-  "lastMergedPr": "PR #90 — Add source card builder agent proposal",
-  "lastMergeCommit": "eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4",
-  "currentMilestone": "v2.9 Source card builder proposal synced",
+  "currentVersion": "v2.10",
+  "lastCompletedVersion": "v2.10",
+  "lastMergedPr": "PR #92 — Add copyright boundary guard agent proposal",
+  "lastMergeCommit": "fc81c223bbf45093697550c588fd4a7b696e5da1",
+  "currentMilestone": "v2.10 Copyright boundary guard proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
-    "v0.2 routing baseline",
-    "v0.3 foundation agents diagnostics",
-    "v0.4 knowledge hierarchy",
-    "v0.5 source cards registry",
-    "v0.6 contextologist to source registry",
-    "v0.7 manual chapter workflow structure",
-    "v0.8 chapter processing artifact templates",
-    "v0.9 project resume protocol",
-    "v1.0 Process Plotnikov preface map and sync package",
-    "v1.1 Derive project resume diagnostics from project-state",
-    "v1.2 Fix project-state path resolution",
-    "v1.3 Add Russian review layer for artifacts",
-    "v1.4 Add clickable review links",
-    "v1.5 Add source location registry for Google Drive",
-    "v1.6 Train anti_cliche_editor on preface review case",
-    "v1.7 Add anti-cliche review map for chapter_00_preface",
-    "v1.8 Apply approved anti-cliche revisions to chapter_00_preface draft",
-    "v1.9 Create reviewed chapter_00_preface artifact",
-    "v2.0 Checkpoint Book Fast Track workflow",
-    "v2.1 Checkpoint project sources uploaded and Source Intake Audit ready",
-    "v2.2 Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion",
-    "v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor",
-    "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals",
-    "v2.5 Checkpoint Go-core validation loop and schema pressure contract",
-    "v2.6 Checkpoint restart-prompt-first protocol correction",
     "v2.7 Shipyard Modernization stability gate passed",
     "v2.8 Checkpoint compressor proposal synced",
-    "v2.9 Source card builder proposal synced"
+    "v2.9 Source card builder proposal synced",
+    "v2.10 Copyright boundary guard proposal synced"
   ],
   "recentPrs": [
-    "PR #87 — Checkpoint full: Shipyard Modernization stability gate passed",
-    "PR #88 — Add checkpoint compressor agent proposal",
     "PR #89 — Sync state after checkpoint compressor proposal",
     "PR #90 — Add source card builder agent proposal",
-    "PR #91 — Sync state after source card builder proposal"
+    "PR #91 — Sync state after source card builder proposal",
+    "PR #92 — Add copyright boundary guard agent proposal",
+    "PR #93 — Sync state after copyright boundary guard proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
     "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision",
     "current active mode is Agent Shipyard / Agent Queue",
-    "Shipyard Modernization stability gate is passed after Go-core schema pressure tests and bug response compatibility protocol",
-    "TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout",
-    "Go-core is the system spine, not a full replacement for TypeScript",
+    "Shipyard Modernization stability gate is passed",
     "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
     "checkpoint_compressor_agent is a proposal only, not activated",
     "source_card_builder is a proposal only, not activated",
-    "source_card_builder creates source application passports after source intake; it does not prove full source reading",
-    "source_card_builder must not commit raw books, raw source text, PDFs, EPUBs, DJVUs, MOBIs, private Drive IDs or URLs",
-    "next agent queue candidate after source_card_builder is copyright_boundary_guard",
+    "copyright_boundary_guard is a proposal only, not activated and not a hard guardrail",
+    "copyright_boundary_guard protects against raw source text, long quotes, close paraphrase, private source locations and source leaks",
+    "copyright_boundary_guard is not legal advice and does not replace professional legal review",
+    "next agent queue candidate after copyright_boundary_guard is svod_guard",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",
@@ -64,16 +39,8 @@
     "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
     "uploaded project sources are raw/source material until audited through Source Intake Audit",
     "source cards are not proof that full sources were read",
-    "socratic_lantern_agent is active only as an optional workflow layer, not a hard guardrail",
-    "ethical_persuasion_guard is active only as an optional workflow layer, not a hard guardrail",
-    "cbt_thought_check_agent is active only as an optional workflow layer, not a hard guardrail or therapy mode",
-    "source_intake_auditor is active only as an optional workflow layer, not a hard guardrail or workflow conductor",
-    "workflow_conductor_agent is a proposal only, not activated",
-    "agent_registry_librarian is a proposal only, not activated",
-    "approval_gate_keeper is a proposal only, not activated",
-    "project_state_synchronizer is a proposal only, not activated",
-    "agent architecture is Centralized Coordination + Peer-to-Peer communication",
-    "materials architecture is Coordinator-based star + fully-connected semantic topology"
+    "proposal agents remain proposal only, not activated",
+    "active optional workflow layers remain optional only, not hard guardrails"
   ],
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
@@ -82,7 +49,7 @@
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Prepare copyright_boundary_guard agent proposal without activation",
+  "nextAction": "Prepare svod_guard agent proposal without activation",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -97,7 +64,7 @@
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md",
     "knowledge/05_agent_memory/agent_proposals/source_card_builder.md",
-    "knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md"
+    "knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
@@ -122,13 +89,14 @@
       "approval_gate_keeper",
       "project_state_synchronizer",
       "checkpoint_compressor_agent",
-      "source_card_builder"
+      "source_card_builder",
+      "copyright_boundary_guard"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "copyright_boundary_guard",
+    "recommendedNextAgent": "svod_guard",
     "alternativeNextAgents": [
-      "svod_guard",
-      "contextologist_agent"
+      "contextologist_agent",
+      "sergey_interaction_profiler"
     ],
     "shipyardModernization": {
       "status": "stability_gate_passed",

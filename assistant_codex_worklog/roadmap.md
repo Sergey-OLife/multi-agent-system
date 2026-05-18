@@ -13,14 +13,15 @@
 - v2.7 — Shipyard Modernization stability gate passed
 - v2.8 — Checkpoint compressor proposal synced
 - v2.9 — Source card builder proposal synced
+- v2.10 — Copyright boundary guard proposal synced
 
 ## Recent PR summary
 
-- PR #87 — Checkpoint full: Shipyard Modernization stability gate passed.
-- PR #88 — Add checkpoint compressor agent proposal.
 - PR #89 — Sync state after checkpoint compressor proposal.
 - PR #90 — Add source card builder agent proposal.
 - PR #91 — Sync state after source card builder proposal.
+- PR #92 — Add copyright boundary guard agent proposal.
+- PR #93 — Sync state after copyright boundary guard proposal.
 
 ## Shipyard Modernization result
 
@@ -46,6 +47,7 @@ GitHub фиксирует.
 - `project_state_synchronizer`: proposal, not activated.
 - `checkpoint_compressor_agent`: proposal, not activated.
 - `source_card_builder`: proposal, not activated.
+- `copyright_boundary_guard`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -60,18 +62,17 @@ Proposal не является activation.
 
 Очередь:
 
-1. `copyright_boundary_guard`
-2. `svod_guard`
-3. `contextologist_agent`
-4. `sergey_interaction_profiler`
-5. `author_style_memory_agent`
+1. `svod_guard`
+2. `contextologist_agent`
+3. `sergey_interaction_profiler`
+4. `author_style_memory_agent`
 
-`checkpoint_compressor_agent` и `source_card_builder` уже доведены до proposal, но не активированы.
+`checkpoint_compressor_agent`, `source_card_builder` и `copyright_boundary_guard` уже доведены до proposal, но не активированы.
 
 Следующий безопасный шаг:
 
 ```text
-prepare copyright_boundary_guard proposal without activation
+prepare svod_guard proposal without activation
 ```
 
 ## Strict PR Workflow

@@ -12,18 +12,18 @@
 
 ## Последний смерженный PR
 
-- PR #90 — Add source card builder agent proposal
+- PR #92 — Add copyright boundary guard agent proposal
 - Статус: merged
-- Merge commit: `eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4`
-- Смысл: создан proposal `source_card_builder` и синхронизирован registry status.
+- Merge commit: `fc81c223bbf45093697550c588fd4a7b696e5da1`
+- Смысл: создан proposal `copyright_boundary_guard` и синхронизирован registry status.
 
 ## Agent queue status
 
-`source_card_builder` теперь proposal only, не activation.
+`copyright_boundary_guard` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: создавать паспорт применения источника после source intake.
+Его роль: защищать проект от raw source text, длинных цитат, близкого рерайта, private source locations и source leaks.
 
-Ключевое ограничение: source card не доказывает, что источник полностью прочитан.
+Ограничение: это не юридическое заключение и не замена профессиональной юридической проверки.
 
 ## Актуальные proposal-агенты
 
@@ -33,6 +33,7 @@
 - `project_state_synchronizer` — proposal only, не activation.
 - `checkpoint_compressor_agent` — proposal only, не activation.
 - `source_card_builder` — proposal only, не activation.
+- `copyright_boundary_guard` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -43,13 +44,13 @@
 
 ## Следующий безопасный шаг
 
-Подготовить `copyright_boundary_guard` как proposal без activation.
+Подготовить `svod_guard` как proposal без activation.
 
 Почему он следующий:
 
-- уже появились source intake и source cards;
-- следующий риск — близкий рерайт, длинные цитаты и raw source leaks;
-- copyright boundary должен появиться до массового создания source cards.
+- source boundary уже получил proposal-предохранители;
+- следующий риск — текст может не спорить с источниками, но спорить со своим Сводом;
+- `svod_guard` должен держать внутренний позвоночник книги, главы, MVP и агентной системы.
 
 ## Что временно не делаем
 
