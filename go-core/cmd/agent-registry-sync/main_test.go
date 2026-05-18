@@ -55,10 +55,10 @@ func TestRejectInvalidTransition(t *testing.T) {
 }
 
 func TestRejectDuplicateAgentIDs(t *testing.T) {
-	registry := sampleRegistry() + `
-    - agent_id: "sergey_interaction_profiler"
-      status: "container"
-`
+	registry := sampleRegistry() + "\n" + strings.Join([]string{
+		`    - agent_id: "sergey_interaction_profiler"`,
+		`      status: "container"`,
+	}, "\n")
 
 	_, _, err := mutateRegistry(registry, mutationRequest{
 		AgentID: "sergey_interaction_profiler",
@@ -75,20 +75,22 @@ func TestRejectDuplicateAgentIDs(t *testing.T) {
 }
 
 func sampleRegistry() string {
-	return `# Registry
-
-\`\`\`yaml
-agent_container_registry:
-  containers:
-    - agent_id: "workflow_conductor_agent"
-      status: "proposal"
-      next_action: "controlled_activation"
-      activation_risk: "medium"
-
-    - agent_id: "sergey_interaction_profiler"
-      status: "container"
-      next_action: "write_proposal"
-      activation_risk: "medium"
-\`\`\`
-`
+	return strings.Join([]string{
+		"# Registry",
+		"",
+		"```yaml",
+		"agent_container_registry:",
+		"  containers:",
+		`    - agent_id: "workflow_conductor_agent"`,
+		`      status: "proposal"`,
+		`      next_action: "controlled_activation"`,
+		`      activation_risk: "medium"`,
+		"",
+		`    - agent_id: "sergey_interaction_profiler"`,
+		`      status: "container"`,
+		`      next_action: "write_proposal"`,
+		`      activation_risk: "medium"`,
+		"```",
+		"",
+	}, "\n")
 }
