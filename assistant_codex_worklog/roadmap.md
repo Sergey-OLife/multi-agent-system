@@ -15,14 +15,16 @@
 - v2.9 — Source card builder proposal synced
 - v2.10 — Copyright boundary guard proposal synced
 - v2.11 — Svod guard proposal synced
+- v2.12 — Contextologist proposal synced
 
 ## Recent PR summary
 
-- PR #91 — Sync state after source card builder proposal.
 - PR #92 — Add copyright boundary guard agent proposal.
 - PR #93 — Sync state after copyright boundary guard proposal.
 - PR #94 — Add svod guard agent proposal.
 - PR #95 — Sync state after svod guard proposal.
+- PR #96 — Add contextologist agent proposal.
+- PR #97 — Sync state after contextologist proposal.
 
 ## Shipyard Modernization result
 
@@ -50,6 +52,7 @@ GitHub фиксирует.
 - `source_card_builder`: proposal, not activated.
 - `copyright_boundary_guard`: proposal, not activated.
 - `svod_guard`: proposal, not activated.
+- `contextologist_agent`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -64,16 +67,15 @@ Proposal не является activation.
 
 Очередь:
 
-1. `contextologist_agent`
-2. `sergey_interaction_profiler`
-3. `author_style_memory_agent`
+1. `sergey_interaction_profiler`
+2. `author_style_memory_agent`
 
-`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard` и `svod_guard` уже доведены до proposal, но не активированы.
+`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard` и `contextologist_agent` уже доведены до proposal, но не активированы.
 
 Следующий безопасный шаг:
 
 ```text
-prepare contextologist_agent proposal without activation
+prepare sergey_interaction_profiler proposal without activation
 ```
 
 ## Strict PR Workflow

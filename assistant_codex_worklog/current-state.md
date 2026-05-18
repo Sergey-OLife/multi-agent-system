@@ -12,18 +12,18 @@
 
 ## Последний смерженный PR
 
-- PR #94 — Add svod guard agent proposal
+- PR #96 — Add contextologist agent proposal
 - Статус: merged
-- Merge commit: `538a3cf937d159b7595155b2018a414ecc8620e5`
-- Смысл: создан proposal `svod_guard` и синхронизирован registry status.
+- Merge commit: `3cb815653115665b104c7d59bec635f01368077e`
+- Смысл: создан proposal `contextologist_agent` и синхронизирован registry status.
 
 ## Agent queue status
 
-`svod_guard` теперь proposal only, не activation и не hard guardrail.
+`contextologist_agent` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: проверять согласие текста, главы, MVP-модуля или agent proposal с принятым Сводом.
+Его роль: восстанавливать карту проекта перед ходом.
 
-Ограничение: он не переписывает Свод и не даёт финальное approval вместо Сергея.
+Ограничение: он не командует маршрутом, не меняет state и не заменяет `workflow_conductor_agent`.
 
 ## Актуальные proposal-агенты
 
@@ -35,6 +35,7 @@
 - `source_card_builder` — proposal only, не activation.
 - `copyright_boundary_guard` — proposal only, не activation.
 - `svod_guard` — proposal only, не activation.
+- `contextologist_agent` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -45,13 +46,13 @@
 
 ## Следующий безопасный шаг
 
-Подготовить `contextologist_agent` как proposal без activation.
+Подготовить `sergey_interaction_profiler` как proposal без activation.
 
 Почему он следующий:
 
-- после source guards и Svod guard нужна карта контекста;
-- проект плотный: книга, MVP, агенты, Go-core, source intake и state rules уже связаны;
-- `contextologist_agent` должен восстанавливать систему проекта перед ходом, чтобы не отвечать с хвоста.
+- архитектурные предохранители уже описаны;
+- теперь нужно формализовать профиль взаимодействия с Сергеем;
+- это снизит риск поддакивания, лишней технички, неверного approval и потери авторского режима работы.
 
 ## Что временно не делаем
 
