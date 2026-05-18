@@ -19,14 +19,14 @@ GitHub — источник правды. Сначала открой:
 10. knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md
 11. knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md
 12. knowledge/05_agent_memory/agent_proposals/source_card_builder.md
-13. knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md
+13. knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
 
 Актуальное состояние:
 
-- currentVersion: v2.9.
-- lastCompletedVersion: v2.9.
-- lastMergedPr: PR #90 — Add source card builder agent proposal.
-- lastMergeCommit: eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4.
+- currentVersion: v2.10.
+- lastCompletedVersion: v2.10.
+- lastMergedPr: PR #92 — Add copyright boundary guard agent proposal.
+- lastMergeCommit: fc81c223bbf45093697550c588fd4a7b696e5da1.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -40,6 +40,7 @@ Proposal agents now include:
 - project_state_synchronizer.
 - checkpoint_compressor_agent.
 - source_card_builder.
+- copyright_boundary_guard.
 
 Active optional workflow layers:
 
@@ -60,5 +61,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare copyright_boundary_guard agent proposal without activation.
+Prepare svod_guard agent proposal without activation.
 ```
