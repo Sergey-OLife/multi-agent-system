@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.5",
-  "lastCompletedVersion": "v2.5",
-  "lastMergedPr": "PR #82 — Document schema pressure invariants for Go-core envelope",
-  "lastMergeCommit": "a49de76ba93dd10cbad498e9962b049725c83d17",
-  "currentMilestone": "v2.5 Full checkpoint after Go-core transport, registry-check, semantic primitives and schema pressure contract",
+  "currentVersion": "v2.6",
+  "lastCompletedVersion": "v2.6",
+  "lastMergedPr": "PR #83 — Checkpoint full after schema pressure contract",
+  "lastMergeCommit": "d2e3e66b57375c8ec8fe46d4e7180bb8f7731b1f",
+  "currentMilestone": "v2.6 Full checkpoint after restart-prompt-first protocol correction",
   "currentMode": "Agent Shipyard / Shipyard Modernization",
   "bookPaused": true,
   "completedVersions": [
@@ -30,14 +30,15 @@
     "v2.2 Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion",
     "v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor",
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals",
-    "v2.5 Checkpoint Go-core validation loop and schema pressure contract"
+    "v2.5 Checkpoint Go-core validation loop and schema pressure contract",
+    "v2.6 Checkpoint restart-prompt-first protocol correction"
   ],
   "recentPrs": [
-    "PR #78 — Extract minimal sync-check transport helpers",
     "PR #79 — Add minimal registry-check Go command",
     "PR #81 — Add minimal Go validation primitives and pressure tests",
     "PR #82 — Document schema pressure invariants for Go-core envelope",
-    "PR #83 — Checkpoint full after schema pressure contract"
+    "PR #83 — Checkpoint full after schema pressure contract",
+    "PR #84 — Checkpoint full after restart prompt protocol correction"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -45,8 +46,6 @@
     "current active mode is Agent Shipyard with a temporary Shipyard Modernization subfocus",
     "first build the ship, then sail: do not continue the book automatically while the current focus is agent buildout or shipyard modernization",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
-    "Shipyard Modernization improves the TypeScript stack first, then introduces Go only behind a clear JSON boundary where it gives a real benefit",
-    "Go is accepted as the future core language candidate for heavy repeatable shipyard checks, not as an immediate full rewrite",
     "TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout",
     "Go-core commands currently include sync-check and registry-check",
     "sync-check validates project state and handoff files",
@@ -56,20 +55,17 @@
     "Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine",
     "blocked outranks needs_revision, needs_revision outranks ready, error is contract/runtime failure, unavailable is wrapper/transport-level",
     "Go-core envelope invariants are documented as internal API assumptions before runtime enforcement",
-    "Adding fields to the envelope is allowed when old consumers can ignore them; renaming/removing fields or changing status meaning requires compatibility review and explicit approval-gate",
     "Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until pressure tests show real need",
-    "agents.ts should remain a registry assembly point, not a dumping ground for context and diagnostics logic",
-    "context-pack belongs to orchestration, not core-like engine, because it depends on source registry",
-    "Import boundaries are enforced by scripts/check-boundaries.mjs and npm test",
-    "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
-    "uploaded project sources are raw/source material until audited through Source Intake Audit",
-    "source cards are not proof that full sources were read",
+    "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
+    "The restart-prompt-first checkpoint rule already existed in working-protocol.md; the prior violation was assistant noncompliance, not missing policy",
     "chat restart prompt before checkpoint full must be no more than 6000 characters with spaces; full restart-prompt.md may be longer",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
     "if a PR materially changes after ++, a new ++ is required before merge",
-    "if approval-gates are multiple, ask which gate is approved",
     "Allow auto-merge is enabled, but auto-merge does not bypass approval-gates",
+    "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
+    "uploaded project sources are raw/source material until audited through Source Intake Audit",
+    "source cards are not proof that full sources were read",
     "socratic_lantern_agent is active only as an optional workflow layer, not a hard guardrail",
     "ethical_persuasion_guard is active only as an optional workflow layer, not a hard guardrail",
     "cbt_thought_check_agent is active only as an optional workflow layer, not a hard guardrail or therapy mode",
@@ -79,9 +75,7 @@
     "approval_gate_keeper is a proposal only, not activated",
     "project_state_synchronizer is a proposal only, not activated",
     "agent architecture is Centralized Coordination + Peer-to-Peer communication",
-    "materials architecture is Coordinator-based star + fully-connected semantic topology",
-    "peer-to-peer signal is not a decision and does not bypass Sergey approval",
-    "fully connected material topology does not bypass source intake, dosage, fact-check, copyright boundary or approval"
+    "materials architecture is Coordinator-based star + fully-connected semantic topology"
   ],
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Shipyard Modernization",
@@ -157,7 +151,7 @@
       "copyright_boundary_guard"
     ],
     "shipyardModernization": {
-      "status": "checkpoint_full_after_pr82_schema_pressure_contract",
+      "status": "checkpoint_full_after_pr83_and_restart_prompt_protocol_correction",
       "completedTechnicalSteps": [
         "incremental TypeScript builds",
         "domain and engine layer split",
@@ -173,7 +167,8 @@
         "transport extraction with minimal command registry",
         "second Go-core command registry-check",
         "Go validation primitives and pressure tests",
-        "schema pressure invariants documented in sync-check wrapper contract"
+        "schema pressure invariants documented in sync-check wrapper contract",
+        "restart-prompt-first checkpoint protocol compliance restored"
       ],
       "languageDecision": "Go accepted for deterministic validation checks behind TypeScript orchestration and JSON boundary",
       "nextTechnicalStep": "Add focused schema pressure tests for malformed Go-core envelopes and contract edge cases",
