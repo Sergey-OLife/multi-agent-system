@@ -241,7 +241,57 @@ semi-stable internal API
 
 ---
 
-# 11. Non-goals
+# 11. Schema pressure invariants
+
+Текущие implicit invariants считаются частью internal API, даже если они пока не выражены отдельной JSON Schema.
+
+Input envelope invariants:
+
+```text
+schemaVersion must equal core-api.v1
+argv command must equal input.command
+files must be command-specific
+file.kind and file.path are identity hints, not validation authority
+missing semantic files must produce diagnostics, not transport failure
+```
+
+Command-specific file ownership:
+
+```text
+sync-check owns handoff/state validation
+registry-check owns registry structural validation
+wrapper owns file collection only
+```
+
+Status invariants:
+
+```text
+blocked outranks needs_revision
+needs_revision outranks ready
+error is contract/runtime failure, not ordinary validation drift
+unavailable is wrapper/transport-level and must not be produced by Go validation commands
+```
+
+Diagnostics invariants:
+
+```text
+diagnostics must stay command-local in meaning
+shared helpers may format diagnostics but must not decide business meaning
+requiredUpdates are repair hints, not auto-fix instructions
+blockedActions are stop signs, not suggestions
+```
+
+Compatibility rule:
+
+```text
+Adding fields is allowed when old consumers can ignore them.
+Renaming/removing fields requires explicit compatibility review.
+Changing status meaning requires explicit approval-gate.
+```
+
+---
+
+# 12. Non-goals
 
 Wrapper intentionally does not:
 
@@ -255,12 +305,12 @@ Wrapper intentionally does not:
 
 ---
 
-# 12. Safe next step after this contract
+# 13. Safe next step after this contract
 
 Следующий безопасный шаг:
 
 ```text
-minimal CI/dev integration for sync-check
+schema pressure tests for malformed envelopes
 ```
 
 Не:
