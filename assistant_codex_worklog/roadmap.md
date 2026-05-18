@@ -22,15 +22,16 @@
 - v2.16 — Review depth protocol and Sergey interaction profiler proposal synced
 - v2.17 — Checkpoint full after profiler state sync
 - v2.18 — Author style memory proposal synced
+- v2.19 — Banality alarm proposal synced
 
 ## Recent PR summary
 
-- PR #102 — Sync state after repository hygiene audit.
-- PR #103 — Checkpoint full after repository hygiene state sync.
 - PR #104 — Add review depth protocol and profiler proposal.
 - PR #110 — Sync state after profiler proposal.
 - PR #111 — Checkpoint full after profiler state sync.
 - PR #112 — Add author style memory agent proposal.
+- PR #114 — Add banality alarm agent proposal.
+- PR #115 — Sync state after banality alarm proposal.
 
 ## Shipyard Modernization result
 
@@ -96,6 +97,7 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 - `contextologist_agent`: proposal, not activated.
 - `sergey_interaction_profiler`: proposal, not activated.
 - `author_style_memory_agent`: proposal, not activated.
+- `banality_alarm_agent`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -110,14 +112,17 @@ Proposal не является activation.
 
 Очередь:
 
-1. `banality_alarm_agent`
+1. `anti_cliche_editor`
+2. `plotnikov_motor_agent`
+3. `one_strike_chapter_agent`
+4. `telegram_voice_editor`
 
-`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent`, `sergey_interaction_profiler` и `author_style_memory_agent` уже доведены до proposal, но не активированы.
+`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent`, `sergey_interaction_profiler`, `author_style_memory_agent` и `banality_alarm_agent` уже доведены до proposal, но не активированы.
 
 Следующий безопасный шаг:
 
 ```text
-prepare banality_alarm_agent proposal without activation
+prepare anti_cliche_editor proposal without activation
 ```
 
 ## Strict PR Workflow

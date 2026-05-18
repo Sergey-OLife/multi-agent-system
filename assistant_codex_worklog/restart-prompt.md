@@ -24,17 +24,18 @@ GitHub — источник правды. Сначала открой:
 15. knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
 16. knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md
 17. knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md
-18. knowledge/07_operations/review_depth_protocol.md
-19. knowledge/07_operations/repository_hygiene_protocol.md
-20. scripts/hygiene-audit.mjs
+18. knowledge/05_agent_memory/agent_proposals/banality_alarm_agent.md
+19. knowledge/07_operations/review_depth_protocol.md
+20. knowledge/07_operations/repository_hygiene_protocol.md
+21. scripts/hygiene-audit.mjs
 
 Актуальное состояние:
 
-- currentVersion: v2.18.
-- lastCompletedVersion: v2.18.
-- lastMergedPr: PR #112 — Add author style memory agent proposal.
-- lastMergeCommit: c5c3cf43951b3d32d46c5f37d994f66d941dd138.
-- currentMilestone: v2.18 Author style memory proposal synced.
+- currentVersion: v2.19.
+- lastCompletedVersion: v2.19.
+- lastMergedPr: PR #114 — Add banality alarm agent proposal.
+- lastMergeCommit: 5f65e6fee8a0e3dc47b9e80ea947b71e19b2a575.
+- currentMilestone: v2.19 Banality alarm proposal synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -67,6 +68,7 @@ Proposal agents:
 - contextologist_agent.
 - sergey_interaction_profiler.
 - author_style_memory_agent.
+- banality_alarm_agent.
 
 Active optional workflow layers:
 
@@ -86,5 +88,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare banality_alarm_agent proposal without activation, unless Sergey chooses a different agent.
+Prepare anti_cliche_editor proposal without activation, unless Sergey chooses a different agent.
 ```
