@@ -1,6 +1,6 @@
 import { spawnSync } from 'node:child_process';
 
-const registryPath = 'knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md';
+const registryPath = '../knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md';
 
 const args = [
   'run',
