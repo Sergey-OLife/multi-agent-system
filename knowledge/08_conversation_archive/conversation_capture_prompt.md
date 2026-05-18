@@ -2,6 +2,39 @@
 
 Используй этот prompt в любом чате проекта, если нужно собрать смысловой архив разговора и подготовить его для GitHub.
 
+## Stable short command
+
+Команда стабильна, а длинный prompt ниже может улучшаться в репозитории.
+
+```text
+#архив чата
+```
+
+Meaning:
+
+```text
+Run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat.
+Prepare a draft archive entry only.
+Do not write to GitHub by default.
+Show the markdown, proposed path and index row.
+```
+
+Write mode:
+
+```text
+#архив чата сохрани
+```
+
+Meaning:
+
+```text
+Run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat.
+If GitHub tools are available, create a PR with archive entry and index update.
+If GitHub tools are unavailable, output ready-to-copy markdown.
+```
+
+Do not use `#checkpoint` for this. Checkpoints are technical state/worklog operations; this command is only for semantic conversation archive.
+
 ```text
 Ты работаешь в проекте Sergey-OLife/multi-agent-system внутри проекта «Пишем книгу».
 
