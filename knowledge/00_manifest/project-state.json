@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.8",
-  "lastCompletedVersion": "v2.8",
-  "lastMergedPr": "PR #88 — Add checkpoint compressor agent proposal",
-  "lastMergeCommit": "7700ee89a5865136e824c35856fbe5ebdd299a97",
-  "currentMilestone": "v2.8 Checkpoint compressor proposal synced",
+  "currentVersion": "v2.9",
+  "lastCompletedVersion": "v2.9",
+  "lastMergedPr": "PR #90 — Add source card builder agent proposal",
+  "lastMergeCommit": "eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4",
+  "currentMilestone": "v2.9 Source card builder proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -33,44 +33,34 @@
     "v2.5 Checkpoint Go-core validation loop and schema pressure contract",
     "v2.6 Checkpoint restart-prompt-first protocol correction",
     "v2.7 Shipyard Modernization stability gate passed",
-    "v2.8 Checkpoint compressor proposal synced"
+    "v2.8 Checkpoint compressor proposal synced",
+    "v2.9 Source card builder proposal synced"
   ],
   "recentPrs": [
-    "PR #85 — Add focused Go-core schema pressure tests",
-    "PR #86 — Add bug response and compatibility protocol",
     "PR #87 — Checkpoint full: Shipyard Modernization stability gate passed",
     "PR #88 — Add checkpoint compressor agent proposal",
-    "PR #89 — Sync state after checkpoint compressor proposal"
+    "PR #89 — Sync state after checkpoint compressor proposal",
+    "PR #90 — Add source card builder agent proposal",
+    "PR #91 — Sync state after source card builder proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
     "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision",
-    "Shipyard Modernization stability gate is passed after Go-core schema pressure tests and bug response compatibility protocol",
     "current active mode is Agent Shipyard / Agent Queue",
-    "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
+    "Shipyard Modernization stability gate is passed after Go-core schema pressure tests and bug response compatibility protocol",
     "TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout",
     "Go-core is the system spine, not a full replacement for TypeScript",
     "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
     "checkpoint_compressor_agent is a proposal only, not activated",
-    "checkpoint_compressor_agent compresses restart prompts as a start key, not an archive",
-    "checkpoint_compressor_agent does not change project-state, roadmap, registry, PRs, routes or guardrails",
-    "next agent queue candidate after checkpoint_compressor_agent is source_card_builder",
-    "Go-core commands currently include sync-check and registry-check",
-    "sync-check validates project state and handoff files",
-    "registry-check validates structural registry signals only; it does not activate agents or orchestrate workflows",
-    "The TypeScript wrapper owns transport, file collection, binary invocation, stdout parsing and unavailable fallback, not validation meaning",
-    "The Go-core validation loop is part of CI through the minimal Sync Check workflow",
-    "Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine",
-    "blocked outranks needs_revision, needs_revision outranks ready, error is contract/runtime failure, unavailable is wrapper/transport-level",
-    "Go-core envelope invariants are documented and pressure-tested without schema framework",
-    "Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until repeated proven pain appears",
-    "Bug response protocol: classify bug, add minimal failing test or fixture, make narrow fix, consider framework only after repeated proven pain",
+    "source_card_builder is a proposal only, not activated",
+    "source_card_builder creates source application passports after source intake; it does not prove full source reading",
+    "source_card_builder must not commit raw books, raw source text, PDFs, EPUBs, DJVUs, MOBIs, private Drive IDs or URLs",
+    "next agent queue candidate after source_card_builder is copyright_boundary_guard",
+    "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
-    "chat restart prompt before checkpoint full must be no more than 6000 characters with spaces; full restart-prompt.md may be longer",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
     "if a PR materially changes after ++, a new ++ is required before merge",
-    "Allow auto-merge is enabled, but auto-merge does not bypass approval-gates",
     "raw Plotnikov text, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs and URLs are not committed to GitHub",
     "uploaded project sources are raw/source material until audited through Source Intake Audit",
     "source cards are not proof that full sources were read",
@@ -92,7 +82,7 @@
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Prepare source_card_builder agent proposal without activation",
+  "nextAction": "Prepare copyright_boundary_guard agent proposal without activation",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -106,25 +96,8 @@
     "knowledge/00_manifest/project-state.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md",
-    "knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md",
-    "knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md",
-    "knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md",
-    "knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md",
-    ".github/workflows/sync-check.yml",
-    "package.json",
-    "scripts/run-sync-check.mjs",
-    "scripts/check-boundaries.mjs",
-    "go-core/go.mod",
-    "go-core/cmd/multi-agent-core/main.go",
-    "go-core/cmd/multi-agent-core/main_test.go",
-    "go-core/cmd/multi-agent-core/schema_pressure_test.go",
-    "go-core/cmd/multi-agent-core/validation_primitives.go",
-    "src/domain/index.ts",
-    "src/engine/index.ts",
-    "src/diagnostics/index.ts",
-    "src/orchestration/index.ts",
-    "src/router.ts",
-    "src/agents.ts"
+    "knowledge/05_agent_memory/agent_proposals/source_card_builder.md",
+    "knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
@@ -135,13 +108,6 @@
     "acceptedTrustLine": "В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.",
     "currentRule": "Введение — морковка: сначала человек, узнавание и доверие; инструменты, термины и кухня MLM позже.",
     "nextChatMove": "Only after Sergey returns to the book: continue from the first boundary of разумное сообщество toward the promise of the book."
-  },
-  "sourceIntakeState": {
-    "mode": "optional_layer_active",
-    "uploadedProjectSources": true,
-    "audited": "partial",
-    "template": "knowledge/03_source_books/audits/source_intake_audit_template.md",
-    "pilotAudit": "knowledge/03_source_books/audits/pilot_source_intake_audit_01.md"
   },
   "agentState": {
     "optionalWorkflowLayersActive": [
@@ -155,39 +121,19 @@
       "agent_registry_librarian",
       "approval_gate_keeper",
       "project_state_synchronizer",
-      "checkpoint_compressor_agent"
+      "checkpoint_compressor_agent",
+      "source_card_builder"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "source_card_builder",
+    "recommendedNextAgent": "copyright_boundary_guard",
     "alternativeNextAgents": [
-      "copyright_boundary_guard",
-      "svod_guard"
+      "svod_guard",
+      "contextologist_agent"
     ],
     "shipyardModernization": {
       "status": "stability_gate_passed",
-      "completedTechnicalSteps": [
-        "incremental TypeScript builds",
-        "domain and engine layer split",
-        "Go-core API contract",
-        "context and diagnostics extraction from agents.ts",
-        "import boundary enforcement and public module entrypoints",
-        "split TypeScript configs into base/build/test",
-        "first minimal Go-core sync-check CLI",
-        "sync-check handoff file validation",
-        "TypeScript dev wrapper for Go-core sync-check",
-        "sync-check wrapper contract document",
-        "minimal sync-check CI workflow",
-        "transport extraction with minimal command registry",
-        "second Go-core command registry-check",
-        "Go validation primitives and pressure tests",
-        "schema pressure invariants documented in sync-check wrapper contract",
-        "restart-prompt-first checkpoint protocol compliance restored",
-        "focused schema pressure tests for malformed envelopes and contract edge cases",
-        "bug response and compatibility protocol"
-      ],
       "languageDecision": "Go accepted as the deterministic spine behind TypeScript orchestration and JSON boundary, not as a full rewrite",
-      "nextTechnicalStep": "No further modernization step by default; return to agent queue unless a concrete bug or compatibility risk appears",
-      "goCoreStrategy": "CLI first, JSON stdin/stdout, deterministic validation spine before any runtime replacement"
+      "nextTechnicalStep": "No further modernization step by default; return to agent queue unless a concrete bug or compatibility risk appears"
     }
   }
 }

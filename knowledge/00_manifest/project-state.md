@@ -4,62 +4,41 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.8
-- lastCompletedVersion: v2.8
-- lastMergedPr: PR #88 — Add checkpoint compressor agent proposal
-- lastMergeCommit: 7700ee89a5865136e824c35856fbe5ebdd299a97
-- currentMilestone: v2.8 Checkpoint compressor proposal synced
+- currentVersion: v2.9
+- lastCompletedVersion: v2.9
+- lastMergedPr: PR #90 — Add source card builder agent proposal
+- lastMergeCommit: eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4
+- currentMilestone: v2.9 Source card builder proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #85 — Add focused Go-core schema pressure tests
-- PR #86 — Add bug response and compatibility protocol
 - PR #87 — Checkpoint full: Shipyard Modernization stability gate passed
 - PR #88 — Add checkpoint compressor agent proposal
 - PR #89 — Sync state after checkpoint compressor proposal
+- PR #90 — Add source card builder agent proposal
+- PR #91 — Sync state after source card builder proposal
 
 ## Current agent queue status
 
-`checkpoint_compressor_agent` is now proposal only, not activated.
+`source_card_builder` is now proposal only, not activated.
 
-- Proposal path: `knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md`
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/source_card_builder.md`
 - Registry status: `proposal`
 - Next action in registry: `controlled_activation`
 - Activation: no
 
-Its role is to compress restart prompts as a start key, not an archive. It does not change project-state, roadmap, registry, routes, guardrails or PRs.
-
-## Shipyard Modernization status
-
-Stability gate passed.
-
-- TypeScript остаётся orchestration shell.
-- Go-core стал deterministic validation spine behind JSON stdin/stdout.
-- Schema pressure invariants documented and pressure-tested without schema framework.
-- Bug response compatibility protocol зафиксирован: classify, failing test/fixture, narrow fix, framework only after repeated proven pain.
-
-## Layer formula
-
-```text
-Go проверяет.
-TypeScript соединяет.
-LLM думает.
-Сергей утверждает.
-GitHub фиксирует.
-```
-
-Go-core — позвоночник системы, не полный replacement TypeScript.
+Its role is to create source application passports after source intake. A source card is not proof that the full source was read.
 
 ## Active decisions
 
 - GitHub is the source of truth for project state.
 - Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
 - Current active mode is Agent Shipyard / Agent Queue.
-- Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
 - `checkpoint_compressor_agent` is a proposal only, not activated.
-- `checkpoint_compressor_agent` compresses restart prompts as a start key, not an archive.
+- `source_card_builder` is a proposal only, not activated.
+- `source_card_builder` must not commit raw books, raw source text, PDFs, EPUBs, DJVUs, MOBIs, private Drive IDs or URLs.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -71,6 +50,7 @@ Go-core — позвоночник системы, не полный replacement
 - `approval_gate_keeper`: proposal only, not activated.
 - `project_state_synchronizer`: proposal only, not activated.
 - `checkpoint_compressor_agent`: proposal only, not activated.
+- `source_card_builder`: proposal only, not activated.
 
 ## Active optional workflow layers
 
@@ -89,7 +69,7 @@ Go-core — позвоночник системы, не полный replacement
 
 ## Next action
 
-Prepare `source_card_builder` agent proposal without activation.
+Prepare `copyright_boundary_guard` agent proposal without activation.
 
 ## Chat writing state
 
@@ -114,7 +94,5 @@ Prepare `source_card_builder` agent proposal without activation.
 - knowledge/00_manifest/project-state.md
 - knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
 - knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md
-- knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
-- knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
-- knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md
+- knowledge/05_agent_memory/agent_proposals/source_card_builder.md
 - knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md
