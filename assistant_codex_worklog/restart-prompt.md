@@ -43,6 +43,13 @@ GitHub — источник правды. Сначала открой:
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
+Stable conversation archive command:
+
+- `#архив чата` means: run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat; prepare draft archive entry only; do not write to GitHub by default.
+- `#архив чата сохрани` means: run the latest repository version of the same prompt and, if GitHub tools are available, create a PR with archive entry + index update.
+- The short command is stable across project chats; the long prompt behind it may evolve in the repository.
+- Do not use `#checkpoint` for semantic archive capture.
+
 Conversation archive — важный слой восстановления контекста:
 
 - `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
