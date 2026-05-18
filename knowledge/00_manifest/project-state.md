@@ -4,21 +4,22 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.17
-- lastCompletedVersion: v2.17
-- lastMergedPr: PR #110 — Sync state after profiler proposal
-- lastMergeCommit: f9223e9698dc3dcdb16948effb894131ab14d36e
-- currentMilestone: v2.17 Checkpoint full after profiler state sync
+- currentVersion: v2.18
+- lastCompletedVersion: v2.18
+- lastMergedPr: PR #112 — Add author style memory agent proposal
+- lastMergeCommit: c5c3cf43951b3d32d46c5f37d994f66d941dd138
+- currentMilestone: v2.18 Author style memory proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #101 — Add repository hygiene audit and ledger protocol
 - PR #102 — Sync state after repository hygiene audit
 - PR #103 — Checkpoint full after repository hygiene state sync
 - PR #104 — Add review depth protocol and profiler proposal
 - PR #110 — Sync state after profiler proposal
+- PR #111 — Checkpoint full after profiler state sync
+- PR #112 — Add author style memory agent proposal
 
 ## Repository hygiene
 
@@ -43,15 +44,17 @@ Rule:
 
 ## Current agent queue status
 
-`sergey_interaction_profiler` is proposal only, not activated and not a hard guardrail.
+`author_style_memory_agent` is proposal only, not activated and not a hard guardrail.
 
-- Proposal path: `knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md`
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md`
 - Registry status: `proposal`
 - Next action in registry: `controlled_activation`
 - Activation: no
 - Hard guardrail: no
 
-Its role is editorial memory, drift diagnostics and contextual style mapping. It observes editorial decisions and failure patterns, but does not imitate Sergey, replace the editor, block merges or become an authority layer.
+Its role is to store confirmed editorial style decisions, formula memory, rhythm memory, scene/object memory, failure-pattern memory and counterexamples without turning style into canon.
+
+`sergey_interaction_profiler` remains proposal only, not activated and not a hard guardrail.
 
 `review_depth_protocol` is active operational protocol.
 
@@ -74,8 +77,9 @@ Its role is editorial memory, drift diagnostics and contextual style mapping. It
 - `svod_guard` is a proposal only, not activated and not a hard guardrail.
 - `contextologist_agent` is a proposal only, not activated and not a hard guardrail.
 - `sergey_interaction_profiler` is a proposal only, not activated and not a hard guardrail.
+- `author_style_memory_agent` is a proposal only, not activated and not a hard guardrail.
 - `review_depth_protocol` defines L1/L2/L3 agent review depth, semantic discipline for `+`, `++`, `+++`, and anti-overengineering doctrine.
-- Next agent queue candidate is `author_style_memory_agent` unless Sergey chooses a different agent.
+- Next agent queue candidate is `banality_alarm_agent` unless Sergey chooses a different agent.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -92,6 +96,7 @@ Its role is editorial memory, drift diagnostics and contextual style mapping. It
 - `svod_guard`: proposal only, not activated.
 - `contextologist_agent`: proposal only, not activated.
 - `sergey_interaction_profiler`: proposal only, not activated.
+- `author_style_memory_agent`: proposal only, not activated.
 
 ## Active optional workflow layers
 
@@ -111,7 +116,7 @@ Its role is editorial memory, drift diagnostics and contextual style mapping. It
 
 ## Next action
 
-Prepare `author_style_memory_agent` proposal without activation, unless Sergey chooses a different agent.
+Prepare `banality_alarm_agent` proposal without activation, unless Sergey chooses a different agent.
 
 ## Chat writing state
 
@@ -141,6 +146,7 @@ Prepare `author_style_memory_agent` proposal without activation, unless Sergey c
 - knowledge/05_agent_memory/agent_proposals/svod_guard.md
 - knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
 - knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md
+- knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md
 - knowledge/07_operations/review_depth_protocol.md
 - knowledge/07_operations/repository_hygiene_protocol.md
 - scripts/hygiene-audit.mjs

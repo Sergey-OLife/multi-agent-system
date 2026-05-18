@@ -21,14 +21,16 @@
 - v2.15 — Checkpoint full after repository hygiene state sync
 - v2.16 — Review depth protocol and Sergey interaction profiler proposal synced
 - v2.17 — Checkpoint full after profiler state sync
+- v2.18 — Author style memory proposal synced
 
 ## Recent PR summary
 
-- PR #101 — Add repository hygiene audit and ledger protocol.
 - PR #102 — Sync state after repository hygiene audit.
 - PR #103 — Checkpoint full after repository hygiene state sync.
 - PR #104 — Add review depth protocol and profiler proposal.
 - PR #110 — Sync state after profiler proposal.
+- PR #111 — Checkpoint full after profiler state sync.
+- PR #112 — Add author style memory agent proposal.
 
 ## Shipyard Modernization result
 
@@ -93,6 +95,7 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 - `svod_guard`: proposal, not activated.
 - `contextologist_agent`: proposal, not activated.
 - `sergey_interaction_profiler`: proposal, not activated.
+- `author_style_memory_agent`: proposal, not activated.
 
 Proposal не является activation.
 
@@ -107,14 +110,14 @@ Proposal не является activation.
 
 Очередь:
 
-1. `author_style_memory_agent`
+1. `banality_alarm_agent`
 
-`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent` и `sergey_interaction_profiler` уже доведены до proposal, но не активированы.
+`checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent`, `sergey_interaction_profiler` и `author_style_memory_agent` уже доведены до proposal, но не активированы.
 
 Следующий безопасный шаг:
 
 ```text
-prepare author_style_memory_agent proposal without activation
+prepare banality_alarm_agent proposal without activation
 ```
 
 ## Strict PR Workflow

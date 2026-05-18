@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.17",
-  "lastCompletedVersion": "v2.17",
-  "lastMergedPr": "PR #110 — Sync state after profiler proposal",
-  "lastMergeCommit": "f9223e9698dc3dcdb16948effb894131ab14d36e",
-  "currentMilestone": "v2.17 Checkpoint full after profiler state sync",
+  "currentVersion": "v2.18",
+  "lastCompletedVersion": "v2.18",
+  "lastMergedPr": "PR #112 — Add author style memory agent proposal",
+  "lastMergeCommit": "c5c3cf43951b3d32d46c5f37d994f66d941dd138",
+  "currentMilestone": "v2.18 Author style memory proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -17,14 +17,16 @@
     "v2.14 Repository hygiene audit and ledger protocol synced",
     "v2.15 Checkpoint full after repository hygiene state sync",
     "v2.16 Review depth protocol and Sergey interaction profiler proposal synced",
-    "v2.17 Checkpoint full after profiler state sync"
+    "v2.17 Checkpoint full after profiler state sync",
+    "v2.18 Author style memory proposal synced"
   ],
   "recentPrs": [
-    "PR #101 — Add repository hygiene audit and ledger protocol",
     "PR #102 — Sync state after repository hygiene audit",
     "PR #103 — Checkpoint full after repository hygiene state sync",
     "PR #104 — Add review depth protocol and profiler proposal",
-    "PR #110 — Sync state after profiler proposal"
+    "PR #110 — Sync state after profiler proposal",
+    "PR #111 — Checkpoint full after profiler state sync",
+    "PR #112 — Add author style memory agent proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -38,12 +40,13 @@
     "svod_guard is a proposal only, not activated and not a hard guardrail",
     "contextologist_agent is a proposal only, not activated and not a hard guardrail",
     "sergey_interaction_profiler is a proposal only, not activated and not a hard guardrail",
+    "author_style_memory_agent is a proposal only, not activated and not a hard guardrail",
     "review_depth_protocol defines L1/L2/L3 agent review depth, semantic discipline for +/++/+++, and anti-overengineering doctrine",
     "repository hygiene audit is available as npm run hygiene:audit",
     "Repository hygiene ledger is GitHub issue #99",
     "branch hygiene cleanup remains cleanup_needed, not completed",
     "stale branches should be removed only manually in GitHub UI or by a future explicit safe branch cleanup tool, not by branch-ref workarounds",
-    "next agent queue candidate is author_style_memory_agent unless Sergey chooses a different agent",
+    "next agent queue candidate is banality_alarm_agent unless Sergey chooses a different agent",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals, activations and repository hygiene protocols",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",
@@ -64,7 +67,7 @@
     "Do not create hard guardrails without separate approval and PR",
     "Do not pretend branch cleanup was completed while branches remain unresolved in issue #99"
   ],
-  "nextAction": "Prepare author_style_memory_agent proposal without activation, unless Sergey chooses a different agent",
+  "nextAction": "Prepare banality_alarm_agent proposal without activation, unless Sergey chooses a different agent",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -83,6 +86,7 @@
     "knowledge/05_agent_memory/agent_proposals/svod_guard.md",
     "knowledge/05_agent_memory/agent_proposals/contextologist_agent.md",
     "knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md",
+    "knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md",
     "knowledge/07_operations/review_depth_protocol.md",
     "knowledge/07_operations/repository_hygiene_protocol.md",
     "scripts/hygiene-audit.mjs"
@@ -114,11 +118,16 @@
       "copyright_boundary_guard",
       "svod_guard",
       "contextologist_agent",
-      "sergey_interaction_profiler"
+      "sergey_interaction_profiler",
+      "author_style_memory_agent"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "author_style_memory_agent",
-    "alternativeNextAgents": [],
+    "recommendedNextAgent": "banality_alarm_agent",
+    "alternativeNextAgents": [
+      "anti_cliche_editor",
+      "plotnikov_motor_agent",
+      "one_strike_chapter_agent"
+    ],
     "shipyardModernization": {
       "status": "stability_gate_passed",
       "languageDecision": "Go accepted as the deterministic spine behind TypeScript orchestration and JSON boundary, not as a full rewrite",

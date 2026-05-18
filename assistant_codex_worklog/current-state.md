@@ -12,30 +12,19 @@
 
 ## Последний смерженный PR
 
-- PR #110 — Sync state after profiler proposal
+- PR #112 — Add author style memory agent proposal
 - Статус: merged
-- Merge commit: `f9223e9698dc3dcdb16948effb894131ab14d36e`
-- Смысл: state/worklog/registry sync после PR #104.
+- Merge commit: `c5c3cf43951b3d32d46c5f37d994f66d941dd138`
+- Смысл: добавлен `knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md`, registry синхронизирован.
 
-## Что зафиксировал PR #110
+## Что зафиксировал PR #112
 
-- `currentVersion`: v2.16.
-- `sergey_interaction_profiler` зафиксирован как proposal only, не activation, не hard guardrail.
-- Registry block для `sergey_interaction_profiler` переведён из `container` в `proposal`.
-- `review_depth_protocol` остаётся active operational protocol.
-- Следующий safe step после checkpoint: `author_style_memory_agent` proposal without activation.
-
-## Текущий checkpoint
-
-Идёт `#checkpoint full` после PR #110.
-
-Checkpoint фиксирует:
-
-- `currentVersion`: v2.17.
-- `lastCompletedVersion`: v2.17.
-- `lastMergedPr`: PR #110 — Sync state after profiler proposal.
-- `lastMergeCommit`: `f9223e9698dc3dcdb16948effb894131ab14d36e`.
-- `currentMilestone`: v2.17 Checkpoint full after profiler state sync.
+- `author_style_memory_agent` — proposal only, не activation, не route element, не hard guardrail.
+- Registry block для `author_style_memory_agent` переведён из `container` в `proposal`.
+- Добавлен `proposal_path`.
+- `next_action` в registry: `controlled_activation`.
+- Automatic memory writes не добавлялись.
+- Книга не продолжалась.
 
 ## Repository hygiene
 
@@ -59,13 +48,11 @@ npm run hygiene:audit
 
 ## Agent queue status
 
-`sergey_interaction_profiler` теперь proposal only, не activation и не hard guardrail.
+`author_style_memory_agent` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: помогать системе помнить наблюдаемые редакторские решения, failure-patterns и drift-зоны без превращения стиля Сергея в догму.
+Его роль: хранить подтверждённые editorial style decisions, formula memory, rhythm memory, scene/object memory, failure-pattern memory и counterexamples без превращения стиля в канон.
 
-Ограничение: он не имитирует личность Сергея, не подменяет редактора, не блокирует merge, не навязывает композиционные схемы и не становится authority layer.
-
-`author_style_memory_agent` остаётся container. Следующий safe step — подготовить его proposal без activation, если Сергей не выберет другой агент.
+Ограничение: он не имитирует Сергея, не пишет вместо автора, не блокирует merge, не создаёт automatic memory writes и не заменяет живую редактуру.
 
 ## Актуальные proposal-агенты
 
@@ -79,6 +66,7 @@ npm run hygiene:audit
 - `svod_guard` — proposal only, не activation.
 - `contextologist_agent` — proposal only, не activation.
 - `sergey_interaction_profiler` — proposal only, не activation.
+- `author_style_memory_agent` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -87,16 +75,15 @@ npm run hygiene:audit
 3. `cbt_thought_check_agent` — optional workflow layer; not therapy, not diagnostics.
 4. `source_intake_auditor` — optional workflow layer; not workflow conductor.
 
-## Следующий безопасный шаг после checkpoint
+## Следующий безопасный шаг
 
-Подготовить `author_style_memory_agent` как proposal без activation, если Сергей не выберет другой агент.
+Подготовить `banality_alarm_agent` как proposal без activation, если Сергей не выберет другой агент.
 
 Почему он следующий:
 
-- `sergey_interaction_profiler` уже оформлен как proposal;
-- registry синхронизирован;
-- следующий контейнер ядра заполнения — `author_style_memory_agent`;
-- он должен хранить вкус текста и авторские паттерны как рабочую память, а не как жёсткий канон.
+- `author_style_memory_agent` уже оформлен как proposal;
+- следующий ближайший контейнер в группе «Профиль взаимодействия и авторская память» — `banality_alarm_agent`;
+- он должен быть коротким сигнализатором повторяющихся сбоев: банальность, пластмасса, методичка, слишком ИИ, потеря мотора.
 
 ## Что временно не делаем
 
