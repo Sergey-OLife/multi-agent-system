@@ -1,16 +1,16 @@
 # Roadmap — Assistant × Codex
 
-Эта дорожная карта описывает рабочий процесс с Codex, GitHub, мультиагентной системой, Book Fast Track, источниками проекта «Пишем книгу» и текущей модернизацией агентной верфи.
+Эта дорожная карта описывает рабочий процесс с Codex, GitHub, мультиагентной системой, Book Fast Track, источниками проекта «Пишем книгу» и текущей агентной верфью.
 
 ## Текущий режим
 
-`Agent Shipyard / Shipyard Modernization`
+`Agent Shipyard / Agent Queue`
 
-Книга временно отложена. Текущий фокус — модернизация верфи, чтобы дальнейшая агентная работа шла быстрее и чище.
+Книга временно отложена. Shipyard Modernization stability gate passed. Текущий фокус возвращается к очереди агентов.
 
 Рабочая формула:
 
-> Сначала модернизируем стапель, потом продолжаем строить агентов.
+> Сначала модернизировали стапель, теперь продолжаем строить агентов.
 
 ## Уже завершено
 
@@ -39,29 +39,35 @@
 - v2.4 — Checkpoint Agent Shipyard architecture and first P0 proposals
 - v2.5 — Checkpoint Go-core validation loop and schema pressure contract
 - v2.6 — Checkpoint restart-prompt-first protocol correction
+- v2.7 — Shipyard Modernization stability gate passed
 
 ## Recent PR summary
 
-- PR #79 — Add minimal registry-check Go command.
-- PR #81 — Add minimal Go validation primitives and pressure tests.
 - PR #82 — Document schema pressure invariants for Go-core envelope.
-- PR #83 — Checkpoint full after schema pressure contract.
 - PR #84 — Checkpoint full after restart prompt protocol correction.
+- PR #85 — Add focused Go-core schema pressure tests.
+- PR #86 — Add bug response and compatibility protocol.
+- PR #87 — Checkpoint full: Shipyard Modernization stability gate passed.
 
-## Process correction
+## Shipyard Modernization result
 
-After PR #83 Sergey pointed out that the restart prompt had not been sent in chat before the previous checkpoint.
+Stability gate passed.
 
-Decision:
-
-- rule already existed in `working-protocol.md`;
-- previous issue was assistant noncompliance, not missing policy;
-- checkpoint order is now explicitly treated as hard working sequence:
+Зафиксировано:
 
 ```text
-prompt first
-GitHub second
+Go проверяет.
+TypeScript соединяет.
+LLM думает.
+Сергей утверждает.
+GitHub фиксирует.
 ```
+
+- Go-core — deterministic spine, not full TypeScript replacement.
+- TypeScript remains orchestration shell.
+- Wrapper owns transport, not validation meaning.
+- Schema pressure tests exist without schema framework.
+- Bug response protocol prevents framework reflex.
 
 ## Agent Shipyard architecture
 
@@ -104,95 +110,32 @@ Proposal не является activation.
 
 ## Shipyard Modernization roadmap
 
-Сергей принял направление: Go использовать как ядро для тяжёлых повторяемых проверок только после TypeScript-дисциплины и JSON boundary.
+Статус: sufficiently stable / pause by default.
 
-### PR A — Record Shipyard Modernization focus
+Технический коридор завершён:
 
-Статус: done via PR #63.
+- PR #63 — Record Shipyard Modernization focus.
+- PR #64 — Enable incremental TypeScript builds.
+- PR #65 — Split TypeScript domain and engine layers.
+- PR #66 — Add core API contract for future Go engine.
+- PR #67 — Extract context and diagnostics modules from agents.ts.
+- PR #69 — Enforce import boundaries and public module entrypoints.
+- PR #71 — Split tsconfig into base/build/test configs.
+- PR #72 — Add minimal Go-core sync-check CLI.
+- PR #73 — Sync state after Go-core and tighten handoff validation.
+- PR #75 — Add TypeScript dev wrapper for sync-check.
+- PR #76 — Add sync-check wrapper contract.
+- PR #77 — Add minimal sync-check CI workflow.
+- PR #78 — Extract minimal transport helpers.
+- PR #79 — Add registry-check Go command.
+- PR #81 — Add Go validation primitives and pressure tests.
+- PR #82 — Document schema pressure invariants.
+- PR #85 — Add focused schema pressure tests.
+- PR #86 — Add bug response and compatibility protocol.
 
-### PR B — Enable incremental TypeScript builds
-
-Статус: done via PR #64.
-
-### PR C — Split TypeScript domain and engine layers
-
-Статус: done via PR #65.
-
-### PR D — Add core API contract for future Go engine
-
-Статус: done via PR #66.
-
-### PR E — Extract context and diagnostics modules from agents.ts
-
-Статус: done via PR #67.
-
-### PR F — Enforce import boundaries and public module entrypoints
-
-Статус: done via PR #69.
-
-### PR G — Split tsconfig into base/build/test configs
-
-Статус: done via PR #71.
-
-### PR H — Add minimal Go-core sync-check CLI
-
-Статус: done via PR #72.
-
-### PR I — Sync state after Go-core and tighten handoff validation
-
-Статус: done via PR #73.
-
-### PR J — Add TypeScript dev wrapper for sync-check
-
-Статус: done via PR #75.
-
-### PR K — Add sync-check wrapper contract
-
-Статус: done via PR #76.
-
-### PR L — Add minimal sync-check CI workflow
-
-Статус: done via PR #77.
-
-### PR M — Extract minimal transport helpers
-
-Статус: done via PR #78.
-
-### PR N — Add registry-check Go command
-
-Статус: done via PR #79.
-
-### PR O — Add Go validation primitives and pressure tests
-
-Статус: done via PR #81.
-
-### PR P — Document schema pressure invariants
-
-Статус: done via PR #82.
-
-### PR Q — Checkpoint full after schema pressure contract
-
-Статус: done via PR #83.
-
-### PR R — Checkpoint full after restart prompt protocol correction
-
-Статус: current checkpoint PR.
-
-Смысл:
-
-- зафиксировать рабочую точку после PR #83;
-- закрепить, что restart-prompt-first rule already existed and must be obeyed;
-- сохранить следующий safe step: focused schema pressure tests.
-
-### PR S — Add focused schema pressure tests
-
-Статус: next safe step after checkpoint merge.
-
-Цель: добавить Go-core tests для malformed envelopes и contract edge cases без schema framework.
+Новый modernization work допускается только при конкретном bug/compatibility risk.
 
 ## Возврат к агентам
-
-Возврат к очереди agent proposals возможен после отдельного решения Сергея.
 
 Очередь:
 
@@ -203,6 +146,12 @@ Proposal не является activation.
 5. `contextologist_agent`
 6. `sergey_interaction_profiler`
 7. `author_style_memory_agent`
+
+Следующий безопасный шаг:
+
+```text
+prepare checkpoint_compressor_agent proposal without activation
+```
 
 ## Strict PR Workflow
 

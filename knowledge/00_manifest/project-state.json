@@ -1,10 +1,10 @@
 {
-  "currentVersion": "v2.6",
-  "lastCompletedVersion": "v2.6",
-  "lastMergedPr": "PR #83 — Checkpoint full after schema pressure contract",
-  "lastMergeCommit": "d2e3e66b57375c8ec8fe46d4e7180bb8f7731b1f",
-  "currentMilestone": "v2.6 Full checkpoint after restart-prompt-first protocol correction",
-  "currentMode": "Agent Shipyard / Shipyard Modernization",
+  "currentVersion": "v2.7",
+  "lastCompletedVersion": "v2.7",
+  "lastMergedPr": "PR #86 — Add bug response and compatibility protocol",
+  "lastMergeCommit": "80f2df5f8e8bf1f8dbb272fd88056a57ecf615a3",
+  "currentMilestone": "v2.7 Shipyard Modernization stability gate passed",
+  "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
     "v0.2 routing baseline",
@@ -31,33 +31,36 @@
     "v2.3 Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor",
     "v2.4 Checkpoint Agent Shipyard architecture and first P0 proposals",
     "v2.5 Checkpoint Go-core validation loop and schema pressure contract",
-    "v2.6 Checkpoint restart-prompt-first protocol correction"
+    "v2.6 Checkpoint restart-prompt-first protocol correction",
+    "v2.7 Shipyard Modernization stability gate passed"
   ],
   "recentPrs": [
-    "PR #79 — Add minimal registry-check Go command",
-    "PR #81 — Add minimal Go validation primitives and pressure tests",
     "PR #82 — Document schema pressure invariants for Go-core envelope",
-    "PR #83 — Checkpoint full after schema pressure contract",
-    "PR #84 — Checkpoint full after restart prompt protocol correction"
+    "PR #84 — Checkpoint full after restart prompt protocol correction",
+    "PR #85 — Add focused Go-core schema pressure tests",
+    "PR #86 — Add bug response and compatibility protocol",
+    "PR #87 — Checkpoint full: Shipyard Modernization stability gate passed"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
-    "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until the agent shipyard is sufficiently built",
-    "current active mode is Agent Shipyard with a temporary Shipyard Modernization subfocus",
-    "first build the ship, then sail: do not continue the book automatically while the current focus is agent buildout or shipyard modernization",
+    "Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision",
+    "Shipyard Modernization stability gate is passed after Go-core schema pressure tests and bug response compatibility protocol",
+    "current active mode returns to Agent Shipyard / Agent Queue",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout",
+    "Go-core is the system spine, not a full replacement for TypeScript",
+    "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
     "Go-core commands currently include sync-check and registry-check",
     "sync-check validates project state and handoff files",
     "registry-check validates structural registry signals only; it does not activate agents or orchestrate workflows",
     "The TypeScript wrapper owns transport, file collection, binary invocation, stdout parsing and unavailable fallback, not validation meaning",
-    "The Go-core validation loop is now part of CI through the minimal Sync Check workflow",
+    "The Go-core validation loop is part of CI through the minimal Sync Check workflow",
     "Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine",
     "blocked outranks needs_revision, needs_revision outranks ready, error is contract/runtime failure, unavailable is wrapper/transport-level",
-    "Go-core envelope invariants are documented as internal API assumptions before runtime enforcement",
-    "Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until pressure tests show real need",
+    "Go-core envelope invariants are documented and pressure-tested without schema framework",
+    "Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until repeated proven pain appears",
+    "Bug response protocol: classify bug, add minimal failing test or fixture, make narrow fix, consider framework only after repeated proven pain",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
-    "The restart-prompt-first checkpoint rule already existed in working-protocol.md; the prior violation was assistant noncompliance, not missing policy",
     "chat restart prompt before checkpoint full must be no more than 6000 characters with spaces; full restart-prompt.md may be longer",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
@@ -78,13 +81,13 @@
     "materials architecture is Coordinator-based star + fully-connected semantic topology"
   ],
   "pausedTasks": [
-    "Do not continue the book automatically while current mode is Agent Shipyard or Shipyard Modernization",
+    "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not create book/03_approved/chapter_00_preface.md until final approval",
     "Do not treat all uploaded project sources as fully audited",
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Add focused Go-core schema pressure tests for malformed envelopes and contract edge cases without introducing a schema framework",
+  "nextAction": "Return to the agent queue and prepare checkpoint_compressor_agent proposal without activation",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -99,6 +102,7 @@
     "knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md",
     "knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md",
     "knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md",
+    "knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md",
     ".github/workflows/sync-check.yml",
     "package.json",
     "scripts/run-sync-check.mjs",
@@ -106,6 +110,7 @@
     "go-core/go.mod",
     "go-core/cmd/multi-agent-core/main.go",
     "go-core/cmd/multi-agent-core/main_test.go",
+    "go-core/cmd/multi-agent-core/schema_pressure_test.go",
     "go-core/cmd/multi-agent-core/validation_primitives.go",
     "src/domain/index.ts",
     "src/engine/index.ts",
@@ -151,7 +156,7 @@
       "copyright_boundary_guard"
     ],
     "shipyardModernization": {
-      "status": "checkpoint_full_after_pr83_and_restart_prompt_protocol_correction",
+      "status": "stability_gate_passed",
       "completedTechnicalSteps": [
         "incremental TypeScript builds",
         "domain and engine layer split",
@@ -168,11 +173,13 @@
         "second Go-core command registry-check",
         "Go validation primitives and pressure tests",
         "schema pressure invariants documented in sync-check wrapper contract",
-        "restart-prompt-first checkpoint protocol compliance restored"
+        "restart-prompt-first checkpoint protocol compliance restored",
+        "focused schema pressure tests for malformed envelopes and contract edge cases",
+        "bug response and compatibility protocol"
       ],
-      "languageDecision": "Go accepted for deterministic validation checks behind TypeScript orchestration and JSON boundary",
-      "nextTechnicalStep": "Add focused schema pressure tests for malformed Go-core envelopes and contract edge cases",
-      "goCoreStrategy": "CLI first, JSON stdin/stdout, optional dev validation tool before any runtime replacement"
+      "languageDecision": "Go accepted as the deterministic spine behind TypeScript orchestration and JSON boundary, not as a full rewrite",
+      "nextTechnicalStep": "No further modernization step by default; return to agent queue unless a concrete bug or compatibility risk appears",
+      "goCoreStrategy": "CLI first, JSON stdin/stdout, deterministic validation spine before any runtime replacement"
     }
   }
 }

@@ -4,32 +4,41 @@
 
 ## Текущая рабочая точка
 
-Проект остаётся в режиме:
+Проект возвращается из подфокуса модернизации в режим:
 
-> `Agent Shipyard / Shipyard Modernization`
+> `Agent Shipyard / Agent Queue`
 
 Книга остаётся на паузе. Возврат к книге — только по отдельному решению Сергея через Book Fast Track.
 
 ## Последний смерженный PR
 
-- PR #83 — Checkpoint full after schema pressure contract
+- PR #86 — Add bug response and compatibility protocol
 - Статус: merged
-- Merge commit: `d2e3e66b57375c8ec8fe46d4e7180bb8f7731b1f`
-- Смысл: синхронизированы project-state/worklog/restart prompt после PR #82; следующая точка — focused schema pressure tests.
+- Merge commit: `80f2df5f8e8bf1f8dbb272fd88056a57ecf615a3`
+- Смысл: добавлен lightweight protocol реакции на будущие баги и compatibility changes.
 
-## Важное процессное исправление
+## Stability gate
 
-После вопроса Сергея зафиксировано:
+Shipyard Modernization stability gate считается пройденным.
 
-- правило уже было в `working-protocol.md`: при `#checkpoint full` сначала дать restart prompt в чат;
-- предыдущий сбой был assistant noncompliance, не missing policy;
-- текущий checkpoint начат правильно: restart prompt был сначала выдан в чат, потом начаты GitHub-операции.
+Проверено и зафиксировано:
+
+- TypeScript остаётся orchestration shell.
+- Go-core стал deterministic validation spine behind JSON stdin/stdout.
+- Go-core commands: `sync-check`, `registry-check`.
+- Wrapper владеет transport, не validation meaning.
+- CI проверяет minimal sync-check path.
+- Schema pressure tests добавлены без JSON Schema/protobuf/OpenAPI framework.
+- Bug response protocol удерживает порядок: classify → failing test/fixture → narrow fix → framework only after repeated proven pain.
 
 Рабочая формула:
 
 ```text
-prompt first
-GitHub second
+Go проверяет.
+TypeScript соединяет.
+LLM думает.
+Сергей утверждает.
+GitHub фиксирует.
 ```
 
 ## Что завершено в пакете Shipyard Modernization
@@ -51,6 +60,9 @@ GitHub second
 - PR #81 — добавлены minimal Go validation primitives and pressure tests.
 - PR #82 — documented schema pressure invariants for Go-core envelope.
 - PR #83 — full checkpoint after schema pressure contract.
+- PR #84 — restart-prompt-first protocol correction checkpoint.
+- PR #85 — focused Go-core schema pressure tests.
+- PR #86 — bug response and compatibility protocol.
 
 ## Актуальные proposal-агенты
 
@@ -66,38 +78,24 @@ GitHub second
 3. `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж.
 4. `source_intake_auditor` — источник не работает без ясной роли и границ; не workflow conductor.
 
-## Архитектурная логика модернизации
+## Следующий безопасный шаг
 
-- TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
-- Go-core развивается как deterministic validation layer за JSON boundary.
-- Go-core команды сейчас: `sync-check`, `registry-check`.
-- Wrapper знает transport, но не validation meaning.
-- Go-core знает validation meaning, но не ходит в GitHub, не вызывает LLM, не меняет state.
-- CI проверяет minimal sync-check path.
-- Semantic primitives в Go остаются маленькими helpers, не policy engine.
-- Schema pressure invariants зафиксированы текстом до runtime enforcement.
+Вернуться к agent queue и подготовить `checkpoint_compressor_agent` как proposal без activation.
 
-## Следующий безопасный технический шаг
+Почему именно он:
 
-Добавить focused Go-core schema pressure tests для malformed envelopes и contract edge cases без JSON Schema/protobuf/OpenAPI framework.
-
-Проверять нужно не happy path, а плохие состояния:
-
-- missing/invalid `schemaVersion`;
-- command mismatch;
-- unsupported command;
-- malformed project-state payload;
-- status priority;
-- command-local diagnostics;
-- compatibility with extra ignored fields where allowed.
+- уже был реальный сбой с checkpoint/restart prompt;
+- система стала плотнее;
+- будущие переходы между чатами требуют сжатия без потери смысловой точки;
+- агент должен помогать с checkpoint/restart continuity, но не менять project-state самостоятельно.
 
 ## Что временно не делаем
 
-- Не создаём следующий agent proposal (`checkpoint_compressor_agent`), пока Сергей не вернёт фокус к agent queue.
-- Не меняем routes/guardrails/optional layers.
 - Не продолжаем книгу автоматически.
+- Не активируем proposal agents без controlled activation and separate approval.
+- Не меняем routes/guardrails/optional layers.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
-- Не вводим schema framework до реальной необходимости.
+- Не вводим новые modernization layers без конкретного bug/compatibility риска.
 
 ## Короткие команды
 
