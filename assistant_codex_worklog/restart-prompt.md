@@ -27,10 +27,10 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.14.
-- lastCompletedVersion: v2.14.
-- lastMergedPr: PR #101 — Add repository hygiene audit and ledger protocol.
-- lastMergeCommit: ade6c257aea62866e7985873bb02f6a8e09881b1.
+- currentVersion: v2.15.
+- lastCompletedVersion: v2.15.
+- lastMergedPr: PR #102 — Sync state after repository hygiene audit.
+- lastMergeCommit: 4db41f8305928fae94add0231c9fc35b7d6fb521.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
