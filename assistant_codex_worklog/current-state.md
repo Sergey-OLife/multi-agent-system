@@ -12,51 +12,84 @@
 
 ## Последний смерженный PR
 
-- PR #118 — Add conversation archive capture protocol
+- PR #116 — Add anti-cliche editor proposal
 - Статус: merged
-- Merge commit: `4f8096378daa55755690a348d455cc780dee17a9`
-- Смысл: добавлен отдельный conversation archive layer для смысловых следов диалогов, которые не должны теряться между чатами.
+- Merge commit: `26d77624c640d1594b2e41aeaae0643959c250b4`
+- Смысл: добавлен proposal `anti_cliche_editor`, registry sync выполнен через Registry Sync workflow, добавлен `registry_mutation_protocol`.
 
-## Что зафиксировал PR #118
+## Что зафиксировал PR #116
+
+- `knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md`
+- `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`
+- `knowledge/07_operations/registry_mutation_protocol.md`
+
+`anti_cliche_editor` — proposal only, не activation и не hard guardrail.
+
+Registry status:
+
+```text
+anti_cliche_editor: proposal
+next_action: controlled_activation
+proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
+```
+
+Главная формула агента:
+
+```text
+Убрать умно звучащее пустое. Оставить точное и живое.
+```
+
+Агент классифицирует и помогает точечно править:
+
+- клише;
+- общие места;
+- псевдоглубину;
+- рекламную пластмассу;
+- морализаторство;
+- методический тон;
+- канцелярит;
+- расплывчатые утверждения;
+- слишком гладкий ИИ-голос.
+
+## Registry mutation protocol
+
+`knowledge/07_operations/registry_mutation_protocol.md` теперь active operational protocol.
+
+Правило:
+
+```text
+Registry меняется инструментом, а не памятью ассистента.
+```
+
+Нормальный путь:
+
+1. proposal file;
+2. `npm run registry:sync -- ... --dry-run`;
+3. apply без `--dry-run`;
+4. проверка changed files;
+5. проверка точечного registry diff;
+6. PR ready only after sync.
+
+Manual full replacement большого registry запрещён как обычный путь.
+
+## Conversation archive
+
+Conversation archive активен как отдельный human interaction archive:
 
 - `knowledge/08_conversation_archive/README.md`
 - `knowledge/08_conversation_archive/archive_governance_protocol.md`
 - `knowledge/08_conversation_archive/conversation_capture_prompt.md`
 - `knowledge/08_conversation_archive/index.md`
-- `knowledge/08_conversation_archive/chat_archives/2026-05-18_lost-dialogue-and-idea-archive.md`
+- `knowledge/08_conversation_archive/chat_archives/`
 - `scripts/archive-audit.mjs`
-- `npm run archive:audit`
 
-Conversation archive не является project-state, approval-log или technical checkpoint.
+Audit:
 
-Он сохраняет только смысловые зерна:
-
-- идеи, которые иначе потеряются;
-- противоречия;
-- open loops;
-- наблюдения о стиле взаимодействия;
-- ошибки ChatGPT;
-- сильные формулы;
-- указатели на то, где мысль реализована.
-
-Запрещено сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
-
-## Registry sync workflow
-
-PR #117 смержен ранее и добавил:
-
-- `.github/workflows/registry-sync.yml`
-
-Его нужно использовать для разблокировки PR #116:
-
-```text
-target_branch: agent-proposal-anti-cliche-editor
-agent_id: anti_cliche_editor
-proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
-dry_run: true сначала, затем false
+```bash
+npm run archive:audit
 ```
 
-PR #116 остаётся заблокирован до registry sync.
+Archive не является project-state, approval-log или technical checkpoint.
 
 ## Repository hygiene
 
@@ -70,19 +103,7 @@ npm run hygiene:audit
 
 - Issue #99 — Repository hygiene ledger.
 
-Статус веток:
-
-- branch cleanup остаётся `cleanup_needed`, не `completed`;
-- stale branches не удалялись;
-- уборка веток должна быть выполнена через GitHub UI или будущий явный безопасный branch cleanup tool;
-- не использовать branch-ref workarounds;
-- не заявлять, что cleanup завершён, пока ветки не убраны реально и issue #99 не обновлён.
-
-## Agent queue status
-
-`banality_alarm_agent` теперь proposal only, не activation и не hard guardrail.
-
-`anti_cliche_editor` proposal PR #116 открыт, но blocked/draft до registry sync через workflow или approved runner path.
+Branch cleanup остаётся `cleanup_needed`, не `completed`.
 
 ## Актуальные proposal-агенты
 
@@ -98,6 +119,7 @@ npm run hygiene:audit
 - `sergey_interaction_profiler` — proposal only, не activation.
 - `author_style_memory_agent` — proposal only, не activation.
 - `banality_alarm_agent` — proposal only, не activation.
+- `anti_cliche_editor` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -108,17 +130,16 @@ npm run hygiene:audit
 
 ## Следующий безопасный шаг
 
-Разблокировать PR #116 через Registry Sync workflow:
+Подготовить `conversation_archive_librarian` proposal without activation, если Сергей не выберет другой ближайший агент или сначала не попросит улучшить registry workflow automation.
+
+Ожидаемый порядок, ранее согласованный с Сергеем:
 
 ```text
-workflow: Registry Sync
-target_branch: agent-proposal-anti-cliche-editor
-agent_id: anti_cliche_editor
-proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
-dry_run: true first
+1. Разблокировать PR #116 через Registry Sync workflow — done.
+2. Довести anti_cliche_editor — proposal merged, not activated.
+3. Потом создать conversation_archive_librarian proposal.
+4. После 2–3 реальных archive entries решить, активировать ли его как optional workflow layer.
 ```
-
-После успешного dry-run повторить с `dry_run: false`, проверить PR #116, снять draft, проверить changed files/mergeability/comments.
 
 ## Что временно не делаем
 
