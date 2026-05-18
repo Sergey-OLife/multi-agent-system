@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.13",
-  "lastCompletedVersion": "v2.13",
-  "lastMergedPr": "PR #97 — Sync state after contextologist proposal",
-  "lastMergeCommit": "52388d39fb2d3b5e965b5718df3bccc0259857b8",
-  "currentMilestone": "v2.13 Checkpoint full after contextologist state sync",
+  "currentVersion": "v2.14",
+  "lastCompletedVersion": "v2.14",
+  "lastMergedPr": "PR #101 — Add repository hygiene audit and ledger protocol",
+  "lastMergeCommit": "ade6c257aea62866e7985873bb02f6a8e09881b1",
+  "currentMilestone": "v2.14 Repository hygiene audit and ledger protocol synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -13,15 +13,16 @@
     "v2.10 Copyright boundary guard proposal synced",
     "v2.11 Svod guard proposal synced",
     "v2.12 Contextologist proposal synced",
-    "v2.13 Checkpoint full after contextologist state sync"
+    "v2.13 Checkpoint full after contextologist state sync",
+    "v2.14 Repository hygiene audit and ledger protocol synced"
   ],
   "recentPrs": [
-    "PR #93 — Sync state after copyright boundary guard proposal",
-    "PR #94 — Add svod guard agent proposal",
     "PR #95 — Sync state after svod guard proposal",
     "PR #96 — Add contextologist agent proposal",
     "PR #97 — Sync state after contextologist proposal",
-    "PR #98 — Checkpoint full after contextologist state sync"
+    "PR #98 — Checkpoint full after contextologist state sync",
+    "PR #100 — Add repository hygiene audit and ledger protocol [closed superseded]",
+    "PR #101 — Add repository hygiene audit and ledger protocol"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -35,8 +36,11 @@
     "svod_guard is a proposal only, not activated and not a hard guardrail",
     "contextologist_agent is a proposal only, not activated and not a hard guardrail",
     "contextologist_agent restores the project map before a move; it does not command the route, change state or replace workflow_conductor_agent",
-    "next agent queue candidate after contextologist_agent is sergey_interaction_profiler",
-    "branch hygiene cleanup is needed after PR #97; stale merged branches should be removed manually or by an explicit safe delete-branch tool, not by force-ref workarounds",
+    "repository hygiene audit is now available as npm run hygiene:audit",
+    "Repository hygiene ledger is GitHub issue #99",
+    "branch hygiene cleanup remains cleanup_needed, not completed",
+    "stale branches should be removed only manually in GitHub UI or by a future explicit safe branch cleanup tool, not by branch-ref workarounds",
+    "next agent queue candidate after repository hygiene state sync remains sergey_interaction_profiler",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",
@@ -54,7 +58,7 @@
     "Do not treat all uploaded project sources as fully audited",
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR",
-    "Do not pretend branch cleanup was completed while the available GitHub tool has no explicit delete branch operation"
+    "Do not pretend branch cleanup was completed while branches remain unresolved in issue #99"
   ],
   "nextAction": "Prepare sergey_interaction_profiler proposal without activation",
   "manualChapterUpload": true,
@@ -73,7 +77,9 @@
     "knowledge/05_agent_memory/agent_proposals/source_card_builder.md",
     "knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md",
     "knowledge/05_agent_memory/agent_proposals/svod_guard.md",
-    "knowledge/05_agent_memory/agent_proposals/contextologist_agent.md"
+    "knowledge/05_agent_memory/agent_proposals/contextologist_agent.md",
+    "knowledge/07_operations/repository_hygiene_protocol.md",
+    "scripts/hygiene-audit.mjs"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
@@ -113,23 +119,12 @@
       "languageDecision": "Go accepted as the deterministic spine behind TypeScript orchestration and JSON boundary, not as a full rewrite",
       "nextTechnicalStep": "No further modernization step by default; return to agent queue unless a concrete bug or compatibility risk appears"
     },
-    "branchHygiene": {
-      "status": "cleanup_needed_after_pr97",
-      "tooling_limitation": "No explicit safe delete-branch operation is available in the current GitHub tool surface",
-      "do_not_use": "force-ref workaround for branch cleanup",
-      "stale_branches_to_remove_manually": [
-        "state-sync-after-checkpoint-compressor-proposal",
-        "state-sync-after-source-card-builder-proposal",
-        "state-sync-after-copyright-boundary-guard-proposal",
-        "state-sync-after-svod-guard-proposal",
-        "state-sync-after-contextologist-proposal",
-        "agent-proposal-checkpoint-compressor",
-        "agent-proposal-source-card-builder",
-        "agent-proposal-copyright-boundary-guard",
-        "agent-proposal-svod-guard",
-        "agent-proposal-contextologist",
-        "agent-proposal/project-state-synchronizer"
-      ]
+    "repositoryHygiene": {
+      "status": "audit_mechanism_active_cleanup_needed",
+      "audit_command": "npm run hygiene:audit",
+      "ledger_issue": "#99 Repository hygiene ledger",
+      "branch_cleanup": "cleanup_needed_not_completed",
+      "do_not_use": "branch-ref workaround for cleanup"
     }
   }
 }

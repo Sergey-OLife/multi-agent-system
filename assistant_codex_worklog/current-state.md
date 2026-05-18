@@ -12,10 +12,30 @@
 
 ## Последний смерженный PR
 
-- PR #97 — Sync state after contextologist proposal
+- PR #101 — Add repository hygiene audit and ledger protocol
 - Статус: merged
-- Merge commit: `52388d39fb2d3b5e965b5718df3bccc0259857b8`
-- Смысл: state sync после `contextologist_agent` proposal.
+- Merge commit: `ade6c257aea62866e7985873bb02f6a8e09881b1`
+- Смысл: добавлен постоянный repository hygiene audit и ledger protocol.
+
+## Repository hygiene
+
+Теперь доступно:
+
+```bash
+npm run hygiene:audit
+```
+
+Единый ledger:
+
+- Issue #99 — Repository hygiene ledger.
+
+Статус веток:
+
+- branch cleanup остаётся `cleanup_needed`, не `completed`;
+- stale branches не удалялись;
+- уборка веток должна быть выполнена через GitHub UI или будущий явный безопасный branch cleanup tool;
+- не использовать branch-ref workarounds;
+- не заявлять, что cleanup завершён, пока ветки не убраны реально и issue #99 не обновлён.
 
 ## Agent queue status
 
@@ -43,14 +63,6 @@
 2. `ethical_persuasion_guard` — optional workflow layer.
 3. `cbt_thought_check_agent` — optional workflow layer; not therapy, not diagnostics.
 4. `source_intake_auditor` — optional workflow layer; not workflow conductor.
-
-## Branch hygiene
-
-После PR #97 остались stale merged branches. Они не влияют на runtime, Go/TS, registry, state, routes, guardrails или книгу, но раздувают branch list.
-
-Текущий GitHub tool surface не даёт явной безопасной операции delete branch. Не использовать force-ref workaround.
-
-Очистка должна быть выполнена вручную в GitHub UI или через явный delete-branch tool, если он появится.
 
 ## Следующий безопасный шаг
 

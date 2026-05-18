@@ -22,19 +22,26 @@ GitHub — источник правды. Сначала открой:
 13. knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
 14. knowledge/05_agent_memory/agent_proposals/svod_guard.md
 15. knowledge/05_agent_memory/agent_proposals/contextologist_agent.md
+16. knowledge/07_operations/repository_hygiene_protocol.md
+17. scripts/hygiene-audit.mjs
 
 Актуальное состояние:
 
-- currentVersion: v2.13.
-- lastCompletedVersion: v2.13.
-- lastMergedPr: PR #97 — Sync state after contextologist proposal.
-- lastMergeCommit: 52388d39fb2d3b5e965b5718df3bccc0259857b8.
+- currentVersion: v2.14.
+- lastCompletedVersion: v2.14.
+- lastMergedPr: PR #101 — Add repository hygiene audit and ledger protocol.
+- lastMergeCommit: ade6c257aea62866e7985873bb02f6a8e09881b1.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
-Shipyard Modernization stability gate passed.
+Repository hygiene:
 
-Proposal agents now include:
+- `npm run hygiene:audit` доступен.
+- Issue #99 — Repository hygiene ledger.
+- Branch cleanup остаётся cleanup_needed, не completed.
+- Не использовать branch-ref workarounds.
+
+Proposal agents:
 
 - workflow_conductor_agent.
 - agent_registry_librarian.
@@ -53,20 +60,12 @@ Active optional workflow layers:
 - cbt_thought_check_agent.
 - source_intake_auditor.
 
-Branch hygiene:
-
-- PR #97 merged.
-- Several merged/stale branches remain.
-- Current GitHub tool surface has no explicit safe delete-branch operation.
-- Do not use force-ref workaround.
-- Clean up stale branches manually in GitHub UI or through future explicit delete-branch tool.
-
 Правила:
 
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
 - Если после `++` PR существенно изменён — нужен новый `++`.
-- Strict PR workflow обязателен для кода, агентов, guardrails, registries, project-state, source cards, MVP, Сводов и Shipyard Modernization.
+- Strict PR workflow обязателен для кода, агентов, guardrails, registries, project-state, source cards, MVP, Сводов, repository hygiene и Shipyard Modernization.
 - Не продолжать книгу автоматически.
 - Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не активировать hard guardrails или proposal agents без отдельного решения.
