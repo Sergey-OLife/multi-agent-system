@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.16",
-  "lastCompletedVersion": "v2.16",
-  "lastMergedPr": "PR #104 — Add review depth protocol and profiler proposal",
-  "lastMergeCommit": "c4125030eef986eb489b28122275d493997fc636",
-  "currentMilestone": "v2.16 Review depth protocol and Sergey interaction profiler proposal synced",
+  "currentVersion": "v2.17",
+  "lastCompletedVersion": "v2.17",
+  "lastMergedPr": "PR #110 — Sync state after profiler proposal",
+  "lastMergeCommit": "f9223e9698dc3dcdb16948effb894131ab14d36e",
+  "currentMilestone": "v2.17 Checkpoint full after profiler state sync",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -16,16 +16,15 @@
     "v2.13 Checkpoint full after contextologist state sync",
     "v2.14 Repository hygiene audit and ledger protocol synced",
     "v2.15 Checkpoint full after repository hygiene state sync",
-    "v2.16 Review depth protocol and Sergey interaction profiler proposal synced"
+    "v2.16 Review depth protocol and Sergey interaction profiler proposal synced",
+    "v2.17 Checkpoint full after profiler state sync"
   ],
   "recentPrs": [
-    "PR #97 — Sync state after contextologist proposal",
-    "PR #98 — Checkpoint full after contextologist state sync",
-    "PR #100 — Add repository hygiene audit and ledger protocol [closed superseded]",
     "PR #101 — Add repository hygiene audit and ledger protocol",
     "PR #102 — Sync state after repository hygiene audit",
     "PR #103 — Checkpoint full after repository hygiene state sync",
-    "PR #104 — Add review depth protocol and profiler proposal"
+    "PR #104 — Add review depth protocol and profiler proposal",
+    "PR #110 — Sync state after profiler proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -44,7 +43,7 @@
     "Repository hygiene ledger is GitHub issue #99",
     "branch hygiene cleanup remains cleanup_needed, not completed",
     "stale branches should be removed only manually in GitHub UI or by a future explicit safe branch cleanup tool, not by branch-ref workarounds",
-    "next agent queue candidate after profiler proposal is author_style_memory_agent unless Sergey chooses a different agent",
+    "next agent queue candidate is author_style_memory_agent unless Sergey chooses a different agent",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals, activations and repository hygiene protocols",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",

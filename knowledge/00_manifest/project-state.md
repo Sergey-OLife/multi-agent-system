@@ -4,23 +4,21 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.16
-- lastCompletedVersion: v2.16
-- lastMergedPr: PR #104 — Add review depth protocol and profiler proposal
-- lastMergeCommit: c4125030eef986eb489b28122275d493997fc636
-- currentMilestone: v2.16 Review depth protocol and Sergey interaction profiler proposal synced
+- currentVersion: v2.17
+- lastCompletedVersion: v2.17
+- lastMergedPr: PR #110 — Sync state after profiler proposal
+- lastMergeCommit: f9223e9698dc3dcdb16948effb894131ab14d36e
+- currentMilestone: v2.17 Checkpoint full after profiler state sync
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #97 — Sync state after contextologist proposal
-- PR #98 — Checkpoint full after contextologist state sync
-- PR #100 — Add repository hygiene audit and ledger protocol [closed superseded]
 - PR #101 — Add repository hygiene audit and ledger protocol
 - PR #102 — Sync state after repository hygiene audit
 - PR #103 — Checkpoint full after repository hygiene state sync
 - PR #104 — Add review depth protocol and profiler proposal
+- PR #110 — Sync state after profiler proposal
 
 ## Repository hygiene
 
@@ -48,12 +46,14 @@ Rule:
 `sergey_interaction_profiler` is proposal only, not activated and not a hard guardrail.
 
 - Proposal path: `knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md`
+- Registry status: `proposal`
+- Next action in registry: `controlled_activation`
 - Activation: no
 - Hard guardrail: no
 
 Its role is editorial memory, drift diagnostics and contextual style mapping. It observes editorial decisions and failure patterns, but does not imitate Sergey, replace the editor, block merges or become an authority layer.
 
-`review_depth_protocol` is now active operational protocol.
+`review_depth_protocol` is active operational protocol.
 
 - Protocol path: `knowledge/07_operations/review_depth_protocol.md`
 - It defines L1/L2/L3 review depth, semantic discipline for `+`, `++`, `+++`, and anti-overengineering doctrine.
@@ -75,7 +75,7 @@ Its role is editorial memory, drift diagnostics and contextual style mapping. It
 - `contextologist_agent` is a proposal only, not activated and not a hard guardrail.
 - `sergey_interaction_profiler` is a proposal only, not activated and not a hard guardrail.
 - `review_depth_protocol` defines L1/L2/L3 agent review depth, semantic discipline for `+`, `++`, `+++`, and anti-overengineering doctrine.
-- Next agent queue candidate after profiler proposal is `author_style_memory_agent` unless Sergey chooses a different agent.
+- Next agent queue candidate is `author_style_memory_agent` unless Sergey chooses a different agent.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.

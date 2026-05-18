@@ -29,10 +29,11 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.16.
-- lastCompletedVersion: v2.16.
-- lastMergedPr: PR #104 — Add review depth protocol and profiler proposal.
-- lastMergeCommit: c4125030eef986eb489b28122275d493997fc636.
+- currentVersion: v2.17.
+- lastCompletedVersion: v2.17.
+- lastMergedPr: PR #110 — Sync state after profiler proposal.
+- lastMergeCommit: f9223e9698dc3dcdb16948effb894131ab14d36e.
+- currentMilestone: v2.17 Checkpoint full after profiler state sync.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -42,6 +43,7 @@ Repository hygiene:
 - Issue #99 — Repository hygiene ledger.
 - Branch cleanup остаётся cleanup_needed, не completed.
 - Не использовать branch-ref workarounds.
+- Не заявлять cleanup completed до фактической уборки веток и обновления issue #99.
 
 Operational protocol:
 
@@ -78,6 +80,7 @@ Active optional workflow layers:
 - Не продолжать книгу автоматически.
 - Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не активировать hard guardrails или proposal agents без отдельного решения.
+- Перед любым будущим `#checkpoint full` сначала выдать compact restart prompt в чат.
 
 Следующий логичный шаг:
 
