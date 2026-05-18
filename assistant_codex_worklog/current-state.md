@@ -12,16 +12,56 @@
 
 ## Последний смерженный PR
 
-- PR #116 — Add anti-cliche editor proposal
+- PR #121 — Archive repository contract risks
 - Статус: merged
-- Merge commit: `26d77624c640d1594b2e41aeaae0643959c250b4`
-- Смысл: добавлен proposal `anti_cliche_editor`, registry sync выполнен через Registry Sync workflow, добавлен `registry_mutation_protocol`.
+- Merge commit: `cc8e2f2216e518871b35c3aa48c91fdbc6bb4943`
+- Смысл: сохранён archive entry о repository contract / main protection risks после обновления capture prompt.
 
-## Что зафиксировал PR #116
+## Недавние merged PRs
 
-- `knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md`
-- `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`
-- `knowledge/07_operations/registry_mutation_protocol.md`
+- PR #120 — Sync state after anti-cliche editor proposal
+- PR #122 — Refresh conversation capture prompt and restart handoff
+- PR #121 — Archive repository contract risks
+
+## Что зафиксировал PR #122
+
+Обновлён universal conversation capture prompt и restart handoff.
+
+Ключевая поправка:
+
+```text
+main — источник правды только для merged state.
+open PR ≠ implemented.
+draft PR ≠ ready state.
+approval-gate ≠ approval.
+```
+
+При сборе archive entry теперь нужно проверять relevant open PRs, если текущий чат на них ссылается.
+
+`knowledge/08_conversation_archive/chat_archives/*.md` добавлен в restart prompt как обязательный слой восстановления контекста.
+
+## Что зафиксировал PR #121
+
+Сохранён archive entry:
+
+- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
+
+И обновлён:
+
+- `knowledge/08_conversation_archive/index.md`
+
+Заархивированы риски:
+
+- нужен root `README.md` / repository architecture contract;
+- нужна source-of-truth map;
+- нужен boundary для `scripts/`, чтобы они не стали вторым неформальным core;
+- нужен отдельный action item для `main` branch protection;
+- нужны future knowledge/protocol consistency checks;
+- manual `workflow_dispatch` для registry sync можно позже заменить label-triggered workflow.
+
+Это archived risks и recommended work items, не implementation approval.
+
+## Anti-cliche editor
 
 `anti_cliche_editor` — proposal only, не activation и не hard guardrail.
 
@@ -39,36 +79,15 @@ proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
 Убрать умно звучащее пустое. Оставить точное и живое.
 ```
 
-Агент классифицирует и помогает точечно править:
-
-- клише;
-- общие места;
-- псевдоглубину;
-- рекламную пластмассу;
-- морализаторство;
-- методический тон;
-- канцелярит;
-- расплывчатые утверждения;
-- слишком гладкий ИИ-голос.
-
 ## Registry mutation protocol
 
-`knowledge/07_operations/registry_mutation_protocol.md` теперь active operational protocol.
+`knowledge/07_operations/registry_mutation_protocol.md` active operational protocol.
 
 Правило:
 
 ```text
 Registry меняется инструментом, а не памятью ассистента.
 ```
-
-Нормальный путь:
-
-1. proposal file;
-2. `npm run registry:sync -- ... --dry-run`;
-3. apply без `--dry-run`;
-4. проверка changed files;
-5. проверка точечного registry diff;
-6. PR ready only after sync.
 
 Manual full replacement большого registry запрещён как обычный путь.
 
@@ -81,6 +100,7 @@ Conversation archive активен как отдельный human interaction 
 - `knowledge/08_conversation_archive/conversation_capture_prompt.md`
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
 - `scripts/archive-audit.mjs`
 
 Audit:
@@ -90,6 +110,14 @@ npm run archive:audit
 ```
 
 Archive не является project-state, approval-log или technical checkpoint.
+
+Он важен при вопросах:
+
+- что у нас дальше;
+- какие идеи потерялись;
+- какие противоречия не закрыты;
+- как учитывать стиль взаимодействия;
+- какие open loops не отражены в roadmap/state.
 
 ## Repository hygiene
 
@@ -130,15 +158,12 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 
 ## Следующий безопасный шаг
 
-Подготовить `conversation_archive_librarian` proposal without activation, если Сергей не выберет другой ближайший агент или сначала не попросит улучшить registry workflow automation.
+Подготовить `Add repository architecture contract` PR, если Сергей не выберет сначала `conversation_archive_librarian` proposal.
 
-Ожидаемый порядок, ранее согласованный с Сергеем:
+Важно:
 
 ```text
-1. Разблокировать PR #116 через Registry Sync workflow — done.
-2. Довести anti_cliche_editor — proposal merged, not activated.
-3. Потом создать conversation_archive_librarian proposal.
-4. После 2–3 реальных archive entries решить, активировать ли его как optional workflow layer.
+repository architecture contract пока recommended work item, не approval.
 ```
 
 ## Что временно не делаем
@@ -149,6 +174,7 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не заявляем, что branch cleanup выполнен, пока ветки не удалены реально.
 - Не превращаем conversation archive в raw transcript dump.
+- Не считаем repository architecture contract уже утверждённым.
 
 ## Короткие команды
 
