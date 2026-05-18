@@ -89,6 +89,29 @@
 
 ---
 
+## Language-awareness correction
+
+Нельзя рассматривать упоминание `GO` только как абстрактный маркер движения/разрешения.
+
+В архитектурных обсуждениях `Go` может быть:
+
+- языком программирования;
+- частью execution strategy;
+- сигналом о переходе к deterministic tooling;
+- ограничением или преимуществом runtime architecture.
+
+Ошибка интерпретации `Go` как только conversational token:
+
+- снижает architectural flexibility;
+- скрывает tooling opportunities;
+- мешает раньше увидеть practical implementation path.
+
+При появлении `Go/GO` в инженерном контексте нужно сначала проверять:
+
+> не является ли это указанием на технологический стек или implementation direction.
+
+---
+
 ## Important distinction
 
 Критика rhetorical inflation:
