@@ -4,22 +4,54 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.22
-- lastCompletedVersion: v2.22
-- lastMergedPr: PR #121 — Archive repository contract risks
-- lastMergeCommit: cc8e2f2216e518871b35c3aa48c91fdbc6bb4943
-- currentMilestone: v2.22 Archive risks and capture prompt refresh synced
+- currentVersion: v2.23
+- lastCompletedVersion: v2.23
+- lastMergedPr: PR #126 — Archive CI baseline and command recovery
+- lastMergeCommit: 01891be8fdb45240f79c00746a5dadef9172a6a2
+- currentMilestone: v2.23 Archive command and CI baseline recovery synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #118 — Add conversation archive capture protocol
-- PR #119 — Sync state after conversation archive protocol
-- PR #116 — Add anti-cliche editor proposal
 - PR #120 — Sync state after anti-cliche editor proposal
 - PR #122 — Refresh conversation capture prompt and restart handoff
 - PR #121 — Archive repository contract risks
+- PR #123 — Sync state after archive risks and capture refresh
+- PR #124 — Add stable conversation archive command
+- PR #125 — Add short command priority rule
+- PR #126 — Archive CI baseline and command recovery
+
+## Archive command and CI baseline recovery
+
+PR #124 added stable conversation archive commands:
+
+```text
+#архив чата
+#архив чата сохрани
+```
+
+Rules:
+
+- `#архив чата` runs the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat in draft mode.
+- It does not write to GitHub by default.
+- `#архив чата сохрани` creates a PR with archive entry and index update when GitHub tools are available.
+
+PR #125 added short command priority:
+
+```text
+Команда не должна проигрывать шуму.
+Хвост не должен скрываться за выполнением новой команды.
+```
+
+If a short command is exact, ChatGPT must recognize it before handling repeated attachments, auto-loaded sources, old non-blocking tails or adjacent tasks. If pending work can conflict with the command, ChatGPT must disclose the tail and ask before acting.
+
+PR #126 archived CI baseline and command recovery:
+
+- baseline CI for TypeScript / JavaScript / Go is a promising next work item, not yet approved implementation;
+- CI V1 should use existing scripts: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`;
+- ESLint / Prettier / golangci-lint / SonarCloud / CodeClimate / AI-review bots should not be introduced before baseline CI and repository contract are settled;
+- TS/Go/JS boundaries should later be fixed in repository architecture contract.
 
 ## Archive risks and capture refresh
 
@@ -79,6 +111,7 @@ Important paths:
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/`
 - `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 - `scripts/archive-audit.mjs`
 
 Audit command:
@@ -124,8 +157,11 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Conversation archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint.
 - Conversation archive is a significant context recovery layer and must be checked for forgotten ideas, contradictions, plans, interaction style and what-next questions.
-- Archive audit is available as `npm run archive:audit`.
-- Conversation capture must distinguish merged main state from open PRs; open PR is not implemented.
+- Stable short command `#архив чата` runs the latest repository capture prompt in draft mode and does not write to GitHub by default.
+- Stable short command `#архив чата сохрани` creates a PR with archive entry plus index update when GitHub tools are available.
+- Short commands have priority over interface noise, but pending work must be disclosed before acting when it can conflict.
+- CI baseline is archived as a promising next work item, not yet approved implementation.
+- Recommended CI V1 should use existing scripts: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - Repository architecture contract is a recommended next step but not yet approved as an implementation PR.
 - Registry sync workflow is available as manual `workflow_dispatch` after PR #117.
 - Registry mutation protocol is active: registry changes must use deterministic tooling rather than manual full replacement when tooling is available.
@@ -142,7 +178,7 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Repository hygiene audit is available as `npm run hygiene:audit`.
 - Repository hygiene ledger is GitHub issue #99.
 - Branch hygiene cleanup remains cleanup_needed, not completed.
-- Next recommended work item is Add repository architecture contract unless Sergey chooses conversation_archive_librarian first.
+- Next recommended work item is Add baseline CI workflow unless Sergey chooses repository architecture contract or conversation_archive_librarian first.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -180,10 +216,11 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
 - Do not let conversation archive become a raw transcript dump.
 - Do not treat repository architecture contract recommendation as already approved.
+- Do not treat baseline CI as approved until Sergey explicitly approves the CI PR.
 
 ## Next action
 
-Prepare `Add repository architecture contract` PR unless Sergey chooses `conversation_archive_librarian` proposal first.
+Prepare `Add baseline CI workflow` PR unless Sergey chooses repository architecture contract or `conversation_archive_librarian` proposal first.
 
 ## Chat writing state
 
