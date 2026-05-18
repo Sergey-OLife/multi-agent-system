@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Дата фиксации: 2026-05-17
+Дата фиксации: 2026-05-18
 
 ## Текущая рабочая точка
 
@@ -12,10 +12,10 @@
 
 ## Последний смерженный PR
 
-- PR #73 — Sync state after Go core sync-check
+- PR #82 — Document schema pressure invariants for Go-core envelope
 - Статус: merged
-- Merge commit: `efa728d33e1fdb7d1a42615670dc3446dc0745c2`
-- Смысл: синхронизированы state/worklog/core contract после PR #71–72; `sync-check` ужесточён и больше не может объявить состояние `ready`, если handoff-файлы не переданы.
+- Merge commit: `a49de76ba93dd10cbad498e9962b049725c83d17`
+- Смысл: implicit invariants Go-core envelope contract зафиксированы как internal API assumptions перед runtime enforcement и schema pressure tests.
 
 ## Что завершено в пакете Shipyard Modernization
 
@@ -30,6 +30,14 @@
 - PR #71 — TypeScript configs разделены на `base/build/test`.
 - PR #72 — добавлен первый Go-core `sync-check` CLI.
 - PR #73 — синхронизировано состояние после Go-core и закрыта дыра с отсутствующими handoff files.
+- PR #74 — full checkpoint после Go-core sync-check.
+- PR #75 — добавлен TypeScript sync-check dev wrapper skeleton.
+- PR #76 — добавлен sync-check wrapper contract document.
+- PR #77 — добавлен minimal sync-check CI workflow.
+- PR #78 — вынесены minimal transport helpers.
+- PR #79 — добавлен второй Go-core command `registry-check`.
+- PR #81 — добавлены minimal Go validation primitives and pressure tests.
+- PR #82 — documented schema pressure invariants for Go-core envelope.
 
 ## Актуальные proposal-агенты
 
@@ -47,22 +55,30 @@
 
 ## Архитектурная логика модернизации
 
-Принята линия: сначала граница ответственности, потом файловая структура, потом конфиг, потом Go.
-
-Ключевые решения:
+Текущая линия:
 
 - TypeScript остаётся оболочкой для CLI, интеграций, GitHub/LLM-обвязки и сценариев разработчика.
-- Go-core вводится через CLI с JSON stdin/stdout.
-- Первый Go-core — optional dev-tool, не runtime replacement.
-- `agents.ts` не должен снова становиться складом контекста и диагностик.
-- Public entrypoints задают доступ к слоям.
-- `context-pack` находится в `orchestration`, потому что зависит от `source-registry`.
-- Import boundaries проверяются кодом перед тестами.
-- `sync-check` должен получать `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`; иначе результат `needs_revision`, не `ready`.
+- Go-core развивается как deterministic validation layer за JSON boundary.
+- Go-core команды сейчас: `sync-check`, `registry-check`.
+- Wrapper знает transport, но не validation meaning.
+- Go-core знает validation meaning, но не ходит в GitHub, не вызывает LLM, не меняет state.
+- CI проверяет minimal sync-check path.
+- Semantic primitives в Go остаются маленькими helpers, не policy engine.
+- Schema pressure invariants зафиксированы текстом до runtime enforcement.
 
 ## Следующий безопасный технический шаг
 
-Добавить TypeScript dev wrapper, который готовит input envelope для `sync-check` и вызывает optional Go-core binary с ясным fallback, если Go/binary недоступны.
+Добавить focused Go-core schema pressure tests для malformed envelopes и contract edge cases без JSON Schema/protobuf/OpenAPI framework.
+
+Проверять нужно не happy path, а плохие состояния:
+
+- missing/invalid `schemaVersion`;
+- command mismatch;
+- unsupported command;
+- malformed project-state payload;
+- status priority;
+- command-local diagnostics;
+- compatibility with extra ignored fields where allowed.
 
 ## Что временно не делаем
 
@@ -70,6 +86,7 @@
 - Не меняем routes/guardrails/optional layers.
 - Не продолжаем книгу автоматически.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
+- Не вводим schema framework до реальной необходимости.
 
 ## Короткие команды
 
