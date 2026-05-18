@@ -1,7 +1,7 @@
 # Agent Container Registry — Agent Shipyard
 
 Дата фиксации: 2026-05-18
-Статус: architecture_map / parser_safe_yaml / synced_after_profiler_proposal
+Статус: architecture_map / parser_safe_yaml / synced_after_author_style_memory_proposal
 
 Этот файл фиксирует архитектуру будущей агентной системы как карту контейнеров и статусов.
 
@@ -21,8 +21,8 @@
 
 ```yaml
 agent_container_registry:
-  schema_version: "1.3"
-  status: "architecture_map / parser_safe_yaml / synced_after_profiler_proposal"
+  schema_version: "1.4"
+  status: "architecture_map / parser_safe_yaml / synced_after_author_style_memory_proposal"
   architecture_mode: "Agent Shipyard"
   current_project_mode: "Книга на паузе; сначала достраиваем агентную архитектуру."
   status_legend:
@@ -783,12 +783,13 @@ agent_container_registry:
     - agent_id: "author_style_memory_agent"
       working_name_ru: "Память авторского стиля"
       group: "Профиль взаимодействия и авторская память"
-      status: "container"
+      status: "proposal"
       ship_role: "archive"
-      why_needed: "Хранит вкус текста: плотность, ритм, дерзость, паузы, любимые формулы, Плотниковский голод."
+      why_needed: "Хранит подтверждённые редакторские решения: плотность, ритм, дерзость, паузы, сильные формулы, Плотниковский голод и границы их применения."
       main_formula: "Стиль — это не набор слов, а способ думать на странице."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md"
       activation_risk: "medium"
       approval_gate: true
 
@@ -819,10 +820,8 @@ agent_container_registry:
 
 ## Первое ядро заполнения
 
-Следующим нужно довести до proposal:
+`author_style_memory_agent` доведён до proposal.
 
-1. `author_style_memory_agent`
-
-`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent` и `sergey_interaction_profiler` уже переведены из `container` в `proposal`, но не активированы.
+`workflow_conductor_agent`, `agent_registry_librarian`, `approval_gate_keeper`, `project_state_synchronizer`, `checkpoint_compressor_agent`, `source_card_builder`, `copyright_boundary_guard`, `svod_guard`, `contextologist_agent`, `sergey_interaction_profiler` и `author_style_memory_agent` уже переведены из `container` в `proposal`, но не активированы.
 
 Этот список не окончательный. Сергей может добавлять новых агентов. ChatGPT также может предлагать новых агентов, если видит функциональную дыру, повторяющийся сбой или риск для корабля.
