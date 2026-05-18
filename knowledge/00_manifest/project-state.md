@@ -4,34 +4,39 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.7
-- lastCompletedVersion: v2.7
-- lastMergedPr: PR #86 — Add bug response and compatibility protocol
-- lastMergeCommit: 80f2df5f8e8bf1f8dbb272fd88056a57ecf615a3
-- currentMilestone: v2.7 Shipyard Modernization stability gate passed
+- currentVersion: v2.8
+- lastCompletedVersion: v2.8
+- lastMergedPr: PR #88 — Add checkpoint compressor agent proposal
+- lastMergeCommit: 7700ee89a5865136e824c35856fbe5ebdd299a97
+- currentMilestone: v2.8 Checkpoint compressor proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #82 — Document schema pressure invariants for Go-core envelope
-- PR #84 — Checkpoint full after restart prompt protocol correction
 - PR #85 — Add focused Go-core schema pressure tests
 - PR #86 — Add bug response and compatibility protocol
 - PR #87 — Checkpoint full: Shipyard Modernization stability gate passed
+- PR #88 — Add checkpoint compressor agent proposal
+- PR #89 — Sync state after checkpoint compressor proposal
+
+## Current agent queue status
+
+`checkpoint_compressor_agent` is now proposal only, not activated.
+
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md`
+- Registry status: `proposal`
+- Next action in registry: `controlled_activation`
+- Activation: no
+
+Its role is to compress restart prompts as a start key, not an archive. It does not change project-state, roadmap, registry, routes, guardrails or PRs.
 
 ## Shipyard Modernization status
 
-Состояние после PR #86:
+Stability gate passed.
 
-- Shipyard Modernization stability gate passed.
 - TypeScript остаётся orchestration shell.
 - Go-core стал deterministic validation spine behind JSON stdin/stdout.
-- `sync-check` и `registry-check` существуют как реальные Go-core commands.
-- TypeScript wrapper остаётся transport shell: file collection, binary invocation, stdout parsing, unavailable fallback.
-- Minimal Sync Check CI workflow запускает Go-core validation loop.
-- `registry-check` проверяет structural registry signal, не активирует агентов.
-- Go validation primitives добавлены маленьким слоем, без validator framework.
 - Schema pressure invariants documented and pressure-tested without schema framework.
 - Bug response compatibility protocol зафиксирован: classify, failing test/fixture, narrow fix, framework only after repeated proven pain.
 
@@ -51,16 +56,10 @@ Go-core — позвоночник системы, не полный replacement
 
 - GitHub is the source of truth for project state.
 - Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
-- Current active mode returns to Agent Shipyard / Agent Queue.
+- Current active mode is Agent Shipyard / Agent Queue.
 - Strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations.
-- TypeScript remains the orchestration shell; Go-core owns deterministic validation semantics behind JSON stdin/stdout.
-- Go-core commands currently include `sync-check` and `registry-check`.
-- Wrapper owns transport, not validation meaning.
-- Go-core validation loop is part of CI through the minimal Sync Check workflow.
-- Go-core semantic helpers may format diagnostics and status escalation mechanics but must not become a policy engine.
-- Go-core envelope invariants are documented and pressure-tested without schema framework.
-- Do not introduce JSON Schema/protobuf/OpenAPI/version-negotiation framework until repeated proven pain appears.
-- Bug response protocol: classify bug, add minimal failing test or fixture, make narrow fix, consider framework only after repeated proven pain.
+- `checkpoint_compressor_agent` is a proposal only, not activated.
+- `checkpoint_compressor_agent` compresses restart prompts as a start key, not an archive.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -71,6 +70,7 @@ Go-core — позвоночник системы, не полный replacement
 - `agent_registry_librarian`: proposal only, not activated.
 - `approval_gate_keeper`: proposal only, not activated.
 - `project_state_synchronizer`: proposal only, not activated.
+- `checkpoint_compressor_agent`: proposal only, not activated.
 
 ## Active optional workflow layers
 
@@ -89,7 +89,7 @@ Go-core — позвоночник системы, не полный replacement
 
 ## Next action
 
-Return to the agent queue and prepare `checkpoint_compressor_agent` proposal without activation.
+Prepare `source_card_builder` agent proposal without activation.
 
 ## Chat writing state
 
@@ -112,22 +112,9 @@ Return to the agent queue and prepare `checkpoint_compressor_agent` proposal wit
 - assistant_codex_worklog/protocol_addenda/*.md
 - knowledge/00_manifest/project-state.json
 - knowledge/00_manifest/project-state.md
+- knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
+- knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md
 - knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 - knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
 - knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md
 - knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md
-- .github/workflows/sync-check.yml
-- package.json
-- scripts/run-sync-check.mjs
-- scripts/check-boundaries.mjs
-- go-core/go.mod
-- go-core/cmd/multi-agent-core/main.go
-- go-core/cmd/multi-agent-core/main_test.go
-- go-core/cmd/multi-agent-core/schema_pressure_test.go
-- go-core/cmd/multi-agent-core/validation_primitives.go
-- src/domain/index.ts
-- src/engine/index.ts
-- src/diagnostics/index.ts
-- src/orchestration/index.ts
-- src/router.ts
-- src/agents.ts
