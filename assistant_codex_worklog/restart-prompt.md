@@ -18,38 +18,35 @@ GitHub — источник правды. Сначала открой:
 9. knowledge/05_agent_memory/agent_shipyard/hybrid_coordination_model.md
 10. knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md
 11. knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md
-12. knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
-13. knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
-14. knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md
-15. knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md
+12. knowledge/05_agent_memory/agent_proposals/source_card_builder.md
+13. knowledge/05_agent_memory/shipyard_modernization/bug_response_compatibility_protocol.md
 
 Актуальное состояние:
 
-- currentVersion: v2.8.
-- lastCompletedVersion: v2.8.
-- lastMergedPr: PR #88 — Add checkpoint compressor agent proposal.
-- lastMergeCommit: 7700ee89a5865136e824c35856fbe5ebdd299a97.
+- currentVersion: v2.9.
+- lastCompletedVersion: v2.9.
+- lastMergedPr: PR #90 — Add source card builder agent proposal.
+- lastMergeCommit: eaefd8dcc22ee7dd1a5967b9ca362d79aadeaff4.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
 Shipyard Modernization stability gate passed.
 
-Что завершено:
+Proposal agents now include:
 
-- Go-core validation spine behind JSON stdin/stdout.
-- sync-check / registry-check.
-- schema pressure tests без schema framework.
-- bug response / compatibility protocol.
-- checkpoint restart-prompt-first порядок восстановлен.
-- checkpoint_compressor_agent создан как proposal only, not activated.
+- workflow_conductor_agent.
+- agent_registry_librarian.
+- approval_gate_keeper.
+- project_state_synchronizer.
+- checkpoint_compressor_agent.
+- source_card_builder.
 
-Архитектурная формула:
+Active optional workflow layers:
 
-Go проверяет.
-TypeScript соединяет.
-LLM думает.
-Сергей утверждает.
-GitHub фиксирует.
+- socratic_lantern_agent.
+- ethical_persuasion_guard.
+- cbt_thought_check_agent.
+- source_intake_auditor.
 
 Правила:
 
@@ -63,5 +60,5 @@ GitHub фиксирует.
 
 Следующий логичный шаг:
 
-Prepare source_card_builder agent proposal without activation.
+Prepare copyright_boundary_guard agent proposal without activation.
 ```
