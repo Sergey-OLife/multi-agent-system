@@ -1,0 +1,131 @@
+name: Registry Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: "Branch to update. Must not be main."
+        required: true
+        type: string
+      agent_id:
+        description: "agent_id to move from container to proposal"
+        required: true
+        type: string
+      proposal_path:
+        description: "Proposal file path under knowledge/05_agent_memory/agent_proposals/"
+        required: true
+        type: string
+      dry_run:
+        description: "Print diff without committing"
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  registry-sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          TARGET_BRANCH="${{ inputs.target_branch }}"
+          AGENT_ID="${{ inputs.agent_id }}"
+          PROPOSAL_PATH="${{ inputs.proposal_path }}"
+
+          if [[ -z "$TARGET_BRANCH" ]]; then
+            echo "target_branch is required" >&2
+            exit 1
+          fi
+
+          if [[ "$TARGET_BRANCH" == "main" ]]; then
+            echo "Refusing to update main directly" >&2
+            exit 1
+          fi
+
+          if [[ "$TARGET_BRANCH" == refs/* ]]; then
+            echo "Pass a branch name, not a ref" >&2
+            exit 1
+          fi
+
+          if [[ ! "$AGENT_ID" =~ ^[a-z0-9_]+$ ]]; then
+            echo "agent_id must use lowercase letters, digits, and underscores only" >&2
+            exit 1
+          fi
+
+          if [[ ! "$PROPOSAL_PATH" =~ ^knowledge/05_agent_memory/agent_proposals/[a-z0-9_]+\.md$ ]]; then
+            echo "proposal_path must be under knowledge/05_agent_memory/agent_proposals/ and end with .md" >&2
+            exit 1
+          fi
+
+      - name: Checkout target branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target_branch }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go-core/go.mod
+
+      - name: Verify proposal file exists
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "${{ inputs.proposal_path }}"
+
+      - name: Run registry sync dry-run
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run registry:sync -- \
+            --agent "${{ inputs.agent_id }}" \
+            --status proposal \
+            --next-action controlled_activation \
+            --proposal-path "${{ inputs.proposal_path }}" \
+            --dry-run
+
+      - name: Apply registry sync
+        if: ${{ inputs.dry_run == false }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run registry:sync -- \
+            --agent "${{ inputs.agent_id }}" \
+            --status proposal \
+            --next-action controlled_activation \
+            --proposal-path "${{ inputs.proposal_path }}"
+
+      - name: Verify diff is limited to registry
+        if: ${{ inputs.dry_run == false }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHANGED_FILES="$(git diff --name-only)"
+          echo "$CHANGED_FILES"
+          if [[ "$CHANGED_FILES" != "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md" ]]; then
+            echo "Registry sync must change only agent_container_registry.md" >&2
+            exit 1
+          fi
+
+      - name: Commit registry sync
+        if: ${{ inputs.dry_run == false }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md
+          git commit -m "Sync agent registry for ${{ inputs.agent_id }}"
+          git push origin HEAD:${{ inputs.target_branch }}
