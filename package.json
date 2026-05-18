@@ -16,6 +16,7 @@
     "test": "npm run lint:boundaries --silent && npm run build --silent && node --test dist/tests/*.test.js",
     "test:core": "cd go-core && go test ./...",
     "sync-check": "node scripts/run-sync-check.mjs",
+    "registry:sync": "node scripts/run-registry-sync.mjs",
     "dev": "npm run build --silent && node dist/src/cli.js"
   },
   "devDependencies": {
