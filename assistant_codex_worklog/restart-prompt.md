@@ -20,25 +20,52 @@ GitHub — источник правды. Сначала открой:
 11. knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md
 12. knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md
 13. knowledge/05_agent_memory/agent_proposals/banality_alarm_agent.md
-14. knowledge/07_operations/review_depth_protocol.md
-15. knowledge/07_operations/repository_hygiene_protocol.md
-16. knowledge/08_conversation_archive/README.md
-17. knowledge/08_conversation_archive/archive_governance_protocol.md
-18. knowledge/08_conversation_archive/conversation_capture_prompt.md
-19. knowledge/08_conversation_archive/index.md
-20. scripts/hygiene-audit.mjs
-21. scripts/archive-audit.mjs
-22. .github/workflows/registry-sync.yml
+14. knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
+15. knowledge/07_operations/review_depth_protocol.md
+16. knowledge/07_operations/repository_hygiene_protocol.md
+17. knowledge/07_operations/registry_mutation_protocol.md
+18. knowledge/08_conversation_archive/README.md
+19. knowledge/08_conversation_archive/archive_governance_protocol.md
+20. knowledge/08_conversation_archive/conversation_capture_prompt.md
+21. knowledge/08_conversation_archive/index.md
+22. scripts/hygiene-audit.mjs
+23. scripts/archive-audit.mjs
+24. .github/workflows/registry-sync.yml
 
 Актуальное состояние:
 
-- currentVersion: v2.20.
-- lastCompletedVersion: v2.20.
-- lastMergedPr: PR #118 — Add conversation archive capture protocol.
-- lastMergeCommit: 4f8096378daa55755690a348d455cc780dee17a9.
-- currentMilestone: v2.20 Conversation archive capture protocol synced.
+- currentVersion: v2.21.
+- lastCompletedVersion: v2.21.
+- lastMergedPr: PR #116 — Add anti-cliche editor proposal.
+- lastMergeCommit: 26d77624c640d1594b2e41aeaae0643959c250b4.
+- currentMilestone: v2.21 Anti-cliche editor proposal synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
+
+PR #116:
+
+- `anti_cliche_editor` proposal merged.
+- Registry sync выполнен через Registry Sync workflow.
+- `anti_cliche_editor` registry status: proposal.
+- `next_action`: controlled_activation.
+- `proposal_path`: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md.
+- Activation: no.
+- Hard guardrail: no.
+
+Anti-cliche editor:
+
+- proposal only;
+- не заменяет `banality_alarm_agent`, `author_style_memory_agent`, `plotnikov_motor_agent`, `one_strike_chapter_agent`, fact-check или source/copyright checks;
+- главная формула: “Убрать умно звучащее пустое. Оставить точное и живое.”
+- классифицирует cliche, commonplace, pseudo-depth, plastic advertising voice, moralizing, manual voice, bureaucracy, vague claims, overpolished AI tone.
+
+Registry mutation protocol:
+
+- `knowledge/07_operations/registry_mutation_protocol.md` active.
+- Registry меняется инструментом, а не памятью ассистента.
+- Нормальный путь: dry-run → apply → changed files check → точечный registry diff check.
+- Manual full replacement большого registry запрещён как обычный путь.
+- Если local command недоступен, использовать approved runner/workflow path.
 
 Conversation archive:
 
@@ -48,19 +75,6 @@ Conversation archive:
 - Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
 - Audit доступен: `npm run archive:audit`.
 - Future `#checkpoint full` должен включать short checkpoint capture check: есть ли смысловые open loops, не отражённые в architecture?
-
-Registry sync workflow:
-
-- PR #117 добавил `.github/workflows/registry-sync.yml`.
-- Использовать для PR #116 вместо ручного full replacement registry.
-- PR #116 — Add anti-cliche editor proposal — blocked/draft до registry sync.
-
-Для PR #116 workflow inputs:
-
-- target_branch: agent-proposal-anti-cliche-editor
-- agent_id: anti_cliche_editor
-- proposal_path: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
-- dry_run: true first, then false
 
 Repository hygiene:
 
@@ -91,6 +105,7 @@ Proposal agents:
 - sergey_interaction_profiler.
 - author_style_memory_agent.
 - banality_alarm_agent.
+- anti_cliche_editor.
 
 Active optional workflow layers:
 
@@ -110,5 +125,12 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Use Registry Sync workflow to unblock PR #116, then check PR #116 files/mergeability/comments and remove draft only if registry sync is correct.
+Prepare `conversation_archive_librarian` proposal only, unless Sergey chooses another next agent or first asks to improve registry workflow automation.
+
+Согласованный порядок:
+
+1. Разблокировать PR #116 через Registry Sync workflow — done.
+2. Довести anti_cliche_editor — proposal merged, not activated.
+3. Потом создать conversation_archive_librarian proposal.
+4. После 2–3 реальных archive entries решить, активировать ли его как optional workflow layer.
 ```
