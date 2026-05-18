@@ -8,8 +8,6 @@ import (
 	"strings"
 )
 
-const defaultRegistryPath = "../knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md"
-
 type mutationRequest struct {
 	AgentID      string
 	Status       string
@@ -24,7 +22,7 @@ type agentBlock struct {
 }
 
 func main() {
-	registryPath := flag.String("registry", defaultRegistryPath, "path to agent_container_registry.md")
+	registryPath := flag.String("registry", "", "required path to agent_container_registry.md")
 	agentID := flag.String("agent", "", "agent_id to update")
 	status := flag.String("status", "", "new status")
 	nextAction := flag.String("next-action", "", "new next_action")
@@ -37,6 +35,10 @@ func main() {
 		Status:       strings.TrimSpace(*status),
 		NextAction:   strings.TrimSpace(*nextAction),
 		ProposalPath: strings.TrimSpace(*proposalPath),
+	}
+
+	if strings.TrimSpace(*registryPath) == "" {
+		exitWithError(errors.New("--registry is required; V1 has no cwd-dependent default path"))
 	}
 
 	if request.AgentID == "" {
