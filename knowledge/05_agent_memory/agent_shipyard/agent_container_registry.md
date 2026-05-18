@@ -285,12 +285,13 @@ agent_container_registry:
     - agent_id: "anti_cliche_editor"
       working_name_ru: "Антиклише-редактор"
       group: "Художественная редактура и стиль"
-      status: "container"
+      status: "proposal"
       ship_role: "deck_watch"
       why_needed: "Ловит штампы, псевдоглубину, рекламную пластмассу и морализаторство."
       main_formula: "Убрать умно звучащее пустое. Оставить точное и живое."
       first_fill_priority: "P1"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md"
       activation_risk: "low"
       approval_gate: true
 
