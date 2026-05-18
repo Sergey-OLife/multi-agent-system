@@ -333,6 +333,87 @@ PR #73 смержен.
 
 ### 46. Full checkpoint after Go-core sync-check
 
-Checkpoint фиксирует состояние после PR #73.
+PR #74 смержен.
 
-Следующий безопасный шаг: TypeScript dev wrapper для Go-core `sync-check`, который готовит input envelope из state/worklog файлов, вызывает optional Go-core binary и имеет ясный fallback, если Go/binary недоступны.
+Следующий безопасный шаг был TypeScript dev wrapper для Go-core `sync-check`.
+
+### 47. TypeScript sync-check dev wrapper
+
+PR #75 смержен.
+
+Решение:
+
+- TS wrapper готовит envelope из state/worklog files;
+- вызывает optional Go-core binary;
+- fallback возвращает `unavailable`, не fake-ready;
+- wrapper не дублирует validation semantics.
+
+### 48. Sync-check wrapper contract document
+
+PR #76 смержен.
+
+Решение:
+
+- зафиксировать input/output contract;
+- stdout JSON only;
+- stderr debug/human logs;
+- unavailable не считается successful validation;
+- transport failure and validation failure remain distinct.
+
+### 49. Minimal sync-check CI workflow
+
+PR #77 смержен.
+
+Решение:
+
+- CI собирает Go binary и запускает `npm run sync-check`;
+- skipped validation больше не проходит silently;
+- CI не становится orchestration layer.
+
+### 50. Minimal transport extraction
+
+PR #78 смержен.
+
+Решение:
+
+- вынести command registry, envelope builder, transport invocation, stdout parsing, unavailable response builder, status normalization;
+- не создавать plugin system, middleware, command classes или orchestration framework.
+
+### 51. Second Go-core command: registry-check
+
+PR #79 смержен.
+
+Решение:
+
+- добавить второй реальный Go-core command;
+- wrapper выбирает command через minimal registry;
+- file sets command-specific;
+- registry-check structural, not orchestration;
+- проверять `agent_id: "workflow_conductor_agent"`, а не loose substring.
+
+### 52. Go validation primitives and pressure tests
+
+PR #81 смержен.
+
+Решение:
+
+- добавить small primitives: `addRequiredDiagnostic`, `addBlockedDiagnostic`, `validationStatus`;
+- blocked > needs_revision > ready;
+- pressure tests проверяют bad states;
+- не создавать validator framework или policy engine.
+
+### 53. Schema pressure invariants documented
+
+PR #82 смержен.
+
+Решение:
+
+- implicit envelope invariants documented before runtime enforcement;
+- command ownership, status precedence, diagnostics invariants and compatibility rules explicit;
+- no JSON Schema/protobuf/OpenAPI/version negotiation yet.
+
+### 54. Full checkpoint after schema pressure contract
+
+Checkpoint фиксирует состояние после PR #82.
+
+Следующий безопасный шаг: focused Go-core schema pressure tests для malformed envelopes и contract edge cases без schema framework.
