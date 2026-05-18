@@ -50,6 +50,14 @@ Stable conversation archive command:
 - The short command is stable across project chats; the long prompt behind it may evolve in the repository.
 - Do not use `#checkpoint` for semantic archive capture.
 
+Short command priority:
+
+- Exact short commands must not lose to interface noise: repeated attachments, auto-loaded sources, long inserts, old non-blocking tails.
+- First recognize the command, then check pending work.
+- If the pending work does not block the command, name the tail briefly and execute the command.
+- If the pending work may create a duplicate, skip an approval-gate or mix archive/checkpoint, ask Sergey what to do before acting.
+- Formula: command must not lose to noise; tail must not be hidden by the new command.
+
 Conversation archive — важный слой восстановления контекста:
 
 - `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
