@@ -20,13 +20,14 @@ GitHub — источник правды. Сначала открой:
 11. knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md
 12. knowledge/05_agent_memory/agent_proposals/source_card_builder.md
 13. knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md
+14. knowledge/05_agent_memory/agent_proposals/svod_guard.md
 
 Актуальное состояние:
 
-- currentVersion: v2.10.
-- lastCompletedVersion: v2.10.
-- lastMergedPr: PR #92 — Add copyright boundary guard agent proposal.
-- lastMergeCommit: fc81c223bbf45093697550c588fd4a7b696e5da1.
+- currentVersion: v2.11.
+- lastCompletedVersion: v2.11.
+- lastMergedPr: PR #94 — Add svod guard agent proposal.
+- lastMergeCommit: 538a3cf937d159b7595155b2018a414ecc8620e5.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -41,6 +42,7 @@ Proposal agents now include:
 - checkpoint_compressor_agent.
 - source_card_builder.
 - copyright_boundary_guard.
+- svod_guard.
 
 Active optional workflow layers:
 
@@ -61,5 +63,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare svod_guard agent proposal without activation.
+Prepare contextologist_agent proposal without activation.
 ```
