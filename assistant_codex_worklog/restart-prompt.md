@@ -19,87 +19,77 @@ GitHub — источник правды. Сначала открой:
 10. knowledge/05_agent_memory/agent_shipyard/materials_research_topology.md
 11. knowledge/05_agent_memory/shipyard_modernization/core_api_contract.md
 12. knowledge/05_agent_memory/shipyard_modernization/import_boundary_rules.md
+13. knowledge/05_agent_memory/shipyard_modernization/sync_check_wrapper_contract.md
 
 Актуальное состояние:
 
-- currentVersion: v2.4.
-- lastCompletedVersion: v2.4.
-- lastMergedPr: PR #73 — Sync state after Go core sync-check.
-- lastMergeCommit: efa728d33e1fdb7d1a42615670dc3446dc0745c2.
+- currentVersion: v2.5.
+- lastCompletedVersion: v2.5.
+- lastMergedPr: PR #82 — Document schema pressure invariants for Go-core envelope.
+- lastMergeCommit: a49de76ba93dd10cbad498e9962b049725c83d17.
 - Текущий режим: Agent Shipyard / Shipyard Modernization.
 - Книга на паузе до отдельного решения Сергея.
-- Формула этапа: сначала модернизируем стапель, потом продолжаем строить агентов.
 
 Что сделано в Shipyard Modernization:
 
-- PR #63 — зафиксирован подфокус Shipyard Modernization.
-- PR #64 — включены incremental TypeScript builds.
-- PR #65 — введены первые слои TypeScript: `domain / engine`.
-- PR #66 — зафиксирован Go-core API contract: CLI + JSON stdin/stdout.
-- PR #67 — из `agents.ts` вынесены `context-pack`, `svod-check`, `sync-map`, `anti-cliche diagnostics`.
-- PR #68 — синхронизировано состояние после PR #64–67.
-- PR #69 — добавлены public module entrypoints и import boundary enforcement.
-- PR #70 — синхронизировано состояние после PR #69.
-- PR #71 — TypeScript configs разделены на `base/build/test`.
-- PR #72 — добавлен первый Go-core `sync-check` CLI.
-- PR #73 — синхронизировано состояние после Go-core; `sync-check` теперь требует handoff-файлы перед статусом `ready`.
+- PR #69 — import boundaries + public module entrypoints.
+- PR #71 — tsconfig split: base/build/test.
+- PR #72 — первый Go-core sync-check CLI.
+- PR #73 — sync-check требует handoff-файлы перед `ready`.
+- PR #75 — TypeScript sync-check wrapper: TS готовит envelope и вызывает optional Go binary.
+- PR #76 — sync-check wrapper contract document.
+- PR #77 — minimal sync-check CI workflow.
+- PR #78 — minimal transport extraction и command registry.
+- PR #79 — второй Go-core command: registry-check.
+- PR #81 — minimal Go validation primitives + pressure tests.
+- PR #82 — schema pressure invariants documented.
 
-Shipyard Modernization rules:
+Текущая архитектурная формула:
 
-- Сначала граница ответственности, потом файловая структура, потом конфиг, потом Go.
-- Go-core вводить через CLI + JSON stdin/stdout как optional dev-tool до runtime replacement.
-- Первый Go-core — `sync-check`; он не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов.
-- `sync-check` должен получать `project-state.md`, `current-state.md`, `roadmap.md`, `restart-prompt.md`; иначе `needs_revision`, не `ready`.
-- `agents.ts` должен оставаться сборщиком agent registry, а не складом контекста и диагностик.
-- `context-pack` живёт в `orchestration`, не в core-like `engine`, потому что зависит от `source-registry`.
-- Import boundaries проверяются `scripts/check-boundaries.mjs`; `npm test` запускает boundary check перед build/tests.
+- TypeScript остаётся orchestration shell.
+- Go-core — deterministic validation layer behind JSON stdin/stdout.
+- Wrapper owns transport, file collection, binary invocation, stdout parsing and unavailable fallback.
+- Go-core owns validation semantics.
+- CI проверяет minimal sync-check loop.
+- registry-check structural, not orchestration.
+- semantic helpers tiny; не policy engine.
+- schema invariants documented before runtime enforcement.
 
-Активные optional workflow layers:
-
-1. `socratic_lantern_agent` — вопрос как фонарь, не поводок.
-2. `ethical_persuasion_guard` — оставить огонь, убрать дым.
-3. `cbt_thought_check_agent` — мысль как гипотеза, не приговор; не терапия, не диагностика, не инструмент продаж; лёгкий юмор допустим, клоунада нет.
-4. `source_intake_auditor` — источник не работает, пока не ясны место, роль, ограничения и запреты; не workflow conductor.
-
-Proposal-only агенты:
-
-- `workflow_conductor_agent` — координатор ансамбля агентов; не начальник системы; не меняет routes/guardrails/project-state/source registry сам.
-- `agent_registry_librarian` — библиотекарь агентов; следит за дублями, статусами, registry sync и ложной активацией.
-- `approval_gate_keeper` — сторож approval-шлюза. Формула: `+` двигает работу; `++` открывает конкретный шлюз.
-- `project_state_synchronizer` — сверяет main, registry, roadmap, restart prompt, current-state и project-state; не активирован.
-
-Архитектура:
-
-- Agent system: Centralized Coordination + Peer-to-Peer communication.
-- Materials: Coordinator-based star + fully-connected semantic topology.
-- Peer-to-peer signal не равен решению и не обходит approval Сергея.
-- Полносвязность материалов не отменяет source intake, dosage, fact-check, copyright boundary и approval.
-
-Правила команд:
+Правила:
 
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
-- Если gates несколько — уточнить.
 - Если после `++` PR существенно изменён — нужен новый `++`.
-- Auto-merge включён, но не отменяет approval-gates.
-
-Строгий PR workflow обязателен для кода, агентов, маршрутов, guardrails, source registries, tests/baseline, project-state, working protocols, source cards, Сводов, MVP, agent proposals/activations и Shipyard Modernization changes.
-
-Книга:
-
+- Строгий PR workflow обязателен для кода, агентов, guardrails, registries, project-state, source cards, MVP, Сводов и Shipyard Modernization.
 - Не продолжать книгу автоматически.
-- Последний книжный фокус: `chapter_00_preface`, Введение `От автора: перед входом`.
-- Возврат к книге только по отдельному решению Сергея через Book Fast Track.
-- Не создавать `book/03_approved/chapter_00_preface.md` без финального approval.
-
-Запреты:
-
 - Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
-- Не делать вид, что все загруженные источники проаудированы.
-- Не путать source card с прочитанным источником.
-- Не активировать новые hard guardrails без отдельного решения Сергея.
+- Не активировать hard guardrails или proposal agents без отдельного решения.
 
-Следующий логичный шаг:
+Proposal-only агенты:
 
-Создать PR с TypeScript dev wrapper для Go-core `sync-check`: TS готовит input envelope из state/worklog файлов, вызывает optional Go-core binary и имеет ясный fallback, если Go/binary недоступны.
+- workflow_conductor_agent.
+- agent_registry_librarian.
+- approval_gate_keeper.
+- project_state_synchronizer.
+
+Active optional workflow layers:
+
+- socratic_lantern_agent.
+- ethical_persuasion_guard.
+- cbt_thought_check_agent.
+- source_intake_auditor.
+
+Следующий логичный шаг после merge checkpoint PR:
+
+Add focused Go-core schema pressure tests for malformed envelopes and contract edge cases without introducing JSON Schema/protobuf/OpenAPI framework.
+
+Проверить:
+
+- missing/invalid schemaVersion;
+- command mismatch;
+- unsupported command;
+- malformed project-state payload;
+- status priority;
+- command-local diagnostics;
+- compatibility with extra ignored fields where allowed.
 ```
