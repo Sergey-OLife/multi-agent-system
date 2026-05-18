@@ -97,12 +97,13 @@ agent_container_registry:
     - agent_id: "checkpoint_compressor_agent"
       working_name_ru: "Сжиматель рестарта"
       group: "Управление кораблём"
-      status: "container"
+      status: "proposal"
       ship_role: "signal"
       why_needed: "Делает чатовый restart prompt до 6000 знаков без потери рабочей точки."
       main_formula: "Prompt в чате — не архив, а стартовый ключ."
       first_fill_priority: "P0"
-      next_action: "write_proposal"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md"
       activation_risk: "low"
       approval_gate: true
 
