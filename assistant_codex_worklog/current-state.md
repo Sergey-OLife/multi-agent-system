@@ -12,14 +12,23 @@
 
 ## Последний смерженный PR
 
-- PR #102 — Sync state after repository hygiene audit
+- PR #104 — Add review depth protocol and profiler proposal
 - Статус: merged
-- Merge commit: `4db41f8305928fae94add0231c9fc35b7d6fb521`
-- Смысл: state sync после добавления repository hygiene audit и ledger protocol.
+- Merge commit: `c4125030eef986eb489b28122275d493997fc636`
+- Смысл: добавлены `knowledge/07_operations/review_depth_protocol.md` и `knowledge/05_agent_memory/agent_proposals/sergey_interaction_profiler.md`.
+
+## Что зафиксировал PR #104
+
+- `review_depth_protocol` — active operational protocol.
+- L1/L2/L3 review depth.
+- Semantic discipline для `+`, `++`, `+++`.
+- Anti-overengineering doctrine.
+- `sergey_interaction_profiler` — proposal only, не activation, не route element, не hard guardrail.
+- Profiler работает как editorial memory / drift diagnostics / contextual style mapping proposal.
 
 ## Repository hygiene
 
-Теперь доступно:
+Доступно:
 
 ```bash
 npm run hygiene:audit
@@ -39,11 +48,11 @@ npm run hygiene:audit
 
 ## Agent queue status
 
-`contextologist_agent` теперь proposal only, не activation и не hard guardrail.
+`sergey_interaction_profiler` теперь proposal only, не activation и не hard guardrail.
 
-Его роль: восстанавливать карту проекта перед ходом.
+Его роль: помогать системе помнить наблюдаемые редакторские решения, failure-patterns и drift-зоны без превращения стиля Сергея в догму.
 
-Ограничение: он не командует маршрутом, не меняет state и не заменяет `workflow_conductor_agent`.
+Ограничение: он не имитирует личность Сергея, не подменяет редактора, не блокирует merge, не навязывает композиционные схемы и не становится authority layer.
 
 ## Актуальные proposal-агенты
 
@@ -56,6 +65,7 @@ npm run hygiene:audit
 - `copyright_boundary_guard` — proposal only, не activation.
 - `svod_guard` — proposal only, не activation.
 - `contextologist_agent` — proposal only, не activation.
+- `sergey_interaction_profiler` — proposal only, не activation.
 
 ## Активные optional workflow layers
 
@@ -66,13 +76,13 @@ npm run hygiene:audit
 
 ## Следующий безопасный шаг
 
-Подготовить `sergey_interaction_profiler` как proposal без activation.
+Подготовить `author_style_memory_agent` как proposal без activation, если Сергей не выберет другой агент.
 
 Почему он следующий:
 
-- архитектурные предохранители уже описаны;
-- теперь нужно формализовать профиль взаимодействия с Сергеем;
-- это снизит риск поддакивания, лишней технички, неверного approval и потери авторского режима работы.
+- `sergey_interaction_profiler` уже оформлен как proposal;
+- следующий контейнер ядра заполнения — `author_style_memory_agent`;
+- он должен хранить вкус текста и авторские паттерны как рабочую память, а не как жёсткий канон.
 
 ## Что временно не делаем
 
@@ -86,5 +96,6 @@ npm run hygiene:audit
 
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
+- `+++` — ближайшее уже grounded safe action, не обход approval-gates.
 - Если после `++` PR существенно изменён — нужен новый `++`.
 - Auto-merge не отменяет approval-gates.
