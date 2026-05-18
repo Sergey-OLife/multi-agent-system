@@ -4,26 +4,49 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.20
-- lastCompletedVersion: v2.20
-- lastMergedPr: PR #118 — Add conversation archive capture protocol
-- lastMergeCommit: 4f8096378daa55755690a348d455cc780dee17a9
-- currentMilestone: v2.20 Conversation archive capture protocol synced
+- currentVersion: v2.21
+- lastCompletedVersion: v2.21
+- lastMergedPr: PR #116 — Add anti-cliche editor proposal
+- lastMergeCommit: 26d77624c640d1594b2e41aeaae0643959c250b4
+- currentMilestone: v2.21 Anti-cliche editor proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #112 — Add author style memory agent proposal
-- PR #114 — Add banality alarm agent proposal
 - PR #115 — Sync state after banality alarm proposal
 - PR #117 — Add registry sync workflow
 - PR #118 — Add conversation archive capture protocol
 - PR #119 — Sync state after conversation archive protocol
+- PR #116 — Add anti-cliche editor proposal
+- PR #120 — Sync state after anti-cliche editor proposal
+
+## Anti-cliche editor
+
+`anti_cliche_editor` is now proposal only, not activated and not a hard guardrail.
+
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md`
+- Registry status: `proposal`
+- Next action in registry: `controlled_activation`
+- Activation: no
+- Hard guardrail: no
+
+Its role is to classify and help rewrite cliche, commonplace, pseudo-depth, plastic advertising voice, moralizing, manual voice, bureaucracy, vague claims and overpolished AI tone.
+
+## Registry mutation protocol
+
+`knowledge/07_operations/registry_mutation_protocol.md` is now active.
+
+Rule:
+
+- registry changes must use deterministic tooling when available;
+- manual full replacement of large registry is not the normal path;
+- dry-run first, then apply;
+- if local command is unavailable, use approved runner/workflow path.
 
 ## Conversation archive
 
-Conversation archive is now an active protocol layer, separate from technical state/worklog.
+Conversation archive remains active as a separate human interaction archive, not project-state, approval-log or technical checkpoint.
 
 Important paths:
 
@@ -40,24 +63,6 @@ Audit command:
 npm run archive:audit
 ```
 
-Rules:
-
-- archive keeps conversation seeds, not full raw conversations;
-- archive does not replace project-state, roadmap, decision-log, issues, source cards or agent proposals;
-- do not duplicate material already reflected in architecture;
-- if a thought is already implemented, leave only `implemented elsewhere` pointer;
-- entries should have at least a 14-day review window;
-- long-lived observations about Sergey interaction style are allowed, but not as psychological diagnoses;
-- future `#checkpoint full` must include a short checkpoint capture check for semantic open loops not reflected in architecture.
-
-## Registry sync workflow
-
-Manual workflow is available after PR #117:
-
-- `.github/workflows/registry-sync.yml`
-
-It should be used to unblock PR #116 by syncing `anti_cliche_editor` into registry through deterministic `npm run registry:sync`, not manual full replacement.
-
 ## Repository hygiene
 
 Repository hygiene audit is available:
@@ -72,13 +77,6 @@ Ledger:
 
 Branch cleanup remains `cleanup_needed`, not `completed`.
 
-Rule:
-
-- tracked junk may be removed through normal PR deletion;
-- stale branch cleanup must happen through GitHub UI or a future explicit safe branch cleanup tool;
-- do not use branch-ref workarounds;
-- do not claim cleanup completed until branches are actually removed and issue #99 is updated.
-
 ## Current agent queue status
 
 `banality_alarm_agent` is proposal only, not activated and not a hard guardrail.
@@ -87,9 +85,9 @@ Rule:
 
 `sergey_interaction_profiler` remains proposal only, not activated and not a hard guardrail.
 
-`review_depth_protocol` is active operational protocol.
+`anti_cliche_editor` remains proposal only, not activated and not a hard guardrail.
 
-`anti_cliche_editor` PR #116 remains blocked until registry sync is performed by registry sync workflow or approved runner path.
+`review_depth_protocol` is active operational protocol.
 
 ## Active decisions
 
@@ -99,12 +97,10 @@ Rule:
 - Shipyard Modernization stability gate is passed.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Conversation archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint.
-- Conversation archive stores only conversation seeds not already reflected in project architecture.
-- Conversation archive entries are append-oriented and must not contain full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs or URLs.
-- Conversation archive entries have at least a 14-day review window unless marked `long_lived_observation` or `implemented_elsewhere`.
-- Future `#checkpoint full` should include a short checkpoint capture check for semantic open loops not reflected in architecture.
 - Archive audit is available as `npm run archive:audit`.
 - Registry sync workflow is available as manual `workflow_dispatch` after PR #117.
+- Registry mutation protocol is active: registry changes must use deterministic tooling rather than manual full replacement when tooling is available.
+- `anti_cliche_editor` is a proposal only, not activated and not a hard guardrail.
 - `checkpoint_compressor_agent` is a proposal only, not activated.
 - `source_card_builder` is a proposal only, not activated.
 - `copyright_boundary_guard` is a proposal only, not activated and not a hard guardrail.
@@ -117,7 +113,7 @@ Rule:
 - Repository hygiene audit is available as `npm run hygiene:audit`.
 - Repository hygiene ledger is GitHub issue #99.
 - Branch hygiene cleanup remains cleanup_needed, not completed.
-- Next agent queue candidate after `banality_alarm_agent` is `anti_cliche_editor`, unless Sergey chooses a different agent.
+- Next agent queue candidate after `anti_cliche_editor` is `conversation_archive_librarian`, unless Sergey chooses a different agent.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -136,6 +132,7 @@ Rule:
 - `sergey_interaction_profiler`: proposal only, not activated.
 - `author_style_memory_agent`: proposal only, not activated.
 - `banality_alarm_agent`: proposal only, not activated.
+- `anti_cliche_editor`: proposal only, not activated.
 
 ## Active optional workflow layers
 
@@ -156,7 +153,7 @@ Rule:
 
 ## Next action
 
-Use registry sync workflow to unblock PR #116 for `anti_cliche_editor` registry sync, or prepare `anti_cliche_editor` registry sync by approved runner path.
+Prepare `conversation_archive_librarian` proposal without activation, unless Sergey chooses a different agent or first asks to improve registry workflow automation.
 
 ## Chat writing state
 
