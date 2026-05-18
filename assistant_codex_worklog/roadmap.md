@@ -37,14 +37,15 @@
 - v2.2 — Checkpoint optional agent environment: Socratic Lantern + Ethical Persuasion
 - v2.3 — Checkpoint optional agent environment: CBT Thought Check + Source Intake Auditor
 - v2.4 — Checkpoint Agent Shipyard architecture and first P0 proposals
+- v2.5 — Checkpoint Go-core validation loop and schema pressure contract
 
 ## Recent PR summary
 
-- PR #69: added import boundaries and public module entrypoints.
-- PR #70: synced state after import boundaries PR.
-- PR #71: split TypeScript configs for build and test.
-- PR #72: added minimal Go-core sync-check CLI.
-- PR #73 — Sync state after Go core sync-check
+- PR #78 — Extract minimal sync-check transport helpers.
+- PR #79 — Add minimal registry-check Go command.
+- PR #81 — Add minimal Go validation primitives and pressure tests.
+- PR #82 — Document schema pressure invariants for Go-core envelope.
+- PR #83 — Checkpoint full after schema pressure contract.
 
 ## Agent Shipyard architecture
 
@@ -125,19 +126,92 @@ Proposal не является activation.
 
 Статус: done via PR #73.
 
-Смысл:
-
-- Go-core добавлен как optional dev-tool, а не runtime replacement;
-- первая команда — `sync-check`;
-- интерфейс — JSON stdin/stdout;
-- Go-core не читает GitHub, не вызывает LLM, не меняет state и не активирует агентов;
-- `sync-check` требует handoff-файлы перед статусом `ready`.
-
 ### PR J — Add TypeScript dev wrapper for sync-check
 
-Статус: next safe step.
+Статус: done via PR #75.
 
-Цель: TypeScript готовит input envelope из текущих state/worklog файлов, вызывает optional Go-core binary, показывает JSON output и имеет ясный fallback, если Go/binary недоступны.
+Смысл:
+
+- TypeScript готовит input envelope;
+- wrapper вызывает optional Go-core binary;
+- fallback возвращает `unavailable`, но не fake-ready;
+- wrapper остаётся transport shell.
+
+### PR K — Add sync-check wrapper contract
+
+Статус: done via PR #76.
+
+Смысл:
+
+- зафиксированы stdout/stderr rules;
+- allowed statuses;
+- exit-code semantics;
+- transport failure vs validation failure;
+- fallback behavior.
+
+### PR L — Add minimal sync-check CI workflow
+
+Статус: done via PR #77.
+
+Смысл:
+
+- Go-core validation loop встроен в CI;
+- skipped validation больше не выглядит successful pass;
+- CI не стал orchestration layer.
+
+### PR M — Extract minimal transport helpers
+
+Статус: done via PR #78.
+
+Смысл:
+
+- wrapper получил minimal command registry;
+- transport extraction не стала plugin framework.
+
+### PR N — Add registry-check Go command
+
+Статус: done via PR #79.
+
+Смысл:
+
+- второй реальный Go-core command;
+- transport пережил второй use-case;
+- registry-check structural, not orchestration.
+
+### PR O — Add Go validation primitives and pressure tests
+
+Статус: done via PR #81.
+
+Смысл:
+
+- small semantic primitives;
+- pressure tests на bad states;
+- no validator framework.
+
+### PR P — Document schema pressure invariants
+
+Статус: done via PR #82.
+
+Смысл:
+
+- implicit envelope invariants зафиксированы текстом;
+- semantic assumptions made explicit before runtime enforcement;
+- no JSON Schema/protobuf/OpenAPI framework.
+
+### PR Q — Checkpoint full after schema pressure contract
+
+Статус: current checkpoint PR.
+
+Смысл:
+
+- синхронизировать state/worklog/restart prompt после PR #82;
+- зафиксировать следующий безопасный шаг: focused schema pressure tests.
+
+### PR R — Add focused schema pressure tests
+
+Статус: next safe step after checkpoint merge.
+
+Цель: добавить Go-core tests для malformed envelopes и contract edge cases без schema framework.
 
 ## Возврат к агентам
 
