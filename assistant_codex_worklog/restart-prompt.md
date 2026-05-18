@@ -28,9 +28,10 @@ GitHub — источник правды. Сначала открой:
 19. knowledge/08_conversation_archive/archive_governance_protocol.md
 20. knowledge/08_conversation_archive/conversation_capture_prompt.md
 21. knowledge/08_conversation_archive/index.md
-22. scripts/hygiene-audit.mjs
-23. scripts/archive-audit.mjs
-24. .github/workflows/registry-sync.yml
+22. knowledge/08_conversation_archive/chat_archives/*.md
+23. scripts/hygiene-audit.mjs
+24. scripts/archive-audit.mjs
+25. .github/workflows/registry-sync.yml
 
 Актуальное состояние:
 
@@ -42,22 +43,29 @@ GitHub — источник правды. Сначала открой:
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
-PR #116:
+Conversation archive — важный слой восстановления контекста:
 
-- `anti_cliche_editor` proposal merged.
+- `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
+- Это не project-state, не approval-log и не technical checkpoint.
+- Он хранит смысловые зерна из чатов, которые иначе теряются между ветками и окнами общения.
+- При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй не только state/roadmap, но и `knowledge/08_conversation_archive/index.md` + релевантные entries.
+- Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
+- Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
+- Audit доступен: `npm run archive:audit`.
+- Future `#checkpoint full` должен включать short checkpoint capture check: есть ли смысловые open loops, не отражённые в architecture?
+- При capture учитывать open PRs отдельно: open PR не равен implemented.
+
+Anti-cliche editor:
+
+- `anti_cliche_editor` proposal merged in PR #116.
 - Registry sync выполнен через Registry Sync workflow.
-- `anti_cliche_editor` registry status: proposal.
+- Registry status: proposal.
 - `next_action`: controlled_activation.
 - `proposal_path`: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md.
 - Activation: no.
 - Hard guardrail: no.
-
-Anti-cliche editor:
-
-- proposal only;
-- не заменяет `banality_alarm_agent`, `author_style_memory_agent`, `plotnikov_motor_agent`, `one_strike_chapter_agent`, fact-check или source/copyright checks;
-- главная формула: “Убрать умно звучащее пустое. Оставить точное и живое.”
-- классифицирует cliche, commonplace, pseudo-depth, plastic advertising voice, moralizing, manual voice, bureaucracy, vague claims, overpolished AI tone.
+- Не заменяет `banality_alarm_agent`, `author_style_memory_agent`, `plotnikov_motor_agent`, `one_strike_chapter_agent`, fact-check или source/copyright checks.
+- Главная формула: “Убрать умно звучащее пустое. Оставить точное и живое.”
 
 Registry mutation protocol:
 
@@ -66,15 +74,6 @@ Registry mutation protocol:
 - Нормальный путь: dry-run → apply → changed files check → точечный registry diff check.
 - Manual full replacement большого registry запрещён как обычный путь.
 - Если local command недоступен, использовать approved runner/workflow path.
-
-Conversation archive:
-
-- `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
-- Это не project-state, не approval-log и не technical checkpoint.
-- Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
-- Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
-- Audit доступен: `npm run archive:audit`.
-- Future `#checkpoint full` должен включать short checkpoint capture check: есть ли смысловые open loops, не отражённые в architecture?
 
 Repository hygiene:
 
@@ -123,14 +122,12 @@ Active optional workflow layers:
 - Не активировать hard guardrails или proposal agents без отдельного решения.
 - Перед любым будущим `#checkpoint full` сначала выдать compact restart prompt в чат.
 
+Текущие открытые хвосты:
+
+- PR #121 — Archive repository contract risks — open; нужен `++` перед merge.
+- После PR #121 recommended next step: `Add repository architecture contract`, если Сергей не выберет другой шаг.
+
 Следующий логичный шаг:
 
-Prepare `conversation_archive_librarian` proposal only, unless Sergey chooses another next agent or first asks to improve registry workflow automation.
-
-Согласованный порядок:
-
-1. Разблокировать PR #116 через Registry Sync workflow — done.
-2. Довести anti_cliche_editor — proposal merged, not activated.
-3. Потом создать conversation_archive_librarian proposal.
-4. После 2–3 реальных archive entries решить, активировать ли его как optional workflow layer.
+Сначала закрыть PR #121, затем подготовить repository architecture contract или `conversation_archive_librarian` proposal — в зависимости от выбора Сергея.
 ```
