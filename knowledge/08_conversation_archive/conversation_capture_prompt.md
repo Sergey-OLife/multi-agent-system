@@ -13,9 +13,17 @@
 - не коммить полные диалоги целиком;
 - не делай вид, что решение принято, если оно было только идеей;
 - не превращай архив в project-state;
-- не смешивай technical worklog и смысловой conversation archive.
+- не смешивай technical worklog и смысловой conversation archive;
+- не сохраняй то, что уже полноценно отражено в project-state, roadmap, decision-log, issue, agent proposal, registry, accepted book/MVP/Svod artifact.
 
-Сначала извлеки из текущего чата:
+Сначала проверь дублирование:
+
+1. Что уже отражено в архитектуре проекта?
+2. Что уже стало PR, issue, agent proposal, state или roadmap?
+3. Что можно не сохранять, а только отметить как implemented_in?
+4. Что реально потеряется, если сейчас не записать?
+
+Извлекай только то, что НЕ отражено в архитектуре:
 
 1. Потерянные или недореализованные идеи.
 2. Идеи, которые звучали сыро, но могут стать сильными позже.
@@ -33,65 +41,79 @@
 # Conversation Archive Entry — <short topic>
 
 Дата: <YYYY-MM-DD>
-Источник: chat_paste / current_chat_summary
+Источник: chat_paste / current_chat_summary / checkpoint_capture
 Статус: draft_archive_entry
 Срок пересмотра: +14 days
+Tags: [style, book, agent_shipyard, mvp, open_loop, contradiction, failure_pattern]
+Implemented elsewhere: no / path / PR
 
 ## 1. Почему этот архив создан
 
 Коротко: какая тревога, идея или потеря контекста стала причиной.
 
-## 2. Ключевые идеи
+## 2. Что уже отражено в архитектуре
+
+- Уже отражено:
+  - Где: path / PR / issue
+  - Что НЕ нужно дублировать:
+
+Если ничего не отражено — напиши: `Пока не отражено`.
+
+## 3. Ключевые идеи, которые иначе потеряются
 
 - Идея:
   - Суть:
   - Почему может быть важна:
-  - Статус: raw / promising / needs_decision / implemented / rejected
-  - Куда может перейти: project-state / roadmap / issue / agent proposal / book note / MVP note
+  - Статус: raw / promising / needs_decision / implemented_elsewhere / rejected
+  - Куда может перейти: project-state / roadmap / issue / agent proposal / book note / MVP note / style memory
 
-## 3. Нереализованные хвосты
+## 4. Нереализованные хвосты
 
 - Хвост:
   - Что осталось не сделано:
   - Почему не сделано:
   - Что нужно для продолжения:
 
-## 4. Наблюдения о взаимодействии с Сергеем
+## 5. Наблюдения о взаимодействии с Сергеем
+
+Заполнять только если есть новая полезная информация, а не повтор уже известного профиля.
 
 - Наблюдение:
   - Поведение / предпочтение:
   - Как учитывать:
   - Риск неправильного применения:
+  - Может перейти в: sergey_interaction_profiler / author_style_memory_agent / long_lived_observation
 
-## 5. Ошибки или сбои ChatGPT
+## 6. Ошибки или сбои ChatGPT
 
 - Сбой:
   - Что произошло:
   - Почему это важно:
   - Как избегать:
+  - Нужно ли внести в protocol: yes/no
 
-## 6. Потенциальные противоречия
+## 7. Потенциальные противоречия
 
 - Противоречие:
   - Между чем и чем:
   - Почему стоит проверить:
   - Что спросить у Сергея позже:
 
-## 7. Сильные формулы
+## 8. Сильные формулы
 
 - Формула:
   - Где применить:
   - Ограничение:
 
-## 8. Что не является решением
+## 9. Что не является решением
 
 Перечисли идеи, которые звучали важно, но не были approval.
 
-## 9. Рекомендованный следующий шаг
+## 10. Рекомендованный следующий шаг
 
 Один конкретный шаг, без расползания.
 
-## 10. Не коммитить
+## 11. Не коммитить
 
 Перечисли, что из этого чата нельзя коммитить: raw sources, личные данные, приватные ссылки, полный диалог и т.п.
 
@@ -99,6 +121,12 @@
 
 knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 
-Если доступен GitHub tool и Сергей просит сразу сохранить — создать PR с этим archive entry.
+Также предложи строку для `knowledge/08_conversation_archive/index.md`:
+
+| Date | Entry | Status | Review date | Tags | Implemented elsewhere | Open loop |
+|---|---|---|---|---|---|---|
+| YYYY-MM-DD | `<path>` | draft_archive_entry | YYYY-MM-DD | tag1, tag2 | no/path/PR | short open loop |
+
+Если доступен GitHub tool и Сергей просит сразу сохранить — создать PR с archive entry и index update.
 Если GitHub tool недоступен — вывести markdown, чтобы Сергей мог перенести его вручную.
 ```
