@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.11",
-  "lastCompletedVersion": "v2.11",
-  "lastMergedPr": "PR #94 — Add svod guard agent proposal",
-  "lastMergeCommit": "538a3cf937d159b7595155b2018a414ecc8620e5",
-  "currentMilestone": "v2.11 Svod guard proposal synced",
+  "currentVersion": "v2.12",
+  "lastCompletedVersion": "v2.12",
+  "lastMergedPr": "PR #96 — Add contextologist agent proposal",
+  "lastMergeCommit": "3cb815653115665b104c7d59bec635f01368077e",
+  "currentMilestone": "v2.12 Contextologist proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -11,14 +11,16 @@
     "v2.8 Checkpoint compressor proposal synced",
     "v2.9 Source card builder proposal synced",
     "v2.10 Copyright boundary guard proposal synced",
-    "v2.11 Svod guard proposal synced"
+    "v2.11 Svod guard proposal synced",
+    "v2.12 Contextologist proposal synced"
   ],
   "recentPrs": [
-    "PR #91 — Sync state after source card builder proposal",
     "PR #92 — Add copyright boundary guard agent proposal",
     "PR #93 — Sync state after copyright boundary guard proposal",
     "PR #94 — Add svod guard agent proposal",
-    "PR #95 — Sync state after svod guard proposal"
+    "PR #95 — Sync state after svod guard proposal",
+    "PR #96 — Add contextologist agent proposal",
+    "PR #97 — Sync state after contextologist proposal"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -30,8 +32,9 @@
     "source_card_builder is a proposal only, not activated",
     "copyright_boundary_guard is a proposal only, not activated and not a hard guardrail",
     "svod_guard is a proposal only, not activated and not a hard guardrail",
-    "svod_guard checks alignment with the accepted Svod; it does not rewrite the Svod and does not give final approval instead of Sergey",
-    "next agent queue candidate after svod_guard is contextologist_agent",
+    "contextologist_agent is a proposal only, not activated and not a hard guardrail",
+    "contextologist_agent restores the project map before a move; it does not command the route, change state or replace workflow_conductor_agent",
+    "next agent queue candidate after contextologist_agent is sergey_interaction_profiler",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals and activations",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",
@@ -50,7 +53,7 @@
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not create hard guardrails without separate approval and PR"
   ],
-  "nextAction": "Prepare contextologist_agent proposal without activation",
+  "nextAction": "Prepare sergey_interaction_profiler proposal without activation",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -66,7 +69,8 @@
     "knowledge/05_agent_memory/agent_proposals/checkpoint_compressor_agent.md",
     "knowledge/05_agent_memory/agent_proposals/source_card_builder.md",
     "knowledge/05_agent_memory/agent_proposals/copyright_boundary_guard.md",
-    "knowledge/05_agent_memory/agent_proposals/svod_guard.md"
+    "knowledge/05_agent_memory/agent_proposals/svod_guard.md",
+    "knowledge/05_agent_memory/agent_proposals/contextologist_agent.md"
   ],
   "chatWritingState": {
     "chapterId": "chapter_00_preface",
@@ -93,12 +97,12 @@
       "checkpoint_compressor_agent",
       "source_card_builder",
       "copyright_boundary_guard",
-      "svod_guard"
+      "svod_guard",
+      "contextologist_agent"
     ],
     "hardGuardrailsActiveFromThisWave": [],
-    "recommendedNextAgent": "contextologist_agent",
+    "recommendedNextAgent": "sergey_interaction_profiler",
     "alternativeNextAgents": [
-      "sergey_interaction_profiler",
       "author_style_memory_agent"
     ],
     "shipyardModernization": {
