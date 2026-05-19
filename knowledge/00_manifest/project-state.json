@@ -1,8 +1,8 @@
 {
   "currentVersion": "v2.30",
   "lastCompletedVersion": "v2.30",
-  "lastMergedPr": "PR #153 — Add archive origin and parallel intake protocol",
-  "lastMergeCommit": "749b77a32da403e3e78653628d5cb3aa7bc8cc0b",
+  "lastMergedPr": "PR #154 — Sync state after archive origin protocol",
+  "lastMergeCommit": "e8a07a7002fc57077221c7ff57e2dbe99f3510a1",
   "currentMilestone": "v2.30 Archive origin and parallel intake protocol synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
@@ -33,15 +33,18 @@
     "v2.30 Archive origin and parallel intake protocol synced"
   ],
   "recentPrs": [
-    "PR #147 — Fix stale CI assertions",
-    "PR #148 — Sync state after CI fix",
     "PR #149 — Add knowledge consistency protocol",
     "PR #150 — Sync state after knowledge consistency protocol",
     "PR #151 — Checkpoint full after knowledge consistency state sync",
-    "PR #153 — Add archive origin and parallel intake protocol"
+    "PR #153 — Add archive origin and parallel intake protocol",
+    "PR #154 — Sync state after archive origin protocol",
+    "PR #152 — Archive Khmelevskaya style optic and command correction closed unmerged"
   ],
-  "openPrs": [
-    "PR #152 — Archive Khmelevskaya style optic and command correction"
+  "openPrs": [],
+  "closedUnmergedPrs": [
+    "PR #141 — closed unmerged after coverage-scope fix",
+    "PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status",
+    "PR #152 — closed unmerged after PR #153 made Origin / Coverage applies to discipline mandatory"
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
@@ -58,8 +61,8 @@
     "when another archive PR already updates knowledge/08_conversation_archive/index.md, new archive PRs must use parallel intake mode or wait",
     "parallel intake archive PRs write only their own entry file and must not update knowledge/08_conversation_archive/index.md",
     "index consolidation after parallel entry-only PRs is a separate PR",
-    "PR #152 remains open and must not be treated as implemented",
-    "PR #153 changed archive protocols and restart prompt but did not update project-state before this sync",
+    "PR #152 was closed unmerged and must not be treated as implemented",
+    "the Khmelevskaya archive material from PR #152 may be recreated later only under the PR #153 Origin / Coverage applies to protocol",
     "baseline CI workflow is implemented in .github/workflows/ci.yml",
     "Sync Check workflow is implemented in .github/workflows/sync-check.yml and must be checked alongside CI when both workflows apply",
     "required PR verification layer currently includes Sync Check and CI, not CI alone",
@@ -70,7 +73,7 @@
     "No archive entry may be treated as full-chat coverage unless it explicitly says coverage_scope: full_chat and names the target origin in Coverage applies to",
     "coverage_scope types are full_chat, thematic, partial and corrective",
     "PR #146 records that no verified coverage_scope: full_chat checkpoint is present for the current chat and this remains a coverage gap, not full coverage",
-    "PR #141 and PR #145 were closed unmerged and must not be treated as implemented",
+    "PR #141, PR #145 and PR #152 were closed unmerged and must not be treated as implemented",
     "#архив_старт and #архив чата сохрани must not save archive output to ChatGPT memory, project memory, knowledge/05_agent_memory/handoff/, project-state, roadmap, working protocol or arbitrary folders",
     "archive/handoff PRs created by mass-running commands across old chats are quarantine PRs until checked",
     "conversation_archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint",
@@ -107,11 +110,11 @@
     "Do not pretend branch cleanup was completed while branches remain unresolved in issue #99",
     "Do not let conversation archive become a raw transcript dump",
     "Do not treat branch protection as configured until it is explicitly verified",
-    "Do not treat PR #141, PR #145 or open PR #152 as implemented",
+    "Do not treat PR #141, PR #145 or closed-unmerged PR #152 as implemented",
     "Do not treat PR #146 as full-chat coverage because it explicitly records a missing full-chat checkpoint",
     "Do not update knowledge/08_conversation_archive/index.md from parallel archive PRs"
   ],
-  "nextAction": "Create conversation_archive_librarian as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented.",
+  "nextAction": "Create conversation_archive_librarian as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -182,89 +185,49 @@
       "banality_alarm_agent",
       "anti_cliche_editor"
     ],
-    "hardGuardrailsActiveFromThisWave": [],
     "recommendedNextAgent": "conversation_archive_librarian",
-    "recommendedNextWorkItem": "Create conversation_archive_librarian as the next design PR after state sync for PR #153",
-    "alternativeNextAgents": [
-      "conversation_archive_librarian",
-      "critic_margin_agent",
-      "plotnikov_motor_agent",
-      "one_strike_chapter_agent",
-      "telegram_voice_editor"
-    ],
-    "shipyardModernization": {
-      "status": "stability_gate_passed",
-      "languageDecision": "Go accepted as the deterministic spine behind TypeScript orchestration and JSON boundary, not as a full rewrite",
-      "nextTechnicalStep": "No further modernization step by default; return to agent queue unless a concrete bug or compatibility risk appears"
-    },
+    "recommendedNextWorkItem": "Create conversation_archive_librarian as the next design PR",
     "repositoryHygiene": {
       "status": "audit_mechanism_active_cleanup_needed",
       "audit_command": "npm run hygiene:audit",
       "ledger_issue": "#99 Repository hygiene ledger",
-      "branch_cleanup": "cleanup_needed_not_completed",
-      "do_not_use": "branch-ref workaround for cleanup",
-      "archivedRisks": [
-        "repository README needed",
-        "main branch protection action item needed",
-        "knowledge/protocol consistency checks needed",
-        "label-triggered registry sync may replace manual workflow_dispatch"
-      ]
+      "branch_cleanup": "cleanup_needed_not_completed"
     },
     "conversationArchive": {
-      "status": "origin_protocol_synced_parallel_intake_active",
+      "status": "origin_protocol_synced_pr_152_closed_unmerged",
       "audit_command": "npm run archive:audit",
       "index": "knowledge/08_conversation_archive/index.md",
       "capture_prompt": "knowledge/08_conversation_archive/conversation_capture_prompt.md",
       "governance_protocol": "knowledge/08_conversation_archive/archive_governance_protocol.md",
       "origin_protocol": "knowledge/08_conversation_archive/archive_origin_protocol.md",
       "latest_merged_entry": "knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md",
-      "open_archive_pr": "PR #152 — Archive Khmelevskaya style optic and command correction",
+      "open_archive_pr": "none",
       "closed_superseded_prs": [
         "PR #133 — superseded by PR #138",
         "PR #139 — superseded by PR #143",
         "PR #141 — closed unmerged after coverage-scope fix",
-        "PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status"
+        "PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status",
+        "PR #152 — closed unmerged after archive origin protocol made Origin / Coverage applies to mandatory"
       ],
       "stable_commands": [
         "#архив чата",
         "#архив чата сохрани",
         "#архив_старт"
       ],
-      "short_command_priority_rule": "command must not lose to noise; tail must not be hidden by the new command",
-      "archive_start_rule": "write only to GitHub conversation archive directory and index in single-lane mode; write entry-only in parallel intake mode",
       "coverage_scope_rule": "No archive entry may be treated as full-chat coverage without explicit coverage_scope: full_chat and a target in Coverage applies to",
       "parallel_intake_rule": "if another archive PR already updates index.md, a new archive PR must use parallel intake mode or wait",
       "current_chat_full_checkpoint": "missing; PR #146 records this as a coverage gap, not as full-chat coverage"
     },
     "ciBaseline": {
-      "status": "green_after_pr_153_before_state_sync",
+      "status": "green_after_pr_154_before_state_sync_after_closing_pr_152",
       "workflow": ".github/workflows/ci.yml",
       "sync_check_workflow": ".github/workflows/sync-check.yml",
-      "latest_green_pr": "PR #153 — Add archive origin and parallel intake protocol",
-      "latest_green_head": "668eddebd62134705284839bab35e41bb2bad238",
-      "latest_green_merge_commit": "749b77a32da403e3e78653628d5cb3aa7bc8cc0b",
+      "latest_green_pr": "PR #154 — Sync state after archive origin protocol",
+      "latest_green_head": "8be71d22d137dfa52e03f051172a4d5dea519df6",
+      "latest_green_merge_commit": "e8a07a7002fc57077221c7ff57e2dbe99f3510a1",
       "required_workflow_statuses": [
         "Sync Check",
         "CI"
-      ],
-      "triggers": [
-        "pull_request to main",
-        "workflow_dispatch for CI where applicable"
-      ],
-      "steps": [
-        "npm run sync-check",
-        "npm run typecheck",
-        "npm run typecheck:test",
-        "npm test",
-        "npm run test:core",
-        "npm run hygiene:audit",
-        "npm run archive:audit"
-      ],
-      "fixed_failures": [
-        "baseline.test.ts no longer expects currentVersion v2.1 in project-state.md",
-        "knowledge.test.ts no longer expects source registry version 0.3",
-        "source-registry.test.ts no longer expects source registry version 0.3",
-        "Go-core CLI now supports the -- command separator used by schema-pressure tests"
       ],
       "branchProtection": "not_configured"
     }

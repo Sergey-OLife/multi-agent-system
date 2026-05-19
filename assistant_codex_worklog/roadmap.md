@@ -10,23 +10,29 @@
 
 - currentVersion: v2.30
 - currentMilestone: Archive origin and parallel intake protocol synced
-- lastMergedPr: PR #153 — Add archive origin and parallel intake protocol
-- lastMergeCommit: `749b77a32da403e3e78653628d5cb3aa7bc8cc0b`
+- lastMergedPr: PR #154 — Sync state after archive origin protocol
+- lastMergeCommit: `e8a07a7002fc57077221c7ff57e2dbe99f3510a1`
 
 ## Recent PR summary
 
-- PR #147 — Fix stale CI assertions.
-- PR #148 — Sync state after CI fix.
 - PR #149 — Add knowledge consistency protocol.
 - PR #150 — Sync state after knowledge consistency protocol.
 - PR #151 — Checkpoint full after knowledge consistency state sync.
 - PR #153 — Add archive origin and parallel intake protocol.
+- PR #154 — Sync state after archive origin protocol.
+- PR #152 — Archive Khmelevskaya style optic and command correction closed unmerged.
 
 ## Open PRs
 
-- PR #152 — Archive Khmelevskaya style optic and command correction.
+None.
 
-Open PR is not implemented.
+## Closed unmerged PRs that matter
+
+- PR #141 — closed unmerged after coverage-scope fix.
+- PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status.
+- PR #152 — closed unmerged after PR #153 made Origin / Coverage applies to mandatory.
+
+These PRs are not implemented.
 
 ## What changed in v2.30
 
@@ -50,6 +56,10 @@ Protocol fixes:
 - parallel intake mode writes entry-only PRs without `index.md` update;
 - if another archive PR already updates `index.md`, new archive PR must use parallel intake mode or wait;
 - consolidation PR updates `index.md` after merged entry-only PRs.
+
+PR #154 synchronized state/worklog/restart after PR #153.
+
+PR #152 was then closed unmerged because it was created under the pre-PR #153 archive discipline.
 
 ## Existing stable foundations
 
@@ -82,6 +92,8 @@ Current archive command rules:
 - Parallel intake PR must not update `knowledge/08_conversation_archive/index.md`.
 - Full-chat coverage requires explicit `Coverage applies to` target.
 
+PR #152 material can be recreated later only under these rules.
+
 ## CI status
 
 Required repository verification layer includes both workflows when both apply:
@@ -89,18 +101,13 @@ Required repository verification layer includes both workflows when both apply:
 - Sync Check — `.github/workflows/sync-check.yml`, `npm run sync-check`;
 - CI — `.github/workflows/ci.yml`.
 
-PR #153 had CI and Sync Check green before merge.
+PR #154 had CI and Sync Check green before merge.
 
 Branch protection remains not configured until separately verified and approved.
 
 ## Recommended next work item
 
-Create `conversation_archive_librarian` as the next design PR after state sync for PR #153.
-
-Important constraint:
-
-- PR #152 remains open and not implemented.
-- Do not create conflicting archive/index updates while PR #152 is open.
+Create `conversation_archive_librarian` as the next design PR.
 
 Then choose one of:
 
@@ -117,7 +124,7 @@ Then choose one of:
 - Book Fast Track остаётся на паузе.
 - Runtime Redis / Postgres / P2P remain future runtime only and must not be implemented without separate decision.
 - PR #146 must not be treated as full-chat coverage.
-- PR #141, PR #145 and open PR #152 are not implemented.
+- PR #141, PR #145 and PR #152 are not implemented.
 - Knowledge consistency protocol is active as an operational protocol, not as an automated validator.
 - Archive origin protocol is active as operational protocol, not as an archive librarian agent.
 
@@ -138,5 +145,5 @@ Then choose one of:
 - Не превращать conversation archive в raw transcript dump.
 - Не считать branch protection configured without verification.
 - Не считать thematic archive entry full-chat checkpoint.
-- Не считать open PR implemented.
+- Не считать closed-unmerged PR implemented.
 - Human-readable artifacts — на русском.

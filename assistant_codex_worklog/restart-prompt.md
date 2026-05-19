@@ -47,12 +47,21 @@ GitHub — источник правды. Сначала открой:
 
 - currentVersion: v2.30.
 - lastCompletedVersion: v2.30.
-- lastMergedPr: PR #153 — Add archive origin and parallel intake protocol.
-- lastMergeCommit: 749b77a32da403e3e78653628d5cb3aa7bc8cc0b.
+- lastMergedPr: PR #154 — Sync state after archive origin protocol.
+- lastMergeCommit: e8a07a7002fc57077221c7ff57e2dbe99f3510a1.
 - currentMilestone: v2.30 Archive origin and parallel intake protocol synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
-- Open PR: PR #152 — Archive Khmelevskaya style optic and command correction. It is open, not implemented.
+- Open PRs: none.
+- Closed unmerged PRs that must not be treated as implemented: PR #141, PR #145, PR #152.
+
+PR #152 status:
+
+- PR #152 — Archive Khmelevskaya style optic and command correction — closed unmerged.
+- It was created before PR #153 introduced Archive Origin + Parallel Intake Protocol.
+- It had Coverage check but no required Origin block and no `Coverage applies to`.
+- It updated shared `knowledge/08_conversation_archive/index.md` directly under the older discipline.
+- Its material is not implemented. If needed later, recreate it under PR #153 protocol.
 
 Repository architecture contract:
 
@@ -90,7 +99,7 @@ Required repository verification layer:
 - CI workflow: `.github/workflows/ci.yml`.
 - CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
-- PR #153 had CI + Sync Check green before merge.
+- PR #154 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
@@ -107,8 +116,8 @@ Stable conversation archive commands:
 Latest conversation archive state:
 
 - PR #146 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md` and records that no verified full-chat checkpoint exists for the current chat.
-- PR #152 is open and includes archive entry + index update. It must not be treated as implemented while open.
-- PR #153 implemented origin / parallel intake protocol but did not merge PR #152.
+- PR #152 is closed unmerged and not implemented.
+- PR #153 implemented origin / parallel intake protocol.
 
 Known archive failure patterns:
 
@@ -175,5 +184,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Create `conversation_archive_librarian` as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented. Do not create conflicting archive/index updates while PR #152 remains open.
+Create `conversation_archive_librarian` as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.
 ```

@@ -12,9 +12,9 @@
 
 ## Последний смерженный PR
 
-- PR #153 — Add archive origin and parallel intake protocol
+- PR #154 — Sync state after archive origin protocol
 - Статус: merged
-- Merge commit: `749b77a32da403e3e78653628d5cb3aa7bc8cc0b`
+- Merge commit: `e8a07a7002fc57077221c7ff57e2dbe99f3510a1`
 
 ## Текущая версия
 
@@ -23,8 +23,13 @@
 
 ## Открытые approval-gates
 
-- PR #152 — Archive Khmelevskaya style optic and command correction remains open.
-- PR #152 must not be treated as implemented.
+- No open PRs.
+
+## Закрытые unmerged PRs, которые нельзя считать implemented
+
+- PR #141 — closed unmerged after coverage-scope fix.
+- PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status.
+- PR #152 — Archive Khmelevskaya style optic and command correction, closed unmerged after PR #153 made Origin / Coverage applies to discipline mandatory.
 
 ## Что зафиксировал PR #153
 
@@ -49,6 +54,31 @@
 - if another archive PR already updates `index.md`, new archive PR must use parallel intake mode or wait;
 - index consolidation after parallel entry-only PRs is a separate PR;
 - future archive audit should check Origin, Coverage applies to and no index update in parallel mode.
+
+## Что зафиксировал PR #154
+
+PR #154 synchronized state/worklog/restart files after PR #153.
+
+Обновлены только:
+
+- `knowledge/00_manifest/project-state.json`
+- `knowledge/00_manifest/project-state.md`
+- `assistant_codex_worklog/current-state.md`
+- `assistant_codex_worklog/roadmap.md`
+- `assistant_codex_worklog/restart-prompt.md`
+
+## Что произошло с PR #152
+
+PR #152 был закрыт без merge.
+
+Причина:
+
+- PR #152 создан до PR #153.
+- В нём есть Coverage check, но нет обязательного теперь Origin block.
+- В нём нет `Coverage applies to`.
+- Он напрямую обновлял общий `knowledge/08_conversation_archive/index.md` по старой дисциплине.
+
+Материал PR #152 не считается потерянным, но если нужен позже, его нужно пересобрать новым archive PR по протоколу PR #153.
 
 ## Что уже было зафиксировано раньше
 
@@ -84,7 +114,7 @@ Current archive rules:
 - `.github/workflows/sync-check.yml` implemented.
 - Required PR verification layer includes both Sync Check and CI when both workflows apply.
 - Branch protection: not configured.
-- PR #153 had CI and Sync Check green before merge.
+- PR #154 had CI and Sync Check green before merge.
 
 ## Repository hygiene
 
@@ -122,7 +152,7 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Create `conversation_archive_librarian` as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented.
+Create `conversation_archive_librarian` as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.
 
 ## Что временно не делаем
 
@@ -130,7 +160,7 @@ Create `conversation_archive_librarian` as the next design PR after state sync f
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не считаем branch protection настроенным без отдельной проверки.
-- Не считаем PR #141, PR #145 or open PR #152 implemented.
+- Не считаем PR #141, PR #145 or closed-unmerged PR #152 implemented.
 - Не считаем PR #146 full-chat coverage: он explicitly records a missing full-chat checkpoint.
 - Не обновляем `index.md` в parallel archive PR.
 
