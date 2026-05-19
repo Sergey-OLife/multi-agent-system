@@ -1,0 +1,15 @@
+{
+  "agent_id": "critic_margin_agent",
+  "status": "proposal",
+  "next_action": "controlled_activation",
+  "proposal_path": "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
+  "insert_if_missing": true,
+  "working_name_ru": "Критик предпосылок",
+  "group": "Управление кораблём",
+  "ship_role": "watch",
+  "why_needed": "Проверяет скрытые предпосылки перед margin-point операциями, где корректный ближайший шаг может опираться на неверную модель действия.",
+  "main_formula": "Вторые глаза смотрят на то, что первый исполнитель уже принял как само собой разумеющееся.",
+  "first_fill_priority": "P0",
+  "activation_risk": "medium",
+  "approval_gate": true
+}
