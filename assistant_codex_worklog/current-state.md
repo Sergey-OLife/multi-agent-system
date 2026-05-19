@@ -12,14 +12,14 @@
 
 ## Последний смерженный PR
 
-- PR #143 — Archive corrective margin orchestra and consistency discussion
+- PR #147 — Fix stale CI assertions
 - Статус: merged
-- Merge commit: `a9353575780d56f31faa84e015998e1552647f53`
+- Merge commit: `d8b47dfd8ffbba64f65494dfdc1cb7559f305816`
 
 ## Текущая версия
 
-- currentVersion: v2.26
-- currentMilestone: Archive coverage scope and corrective archive synced
+- currentVersion: v2.27
+- currentMilestone: Current chat coverage gap recorded and baseline CI green
 
 ## Что зафиксировал PR #131
 
@@ -62,7 +62,7 @@
 - working protocol;
 - arbitrary folders.
 
-## Что зафиксировали PR #140, #142, #143
+## Что зафиксировали PR #140, #142, #143, #146
 
 PR #140:
 
@@ -79,12 +79,32 @@ PR #142:
 PR #143:
 
 - created corrective archive entry after coverage-scope protocol fix;
-- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`;
+- archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`;
 - PR #141 closed unmerged and must not be treated as implemented.
+
+PR #146:
+
+- created corrective archive entry for the current chat coverage gap;
+- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`;
+- no verified `coverage_scope: full_chat` checkpoint exists for the current chat;
+- PR #145 closed unmerged and must not be treated as implemented.
+
+## Что зафиксировал PR #147
+
+PR #147 fixed stale CI assertions and made baseline CI green.
+
+Fixed:
+
+- `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`;
+- `knowledge.test.ts` no longer expects source registry version `0.3`;
+- `source-registry.test.ts` no longer expects source registry version `0.3`;
+- Go-core CLI supports the `--` command separator used by schema-pressure tests.
+
+CI and Sync Check were green on PR #147 head before merge.
 
 ## Открытые approval-gates
 
-- No open PRs known after PR #143 merge.
+- No open PRs known after PR #147 merge.
 
 ## Conversation archive commands
 
@@ -119,16 +139,7 @@ Archive/handoff PRs из массового прогона старых чато
 - `.github/workflows/ci.yml` implemented.
 - Checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - Branch protection: not configured.
-
-CI observation:
-
-- CI was observed on PR #131.
-- Sync Check passed.
-- CI failed during `npm test` because of stale assertions, not because of the PR #131 architecture contract diff.
-- Known stale assertions:
-  - `baseline.test.ts` expected `currentVersion: v2.1`;
-  - `knowledge.test.ts` expected source registry version `0.3`, but registry is `0.6`;
-  - `source-registry.test.ts` expected source registry version `0.3`, but registry is `0.6`.
+- Current status: green after PR #147.
 
 ## Repository hygiene
 
@@ -166,13 +177,13 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Fix stale CI assertions observed on PR #131, then choose one design work item:
+Choose exactly one design work item now that baseline CI is green:
 
-1. `knowledge_consistency_protocol`;
+1. `knowledge_consistency_protocol` — recommended first;
 2. `conversation_archive_librarian`;
 3. `critic_margin_agent` + `margin_orchestra`;
 4. README / architecture map;
-5. branch protection only after CI is reliable.
+5. branch protection after separate verification.
 
 ## Что временно не делаем
 
@@ -180,7 +191,8 @@ Fix stale CI assertions observed on PR #131, then choose one design work item:
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не считаем branch protection настроенным без отдельной проверки.
-- Не считаем PR #141 implemented: он closed unmerged.
+- Не считаем PR #141 or PR #145 implemented: они closed unmerged.
+- Не считаем PR #146 full-chat coverage: он explicitly records a missing full-chat checkpoint.
 
 ## Короткие команды
 
