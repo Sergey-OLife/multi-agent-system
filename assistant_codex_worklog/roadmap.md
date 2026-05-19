@@ -8,19 +8,19 @@
 
 ## Current milestone
 
-- currentVersion: v2.26
-- currentMilestone: Archive coverage scope and corrective archive synced
-- lastMergedPr: PR #143 — Archive corrective margin orchestra and consistency discussion
-- lastMergeCommit: `a9353575780d56f31faa84e015998e1552647f53`
+- currentVersion: v2.27
+- currentMilestone: Current chat coverage gap recorded and baseline CI green
+- lastMergedPr: PR #147 — Fix stale CI assertions
+- lastMergeCommit: `d8b47dfd8ffbba64f65494dfdc1cb7559f305816`
 
 ## Recent PR summary
 
-- PR #136 — Add archive start GitHub write command.
-- PR #137 — Sync state after architecture and archive start.
-- PR #138 — Archive red flags after architecture contract.
 - PR #140 — Require cumulative archive start capture.
 - PR #142 — Require explicit archive coverage scope.
 - PR #143 — Archive corrective margin orchestra and consistency discussion.
+- PR #144 — Sync state after archive coverage fixes.
+- PR #146 — Archive corrective current chat coverage gap.
+- PR #147 — Fix stale CI assertions.
 
 ## Что изменилось в v2.25
 
@@ -76,6 +76,31 @@ Entry фиксирует:
 
 PR #141 закрыт unmerged и не считается implemented.
 
+## Что изменилось в v2.27
+
+PR #146 добавил corrective archive entry:
+
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`.
+
+Entry фиксирует:
+
+- no verified `coverage_scope: full_chat` checkpoint exists for the current chat;
+- previous checkpoint coverage scope: `missing`;
+- full-chat marker present: no;
+- gap found: yes;
+- PR #145 was closed unmerged and must not be treated as implemented.
+
+PR #147 fixed stale CI assertions and made baseline CI green.
+
+Fixed:
+
+- `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`;
+- `knowledge.test.ts` no longer expects source registry version `0.3`;
+- `source-registry.test.ts` no longer expects source registry version `0.3`;
+- Go-core CLI supports the `--` command separator used by schema-pressure tests.
+
+CI and Sync Check were green on PR #147 head before merge.
+
 ## Conversation archive
 
 Conversation archive остаётся отдельным human interaction archive, не project-state, не approval-log и не technical checkpoint.
@@ -87,6 +112,7 @@ Conversation archive остаётся отдельным human interaction archi
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/2026-05-19_red-flags-after-architecture-contract.md`
 - `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`
 
 Audit:
 
@@ -126,29 +152,29 @@ Archive/handoff PRs из массового прогона старых чато
 
 ## Open approval-gate
 
-No open PR approval-gate known after PR #143 merge.
+No open PR approval-gate known after PR #147 merge.
 
-## CI observation
+## CI status
 
-Baseline CI is implemented, but first observation on PR #131 showed failure in existing stale assertions:
+Baseline CI is implemented and green after PR #147.
+
+PR #147 removed stale assertions that previously kept CI red:
 
 - `baseline.test.ts` expected `currentVersion: v2.1`;
 - `knowledge.test.ts` expected source registry version `0.3`, but registry is `0.6`;
 - `source-registry.test.ts` expected source registry version `0.3`, but registry is `0.6`.
 
-Therefore branch protection should not be configured around CI until stale assertions are fixed.
+Branch protection remains not configured until separately verified and approved.
 
 ## Recommended next work item
 
-First fix stale CI assertions observed on PR #131.
+Choose exactly one design PR:
 
-Then choose exactly one design PR:
-
-1. `knowledge_consistency_protocol`;
+1. `knowledge_consistency_protocol` — recommended first;
 2. `conversation_archive_librarian`;
 3. `critic_margin_agent` + `margin_orchestra`;
 4. README / architecture map;
-5. branch protection after CI is reliable.
+5. branch protection after separate verification.
 
 ## Standing rules
 
@@ -158,6 +184,8 @@ Then choose exactly one design PR:
 - Branch protection remains not configured until explicitly verified.
 - Book Fast Track остаётся на паузе.
 - Runtime Redis / Postgres / P2P remain future runtime only and must not be implemented without separate decision.
+- PR #146 must not be treated as full-chat coverage; it records a missing full-chat checkpoint.
+- PR #141 and PR #145 were closed unmerged and are not implemented.
 
 ## Короткие команды
 
@@ -176,5 +204,5 @@ Then choose exactly one design PR:
 - Не превращать conversation archive в raw transcript dump.
 - Не считать branch protection configured without verification.
 - Не считать thematic archive entry full-chat checkpoint.
-- Не считать PR #141 implemented.
+- Не считать PR #141 / PR #145 implemented.
 - Human-readable artifacts — на русском.

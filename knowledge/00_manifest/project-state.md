@@ -4,22 +4,22 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.26
-- lastCompletedVersion: v2.26
-- lastMergedPr: PR #143 — Archive corrective margin orchestra and consistency discussion
-- lastMergeCommit: a9353575780d56f31faa84e015998e1552647f53
-- currentMilestone: v2.26 Archive coverage scope and corrective archive synced
+- currentVersion: v2.27
+- lastCompletedVersion: v2.27
+- lastMergedPr: PR #147 — Fix stale CI assertions
+- lastMergeCommit: d8b47dfd8ffbba64f65494dfdc1cb7559f305816
+- currentMilestone: v2.27 Current chat coverage gap recorded and baseline CI green
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #136 — Add archive start GitHub write command
-- PR #137 — Sync state after architecture and archive start
-- PR #138 — Archive red flags after architecture contract
 - PR #140 — Require cumulative archive start capture
 - PR #142 — Require explicit archive coverage scope
 - PR #143 — Archive corrective margin orchestra and consistency discussion
+- PR #144 — Sync state after archive coverage fixes
+- PR #146 — Archive corrective current chat coverage gap
+- PR #147 — Fix stale CI assertions
 
 ## Repository architecture contract
 
@@ -82,6 +82,19 @@ It records:
 - gap found: yes;
 - PR #141 was closed unmerged and must not be treated as implemented.
 
+PR #146 added a second corrective archive entry:
+
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`
+
+It records:
+
+- no verified `coverage_scope: full_chat` checkpoint exists for the current chat;
+- previous checkpoint coverage scope: `missing`;
+- full-chat marker present: no;
+- gap found: yes;
+- this is a coverage gap, not full-chat coverage;
+- PR #145 was closed unmerged and must not be treated as implemented.
+
 ## Conversation archive
 
 Conversation archive remains active as a separate human interaction archive, not project-state, approval-log or technical checkpoint.
@@ -103,9 +116,9 @@ npm run archive:audit
 
 Current archive status:
 
-- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`;
+- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`;
 - open archive PR: none known;
-- closed superseded PRs: PR #133, PR #139, PR #141.
+- closed superseded/unmerged PRs: PR #133, PR #139, PR #141, PR #145.
 
 ## Baseline CI workflow
 
@@ -126,17 +139,16 @@ CI runs only existing scripts:
 - `npm run hygiene:audit`
 - `npm run archive:audit`
 
-Observation:
+PR #147 fixed the stale assertions that kept baseline CI red:
 
-- CI was observed on PR #131.
-- Sync Check passed.
-- CI failed during `npm test` because of stale test assertions, not because of the PR #131 architecture contract diff.
-- Known stale assertions:
-  - `baseline.test.ts` expected `currentVersion: v2.1` in `project-state.md`;
-  - `knowledge.test.ts` expected source registry version `0.3` but registry is `0.6`;
-  - `source-registry.test.ts` expected source registry version `0.3` but registry is `0.6`.
+- `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`;
+- `knowledge.test.ts` no longer expects source registry version `0.3`;
+- `source-registry.test.ts` no longer expects source registry version `0.3`;
+- Go-core CLI supports the `--` command separator used by schema-pressure tests.
 
-Branch protection remains not configured until explicitly verified. Do not use CI as a branch protection gate before fixing stale assertions.
+CI and Sync Check were green on PR #147 head before merge.
+
+Branch protection remains not configured until explicitly verified.
 
 ## Repository hygiene
 
@@ -184,10 +196,11 @@ Active optional workflow layers:
 - Current active mode is Agent Shipyard / Agent Queue.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Repository architecture contract is implemented.
-- Baseline CI workflow is implemented, but stale test assertions must be fixed before CI can become a reliable gate.
+- Baseline CI workflow is implemented and green after PR #147.
 - `#архив_старт` is implemented as a write-first GitHub conversation archive command.
 - `#архив_старт` is cumulative, not last-topic-only.
 - Archive entries require explicit coverage scope discipline.
+- PR #146 records a missing current-chat full-chat checkpoint and must not be treated as full-chat coverage.
 - Archive commands must not save to memory/handoff/project-state/arbitrary folders.
 - Mass capture imports are quarantine PRs until checked.
 - Branch protection remains a separate future action item and is not configured until explicitly verified.
@@ -210,17 +223,18 @@ Active optional workflow layers:
 - Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
 - Do not let conversation archive become a raw transcript dump.
 - Do not treat branch protection as configured until it is explicitly verified.
-- Do not treat PR #141 as implemented because it was closed unmerged.
+- Do not treat PR #141 or PR #145 as implemented because they were closed unmerged.
+- Do not treat PR #146 as full-chat coverage because it explicitly records a missing full-chat checkpoint.
 
 ## Next action
 
-Fix stale CI assertions observed on PR #131, then choose the next design work item:
+Choose exactly one design work item now that baseline CI is green:
 
-1. `knowledge_consistency_protocol`;
+1. `knowledge_consistency_protocol` — recommended first;
 2. `conversation_archive_librarian`;
 3. `critic_margin_agent` + `margin_orchestra`;
 4. README / architecture map;
-5. branch protection after CI is reliable.
+5. branch protection after separate verification.
 
 ## Chat writing state
 

@@ -35,14 +35,18 @@ GitHub — источник правды. Сначала открой:
 26. scripts/archive-audit.mjs
 27. .github/workflows/registry-sync.yml
 28. .github/workflows/ci.yml
+29. go-core/cmd/multi-agent-core/main.go
+30. tests/baseline.test.ts
+31. tests/knowledge.test.ts
+32. tests/source-registry.test.ts
 
 Актуальное состояние:
 
-- currentVersion: v2.26.
-- lastCompletedVersion: v2.26.
-- lastMergedPr: PR #143 — Archive corrective margin orchestra and consistency discussion.
-- lastMergeCommit: a9353575780d56f31faa84e015998e1552647f53.
-- currentMilestone: v2.26 Archive coverage scope and corrective archive synced.
+- currentVersion: v2.27.
+- lastCompletedVersion: v2.27.
+- lastMergedPr: PR #147 — Fix stale CI assertions.
+- lastMergeCommit: d8b47dfd8ffbba64f65494dfdc1cb7559f305816.
+- currentMilestone: v2.27 Current chat coverage gap recorded and baseline CI green.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -63,9 +67,13 @@ Baseline CI:
 - Runs on `pull_request` to `main` and `workflow_dispatch`.
 - Uses Node.js 20 and Go version from `go-core/go.mod`.
 - Runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
-- CI was observed on PR #131: Sync Check passed, CI failed during `npm test` because of stale test assertions.
-- Known stale assertions: `baseline.test.ts` expects `currentVersion: v2.1`; `knowledge.test.ts` and `source-registry.test.ts` expect source registry version `0.3`, while registry is `0.6`.
-- Do not configure branch protection around CI until stale assertions are fixed.
+- PR #147 fixed stale assertions and made CI + Sync Check green before merge.
+- Fixed stale failures:
+  - `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`.
+  - `knowledge.test.ts` no longer expects source registry version `0.3`.
+  - `source-registry.test.ts` no longer expects source registry version `0.3`.
+  - Go-core CLI supports the `--` command separator used by schema-pressure tests.
+- Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
 
@@ -87,8 +95,9 @@ Latest conversation archive state:
 - PR #140 fixed `#архив_старт` cumulative capture.
 - PR #142 fixed explicit archive coverage scope.
 - PR #143 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`.
-- PR #141 was closed unmerged and must not be treated as implemented.
-- No open archive PR is known after PR #143.
+- PR #146 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`.
+- PR #141 and PR #145 were closed unmerged and must not be treated as implemented.
+- PR #146 records that no verified `coverage_scope: full_chat` checkpoint exists for the current chat; this is a coverage gap, not full-chat coverage.
 
 Known archive failure patterns:
 
@@ -165,5 +174,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Fix stale CI assertions observed on PR #131, then choose exactly one design PR: knowledge_consistency_protocol, conversation_archive_librarian, critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after CI is reliable.
+Choose exactly one design PR now that baseline CI is green: knowledge_consistency_protocol is recommended first, then conversation_archive_librarian, critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after separate verification.
 ```
