@@ -10,14 +10,14 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #165 — Sync registry for conversation archive librarian
+- PR #167 — Add second-eyes preflight design
 - Status: merged
-- Merge commit: `5b98794f466e9d4722eb308e590c955eb0ae771a`
+- Merge commit: `22bee4a9f5e0cacfa130fd41992651c780c9a578`
 
 ## Current version
 
-- currentVersion: v2.32
-- currentMilestone: Registry sync request flow and conversation archive librarian registry synced
+- currentVersion: v2.33
+- currentMilestone: Second-eyes preflight design synced
 
 ## Open approval gates
 
@@ -31,13 +31,35 @@ No open PRs before this state sync PR.
 - PR #162
 - PR #164
 
-## PR #165 result
+## PR #167 result
 
-PR #165 recorded `conversation_archive_librarian` in `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`.
+PR #167 added:
 
-The agent remains proposal-only. It is not activated, routed, or converted into a hard guardrail.
+- `knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md`
+- `knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md`
 
-The registry update was produced by request-driven Go-backed registry sync, not by manual full-file replacement.
+Status:
+
+- proposal/design only;
+- `critic_margin_agent` is not activated;
+- `critic_margin_agent` is not in registry yet;
+- `margin_orchestra` is not a hard guardrail;
+- no validator or route change was added.
+
+## Second-eyes preflight layer
+
+The second-eyes layer is a preflight design for margin points where hidden assumptions can break an otherwise correct step.
+
+Use it before:
+
+- registry sync;
+- agent activation;
+- route changes;
+- archive PR creation;
+- state sync;
+- workflow changes;
+- checkpoint full;
+- branch protection changes.
 
 ## Registry sync request flow
 
@@ -46,24 +68,7 @@ The registry update was produced by request-driven Go-backed registry sync, not 
 - PR #163 extended `go-core/cmd/agent-registry-sync/main.go` and tests with `--insert-if-missing`.
 - PR #165 used the flow successfully for `conversation_archive_librarian`.
 
-Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 was closed unmerged for that reason. PR #165 reopened the final-head branch and passed CI plus Sync Check before merge.
-
-## Conversation archive commands
-
-```text
-#архив чата
-#архив чата сохрани
-#архив_старт
-```
-
-Current archive rules:
-
-- Origin block is required for new archive entries.
-- Coverage check must include `Coverage applies to`.
-- `coverage_scope: full_chat` is valid only for the named target origin.
-- Parallel archive PRs must not update `knowledge/08_conversation_archive/index.md`.
-- Open PR is not implemented.
-- `conversation_archive_librarian` proposal and registry entry exist, but activation has not been done.
+Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 was closed unmerged for that reason.
 
 ## CI and Sync Check
 
@@ -71,16 +76,7 @@ Current archive rules:
 - `.github/workflows/sync-check.yml` exists.
 - PR readiness means both Sync Check and CI when both apply.
 - Branch protection is not configured.
-- PR #165 had green CI and Sync Check before merge.
-
-## Repository hygiene
-
-```bash
-npm run hygiene:audit
-npm run archive:audit
-```
-
-Branch cleanup remains `cleanup_needed`, not `completed`.
+- PR #167 had green CI and Sync Check before merge.
 
 ## Standing agent status
 
@@ -100,6 +96,7 @@ Proposal-only agents include:
 - `banality_alarm_agent`
 - `anti_cliche_editor`
 - `conversation_archive_librarian`
+- `critic_margin_agent`
 
 Active optional workflow layers:
 
@@ -110,4 +107,4 @@ Active optional workflow layers:
 
 ## Next safe step
 
-Choose the next Agent Shipyard item: controlled activation proposal for `conversation_archive_librarian`, `critic_margin_agent` / `margin_orchestra` design, README / architecture map, or branch protection verification.
+Choose the next Agent Shipyard item: registry sync for `critic_margin_agent`, controlled activation proposal for `conversation_archive_librarian`, hardening `margin_orchestra` into protocol/tooling, README / architecture map, or branch protection verification.
