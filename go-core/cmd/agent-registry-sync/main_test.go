@@ -39,6 +39,75 @@ func TestMutateRegistryProposalTransition(t *testing.T) {
 	}
 }
 
+func TestInsertMissingAgentBlock(t *testing.T) {
+	updated, diff, err := mutateRegistry(sampleRegistry(), mutationRequest{
+		AgentID:           "conversation_archive_librarian",
+		Status:            "proposal",
+		NextAction:        "controlled_activation",
+		ProposalPath:      "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md",
+		InsertIfMissing:   true,
+		WorkingNameRU:     "Библиотекарь архива разговоров",
+		Group:             "Управление кораблём",
+		ShipRole:          "archive",
+		WhyNeeded:         "Следит, чтобы conversation archive сохранял смысловые зерна, origin, coverage and mode discipline without becoming raw memory dump.",
+		MainFormula:       "Архив хранит не шум чата, а смысловые зерна, которые иначе потеряются.",
+		FirstFillPriority: "P0",
+		ActivationRisk:    "medium",
+		ApprovalGate:      true,
+	})
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if diff == "" {
+		t.Fatal("expected diff output")
+	}
+
+	required := []string{
+		`agent_id: "conversation_archive_librarian"`,
+		`working_name_ru: "Библиотекарь архива разговоров"`,
+		`status: "proposal"`,
+		`proposal_path: "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md"`,
+		`approval_gate: true`,
+	}
+	for _, needle := range required {
+		if !strings.Contains(updated, needle) {
+			t.Fatalf("updated registry missing %q", needle)
+		}
+	}
+	if strings.Count(updated, `agent_id: "conversation_archive_librarian"`) != 1 {
+		t.Fatal("agent duplication detected")
+	}
+}
+
+func TestRejectMissingAgentWithoutInsertFlag(t *testing.T) {
+	_, _, err := mutateRegistry(sampleRegistry(), mutationRequest{
+		AgentID: "conversation_archive_librarian",
+		Status:  "proposal",
+	})
+	if err == nil {
+		t.Fatal("expected missing agent error")
+	}
+	if !strings.Contains(err.Error(), "not found") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
+func TestRejectInsertMissingAgentWithoutRequiredFields(t *testing.T) {
+	_, _, err := mutateRegistry(sampleRegistry(), mutationRequest{
+		AgentID:         "conversation_archive_librarian",
+		Status:          "proposal",
+		NextAction:      "controlled_activation",
+		ProposalPath:    "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md",
+		InsertIfMissing: true,
+	})
+	if err == nil {
+		t.Fatal("expected required fields error")
+	}
+	if !strings.Contains(err.Error(), "working-name-ru") {
+		t.Fatalf("unexpected error: %v", err)
+	}
+}
+
 func TestRejectInvalidTransition(t *testing.T) {
 	_, _, err := mutateRegistry(sampleRegistry(), mutationRequest{
 		AgentID: "sergey_interaction_profiler",
