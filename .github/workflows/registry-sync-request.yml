@@ -108,17 +108,67 @@ jobs:
             throw new Error('next_action is not allowed for request-driven registry sync');
           }
 
+          const optionalStringKeys = [
+            'working_name_ru',
+            'group',
+            'ship_role',
+            'why_needed',
+            'main_formula',
+            'first_fill_priority',
+            'activation_risk',
+          ];
+
           const lines = [
             `REQUEST_FILE=${requestFile}`,
             `AGENT_ID=${request.agent_id}`,
             `TARGET_STATUS=${request.status}`,
             `NEXT_ACTION=${request.next_action}`,
             `PROPOSAL_PATH=${request.proposal_path}`,
+            `INSERT_IF_MISSING=${request.insert_if_missing === true ? 'true' : 'false'}`,
+            `APPROVAL_GATE=${request.approval_gate === false ? 'false' : 'true'}`,
           ];
+
+          for (const key of optionalStringKeys) {
+            if (request[key] !== undefined) {
+              if (typeof request[key] !== 'string' || request[key].trim() === '') {
+                throw new Error(`${key} must be a non-empty string when provided`);
+              }
+              lines.push(`${key.toUpperCase()}=${request[key]}`);
+            }
+          }
+
           fs.appendFileSync(envFile, `${lines.join('\n')}\n`);
           NODE
         env:
           REQUEST_FILE: ${{ steps.request.outputs.request_file }}
+
+      - name: Build registry sync args
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARGS=(
+            --agent "$AGENT_ID"
+            --status "$TARGET_STATUS"
+            --next-action "$NEXT_ACTION"
+            --proposal-path "$PROPOSAL_PATH"
+          )
+
+          if [[ "${INSERT_IF_MISSING:-false}" == "true" ]]; then
+            ARGS+=(--insert-if-missing)
+            ARGS+=(--working-name-ru "${WORKING_NAME_RU:?}")
+            ARGS+=(--group "${GROUP:?}")
+            ARGS+=(--ship-role "${SHIP_ROLE:?}")
+            ARGS+=(--why-needed "${WHY_NEEDED:?}")
+            ARGS+=(--main-formula "${MAIN_FORMULA:?}")
+            ARGS+=(--first-fill-priority "${FIRST_FILL_PRIORITY:-P0}")
+            ARGS+=(--activation-risk "${ACTIVATION_RISK:-medium}")
+            ARGS+=(--approval-gate="${APPROVAL_GATE:-true}")
+          fi
+
+          printf 'REGISTRY_SYNC_ARGS<<EOF\n' >> "$GITHUB_ENV"
+          printf '%q ' "${ARGS[@]}" >> "$GITHUB_ENV"
+          printf '\nEOF\n' >> "$GITHUB_ENV"
 
       - name: Set up Node.js
         if: steps.request.outputs.skip == 'false'
@@ -144,23 +194,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          npm run registry:sync -- \
-            --agent "$AGENT_ID" \
-            --status "$TARGET_STATUS" \
-            --next-action "$NEXT_ACTION" \
-            --proposal-path "$PROPOSAL_PATH" \
-            --dry-run
+          eval "npm run registry:sync -- $REGISTRY_SYNC_ARGS --dry-run"
 
       - name: Apply registry sync
         if: steps.request.outputs.skip == 'false'
         shell: bash
         run: |
           set -euo pipefail
-          npm run registry:sync -- \
-            --agent "$AGENT_ID" \
-            --status "$TARGET_STATUS" \
-            --next-action "$NEXT_ACTION" \
-            --proposal-path "$PROPOSAL_PATH"
+          eval "npm run registry:sync -- $REGISTRY_SYNC_ARGS"
 
       - name: Remove consumed request
         if: steps.request.outputs.skip == 'false'

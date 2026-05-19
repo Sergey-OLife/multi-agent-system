@@ -8,11 +8,22 @@ import (
 	"strings"
 )
 
+var errAgentNotFound = errors.New("agent not found")
+
 type mutationRequest struct {
-	AgentID      string
-	Status       string
-	NextAction   string
-	ProposalPath string
+	AgentID           string
+	Status            string
+	NextAction        string
+	ProposalPath      string
+	InsertIfMissing   bool
+	WorkingNameRU     string
+	Group             string
+	ShipRole          string
+	WhyNeeded         string
+	MainFormula       string
+	FirstFillPriority string
+	ActivationRisk    string
+	ApprovalGate      bool
 }
 
 type agentBlock struct {
@@ -27,14 +38,32 @@ func main() {
 	status := flag.String("status", "", "new status")
 	nextAction := flag.String("next-action", "", "new next_action")
 	proposalPath := flag.String("proposal-path", "", "proposal_path to set")
+	insertIfMissing := flag.Bool("insert-if-missing", false, "insert a missing proposal/container block deterministically")
+	workingNameRU := flag.String("working-name-ru", "", "working_name_ru for inserted agent")
+	group := flag.String("group", "", "group for inserted agent")
+	shipRole := flag.String("ship-role", "", "ship_role for inserted agent")
+	whyNeeded := flag.String("why-needed", "", "why_needed for inserted agent")
+	mainFormula := flag.String("main-formula", "", "main_formula for inserted agent")
+	firstFillPriority := flag.String("first-fill-priority", "P0", "first_fill_priority for inserted agent")
+	activationRisk := flag.String("activation-risk", "medium", "activation_risk for inserted agent")
+	approvalGate := flag.Bool("approval-gate", true, "approval_gate for inserted agent")
 	dryRun := flag.Bool("dry-run", false, "print diff without writing")
 	flag.Parse()
 
 	request := mutationRequest{
-		AgentID:      strings.TrimSpace(*agentID),
-		Status:       strings.TrimSpace(*status),
-		NextAction:   strings.TrimSpace(*nextAction),
-		ProposalPath: strings.TrimSpace(*proposalPath),
+		AgentID:           strings.TrimSpace(*agentID),
+		Status:            strings.TrimSpace(*status),
+		NextAction:        strings.TrimSpace(*nextAction),
+		ProposalPath:      strings.TrimSpace(*proposalPath),
+		InsertIfMissing:   *insertIfMissing,
+		WorkingNameRU:     strings.TrimSpace(*workingNameRU),
+		Group:             strings.TrimSpace(*group),
+		ShipRole:          strings.TrimSpace(*shipRole),
+		WhyNeeded:         strings.TrimSpace(*whyNeeded),
+		MainFormula:       strings.TrimSpace(*mainFormula),
+		FirstFillPriority: strings.TrimSpace(*firstFillPriority),
+		ActivationRisk:    strings.TrimSpace(*activationRisk),
+		ApprovalGate:      *approvalGate,
 	}
 
 	if strings.TrimSpace(*registryPath) == "" {
@@ -89,6 +118,9 @@ func mutateRegistry(content string, request mutationRequest) (string, string, er
 	lines := splitLines(content)
 	block, err := findAgentBlock(lines, request.AgentID)
 	if err != nil {
+		if errors.Is(err, errAgentNotFound) && request.InsertIfMissing {
+			return insertMissingAgentBlock(content, lines, request)
+		}
 		return "", "", err
 	}
 
@@ -132,7 +164,7 @@ func findAgentBlock(lines []string, agentID string) (agentBlock, error) {
 	}
 
 	if len(starts) == 0 {
-		return agentBlock{}, fmt.Errorf("agent %q not found", agentID)
+		return agentBlock{}, fmt.Errorf("%w: agent %q not found", errAgentNotFound, agentID)
 	}
 	if len(starts) > 1 {
 		return agentBlock{}, fmt.Errorf("agent %q appears %d times; refusing ambiguous mutation", agentID, len(starts))
@@ -179,6 +211,125 @@ func mutateBlock(lines []string, request mutationRequest) ([]string, error) {
 	}
 
 	return updated, nil
+}
+
+func insertMissingAgentBlock(content string, lines []string, request mutationRequest) (string, string, error) {
+	if err := validateInsertRequest(request); err != nil {
+		return "", "", err
+	}
+
+	insertAt, err := findContainerInsertPosition(lines)
+	if err != nil {
+		return "", "", err
+	}
+
+	newBlock := renderInsertedAgentBlock(request)
+	updatedLines := append([]string{}, lines[:insertAt]...)
+	updatedLines = append(updatedLines, newBlock...)
+	updatedLines = append(updatedLines, lines[insertAt:]...)
+
+	updated := strings.Join(updatedLines, "\n")
+	if strings.HasSuffix(content, "\n") {
+		updated += "\n"
+	}
+
+	return updated, renderInsertDiff(newBlock, request.AgentID), nil
+}
+
+func validateInsertRequest(request mutationRequest) error {
+	if request.Status == "" {
+		return errors.New("--status is required when --insert-if-missing is used")
+	}
+	if request.NextAction == "" {
+		return errors.New("--next-action is required when --insert-if-missing is used")
+	}
+	if request.ProposalPath == "" {
+		return errors.New("--proposal-path is required when --insert-if-missing is used")
+	}
+	if request.WorkingNameRU == "" {
+		return errors.New("--working-name-ru is required when --insert-if-missing is used")
+	}
+	if request.Group == "" {
+		return errors.New("--group is required when --insert-if-missing is used")
+	}
+	if request.ShipRole == "" {
+		return errors.New("--ship-role is required when --insert-if-missing is used")
+	}
+	if request.WhyNeeded == "" {
+		return errors.New("--why-needed is required when --insert-if-missing is used")
+	}
+	if request.MainFormula == "" {
+		return errors.New("--main-formula is required when --insert-if-missing is used")
+	}
+	if request.FirstFillPriority == "" {
+		return errors.New("--first-fill-priority is required when --insert-if-missing is used")
+	}
+	if request.ActivationRisk == "" {
+		return errors.New("--activation-risk is required when --insert-if-missing is used")
+	}
+	if request.Status != "container" && request.Status != "proposal" {
+		return fmt.Errorf("status %q is not allowed for missing-agent insertion", request.Status)
+	}
+	return nil
+}
+
+func findContainerInsertPosition(lines []string) (int, error) {
+	containersSeen := false
+	lastBlockEnd := -1
+
+	for i, line := range lines {
+		trimmed := strings.TrimSpace(line)
+		if trimmed == "containers:" {
+			containersSeen = true
+			continue
+		}
+		if !containersSeen {
+			continue
+		}
+		if strings.HasPrefix(trimmed, "- agent_id: ") {
+			lastBlockEnd = i + 1
+			for j := i + 1; j < len(lines); j++ {
+				candidate := strings.TrimSpace(lines[j])
+				if strings.HasPrefix(candidate, "- agent_id: ") || candidate == "```" {
+					lastBlockEnd = j
+					break
+				}
+				lastBlockEnd = j + 1
+			}
+		}
+		if trimmed == "```" {
+			if lastBlockEnd == -1 {
+				return i, nil
+			}
+			return lastBlockEnd, nil
+		}
+	}
+
+	return 0, errors.New("containers section closing fence was not found")
+}
+
+func renderInsertedAgentBlock(request mutationRequest) []string {
+	return []string{
+		"",
+		fmt.Sprintf("    - agent_id: \"%s\"", request.AgentID),
+		fmt.Sprintf("      working_name_ru: \"%s\"", escapeYAMLString(request.WorkingNameRU)),
+		fmt.Sprintf("      group: \"%s\"", escapeYAMLString(request.Group)),
+		fmt.Sprintf("      status: \"%s\"", request.Status),
+		fmt.Sprintf("      ship_role: \"%s\"", escapeYAMLString(request.ShipRole)),
+		fmt.Sprintf("      why_needed: \"%s\"", escapeYAMLString(request.WhyNeeded)),
+		fmt.Sprintf("      main_formula: \"%s\"", escapeYAMLString(request.MainFormula)),
+		fmt.Sprintf("      first_fill_priority: \"%s\"", escapeYAMLString(request.FirstFillPriority)),
+		fmt.Sprintf("      next_action: \"%s\"", escapeYAMLString(request.NextAction)),
+		fmt.Sprintf("      proposal_path: \"%s\"", escapeYAMLString(request.ProposalPath)),
+		fmt.Sprintf("      activation_risk: \"%s\"", escapeYAMLString(request.ActivationRisk)),
+		fmt.Sprintf("      approval_gate: %t", request.ApprovalGate),
+	}
+}
+
+func escapeYAMLString(value string) string {
+	value = strings.ReplaceAll(value, "\\", "\\\\")
+	value = strings.ReplaceAll(value, "\"", "\\\"")
+	return value
 }
 
 func validateStatusTransition(current string, next string) error {
@@ -291,5 +442,18 @@ func renderBlockDiff(before []string, after []string, agentID string) string {
 		}
 	}
 
+	return builder.String()
+}
+
+func renderInsertDiff(block []string, agentID string) string {
+	var builder strings.Builder
+	builder.WriteString(fmt.Sprintf("--- agent %s before\n", agentID))
+	builder.WriteString(fmt.Sprintf("+++ agent %s after\n", agentID))
+	for _, line := range block {
+		if line == "" {
+			continue
+		}
+		builder.WriteString("+" + line + "\n")
+	}
 	return builder.String()
 }
