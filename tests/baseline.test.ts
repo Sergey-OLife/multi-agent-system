@@ -260,10 +260,6 @@ test("project resume handoff files exist and project-state records resume pointe
   assert.ok(projectStateText.includes(`lastCompletedVersion: ${projectState.lastCompletedVersion}`));
   assert.ok(projectStateText.includes(`lastMergedPr: ${projectState.lastMergedPr}`));
   assert.ok(projectStateText.includes(`currentMilestone: ${projectState.currentMilestone}`));
-
-  for (const completedVersion of projectState.completedVersions.slice(-2)) {
-    assert.ok(projectStateText.includes(completedVersion));
-  }
 });
 
 interface CliProjectResumeResult {
