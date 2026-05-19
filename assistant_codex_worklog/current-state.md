@@ -12,9 +12,9 @@
 
 ## Последний смерженный PR
 
-- PR #154 — Sync state after archive origin protocol
+- PR #155 — Sync state after closing PR #152
 - Статус: merged
-- Merge commit: `e8a07a7002fc57077221c7ff57e2dbe99f3510a1`
+- Merge commit: `63f22f8300aa2bb5313383890fdd03a1c5d049b8`
 
 ## Текущая версия
 
@@ -80,6 +80,18 @@ PR #152 был закрыт без merge.
 
 Материал PR #152 не считается потерянным, но если нужен позже, его нужно пересобрать новым archive PR по протоколу PR #153.
 
+## Что зафиксировал PR #155
+
+PR #155 synchronized state/worklog/restart files after PR #152 was closed unmerged.
+
+Он зафиксировал:
+
+- no open PRs;
+- PR #152 closed unmerged, not implemented;
+- next action: `conversation_archive_librarian` design PR.
+
+PR #155 не создавал archive entry, не обновлял `index.md`, не активировал агентов, не менял runtime-код и не продолжал книгу.
+
 ## Что уже было зафиксировано раньше
 
 - PR #131 — repository architecture contract.
@@ -114,7 +126,7 @@ Current archive rules:
 - `.github/workflows/sync-check.yml` implemented.
 - Required PR verification layer includes both Sync Check and CI when both workflows apply.
 - Branch protection: not configured.
-- PR #154 had CI and Sync Check green before merge.
+- PR #155 had CI and Sync Check green before merge.
 
 ## Repository hygiene
 
@@ -152,7 +164,7 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Create `conversation_archive_librarian` as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.
+Create `conversation_archive_librarian` as the next design PR, now that PR #155 synced state after closing PR #152 and there are no open PRs.
 
 ## Что временно не делаем
 
