@@ -8,19 +8,19 @@
 
 ## Current milestone
 
-- currentVersion: v2.28
-- currentMilestone: Knowledge consistency protocol synced
-- lastMergedPr: PR #149 — Add knowledge consistency protocol
-- lastMergeCommit: `16b5716e89769fae2c1b4f590afcc01574cabc19`
+- currentVersion: v2.29
+- currentMilestone: Checkpoint full after knowledge consistency state sync
+- lastMergedPr: PR #150 — Sync state after knowledge consistency protocol
+- lastMergeCommit: `f4687cfc01de13d9a9dbf875d1f2d78a3a40027d`
 
 ## Recent PR summary
 
-- PR #143 — Archive corrective margin orchestra and consistency discussion.
 - PR #144 — Sync state after archive coverage fixes.
 - PR #146 — Archive corrective current chat coverage gap.
 - PR #147 — Fix stale CI assertions.
 - PR #148 — Sync state after CI fix.
 - PR #149 — Add knowledge consistency protocol.
+- PR #150 — Sync state after knowledge consistency protocol.
 
 ## Что изменилось в v2.25
 
@@ -126,6 +126,20 @@ Codex feedback was addressed before merge:
 - required repository checks now include `npm run sync-check`;
 - PR readiness must mention both Sync Check and CI when both workflows apply.
 
+PR #150 synchronized state/worklog/restart after PR #149.
+
+## Что изменилось в v2.29
+
+Checkpoint full зафиксировал полную рабочую точку после PR #150.
+
+Checkpoint confirms:
+
+- current mode remains `Agent Shipyard / Agent Queue`;
+- book remains paused;
+- `knowledge_consistency_protocol` is implemented as operational protocol, not automated validator;
+- required PR verification layer is Sync Check + CI when both apply;
+- next design PR is `conversation_archive_librarian`.
+
 ## Conversation archive
 
 Conversation archive остаётся отдельным human interaction archive, не project-state, не approval-log и не technical checkpoint.
@@ -177,7 +191,7 @@ Archive/handoff PRs из массового прогона старых чато
 
 ## Open approval-gate
 
-No open PR approval-gate known after PR #149 merge.
+No open PR approval-gate known after PR #150 merge.
 
 ## CI status
 
@@ -192,7 +206,7 @@ Branch protection remains not configured until separately verified and approved.
 
 ## Recommended next work item
 
-Create `conversation_archive_librarian` as the next design PR.
+Create `conversation_archive_librarian` as the next design PR after checkpoint full.
 
 Then choose one of:
 

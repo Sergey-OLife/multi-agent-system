@@ -44,11 +44,11 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.28.
-- lastCompletedVersion: v2.28.
-- lastMergedPr: PR #149 — Add knowledge consistency protocol.
-- lastMergeCommit: 16b5716e89769fae2c1b4f590afcc01574cabc19.
-- currentMilestone: v2.28 Knowledge consistency protocol synced.
+- currentVersion: v2.29.
+- lastCompletedVersion: v2.29.
+- lastMergedPr: PR #150 — Sync state after knowledge consistency protocol.
+- lastMergeCommit: f4687cfc01de13d9a9dbf875d1f2d78a3a40027d.
+- currentMilestone: v2.29 Checkpoint full after knowledge consistency state sync.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -69,6 +69,7 @@ Knowledge consistency protocol:
 - It defines source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state sync PR boundary, PR body consistency contract, red-flag phrases, observed drift patterns, follow-up consistency PR conditions, CI rules, future validator relationship and exit criteria.
 - Codex feedback was addressed before merge: required repository checks now include `npm run sync-check`.
 - This is an operational protocol, not an automated validator.
+- PR #150 synchronized state/worklog/restart after PR #149.
 
 Required repository verification layer:
 
@@ -76,8 +77,6 @@ Required repository verification layer:
 - CI workflow: `.github/workflows/ci.yml`.
 - CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
-- PR #147 fixed stale assertions and made CI + Sync Check green before merge.
-- PR #149 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
@@ -179,5 +178,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Create `conversation_archive_librarian` as the next design PR. Then choose critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after separate verification.
+Create `conversation_archive_librarian` as the next design PR after checkpoint full. Then choose critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after separate verification.
 ```
