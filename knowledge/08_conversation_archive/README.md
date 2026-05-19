@@ -41,6 +41,25 @@ Conversation archive не является:
 - куда вернуться;
 - какие формулировки или наблюдения могут пригодиться.
 
+## Origin and parallel intake
+
+Новые archive entries должны указывать происхождение записи.
+
+См. протокол:
+
+```text
+knowledge/08_conversation_archive/archive_origin_protocol.md
+```
+
+Минимальное правило:
+
+- archive entry должен иметь `Origin` block;
+- `coverage_scope: full_chat` должен уточнять, full chat какого origin он покрывает;
+- если архивы из нескольких чатов создаются параллельно, entry PR не должен трогать общий `index.md`;
+- общий `index.md` обновляется отдельным consolidation PR.
+
+Это позволяет хранить архивы отдельно по чатам, но делать их доступными всем агентам без конфликтов по одному index file.
+
 ## Правило недублирования архитектуры
 
 Не архивировать то, что уже полноценно отражено в:
@@ -113,6 +132,10 @@ knowledge/08_conversation_archive/chat_archives/2026-05-18_registry-sync-and-los
 - куда перенесено, если перенесено;
 - что ещё открыто.
 
+При single-lane archive mode entry PR может обновлять index.
+
+При parallel intake mode entry PR не обновляет index; отдельный consolidation PR добавляет строки после merge entry files.
+
 ## Checkpoint capture rule
 
 Во время будущего `#checkpoint full` нужно выполнять короткую проверку:
@@ -124,7 +147,7 @@ knowledge/08_conversation_archive/chat_archives/2026-05-18_registry-sync-and-los
 
 Если нет — ничего не добавлять.
 
-Если да — добавить короткий archive entry в `knowledge/08_conversation_archive/chat_archives/` и обновить `index.md`.
+Если да — добавить короткий archive entry в `knowledge/08_conversation_archive/chat_archives/` и обновить `index.md`, кроме parallel intake mode.
 
 Checkpoint не должен превращаться в автоматическую свалку переписки.
 
