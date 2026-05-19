@@ -47,8 +47,8 @@ GitHub — источник правды. Сначала открой:
 
 - currentVersion: v2.30.
 - lastCompletedVersion: v2.30.
-- lastMergedPr: PR #154 — Sync state after archive origin protocol.
-- lastMergeCommit: e8a07a7002fc57077221c7ff57e2dbe99f3510a1.
+- lastMergedPr: PR #155 — Sync state after closing PR #152.
+- lastMergeCommit: 63f22f8300aa2bb5313383890fdd03a1c5d049b8.
 - currentMilestone: v2.30 Archive origin and parallel intake protocol synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
@@ -62,6 +62,11 @@ PR #152 status:
 - It had Coverage check but no required Origin block and no `Coverage applies to`.
 - It updated shared `knowledge/08_conversation_archive/index.md` directly under the older discipline.
 - Its material is not implemented. If needed later, recreate it under PR #153 protocol.
+
+PR #155 status:
+
+- PR #155 synchronized state/worklog/restart files after PR #152 was closed unmerged.
+- It did not create archive entries, update `index.md`, activate agents, change runtime code or continue the book.
 
 Repository architecture contract:
 
@@ -99,7 +104,7 @@ Required repository verification layer:
 - CI workflow: `.github/workflows/ci.yml`.
 - CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
-- PR #154 had CI + Sync Check green before merge.
+- PR #155 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
@@ -184,5 +189,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Create `conversation_archive_librarian` as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.
+Create `conversation_archive_librarian` as the next design PR, now that PR #155 synced state after closing PR #152 and there are no open PRs.
 ```
