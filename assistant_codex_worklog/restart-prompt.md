@@ -45,13 +45,14 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.29.
-- lastCompletedVersion: v2.29.
-- lastMergedPr: PR #150 — Sync state after knowledge consistency protocol.
-- lastMergeCommit: f4687cfc01de13d9a9dbf875d1f2d78a3a40027d.
-- currentMilestone: v2.29 Checkpoint full after knowledge consistency state sync.
+- currentVersion: v2.30.
+- lastCompletedVersion: v2.30.
+- lastMergedPr: PR #153 — Add archive origin and parallel intake protocol.
+- lastMergeCommit: 749b77a32da403e3e78653628d5cb3aa7bc8cc0b.
+- currentMilestone: v2.30 Archive origin and parallel intake protocol synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
+- Open PR: PR #152 — Archive Khmelevskaya style optic and command correction. It is open, not implemented.
 
 Repository architecture contract:
 
@@ -70,7 +71,18 @@ Knowledge consistency protocol:
 - It defines source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state sync PR boundary, PR body consistency contract, red-flag phrases, observed drift patterns, follow-up consistency PR conditions, CI rules, future validator relationship and exit criteria.
 - Required repository checks include `npm run sync-check`.
 - This is an operational protocol, not an automated validator.
-- PR #150 synchronized state/worklog/restart after PR #149.
+
+Archive origin and parallel intake protocol:
+
+- `knowledge/08_conversation_archive/archive_origin_protocol.md` implemented in PR #153.
+- New archive entries require an Origin block.
+- Coverage check must include `Coverage applies to`.
+- `coverage_scope: full_chat` is valid only for the named target origin.
+- Single-lane archive mode allows entry + index update in one PR.
+- Parallel intake mode writes entry-only PRs without `index.md` update.
+- If another archive PR already updates `knowledge/08_conversation_archive/index.md`, new archive PR must use parallel intake mode or wait.
+- Consolidation PR updates `index.md` after merged entry-only PRs.
+- This protocol does not activate `conversation_archive_librarian`, does not add Go validator or JS audit, and does not change branch protection.
 
 Required repository verification layer:
 
@@ -78,50 +90,36 @@ Required repository verification layer:
 - CI workflow: `.github/workflows/ci.yml`.
 - CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
+- PR #153 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
-
-Conversation archive protocols:
-
-- `knowledge/08_conversation_archive/archive_governance_protocol.md` protects archive quality.
-- `knowledge/08_conversation_archive/archive_origin_protocol.md` defines Origin block, Coverage applies to, single-lane mode, parallel intake mode and consolidation PR.
-- Archive entries from different chats must be understandable by origin, not just by topic/date.
-- `coverage_scope: full_chat` means full coverage only for the target origin named in `Coverage applies to`.
-- If another archive PR already updates `index.md`, new archive PR should use parallel intake mode: write only entry file, do not update `index.md`, then later use consolidation PR.
 
 Stable conversation archive commands:
 
-- `#архив чата` means: run latest `conversation_capture_prompt.md`; prepare draft archive entry only; do not write to GitHub by default.
-- `#архив чата сохрани` means: use GitHub tools and create a PR with archive entry. Update `index.md` only in single-lane mode.
-- `#архив_старт` means: write-first cumulative archive command. Use GitHub tools, verify latest archive/state checkpoint, origin and coverage scope, then capture the full new semantic tail from that point to now.
-- `#архив_старт` is cumulative, not last-topic-only.
-- Archive entries must include `Origin` and `Coverage check` sections.
-- No archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or equivalent and names target origin. No full-chat marker = thematic coverage by default.
-- Coverage types: `full_chat`, `thematic`, `partial`, `corrective`.
+- `#архив чата` means: run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat; prepare draft archive entry only; do not write to GitHub by default.
+- `#архив чата сохрани` means: use GitHub tools and create an archive PR according to current archive mode.
+- `#архив_старт` means: write-first cumulative archive command according to current archive mode.
+- New archive entries must include Origin block + Coverage check.
+- No archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` and names target in `Coverage applies to`.
 - If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
 - Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
 - Do not use `#checkpoint` for semantic archive capture.
 
 Latest conversation archive state:
 
-- PR #138 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_red-flags-after-architecture-contract.md`.
-- PR #140 fixed `#архив_старт` cumulative capture.
-- PR #142 fixed explicit archive coverage scope.
-- PR #143 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`.
-- PR #146 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`.
-- PR #141 and PR #145 were closed unmerged and must not be treated as implemented.
-- PR #146 records that no verified `coverage_scope: full_chat` checkpoint exists for the current chat; this is a coverage gap, not full-chat coverage.
+- PR #146 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md` and records that no verified full-chat checkpoint exists for the current chat.
+- PR #152 is open and includes archive entry + index update. It must not be treated as implemented while open.
+- PR #153 implemented origin / parallel intake protocol but did not merge PR #152.
 
 Known archive failure patterns:
 
 - Bad: `#архив_старт` archives only the latest topic and leaves earlier unarchived ideas unnamed.
-- Bad: assistant treats a thematic archive entry as full-chat coverage without explicit `full_chat` marker.
-- Bad: multiple archive PRs from different chats all update `index.md` and create predictable conflicts.
-- Correct: verify origin and previous coverage scope, capture cumulative semantic tail, name coverage gaps, and use parallel intake when index conflicts are likely.
+- Bad: assistant treats a thematic archive entry as full-chat coverage without explicit target.
+- Correct: verify previous coverage scope, capture cumulative semantic tail, and name the target origin.
 
 Mass capture quarantine:
 
 - Archive/handoff PRs created by mass-running commands across old chats are quarantine PRs until checked.
-- Reject/close entries that write outside `knowledge/08_conversation_archive/chat_archives/`, duplicate state/roadmap/protocol, contain stale project state, lack Origin/Coverage check, or look like project memory/handoff instead of conversation archive.
+- Reject/close entries that write outside `knowledge/08_conversation_archive/chat_archives/`, duplicate state/roadmap/protocol, contain stale project state, or look like project memory/handoff instead of conversation archive.
 
 Short command priority:
 
@@ -129,20 +127,11 @@ Short command priority:
 - First recognize the command, then check pending work.
 - If the pending work does not block the command, name the tail briefly and execute the command.
 - If the pending work may create a duplicate, skip an approval-gate or mix archive/checkpoint, ask Sergey what to do before acting.
-- Formula: command must not lose to noise; tail must not be hidden by the new command.
-
-Conversation archive — важный слой восстановления контекста:
-
-- `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
-- Это не project-state, не approval-log и не technical checkpoint.
-- При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй state/roadmap и `knowledge/08_conversation_archive/index.md` + relevant entries.
-- Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
-- Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
-- Audit доступен: `npm run archive:audit`.
 
 Repository hygiene:
 
 - `npm run hygiene:audit` доступен.
+- `npm run archive:audit` доступен.
 - Issue #99 — Repository hygiene ledger.
 - Branch cleanup остаётся cleanup_needed, не completed.
 
@@ -183,9 +172,8 @@ Rules:
 - Не продолжать книгу автоматически.
 - Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не активировать hard guardrails или proposal agents без отдельного решения.
-- Перед любым будущим `#checkpoint full` сначала выдать compact restart prompt в чат.
 
 Следующий логичный шаг:
 
-Merge Archive Origin + Parallel Intake Protocol after approval, then state sync. After that create `conversation_archive_librarian` as the next design PR.
+Create `conversation_archive_librarian` as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented. Do not create conflicting archive/index updates while PR #152 remains open.
 ```

@@ -4,22 +4,28 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.29
-- lastCompletedVersion: v2.29
-- lastMergedPr: PR #150 — Sync state after knowledge consistency protocol
-- lastMergeCommit: f4687cfc01de13d9a9dbf875d1f2d78a3a40027d
-- currentMilestone: v2.29 Checkpoint full after knowledge consistency state sync
+- currentVersion: v2.30
+- lastCompletedVersion: v2.30
+- lastMergedPr: PR #153 — Add archive origin and parallel intake protocol
+- lastMergeCommit: 749b77a32da403e3e78653628d5cb3aa7bc8cc0b
+- currentMilestone: v2.30 Archive origin and parallel intake protocol synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #144 — Sync state after archive coverage fixes
-- PR #146 — Archive corrective current chat coverage gap
 - PR #147 — Fix stale CI assertions
 - PR #148 — Sync state after CI fix
 - PR #149 — Add knowledge consistency protocol
 - PR #150 — Sync state after knowledge consistency protocol
+- PR #151 — Checkpoint full after knowledge consistency state sync
+- PR #153 — Add archive origin and parallel intake protocol
+
+## Open PRs
+
+- PR #152 — Archive Khmelevskaya style optic and command correction
+
+PR #152 remains open and must not be treated as implemented.
 
 ## Repository architecture contract
 
@@ -27,29 +33,9 @@ PR #131 implemented:
 
 - `knowledge/07_operations/repository_architecture_contract.md`
 
-Contract fixed:
+Contract fixed GitHub `main` as current source of truth, Go as deterministic spine, TypeScript / JavaScript as orchestration, `scripts/` as edge automation, event envelope as future contract, and Redis/Postgres/P2P as future runtime layers only.
 
-- GitHub `main` as current source of truth for merged state;
-- Go as deterministic spine;
-- TypeScript / JavaScript as orchestration, CLI, scripts and agent-facing layer;
-- `scripts/` as edge automation, not a second core;
-- baseline CI boundary;
-- event envelope as future contract discipline, not runtime implementation;
-- idempotency / race-condition rules;
-- single-writer principle;
-- Redis/Postgres/P2P as future runtime layers only.
-
-Not implemented by the contract:
-
-- Redis;
-- Postgres;
-- SQL migrations;
-- P2P runtime;
-- event processor;
-- OpenTelemetry / Prometheus / Grafana;
-- Kafka / RabbitMQ / gRPC;
-- OpenAPI generation;
-- branch protection.
+Branch protection remains not configured until explicitly verified.
 
 ## Knowledge consistency protocol
 
@@ -57,76 +43,46 @@ PR #149 implemented:
 
 - `knowledge/07_operations/knowledge_consistency_protocol.md`
 
-The protocol fixes:
+The protocol fixes source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state sync PR boundary, PR body consistency contract, red-flag phrases, observed drift patterns, follow-up consistency PR conditions, CI and Sync Check rules, future validator relationship and exit criteria.
 
-- source-of-truth hierarchy;
-- consistency classes C0-C5;
-- merge aftermath checklist;
-- narrow state sync PR boundary;
-- PR body consistency contract;
-- red-flag phrases that require verification;
-- already observed drift patterns;
-- conditions for follow-up consistency PR;
-- CI and Sync Check rules;
-- relationship with future validators;
-- exit criteria for consistency-sensitive PRs.
-
-Codex feedback was addressed before merge: required repository checks now include both `npm run sync-check` and the baseline CI commands.
-
-This protocol does not implement:
-
-- Go validator;
-- JS audit;
-- branch protection;
-- README;
-- agent activation;
-- runtime changes.
+It does not implement Go validator, JS audit, branch protection, README, agent activation or runtime changes.
 
 PR #150 synchronized project-state, current-state, roadmap and restart-prompt after PR #149.
 
+## Archive origin and parallel intake protocol
+
+PR #153 implemented:
+
+- `knowledge/08_conversation_archive/archive_origin_protocol.md`
+
+It also updated:
+
+- `knowledge/08_conversation_archive/README.md`
+- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
+- `assistant_codex_worklog/protocol_addenda/archive_start_command.md`
+- `assistant_codex_worklog/restart-prompt.md`
+
+The protocol fixes:
+
+- new archive entries require an `Origin` block;
+- `coverage_scope: full_chat` requires a target in `Coverage applies to`;
+- full-chat coverage without origin target is invalid;
+- single-lane archive mode: entry + index update in one PR;
+- parallel intake mode: entry-only PR without `index.md` update;
+- if another archive PR already updates `index.md`, a new archive PR must use parallel intake mode or wait;
+- index consolidation after parallel entry-only PRs is a separate PR.
+
+This protocol does not activate `conversation_archive_librarian`, does not add Go validator or JS audit, and does not change branch protection.
+
 ## Archive start command and coverage scope
 
-PR #136 implemented:
+PR #136 implemented `#архив_старт` and `assistant_codex_worklog/protocol_addenda/archive_start_command.md`.
 
-- `#архив_старт`
-- `assistant_codex_worklog/protocol_addenda/archive_start_command.md`
+PR #140 fixed the command semantics: `#архив_старт` is cumulative, not last-topic-only.
 
-PR #140 fixed the command semantics:
+PR #142 fixed coverage-scope discipline: no archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` and names the target in `Coverage applies to`.
 
-- `#архив_старт` is cumulative, not last-topic-only.
-- It must find the latest archive/state checkpoint and capture the unresolved semantic tail from there.
-- It must not archive only the latest topic when earlier unresolved ideas appeared after the checkpoint.
-
-PR #142 fixed the coverage-scope bug:
-
-- no archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or has an equivalent marker;
-- no full-chat marker means thematic coverage by default;
-- supported coverage types are `full_chat`, `thematic`, `partial`, and `corrective`.
-
-PR #143 added the corrective archive entry:
-
-- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`
-
-It records:
-
-- Coverage scope: `corrective`;
-- previous checkpoint coverage scope: `thematic`;
-- full-chat marker present: no;
-- gap found: yes;
-- PR #141 was closed unmerged and must not be treated as implemented.
-
-PR #146 added a second corrective archive entry:
-
-- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`
-
-It records:
-
-- no verified `coverage_scope: full_chat` checkpoint exists for the current chat;
-- previous checkpoint coverage scope: `missing`;
-- full-chat marker present: no;
-- gap found: yes;
-- this is a coverage gap, not full-chat coverage;
-- PR #145 was closed unmerged and must not be treated as implemented.
+PR #146 added a corrective archive entry that records no verified `coverage_scope: full_chat` checkpoint for the current chat. It remains a coverage gap, not full-chat coverage.
 
 ## Conversation archive
 
@@ -136,6 +92,7 @@ Important paths:
 
 - `knowledge/08_conversation_archive/README.md`
 - `knowledge/08_conversation_archive/archive_governance_protocol.md`
+- `knowledge/08_conversation_archive/archive_origin_protocol.md`
 - `knowledge/08_conversation_archive/conversation_capture_prompt.md`
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/`
@@ -150,59 +107,30 @@ npm run archive:audit
 Current archive status:
 
 - latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`;
-- open archive PR: none known;
+- open archive PR: PR #152;
 - closed superseded/unmerged PRs: PR #133, PR #139, PR #141, PR #145.
 
 ## Baseline CI and Sync Check
 
-PR #129 implemented baseline CI:
+CI workflow:
 
-- workflow path: `.github/workflows/ci.yml`
-- triggers: `pull_request` to `main`, `workflow_dispatch`
-- permissions: `contents: read`
-- Node.js: 20
-- Go version: from `go-core/go.mod`
-
-CI runs only existing scripts:
-
-- `npm run typecheck`
-- `npm run typecheck:test`
-- `npm test`
-- `npm run test:core`
-- `npm run hygiene:audit`
-- `npm run archive:audit`
+- `.github/workflows/ci.yml`
+- commands: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`
 
 Sync Check workflow:
 
-- workflow path: `.github/workflows/sync-check.yml`
-- required command in protocol: `npm run sync-check`
+- `.github/workflows/sync-check.yml`
+- command: `npm run sync-check`
 
-Current rule after PR #149:
+Current rule: when both workflows apply, PR verification means both Sync Check and CI, not CI alone.
 
-- when both workflows apply, PR verification means both Sync Check and CI, not CI alone.
-
-PR #147 fixed the stale assertions that kept baseline CI red:
-
-- `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`;
-- `knowledge.test.ts` no longer expects source registry version `0.3`;
-- `source-registry.test.ts` no longer expects source registry version `0.3`;
-- Go-core CLI supports the `--` command separator used by schema-pressure tests.
-
-CI and Sync Check were green on PR #150 head before merge.
-
-Branch protection remains not configured until explicitly verified.
+PR #153 had CI and Sync Check green before merge.
 
 ## Repository hygiene
 
-Repository hygiene audit is available:
+Repository hygiene audit is available as `npm run hygiene:audit`.
 
-```bash
-npm run hygiene:audit
-```
-
-Ledger:
-
-- GitHub issue #99 — Repository hygiene ledger.
+Ledger: GitHub issue #99 — Repository hygiene ledger.
 
 Branch cleanup remains `cleanup_needed`, not `completed`.
 
@@ -234,26 +162,12 @@ Active optional workflow layers:
 ## Active decisions
 
 - GitHub `main` is the source of truth for merged project state.
-- Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
 - Current active mode is Agent Shipyard / Agent Queue.
-- Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
-- Repository architecture contract is implemented.
-- Knowledge consistency protocol is implemented.
-- Baseline CI workflow is implemented and green after PR #147.
+- Book Fast Track remains paused until separate Sergey decision.
 - Required PR verification layer currently includes Sync Check and CI, not CI alone.
-- `#архив_старт` is implemented as a write-first GitHub conversation archive command.
-- `#архив_старт` is cumulative, not last-topic-only.
-- Archive entries require explicit coverage scope discipline.
-- PR #146 records a missing current-chat full-chat checkpoint and must not be treated as full-chat coverage.
-- Archive commands must not save to memory/handoff/project-state/arbitrary folders.
-- Mass capture imports are quarantine PRs until checked.
-- Branch protection remains a separate future action item and is not configured until explicitly verified.
-- Conversation archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint.
-- Short commands have priority over interface noise, but pending work must be disclosed before acting when it can conflict.
-- Repository hygiene audit is available as `npm run hygiene:audit`.
-- Repository hygiene ledger is GitHub issue #99.
-- Branch hygiene cleanup remains cleanup_needed, not completed.
-- Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
+- PR #152 is open and must not be treated as implemented.
+- Parallel archive PRs must not update `index.md`.
+- Branch protection remains not configured until explicitly verified.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
 
@@ -264,19 +178,13 @@ Active optional workflow layers:
 - Do not treat all uploaded project sources as fully audited.
 - Do not activate proposal agents without controlled activation and separate approval.
 - Do not create hard guardrails without separate approval and PR.
-- Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
-- Do not let conversation archive become a raw transcript dump.
-- Do not treat branch protection as configured until it is explicitly verified.
-- Do not treat PR #141 or PR #145 as implemented because they were closed unmerged.
-- Do not treat PR #146 as full-chat coverage because it explicitly records a missing full-chat checkpoint.
+- Do not treat PR #141, PR #145 or open PR #152 as implemented.
+- Do not treat PR #146 as full-chat coverage.
+- Do not update `knowledge/08_conversation_archive/index.md` from parallel archive PRs.
 
 ## Next action
 
-Create `conversation_archive_librarian` as the next design PR, then choose one of:
-
-1. `critic_margin_agent` + `margin_orchestra`;
-2. README / architecture map;
-3. branch protection after separate verification.
+Create `conversation_archive_librarian` as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented.
 
 ## Chat writing state
 

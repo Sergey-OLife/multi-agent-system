@@ -12,135 +12,55 @@
 
 ## Последний смерженный PR
 
-- PR #150 — Sync state after knowledge consistency protocol
+- PR #153 — Add archive origin and parallel intake protocol
 - Статус: merged
-- Merge commit: `f4687cfc01de13d9a9dbf875d1f2d78a3a40027d`
+- Merge commit: `749b77a32da403e3e78653628d5cb3aa7bc8cc0b`
 
 ## Текущая версия
 
-- currentVersion: v2.29
-- currentMilestone: Checkpoint full after knowledge consistency state sync
-
-## Что зафиксировал PR #131
-
-Добавлен operational contract:
-
-- `knowledge/07_operations/repository_architecture_contract.md`
-
-Зафиксировано:
-
-- GitHub `main` — current source of truth;
-- Go — deterministic spine;
-- TypeScript / JavaScript — orchestration, CLI, scripts, agent-facing layer;
-- `scripts/` — edge automation, не второй core;
-- event envelope — future contract, не runtime implementation;
-- Redis / Postgres / P2P — future runtime layers only;
-- branch protection — not configured until explicitly verified.
-
-## Что зафиксировал PR #136
-
-Добавлена write-first команда:
-
-```text
-#архив_старт
-```
-
-Она должна:
-
-- сразу использовать GitHub tools;
-- писать archive entry только в `knowledge/08_conversation_archive/chat_archives/`;
-- обновлять только `knowledge/08_conversation_archive/index.md`;
-- открывать PR против `main`.
-
-Запрещено сохранять archive output в:
-
-- ChatGPT memory;
-- project memory;
-- `knowledge/05_agent_memory/handoff/`;
-- project-state;
-- roadmap;
-- working protocol;
-- arbitrary folders.
-
-## Что зафиксировали PR #140, #142, #143, #146
-
-PR #140:
-
-- `#архив_старт` теперь cumulative, not last-topic-only;
-- command must collect the unresolved semantic tail, not only the latest topic;
-- required `Coverage check` section added.
-
-PR #142:
-
-- no archive entry may be treated as full-chat coverage without explicit `coverage_scope: full_chat` or equivalent marker;
-- no full-chat marker = thematic coverage by default;
-- coverage types: `full_chat`, `thematic`, `partial`, `corrective`.
-
-PR #143:
-
-- created corrective archive entry after coverage-scope protocol fix;
-- archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`;
-- PR #141 closed unmerged and must not be treated as implemented.
-
-PR #146:
-
-- created corrective archive entry for the current chat coverage gap;
-- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`;
-- no verified `coverage_scope: full_chat` checkpoint exists for the current chat;
-- PR #145 closed unmerged and must not be treated as implemented.
-
-## Что зафиксировал PR #147
-
-PR #147 fixed stale CI assertions and made baseline CI green.
-
-Fixed:
-
-- `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`;
-- `knowledge.test.ts` no longer expects source registry version `0.3`;
-- `source-registry.test.ts` no longer expects source registry version `0.3`;
-- Go-core CLI supports the `--` command separator used by schema-pressure tests.
-
-CI and Sync Check were green on PR #147 head before merge.
-
-## Что зафиксировал PR #149
-
-Добавлен protocol:
-
-- `knowledge/07_operations/knowledge_consistency_protocol.md`
-
-Он фиксирует:
-
-- source-of-truth hierarchy;
-- consistency classes C0-C5;
-- merge aftermath checklist;
-- narrow state sync PR boundary;
-- PR body consistency contract;
-- red-flag phrases requiring verification;
-- observed drift patterns;
-- conditions for follow-up consistency PR;
-- CI and Sync Check rules;
-- relationship with future validators;
-- exit criteria for consistency-sensitive PRs.
-
-Codex feedback was addressed before merge: required repository checks now include `npm run sync-check`, and readiness must mention both Sync Check and CI when both workflows apply.
-
-## Что зафиксировал PR #150
-
-PR #150 synchronized:
-
-- `knowledge/00_manifest/project-state.json`
-- `knowledge/00_manifest/project-state.md`
-- `assistant_codex_worklog/current-state.md`
-- `assistant_codex_worklog/roadmap.md`
-- `assistant_codex_worklog/restart-prompt.md`
-
-after PR #149.
-
-CI and Sync Check were green before merge.
+- currentVersion: v2.30
+- currentMilestone: Archive origin and parallel intake protocol synced
 
 ## Открытые approval-gates
 
-- No open PRs known after PR #150 merge.
+- PR #152 — Archive Khmelevskaya style optic and command correction remains open.
+- PR #152 must not be treated as implemented.
+
+## Что зафиксировал PR #153
+
+Добавлен archive protocol:
+
+- `knowledge/08_conversation_archive/archive_origin_protocol.md`
+
+Обновлены:
+
+- `knowledge/08_conversation_archive/README.md`
+- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
+- `assistant_codex_worklog/protocol_addenda/archive_start_command.md`
+- `assistant_codex_worklog/restart-prompt.md`
+
+Зафиксировано:
+
+- new archive entries require an `Origin` block;
+- `coverage_scope: full_chat` requires a target in `Coverage applies to`;
+- full-chat coverage without origin target is invalid;
+- single-lane archive mode allows entry + index update in one PR;
+- parallel intake mode writes only entry file and does not update `index.md`;
+- if another archive PR already updates `index.md`, new archive PR must use parallel intake mode or wait;
+- index consolidation after parallel entry-only PRs is a separate PR;
+- future archive audit should check Origin, Coverage applies to and no index update in parallel mode.
+
+## Что уже было зафиксировано раньше
+
+- PR #131 — repository architecture contract.
+- PR #136 — `#архив_старт` write-first command.
+- PR #140 — `#архив_старт` cumulative, not last-topic-only.
+- PR #142 — explicit coverage scope discipline.
+- PR #146 — current-chat full-chat checkpoint is missing; this is coverage gap, not full-chat coverage.
+- PR #147 — stale CI assertions fixed; baseline CI green.
+- PR #149 — knowledge consistency protocol.
+- PR #150 — state sync after knowledge consistency protocol.
+- PR #151 — checkpoint full after knowledge consistency state sync.
 
 ## Conversation archive commands
 
@@ -150,35 +70,21 @@ CI and Sync Check were green before merge.
 #архив_старт
 ```
 
-Short command priority:
+Current archive rules:
 
-```text
-Команда не должна проигрывать шуму.
-Хвост не должен скрываться за выполнением новой команды.
-```
-
-## Mass capture quarantine
-
-Archive/handoff PRs из массового прогона старых чатов считаются quarantine PR до проверки.
-
-Закрывать без merge, если PR:
-
-- пишет вне `knowledge/08_conversation_archive/chat_archives/`;
-- обновляет не только `knowledge/08_conversation_archive/index.md`;
-- содержит raw transcript / raw books / private links;
-- тащит старый project-state как текущий;
-- пишет в `knowledge/05_agent_memory/handoff/`;
-- дублирует уже реализованные state/roadmap/protocol решения.
+- Origin block is required for new archive entries.
+- Coverage check must include `Coverage applies to`.
+- `coverage_scope: full_chat` is valid only for the named target origin.
+- Parallel archive PRs must not update `knowledge/08_conversation_archive/index.md`.
+- Open PR is not implemented.
 
 ## Baseline CI and Sync Check
 
 - `.github/workflows/ci.yml` implemented.
 - `.github/workflows/sync-check.yml` implemented.
-- Required PR verification layer currently includes both Sync Check and CI when both workflows apply.
-- CI checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
-- Sync Check command: `npm run sync-check`.
+- Required PR verification layer includes both Sync Check and CI when both workflows apply.
 - Branch protection: not configured.
-- Current status: green after PR #150.
+- PR #153 had CI and Sync Check green before merge.
 
 ## Repository hygiene
 
@@ -216,13 +122,7 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Create `conversation_archive_librarian` as the next design PR after checkpoint full.
-
-Then choose one of:
-
-1. `critic_margin_agent` + `margin_orchestra`;
-2. README / architecture map;
-3. branch protection after separate verification.
+Create `conversation_archive_librarian` as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented.
 
 ## Что временно не делаем
 
@@ -230,8 +130,9 @@ Then choose one of:
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не считаем branch protection настроенным без отдельной проверки.
-- Не считаем PR #141 or PR #145 implemented: они closed unmerged.
+- Не считаем PR #141, PR #145 or open PR #152 implemented.
 - Не считаем PR #146 full-chat coverage: он explicitly records a missing full-chat checkpoint.
+- Не обновляем `index.md` в parallel archive PR.
 
 ## Короткие команды
 
@@ -239,5 +140,5 @@ Then choose one of:
 - `++` — approval текущего понятного approval-gate.
 - `+++` — ближайшее grounded safe action, не обход approval-gates.
 - `#архив чата` — draft archive entry, без записи в GitHub.
-- `#архив чата сохрани` — PR с archive entry + index update.
-- `#архив_старт` — write-first GitHub archive PR.
+- `#архив чата сохрани` — archive PR according to single-lane or parallel intake mode.
+- `#архив_старт` — write-first GitHub archive PR according to current archive mode.
