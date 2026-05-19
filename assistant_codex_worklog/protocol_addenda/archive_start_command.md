@@ -7,7 +7,9 @@
 
 Массовый прогон коротких archive-команд по старым чатам показал сбой: часть чатов могла понять команду как просьбу сохранить информацию в память проекта, handoff или другой нестандартный путь, а не как GitHub conversation archive.
 
-Причина: в прежней формулировке было недостаточно жёстко указано, что сохранение archive entry должно идти только через GitHub и только в стандартную директорию conversation archive.
+Позже обнаружен второй сбой: `#архив_старт` мог быть понят как команда сохранить только последнюю обсуждаемую тему, а не накопительный смысловой хвост текущего чата.
+
+Причина: в прежней формулировке было недостаточно жёстко указано, что сохранение archive entry должно идти только через GitHub и только в стандартную директорию conversation archive, а также что `#архив_старт` должен проверять предыдущую archive/state точку и собирать всё новое с этой точки до текущего момента.
 
 ## 2. Новая короткая команда
 
@@ -21,22 +23,53 @@
 
 1. Проверить актуальный `main`.
 2. Открыть актуальный `knowledge/08_conversation_archive/conversation_capture_prompt.md`.
-3. Собрать смысловой archive entry текущего чата.
-4. Записать entry только в:
+3. Найти последнюю проверенную archive/state точку текущего чата.
+4. Сначала убедиться, что предыдущая archive entry корректно покрывает историю до этой точки.
+5. Если предыдущая запись неполна, явно отметить coverage gap.
+6. Собрать весь новый смысловой хвост текущего чата от последней проверенной точки до текущего момента.
+7. Не ограничиваться последней обсуждаемой темой, если раньше после checkpoint были незакрытые идеи.
+8. Записать entry только в:
 
 ```text
 knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 ```
 
-5. Обновить только:
+9. Обновить только:
 
 ```text
 knowledge/08_conversation_archive/index.md
 ```
 
-6. Открыть PR в GitHub против `main`.
+10. Открыть PR в GitHub против `main`.
 
-## 3. Запрещённые направления сохранения
+## 3. Cumulative capture rule
+
+`#архив_старт` is cumulative, not last-topic-only.
+
+Перед записью ассистент обязан:
+
+1. Проверить последнюю релевантную archive/state точку.
+2. Проверить, закрывает ли она предыдущую историю полностью.
+3. Проверить open PRs: open PR не является implemented.
+4. Вытащить все новые semantic seeds с момента checkpoint.
+5. Разделить unrelated themes на несколько archive entries, если один entry смешает разные линии.
+6. Добавить `Coverage check` section.
+
+Обязательный блок:
+
+```markdown
+## 0. Coverage check
+
+- Previous checkpoint:
+- Previous archive/state coverage status: complete / partial / missing / open PR only
+- Gap found: yes/no
+- What this entry covers:
+- What remains outside this entry:
+```
+
+Если ассистент сохраняет только одну узкую тему, он обязан прямо написать, какие другие темы остаются вне entry и почему.
+
+## 4. Запрещённые направления сохранения
 
 Для `#архив_старт` и `#архив чата сохрани` запрещено сохранять archive entry в:
 
@@ -49,7 +82,7 @@ knowledge/08_conversation_archive/index.md
 - любые произвольные notes/handoff folders;
 - полный transcript dump.
 
-## 4. Если GitHub tool недоступен
+## 5. Если GitHub tool недоступен
 
 Если GitHub write недоступен, ассистент не должен выбирать другой способ хранения.
 
@@ -59,7 +92,7 @@ knowledge/08_conversation_archive/index.md
 GitHub write is unavailable in this chat. I cannot perform #архив_старт correctly. Here is ready-to-copy markdown for manual transfer.
 ```
 
-## 5. Отличие от старых команд
+## 6. Отличие от старых команд
 
 ```text
 #архив чата
@@ -77,9 +110,9 @@ Explicit save mode. Использовать GitHub tools и создать PR �
 #архив_старт
 ```
 
-Write-first mode. Сразу делать GitHub archive PR в стандартной директории, без промежуточного draft-only шага.
+Write-first cumulative mode. Сразу делать GitHub archive PR в стандартной директории и покрывать весь новый смысловой хвост от последней проверенной точки, а не только последнюю тему.
 
-## 6. Карантин массовых импортов
+## 7. Карантин массовых импортов
 
 Все archive/handoff PR, созданные массовым прогоном команд по старым чатам, считаются quarantine PR до проверки:
 
@@ -93,3 +126,20 @@ Write-first mode. Сразу делать GitHub archive PR в стандарт�
 8. нет дублирования уже реализованных state/roadmap/protocol решений.
 
 Если PR не проходит карантин, его нужно закрыть с комментарием, не мержить.
+
+## 8. Известный failure pattern
+
+Недопустимый сценарий:
+
+```text
+User runs #архив_старт.
+Assistant archives only the latest topic.
+Earlier unarchived ideas after the previous checkpoint are left out without being named.
+```
+
+Правильное поведение:
+
+```text
+#архив_старт first verifies prior coverage, then captures the cumulative unresolved semantic tail.
+If it intentionally captures only one theme, it must state what remains outside and why.
+```

@@ -69,15 +69,22 @@ Stable conversation archive commands:
 
 - `#архив чата` means: run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat; prepare draft archive entry only; do not write to GitHub by default.
 - `#архив чата сохрани` means: use GitHub tools and create a PR with archive entry + index update in `knowledge/08_conversation_archive/chat_archives/` and `knowledge/08_conversation_archive/index.md` only.
-- `#архив_старт` means: write-first archive command; immediately use GitHub tools, create archive entry in `knowledge/08_conversation_archive/chat_archives/`, update `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
+- `#архив_старт` means: write-first cumulative archive command. Immediately use GitHub tools, verify the latest archive/state checkpoint, check whether the previous archive entry covered the chat up to that point, then capture the full new semantic tail from that checkpoint to now. Do not capture only the last discussed topic if earlier unresolved ideas appeared after the checkpoint.
+- For `#архив_старт`, create archive entries only in `knowledge/08_conversation_archive/chat_archives/`, update only `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
+- `#архив_старт` entries must include a `Coverage check` section: previous checkpoint, previous coverage status, gap found, what this entry covers, what remains outside.
 - If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
 - Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
 - Do not use `#checkpoint` for semantic archive capture.
 
+Known archive failure pattern:
+
+- Bad: `#архив_старт` archives only the latest topic and leaves earlier unarchived ideas unnamed.
+- Correct: `#архив_старт` first verifies previous coverage, then captures the cumulative unresolved semantic tail. If it intentionally captures only one theme, it must state what remains outside and why.
+
 Open approval-gate:
 
-- PR #133 — Archive red flags after architecture contract.
-- Do not merge PR #133 without explicit `++`.
+- PR #139 — Archive critic margin orchestra discussion.
+- Do not merge PR #139 without explicit `++`.
 
 Mass capture quarantine:
 
@@ -148,5 +155,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Decide PR #133 or inspect CI on PR #131 / next PR. Then consider README or branch protection.
+Resolve PR #139 or create corrective cumulative archive entry, then state sync. Then consider critic_margin_agent proposal, README or branch protection.
 ```

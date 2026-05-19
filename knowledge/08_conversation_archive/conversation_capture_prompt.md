@@ -51,8 +51,13 @@ Universal write-first archive command for project chats.
 Immediately use GitHub tools.
 Fetch the latest `knowledge/08_conversation_archive/conversation_capture_prompt.md` from `main`.
 Check `knowledge/08_conversation_archive/index.md`, `knowledge/00_manifest/project-state.json`, current open PRs and relevant archive entries.
-Create a conversation archive entry from the current chat.
-Write it only to `knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md`.
+Find the latest valid archive/state checkpoint for the current chat.
+First verify whether the previous archive entry correctly covers the conversation history up to that checkpoint.
+Then perform cumulative capture: inspect the entire current chat from the latest verified checkpoint to now.
+Extract every new semantic seed that is not already reflected in `main`.
+Do not capture only the last discussed topic if earlier unresolved ideas appeared after the checkpoint.
+Create one or more conversation archive entries if a single entry would mix unrelated themes.
+Write entries only to `knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md`.
 Update only `knowledge/08_conversation_archive/index.md`.
 Open a PR against `main`.
 Do not save to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or any other folder.
@@ -68,6 +73,49 @@ GitHub write is unavailable in this chat. I cannot perform #архив_стар�
 ```
 
 Do not use `#checkpoint` for this. Checkpoints are technical state/worklog operations; these commands are only for semantic conversation archive.
+
+## Cumulative capture requirement for `#архив_старт`
+
+`#архив_старт` is cumulative, not last-topic-only.
+
+Before writing:
+
+1. Identify the latest relevant verified checkpoint:
+   - latest merged archive entry for this chat/theme;
+   - latest state sync if it defines a work boundary;
+   - latest merged PR that intentionally closed the previous semantic segment.
+
+2. Verify previous coverage:
+   - does the previous archive entry accurately cover the conversation up to that point?
+   - did it omit important ideas, open loops, contradictions or failure patterns?
+   - did it accidentally capture only the last topic?
+   - is it already in `main`, or only in an open PR?
+
+3. If the previous archive entry is incomplete:
+   - do not pretend it is complete;
+   - mark the gap explicitly;
+   - either create a corrective archive entry or include a `coverage_gap` section in the new entry;
+   - do not overwrite the old entry unless doing a dedicated cleanup/correction PR.
+
+4. Capture from checkpoint to now:
+   - inspect the whole current chat after the verified checkpoint;
+   - collect all new semantic seeds not reflected in `main`;
+   - separate unrelated themes into multiple archive entries when needed;
+   - do not reduce the archive to the most recent discussion if earlier ideas are still unarchived.
+
+5. Required section for `#архив_старт` entries:
+
+```markdown
+## 0. Coverage check
+
+- Previous checkpoint:
+- Previous archive/state coverage status: complete / partial / missing / open PR only
+- Gap found: yes/no
+- What this entry covers:
+- What remains outside this entry:
+```
+
+If only one narrow theme is captured while other new themes remain, this must be stated as an open loop.
 
 ## GitHub write destination is mandatory
 
@@ -126,6 +174,7 @@ If the assistant cannot write to the valid GitHub destination, it must stop and 
 Команда не должна проигрывать шуму.
 Хвост не должен скрываться за выполнением новой команды.
 GitHub archive command must write only to the GitHub conversation archive directory.
+#архив_старт is cumulative, not last-topic-only.
 ```
 
 ```text
@@ -165,6 +214,13 @@ GitHub archive command must write only to the GitHub conversation archive direct
 - если PR изменился после `++`, нужен новый `++`;
 - implemented_elsewhere можно ставить только для merged PR / existing path / issue, а для open PR писать `partial / PR #<number>-open`.
 
+Для `#архив_старт` дополнительно обязательно:
+- найти последнюю проверенную archive/state точку;
+- проверить, корректно ли предыдущая запись покрывает историю до этой точки;
+- затем собрать весь новый смысловой хвост текущего чата с этой точки до текущего момента;
+- если предыдущая запись неполная, указать `coverage_gap`;
+- не архивировать только последнюю тему, если после checkpoint были другие незакрытые идеи.
+
 Сначала проверь дублирование:
 
 1. Что уже отражено в архитектуре проекта?
@@ -196,6 +252,14 @@ GitHub archive command must write only to the GitHub conversation archive direct
 Срок пересмотра: <YYYY-MM-DD, обычно +14 days>
 Tags: [style, book, agent_shipyard, mvp, open_loop, contradiction, failure_pattern]
 Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
+
+## 0. Coverage check
+
+- Previous checkpoint:
+- Previous archive/state coverage status: complete / partial / missing / open PR only
+- Gap found: yes/no
+- What this entry covers:
+- What remains outside this entry:
 
 ## 1. Почему этот архив создан
 
