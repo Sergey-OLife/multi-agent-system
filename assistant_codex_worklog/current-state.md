@@ -12,14 +12,14 @@
 
 ## Последний смерженный PR
 
-- PR #136 — Add archive start GitHub write command
+- PR #143 — Archive corrective margin orchestra and consistency discussion
 - Статус: merged
-- Merge commit: `704c96453f98ff527a04c2ba98f3dba83a18daf0`
+- Merge commit: `a9353575780d56f31faa84e015998e1552647f53`
 
 ## Текущая версия
 
-- currentVersion: v2.25
-- currentMilestone: Architecture contract and archive-start command synced
+- currentVersion: v2.26
+- currentMilestone: Archive coverage scope and corrective archive synced
 
 ## Что зафиксировал PR #131
 
@@ -62,13 +62,29 @@
 - working protocol;
 - arbitrary folders.
 
-Если GitHub write недоступен, не сохранять в другое место; вывести ready-to-copy markdown и назвать блокер.
+## Что зафиксировали PR #140, #142, #143
 
-## Открытый approval-gate
+PR #140:
 
-- PR #133 — Archive red flags after architecture contract
-- Статус: open
-- Не мержить без явного `++`.
+- `#архив_старт` теперь cumulative, not last-topic-only;
+- command must collect the unresolved semantic tail, not only the latest topic;
+- required `Coverage check` section added.
+
+PR #142:
+
+- no archive entry may be treated as full-chat coverage without explicit `coverage_scope: full_chat` or equivalent marker;
+- no full-chat marker = thematic coverage by default;
+- coverage types: `full_chat`, `thematic`, `partial`, `corrective`.
+
+PR #143:
+
+- created corrective archive entry after coverage-scope protocol fix;
+- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`;
+- PR #141 closed unmerged and must not be treated as implemented.
+
+## Открытые approval-gates
+
+- No open PRs known after PR #143 merge.
 
 ## Conversation archive commands
 
@@ -103,6 +119,16 @@ Archive/handoff PRs из массового прогона старых чато
 - `.github/workflows/ci.yml` implemented.
 - Checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - Branch protection: not configured.
+
+CI observation:
+
+- CI was observed on PR #131.
+- Sync Check passed.
+- CI failed during `npm test` because of stale assertions, not because of the PR #131 architecture contract diff.
+- Known stale assertions:
+  - `baseline.test.ts` expected `currentVersion: v2.1`;
+  - `knowledge.test.ts` expected source registry version `0.3`, but registry is `0.6`;
+  - `source-registry.test.ts` expected source registry version `0.3`, but registry is `0.6`.
 
 ## Repository hygiene
 
@@ -140,7 +166,13 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branch protection.
+Fix stale CI assertions observed on PR #131, then choose one design work item:
+
+1. `knowledge_consistency_protocol`;
+2. `conversation_archive_librarian`;
+3. `critic_margin_agent` + `margin_orchestra`;
+4. README / architecture map;
+5. branch protection only after CI is reliable.
 
 ## Что временно не делаем
 
@@ -148,7 +180,7 @@ Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branc
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не считаем branch protection настроенным без отдельной проверки.
-- Не мержим PR #133 без явного `++`.
+- Не считаем PR #141 implemented: он closed unmerged.
 
 ## Короткие команды
 
