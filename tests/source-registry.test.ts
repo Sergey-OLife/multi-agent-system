@@ -26,7 +26,7 @@ function assertIncludesAll(actual: string[], expected: string[]): void {
 }
 
 test("source registry version has semantic major.minor shape", () => {
-  assert.match(getSourceRegistryVersion(), /^\d+\.\d+$/);
+  assert.ok(/^\d+\.\d+$/.test(getSourceRegistryVersion()), "registry version should use major.minor format");
 });
 
 test("every route-mapped source_id exists in registry", () => {
