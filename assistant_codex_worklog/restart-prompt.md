@@ -38,11 +38,11 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.25.
-- lastCompletedVersion: v2.25.
-- lastMergedPr: PR #136 — Add archive start GitHub write command.
-- lastMergeCommit: 704c96453f98ff527a04c2ba98f3dba83a18daf0.
-- currentMilestone: v2.25 Architecture contract and archive-start command synced.
+- currentVersion: v2.26.
+- lastCompletedVersion: v2.26.
+- lastMergedPr: PR #143 — Archive corrective margin orchestra and consistency discussion.
+- lastMergeCommit: a9353575780d56f31faa84e015998e1552647f53.
+- currentMilestone: v2.26 Archive coverage scope and corrective archive synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -63,29 +63,38 @@ Baseline CI:
 - Runs on `pull_request` to `main` and `workflow_dispatch`.
 - Uses Node.js 20 and Go version from `go-core/go.mod`.
 - Runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
-- Does not include ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection.
+- CI was observed on PR #131: Sync Check passed, CI failed during `npm test` because of stale test assertions.
+- Known stale assertions: `baseline.test.ts` expects `currentVersion: v2.1`; `knowledge.test.ts` and `source-registry.test.ts` expect source registry version `0.3`, while registry is `0.6`.
+- Do not configure branch protection around CI until stale assertions are fixed.
 
 Stable conversation archive commands:
 
 - `#архив чата` means: run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat; prepare draft archive entry only; do not write to GitHub by default.
 - `#архив чата сохрани` means: use GitHub tools and create a PR with archive entry + index update in `knowledge/08_conversation_archive/chat_archives/` and `knowledge/08_conversation_archive/index.md` only.
-- `#архив_старт` means: write-first cumulative archive command. Immediately use GitHub tools, verify the latest archive/state checkpoint, check whether the previous archive entry covered the chat up to that point, then capture the full new semantic tail from that checkpoint to now. Do not capture only the last discussed topic if earlier unresolved ideas appeared after the checkpoint.
+- `#архив_старт` means: write-first cumulative archive command. Immediately use GitHub tools, verify the latest archive/state checkpoint, check whether the previous archive entry covered the chat up to that point, then capture the full new semantic tail from that checkpoint to now.
+- `#архив_старт` is cumulative, not last-topic-only.
 - For `#архив_старт`, create archive entries only in `knowledge/08_conversation_archive/chat_archives/`, update only `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
 - `#архив_старт` entries must include a `Coverage check` section with `Coverage scope`, previous checkpoint coverage scope, full-chat marker status, gap status, what is covered and what remains outside.
 - No archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or equivalent. No full-chat marker = thematic coverage by default.
+- Coverage types: `full_chat`, `thematic`, `partial`, `corrective`.
 - If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
 - Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
 - Do not use `#checkpoint` for semantic archive capture.
+
+Latest conversation archive state:
+
+- PR #138 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_red-flags-after-architecture-contract.md`.
+- PR #140 fixed `#архив_старт` cumulative capture.
+- PR #142 fixed explicit archive coverage scope.
+- PR #143 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`.
+- PR #141 was closed unmerged and must not be treated as implemented.
+- No open archive PR is known after PR #143.
 
 Known archive failure patterns:
 
 - Bad: `#архив_старт` archives only the latest topic and leaves earlier unarchived ideas unnamed.
 - Bad: assistant treats a thematic archive entry as full-chat coverage without explicit `full_chat` marker.
 - Correct: `#архив_старт` first verifies previous coverage scope, then captures the cumulative unresolved semantic tail. If there is no explicit full-chat checkpoint, it must say so and mark coverage_gap.
-
-Open approval-gates:
-
-- PR #141 — Archive cumulative margin orchestra and consistency discussion — HOLD, not ready for merge until coverage-scope issue is handled.
 
 Mass capture quarantine:
 
@@ -145,7 +154,7 @@ Active optional workflow layers:
 - cbt_thought_check_agent.
 - source_intake_auditor.
 
-Правила:
+Rules:
 
 - Proposal не является activation.
 - Strict PR workflow обязателен для кода, агентов, guardrails, registries, project-state, source cards, MVP, Сводов, repository hygiene, conversation archive и Shipyard Modernization.
@@ -156,5 +165,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Merge coverage-scope protocol fix after approval, then repair/replace PR #141 with explicit coverage_scope. Then state sync.
+Fix stale CI assertions observed on PR #131, then choose exactly one design PR: knowledge_consistency_protocol, conversation_archive_librarian, critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after CI is reliable.
 ```
