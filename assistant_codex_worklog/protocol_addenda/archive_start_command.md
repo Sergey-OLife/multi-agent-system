@@ -9,7 +9,9 @@
 
 Позже обнаружен второй сбой: `#архив_старт` мог быть понят как команда сохранить только последнюю обсуждаемую тему, а не накопительный смысловой хвост текущего чата.
 
-Причина: в прежней формулировке было недостаточно жёстко указано, что сохранение archive entry должно идти только через GitHub и только в стандартную директорию conversation archive, а также что `#архив_старт` должен проверять предыдущую archive/state точку и собирать всё новое с этой точки до текущего момента.
+Третий сбой: ассистент мог принять тематическую archive-запись за полную границу истории чата, хотя в ней не было явного маркера `coverage_scope: full_chat`.
+
+Причина: в прежней формулировке было недостаточно жёстко указано, что сохранение archive entry должно идти только через GitHub и только в стандартную директорию conversation archive, что `#архив_старт` должен собирать всё новое с проверенной точки до текущего момента, и что archive entry не является full-chat checkpoint без явного coverage marker.
 
 ## 2. Новая короткая команда
 
@@ -24,44 +26,75 @@
 1. Проверить актуальный `main`.
 2. Открыть актуальный `knowledge/08_conversation_archive/conversation_capture_prompt.md`.
 3. Найти последнюю проверенную archive/state точку текущего чата.
-4. Сначала убедиться, что предыдущая archive entry корректно покрывает историю до этой точки.
-5. Если предыдущая запись неполна, явно отметить coverage gap.
-6. Собрать весь новый смысловой хвост текущего чата от последней проверенной точки до текущего момента.
-7. Не ограничиваться последней обсуждаемой темой, если раньше после checkpoint были незакрытые идеи.
-8. Записать entry только в:
+4. Определить её `coverage_scope`.
+5. Не считать тематическую запись полной границей чата.
+6. Сначала убедиться, что предыдущая archive entry корректно покрывает историю до этой точки.
+7. Если предыдущая запись неполна, тематическая или не имеет full-chat marker, явно отметить coverage gap.
+8. Собрать весь новый смысловой хвост текущего чата от последней проверенной full-chat точки или от явно названной тематической точки с coverage gap.
+9. Не ограничиваться последней обсуждаемой темой, если раньше после checkpoint были незакрытые идеи.
+10. Записать entry только в:
 
 ```text
 knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 ```
 
-9. Обновить только:
+11. Обновить только:
 
 ```text
 knowledge/08_conversation_archive/index.md
 ```
 
-10. Открыть PR в GitHub против `main`.
+12. Открыть PR в GitHub против `main`.
 
-## 3. Cumulative capture rule
+## 3. Coverage scope rule
+
+No archive entry may be treated as full-chat coverage unless it explicitly says:
+
+```text
+coverage_scope: full_chat
+```
+
+or includes an equivalent explicit marker in its `Coverage check` section.
+
+Default rule:
+
+```text
+No full-chat marker = thematic coverage by default.
+```
+
+Coverage types:
+
+- `full_chat` — entry explicitly claims and justifies coverage of the whole chat up to a stated boundary.
+- `thematic` — entry covers only one topic or theme; default when no full-chat marker exists.
+- `partial` — entry knowingly covers only part of the relevant history.
+- `corrective` — entry corrects a previous coverage gap or supersedes a flawed entry.
+
+A thematic entry must not be used as a full-chat checkpoint.
+
+## 4. Cumulative capture rule
 
 `#архив_старт` is cumulative, not last-topic-only.
 
 Перед записью ассистент обязан:
 
 1. Проверить последнюю релевантную archive/state точку.
-2. Проверить, закрывает ли она предыдущую историю полностью.
-3. Проверить open PRs: open PR не является implemented.
-4. Вытащить все новые semantic seeds с момента checkpoint.
-5. Разделить unrelated themes на несколько archive entries, если один entry смешает разные линии.
-6. Добавить `Coverage check` section.
+2. Определить её coverage scope.
+3. Проверить, закрывает ли она предыдущую историю полностью.
+4. Проверить open PRs: open PR не является implemented.
+5. Вытащить все новые semantic seeds с момента доказанной full-chat точки или явно обозначить gap, если такой точки нет.
+6. Разделить unrelated themes на несколько archive entries, если один entry смешает разные линии.
+7. Добавить `Coverage check` section.
 
 Обязательный блок:
 
 ```markdown
 ## 0. Coverage check
 
+- Coverage scope: full_chat / thematic / partial / corrective
 - Previous checkpoint:
+- Previous checkpoint coverage scope: full_chat / thematic / partial / missing / open PR only
 - Previous archive/state coverage status: complete / partial / missing / open PR only
+- Full-chat marker present: yes/no
 - Gap found: yes/no
 - What this entry covers:
 - What remains outside this entry:
@@ -69,7 +102,7 @@ knowledge/08_conversation_archive/index.md
 
 Если ассистент сохраняет только одну узкую тему, он обязан прямо написать, какие другие темы остаются вне entry и почему.
 
-## 4. Запрещённые направления сохранения
+## 5. Запрещённые направления сохранения
 
 Для `#архив_старт` и `#архив чата сохрани` запрещено сохранять archive entry в:
 
@@ -82,7 +115,7 @@ knowledge/08_conversation_archive/index.md
 - любые произвольные notes/handoff folders;
 - полный transcript dump.
 
-## 5. Если GitHub tool недоступен
+## 6. Если GitHub tool недоступен
 
 Если GitHub write недоступен, ассистент не должен выбирать другой способ хранения.
 
@@ -92,7 +125,7 @@ knowledge/08_conversation_archive/index.md
 GitHub write is unavailable in this chat. I cannot perform #архив_старт correctly. Here is ready-to-copy markdown for manual transfer.
 ```
 
-## 6. Отличие от старых команд
+## 7. Отличие от старых команд
 
 ```text
 #архив чата
@@ -110,9 +143,9 @@ Explicit save mode. Использовать GitHub tools и создать PR �
 #архив_старт
 ```
 
-Write-first cumulative mode. Сразу делать GitHub archive PR в стандартной директории и покрывать весь новый смысловой хвост от последней проверенной точки, а не только последнюю тему.
+Write-first cumulative mode. Сразу делать GitHub archive PR в стандартной директории и покрывать весь новый смысловой хвост от последней проверенной full-chat точки. Если full-chat точки нет, explicitly declare coverage gap and do not pretend completeness.
 
-## 7. Карантин массовых импортов
+## 8. Карантин массовых импортов
 
 Все archive/handoff PR, созданные массовым прогоном команд по старым чатам, считаются quarantine PR до проверки:
 
@@ -127,9 +160,9 @@ Write-first cumulative mode. Сразу делать GitHub archive PR в ста
 
 Если PR не проходит карантин, его нужно закрыть с комментарием, не мержить.
 
-## 8. Известный failure pattern
+## 9. Известные failure patterns
 
-Недопустимый сценарий:
+Недопустимый сценарий 1:
 
 ```text
 User runs #архив_старт.
@@ -137,9 +170,16 @@ Assistant archives only the latest topic.
 Earlier unarchived ideas after the previous checkpoint are left out without being named.
 ```
 
+Недопустимый сценарий 2:
+
+```text
+Assistant treats a thematic archive entry as full-chat coverage without an explicit full_chat marker.
+```
+
 Правильное поведение:
 
 ```text
-#архив_старт first verifies prior coverage, then captures the cumulative unresolved semantic tail.
+#архив_старт first verifies prior coverage scope, then captures the cumulative unresolved semantic tail.
 If it intentionally captures only one theme, it must state what remains outside and why.
+If there is no explicit full_chat checkpoint, it must say so and mark coverage_gap.
 ```
