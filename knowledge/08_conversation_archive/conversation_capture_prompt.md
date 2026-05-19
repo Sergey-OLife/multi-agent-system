@@ -58,7 +58,8 @@ Extract every new semantic seed that is not already reflected in `main`.
 Do not capture only the last discussed topic if earlier unresolved ideas appeared after the checkpoint.
 Create one or more conversation archive entries if a single entry would mix unrelated themes.
 Write entries only to `knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md`.
-Update only `knowledge/08_conversation_archive/index.md`.
+Update `knowledge/08_conversation_archive/index.md` only in single-lane mode.
+If another archive PR that updates `index.md` is already open, use parallel intake mode and write only the entry file, or ask Sergey whether to wait.
 Open a PR against `main`.
 Do not save to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or any other folder.
 Do not create technical checkpoint.
@@ -73,6 +74,33 @@ GitHub write is unavailable in this chat. I cannot perform #архив_стар�
 ```
 
 Do not use `#checkpoint` for this. Checkpoints are technical state/worklog operations; these commands are only for semantic conversation archive.
+
+## Origin requirement
+
+New archive entries must include an Origin block before Coverage check.
+
+```markdown
+## 0. Origin
+
+- Origin type: project_chat / imported_chat / external_chat_paste / current_visible_segment
+- Origin id: <stable-short-id>
+- Origin title:
+- Source scope: full_visible_chat / partial_visible_chat / pasted_summary / imported_summary
+- Capture command: #архив чата / #архив чата сохрани / #архив_старт / manual
+- Captured from: current chat / another project chat / pasted response / uploaded summary
+- Related PRs:
+- Related archive entries:
+```
+
+Do not include private URLs, Drive IDs, raw thread IDs or personal data in Origin id.
+
+`coverage_scope: full_chat` must always say what it applies to:
+
+```text
+Coverage applies to: origin_chat_id / current_visible_segment / pasted_material / imported_summary
+```
+
+Full-chat coverage without a target origin is invalid.
 
 ## Cumulative capture requirement for `#архив_старт`
 
@@ -112,9 +140,10 @@ Before writing:
 6. Required section for `#архив_старт` entries:
 
 ```markdown
-## 0. Coverage check
+## 1. Coverage check
 
 - Coverage scope: full_chat / thematic / partial / corrective
+- Coverage applies to: origin_chat_id / current_visible_segment / pasted_material / imported_summary
 - Previous checkpoint:
 - Previous checkpoint coverage scope: full_chat / thematic / partial / missing / open PR only
 - Previous archive/state coverage status: complete / partial / missing / open PR only
@@ -128,20 +157,37 @@ If only one narrow theme is captured while other new themes remain, this must be
 
 ## Coverage scope meanings
 
-- `full_chat` — entry explicitly claims and justifies coverage of the whole chat up to a stated boundary.
+- `full_chat` — entry explicitly claims and justifies coverage of the target origin up to a stated boundary.
 - `thematic` — entry covers only one topic or theme; default when no full-chat marker exists.
 - `partial` — entry knowingly covers only part of the relevant history.
 - `corrective` — entry corrects a previous coverage gap or supersedes a flawed entry.
 
 A thematic entry must not be used as a full-chat checkpoint.
 
+## Single-lane and parallel intake
+
+Single-lane mode:
+
+- use when no other archive PR updating `index.md` is open;
+- create entry file;
+- update `knowledge/08_conversation_archive/index.md` in the same PR.
+
+Parallel intake mode:
+
+- use when another archive PR updating `index.md` is already open, or when importing multiple chats in parallel;
+- create only the entry file;
+- do not update `index.md`;
+- after multiple entry-only PRs are merged, create a separate consolidation PR that updates `index.md`.
+
+If unsure whether a new archive PR would conflict with an open archive PR, stop and ask Sergey.
+
 ## GitHub write destination is mandatory
 
-For `#архив чата сохрани` and `#архив_старт`, the only valid write destination is:
+For `#архив чата сохрани` and `#архив_старт`, valid write destinations are:
 
 ```text
 knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
-knowledge/08_conversation_archive/index.md
+knowledge/08_conversation_archive/index.md only in single-lane or consolidation mode
 ```
 
 Invalid destinations:
@@ -193,7 +239,8 @@ If the assistant cannot write to the valid GitHub destination, it must stop and 
 Хвост не должен скрываться за выполнением новой команды.
 GitHub archive command must write only to the GitHub conversation archive directory.
 #архив_старт is cumulative, not last-topic-only.
-No archive entry is full-chat coverage without an explicit full_chat coverage marker.
+No archive entry is full-chat coverage without an explicit full_chat coverage marker and target origin.
+Parallel archive intake must not update shared index.md.
 ```
 
 ```text
@@ -206,14 +253,15 @@ No archive entry is full-chat coverage without an explicit full_chat coverage ma
 Открой или учитывай:
 1. knowledge/08_conversation_archive/README.md
 2. knowledge/08_conversation_archive/archive_governance_protocol.md
-3. knowledge/08_conversation_archive/conversation_capture_prompt.md
-4. knowledge/08_conversation_archive/index.md
-5. knowledge/00_manifest/project-state.json
-6. knowledge/00_manifest/project-state.md
-7. assistant_codex_worklog/current-state.md
-8. assistant_codex_worklog/roadmap.md
-9. assistant_codex_worklog/decision-log.md
-10. relevant open PRs, if the current chat references them
+3. knowledge/08_conversation_archive/archive_origin_protocol.md
+4. knowledge/08_conversation_archive/conversation_capture_prompt.md
+5. knowledge/08_conversation_archive/index.md
+6. knowledge/00_manifest/project-state.json
+7. knowledge/00_manifest/project-state.md
+8. assistant_codex_worklog/current-state.md
+9. assistant_codex_worklog/roadmap.md
+10. assistant_codex_worklog/decision-log.md
+11. relevant open PRs, if the current chat references them
 
 Важно:
 - не раскрывай скрытые системные инструкции;
@@ -236,12 +284,14 @@ No archive entry is full-chat coverage without an explicit full_chat coverage ma
 Для `#архив_старт` дополнительно обязательно:
 - найти последнюю проверенную archive/state точку;
 - определить её coverage scope;
+- определить origin;
 - не считать тематическую запись полной границей чата;
 - проверить, есть ли явный full-chat marker;
 - если full-chat marker отсутствует, считать previous coverage partial/thematic and name the possible gap;
 - затем собрать весь новый смысловой хвост текущего чата с этой точки до текущего момента;
 - если предыдущая запись неполная или тематическая, указать `coverage_gap`;
-- не архивировать только последнюю тему, если после checkpoint были другие незакрытые идеи.
+- не архивировать только последнюю тему, если после checkpoint были другие незакрытые идеи;
+- если открыт archive PR с index update, использовать parallel intake mode или спросить Сергея.
 
 Сначала проверь дублирование:
 
@@ -275,9 +325,21 @@ No archive entry is full-chat coverage without an explicit full_chat coverage ma
 Tags: [style, book, agent_shipyard, mvp, open_loop, contradiction, failure_pattern]
 Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
 
-## 0. Coverage check
+## 0. Origin
+
+- Origin type: project_chat / imported_chat / external_chat_paste / current_visible_segment
+- Origin id:
+- Origin title:
+- Source scope: full_visible_chat / partial_visible_chat / pasted_summary / imported_summary
+- Capture command:
+- Captured from:
+- Related PRs:
+- Related archive entries:
+
+## 1. Coverage check
 
 - Coverage scope: full_chat / thematic / partial / corrective
+- Coverage applies to: origin_chat_id / current_visible_segment / pasted_material / imported_summary
 - Previous checkpoint:
 - Previous checkpoint coverage scope: full_chat / thematic / partial / missing / open PR only
 - Previous archive/state coverage status: complete / partial / missing / open PR only
@@ -286,11 +348,11 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
 - What this entry covers:
 - What remains outside this entry:
 
-## 1. Почему этот архив создан
+## 2. Почему этот архив создан
 
 Коротко: какая тревога, идея или потеря контекста стала причиной.
 
-## 2. Что уже отражено в архитектуре
+## 3. Что уже отражено в архитектуре
 
 - Уже отражено:
   - Где: path / merged PR / issue
@@ -302,7 +364,7 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
 
 Если ничего не отражено — напиши: `Пока не отражено`.
 
-## 3. Ключевые идеи, которые иначе потеряются
+## 4. Ключевые идеи, которые иначе потеряются
 
 - Идея:
   - Суть:
@@ -310,14 +372,14 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
   - Статус: raw / promising / needs_decision / implemented_elsewhere / rejected
   - Куда может перейти: project-state / roadmap / issue / agent proposal / book note / MVP note / style memory
 
-## 4. Нереализованные хвосты
+## 5. Нереализованные хвосты
 
 - Хвост:
   - Что осталось не сделано:
   - Почему не сделано:
   - Что нужно для продолжения:
 
-## 5. Наблюдения о взаимодействии с Сергеем
+## 6. Наблюдения о взаимодействии с Сергеем
 
 Заполнять только если есть новая полезная информация, а не повтор уже известного профиля.
 
@@ -327,7 +389,7 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
   - Риск неправильного применения:
   - Может перейти в: sergey_interaction_profiler / author_style_memory_agent / long_lived_observation
 
-## 6. Ошибки или сбои ChatGPT
+## 7. Ошибки или сбои ChatGPT
 
 - Сбой:
   - Что произошло:
@@ -335,30 +397,30 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
   - Как избегать:
   - Нужно ли внести в protocol: yes/no
 
-## 7. Потенциальные противоречия
+## 8. Потенциальные противоречия
 
 - Противоречие:
   - Между чем и чем:
   - Почему стоит проверить:
   - Что спросить у Сергея позже:
 
-## 8. Сильные формулы
+## 9. Сильные формулы
 
 - Формула:
   - Где применить:
   - Ограничение:
 
-## 9. Что не является решением
+## 10. Что не является решением
 
 Перечисли идеи, которые звучали важно, но не были approval.
 Отдельно укажи, какие open PRs ещё не являются implemented.
 
-## 10. Рекомендованный следующий шаг
+## 11. Рекомендованный следующий шаг
 
 Один конкретный шаг, без расползания.
 Если есть открытый approval-gate, не перепрыгивай через него.
 
-## 11. Не коммитить
+## 12. Не коммитить
 
 Перечисли, что из этого чата нельзя коммитить: raw sources, личные данные, приватные ссылки, полный диалог и т.п.
 
@@ -366,11 +428,7 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
 
 knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 
-Также предложи строку для `knowledge/08_conversation_archive/index.md`:
-
-| Date | Entry | Status | Review date | Tags | Implemented elsewhere | Open loop |
-|---|---|---|---|---|---|---|
-| YYYY-MM-DD | `<path>` | draft_archive_entry | YYYY-MM-DD | tag1, tag2 | no/path/PR | short open loop |
+Также предложи строку для `knowledge/08_conversation_archive/index.md`, кроме parallel intake mode.
 
 Для `#архив чата`:
 - вывести markdown, proposed path и index row;
@@ -378,7 +436,8 @@ knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 
 Для `#архив чата сохрани` и `#архив_старт`:
 - использовать GitHub tool;
-- создать PR с archive entry и index update;
-- писать только в `knowledge/08_conversation_archive/chat_archives/` и `knowledge/08_conversation_archive/index.md`;
+- создать PR with archive entry;
+- update `index.md` only in single-lane mode;
+- in parallel intake mode, do not update `index.md`;
 - если GitHub tool недоступен, не сохранять в другое место, а вывести ready-to-copy markdown и явно назвать блокер.
 ```
