@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.24",
-  "lastCompletedVersion": "v2.24",
-  "lastMergedPr": "PR #129 — Add baseline CI workflow",
-  "lastMergeCommit": "7dd6e60cefb1aae72d4b55916c1c1a3652274634",
-  "currentMilestone": "v2.24 Baseline CI workflow synced",
+  "currentVersion": "v2.25",
+  "lastCompletedVersion": "v2.25",
+  "lastMergedPr": "PR #136 — Add archive start GitHub write command",
+  "lastMergeCommit": "704c96453f98ff527a04c2ba98f3dba83a18daf0",
+  "currentMilestone": "v2.25 Architecture contract and archive-start command synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -24,15 +24,16 @@
     "v2.21 Anti-cliche editor proposal synced",
     "v2.22 Archive risks and capture prompt refresh synced",
     "v2.23 Archive command and CI baseline recovery synced",
-    "v2.24 Baseline CI workflow synced"
+    "v2.24 Baseline CI workflow synced",
+    "v2.25 Architecture contract and archive-start command synced"
   ],
   "recentPrs": [
-    "PR #123 — Sync state after archive risks and capture refresh",
-    "PR #124 — Add stable conversation archive command",
-    "PR #125 — Add short command priority rule",
     "PR #126 — Archive CI baseline and command recovery",
     "PR #127 — Sync state after archive command and CI entry",
-    "PR #129 — Add baseline CI workflow"
+    "PR #129 — Add baseline CI workflow",
+    "PR #130 — Sync state after baseline CI",
+    "PR #131 — Add repository architecture contract",
+    "PR #136 — Add archive start GitHub write command"
   ],
   "activeDecisions": [
     "GitHub is the source of truth for project state",
@@ -40,12 +41,19 @@
     "current active mode is Agent Shipyard / Agent Queue",
     "Shipyard Modernization stability gate is passed",
     "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
+    "repository architecture contract is implemented in knowledge/07_operations/repository_architecture_contract.md",
+    "repository architecture contract fixes GitHub main as current source of truth, Go as deterministic spine, TS/JS as orchestration, scripts as edge automation, event envelope as future contract, and Redis/Postgres/P2P as future runtime only",
     "baseline CI workflow is implemented in .github/workflows/ci.yml",
     "baseline CI runs on pull_request to main and workflow_dispatch",
     "baseline CI uses Node.js 20 and Go version from go-core/go.mod",
     "baseline CI runs existing scripts only: typecheck, typecheck:test, test, test:core, hygiene:audit, archive:audit",
     "baseline CI does not add ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection",
-    "branch protection remains a separate future action item after CI is observed on a PR",
+    "branch protection remains a separate future action item and is not configured until explicitly verified",
+    "#архив_старт is implemented as a write-first GitHub conversation archive command",
+    "#архив_старт must write only to knowledge/08_conversation_archive/chat_archives/ and knowledge/08_conversation_archive/index.md",
+    "#архив_старт and #архив чата сохрани must not save archive output to ChatGPT memory, project memory, knowledge/05_agent_memory/handoff/, project-state, roadmap, working protocol or arbitrary folders",
+    "if GitHub write is unavailable for #архив_старт, do not save elsewhere; output ready-to-copy markdown and state the blocker",
+    "archive/handoff PRs created by mass-running commands across old chats are quarantine PRs until checked",
     "conversation_archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint",
     "conversation_archive is a significant context recovery layer and must be checked for forgotten ideas, contradictions, plans, interaction style and what-next questions",
     "conversation_archive stores only conversation seeds not already reflected in project architecture",
@@ -56,12 +64,9 @@
     "command must not lose to noise; tail must not be hidden by the new command",
     "conversation capture must distinguish merged main state from open PRs; open PR is not implemented",
     "archive audit is available as npm run archive:audit",
-    "repository architecture contract is a recommended next step but not yet approved as an implementation PR",
-    "repository contract risks archived: README/repo contract, source-of-truth map, scripts boundary, main protection, knowledge/protocol consistency checks and label-triggered registry sync",
     "registry sync workflow is available as manual workflow_dispatch after PR #117",
     "registry_mutation_protocol is active: registry changes must use deterministic tooling rather than manual full replacement when tooling is available",
     "anti_cliche_editor is a proposal only, not activated and not a hard guardrail",
-    "anti_cliche_editor classifies and rewrites cliche, commonplace, pseudo-depth, plastic advertising voice, moralizing, manual voice, bureaucracy, vague claims and overpolished AI tone",
     "checkpoint_compressor_agent is a proposal only, not activated",
     "source_card_builder is a proposal only, not activated",
     "copyright_boundary_guard is a proposal only, not activated and not a hard guardrail",
@@ -74,7 +79,7 @@
     "repository hygiene audit is available as npm run hygiene:audit",
     "Repository hygiene ledger is GitHub issue #99",
     "branch hygiene cleanup remains cleanup_needed, not completed",
-    "next recommended work item is observe CI on the next PR, then consider branch protection or repository architecture contract",
+    "next recommended work item is decide PR #133 or inspect CI on PR #131/next PR, then consider README or branch protection",
     "strict PR workflow remains required for code, agent logic, guardrails, registries, tests, project-state, source cards, training cases, Svod, MVP, context maps, agent proposals, activations, conversation archive protocols and repository hygiene protocols",
     "Before any #checkpoint full GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat",
     "+ means continue the next safe step, not approval",
@@ -95,10 +100,10 @@
     "Do not create hard guardrails without separate approval and PR",
     "Do not pretend branch cleanup was completed while branches remain unresolved in issue #99",
     "Do not let conversation archive become a raw transcript dump",
-    "Do not treat repository architecture contract recommendation as already approved",
-    "Do not treat branch protection as configured until it is explicitly verified"
+    "Do not treat branch protection as configured until it is explicitly verified",
+    "Do not merge PR #133 without explicit ++"
   ],
-  "nextAction": "Observe baseline CI on the next PR, then consider branch protection or repository architecture contract",
+  "nextAction": "Decide PR #133 or inspect CI on PR #131/next PR, then consider README or branch protection",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -108,6 +113,7 @@
     "assistant_codex_worklog/working-protocol.md",
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/protocol_addenda/*.md",
+    "assistant_codex_worklog/protocol_addenda/archive_start_command.md",
     "knowledge/00_manifest/project-state.json",
     "knowledge/00_manifest/project-state.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
@@ -118,6 +124,7 @@
     "knowledge/07_operations/review_depth_protocol.md",
     "knowledge/07_operations/repository_hygiene_protocol.md",
     "knowledge/07_operations/registry_mutation_protocol.md",
+    "knowledge/07_operations/repository_architecture_contract.md",
     "knowledge/08_conversation_archive/README.md",
     "knowledge/08_conversation_archive/archive_governance_protocol.md",
     "knowledge/08_conversation_archive/conversation_capture_prompt.md",
@@ -162,7 +169,7 @@
     ],
     "hardGuardrailsActiveFromThisWave": [],
     "recommendedNextAgent": "conversation_archive_librarian",
-    "recommendedNextWorkItem": "Observe baseline CI on next PR",
+    "recommendedNextWorkItem": "Decide PR #133 or inspect CI / README / branch protection",
     "alternativeNextAgents": [
       "conversation_archive_librarian",
       "plotnikov_motor_agent",
@@ -181,29 +188,30 @@
       "branch_cleanup": "cleanup_needed_not_completed",
       "do_not_use": "branch-ref workaround for cleanup",
       "archivedRisks": [
-        "repository README / architecture contract needed",
-        "source-of-truth map needed",
-        "scripts boundary needed",
+        "repository README needed",
         "main branch protection action item needed",
         "knowledge/protocol consistency checks needed",
         "label-triggered registry sync may replace manual workflow_dispatch"
       ]
     },
     "conversationArchive": {
-      "status": "active_protocol_synced",
+      "status": "active_protocol_synced_archive_start_added",
       "audit_command": "npm run archive:audit",
       "index": "knowledge/08_conversation_archive/index.md",
       "capture_prompt": "knowledge/08_conversation_archive/conversation_capture_prompt.md",
       "governance_protocol": "knowledge/08_conversation_archive/archive_governance_protocol.md",
-      "latest_entry": "knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md",
+      "latest_merged_entry": "knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md",
+      "open_archive_pr": "PR #133 — Archive red flags after architecture contract",
       "stable_commands": [
         "#архив чата",
-        "#архив чата сохрани"
+        "#архив чата сохрани",
+        "#архив_старт"
       ],
-      "short_command_priority_rule": "command must not lose to noise; tail must not be hidden by the new command"
+      "short_command_priority_rule": "command must not lose to noise; tail must not be hidden by the new command",
+      "archive_start_rule": "write only to GitHub conversation archive directory and index; never to memory/handoff/project-state"
     },
     "ciBaseline": {
-      "status": "implemented_workflow_not_yet_observed_on_next_pr",
+      "status": "implemented_workflow_observation_pending_or_partial",
       "workflow": ".github/workflows/ci.yml",
       "triggers": [
         "pull_request to main",
