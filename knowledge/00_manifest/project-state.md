@@ -4,21 +4,22 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.32
-- lastCompletedVersion: v2.32
-- lastMergedPr: PR #165 — Sync registry for conversation archive librarian
-- lastMergeCommit: 5b98794f466e9d4722eb308e590c955eb0ae771a
-- currentMilestone: v2.32 Registry sync request flow and conversation archive librarian registry synced
+- currentVersion: v2.33
+- lastCompletedVersion: v2.33
+- lastMergedPr: PR #167 — Add second-eyes preflight design
+- lastMergeCommit: 22bee4a9f5e0cacfa130fd41992651c780c9a578
+- currentMilestone: v2.33 Second-eyes preflight design synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #158 — Add conversation archive librarian proposal
 - PR #160 — Add registry sync request workflow
 - PR #161 — Fix registry sync request trigger
 - PR #163 — Extend registry sync to insert missing agents
 - PR #165 — Sync registry for conversation archive librarian
+- PR #166 — Sync state after PR #165
+- PR #167 — Add second-eyes preflight design
 
 ## Open PRs
 
@@ -32,31 +33,41 @@ None before this state sync PR.
 - PR #162 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet.
 - PR #164 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check.
 
-## Repository architecture contract
+## What changed in v2.33
 
-PR #131 implemented:
+PR #167 added:
 
-- `knowledge/07_operations/repository_architecture_contract.md`
+- `knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md`
+- `knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md`
 
-Contract fixed GitHub `main` as current source of truth, Go as deterministic spine, TypeScript / JavaScript as orchestration, `scripts/` as edge automation, event envelope as future contract, and Redis/Postgres/P2P as future runtime layers only.
+This is proposal/design only:
 
-Branch protection remains not configured until explicitly verified.
+- `critic_margin_agent` is not activated;
+- `critic_margin_agent` is not routed;
+- `critic_margin_agent` is not recorded in `agent_container_registry.md` yet;
+- `margin_orchestra` is not a hard guardrail;
+- no automated validator was added.
 
-## Knowledge consistency protocol
+## Second-eyes preflight layer
 
-PR #149 implemented:
+The second-eyes layer exists to catch hidden assumptions before margin-point operations.
 
-- `knowledge/07_operations/knowledge_consistency_protocol.md`
+Use it as a design reference before:
 
-The protocol fixes source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state sync PR boundary, PR body consistency contract, red-flag phrases, observed drift patterns, follow-up consistency PR conditions, CI and Sync Check rules, future validator relationship and exit criteria.
+- registry sync;
+- agent activation;
+- route changes;
+- archive PR creation;
+- state sync;
+- workflow changes;
+- checkpoint full;
+- branch protection changes.
 
-It does not implement Go validator, JS audit, branch protection, README, agent activation or runtime changes.
+It was created after the registry-sync incident where the workflow was correct but the operation assumption was wrong: the old sync path assumed the target agent already existed in registry.
 
 ## Registry sync request flow
 
-PR #160 implemented:
-
-- `.github/workflows/registry-sync-request.yml`
+PR #160 implemented `.github/workflows/registry-sync-request.yml`.
 
 PR #161 added pull_request fallback trigger.
 
@@ -65,91 +76,35 @@ PR #163 extended deterministic Go registry sync:
 - `go-core/cmd/agent-registry-sync/main.go`
 - `go-core/cmd/agent-registry-sync/main_test.go`
 
-The Go command can now mutate existing agent blocks and can insert missing proposal/container blocks only with explicit `--insert-if-missing` and required registry fields.
+The Go command can mutate existing agent blocks and can insert missing proposal/container blocks only with explicit `--insert-if-missing` and required registry fields.
 
-PR #165 used request-driven Go-backed registry sync to record `conversation_archive_librarian` in:
-
-- `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`
-
-Important caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 was closed unmerged because of this; PR #165 was opened on the final head and passed CI + Sync Check before merge.
-
-## Archive origin and parallel intake protocol
-
-PR #153 implemented:
-
-- `knowledge/08_conversation_archive/archive_origin_protocol.md`
-
-The protocol fixes:
-
-- new archive entries require an `Origin` block;
-- `coverage_scope: full_chat` requires a target in `Coverage applies to`;
-- full-chat coverage without origin target is invalid;
-- single-lane archive mode: entry + index update in one PR;
-- parallel intake mode: entry-only PR without `index.md` update;
-- if another archive PR already updates `index.md`, a new archive PR must use parallel intake mode or wait;
-- index consolidation after parallel entry-only PRs is a separate PR.
-
-## PR #158 conversation archive librarian proposal
-
-PR #158 added:
-
-- `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`
-
-The agent is proposal only. It is not activated, not routed and not a hard guardrail.
-
-PR #165 later recorded it in the registry as proposal-only.
+PR #165 recorded `conversation_archive_librarian` in the registry as proposal-only.
 
 ## Conversation archive
 
 Conversation archive remains active as a separate human interaction archive, not project-state, approval-log or technical checkpoint.
 
-Important paths:
-
-- `knowledge/08_conversation_archive/README.md`
-- `knowledge/08_conversation_archive/archive_governance_protocol.md`
-- `knowledge/08_conversation_archive/archive_origin_protocol.md`
-- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
-- `knowledge/08_conversation_archive/index.md`
-- `knowledge/08_conversation_archive/chat_archives/`
-- `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`
-- `scripts/archive-audit.mjs`
-
-Audit command:
-
-```bash
-npm run archive:audit
-```
-
 Current archive status:
 
 - latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`;
-- open archive PR: none;
-- closed superseded/unmerged PRs: PR #133, PR #139, PR #141, PR #145, PR #152;
-- librarian proposal: merged in PR #158, registry synced in PR #165, not activated.
+- librarian proposal: merged in PR #158, registry synced in PR #165, not activated;
+- `critic_margin_agent` is design/proposal only after PR #167.
 
 ## Baseline CI and Sync Check
 
 CI workflow:
 
 - `.github/workflows/ci.yml`
-- commands: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`
 
 Sync Check workflow:
 
 - `.github/workflows/sync-check.yml`
-- command: `npm run sync-check`
 
 Current rule: when both workflows apply, PR verification means both Sync Check and CI, not CI alone.
 
-PR #165 had CI and Sync Check green before merge.
+PR #167 had CI and Sync Check green before merge.
 
-## Repository hygiene
-
-Repository hygiene audit is available as `npm run hygiene:audit`.
-
-Ledger: GitHub issue #99 — Repository hygiene ledger.
-
-Branch cleanup remains `cleanup_needed`, not `completed`.
+Branch protection remains not configured until explicitly verified.
 
 ## Current agent queue status
 
@@ -169,6 +124,7 @@ Proposal only, not activated:
 - `banality_alarm_agent`
 - `anti_cliche_editor`
 - `conversation_archive_librarian`
+- `critic_margin_agent`
 
 Active optional workflow layers:
 
@@ -184,28 +140,24 @@ Active optional workflow layers:
 - Book Fast Track remains paused until separate Sergey decision.
 - Required PR verification layer currently includes Sync Check and CI, not CI alone.
 - PR #152, PR #162 and PR #164 were closed unmerged and must not be treated as implemented.
-- PR #158 added `conversation_archive_librarian` as proposal only, not activation.
-- PR #165 recorded `conversation_archive_librarian` in registry as proposal only, not activation.
-- Parallel archive PRs must not update `index.md`.
-- Branch protection remains not configured until explicitly verified.
+- PR #167 added second-eyes preflight design only, not activation.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
 
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
-- Do not create `book/03_approved/chapter_00_preface.md` until final approval.
-- Do not treat all uploaded project sources as fully audited.
 - Do not activate proposal agents without controlled activation and separate approval.
 - Do not activate `conversation_archive_librarian` without controlled activation and separate approval.
+- Do not activate `critic_margin_agent` without registry sync, controlled activation and separate approval.
+- Do not treat `margin_orchestra` as hard guardrail or automated validator.
 - Do not create hard guardrails without separate approval and PR.
+- Do not treat branch protection as configured until it is explicitly verified.
 - Do not treat PR #141, PR #145, PR #152, PR #162 or PR #164 as implemented.
-- Do not treat PR #146 as full-chat coverage.
-- Do not update `knowledge/08_conversation_archive/index.md` from parallel archive PRs.
 
 ## Next action
 
-Decide the next Agent Shipyard item: controlled activation proposal for `conversation_archive_librarian`, `critic_margin_agent` / `margin_orchestra` design, README / architecture map, or branch protection verification.
+Decide the next Agent Shipyard item: registry sync for `critic_margin_agent`, controlled activation proposal for `conversation_archive_librarian`, hardening `margin_orchestra` into protocol/tooling, README / architecture map, or branch protection verification.
 
 ## Chat writing state
 
