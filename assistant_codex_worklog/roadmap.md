@@ -1,26 +1,25 @@
 # Roadmap — Assistant × Codex
 
-## Текущий режим
+## Current mode
 
 `Agent Shipyard / Agent Queue`
 
-Книга на паузе до отдельного решения Сергея.
+Book work remains paused until Sergey gives a separate decision.
 
 ## Current milestone
 
-- currentVersion: v2.31
-- currentMilestone: Conversation archive librarian proposal synced
-- lastMergedPr: PR #158 — Add conversation archive librarian proposal
-- lastMergeCommit: `4fc8f41145b0c31eb06cd6b65f09e068d58d00fa`
+- currentVersion: v2.32
+- currentMilestone: Registry sync request flow and conversation archive librarian registry synced
+- lastMergedPr: PR #165 — Sync registry for conversation archive librarian
+- lastMergeCommit: `5b98794f466e9d4722eb308e590c955eb0ae771a`
 
 ## Recent PR summary
 
-- PR #151 — Checkpoint full after knowledge consistency state sync.
-- PR #153 — Add archive origin and parallel intake protocol.
-- PR #154 — Sync state after archive origin protocol.
-- PR #152 — Archive Khmelevskaya style optic and command correction closed unmerged.
-- PR #155 — Sync state after closing PR #152.
 - PR #158 — Add conversation archive librarian proposal.
+- PR #160 — Add registry sync request workflow.
+- PR #161 — Fix registry sync request trigger.
+- PR #163 — Extend registry sync to insert missing agents.
+- PR #165 — Sync registry for conversation archive librarian.
 
 ## Open PRs
 
@@ -31,25 +30,31 @@ None before this state sync PR.
 - PR #141 — closed unmerged after coverage-scope fix.
 - PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status.
 - PR #152 — closed unmerged after PR #153 made Origin / Coverage applies to mandatory.
+- PR #162 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet.
+- PR #164 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check.
 
 These PRs are not implemented.
 
-## What changed in v2.31
+## What changed in v2.32
 
-PR #158 added:
+PR #160 added request-driven registry sync workflow:
 
-- `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`.
+- `.github/workflows/registry-sync-request.yml`
 
-It defines a proposal-only agent for conversation archive discipline:
+PR #161 added pull_request fallback trigger.
 
-- Origin block;
-- `Coverage applies to`;
-- full-chat marker handling;
-- single-lane / parallel intake mode;
-- open PR not implemented;
-- raw transcript / raw books / private IDs запрет.
+PR #163 extended deterministic registry tooling:
 
-PR #158 intentionally did not update registry, routes, project-state, archive index, runtime code, tests, validators, branch protection or book content.
+- `go-core/cmd/agent-registry-sync/main.go`
+- `go-core/cmd/agent-registry-sync/main_test.go`
+
+The Go tool can now insert a missing proposal/container block only with explicit `--insert-if-missing` and required fields.
+
+PR #165 recorded `conversation_archive_librarian` in:
+
+- `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`
+
+The agent remains proposal-only. It is not activated, routed, or converted into a hard guardrail.
 
 ## Existing stable foundations
 
@@ -62,7 +67,8 @@ PR #158 intentionally did not update registry, routes, project-state, archive in
 - PR #149 — knowledge consistency protocol.
 - PR #151 — checkpoint full after knowledge consistency state sync.
 - PR #153 — archive origin and parallel intake protocol.
-- PR #155 — state sync after closing PR #152.
+- PR #158 — conversation archive librarian proposal.
+- PR #165 — conversation archive librarian registry sync.
 
 ## Conversation archive
 
@@ -85,7 +91,7 @@ Current archive command rules:
 - Parallel intake PR must not update `knowledge/08_conversation_archive/index.md`.
 - Full-chat coverage requires explicit `Coverage applies to` target.
 
-`conversation_archive_librarian` exists as proposal only. It is not activated, not routed and not a hard guardrail.
+`conversation_archive_librarian` exists as proposal and registry entry only. It is not activated, not routed and not a hard guardrail.
 
 ## CI status
 
@@ -94,52 +100,52 @@ Required repository verification layer includes both workflows when both apply:
 - Sync Check — `.github/workflows/sync-check.yml`, `npm run sync-check`;
 - CI — `.github/workflows/ci.yml`.
 
-PR #158 had CI and Sync Check green before merge.
+PR #165 had CI and Sync Check green before merge.
 
 Branch protection remains not configured until separately verified and approved.
 
 ## Recommended next work item
 
-Create a registry sync PR for `conversation_archive_librarian` so `agent_container_registry` records the merged proposal without activating it.
-
-Then choose one of:
+Choose one:
 
 1. controlled activation proposal for `conversation_archive_librarian`;
-2. `critic_margin_agent` + `margin_orchestra`;
+2. `critic_margin_agent` + `margin_orchestra` / second-eyes preflight design;
 3. README / architecture map;
-4. branch protection after separate verification.
+4. branch protection verification.
+
+Given the registry-sync miss, the strongest next design item is `critic_margin_agent` + `margin_orchestra` as a second-eyes preflight layer before archive / registry / state operations.
 
 ## Standing rules
 
-- Proposal не является activation.
-- Active optional workflow layers остаются optional, not hard guardrails.
-- Branch cleanup остаётся `cleanup_needed`, not completed.
+- Proposal is not activation.
+- Active optional workflow layers remain optional, not hard guardrails.
+- Branch cleanup remains `cleanup_needed`, not completed.
 - Branch protection remains not configured until explicitly verified.
-- Book Fast Track остаётся на паузе.
+- Book Fast Track remains paused.
 - Runtime Redis / Postgres / P2P remain future runtime only and must not be implemented without separate decision.
 - PR #146 must not be treated as full-chat coverage.
-- PR #141, PR #145 and PR #152 are not implemented.
+- PR #141, PR #145, PR #152, PR #162 and PR #164 are not implemented.
 - Knowledge consistency protocol is active as an operational protocol, not as an automated validator.
 - Archive origin protocol is active as operational protocol.
-- `conversation_archive_librarian` proposal is merged but not activated.
+- `conversation_archive_librarian` proposal and registry entry are merged but not activated.
 
-## Короткие команды
+## Short commands
 
-- `+` — следующий безопасный шаг, не approval.
-- `++` — approval текущего понятного approval-gate.
-- `+++` — ближайшее grounded safe action, не обход approval-gates.
-- `#архив чата` — draft archive entry, без записи в GitHub.
+- `+` — next safe step, not approval.
+- `++` — approval for the current clear approval-gate.
+- `+++` — nearest grounded safe action, does not bypass approval-gates.
+- `#архив чата` — draft archive entry, no GitHub write.
 - `#архив чата сохрани` — archive PR according to current archive mode.
 - `#архив_старт` — write-first GitHub archive PR according to current archive mode.
 
-## Нельзя забыть
+## Do not forget
 
-- Не загружать raw books в GitHub.
-- Не хранить сырой текст Плотникова.
-- Не считать source card прочитанным источником.
-- Не превращать conversation archive в raw transcript dump.
-- Не считать branch protection configured without verification.
-- Не считать thematic archive entry full-chat checkpoint.
-- Не считать closed-unmerged PR implemented.
-- Не считать proposal activation.
-- Human-readable artifacts — на русском.
+- Do not upload raw books to GitHub.
+- Do not store raw Plotnikov text.
+- Do not treat source card as proof that full source was read.
+- Do not turn conversation archive into raw transcript dump.
+- Do not treat branch protection as configured without verification.
+- Do not treat thematic archive entry as full-chat checkpoint.
+- Do not treat closed-unmerged PR as implemented.
+- Do not treat proposal as activation.
+- Human-readable artifacts should be in Russian unless there is a practical reason otherwise.
