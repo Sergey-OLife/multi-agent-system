@@ -36,36 +36,52 @@ GitHub — источник правды. Сначала открой:
 27. assistant_codex_worklog/protocol_addenda/archive_start_command.md
 28. scripts/hygiene-audit.mjs
 29. scripts/archive-audit.mjs
-30. .github/workflows/registry-sync.yml
-31. .github/workflows/sync-check.yml
-32. .github/workflows/ci.yml
-33. go-core/cmd/multi-agent-core/main.go
-34. tests/baseline.test.ts
-35. tests/knowledge.test.ts
-36. tests/source-registry.test.ts
+30. scripts/run-registry-sync.mjs
+31. .github/workflows/registry-sync.yml
+32. .github/workflows/registry-sync-request.yml
+33. .github/workflows/sync-check.yml
+34. .github/workflows/ci.yml
+35. go-core/cmd/agent-registry-sync/main.go
+36. go-core/cmd/agent-registry-sync/main_test.go
+37. go-core/cmd/multi-agent-core/main.go
+38. tests/baseline.test.ts
+39. tests/knowledge.test.ts
+40. tests/source-registry.test.ts
 
 Актуальное состояние:
 
-- currentVersion: v2.31.
-- lastCompletedVersion: v2.31.
-- lastMergedPr: PR #158 — Add conversation archive librarian proposal.
-- lastMergeCommit: 4fc8f41145b0c31eb06cd6b65f09e068d58d00fa.
-- currentMilestone: v2.31 Conversation archive librarian proposal synced.
+- currentVersion: v2.32.
+- lastCompletedVersion: v2.32.
+- lastMergedPr: PR #165 — Sync registry for conversation archive librarian.
+- lastMergeCommit: 5b98794f466e9d4722eb308e590c955eb0ae771a.
+- currentMilestone: v2.32 Registry sync request flow and conversation archive librarian registry synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 - Open PRs: none before this state sync PR.
-- Closed unmerged PRs that must not be treated as implemented: PR #141, PR #145, PR #152.
+- Closed unmerged PRs that must not be treated as implemented: PR #141, PR #145, PR #152, PR #162, PR #164.
 
 PR #158 status:
 
-- PR #158 added `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`.
+- Added `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`.
 - Status: proposal only.
 - Not activated, not routed, not a hard guardrail.
-- PR #158 intentionally did not update registry, routes, project-state, archive index, runtime code, tests, validators, branch protection or book content.
 
-Next action:
+PR #165 status:
 
-- Create a registry sync PR for `conversation_archive_librarian` so `agent_container_registry` records the merged proposal without activating it.
+- Recorded `conversation_archive_librarian` in `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md` as proposal-only.
+- Registry update was produced through request-driven Go-backed registry sync.
+- Agent activation was not done.
+- Routes were not changed.
+- Runtime and book content were not changed.
+
+Registry sync request flow:
+
+- PR #160 added `.github/workflows/registry-sync-request.yml`.
+- PR #161 added pull_request fallback trigger.
+- PR #163 extended `go-core/cmd/agent-registry-sync/main.go` and tests with `--insert-if-missing`.
+- The Go command can mutate existing agent blocks and can insert missing proposal/container blocks only with explicit `--insert-if-missing` and required fields.
+- PR #165 used this flow successfully for `conversation_archive_librarian`.
+- Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 was closed unmerged for that reason; PR #165 reopened the final-head branch and passed CI plus Sync Check before merge.
 
 Repository architecture contract:
 
@@ -95,15 +111,14 @@ Archive origin and parallel intake protocol:
 - Parallel intake mode writes entry-only PRs without `index.md` update.
 - If another archive PR already updates `knowledge/08_conversation_archive/index.md`, new archive PR must use parallel intake mode or wait.
 - Consolidation PR updates `index.md` after merged entry-only PRs.
-- This protocol does not add Go validator or JS audit, and does not change branch protection.
 
 Conversation archive librarian:
 
 - Proposal path: `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`.
+- Registry path: `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`.
 - Purpose: preserve semantic seeds without turning archive into raw memory dump.
 - Handles discipline for Origin, Coverage applies to, full-chat marker, archive mode, open PR handling and raw/private content exclusions.
 - Not activated.
-- Registry entry still needs a separate registry sync PR.
 
 Required repository verification layer:
 
@@ -111,7 +126,7 @@ Required repository verification layer:
 - CI workflow: `.github/workflows/ci.yml`.
 - CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
-- PR #158 had CI + Sync Check green before merge.
+- PR #165 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
@@ -131,21 +146,18 @@ Latest conversation archive state:
 - PR #152 is closed unmerged and not implemented.
 - PR #153 implemented origin / parallel intake protocol.
 - PR #158 added conversation_archive_librarian proposal only.
+- PR #165 recorded conversation_archive_librarian in registry only.
 
-Known archive failure patterns:
+Known failure patterns:
 
 - Bad: `#архив_старт` archives only the latest topic and leaves earlier unarchived ideas unnamed.
 - Bad: assistant treats a thematic archive entry as full-chat coverage without explicit target.
-- Correct: verify previous coverage scope, capture cumulative semantic tail, and name the target origin.
-
-Mass capture quarantine:
-
-- Archive/handoff PRs created by mass-running commands across old chats are quarantine PRs until checked.
-- Reject/close entries that write outside `knowledge/08_conversation_archive/chat_archives/`, duplicate state/roadmap/protocol, contain stale project state, or look like project memory/handoff instead of conversation archive.
+- Bad: registry sync assumes the target agent already exists in registry.
+- Correct: verify previous coverage scope, capture cumulative semantic tail, name the target origin, and run registry preflight before sync.
 
 Short command priority:
 
-- Exact short commands must not lose to interface noise: repeated attachments, auto-loaded sources, long inserts, old non-blocking tails.
+- Exact short commands must not lose to interface noise.
 - First recognize the command, then check pending work.
 - If the pending work does not block the command, name the tail briefly and execute the command.
 - If the pending work may create a duplicate, skip an approval-gate or mix archive/checkpoint, ask Sergey what to do before acting.
@@ -198,5 +210,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Create a registry sync PR for `conversation_archive_librarian` so `agent_container_registry` records the merged proposal without activating it.
+Choose the next Agent Shipyard item: controlled activation proposal for `conversation_archive_librarian`, `critic_margin_agent` + `margin_orchestra` / second-eyes preflight design, README / architecture map, or branch protection verification.
 ```
