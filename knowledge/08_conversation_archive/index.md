@@ -7,6 +7,7 @@
 | Date | Entry | Status | Review date | Tags | Implemented elsewhere | Open loop |
 |---|---|---|---|---|---|---|
 | 2026-05-18 | `knowledge/08_conversation_archive/chat_archives/2026-05-18_lost-dialogue-and-idea-archive.md` | draft_archive_entry | 2026-06-01 | style, open_loop, failure_pattern, archive_protocol | PR #118 | first real external-chat capture still needed |
+| 2026-05-18 | `knowledge/08_conversation_archive/chat_archives/2026-05-18_current-chat-source-intake-boundary.md` | draft_archive_entry | 2026-06-01 | source_intake, open_loop, agent_shipyard, book, failure_pattern | partially: project-state.json / PR #118 / PR #119 | decide whether to run Source Intake Audit for current bulk upload |
 
 ## Status legend
 
