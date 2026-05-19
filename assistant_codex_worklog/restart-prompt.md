@@ -35,11 +35,11 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.22.
-- lastCompletedVersion: v2.22.
-- lastMergedPr: PR #121 — Archive repository contract risks.
-- lastMergeCommit: cc8e2f2216e518871b35c3aa48c91fdbc6bb4943.
-- currentMilestone: v2.22 Archive risks and capture prompt refresh synced.
+- currentVersion: v2.23.
+- lastCompletedVersion: v2.23.
+- lastMergedPr: PR #126 — Archive CI baseline and command recovery.
+- lastMergeCommit: 01891be8fdb45240f79c00746a5dadef9172a6a2.
+- currentMilestone: v2.23 Archive command and CI baseline recovery synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -62,14 +62,19 @@ Conversation archive — важный слой восстановления ко
 
 - `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
 - Это не project-state, не approval-log и не technical checkpoint.
-- Он хранит смысловые зерна из чатов, которые иначе теряются между ветками и окнами общения.
 - При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй не только state/roadmap, но и `knowledge/08_conversation_archive/index.md` + релевантные entries.
-- Relevant entry now exists: `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`.
+- Relevant entries:
+  - `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
+  - `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 - Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
 - Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
 - Audit доступен: `npm run archive:audit`.
-- Future `#checkpoint full` должен включать short checkpoint capture check: есть ли смысловые open loops, не отражённые в architecture?
-- При capture учитывать open PRs отдельно: open PR не равен implemented.
+
+CI baseline:
+
+- CI baseline is archived as promising next work item, not approved implementation.
+- Recommended CI V1: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- Do not add ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate or AI-review bots before baseline CI and repository contract are settled.
 
 Repository contract risks archived:
 
@@ -85,37 +90,30 @@ These are archived risks and recommended work items, not implementation approval
 Anti-cliche editor:
 
 - `anti_cliche_editor` proposal merged in PR #116.
-- Registry sync выполнен через Registry Sync workflow.
 - Registry status: proposal.
 - `next_action`: controlled_activation.
-- `proposal_path`: knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md.
 - Activation: no.
 - Hard guardrail: no.
-- Не заменяет `banality_alarm_agent`, `author_style_memory_agent`, `plotnikov_motor_agent`, `one_strike_chapter_agent`, fact-check или source/copyright checks.
 - Главная формула: “Убрать умно звучащее пустое. Оставить точное и живое.”
 
 Registry mutation protocol:
 
 - `knowledge/07_operations/registry_mutation_protocol.md` active.
 - Registry меняется инструментом, а не памятью ассистента.
-- Нормальный путь: dry-run → apply → changed files check → точечный registry diff check.
 - Manual full replacement большого registry запрещён как обычный путь.
-- Если local command недоступен, использовать approved runner/workflow path.
 
 Repository hygiene:
 
 - `npm run hygiene:audit` доступен.
 - Issue #99 — Repository hygiene ledger.
 - Branch cleanup остаётся cleanup_needed, не completed.
-- Не использовать branch-ref workarounds.
 
 Operational protocol:
 
 - `review_depth_protocol` активен.
-- L1/L2/L3 review depth.
 - `+` — следующий grounded safe step, не approval.
 - `++` — approval текущего понятного approval-gate.
-- `+++` — ближайшее уже grounded safe action, не обход approval-gates.
+- `+++` — ближайшее already grounded safe action, не обход approval-gates.
 
 Proposal agents:
 
@@ -151,5 +149,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare `Add repository architecture contract` PR unless Sergey chooses `conversation_archive_librarian` proposal first.
+Prepare `Add baseline CI workflow` PR unless Sergey chooses repository architecture contract or `conversation_archive_librarian` proposal first.
 ```
