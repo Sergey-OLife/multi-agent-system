@@ -818,6 +818,19 @@ agent_container_registry:
       next_action: "write_proposal"
       activation_risk: "medium"
       approval_gate: true
+
+    - agent_id: "conversation_archive_librarian"
+      working_name_ru: "Библиотекарь архива разговоров"
+      group: "Управление кораблём"
+      status: "proposal"
+      ship_role: "archive"
+      why_needed: "Следит, чтобы conversation archive сохранял смысловые зерна, origin, coverage and mode discipline without becoming raw memory dump."
+      main_formula: "Архив хранит не шум чата, а смысловые зерна, которые иначе потеряются."
+      first_fill_priority: "P0"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md"
+      activation_risk: "medium"
+      approval_gate: true
 ```
 
 ## Первое ядро заполнения
