@@ -6,20 +6,20 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - currentVersion: v2.30
 - lastCompletedVersion: v2.30
-- lastMergedPr: PR #154 — Sync state after archive origin protocol
-- lastMergeCommit: e8a07a7002fc57077221c7ff57e2dbe99f3510a1
+- lastMergedPr: PR #155 — Sync state after closing PR #152
+- lastMergeCommit: 63f22f8300aa2bb5313383890fdd03a1c5d049b8
 - currentMilestone: v2.30 Archive origin and parallel intake protocol synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #149 — Add knowledge consistency protocol
 - PR #150 — Sync state after knowledge consistency protocol
 - PR #151 — Checkpoint full after knowledge consistency state sync
 - PR #153 — Add archive origin and parallel intake protocol
 - PR #154 — Sync state after archive origin protocol
 - PR #152 — Archive Khmelevskaya style optic and command correction closed unmerged
+- PR #155 — Sync state after closing PR #152
 
 ## Open PRs
 
@@ -89,6 +89,12 @@ Reason:
 
 Do not treat PR #152 as implemented.
 
+## PR #155 state sync
+
+PR #155 synchronized state/worklog/restart files after PR #152 was closed unmerged.
+
+It did not create archive entries, update `index.md`, activate agents, change runtime code or continue the book.
+
 ## Archive start command and coverage scope
 
 PR #136 implemented `#архив_старт` and `assistant_codex_worklog/protocol_addenda/archive_start_command.md`.
@@ -139,7 +145,7 @@ Sync Check workflow:
 
 Current rule: when both workflows apply, PR verification means both Sync Check and CI, not CI alone.
 
-PR #154 had CI and Sync Check green before merge.
+PR #155 had CI and Sync Check green before merge.
 
 ## Repository hygiene
 
@@ -199,7 +205,7 @@ Active optional workflow layers:
 
 ## Next action
 
-Create `conversation_archive_librarian` as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.
+Create `conversation_archive_librarian` as the next design PR, now that PR #155 synced state after closing PR #152 and there are no open PRs.
 
 ## Chat writing state
 
