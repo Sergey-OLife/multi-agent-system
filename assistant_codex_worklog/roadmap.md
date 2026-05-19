@@ -10,17 +10,17 @@
 
 - currentVersion: v2.30
 - currentMilestone: Archive origin and parallel intake protocol synced
-- lastMergedPr: PR #154 — Sync state after archive origin protocol
-- lastMergeCommit: `e8a07a7002fc57077221c7ff57e2dbe99f3510a1`
+- lastMergedPr: PR #155 — Sync state after closing PR #152
+- lastMergeCommit: `63f22f8300aa2bb5313383890fdd03a1c5d049b8`
 
 ## Recent PR summary
 
-- PR #149 — Add knowledge consistency protocol.
 - PR #150 — Sync state after knowledge consistency protocol.
 - PR #151 — Checkpoint full after knowledge consistency state sync.
 - PR #153 — Add archive origin and parallel intake protocol.
 - PR #154 — Sync state after archive origin protocol.
 - PR #152 — Archive Khmelevskaya style optic and command correction closed unmerged.
+- PR #155 — Sync state after closing PR #152.
 
 ## Open PRs
 
@@ -60,6 +60,8 @@ Protocol fixes:
 PR #154 synchronized state/worklog/restart after PR #153.
 
 PR #152 was then closed unmerged because it was created under the pre-PR #153 archive discipline.
+
+PR #155 synchronized state/worklog/restart after PR #152 was closed unmerged.
 
 ## Existing stable foundations
 
@@ -101,7 +103,7 @@ Required repository verification layer includes both workflows when both apply:
 - Sync Check — `.github/workflows/sync-check.yml`, `npm run sync-check`;
 - CI — `.github/workflows/ci.yml`.
 
-PR #154 had CI and Sync Check green before merge.
+PR #155 had CI and Sync Check green before merge.
 
 Branch protection remains not configured until separately verified and approved.
 
