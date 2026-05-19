@@ -38,11 +38,11 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.25.
-- lastCompletedVersion: v2.25.
-- lastMergedPr: PR #136 — Add archive start GitHub write command.
-- lastMergeCommit: 704c96453f98ff527a04c2ba98f3dba83a18daf0.
-- currentMilestone: v2.25 Architecture contract and archive-start command synced.
+- currentVersion: v2.26.
+- lastCompletedVersion: v2.26.
+- lastMergedPr: PR #143 — Archive corrective margin orchestra and consistency discussion.
+- lastMergeCommit: a9353575780d56f31faa84e015998e1552647f53.
+- currentMilestone: v2.26 Corrective archive coverage and cumulative archive-start synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -67,11 +67,11 @@ Baseline CI:
 
 Stable conversation archive commands:
 
-- `#архив чата` means: run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat; prepare draft archive entry only; do not write to GitHub by default.
+- `#архив чата` means: run latest repository capture prompt against current chat; prepare draft archive entry only; do not write to GitHub by default.
 - `#архив чата сохрани` means: use GitHub tools and create a PR with archive entry + index update in `knowledge/08_conversation_archive/chat_archives/` and `knowledge/08_conversation_archive/index.md` only.
-- `#архив_старт` means: write-first cumulative archive command. Immediately use GitHub tools, verify the latest archive/state checkpoint, check whether the previous archive entry covered the chat up to that point, then capture the full new semantic tail from that checkpoint to now. Do not capture only the last discussed topic if earlier unresolved ideas appeared after the checkpoint.
+- `#архив_старт` means: write-first cumulative archive command. Immediately use GitHub tools, verify previous archive/state checkpoint and capture the full new semantic tail. Do not capture only the latest topic.
 - For `#архив_старт`, create archive entries only in `knowledge/08_conversation_archive/chat_archives/`, update only `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
-- `#архив_старт` entries must include a `Coverage check` section with `Coverage scope`, previous checkpoint coverage scope, full-chat marker status, gap status, what is covered and what remains outside.
+- `#архив_старт` entries must include `Coverage check`: coverage scope, previous checkpoint scope, full-chat marker status, gap status, what is covered and what remains outside.
 - No archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or equivalent. No full-chat marker = thematic coverage by default.
 - If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
 - Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
@@ -85,44 +85,53 @@ Known archive failure patterns:
 
 Open approval-gates:
 
-- PR #141 — Archive cumulative margin orchestra and consistency discussion — HOLD, not ready for merge until coverage-scope issue is handled.
+- No open PR at the moment of this state sync.
+- Future PRs still require explicit `++` before merge.
+
+Approved next order from Sergey:
+
+1. State sync after PR #138/#140/#142/#143.
+2. `knowledge_consistency_protocol`.
+3. `conversation_archive_librarian` proposal.
+4. `critic_margin_agent` with internal `margin_orchestra` proposal.
+5. README / branch protection / future Go validator line.
 
 Mass capture quarantine:
 
 - Archive/handoff PRs created by mass-running commands across old chats are quarantine PRs until checked.
-- Reject/close entries that write outside `knowledge/08_conversation_archive/chat_archives/`, duplicate state/roadmap/protocol, contain stale project state, or look like project memory/handoff instead of conversation archive.
+- Reject/close entries that write outside `knowledge/08_conversation_archive/chat_archives/`, duplicate state/roadmap/protocol, contain stale project state, lack clear `coverage_scope`, or look like project memory/handoff instead of conversation archive.
 
 Short command priority:
 
 - Exact short commands must not lose to interface noise: repeated attachments, auto-loaded sources, long inserts, old non-blocking tails.
 - First recognize the command, then check pending work.
-- If the pending work does not block the command, name the tail briefly and execute the command.
-- If the pending work may create a duplicate, skip an approval-gate or mix archive/checkpoint, ask Sergey what to do before acting.
+- If pending work does not block the command, name the tail briefly and execute the command.
+- If pending work may create a duplicate, skip an approval-gate or mix archive/checkpoint, ask Sergey what to do before acting.
 - Formula: command must not lose to noise; tail must not be hidden by the new command.
 
-Conversation archive — важный слой восстановления контекста:
+Conversation archive:
 
-- `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
-- Это не project-state, не approval-log и не technical checkpoint.
-- При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй state/roadmap и `knowledge/08_conversation_archive/index.md` + relevant entries.
-- Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
-- Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
-- Audit доступен: `npm run archive:audit`.
+- `knowledge/08_conversation_archive/` is a separate human interaction archive.
+- It is not project-state, approval-log or technical checkpoint.
+- Check it for forgotten ideas, contradictions, plans, interaction style and what-next questions.
+- Save only conversation seeds not already reflected in architecture/state/roadmap/issue/proposal/registry.
+- Do not save full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
+- Audit: `npm run archive:audit`.
 
 Repository hygiene:
 
-- `npm run hygiene:audit` доступен.
+- `npm run hygiene:audit` available.
 - Issue #99 — Repository hygiene ledger.
-- Branch cleanup остаётся cleanup_needed, не completed.
+- Branch cleanup remains cleanup_needed, not completed.
 
 Operational protocol:
 
-- `review_depth_protocol` активен.
-- `+` — следующий grounded safe step, не approval.
-- `++` — approval текущего понятного approval-gate.
-- `+++` — ближайшее already grounded safe action, не обход approval-gates.
+- `review_depth_protocol` active.
+- `+` — next grounded safe step, not approval.
+- `++` — approval for current clear approval-gate only.
+- `+++` — nearest already grounded safe action, does not bypass approval-gates.
 
-Proposal agents:
+Proposal agents remain proposal only, not activated:
 
 - workflow_conductor_agent.
 - agent_registry_librarian.
@@ -152,9 +161,10 @@ Active optional workflow layers:
 - Не продолжать книгу автоматически.
 - Не коммитить raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не активировать hard guardrails или proposal agents без отдельного решения.
+- Не внедрять runtime P2P / Redis / Postgres / Go validators без отдельного решения.
 - Перед любым будущим `#checkpoint full` сначала выдать compact restart prompt в чат.
 
 Следующий логичный шаг:
 
-Merge coverage-scope protocol fix after approval, then repair/replace PR #141 with explicit coverage_scope. Then state sync.
+Create `knowledge_consistency_protocol` PR, then `conversation_archive_librarian` proposal, then `critic_margin_agent` with internal `margin_orchestra` proposal. After that consider README / branch protection / future Go validator.
 ```
