@@ -91,31 +91,49 @@ Before writing:
    - did it accidentally capture only the last topic?
    - is it already in `main`, or only in an open PR?
 
-3. If the previous archive entry is incomplete:
+3. Verify the checkpoint coverage scope:
+   - no archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or equivalent in its Coverage check;
+   - if the previous entry has no explicit full-chat marker, treat it as `coverage_scope: thematic` by default;
+   - thematic entries can prove coverage only for their declared topic, not for the whole prior chat;
+   - if no full-chat checkpoint exists, the assistant must say so and treat earlier unverified history as a possible coverage gap.
+
+4. If the previous archive entry is incomplete or thematic:
    - do not pretend it is complete;
    - mark the gap explicitly;
    - either create a corrective archive entry or include a `coverage_gap` section in the new entry;
    - do not overwrite the old entry unless doing a dedicated cleanup/correction PR.
 
-4. Capture from checkpoint to now:
+5. Capture from checkpoint to now:
    - inspect the whole current chat after the verified checkpoint;
    - collect all new semantic seeds not reflected in `main`;
    - separate unrelated themes into multiple archive entries when needed;
    - do not reduce the archive to the most recent discussion if earlier ideas are still unarchived.
 
-5. Required section for `#архив_старт` entries:
+6. Required section for `#архив_старт` entries:
 
 ```markdown
 ## 0. Coverage check
 
+- Coverage scope: full_chat / thematic / partial / corrective
 - Previous checkpoint:
+- Previous checkpoint coverage scope: full_chat / thematic / partial / missing / open PR only
 - Previous archive/state coverage status: complete / partial / missing / open PR only
+- Full-chat marker present: yes/no
 - Gap found: yes/no
 - What this entry covers:
 - What remains outside this entry:
 ```
 
 If only one narrow theme is captured while other new themes remain, this must be stated as an open loop.
+
+## Coverage scope meanings
+
+- `full_chat` — entry explicitly claims and justifies coverage of the whole chat up to a stated boundary.
+- `thematic` — entry covers only one topic or theme; default when no full-chat marker exists.
+- `partial` — entry knowingly covers only part of the relevant history.
+- `corrective` — entry corrects a previous coverage gap or supersedes a flawed entry.
+
+A thematic entry must not be used as a full-chat checkpoint.
 
 ## GitHub write destination is mandatory
 
@@ -175,6 +193,7 @@ If the assistant cannot write to the valid GitHub destination, it must stop and 
 Хвост не должен скрываться за выполнением новой команды.
 GitHub archive command must write only to the GitHub conversation archive directory.
 #архив_старт is cumulative, not last-topic-only.
+No archive entry is full-chat coverage without an explicit full_chat coverage marker.
 ```
 
 ```text
@@ -216,9 +235,12 @@ GitHub archive command must write only to the GitHub conversation archive direct
 
 Для `#архив_старт` дополнительно обязательно:
 - найти последнюю проверенную archive/state точку;
-- проверить, корректно ли предыдущая запись покрывает историю до этой точки;
+- определить её coverage scope;
+- не считать тематическую запись полной границей чата;
+- проверить, есть ли явный full-chat marker;
+- если full-chat marker отсутствует, считать previous coverage partial/thematic and name the possible gap;
 - затем собрать весь новый смысловой хвост текущего чата с этой точки до текущего момента;
-- если предыдущая запись неполная, указать `coverage_gap`;
+- если предыдущая запись неполная или тематическая, указать `coverage_gap`;
 - не архивировать только последнюю тему, если после checkpoint были другие незакрытые идеи.
 
 Сначала проверь дублирование:
@@ -255,8 +277,11 @@ Implemented elsewhere: no / path / merged PR / partial / PR #<number>-open
 
 ## 0. Coverage check
 
+- Coverage scope: full_chat / thematic / partial / corrective
 - Previous checkpoint:
+- Previous checkpoint coverage scope: full_chat / thematic / partial / missing / open PR only
 - Previous archive/state coverage status: complete / partial / missing / open PR only
+- Full-chat marker present: yes/no
 - Gap found: yes/no
 - What this entry covers:
 - What remains outside this entry:
