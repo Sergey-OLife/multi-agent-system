@@ -4,22 +4,22 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.25
-- lastCompletedVersion: v2.25
-- lastMergedPr: PR #136 — Add archive start GitHub write command
-- lastMergeCommit: 704c96453f98ff527a04c2ba98f3dba83a18daf0
-- currentMilestone: v2.25 Architecture contract and archive-start command synced
+- currentVersion: v2.26
+- lastCompletedVersion: v2.26
+- lastMergedPr: PR #143 — Archive corrective margin orchestra and consistency discussion
+- lastMergeCommit: a9353575780d56f31faa84e015998e1552647f53
+- currentMilestone: v2.26 Archive coverage scope and corrective archive synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #126 — Archive CI baseline and command recovery
-- PR #127 — Sync state after archive command and CI entry
-- PR #129 — Add baseline CI workflow
-- PR #130 — Sync state after baseline CI
-- PR #131 — Add repository architecture contract
 - PR #136 — Add archive start GitHub write command
+- PR #137 — Sync state after architecture and archive start
+- PR #138 — Archive red flags after architecture contract
+- PR #140 — Require cumulative archive start capture
+- PR #142 — Require explicit archive coverage scope
+- PR #143 — Archive corrective margin orchestra and consistency discussion
 
 ## Repository architecture contract
 
@@ -51,72 +51,36 @@ Not implemented by the contract:
 - OpenAPI generation;
 - branch protection.
 
-## Archive start command
+## Archive start command and coverage scope
 
 PR #136 implemented:
 
 - `#архив_старт`
 - `assistant_codex_worklog/protocol_addenda/archive_start_command.md`
 
-`#архив_старт` is a write-first GitHub conversation archive command.
+PR #140 fixed the command semantics:
 
-It must:
+- `#архив_старт` is cumulative, not last-topic-only.
+- It must find the latest archive/state checkpoint and capture the unresolved semantic tail from there.
+- It must not archive only the latest topic when earlier unresolved ideas appeared after the checkpoint.
 
-- check latest `main`;
-- open latest `knowledge/08_conversation_archive/conversation_capture_prompt.md`;
-- create an archive entry only in `knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md`;
-- update only `knowledge/08_conversation_archive/index.md`;
-- open a PR against `main`.
+PR #142 fixed the coverage-scope bug:
 
-It must not save archive output to:
+- no archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or has an equivalent marker;
+- no full-chat marker means thematic coverage by default;
+- supported coverage types are `full_chat`, `thematic`, `partial`, and `corrective`.
 
-- ChatGPT memory;
-- project memory;
-- `knowledge/05_agent_memory/handoff/`;
-- `assistant_codex_worklog/`;
-- `knowledge/00_manifest/project-state.*`;
-- roadmap;
-- working protocol;
-- arbitrary folders;
-- full transcript dump.
+PR #143 added the corrective archive entry:
 
-If GitHub write is unavailable, do not save elsewhere. Output ready-to-copy markdown and name the blocker.
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`
 
-## Mass capture quarantine
+It records:
 
-Archive/handoff PRs created by mass-running archive commands across old chats are quarantine PRs until checked.
-
-Reject/close PRs when they:
-
-- write outside `knowledge/08_conversation_archive/chat_archives/`;
-- update anything other than `knowledge/08_conversation_archive/index.md`;
-- contain raw transcript;
-- contain raw books / PDF / EPUB / DJVU / MOBI;
-- contain private Drive IDs / URLs;
-- carry stale project state as current;
-- write to `knowledge/05_agent_memory/handoff/`;
-- duplicate already implemented state/roadmap/protocol decisions.
-
-## Baseline CI workflow
-
-PR #129 implemented baseline CI:
-
-- workflow path: `.github/workflows/ci.yml`
-- triggers: `pull_request` to `main`, `workflow_dispatch`
-- permissions: `contents: read`
-- Node.js: 20
-- Go version: from `go-core/go.mod`
-
-CI runs only existing scripts:
-
-- `npm run typecheck`
-- `npm run typecheck:test`
-- `npm test`
-- `npm run test:core`
-- `npm run hygiene:audit`
-- `npm run archive:audit`
-
-Branch protection remains not configured until explicitly verified.
+- Coverage scope: `corrective`;
+- previous checkpoint coverage scope: `thematic`;
+- full-chat marker present: no;
+- gap found: yes;
+- PR #141 was closed unmerged and must not be treated as implemented.
 
 ## Conversation archive
 
@@ -137,11 +101,42 @@ Audit command:
 npm run archive:audit
 ```
 
-Open archive PR:
+Current archive status:
 
-- PR #133 — Archive red flags after architecture contract.
+- latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`;
+- open archive PR: none known;
+- closed superseded PRs: PR #133, PR #139, PR #141.
 
-This is still an approval-gate and must not be merged without explicit `++`.
+## Baseline CI workflow
+
+PR #129 implemented baseline CI:
+
+- workflow path: `.github/workflows/ci.yml`
+- triggers: `pull_request` to `main`, `workflow_dispatch`
+- permissions: `contents: read`
+- Node.js: 20
+- Go version: from `go-core/go.mod`
+
+CI runs only existing scripts:
+
+- `npm run typecheck`
+- `npm run typecheck:test`
+- `npm test`
+- `npm run test:core`
+- `npm run hygiene:audit`
+- `npm run archive:audit`
+
+Observation:
+
+- CI was observed on PR #131.
+- Sync Check passed.
+- CI failed during `npm test` because of stale test assertions, not because of the PR #131 architecture contract diff.
+- Known stale assertions:
+  - `baseline.test.ts` expected `currentVersion: v2.1` in `project-state.md`;
+  - `knowledge.test.ts` expected source registry version `0.3` but registry is `0.6`;
+  - `source-registry.test.ts` expected source registry version `0.3` but registry is `0.6`.
+
+Branch protection remains not configured until explicitly verified. Do not use CI as a branch protection gate before fixing stale assertions.
 
 ## Repository hygiene
 
@@ -159,20 +154,40 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 
 ## Current agent queue status
 
-`anti_cliche_editor`, `banality_alarm_agent`, `author_style_memory_agent`, and `sergey_interaction_profiler` remain proposal only, not activated and not hard guardrails.
+Proposal only, not activated:
 
-`review_depth_protocol` is active operational protocol.
+- `workflow_conductor_agent`
+- `agent_registry_librarian`
+- `approval_gate_keeper`
+- `project_state_synchronizer`
+- `checkpoint_compressor_agent`
+- `source_card_builder`
+- `copyright_boundary_guard`
+- `svod_guard`
+- `contextologist_agent`
+- `sergey_interaction_profiler`
+- `author_style_memory_agent`
+- `banality_alarm_agent`
+- `anti_cliche_editor`
+
+Active optional workflow layers:
+
+- `socratic_lantern_agent`
+- `ethical_persuasion_guard`
+- `cbt_thought_check_agent`
+- `source_intake_auditor`
 
 ## Active decisions
 
-- GitHub is the source of truth for project state.
+- GitHub `main` is the source of truth for merged project state.
 - Book Fast Track remains the writing mode for book chapters, but the book is currently paused until separate Sergey decision.
 - Current active mode is Agent Shipyard / Agent Queue.
-- Shipyard Modernization stability gate is passed.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Repository architecture contract is implemented.
-- Baseline CI workflow is implemented.
+- Baseline CI workflow is implemented, but stale test assertions must be fixed before CI can become a reliable gate.
 - `#архив_старт` is implemented as a write-first GitHub conversation archive command.
+- `#архив_старт` is cumulative, not last-topic-only.
+- Archive entries require explicit coverage scope discipline.
 - Archive commands must not save to memory/handoff/project-state/arbitrary folders.
 - Mass capture imports are quarantine PRs until checked.
 - Branch protection remains a separate future action item and is not configured until explicitly verified.
@@ -185,29 +200,6 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
 
-## Proposal agents
-
-- `workflow_conductor_agent`: proposal only, not activated.
-- `agent_registry_librarian`: proposal only, not activated.
-- `approval_gate_keeper`: proposal only, not activated.
-- `project_state_synchronizer`: proposal only, not activated.
-- `checkpoint_compressor_agent`: proposal only, not activated.
-- `source_card_builder`: proposal only, not activated.
-- `copyright_boundary_guard`: proposal only, not activated and not a hard guardrail.
-- `svod_guard`: proposal only, not activated and not a hard guardrail.
-- `contextologist_agent`: proposal only, not activated and not a hard guardrail.
-- `sergey_interaction_profiler`: proposal only, not activated and not a hard guardrail.
-- `author_style_memory_agent`: proposal only, not activated and not a hard guardrail.
-- `banality_alarm_agent`: proposal only, not activated and not a hard guardrail.
-- `anti_cliche_editor`: proposal only, not activated and not a hard guardrail.
-
-## Active optional workflow layers
-
-- `socratic_lantern_agent` — active optional workflow layer.
-- `ethical_persuasion_guard` — active optional workflow layer.
-- `cbt_thought_check_agent` — active optional workflow layer; not therapy, not diagnostics, not sales pressure tool.
-- `source_intake_auditor` — active optional workflow layer; not workflow conductor.
-
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
@@ -218,11 +210,17 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
 - Do not let conversation archive become a raw transcript dump.
 - Do not treat branch protection as configured until it is explicitly verified.
-- Do not merge PR #133 without explicit `++`.
+- Do not treat PR #141 as implemented because it was closed unmerged.
 
 ## Next action
 
-Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branch protection.
+Fix stale CI assertions observed on PR #131, then choose the next design work item:
+
+1. `knowledge_consistency_protocol`;
+2. `conversation_archive_librarian`;
+3. `critic_margin_agent` + `margin_orchestra`;
+4. README / architecture map;
+5. branch protection after CI is reliable.
 
 ## Chat writing state
 
