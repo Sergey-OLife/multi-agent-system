@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.28",
-  "lastCompletedVersion": "v2.28",
-  "lastMergedPr": "PR #149 — Add knowledge consistency protocol",
-  "lastMergeCommit": "16b5716e89769fae2c1b4f590afcc01574cabc19",
-  "currentMilestone": "v2.28 Knowledge consistency protocol synced",
+  "currentVersion": "v2.29",
+  "lastCompletedVersion": "v2.29",
+  "lastMergedPr": "PR #150 — Sync state after knowledge consistency protocol",
+  "lastMergeCommit": "f4687cfc01de13d9a9dbf875d1f2d78a3a40027d",
+  "currentMilestone": "v2.29 Checkpoint full after knowledge consistency state sync",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -28,15 +28,16 @@
     "v2.25 Architecture contract and archive-start command synced",
     "v2.26 Archive coverage scope and corrective archive synced",
     "v2.27 Current chat coverage gap recorded and baseline CI green",
-    "v2.28 Knowledge consistency protocol synced"
+    "v2.28 Knowledge consistency protocol synced",
+    "v2.29 Checkpoint full after knowledge consistency state sync"
   ],
   "recentPrs": [
-    "PR #143 — Archive corrective margin orchestra and consistency discussion",
     "PR #144 — Sync state after archive coverage fixes",
     "PR #146 — Archive corrective current chat coverage gap",
     "PR #147 — Fix stale CI assertions",
     "PR #148 — Sync state after CI fix",
-    "PR #149 — Add knowledge consistency protocol"
+    "PR #149 — Add knowledge consistency protocol",
+    "PR #150 — Sync state after knowledge consistency protocol"
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
@@ -47,6 +48,7 @@
     "repository architecture contract is implemented in knowledge/07_operations/repository_architecture_contract.md",
     "knowledge consistency protocol is implemented in knowledge/07_operations/knowledge_consistency_protocol.md",
     "knowledge consistency protocol defines source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state-sync PR boundary, red-flag phrases, CI rules and exit criteria for consistency-sensitive PRs",
+    "PR #150 synchronized project-state, current-state, roadmap and restart-prompt after PR #149",
     "repository architecture contract fixes GitHub main as current source of truth, Go as deterministic spine, TS/JS as orchestration, scripts as edge automation, event envelope as future contract, and Redis/Postgres/P2P as future runtime only",
     "baseline CI workflow is implemented in .github/workflows/ci.yml",
     "Sync Check workflow is implemented in .github/workflows/sync-check.yml and must be checked alongside CI when both workflows apply",
@@ -57,6 +59,7 @@
     "baseline CI does not add ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection",
     "PR #147 fixed stale baseline CI assertions and made CI plus Sync Check green on its head before merge",
     "PR #149 addressed Codex feedback to include npm run sync-check in documented required checks before merge",
+    "PR #150 had CI and Sync Check green before merge",
     "branch protection remains a separate future action item and is not configured until explicitly verified",
     "#архив_старт is implemented as a write-first GitHub conversation archive command",
     "#архив_старт must write only to knowledge/08_conversation_archive/chat_archives/ and knowledge/08_conversation_archive/index.md",
@@ -182,7 +185,7 @@
     ],
     "hardGuardrailsActiveFromThisWave": [],
     "recommendedNextAgent": "conversation_archive_librarian",
-    "recommendedNextWorkItem": "Create conversation_archive_librarian as the next design PR after knowledge consistency protocol",
+    "recommendedNextWorkItem": "Create conversation_archive_librarian as the next design PR after checkpoint full",
     "alternativeNextAgents": [
       "conversation_archive_librarian",
       "critic_margin_agent",
@@ -233,12 +236,12 @@
       "current_chat_full_checkpoint": "missing; PR #146 records this as a coverage gap, not as full-chat coverage"
     },
     "ciBaseline": {
-      "status": "green_after_pr_147_and_consistency_protocol_synced",
+      "status": "green_after_pr_150_checkpoint_ready",
       "workflow": ".github/workflows/ci.yml",
       "sync_check_workflow": ".github/workflows/sync-check.yml",
-      "latest_green_pr": "PR #149 — Add knowledge consistency protocol",
-      "latest_green_head": "42ea08dd4a71660a490a3297fb897960e43f711f",
-      "latest_green_merge_commit": "16b5716e89769fae2c1b4f590afcc01574cabc19",
+      "latest_green_pr": "PR #150 — Sync state after knowledge consistency protocol",
+      "latest_green_head": "d02472aa3f83186654a36ea5f779752064544f38",
+      "latest_green_merge_commit": "f4687cfc01de13d9a9dbf875d1f2d78a3a40027d",
       "required_workflow_statuses": [
         "Sync Check",
         "CI"
