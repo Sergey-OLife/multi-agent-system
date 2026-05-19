@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: TypeScript / JavaScript / Go checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go-core/go.mod
+
+      - name: Install Node dependencies
+        run: npm install
+
+      - name: Typecheck source
+        run: npm run typecheck
+
+      - name: Typecheck tests
+        run: npm run typecheck:test
+
+      - name: Run TypeScript / JavaScript tests
+        run: npm test
+
+      - name: Run Go tests
+        run: npm run test:core
+
+      - name: Run repository hygiene audit
+        run: npm run hygiene:audit
+
+      - name: Run conversation archive audit
+        run: npm run archive:audit
