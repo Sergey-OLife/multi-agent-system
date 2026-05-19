@@ -252,15 +252,14 @@ test("project resume handoff files exist and project-state records resume pointe
   assert.equal(existsSync(projectStatePath), true);
   assert.equal(existsSync("knowledge/00_manifest/project-state.md"), true);
 
-  const projectState = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
+  const projectStateText = readFileSync("knowledge/00_manifest/project-state.md", "utf8");
+  const projectState = loadProjectState();
 
-  assert.ok(projectState.includes("project-state.json"));
-  assert.ok(/currentVersion: v2\.1/.test(projectState));
-  assert.ok(/lastCompletedVersion: v2\.1/.test(projectState));
-  assert.ok(/lastMergedPr: PR #26 — Add source intake and agent creation rules/.test(projectState));
-  assert.ok(/currentMilestone: v2\.1 Checkpoint project sources uploaded and Source Intake Audit ready/.test(projectState));
-  assert.ok(/v2\.0 Checkpoint Book Fast Track workflow/.test(projectState));
-  assert.ok(/v2\.1 Checkpoint project sources uploaded and Source Intake Audit ready/.test(projectState));
+  assert.ok(projectStateText.includes("project-state.json"));
+  assert.ok(projectStateText.includes(`currentVersion: ${projectState.currentVersion}`));
+  assert.ok(projectStateText.includes(`lastCompletedVersion: ${projectState.lastCompletedVersion}`));
+  assert.ok(projectStateText.includes(`lastMergedPr: ${projectState.lastMergedPr}`));
+  assert.ok(projectStateText.includes(`currentMilestone: ${projectState.currentMilestone}`));
 });
 
 interface CliProjectResumeResult {

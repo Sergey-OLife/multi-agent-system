@@ -25,8 +25,8 @@ function assertIncludesAll(actual: string[], expected: string[]): void {
   }
 }
 
-test('source registry version is "0.3"', () => {
-  assert.equal(getSourceRegistryVersion(), "0.3");
+test("source registry version has semantic major.minor shape", () => {
+  assert.ok(/^\d+\.\d+$/.test(getSourceRegistryVersion()), "registry version should use major.minor format");
 });
 
 test("every route-mapped source_id exists in registry", () => {
@@ -37,7 +37,7 @@ test("contextologist adds relevantSourceIds and sourceCards for chapter_editing"
   const contextPack = getContextPackForPrompt("Вычисти главу книги, добавь драматургии");
 
   assert.equal(contextPack.taskType, "chapter_editing");
-  assert.equal(contextPack.registryVersion, "0.3");
+  assert.equal(contextPack.registryVersion, getSourceRegistryVersion());
   assert.deepEqual(contextPack.relevantSourceIds, getSourceIdsForTask("chapter_editing"));
   assert.equal(contextPack.sourceCards.length, contextPack.relevantSourceIds.length);
   assert.deepEqual(

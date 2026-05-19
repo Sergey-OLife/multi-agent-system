@@ -85,6 +85,13 @@ func main() {
 	}
 
 	command := os.Args[1]
+	for index, arg := range os.Args {
+		if arg == "--" && index+1 < len(os.Args) {
+			command = os.Args[index+1]
+			break
+		}
+	}
+
 	inputBytes, readErr := io.ReadAll(os.Stdin)
 	if readErr != nil {
 		writeOutput(errorOutput(command, "stdin_read_failed", readErr.Error(), "Provide a readable JSON input envelope on stdin."))

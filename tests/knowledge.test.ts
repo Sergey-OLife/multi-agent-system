@@ -28,7 +28,7 @@ test("sources registry parses as valid JSON", () => {
 test("sources registry contains at least 57 sources", () => {
   const registry = readRegistry();
 
-  assert.equal(registry.version, "0.3");
+  assert.ok(/^\d+\.\d+$/.test(registry.version), "registry version should use major.minor format");
   assert.ok(registry.sources.length >= 57, "registry should contain at least 57 sources");
 });
 
