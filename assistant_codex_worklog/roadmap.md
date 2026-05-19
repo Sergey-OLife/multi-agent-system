@@ -8,47 +8,44 @@
 
 ## Current milestone
 
-- currentVersion: v2.24
-- currentMilestone: Baseline CI workflow synced
-- lastMergedPr: PR #129 — Add baseline CI workflow
+- currentVersion: v2.25
+- currentMilestone: Architecture contract and archive-start command synced
+- lastMergedPr: PR #136 — Add archive start GitHub write command
 
 ## Recent PR summary
 
-- PR #124 — Add stable conversation archive command.
-- PR #125 — Add short command priority rule.
-- PR #126 — Archive CI baseline and command recovery.
-- PR #127 — Sync state after archive command and CI entry.
 - PR #129 — Add baseline CI workflow.
+- PR #130 — Sync state after baseline CI.
+- PR #131 — Add repository architecture contract.
+- PR #136 — Add archive start GitHub write command.
 
-## Что изменилось в v2.24
+## Что изменилось в v2.25
 
-PR #129 добавил baseline CI workflow:
+PR #131 добавил:
 
-- `.github/workflows/ci.yml`
+- `knowledge/07_operations/repository_architecture_contract.md`
 
-Workflow запускается:
+Контракт закрепил:
 
-- `pull_request` в `main`;
-- `workflow_dispatch`.
+- GitHub `main` — current source of truth;
+- Go — deterministic spine;
+- TypeScript / JavaScript — orchestration, CLI, scripts, agent-facing layer;
+- `scripts/` — edge automation, не второй core;
+- event envelope — future contract, не runtime implementation;
+- Redis / Postgres / P2P — future runtime only.
 
-CI V1 использует только существующие scripts:
+PR #136 добавил:
 
-- `npm run typecheck`
-- `npm run typecheck:test`
-- `npm test`
-- `npm run test:core`
-- `npm run hygiene:audit`
-- `npm run archive:audit`
+```text
+#архив_старт
+```
 
-Не добавлены:
+Это write-first GitHub archive command. Он пишет только в:
 
-- ESLint;
-- Prettier;
-- golangci-lint;
-- SonarCloud / CodeClimate;
-- AI-review bots;
-- branch protection;
-- repository architecture contract.
+- `knowledge/08_conversation_archive/chat_archives/`
+- `knowledge/08_conversation_archive/index.md`
+
+Запрещено сохранять archive output в memory / handoff / project-state / roadmap / arbitrary folders.
 
 ## Conversation archive
 
@@ -72,6 +69,7 @@ npm run archive:audit
 ```text
 #архив чата
 #архив чата сохрани
+#архив_старт
 ```
 
 Rule:
@@ -79,22 +77,43 @@ Rule:
 ```text
 Команда не должна проигрывать шуму.
 Хвост не должен скрываться за выполнением новой команды.
+GitHub archive command writes only to GitHub conversation archive directory.
 ```
+
+## Mass capture quarantine
+
+Archive/handoff PRs из массового прогона старых чатов считаются quarantine PR до проверки.
+
+Закрывать без merge, если PR:
+
+- пишет вне `knowledge/08_conversation_archive/chat_archives/`;
+- обновляет не только `knowledge/08_conversation_archive/index.md`;
+- содержит raw transcript / raw books / private links;
+- тащит старый project-state как текущий;
+- пишет в `knowledge/05_agent_memory/handoff/`;
+- дублирует уже реализованные state/roadmap/protocol решения.
+
+## Open approval-gate
+
+- PR #133 — Archive red flags after architecture contract.
+- Не мержить без явного `++`.
 
 ## Recommended next work item
 
-Наблюдать baseline CI на следующем PR. После этого отдельно решить:
+Сначала решить PR #133 или проверить CI observation на PR #131 / следующем PR.
 
-- включать ли branch protection;
-- делать ли `Add repository architecture contract`;
-- готовить ли `conversation_archive_librarian` proposal.
+Затем отдельно выбрать:
+
+- `Add repository README`;
+- branch protection;
+- protocol / knowledge consistency checks;
+- `conversation_archive_librarian` proposal.
 
 ## Standing rules
 
 - Proposal не является activation.
 - Active optional workflow layers остаются optional, not hard guardrails.
 - Branch cleanup остаётся `cleanup_needed`, not completed.
-- Repository architecture contract remains recommended, not approved implementation.
 - Branch protection remains not configured until explicitly verified.
 - Book Fast Track остаётся на паузе.
 
@@ -103,8 +122,9 @@ Rule:
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
 - `+++` — ближайшее grounded safe action, не обход approval-gates.
-- `#архив чата` — draft archive entry по текущему чату, без записи в GitHub.
-- `#архив чата сохрани` — PR с archive entry + index update, если tools доступны.
+- `#архив чата` — draft archive entry, без записи в GitHub.
+- `#архив чата сохрани` — PR с archive entry + index update.
+- `#архив_старт` — write-first GitHub archive PR.
 
 ## Нельзя забыть
 
@@ -112,6 +132,5 @@ Rule:
 - Не хранить сырой текст Плотникова.
 - Не считать source card прочитанным источником.
 - Не превращать conversation archive в raw transcript dump.
-- Не считать repository architecture contract approved.
 - Не считать branch protection configured without verification.
 - Human-readable artifacts — на русском.

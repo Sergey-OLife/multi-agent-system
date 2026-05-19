@@ -24,34 +24,46 @@ GitHub — источник правды. Сначала открой:
 15. knowledge/07_operations/review_depth_protocol.md
 16. knowledge/07_operations/repository_hygiene_protocol.md
 17. knowledge/07_operations/registry_mutation_protocol.md
-18. knowledge/08_conversation_archive/README.md
-19. knowledge/08_conversation_archive/archive_governance_protocol.md
-20. knowledge/08_conversation_archive/conversation_capture_prompt.md
-21. knowledge/08_conversation_archive/index.md
-22. knowledge/08_conversation_archive/chat_archives/*.md
-23. scripts/hygiene-audit.mjs
-24. scripts/archive-audit.mjs
-25. .github/workflows/registry-sync.yml
-26. .github/workflows/ci.yml
+18. knowledge/07_operations/repository_architecture_contract.md
+19. knowledge/08_conversation_archive/README.md
+20. knowledge/08_conversation_archive/archive_governance_protocol.md
+21. knowledge/08_conversation_archive/conversation_capture_prompt.md
+22. knowledge/08_conversation_archive/index.md
+23. knowledge/08_conversation_archive/chat_archives/*.md
+24. assistant_codex_worklog/protocol_addenda/archive_start_command.md
+25. scripts/hygiene-audit.mjs
+26. scripts/archive-audit.mjs
+27. .github/workflows/registry-sync.yml
+28. .github/workflows/ci.yml
 
 Актуальное состояние:
 
-- currentVersion: v2.24.
-- lastCompletedVersion: v2.24.
-- lastMergedPr: PR #129 — Add baseline CI workflow.
-- lastMergeCommit: 7dd6e60cefb1aae72d4b55916c1c1a3652274634.
-- currentMilestone: v2.24 Baseline CI workflow synced.
+- currentVersion: v2.25.
+- lastCompletedVersion: v2.25.
+- lastMergedPr: PR #136 — Add archive start GitHub write command.
+- lastMergeCommit: 704c96453f98ff527a04c2ba98f3dba83a18daf0.
+- currentMilestone: v2.25 Architecture contract and archive-start command synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
+Repository architecture contract:
+
+- `knowledge/07_operations/repository_architecture_contract.md` implemented in PR #131.
+- GitHub `main` is current source of truth.
+- Go is deterministic spine.
+- TypeScript / JavaScript are orchestration, CLI, scripts and agent-facing layer.
+- `scripts/` are edge automation, not a second core.
+- Event envelope is future contract, not runtime implementation.
+- Redis / Postgres / P2P are future runtime layers only.
+- Branch protection remains not configured until explicitly verified.
+
 Baseline CI:
 
-- `.github/workflows/ci.yml` implemented.
+- `.github/workflows/ci.yml` implemented in PR #129.
 - Runs on `pull_request` to `main` and `workflow_dispatch`.
 - Uses Node.js 20 and Go version from `go-core/go.mod`.
 - Runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - Does not include ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection.
-- Branch protection remains a separate future action item after CI is observed on a PR.
 
 Stable conversation archive commands:
 
@@ -60,8 +72,12 @@ Stable conversation archive commands:
 - `#архив_старт` means: write-first archive command; immediately use GitHub tools, create archive entry in `knowledge/08_conversation_archive/chat_archives/`, update `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
 - If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
 - Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
-- The short commands are stable across project chats; the long prompt behind them may evolve in the repository.
 - Do not use `#checkpoint` for semantic archive capture.
+
+Open approval-gate:
+
+- PR #133 — Archive red flags after architecture contract.
+- Do not merge PR #133 without explicit `++`.
 
 Mass capture quarantine:
 
@@ -81,38 +97,9 @@ Conversation archive — важный слой восстановления ко
 - `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
 - Это не project-state, не approval-log и не technical checkpoint.
 - При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй state/roadmap и `knowledge/08_conversation_archive/index.md` + relevant entries.
-- Relevant entries:
-  - `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
-  - `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 - Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
 - Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
 - Audit доступен: `npm run archive:audit`.
-
-Repository contract risks archived:
-
-- root `README.md` / repository architecture contract needed;
-- source-of-truth map needed;
-- `scripts/` boundary needed so scripts do not become a second informal core;
-- `main` branch protection action item needed;
-- future knowledge/protocol consistency checks needed;
-- label-triggered registry sync may replace manual `workflow_dispatch` later.
-
-These are archived risks and recommended work items, not implementation approval.
-
-Anti-cliche editor:
-
-- `anti_cliche_editor` proposal merged in PR #116.
-- Registry status: proposal.
-- `next_action`: controlled_activation.
-- Activation: no.
-- Hard guardrail: no.
-- Главная формула: “Убрать умно звучащее пустое. Оставить точное и живое.”
-
-Registry mutation protocol:
-
-- `knowledge/07_operations/registry_mutation_protocol.md` active.
-- Registry меняется инструментом, а не памятью ассистента.
-- Manual full replacement большого registry запрещён как обычный путь.
 
 Repository hygiene:
 
@@ -161,5 +148,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Observe baseline CI on the next PR. Then consider branch protection or `Add repository architecture contract`.
+Decide PR #133 or inspect CI on PR #131 / next PR. Then consider README or branch protection.
 ```
