@@ -8,18 +8,19 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Current milestone
 
-- currentVersion: v2.32
-- currentMilestone: Registry sync request flow and conversation archive librarian registry synced
-- lastMergedPr: PR #165 — Sync registry for conversation archive librarian
-- lastMergeCommit: `5b98794f466e9d4722eb308e590c955eb0ae771a`
+- currentVersion: v2.33
+- currentMilestone: Second-eyes preflight design synced
+- lastMergedPr: PR #167 — Add second-eyes preflight design
+- lastMergeCommit: `22bee4a9f5e0cacfa130fd41992651c780c9a578`
 
 ## Recent PR summary
 
-- PR #158 — Add conversation archive librarian proposal.
 - PR #160 — Add registry sync request workflow.
 - PR #161 — Fix registry sync request trigger.
 - PR #163 — Extend registry sync to insert missing agents.
 - PR #165 — Sync registry for conversation archive librarian.
+- PR #166 — Sync state after PR #165.
+- PR #167 — Add second-eyes preflight design.
 
 ## Open PRs
 
@@ -35,26 +36,37 @@ None before this state sync PR.
 
 These PRs are not implemented.
 
-## What changed in v2.32
+## What changed in v2.33
 
-PR #160 added request-driven registry sync workflow:
+PR #167 added:
 
-- `.github/workflows/registry-sync-request.yml`
+- `knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md`
+- `knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md`
 
-PR #161 added pull_request fallback trigger.
+This is proposal/design only:
 
-PR #163 extended deterministic registry tooling:
+- `critic_margin_agent` is not activated;
+- `critic_margin_agent` is not routed;
+- `critic_margin_agent` is not recorded in registry yet;
+- `margin_orchestra` is not a hard guardrail;
+- no automated validator was added.
 
-- `go-core/cmd/agent-registry-sync/main.go`
-- `go-core/cmd/agent-registry-sync/main_test.go`
+## Second-eyes preflight design
 
-The Go tool can now insert a missing proposal/container block only with explicit `--insert-if-missing` and required fields.
+`critic_margin_agent` is the proposed second-eyes voice.
 
-PR #165 recorded `conversation_archive_librarian` in:
+`margin_orchestra` is the coordination pattern deciding when second-eyes preflight is required.
 
-- `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`
+Use as design reference before:
 
-The agent remains proposal-only. It is not activated, routed, or converted into a hard guardrail.
+- registry sync;
+- activation;
+- route changes;
+- archive PR creation;
+- state sync;
+- workflow changes;
+- checkpoint full;
+- branch protection changes.
 
 ## Existing stable foundations
 
@@ -63,33 +75,17 @@ The agent remains proposal-only. It is not activated, routed, or converted into 
 - PR #140 — `#архив_старт` cumulative, not last-topic-only.
 - PR #142 — explicit archive coverage scope.
 - PR #146 — current-chat full-chat checkpoint remains missing; coverage gap not full coverage.
-- PR #147 — stale CI assertions fixed and baseline CI green.
 - PR #149 — knowledge consistency protocol.
-- PR #151 — checkpoint full after knowledge consistency state sync.
 - PR #153 — archive origin and parallel intake protocol.
 - PR #158 — conversation archive librarian proposal.
+- PR #160 — registry sync request workflow.
+- PR #163 — registry sync missing-agent insertion.
 - PR #165 — conversation archive librarian registry sync.
+- PR #167 — second-eyes preflight design.
 
 ## Conversation archive
 
 Conversation archive remains separate from project-state, approval-log and technical checkpoint.
-
-Important paths:
-
-- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
-- `knowledge/08_conversation_archive/archive_governance_protocol.md`
-- `knowledge/08_conversation_archive/archive_origin_protocol.md`
-- `knowledge/08_conversation_archive/index.md`
-- `knowledge/08_conversation_archive/chat_archives/*.md`
-- `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`
-
-Current archive command rules:
-
-- `#архив чата` — draft archive entry, no GitHub write by default.
-- `#архив чата сохрани` — archive PR according to single-lane or parallel intake mode.
-- `#архив_старт` — write-first GitHub archive PR according to current archive mode.
-- Parallel intake PR must not update `knowledge/08_conversation_archive/index.md`.
-- Full-chat coverage requires explicit `Coverage applies to` target.
 
 `conversation_archive_librarian` exists as proposal and registry entry only. It is not activated, not routed and not a hard guardrail.
 
@@ -100,7 +96,7 @@ Required repository verification layer includes both workflows when both apply:
 - Sync Check — `.github/workflows/sync-check.yml`, `npm run sync-check`;
 - CI — `.github/workflows/ci.yml`.
 
-PR #165 had CI and Sync Check green before merge.
+PR #167 had CI and Sync Check green before merge.
 
 Branch protection remains not configured until separately verified and approved.
 
@@ -108,12 +104,13 @@ Branch protection remains not configured until separately verified and approved.
 
 Choose one:
 
-1. controlled activation proposal for `conversation_archive_librarian`;
-2. `critic_margin_agent` + `margin_orchestra` / second-eyes preflight design;
-3. README / architecture map;
-4. branch protection verification.
+1. registry sync for `critic_margin_agent` as proposal-only;
+2. controlled activation proposal for `conversation_archive_librarian`;
+3. harden `margin_orchestra` into operational protocol / tooling;
+4. README / architecture map;
+5. branch protection verification.
 
-Given the registry-sync miss, the strongest next design item is `critic_margin_agent` + `margin_orchestra` as a second-eyes preflight layer before archive / registry / state operations.
+The nearest coherent continuation is registry sync for `critic_margin_agent`, because PR #167 intentionally did not record it in registry.
 
 ## Standing rules
 
@@ -128,6 +125,7 @@ Given the registry-sync miss, the strongest next design item is `critic_margin_a
 - Knowledge consistency protocol is active as an operational protocol, not as an automated validator.
 - Archive origin protocol is active as operational protocol.
 - `conversation_archive_librarian` proposal and registry entry are merged but not activated.
+- `critic_margin_agent` proposal is merged but not in registry and not activated.
 
 ## Short commands
 
@@ -137,15 +135,3 @@ Given the registry-sync miss, the strongest next design item is `critic_margin_a
 - `#архив чата` — draft archive entry, no GitHub write.
 - `#архив чата сохрани` — archive PR according to current archive mode.
 - `#архив_старт` — write-first GitHub archive PR according to current archive mode.
-
-## Do not forget
-
-- Do not upload raw books to GitHub.
-- Do not store raw Plotnikov text.
-- Do not treat source card as proof that full source was read.
-- Do not turn conversation archive into raw transcript dump.
-- Do not treat branch protection as configured without verification.
-- Do not treat thematic archive entry as full-chat checkpoint.
-- Do not treat closed-unmerged PR as implemented.
-- Do not treat proposal as activation.
-- Human-readable artifacts should be in Russian unless there is a practical reason otherwise.
