@@ -71,20 +71,21 @@ Stable conversation archive commands:
 - `#архив чата сохрани` means: use GitHub tools and create a PR with archive entry + index update in `knowledge/08_conversation_archive/chat_archives/` and `knowledge/08_conversation_archive/index.md` only.
 - `#архив_старт` means: write-first cumulative archive command. Immediately use GitHub tools, verify the latest archive/state checkpoint, check whether the previous archive entry covered the chat up to that point, then capture the full new semantic tail from that checkpoint to now. Do not capture only the last discussed topic if earlier unresolved ideas appeared after the checkpoint.
 - For `#архив_старт`, create archive entries only in `knowledge/08_conversation_archive/chat_archives/`, update only `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
-- `#архив_старт` entries must include a `Coverage check` section: previous checkpoint, previous coverage status, gap found, what this entry covers, what remains outside.
+- `#архив_старт` entries must include a `Coverage check` section with `Coverage scope`, previous checkpoint coverage scope, full-chat marker status, gap status, what is covered and what remains outside.
+- No archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` or equivalent. No full-chat marker = thematic coverage by default.
 - If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
 - Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
 - Do not use `#checkpoint` for semantic archive capture.
 
-Known archive failure pattern:
+Known archive failure patterns:
 
 - Bad: `#архив_старт` archives only the latest topic and leaves earlier unarchived ideas unnamed.
-- Correct: `#архив_старт` first verifies previous coverage, then captures the cumulative unresolved semantic tail. If it intentionally captures only one theme, it must state what remains outside and why.
+- Bad: assistant treats a thematic archive entry as full-chat coverage without explicit `full_chat` marker.
+- Correct: `#архив_старт` first verifies previous coverage scope, then captures the cumulative unresolved semantic tail. If there is no explicit full-chat checkpoint, it must say so and mark coverage_gap.
 
-Open approval-gate:
+Open approval-gates:
 
-- PR #139 — Archive critic margin orchestra discussion.
-- Do not merge PR #139 without explicit `++`.
+- PR #141 — Archive cumulative margin orchestra and consistency discussion — HOLD, not ready for merge until coverage-scope issue is handled.
 
 Mass capture quarantine:
 
@@ -155,5 +156,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Resolve PR #139 or create corrective cumulative archive entry, then state sync. Then consider critic_margin_agent proposal, README or branch protection.
+Merge coverage-scope protocol fix after approval, then repair/replace PR #141 with explicit coverage_scope. Then state sync.
 ```
