@@ -12,14 +12,14 @@
 
 ## Последний смерженный PR
 
-- PR #149 — Add knowledge consistency protocol
+- PR #150 — Sync state after knowledge consistency protocol
 - Статус: merged
-- Merge commit: `16b5716e89769fae2c1b4f590afcc01574cabc19`
+- Merge commit: `f4687cfc01de13d9a9dbf875d1f2d78a3a40027d`
 
 ## Текущая версия
 
-- currentVersion: v2.28
-- currentMilestone: Knowledge consistency protocol synced
+- currentVersion: v2.29
+- currentMilestone: Checkpoint full after knowledge consistency state sync
 
 ## Что зафиксировал PR #131
 
@@ -124,9 +124,23 @@ CI and Sync Check were green on PR #147 head before merge.
 
 Codex feedback was addressed before merge: required repository checks now include `npm run sync-check`, and readiness must mention both Sync Check and CI when both workflows apply.
 
+## Что зафиксировал PR #150
+
+PR #150 synchronized:
+
+- `knowledge/00_manifest/project-state.json`
+- `knowledge/00_manifest/project-state.md`
+- `assistant_codex_worklog/current-state.md`
+- `assistant_codex_worklog/roadmap.md`
+- `assistant_codex_worklog/restart-prompt.md`
+
+after PR #149.
+
+CI and Sync Check were green before merge.
+
 ## Открытые approval-gates
 
-- No open PRs known after PR #149 merge.
+- No open PRs known after PR #150 merge.
 
 ## Conversation archive commands
 
@@ -164,7 +178,7 @@ Archive/handoff PRs из массового прогона старых чато
 - CI checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - Sync Check command: `npm run sync-check`.
 - Branch protection: not configured.
-- Current status: green after PR #149.
+- Current status: green after PR #150.
 
 ## Repository hygiene
 
@@ -202,7 +216,7 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Create `conversation_archive_librarian` as the next design PR.
+Create `conversation_archive_librarian` as the next design PR after checkpoint full.
 
 Then choose one of:
 
