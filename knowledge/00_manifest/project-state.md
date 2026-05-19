@@ -4,22 +4,22 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.27
-- lastCompletedVersion: v2.27
-- lastMergedPr: PR #147 — Fix stale CI assertions
-- lastMergeCommit: d8b47dfd8ffbba64f65494dfdc1cb7559f305816
-- currentMilestone: v2.27 Current chat coverage gap recorded and baseline CI green
+- currentVersion: v2.28
+- lastCompletedVersion: v2.28
+- lastMergedPr: PR #149 — Add knowledge consistency protocol
+- lastMergeCommit: 16b5716e89769fae2c1b4f590afcc01574cabc19
+- currentMilestone: v2.28 Knowledge consistency protocol synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #140 — Require cumulative archive start capture
-- PR #142 — Require explicit archive coverage scope
 - PR #143 — Archive corrective margin orchestra and consistency discussion
 - PR #144 — Sync state after archive coverage fixes
 - PR #146 — Archive corrective current chat coverage gap
 - PR #147 — Fix stale CI assertions
+- PR #148 — Sync state after CI fix
+- PR #149 — Add knowledge consistency protocol
 
 ## Repository architecture contract
 
@@ -50,6 +50,37 @@ Not implemented by the contract:
 - Kafka / RabbitMQ / gRPC;
 - OpenAPI generation;
 - branch protection.
+
+## Knowledge consistency protocol
+
+PR #149 implemented:
+
+- `knowledge/07_operations/knowledge_consistency_protocol.md`
+
+The protocol fixes:
+
+- source-of-truth hierarchy;
+- consistency classes C0-C5;
+- merge aftermath checklist;
+- narrow state sync PR boundary;
+- PR body consistency contract;
+- red-flag phrases that require verification;
+- already observed drift patterns;
+- conditions for follow-up consistency PR;
+- CI and Sync Check rules;
+- relationship with future validators;
+- exit criteria for consistency-sensitive PRs.
+
+Codex feedback was addressed before merge: required repository checks now include both `npm run sync-check` and the baseline CI commands.
+
+This protocol does not implement:
+
+- Go validator;
+- JS audit;
+- branch protection;
+- README;
+- agent activation;
+- runtime changes.
 
 ## Archive start command and coverage scope
 
@@ -120,7 +151,7 @@ Current archive status:
 - open archive PR: none known;
 - closed superseded/unmerged PRs: PR #133, PR #139, PR #141, PR #145.
 
-## Baseline CI workflow
+## Baseline CI and Sync Check
 
 PR #129 implemented baseline CI:
 
@@ -139,6 +170,15 @@ CI runs only existing scripts:
 - `npm run hygiene:audit`
 - `npm run archive:audit`
 
+Sync Check workflow:
+
+- workflow path: `.github/workflows/sync-check.yml`
+- required command in protocol: `npm run sync-check`
+
+Current rule after PR #149:
+
+- when both workflows apply, PR verification means both Sync Check and CI, not CI alone.
+
 PR #147 fixed the stale assertions that kept baseline CI red:
 
 - `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`;
@@ -146,7 +186,7 @@ PR #147 fixed the stale assertions that kept baseline CI red:
 - `source-registry.test.ts` no longer expects source registry version `0.3`;
 - Go-core CLI supports the `--` command separator used by schema-pressure tests.
 
-CI and Sync Check were green on PR #147 head before merge.
+CI and Sync Check were green on PR #149 head before merge.
 
 Branch protection remains not configured until explicitly verified.
 
@@ -196,7 +236,9 @@ Active optional workflow layers:
 - Current active mode is Agent Shipyard / Agent Queue.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
 - Repository architecture contract is implemented.
+- Knowledge consistency protocol is implemented.
 - Baseline CI workflow is implemented and green after PR #147.
+- Required PR verification layer currently includes Sync Check and CI, not CI alone.
 - `#архив_старт` is implemented as a write-first GitHub conversation archive command.
 - `#архив_старт` is cumulative, not last-topic-only.
 - Archive entries require explicit coverage scope discipline.
@@ -228,13 +270,11 @@ Active optional workflow layers:
 
 ## Next action
 
-Choose exactly one design work item now that baseline CI is green:
+Create `conversation_archive_librarian` as the next design PR, then choose one of:
 
-1. `knowledge_consistency_protocol` — recommended first;
-2. `conversation_archive_librarian`;
-3. `critic_margin_agent` + `margin_orchestra`;
-4. README / architecture map;
-5. branch protection after separate verification.
+1. `critic_margin_agent` + `margin_orchestra`;
+2. README / architecture map;
+3. branch protection after separate verification.
 
 ## Chat writing state
 

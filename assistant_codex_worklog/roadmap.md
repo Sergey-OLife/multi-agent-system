@@ -8,19 +8,19 @@
 
 ## Current milestone
 
-- currentVersion: v2.27
-- currentMilestone: Current chat coverage gap recorded and baseline CI green
-- lastMergedPr: PR #147 — Fix stale CI assertions
-- lastMergeCommit: `d8b47dfd8ffbba64f65494dfdc1cb7559f305816`
+- currentVersion: v2.28
+- currentMilestone: Knowledge consistency protocol synced
+- lastMergedPr: PR #149 — Add knowledge consistency protocol
+- lastMergeCommit: `16b5716e89769fae2c1b4f590afcc01574cabc19`
 
 ## Recent PR summary
 
-- PR #140 — Require cumulative archive start capture.
-- PR #142 — Require explicit archive coverage scope.
 - PR #143 — Archive corrective margin orchestra and consistency discussion.
 - PR #144 — Sync state after archive coverage fixes.
 - PR #146 — Archive corrective current chat coverage gap.
 - PR #147 — Fix stale CI assertions.
+- PR #148 — Sync state after CI fix.
+- PR #149 — Add knowledge consistency protocol.
 
 ## Что изменилось в v2.25
 
@@ -101,6 +101,31 @@ Fixed:
 
 CI and Sync Check were green on PR #147 head before merge.
 
+## Что изменилось в v2.28
+
+PR #149 добавил:
+
+- `knowledge/07_operations/knowledge_consistency_protocol.md`.
+
+Protocol фиксирует:
+
+- source-of-truth hierarchy;
+- consistency classes C0-C5;
+- merge aftermath checklist;
+- narrow state sync PR boundary;
+- PR body consistency contract;
+- red-flag phrases requiring verification;
+- already observed drift patterns;
+- conditions for follow-up consistency PR;
+- CI and Sync Check rules;
+- relationship with future validators;
+- exit criteria for consistency-sensitive PRs.
+
+Codex feedback was addressed before merge:
+
+- required repository checks now include `npm run sync-check`;
+- PR readiness must mention both Sync Check and CI when both workflows apply.
+
 ## Conversation archive
 
 Conversation archive остаётся отдельным human interaction archive, не project-state, не approval-log и не technical checkpoint.
@@ -152,29 +177,28 @@ Archive/handoff PRs из массового прогона старых чато
 
 ## Open approval-gate
 
-No open PR approval-gate known after PR #147 merge.
+No open PR approval-gate known after PR #149 merge.
 
 ## CI status
 
 Baseline CI is implemented and green after PR #147.
 
-PR #147 removed stale assertions that previously kept CI red:
+Current required repository verification layer includes both workflows when both apply:
 
-- `baseline.test.ts` expected `currentVersion: v2.1`;
-- `knowledge.test.ts` expected source registry version `0.3`, but registry is `0.6`;
-- `source-registry.test.ts` expected source registry version `0.3`, but registry is `0.6`.
+- Sync Check — `.github/workflows/sync-check.yml`, `npm run sync-check`;
+- CI — `.github/workflows/ci.yml`.
 
 Branch protection remains not configured until separately verified and approved.
 
 ## Recommended next work item
 
-Choose exactly one design PR:
+Create `conversation_archive_librarian` as the next design PR.
 
-1. `knowledge_consistency_protocol` — recommended first;
-2. `conversation_archive_librarian`;
-3. `critic_margin_agent` + `margin_orchestra`;
-4. README / architecture map;
-5. branch protection after separate verification.
+Then choose one of:
+
+1. `critic_margin_agent` + `margin_orchestra`;
+2. README / architecture map;
+3. branch protection after separate verification.
 
 ## Standing rules
 
@@ -186,6 +210,7 @@ Choose exactly one design PR:
 - Runtime Redis / Postgres / P2P remain future runtime only and must not be implemented without separate decision.
 - PR #146 must not be treated as full-chat coverage; it records a missing full-chat checkpoint.
 - PR #141 and PR #145 were closed unmerged and are not implemented.
+- Knowledge consistency protocol is active as an operational protocol, not as an automated validator.
 
 ## Короткие команды
 

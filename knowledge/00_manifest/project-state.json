@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.27",
-  "lastCompletedVersion": "v2.27",
-  "lastMergedPr": "PR #147 — Fix stale CI assertions",
-  "lastMergeCommit": "d8b47dfd8ffbba64f65494dfdc1cb7559f305816",
-  "currentMilestone": "v2.27 Current chat coverage gap recorded and baseline CI green",
+  "currentVersion": "v2.28",
+  "lastCompletedVersion": "v2.28",
+  "lastMergedPr": "PR #149 — Add knowledge consistency protocol",
+  "lastMergeCommit": "16b5716e89769fae2c1b4f590afcc01574cabc19",
+  "currentMilestone": "v2.28 Knowledge consistency protocol synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -27,15 +27,16 @@
     "v2.24 Baseline CI workflow synced",
     "v2.25 Architecture contract and archive-start command synced",
     "v2.26 Archive coverage scope and corrective archive synced",
-    "v2.27 Current chat coverage gap recorded and baseline CI green"
+    "v2.27 Current chat coverage gap recorded and baseline CI green",
+    "v2.28 Knowledge consistency protocol synced"
   ],
   "recentPrs": [
-    "PR #140 — Require cumulative archive start capture",
-    "PR #142 — Require explicit archive coverage scope",
     "PR #143 — Archive corrective margin orchestra and consistency discussion",
     "PR #144 — Sync state after archive coverage fixes",
     "PR #146 — Archive corrective current chat coverage gap",
-    "PR #147 — Fix stale CI assertions"
+    "PR #147 — Fix stale CI assertions",
+    "PR #148 — Sync state after CI fix",
+    "PR #149 — Add knowledge consistency protocol"
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
@@ -44,13 +45,18 @@
     "Shipyard Modernization stability gate is passed",
     "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
     "repository architecture contract is implemented in knowledge/07_operations/repository_architecture_contract.md",
+    "knowledge consistency protocol is implemented in knowledge/07_operations/knowledge_consistency_protocol.md",
+    "knowledge consistency protocol defines source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state-sync PR boundary, red-flag phrases, CI rules and exit criteria for consistency-sensitive PRs",
     "repository architecture contract fixes GitHub main as current source of truth, Go as deterministic spine, TS/JS as orchestration, scripts as edge automation, event envelope as future contract, and Redis/Postgres/P2P as future runtime only",
     "baseline CI workflow is implemented in .github/workflows/ci.yml",
+    "Sync Check workflow is implemented in .github/workflows/sync-check.yml and must be checked alongside CI when both workflows apply",
     "baseline CI runs on pull_request to main and workflow_dispatch",
     "baseline CI uses Node.js 20 and Go version from go-core/go.mod",
     "baseline CI runs existing scripts only: typecheck, typecheck:test, test, test:core, hygiene:audit, archive:audit",
+    "required PR verification layer currently includes Sync Check and CI, not CI alone",
     "baseline CI does not add ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection",
     "PR #147 fixed stale baseline CI assertions and made CI plus Sync Check green on its head before merge",
+    "PR #149 addressed Codex feedback to include npm run sync-check in documented required checks before merge",
     "branch protection remains a separate future action item and is not configured until explicitly verified",
     "#архив_старт is implemented as a write-first GitHub conversation archive command",
     "#архив_старт must write only to knowledge/08_conversation_archive/chat_archives/ and knowledge/08_conversation_archive/index.md",
@@ -104,7 +110,7 @@
     "Do not treat PR #141 or PR #145 as implemented because they were closed unmerged",
     "Do not treat PR #146 as full-chat coverage because it explicitly records a missing full-chat checkpoint"
   ],
-  "nextAction": "Choose exactly one design work item now that baseline CI is green: knowledge_consistency_protocol is recommended first, then conversation_archive_librarian, critic_margin_agent, README, or branch protection after separate verification.",
+  "nextAction": "Create conversation_archive_librarian as the next design PR, then choose critic_margin_agent, README / architecture map, or branch protection after separate verification.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -126,6 +132,7 @@
     "knowledge/07_operations/repository_hygiene_protocol.md",
     "knowledge/07_operations/registry_mutation_protocol.md",
     "knowledge/07_operations/repository_architecture_contract.md",
+    "knowledge/07_operations/knowledge_consistency_protocol.md",
     "knowledge/08_conversation_archive/README.md",
     "knowledge/08_conversation_archive/archive_governance_protocol.md",
     "knowledge/08_conversation_archive/conversation_capture_prompt.md",
@@ -134,6 +141,7 @@
     "scripts/hygiene-audit.mjs",
     "scripts/archive-audit.mjs",
     ".github/workflows/registry-sync.yml",
+    ".github/workflows/sync-check.yml",
     ".github/workflows/ci.yml",
     "go-core/cmd/multi-agent-core/main.go",
     "tests/baseline.test.ts",
@@ -174,7 +182,7 @@
     ],
     "hardGuardrailsActiveFromThisWave": [],
     "recommendedNextAgent": "conversation_archive_librarian",
-    "recommendedNextWorkItem": "Create knowledge_consistency_protocol first now that baseline CI is green",
+    "recommendedNextWorkItem": "Create conversation_archive_librarian as the next design PR after knowledge consistency protocol",
     "alternativeNextAgents": [
       "conversation_archive_librarian",
       "critic_margin_agent",
@@ -225,16 +233,22 @@
       "current_chat_full_checkpoint": "missing; PR #146 records this as a coverage gap, not as full-chat coverage"
     },
     "ciBaseline": {
-      "status": "green_after_pr_147",
+      "status": "green_after_pr_147_and_consistency_protocol_synced",
       "workflow": ".github/workflows/ci.yml",
-      "latest_green_pr": "PR #147 — Fix stale CI assertions",
-      "latest_green_head": "2ee86f2859b8651cfe7027b7aed9f0c961776787",
-      "latest_green_merge_commit": "d8b47dfd8ffbba64f65494dfdc1cb7559f305816",
+      "sync_check_workflow": ".github/workflows/sync-check.yml",
+      "latest_green_pr": "PR #149 — Add knowledge consistency protocol",
+      "latest_green_head": "42ea08dd4a71660a490a3297fb897960e43f711f",
+      "latest_green_merge_commit": "16b5716e89769fae2c1b4f590afcc01574cabc19",
+      "required_workflow_statuses": [
+        "Sync Check",
+        "CI"
+      ],
       "triggers": [
         "pull_request to main",
-        "workflow_dispatch"
+        "workflow_dispatch for CI where applicable"
       ],
       "steps": [
+        "npm run sync-check",
         "npm run typecheck",
         "npm run typecheck:test",
         "npm test",

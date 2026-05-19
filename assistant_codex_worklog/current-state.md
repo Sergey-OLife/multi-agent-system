@@ -12,14 +12,14 @@
 
 ## Последний смерженный PR
 
-- PR #147 — Fix stale CI assertions
+- PR #149 — Add knowledge consistency protocol
 - Статус: merged
-- Merge commit: `d8b47dfd8ffbba64f65494dfdc1cb7559f305816`
+- Merge commit: `16b5716e89769fae2c1b4f590afcc01574cabc19`
 
 ## Текущая версия
 
-- currentVersion: v2.27
-- currentMilestone: Current chat coverage gap recorded and baseline CI green
+- currentVersion: v2.28
+- currentMilestone: Knowledge consistency protocol synced
 
 ## Что зафиксировал PR #131
 
@@ -102,9 +102,31 @@ Fixed:
 
 CI and Sync Check were green on PR #147 head before merge.
 
+## Что зафиксировал PR #149
+
+Добавлен protocol:
+
+- `knowledge/07_operations/knowledge_consistency_protocol.md`
+
+Он фиксирует:
+
+- source-of-truth hierarchy;
+- consistency classes C0-C5;
+- merge aftermath checklist;
+- narrow state sync PR boundary;
+- PR body consistency contract;
+- red-flag phrases requiring verification;
+- observed drift patterns;
+- conditions for follow-up consistency PR;
+- CI and Sync Check rules;
+- relationship with future validators;
+- exit criteria for consistency-sensitive PRs.
+
+Codex feedback was addressed before merge: required repository checks now include `npm run sync-check`, and readiness must mention both Sync Check and CI when both workflows apply.
+
 ## Открытые approval-gates
 
-- No open PRs known after PR #147 merge.
+- No open PRs known after PR #149 merge.
 
 ## Conversation archive commands
 
@@ -134,12 +156,15 @@ Archive/handoff PRs из массового прогона старых чато
 - пишет в `knowledge/05_agent_memory/handoff/`;
 - дублирует уже реализованные state/roadmap/protocol решения.
 
-## Baseline CI
+## Baseline CI and Sync Check
 
 - `.github/workflows/ci.yml` implemented.
-- Checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- `.github/workflows/sync-check.yml` implemented.
+- Required PR verification layer currently includes both Sync Check and CI when both workflows apply.
+- CI checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- Sync Check command: `npm run sync-check`.
 - Branch protection: not configured.
-- Current status: green after PR #147.
+- Current status: green after PR #149.
 
 ## Repository hygiene
 
@@ -177,13 +202,13 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Choose exactly one design work item now that baseline CI is green:
+Create `conversation_archive_librarian` as the next design PR.
 
-1. `knowledge_consistency_protocol` — recommended first;
-2. `conversation_archive_librarian`;
-3. `critic_margin_agent` + `margin_orchestra`;
-4. README / architecture map;
-5. branch protection after separate verification.
+Then choose one of:
+
+1. `critic_margin_agent` + `margin_orchestra`;
+2. README / architecture map;
+3. branch protection after separate verification.
 
 ## Что временно не делаем
 
