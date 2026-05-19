@@ -21,52 +21,51 @@ GitHub — источник правды. Сначала открой:
 12. knowledge/05_agent_memory/agent_proposals/author_style_memory_agent.md
 13. knowledge/05_agent_memory/agent_proposals/banality_alarm_agent.md
 14. knowledge/05_agent_memory/agent_proposals/anti_cliche_editor.md
-15. knowledge/07_operations/review_depth_protocol.md
-16. knowledge/07_operations/repository_hygiene_protocol.md
-17. knowledge/07_operations/registry_mutation_protocol.md
-18. knowledge/07_operations/repository_architecture_contract.md
-19. knowledge/07_operations/knowledge_consistency_protocol.md
-20. knowledge/08_conversation_archive/README.md
-21. knowledge/08_conversation_archive/archive_governance_protocol.md
-22. knowledge/08_conversation_archive/archive_origin_protocol.md
-23. knowledge/08_conversation_archive/conversation_capture_prompt.md
-24. knowledge/08_conversation_archive/index.md
-25. knowledge/08_conversation_archive/chat_archives/*.md
-26. assistant_codex_worklog/protocol_addenda/archive_start_command.md
-27. scripts/hygiene-audit.mjs
-28. scripts/archive-audit.mjs
-29. .github/workflows/registry-sync.yml
-30. .github/workflows/sync-check.yml
-31. .github/workflows/ci.yml
-32. go-core/cmd/multi-agent-core/main.go
-33. tests/baseline.test.ts
-34. tests/knowledge.test.ts
-35. tests/source-registry.test.ts
+15. knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md
+16. knowledge/07_operations/review_depth_protocol.md
+17. knowledge/07_operations/repository_hygiene_protocol.md
+18. knowledge/07_operations/registry_mutation_protocol.md
+19. knowledge/07_operations/repository_architecture_contract.md
+20. knowledge/07_operations/knowledge_consistency_protocol.md
+21. knowledge/08_conversation_archive/README.md
+22. knowledge/08_conversation_archive/archive_governance_protocol.md
+23. knowledge/08_conversation_archive/archive_origin_protocol.md
+24. knowledge/08_conversation_archive/conversation_capture_prompt.md
+25. knowledge/08_conversation_archive/index.md
+26. knowledge/08_conversation_archive/chat_archives/*.md
+27. assistant_codex_worklog/protocol_addenda/archive_start_command.md
+28. scripts/hygiene-audit.mjs
+29. scripts/archive-audit.mjs
+30. .github/workflows/registry-sync.yml
+31. .github/workflows/sync-check.yml
+32. .github/workflows/ci.yml
+33. go-core/cmd/multi-agent-core/main.go
+34. tests/baseline.test.ts
+35. tests/knowledge.test.ts
+36. tests/source-registry.test.ts
 
 Актуальное состояние:
 
-- currentVersion: v2.30.
-- lastCompletedVersion: v2.30.
-- lastMergedPr: PR #155 — Sync state after closing PR #152.
-- lastMergeCommit: 63f22f8300aa2bb5313383890fdd03a1c5d049b8.
-- currentMilestone: v2.30 Archive origin and parallel intake protocol synced.
+- currentVersion: v2.31.
+- lastCompletedVersion: v2.31.
+- lastMergedPr: PR #158 — Add conversation archive librarian proposal.
+- lastMergeCommit: 4fc8f41145b0c31eb06cd6b65f09e068d58d00fa.
+- currentMilestone: v2.31 Conversation archive librarian proposal synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
-- Open PRs: none.
+- Open PRs: none before this state sync PR.
 - Closed unmerged PRs that must not be treated as implemented: PR #141, PR #145, PR #152.
 
-PR #152 status:
+PR #158 status:
 
-- PR #152 — Archive Khmelevskaya style optic and command correction — closed unmerged.
-- It was created before PR #153 introduced Archive Origin + Parallel Intake Protocol.
-- It had Coverage check but no required Origin block and no `Coverage applies to`.
-- It updated shared `knowledge/08_conversation_archive/index.md` directly under the older discipline.
-- Its material is not implemented. If needed later, recreate it under PR #153 protocol.
+- PR #158 added `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`.
+- Status: proposal only.
+- Not activated, not routed, not a hard guardrail.
+- PR #158 intentionally did not update registry, routes, project-state, archive index, runtime code, tests, validators, branch protection or book content.
 
-PR #155 status:
+Next action:
 
-- PR #155 synchronized state/worklog/restart files after PR #152 was closed unmerged.
-- It did not create archive entries, update `index.md`, activate agents, change runtime code or continue the book.
+- Create a registry sync PR for `conversation_archive_librarian` so `agent_container_registry` records the merged proposal without activating it.
 
 Repository architecture contract:
 
@@ -96,7 +95,15 @@ Archive origin and parallel intake protocol:
 - Parallel intake mode writes entry-only PRs without `index.md` update.
 - If another archive PR already updates `knowledge/08_conversation_archive/index.md`, new archive PR must use parallel intake mode or wait.
 - Consolidation PR updates `index.md` after merged entry-only PRs.
-- This protocol does not activate `conversation_archive_librarian`, does not add Go validator or JS audit, and does not change branch protection.
+- This protocol does not add Go validator or JS audit, and does not change branch protection.
+
+Conversation archive librarian:
+
+- Proposal path: `knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md`.
+- Purpose: preserve semantic seeds without turning archive into raw memory dump.
+- Handles discipline for Origin, Coverage applies to, full-chat marker, archive mode, open PR handling and raw/private content exclusions.
+- Not activated.
+- Registry entry still needs a separate registry sync PR.
 
 Required repository verification layer:
 
@@ -104,7 +111,7 @@ Required repository verification layer:
 - CI workflow: `.github/workflows/ci.yml`.
 - CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
-- PR #155 had CI + Sync Check green before merge.
+- PR #158 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
@@ -123,6 +130,7 @@ Latest conversation archive state:
 - PR #146 merged `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md` and records that no verified full-chat checkpoint exists for the current chat.
 - PR #152 is closed unmerged and not implemented.
 - PR #153 implemented origin / parallel intake protocol.
+- PR #158 added conversation_archive_librarian proposal only.
 
 Known archive failure patterns:
 
@@ -171,6 +179,7 @@ Proposal agents:
 - author_style_memory_agent.
 - banality_alarm_agent.
 - anti_cliche_editor.
+- conversation_archive_librarian.
 
 Active optional workflow layers:
 
@@ -189,5 +198,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Create `conversation_archive_librarian` as the next design PR, now that PR #155 synced state after closing PR #152 and there are no open PRs.
+Create a registry sync PR for `conversation_archive_librarian` so `agent_container_registry` records the merged proposal without activating it.
 ```
