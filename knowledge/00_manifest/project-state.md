@@ -6,26 +6,30 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 - currentVersion: v2.30
 - lastCompletedVersion: v2.30
-- lastMergedPr: PR #153 — Add archive origin and parallel intake protocol
-- lastMergeCommit: 749b77a32da403e3e78653628d5cb3aa7bc8cc0b
+- lastMergedPr: PR #154 — Sync state after archive origin protocol
+- lastMergeCommit: e8a07a7002fc57077221c7ff57e2dbe99f3510a1
 - currentMilestone: v2.30 Archive origin and parallel intake protocol synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #147 — Fix stale CI assertions
-- PR #148 — Sync state after CI fix
 - PR #149 — Add knowledge consistency protocol
 - PR #150 — Sync state after knowledge consistency protocol
 - PR #151 — Checkpoint full after knowledge consistency state sync
 - PR #153 — Add archive origin and parallel intake protocol
+- PR #154 — Sync state after archive origin protocol
+- PR #152 — Archive Khmelevskaya style optic and command correction closed unmerged
 
 ## Open PRs
 
-- PR #152 — Archive Khmelevskaya style optic and command correction
+None.
 
-PR #152 remains open and must not be treated as implemented.
+## Closed unmerged PRs that must not be treated as implemented
+
+- PR #141 — closed unmerged after coverage-scope fix.
+- PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status.
+- PR #152 — closed unmerged after PR #153 made Origin / Coverage applies to discipline mandatory.
 
 ## Repository architecture contract
 
@@ -46,8 +50,6 @@ PR #149 implemented:
 The protocol fixes source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state sync PR boundary, PR body consistency contract, red-flag phrases, observed drift patterns, follow-up consistency PR conditions, CI and Sync Check rules, future validator relationship and exit criteria.
 
 It does not implement Go validator, JS audit, branch protection, README, agent activation or runtime changes.
-
-PR #150 synchronized project-state, current-state, roadmap and restart-prompt after PR #149.
 
 ## Archive origin and parallel intake protocol
 
@@ -73,6 +75,19 @@ The protocol fixes:
 - index consolidation after parallel entry-only PRs is a separate PR.
 
 This protocol does not activate `conversation_archive_librarian`, does not add Go validator or JS audit, and does not change branch protection.
+
+## PR #152 closure
+
+PR #152 was closed without merge after PR #153 changed the archive-entry discipline.
+
+Reason:
+
+- PR #152 had a Coverage check but not the now-required Origin block.
+- PR #152 did not include `Coverage applies to`.
+- PR #152 updated the shared `knowledge/08_conversation_archive/index.md` directly under the old archive mode.
+- Its material is not lost, but if needed later it must be recreated under the PR #153 protocol.
+
+Do not treat PR #152 as implemented.
 
 ## Archive start command and coverage scope
 
@@ -107,8 +122,8 @@ npm run archive:audit
 Current archive status:
 
 - latest merged archive entry: `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-current-chat-coverage-gap.md`;
-- open archive PR: PR #152;
-- closed superseded/unmerged PRs: PR #133, PR #139, PR #141, PR #145.
+- open archive PR: none;
+- closed superseded/unmerged PRs: PR #133, PR #139, PR #141, PR #145, PR #152.
 
 ## Baseline CI and Sync Check
 
@@ -124,7 +139,7 @@ Sync Check workflow:
 
 Current rule: when both workflows apply, PR verification means both Sync Check and CI, not CI alone.
 
-PR #153 had CI and Sync Check green before merge.
+PR #154 had CI and Sync Check green before merge.
 
 ## Repository hygiene
 
@@ -165,7 +180,7 @@ Active optional workflow layers:
 - Current active mode is Agent Shipyard / Agent Queue.
 - Book Fast Track remains paused until separate Sergey decision.
 - Required PR verification layer currently includes Sync Check and CI, not CI alone.
-- PR #152 is open and must not be treated as implemented.
+- PR #152 was closed unmerged and must not be treated as implemented.
 - Parallel archive PRs must not update `index.md`.
 - Branch protection remains not configured until explicitly verified.
 - Proposal agents remain proposal only, not activated.
@@ -178,13 +193,13 @@ Active optional workflow layers:
 - Do not treat all uploaded project sources as fully audited.
 - Do not activate proposal agents without controlled activation and separate approval.
 - Do not create hard guardrails without separate approval and PR.
-- Do not treat PR #141, PR #145 or open PR #152 as implemented.
+- Do not treat PR #141, PR #145 or PR #152 as implemented.
 - Do not treat PR #146 as full-chat coverage.
 - Do not update `knowledge/08_conversation_archive/index.md` from parallel archive PRs.
 
 ## Next action
 
-Create `conversation_archive_librarian` as the next design PR after state sync for PR #153, while remembering that PR #152 is still open and not implemented.
+Create `conversation_archive_librarian` as the next design PR, now that PR #152 is closed unmerged and there are no open PRs.
 
 ## Chat writing state
 
