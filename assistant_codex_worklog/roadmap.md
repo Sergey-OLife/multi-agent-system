@@ -8,37 +8,47 @@
 
 ## Current milestone
 
-- currentVersion: v2.23
-- currentMilestone: Archive command and CI baseline recovery synced
-- lastMergedPr: PR #126 — Archive CI baseline and command recovery
+- currentVersion: v2.24
+- currentMilestone: Baseline CI workflow synced
+- lastMergedPr: PR #129 — Add baseline CI workflow
 
 ## Recent PR summary
 
-- PR #123 — Sync state after archive risks and capture refresh.
 - PR #124 — Add stable conversation archive command.
 - PR #125 — Add short command priority rule.
 - PR #126 — Archive CI baseline and command recovery.
+- PR #127 — Sync state after archive command and CI entry.
+- PR #129 — Add baseline CI workflow.
 
-## Что изменилось в v2.23
+## Что изменилось в v2.24
 
-PR #124 закрепил стабильные команды:
+PR #129 добавил baseline CI workflow:
 
-```text
-#архив чата
-#архив чата сохрани
-```
+- `.github/workflows/ci.yml`
 
-PR #125 закрепил правило:
+Workflow запускается:
 
-```text
-Команда не должна проигрывать шуму.
-Хвост не должен скрываться за выполнением новой команды.
-```
+- `pull_request` в `main`;
+- `workflow_dispatch`.
 
-PR #126 сохранил смысловой archive entry о двух линиях:
+CI V1 использует только существующие scripts:
 
-- baseline CI для TypeScript / JavaScript / Go;
-- recovery после сбоя распознавания короткой команды `#архив чата`.
+- `npm run typecheck`
+- `npm run typecheck:test`
+- `npm test`
+- `npm run test:core`
+- `npm run hygiene:audit`
+- `npm run archive:audit`
+
+Не добавлены:
+
+- ESLint;
+- Prettier;
+- golangci-lint;
+- SonarCloud / CodeClimate;
+- AI-review bots;
+- branch protection;
+- repository architecture contract.
 
 ## Conversation archive
 
@@ -48,6 +58,7 @@ Conversation archive остаётся отдельным human interaction archi
 
 - `knowledge/08_conversation_archive/conversation_capture_prompt.md`
 - `knowledge/08_conversation_archive/index.md`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
 - `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 
 Audit:
@@ -56,28 +67,27 @@ Audit:
 npm run archive:audit
 ```
 
+## Conversation archive commands
+
+```text
+#архив чата
+#архив чата сохрани
+```
+
+Rule:
+
+```text
+Команда не должна проигрывать шуму.
+Хвост не должен скрываться за выполнением новой команды.
+```
+
 ## Recommended next work item
 
-`Add baseline CI workflow`.
+Наблюдать baseline CI на следующем PR. После этого отдельно решить:
 
-CI V1 должен использовать только существующие scripts:
-
-- `npm run typecheck`
-- `npm run typecheck:test`
-- `npm test`
-- `npm run test:core`
-- `npm run hygiene:audit`
-- `npm run archive:audit`
-
-Не включать в этот PR ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots, branch protection или repository architecture contract.
-
-## Альтернативные следующие шаги
-
-- `Add repository architecture contract`.
-- `conversation_archive_librarian` proposal only.
-- `plotnikov_motor_agent`.
-- `one_strike_chapter_agent`.
-- `telegram_voice_editor`.
+- включать ли branch protection;
+- делать ли `Add repository architecture contract`;
+- готовить ли `conversation_archive_librarian` proposal.
 
 ## Standing rules
 
@@ -85,7 +95,7 @@ CI V1 должен использовать только существующи�
 - Active optional workflow layers остаются optional, not hard guardrails.
 - Branch cleanup остаётся `cleanup_needed`, not completed.
 - Repository architecture contract remains recommended, not approved implementation.
-- Baseline CI remains recommended until separate approval / PR.
+- Branch protection remains not configured until explicitly verified.
 - Book Fast Track остаётся на паузе.
 
 ## Короткие команды
@@ -103,5 +113,5 @@ CI V1 должен использовать только существующи�
 - Не считать source card прочитанным источником.
 - Не превращать conversation archive в raw transcript dump.
 - Не считать repository architecture contract approved.
-- Не считать baseline CI approved before separate approval / PR.
+- Не считать branch protection configured without verification.
 - Human-readable artifacts — на русском.
