@@ -1,0 +1,177 @@
+name: Registry Sync Request
+
+on:
+  push:
+    paths:
+      - ".github/registry-sync-requests/*.json"
+
+permissions:
+  contents: write
+
+jobs:
+  registry-sync-request:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Refuse main updates
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            echo "Registry sync requests must run on a branch, not main" >&2
+            exit 1
+          fi
+
+      - name: Checkout request branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Locate request file
+        id: request
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .github/registry-sync-requests
+          mapfile -t REQUEST_FILES < <(find .github/registry-sync-requests -maxdepth 1 -type f -name '*.json' | sort)
+
+          if [[ "${#REQUEST_FILES[@]}" -eq 0 ]]; then
+            echo "No registry sync request files found. Nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [[ "${#REQUEST_FILES[@]}" -ne 1 ]]; then
+            printf 'Expected exactly one registry sync request file, found %s\n' "${#REQUEST_FILES[@]}" >&2
+            printf '%s\n' "${REQUEST_FILES[@]}" >&2
+            exit 1
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "request_file=${REQUEST_FILES[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Parse request
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          REQUEST_FILE="${{ steps.request.outputs.request_file }}"
+
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+
+          const requestFile = process.env.REQUEST_FILE;
+          const envFile = process.env.GITHUB_ENV;
+          const raw = fs.readFileSync(requestFile, 'utf8');
+          const request = JSON.parse(raw);
+
+          const required = ['agent_id', 'status', 'next_action', 'proposal_path'];
+          for (const key of required) {
+            if (typeof request[key] !== 'string' || request[key].trim() === '') {
+              throw new Error(`${key} is required and must be a non-empty string`);
+            }
+          }
+
+          if (!/^[a-z0-9_]+$/.test(request.agent_id)) {
+            throw new Error('agent_id must use lowercase letters, digits, and underscores only');
+          }
+
+          if (!/^knowledge\/05_agent_memory\/agent_proposals\/[a-z0-9_]+\.md$/.test(request.proposal_path)) {
+            throw new Error('proposal_path must be under knowledge/05_agent_memory/agent_proposals/ and end with .md');
+          }
+
+          if (!['proposal', 'controlled_activation'].includes(request.status)) {
+            throw new Error('status must be proposal or controlled_activation');
+          }
+
+          if (!['controlled_activation', 'no_action', 'write_proposal'].includes(request.next_action)) {
+            throw new Error('next_action is not allowed for request-driven registry sync');
+          }
+
+          const lines = [
+            `REQUEST_FILE=${requestFile}`,
+            `AGENT_ID=${request.agent_id}`,
+            `TARGET_STATUS=${request.status}`,
+            `NEXT_ACTION=${request.next_action}`,
+            `PROPOSAL_PATH=${request.proposal_path}`,
+          ];
+          fs.appendFileSync(envFile, `${lines.join('\n')}\n`);
+          NODE
+        env:
+          REQUEST_FILE: ${{ steps.request.outputs.request_file }}
+
+      - name: Set up Node.js
+        if: steps.request.outputs.skip == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Set up Go
+        if: steps.request.outputs.skip == 'false'
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go-core/go.mod
+
+      - name: Verify proposal file exists
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "$PROPOSAL_PATH"
+
+      - name: Run registry sync dry-run
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run registry:sync -- \
+            --agent "$AGENT_ID" \
+            --status "$TARGET_STATUS" \
+            --next-action "$NEXT_ACTION" \
+            --proposal-path "$PROPOSAL_PATH" \
+            --dry-run
+
+      - name: Apply registry sync
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run registry:sync -- \
+            --agent "$AGENT_ID" \
+            --status "$TARGET_STATUS" \
+            --next-action "$NEXT_ACTION" \
+            --proposal-path "$PROPOSAL_PATH"
+
+      - name: Remove consumed request
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm "$REQUEST_FILE"
+
+      - name: Verify diff is limited to registry and consumed request
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHANGED_FILES="$(git diff --name-only | sort)"
+          echo "$CHANGED_FILES"
+
+          EXPECTED="$(printf '%s\n%s\n' "$REQUEST_FILE" "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md" | sort)"
+
+          if [[ "$CHANGED_FILES" != "$EXPECTED" ]]; then
+            echo "Request-driven registry sync may only change agent_container_registry.md and remove the consumed request" >&2
+            exit 1
+          fi
+
+      - name: Commit registry sync result
+        if: steps.request.outputs.skip == 'false'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md "$REQUEST_FILE"
+          git commit -m "Sync agent registry for $AGENT_ID from request"
+          git push origin HEAD:${GITHUB_REF_NAME}
