@@ -2,9 +2,11 @@
 
 Используй этот prompt в любом чате проекта, если нужно собрать смысловой архив разговора и подготовить его для GitHub.
 
-## Stable short command
+## Stable short commands
 
-Команда стабильна, а длинный prompt ниже может улучшаться в репозитории.
+Команды стабильны, а длинный prompt ниже может улучшаться в репозитории.
+
+### Draft mode
 
 ```text
 #архив чата
@@ -19,7 +21,7 @@ Do not write to GitHub by default.
 Show the markdown, proposed path and index row.
 ```
 
-Write mode:
+### Explicit save mode
 
 ```text
 #архив чата сохрани
@@ -29,11 +31,65 @@ Meaning:
 
 ```text
 Run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat.
-If GitHub tools are available, create a PR with archive entry and index update.
-If GitHub tools are unavailable, output ready-to-copy markdown.
+Use GitHub tools.
+Create a PR with archive entry and index update in the standard GitHub directory:
+`knowledge/08_conversation_archive/chat_archives/`.
+Do not save to memory, agent handoff, project memory or any non-standard path.
+If GitHub tools are unavailable, output ready-to-copy markdown and clearly say that GitHub write was not possible.
 ```
 
-Do not use `#checkpoint` for this. Checkpoints are technical state/worklog operations; this command is only for semantic conversation archive.
+### Start-and-save mode
+
+```text
+#архив_старт
+```
+
+Meaning:
+
+```text
+Universal write-first archive command for project chats.
+Immediately use GitHub tools.
+Fetch the latest `knowledge/08_conversation_archive/conversation_capture_prompt.md` from `main`.
+Check `knowledge/08_conversation_archive/index.md`, `knowledge/00_manifest/project-state.json`, current open PRs and relevant archive entries.
+Create a conversation archive entry from the current chat.
+Write it only to `knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md`.
+Update only `knowledge/08_conversation_archive/index.md`.
+Open a PR against `main`.
+Do not save to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or any other folder.
+Do not create technical checkpoint.
+Do not create or update agent memory.
+Do not commit raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs or source dumps.
+```
+
+If GitHub tools are unavailable for `#архив_старт`, do not silently save elsewhere. Say:
+
+```text
+GitHub write is unavailable in this chat. I cannot perform #архив_старт correctly. Here is ready-to-copy markdown for manual transfer.
+```
+
+Do not use `#checkpoint` for this. Checkpoints are technical state/worklog operations; these commands are only for semantic conversation archive.
+
+## GitHub write destination is mandatory
+
+For `#архив чата сохрани` and `#архив_старт`, the only valid write destination is:
+
+```text
+knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
+knowledge/08_conversation_archive/index.md
+```
+
+Invalid destinations:
+
+- ChatGPT memory;
+- project memory;
+- `knowledge/05_agent_memory/handoff/`;
+- `assistant_codex_worklog/`;
+- `knowledge/00_manifest/project-state.*`;
+- `knowledge/05_agent_memory/`;
+- arbitrary notes folders;
+- full transcript dumps.
+
+If the assistant cannot write to the valid GitHub destination, it must stop and say so. It must not choose another storage location.
 
 ## Short command priority and pending-work disclosure
 
@@ -50,15 +106,15 @@ Do not use `#checkpoint` for this. Checkpoints are technical state/worklog opera
 Если хвост не мешает команде, выполнить команду и коротко назвать хвост:
 
 ```text
-Распознал команду #архив чата.
+Распознал команду <command>.
 Есть незавершённый хвост: <что именно>.
-Он не блокирует смысловой архив. Выполняю команду в draft-режиме.
+Он не блокирует смысловой архив. Выполняю команду.
 ```
 
 Если хвост может создать дубль, конфликт или потерю approval-gate, не выполнять молча. Сначала спросить:
 
 ```text
-Распознал команду #архив чата.
+Распознал команду <command>.
 Есть незавершённый хвост: <что именно>.
 Новая команда может <создать дубль / перескочить approval-gate / смешать archive и checkpoint>.
 Что делаем сейчас: закрываем хвост или выполняем новую команду?
@@ -69,6 +125,7 @@ Do not use `#checkpoint` for this. Checkpoints are technical state/worklog opera
 ```text
 Команда не должна проигрывать шуму.
 Хвост не должен скрываться за выполнением новой команды.
+GitHub archive command must write only to the GitHub conversation archive directory.
 ```
 
 ```text
@@ -226,6 +283,13 @@ knowledge/08_conversation_archive/chat_archives/<YYYY-MM-DD>_<short-topic>.md
 |---|---|---|---|---|---|---|
 | YYYY-MM-DD | `<path>` | draft_archive_entry | YYYY-MM-DD | tag1, tag2 | no/path/PR | short open loop |
 
-Если доступен GitHub tool и Сергей прямо просит сохранить — создать PR с archive entry и index update.
-Если GitHub tool недоступен — вывести markdown, чтобы Сергей мог перенести его вручную.
+Для `#архив чата`:
+- вывести markdown, proposed path и index row;
+- не писать в GitHub.
+
+Для `#архив чата сохрани` и `#архив_старт`:
+- использовать GitHub tool;
+- создать PR с archive entry и index update;
+- писать только в `knowledge/08_conversation_archive/chat_archives/` и `knowledge/08_conversation_archive/index.md`;
+- если GitHub tool недоступен, не сохранять в другое место, а вывести ready-to-copy markdown и явно назвать блокер.
 ```

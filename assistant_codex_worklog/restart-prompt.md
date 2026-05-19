@@ -53,12 +53,20 @@ Baseline CI:
 - Does not include ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection.
 - Branch protection remains a separate future action item after CI is observed on a PR.
 
-Stable conversation archive command:
+Stable conversation archive commands:
 
 - `#архив чата` means: run the latest repository version of `knowledge/08_conversation_archive/conversation_capture_prompt.md` against the current chat; prepare draft archive entry only; do not write to GitHub by default.
-- `#архив чата сохрани` means: run the latest repository version of the same prompt and, if GitHub tools are available, create a PR with archive entry + index update.
-- The short command is stable across project chats; the long prompt behind it may evolve in the repository.
+- `#архив чата сохрани` means: use GitHub tools and create a PR with archive entry + index update in `knowledge/08_conversation_archive/chat_archives/` and `knowledge/08_conversation_archive/index.md` only.
+- `#архив_старт` means: write-first archive command; immediately use GitHub tools, create archive entry in `knowledge/08_conversation_archive/chat_archives/`, update `knowledge/08_conversation_archive/index.md`, and open a PR against `main`.
+- If GitHub tools are unavailable for `#архив_старт`, do not save elsewhere. Output ready-to-copy markdown and state that GitHub write was not possible.
+- Never save archive command output to ChatGPT memory, project memory, `knowledge/05_agent_memory/handoff/`, project-state, roadmap, working protocol or arbitrary folders.
+- The short commands are stable across project chats; the long prompt behind them may evolve in the repository.
 - Do not use `#checkpoint` for semantic archive capture.
+
+Mass capture quarantine:
+
+- Archive/handoff PRs created by mass-running commands across old chats are quarantine PRs until checked.
+- Reject/close entries that write outside `knowledge/08_conversation_archive/chat_archives/`, duplicate state/roadmap/protocol, contain stale project state, or look like project memory/handoff instead of conversation archive.
 
 Short command priority:
 
