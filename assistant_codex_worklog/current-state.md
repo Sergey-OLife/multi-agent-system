@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Дата фиксации: 2026-05-18
+Дата фиксации: 2026-05-19
 
 ## Текущая рабочая точка
 
@@ -12,54 +12,68 @@
 
 ## Последний смерженный PR
 
-- PR #121 — Archive repository contract risks
+- PR #126 — Archive CI baseline and command recovery
 - Статус: merged
-- Merge commit: `cc8e2f2216e518871b35c3aa48c91fdbc6bb4943`
-- Смысл: сохранён archive entry о repository contract / main protection risks после обновления capture prompt.
+- Merge commit: `01891be8fdb45240f79c00746a5dadef9172a6a2`
+- Смысл: сохранён archive entry по baseline CI для TypeScript / JavaScript / Go и recovery после сбоя распознавания короткой команды `#архив чата`.
 
 ## Недавние merged PRs
 
-- PR #120 — Sync state after anti-cliche editor proposal
-- PR #122 — Refresh conversation capture prompt and restart handoff
-- PR #121 — Archive repository contract risks
+- PR #123 — Sync state after archive risks and capture refresh
+- PR #124 — Add stable conversation archive command
+- PR #125 — Add short command priority rule
+- PR #126 — Archive CI baseline and command recovery
 
-## Что зафиксировал PR #122
+## Что зафиксировал PR #124
 
-Обновлён universal conversation capture prompt и restart handoff.
-
-Ключевая поправка:
+Добавлены стабильные команды conversation archive:
 
 ```text
-main — источник правды только для merged state.
-open PR ≠ implemented.
-draft PR ≠ ready state.
-approval-gate ≠ approval.
+#архив чата
+#архив чата сохрани
 ```
 
-При сборе archive entry теперь нужно проверять relevant open PRs, если текущий чат на них ссылается.
+Правила:
 
-`knowledge/08_conversation_archive/chat_archives/*.md` добавлен в restart prompt как обязательный слой восстановления контекста.
+- `#архив чата` выполняет актуальную версию `knowledge/08_conversation_archive/conversation_capture_prompt.md` по текущему чату.
+- По умолчанию команда готовит draft archive entry и не пишет в GitHub.
+- `#архив чата сохрани` создаёт PR с archive entry + index update, если GitHub tools доступны.
+- Длинный capture prompt может улучшаться в репозитории, короткая команда остаётся стабильной.
 
-## Что зафиксировал PR #121
+## Что зафиксировал PR #125
+
+Добавлено правило short command priority:
+
+```text
+Команда не должна проигрывать шуму.
+Хвост не должен скрываться за выполнением новой команды.
+```
+
+Если сообщение Сергея состоит из точной короткой команды, ChatGPT сначала распознаёт её и проверяет pending work.
+
+Если хвост не блокирует команду — назвать хвост и выполнить команду.
+
+Если хвост может создать дубль, конфликт, потерю approval-gate или смешение archive/checkpoint — сначала спросить Сергея, что делать.
+
+## Что зафиксировал PR #126
 
 Сохранён archive entry:
 
-- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 
 И обновлён:
 
 - `knowledge/08_conversation_archive/index.md`
 
-Заархивированы риски:
+Заархивировано:
 
-- нужен root `README.md` / repository architecture contract;
-- нужна source-of-truth map;
-- нужен boundary для `scripts/`, чтобы они не стали вторым неформальным core;
-- нужен отдельный action item для `main` branch protection;
-- нужны future knowledge/protocol consistency checks;
-- manual `workflow_dispatch` для registry sync можно позже заменить label-triggered workflow.
+- baseline CI для TypeScript / JavaScript / Go как promising next work item;
+- CI V1 должен использовать существующие scripts: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`;
+- ESLint / Prettier / golangci-lint / SonarCloud / CodeClimate / AI-review bots пока не вводить;
+- TS/Go/JS boundaries позже закрепить в repository architecture contract;
+- сбой `#архив чата` сохранён как failure pattern, уже закрытый правилом PR #125.
 
-Это archived risks и recommended work items, не implementation approval.
+Это archived idea / recommended work item, не implementation approval.
 
 ## Anti-cliche editor
 
@@ -101,6 +115,7 @@ Conversation archive активен как отдельный human interaction 
 - `knowledge/08_conversation_archive/index.md`
 - `knowledge/08_conversation_archive/chat_archives/`
 - `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 - `scripts/archive-audit.mjs`
 
 Audit:
@@ -158,12 +173,12 @@ Branch cleanup остаётся `cleanup_needed`, не `completed`.
 
 ## Следующий безопасный шаг
 
-Подготовить `Add repository architecture contract` PR, если Сергей не выберет сначала `conversation_archive_librarian` proposal.
+Подготовить `Add baseline CI workflow` PR, если Сергей не выберет сначала `repository architecture contract` или `conversation_archive_librarian` proposal.
 
 Важно:
 
 ```text
-repository architecture contract пока recommended work item, не approval.
+baseline CI пока recommended work item, не approval.
 ```
 
 ## Что временно не делаем
@@ -175,11 +190,14 @@ repository architecture contract пока recommended work item, не approval.
 - Не заявляем, что branch cleanup выполнен, пока ветки не удалены реально.
 - Не превращаем conversation archive в raw transcript dump.
 - Не считаем repository architecture contract уже утверждённым.
+- Не считаем baseline CI утверждённым до отдельного approval / PR.
 
 ## Короткие команды
 
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
 - `+++` — ближайшее уже grounded safe action, не обход approval-gates.
+- `#архив чата` — draft archive entry по текущему чату, без записи в GitHub.
+- `#архив чата сохрани` — создать PR с archive entry + index update, если tools доступны.
 - Если после `++` PR существенно изменён — нужен новый `++`.
 - Auto-merge не отменяет approval-gates.
