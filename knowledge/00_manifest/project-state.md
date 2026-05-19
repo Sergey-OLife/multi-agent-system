@@ -4,22 +4,22 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.28
-- lastCompletedVersion: v2.28
-- lastMergedPr: PR #149 — Add knowledge consistency protocol
-- lastMergeCommit: 16b5716e89769fae2c1b4f590afcc01574cabc19
-- currentMilestone: v2.28 Knowledge consistency protocol synced
+- currentVersion: v2.29
+- lastCompletedVersion: v2.29
+- lastMergedPr: PR #150 — Sync state after knowledge consistency protocol
+- lastMergeCommit: f4687cfc01de13d9a9dbf875d1f2d78a3a40027d
+- currentMilestone: v2.29 Checkpoint full after knowledge consistency state sync
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #143 — Archive corrective margin orchestra and consistency discussion
 - PR #144 — Sync state after archive coverage fixes
 - PR #146 — Archive corrective current chat coverage gap
 - PR #147 — Fix stale CI assertions
 - PR #148 — Sync state after CI fix
 - PR #149 — Add knowledge consistency protocol
+- PR #150 — Sync state after knowledge consistency protocol
 
 ## Repository architecture contract
 
@@ -81,6 +81,8 @@ This protocol does not implement:
 - README;
 - agent activation;
 - runtime changes.
+
+PR #150 synchronized project-state, current-state, roadmap and restart-prompt after PR #149.
 
 ## Archive start command and coverage scope
 
@@ -186,7 +188,7 @@ PR #147 fixed the stale assertions that kept baseline CI red:
 - `source-registry.test.ts` no longer expects source registry version `0.3`;
 - Go-core CLI supports the `--` command separator used by schema-pressure tests.
 
-CI and Sync Check were green on PR #149 head before merge.
+CI and Sync Check were green on PR #150 head before merge.
 
 Branch protection remains not configured until explicitly verified.
 
