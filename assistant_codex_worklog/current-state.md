@@ -12,18 +12,52 @@
 
 ## Последний смерженный PR
 
-- PR #136 — Add archive start GitHub write command
+- PR #143 — Archive corrective margin orchestra and consistency discussion
 - Статус: merged
-- Merge commit: `704c96453f98ff527a04c2ba98f3dba83a18daf0`
+- Merge commit: `a9353575780d56f31faa84e015998e1552647f53`
 
 ## Текущая версия
 
-- currentVersion: v2.25
-- currentMilestone: Architecture contract and archive-start command synced
+- currentVersion: v2.26
+- currentMilestone: Corrective archive coverage and cumulative archive-start synced
 
-## Что зафиксировал PR #131
+## Что зафиксировали PR #138 / #140 / #142 / #143
 
-Добавлен operational contract:
+PR #138 добавил thematic archive entry по красным флагам после repository architecture contract.
+
+PR #140 закрепил:
+
+```text
+#архив_старт is cumulative, not last-topic-only.
+```
+
+PR #142 закрепил:
+
+```text
+No full-chat marker = thematic coverage by default.
+```
+
+Archive entry нельзя считать full-chat checkpoint без явного:
+
+```text
+coverage_scope: full_chat
+```
+
+PR #143 добавил corrective archive entry:
+
+- `knowledge/08_conversation_archive/chat_archives/2026-05-19_corrective-margin-orchestra-and-consistency.md`
+
+Он покрывает известный накопительный хвост и прямо говорит:
+
+- Coverage scope: corrective;
+- previous checkpoint coverage scope: thematic;
+- full-chat marker present: no;
+- gap found: yes;
+- entry does not claim full-chat coverage.
+
+## Repository architecture contract
+
+Implemented in PR #131:
 
 - `knowledge/07_operations/repository_architecture_contract.md`
 
@@ -37,39 +71,6 @@
 - Redis / Postgres / P2P — future runtime layers only;
 - branch protection — not configured until explicitly verified.
 
-## Что зафиксировал PR #136
-
-Добавлена write-first команда:
-
-```text
-#архив_старт
-```
-
-Она должна:
-
-- сразу использовать GitHub tools;
-- писать archive entry только в `knowledge/08_conversation_archive/chat_archives/`;
-- обновлять только `knowledge/08_conversation_archive/index.md`;
-- открывать PR против `main`.
-
-Запрещено сохранять archive output в:
-
-- ChatGPT memory;
-- project memory;
-- `knowledge/05_agent_memory/handoff/`;
-- project-state;
-- roadmap;
-- working protocol;
-- arbitrary folders.
-
-Если GitHub write недоступен, не сохранять в другое место; вывести ready-to-copy markdown и назвать блокер.
-
-## Открытый approval-gate
-
-- PR #133 — Archive red flags after architecture contract
-- Статус: open
-- Не мержить без явного `++`.
-
 ## Conversation archive commands
 
 ```text
@@ -78,25 +79,23 @@
 #архив_старт
 ```
 
+`#архив_старт` must:
+
+- immediately use GitHub tools;
+- check main, index, open PRs and relevant archive entries;
+- open latest conversation_capture_prompt.md;
+- determine previous coverage_scope;
+- not treat thematic entries as full-chat checkpoints;
+- name coverage gap if no full-chat marker exists;
+- capture the cumulative semantic tail, not only the latest topic;
+- write only to `knowledge/08_conversation_archive/chat_archives/` and `knowledge/08_conversation_archive/index.md`.
+
 Short command priority:
 
 ```text
 Команда не должна проигрывать шуму.
 Хвост не должен скрываться за выполнением новой команды.
 ```
-
-## Mass capture quarantine
-
-Archive/handoff PRs из массового прогона старых чатов считаются quarantine PR до проверки.
-
-Закрывать без merge, если PR:
-
-- пишет вне `knowledge/08_conversation_archive/chat_archives/`;
-- обновляет не только `knowledge/08_conversation_archive/index.md`;
-- содержит raw transcript / raw books / private links;
-- тащит старый project-state как текущий;
-- пишет в `knowledge/05_agent_memory/handoff/`;
-- дублирует уже реализованные state/roadmap/protocol решения.
 
 ## Baseline CI
 
@@ -140,7 +139,7 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branch protection.
+Create `knowledge_consistency_protocol` PR, then `conversation_archive_librarian` proposal, then `critic_margin_agent` with internal `margin_orchestra` proposal.
 
 ## Что временно не делаем
 
@@ -148,7 +147,7 @@ Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branc
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не считаем branch protection настроенным без отдельной проверки.
-- Не мержим PR #133 без явного `++`.
+- Не внедряем runtime P2P / Redis / Postgres / Go validators без отдельного решения.
 
 ## Короткие команды
 
@@ -157,4 +156,4 @@ Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branc
 - `+++` — ближайшее grounded safe action, не обход approval-gates.
 - `#архив чата` — draft archive entry, без записи в GitHub.
 - `#архив чата сохрани` — PR с archive entry + index update.
-- `#архив_старт` — write-first GitHub archive PR.
+- `#архив_старт` — cumulative write-first GitHub archive PR.
