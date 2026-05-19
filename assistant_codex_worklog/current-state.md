@@ -12,57 +12,71 @@
 
 ## Последний смерженный PR
 
-- PR #129 — Add baseline CI workflow
+- PR #136 — Add archive start GitHub write command
 - Статус: merged
-- Merge commit: `7dd6e60cefb1aae72d4b55916c1c1a3652274634`
+- Merge commit: `704c96453f98ff527a04c2ba98f3dba83a18daf0`
 
 ## Текущая версия
 
-- currentVersion: v2.24
-- currentMilestone: Baseline CI workflow synced
+- currentVersion: v2.25
+- currentMilestone: Architecture contract and archive-start command synced
 
-## Что зафиксировал PR #129
+## Что зафиксировал PR #131
 
-Добавлен baseline CI workflow:
+Добавлен operational contract:
 
-- `.github/workflows/ci.yml`
+- `knowledge/07_operations/repository_architecture_contract.md`
 
-Workflow запускается:
+Зафиксировано:
 
-- на `pull_request` в `main`;
-- вручную через `workflow_dispatch`.
+- GitHub `main` — current source of truth;
+- Go — deterministic spine;
+- TypeScript / JavaScript — orchestration, CLI, scripts, agent-facing layer;
+- `scripts/` — edge automation, не второй core;
+- event envelope — future contract, не runtime implementation;
+- Redis / Postgres / P2P — future runtime layers only;
+- branch protection — not configured until explicitly verified.
 
-Проверки:
+## Что зафиксировал PR #136
 
-- `npm run typecheck`
-- `npm run typecheck:test`
-- `npm test`
-- `npm run test:core`
-- `npm run hygiene:audit`
-- `npm run archive:audit`
+Добавлена write-first команда:
 
-Не добавлялись:
+```text
+#архив_старт
+```
 
-- ESLint;
-- Prettier;
-- golangci-lint;
-- SonarCloud / CodeClimate;
-- AI-review bots;
-- branch protection;
-- repository architecture contract.
+Она должна:
 
-Branch protection остаётся отдельным будущим шагом после наблюдения CI на следующем PR.
+- сразу использовать GitHub tools;
+- писать archive entry только в `knowledge/08_conversation_archive/chat_archives/`;
+- обновлять только `knowledge/08_conversation_archive/index.md`;
+- открывать PR против `main`.
+
+Запрещено сохранять archive output в:
+
+- ChatGPT memory;
+- project memory;
+- `knowledge/05_agent_memory/handoff/`;
+- project-state;
+- roadmap;
+- working protocol;
+- arbitrary folders.
+
+Если GitHub write недоступен, не сохранять в другое место; вывести ready-to-copy markdown и назвать блокер.
+
+## Открытый approval-gate
+
+- PR #133 — Archive red flags after architecture contract
+- Статус: open
+- Не мержить без явного `++`.
 
 ## Conversation archive commands
 
 ```text
 #архив чата
 #архив чата сохрани
+#архив_старт
 ```
-
-`#архив чата` выполняет актуальную версию `knowledge/08_conversation_archive/conversation_capture_prompt.md` по текущему чату, готовит draft archive entry и не пишет в GitHub.
-
-`#архив чата сохрани` создаёт PR с archive entry + index update, если GitHub tools доступны.
 
 Short command priority:
 
@@ -71,33 +85,31 @@ Short command priority:
 Хвост не должен скрываться за выполнением новой команды.
 ```
 
-## Conversation archive
+## Mass capture quarantine
 
-Важные пути:
+Archive/handoff PRs из массового прогона старых чатов считаются quarantine PR до проверки.
 
-- `knowledge/08_conversation_archive/README.md`
-- `knowledge/08_conversation_archive/archive_governance_protocol.md`
-- `knowledge/08_conversation_archive/conversation_capture_prompt.md`
-- `knowledge/08_conversation_archive/index.md`
-- `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
-- `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
-- `scripts/archive-audit.mjs`
+Закрывать без merge, если PR:
 
-Audit:
+- пишет вне `knowledge/08_conversation_archive/chat_archives/`;
+- обновляет не только `knowledge/08_conversation_archive/index.md`;
+- содержит raw transcript / raw books / private links;
+- тащит старый project-state как текущий;
+- пишет в `knowledge/05_agent_memory/handoff/`;
+- дублирует уже реализованные state/roadmap/protocol решения.
 
-```bash
-npm run archive:audit
-```
+## Baseline CI
+
+- `.github/workflows/ci.yml` implemented.
+- Checks: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- Branch protection: not configured.
 
 ## Repository hygiene
 
 ```bash
 npm run hygiene:audit
+npm run archive:audit
 ```
-
-Ledger:
-
-- Issue #99 — Repository hygiene ledger.
 
 Branch cleanup остаётся `cleanup_needed`, не `completed`.
 
@@ -128,11 +140,7 @@ Active optional workflow layers:
 
 ## Следующий безопасный шаг
 
-Наблюдать baseline CI на следующем PR. После этого отдельно рассмотреть:
-
-- branch protection;
-- repository architecture contract;
-- `conversation_archive_librarian` proposal.
+Decide PR #133 or inspect CI on PR #131 / next PR, then consider README or branch protection.
 
 ## Что временно не делаем
 
@@ -140,12 +148,13 @@ Active optional workflow layers:
 - Не активируем proposal agents без controlled activation and separate approval.
 - Не коммитим raw books, PDF/EPUB/DJVU/MOBI, сырой текст источников, приватные Drive IDs/URLs.
 - Не считаем branch protection настроенным без отдельной проверки.
-- Не считаем repository architecture contract approved.
+- Не мержим PR #133 без явного `++`.
 
 ## Короткие команды
 
 - `+` — следующий безопасный шаг, не approval.
 - `++` — approval текущего понятного approval-gate.
 - `+++` — ближайшее grounded safe action, не обход approval-gates.
-- `#архив чата` — draft archive entry по текущему чату, без записи в GitHub.
-- `#архив чата сохрани` — создать PR с archive entry + index update, если tools доступны.
+- `#архив чата` — draft archive entry, без записи в GitHub.
+- `#архив чата сохрани` — PR с archive entry + index update.
+- `#архив_старт` — write-first GitHub archive PR.
