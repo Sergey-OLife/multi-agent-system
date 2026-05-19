@@ -1,0 +1,6 @@
+{
+  "agent_id": "conversation_archive_librarian",
+  "status": "proposal",
+  "next_action": "controlled_activation",
+  "proposal_path": "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md"
+}
