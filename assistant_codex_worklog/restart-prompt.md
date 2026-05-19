@@ -25,28 +25,30 @@ GitHub — источник правды. Сначала открой:
 16. knowledge/07_operations/repository_hygiene_protocol.md
 17. knowledge/07_operations/registry_mutation_protocol.md
 18. knowledge/07_operations/repository_architecture_contract.md
-19. knowledge/08_conversation_archive/README.md
-20. knowledge/08_conversation_archive/archive_governance_protocol.md
-21. knowledge/08_conversation_archive/conversation_capture_prompt.md
-22. knowledge/08_conversation_archive/index.md
-23. knowledge/08_conversation_archive/chat_archives/*.md
-24. assistant_codex_worklog/protocol_addenda/archive_start_command.md
-25. scripts/hygiene-audit.mjs
-26. scripts/archive-audit.mjs
-27. .github/workflows/registry-sync.yml
-28. .github/workflows/ci.yml
-29. go-core/cmd/multi-agent-core/main.go
-30. tests/baseline.test.ts
-31. tests/knowledge.test.ts
-32. tests/source-registry.test.ts
+19. knowledge/07_operations/knowledge_consistency_protocol.md
+20. knowledge/08_conversation_archive/README.md
+21. knowledge/08_conversation_archive/archive_governance_protocol.md
+22. knowledge/08_conversation_archive/conversation_capture_prompt.md
+23. knowledge/08_conversation_archive/index.md
+24. knowledge/08_conversation_archive/chat_archives/*.md
+25. assistant_codex_worklog/protocol_addenda/archive_start_command.md
+26. scripts/hygiene-audit.mjs
+27. scripts/archive-audit.mjs
+28. .github/workflows/registry-sync.yml
+29. .github/workflows/sync-check.yml
+30. .github/workflows/ci.yml
+31. go-core/cmd/multi-agent-core/main.go
+32. tests/baseline.test.ts
+33. tests/knowledge.test.ts
+34. tests/source-registry.test.ts
 
 Актуальное состояние:
 
-- currentVersion: v2.27.
-- lastCompletedVersion: v2.27.
-- lastMergedPr: PR #147 — Fix stale CI assertions.
-- lastMergeCommit: d8b47dfd8ffbba64f65494dfdc1cb7559f305816.
-- currentMilestone: v2.27 Current chat coverage gap recorded and baseline CI green.
+- currentVersion: v2.28.
+- lastCompletedVersion: v2.28.
+- lastMergedPr: PR #149 — Add knowledge consistency protocol.
+- lastMergeCommit: 16b5716e89769fae2c1b4f590afcc01574cabc19.
+- currentMilestone: v2.28 Knowledge consistency protocol synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 
@@ -61,18 +63,21 @@ Repository architecture contract:
 - Redis / Postgres / P2P are future runtime layers only.
 - Branch protection remains not configured until explicitly verified.
 
-Baseline CI:
+Knowledge consistency protocol:
 
-- `.github/workflows/ci.yml` implemented in PR #129.
-- Runs on `pull_request` to `main` and `workflow_dispatch`.
-- Uses Node.js 20 and Go version from `go-core/go.mod`.
-- Runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- `knowledge/07_operations/knowledge_consistency_protocol.md` implemented in PR #149.
+- It defines source-of-truth hierarchy, consistency classes C0-C5, merge aftermath checks, narrow state sync PR boundary, PR body consistency contract, red-flag phrases, observed drift patterns, follow-up consistency PR conditions, CI rules, future validator relationship and exit criteria.
+- Codex feedback was addressed before merge: required repository checks now include `npm run sync-check`.
+- This is an operational protocol, not an automated validator.
+
+Required repository verification layer:
+
+- Sync Check workflow: `.github/workflows/sync-check.yml`, command `npm run sync-check`.
+- CI workflow: `.github/workflows/ci.yml`.
+- CI runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
 - PR #147 fixed stale assertions and made CI + Sync Check green before merge.
-- Fixed stale failures:
-  - `baseline.test.ts` no longer expects `currentVersion: v2.1` in `project-state.md`.
-  - `knowledge.test.ts` no longer expects source registry version `0.3`.
-  - `source-registry.test.ts` no longer expects source registry version `0.3`.
-  - Go-core CLI supports the `--` command separator used by schema-pressure tests.
+- PR #149 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
 
 Stable conversation archive commands:
@@ -174,5 +179,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Choose exactly one design PR now that baseline CI is green: knowledge_consistency_protocol is recommended first, then conversation_archive_librarian, critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after separate verification.
+Create `conversation_archive_librarian` as the next design PR. Then choose critic_margin_agent + margin_orchestra, README / architecture map, or branch protection after separate verification.
 ```
