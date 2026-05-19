@@ -333,9 +333,10 @@ Do not create a follow-up consistency PR just because a PR was merged. Classify 
 
 CI is a verification layer.
 
-Current baseline CI checks:
+Current required repository checks:
 
 ```bash
+npm run sync-check
 npm run typecheck
 npm run typecheck:test
 npm test
@@ -344,9 +345,16 @@ npm run hygiene:audit
 npm run archive:audit
 ```
 
+Notes:
+
+- `npm run sync-check` is run by `.github/workflows/sync-check.yml`.
+- The remaining commands are run by `.github/workflows/ci.yml`.
+- When reporting PR readiness, mention both workflow statuses: Sync Check and CI.
+
 Rules:
 
 - Do not call CI green unless a workflow run was observed as green.
+- Do not call the PR verification layer green unless both Sync Check and CI were observed as green when both workflows apply.
 - Do not configure branch protection around a known-red CI.
 - Do not treat skipped checks as passed checks.
 - If a check fails on stale expectations, fix the stale expectations or document the debt before building more gates.
