@@ -4,23 +4,53 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.23
-- lastCompletedVersion: v2.23
-- lastMergedPr: PR #126 — Archive CI baseline and command recovery
-- lastMergeCommit: 01891be8fdb45240f79c00746a5dadef9172a6a2
-- currentMilestone: v2.23 Archive command and CI baseline recovery synced
+- currentVersion: v2.24
+- lastCompletedVersion: v2.24
+- lastMergedPr: PR #129 — Add baseline CI workflow
+- lastMergeCommit: 7dd6e60cefb1aae72d4b55916c1c1a3652274634
+- currentMilestone: v2.24 Baseline CI workflow synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #120 — Sync state after anti-cliche editor proposal
-- PR #122 — Refresh conversation capture prompt and restart handoff
-- PR #121 — Archive repository contract risks
 - PR #123 — Sync state after archive risks and capture refresh
 - PR #124 — Add stable conversation archive command
 - PR #125 — Add short command priority rule
 - PR #126 — Archive CI baseline and command recovery
+- PR #127 — Sync state after archive command and CI entry
+- PR #129 — Add baseline CI workflow
+
+## Baseline CI workflow
+
+PR #129 implemented baseline CI:
+
+- workflow path: `.github/workflows/ci.yml`
+- triggers: `pull_request` to `main`, `workflow_dispatch`
+- permissions: `contents: read`
+- Node.js: 20
+- Go version: from `go-core/go.mod`
+
+CI runs only existing scripts:
+
+- `npm run typecheck`
+- `npm run typecheck:test`
+- `npm test`
+- `npm run test:core`
+- `npm run hygiene:audit`
+- `npm run archive:audit`
+
+Not included:
+
+- ESLint
+- Prettier
+- golangci-lint
+- SonarCloud / CodeClimate
+- AI-review bots
+- branch protection
+- repository architecture contract
+
+Branch protection remains a separate future action item after CI is observed on a PR.
 
 ## Archive command and CI baseline recovery
 
@@ -46,24 +76,9 @@ PR #125 added short command priority:
 
 If a short command is exact, ChatGPT must recognize it before handling repeated attachments, auto-loaded sources, old non-blocking tails or adjacent tasks. If pending work can conflict with the command, ChatGPT must disclose the tail and ask before acting.
 
-PR #126 archived CI baseline and command recovery:
-
-- baseline CI for TypeScript / JavaScript / Go is a promising next work item, not yet approved implementation;
-- CI V1 should use existing scripts: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`;
-- ESLint / Prettier / golangci-lint / SonarCloud / CodeClimate / AI-review bots should not be introduced before baseline CI and repository contract are settled;
-- TS/Go/JS boundaries should later be fixed in repository architecture contract.
+PR #126 archived CI baseline and command recovery.
 
 ## Archive risks and capture refresh
-
-PR #122 refreshed the universal conversation capture prompt and restart handoff.
-
-Key rule:
-
-- `main` is the source of truth only for merged state;
-- open PR is not implemented;
-- draft PR is not ready state;
-- approval-gate is not approval;
-- archive capture must check relevant open PRs when the chat references them.
 
 PR #121 archived repository contract risks:
 
@@ -90,7 +105,7 @@ Its role is to classify and help rewrite cliche, commonplace, pseudo-depth, plas
 
 ## Registry mutation protocol
 
-`knowledge/07_operations/registry_mutation_protocol.md` is now active.
+`knowledge/07_operations/registry_mutation_protocol.md` is active.
 
 Rule:
 
@@ -155,30 +170,23 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Current active mode is Agent Shipyard / Agent Queue.
 - Shipyard Modernization stability gate is passed.
 - Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records.
+- Baseline CI workflow is implemented in `.github/workflows/ci.yml`.
+- Baseline CI runs on pull requests to `main` and `workflow_dispatch`.
+- Baseline CI uses Node.js 20 and Go version from `go-core/go.mod`.
+- Baseline CI runs existing scripts only: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- Branch protection remains a separate future action item after CI is observed on a PR.
 - Conversation archive is a separate human interaction archive, not project-state, approval-log or technical checkpoint.
-- Conversation archive is a significant context recovery layer and must be checked for forgotten ideas, contradictions, plans, interaction style and what-next questions.
 - Stable short command `#архив чата` runs the latest repository capture prompt in draft mode and does not write to GitHub by default.
 - Stable short command `#архив чата сохрани` creates a PR with archive entry plus index update when GitHub tools are available.
 - Short commands have priority over interface noise, but pending work must be disclosed before acting when it can conflict.
-- CI baseline is archived as a promising next work item, not yet approved implementation.
-- Recommended CI V1 should use existing scripts: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
 - Repository architecture contract is a recommended next step but not yet approved as an implementation PR.
 - Registry sync workflow is available as manual `workflow_dispatch` after PR #117.
 - Registry mutation protocol is active: registry changes must use deterministic tooling rather than manual full replacement when tooling is available.
 - `anti_cliche_editor` is a proposal only, not activated and not a hard guardrail.
-- `checkpoint_compressor_agent` is a proposal only, not activated.
-- `source_card_builder` is a proposal only, not activated.
-- `copyright_boundary_guard` is a proposal only, not activated and not a hard guardrail.
-- `svod_guard` is a proposal only, not activated and not a hard guardrail.
-- `contextologist_agent` is a proposal only, not activated and not a hard guardrail.
-- `sergey_interaction_profiler` is a proposal only, not activated and not a hard guardrail.
-- `author_style_memory_agent` is a proposal only, not activated and not a hard guardrail.
-- `banality_alarm_agent` is a proposal only, not activated and not a hard guardrail.
-- `review_depth_protocol` defines L1/L2/L3 agent review depth, semantic discipline for `+`, `++`, `+++`, and anti-overengineering doctrine.
 - Repository hygiene audit is available as `npm run hygiene:audit`.
 - Repository hygiene ledger is GitHub issue #99.
 - Branch hygiene cleanup remains cleanup_needed, not completed.
-- Next recommended work item is Add baseline CI workflow unless Sergey chooses repository architecture contract or conversation_archive_librarian first.
+- Next recommended work item is observe baseline CI on the next PR, then consider branch protection or repository architecture contract.
 - Before any `#checkpoint full` GitHub operation, ChatGPT must first send Sergey a compact restart prompt in chat.
 - Proposal agents remain proposal only, not activated.
 - Active optional workflow layers remain optional only, not hard guardrails.
@@ -191,13 +199,13 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - `project_state_synchronizer`: proposal only, not activated.
 - `checkpoint_compressor_agent`: proposal only, not activated.
 - `source_card_builder`: proposal only, not activated.
-- `copyright_boundary_guard`: proposal only, not activated.
-- `svod_guard`: proposal only, not activated.
-- `contextologist_agent`: proposal only, not activated.
-- `sergey_interaction_profiler`: proposal only, not activated.
-- `author_style_memory_agent`: proposal only, not activated.
-- `banality_alarm_agent`: proposal only, not activated.
-- `anti_cliche_editor`: proposal only, not activated.
+- `copyright_boundary_guard`: proposal only, not activated and not a hard guardrail.
+- `svod_guard`: proposal only, not activated and not a hard guardrail.
+- `contextologist_agent`: proposal only, not activated and not a hard guardrail.
+- `sergey_interaction_profiler`: proposal only, not activated and not a hard guardrail.
+- `author_style_memory_agent`: proposal only, not activated and not a hard guardrail.
+- `banality_alarm_agent`: proposal only, not activated and not a hard guardrail.
+- `anti_cliche_editor`: proposal only, not activated and not a hard guardrail.
 
 ## Active optional workflow layers
 
@@ -216,11 +224,11 @@ Branch cleanup remains `cleanup_needed`, not `completed`.
 - Do not pretend branch cleanup was completed while branches remain unresolved in issue #99.
 - Do not let conversation archive become a raw transcript dump.
 - Do not treat repository architecture contract recommendation as already approved.
-- Do not treat baseline CI as approved until Sergey explicitly approves the CI PR.
+- Do not treat branch protection as configured until it is explicitly verified.
 
 ## Next action
 
-Prepare `Add baseline CI workflow` PR unless Sergey chooses repository architecture contract or `conversation_archive_librarian` proposal first.
+Observe baseline CI on the next PR, then consider branch protection or repository architecture contract.
 
 ## Chat writing state
 

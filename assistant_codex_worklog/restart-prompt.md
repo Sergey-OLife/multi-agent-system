@@ -32,16 +32,26 @@ GitHub — источник правды. Сначала открой:
 23. scripts/hygiene-audit.mjs
 24. scripts/archive-audit.mjs
 25. .github/workflows/registry-sync.yml
+26. .github/workflows/ci.yml
 
 Актуальное состояние:
 
-- currentVersion: v2.23.
-- lastCompletedVersion: v2.23.
-- lastMergedPr: PR #126 — Archive CI baseline and command recovery.
-- lastMergeCommit: 01891be8fdb45240f79c00746a5dadef9172a6a2.
-- currentMilestone: v2.23 Archive command and CI baseline recovery synced.
+- currentVersion: v2.24.
+- lastCompletedVersion: v2.24.
+- lastMergedPr: PR #129 — Add baseline CI workflow.
+- lastMergeCommit: 7dd6e60cefb1aae72d4b55916c1c1a3652274634.
+- currentMilestone: v2.24 Baseline CI workflow synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
+
+Baseline CI:
+
+- `.github/workflows/ci.yml` implemented.
+- Runs on `pull_request` to `main` and `workflow_dispatch`.
+- Uses Node.js 20 and Go version from `go-core/go.mod`.
+- Runs: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
+- Does not include ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate, AI-review bots or branch protection.
+- Branch protection remains a separate future action item after CI is observed on a PR.
 
 Stable conversation archive command:
 
@@ -62,19 +72,13 @@ Conversation archive — важный слой восстановления ко
 
 - `knowledge/08_conversation_archive/` активен как отдельный human interaction archive.
 - Это не project-state, не approval-log и не technical checkpoint.
-- При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй не только state/roadmap, но и `knowledge/08_conversation_archive/index.md` + релевантные entries.
+- При вопросах Сергея о забытых идеях, противоречиях, планах, стиле взаимодействия или «что у нас дальше?» проверяй state/roadmap и `knowledge/08_conversation_archive/index.md` + relevant entries.
 - Relevant entries:
   - `knowledge/08_conversation_archive/chat_archives/2026-05-18_repository-contract-and-main-protection-risks.md`
   - `knowledge/08_conversation_archive/chat_archives/2026-05-19_ci-baseline-and-short-command-recovery.md`
 - Сохранять только conversation seeds, которые не отражены в architecture/state/roadmap/issue/proposal/registry.
 - Не сохранять full raw dialogs, raw books, PDF/EPUB/DJVU/MOBI, private Drive IDs/URLs.
 - Audit доступен: `npm run archive:audit`.
-
-CI baseline:
-
-- CI baseline is archived as promising next work item, not approved implementation.
-- Recommended CI V1: `typecheck`, `typecheck:test`, `test`, `test:core`, `hygiene:audit`, `archive:audit`.
-- Do not add ESLint, Prettier, golangci-lint, SonarCloud, CodeClimate or AI-review bots before baseline CI and repository contract are settled.
 
 Repository contract risks archived:
 
@@ -149,5 +153,5 @@ Active optional workflow layers:
 
 Следующий логичный шаг:
 
-Prepare `Add baseline CI workflow` PR unless Sergey chooses repository architecture contract or `conversation_archive_librarian` proposal first.
+Observe baseline CI on the next PR. Then consider branch protection or `Add repository architecture contract`.
 ```
