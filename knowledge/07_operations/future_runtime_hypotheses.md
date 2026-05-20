@@ -27,6 +27,16 @@ If runtime architecture is approved later, the target is coordinator-centered or
 - Important peer outcomes must be committed back to the central source of truth.
 - This is not P2P anarchy: local collaboration is allowed, global authority remains centralized.
 
+## Second-eyes topology hypothesis
+
+Second-eyes work mirrors the same pattern at a smaller scale.
+
+- `critic_margin_agent` is the coordinator voice.
+- It selects or requests a focused instrument when needed.
+- `margin_orchestra` is the design for the instrument set.
+- Local instruments can sharpen a check, but they do not become project-level authority.
+- Final action still returns to GitHub discipline and Sergey approval gates.
+
 ## Hypotheses held for later
 
 - Redis / Postgres shared state.
