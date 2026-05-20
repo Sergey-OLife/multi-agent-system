@@ -10,21 +10,21 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #181 — Add architecture map
+- PR #183 — Add maturity checklist
 - Status: merged
-- Merge commit: `2c657ae6b46e06db06bd4ab02f7ae9ac50855495`
+- Merge commit: `3169839e6365d52609b7c5a8d36db304a6a753b1`
 
 ## Current version
 
-- currentVersion: v2.39
-- currentMilestone: Architecture map and documentation topology synced
+- currentVersion: v2.40
+- currentMilestone: Maturity checklist synced
 
-## PR #181 result
+## PR #183 result
 
-PR #181 added README and documentation/vision/runtime map files.
+PR #183 added maturity checklist and updated README, vision intake map, and roadmap.
 
-Status: map only. Runtime, routes, validators, hard guardrails, branch protection and book work were not changed.
+Status: diagnostic map only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
 
 ## Next safe step
 
-Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, knowledge/protocol consistency check, or return to Book Fast Track by separate decision.
+Choose knowledge/protocol consistency check, controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or return to Book Fast Track by separate decision.
