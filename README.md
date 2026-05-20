@@ -20,7 +20,11 @@ In plain language: this repo is the map of the ship. Chat can discuss, LLM can d
 - LLM reasons and drafts.
 - Sergey approves.
 
-This is not a P2P runtime. Global state and accepted decisions are centralized in GitHub.
+Current architecture is GitHub-centered, not runtime-centered.
+
+Future runtime target, if separately approved: coordinator-centered orchestration with a task-local full-mesh module bus.
+
+Meaning: coordinator owns workflow, routing, assignment, policy and final status. Modules may consult each other through task-local channels, but they do not mutate global state directly. Important peer outcomes must be committed back to the central source of truth.
 
 Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, message broker, branch protection, validators and hard guardrails require separate decisions before implementation.
 
