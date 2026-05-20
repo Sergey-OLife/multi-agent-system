@@ -12,25 +12,25 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #183 — Add maturity checklist
+- PR #186 — Record post-185 focus
 - Status: merged
-- Merge commit: `3169839e6365d52609b7c5a8d36db304a6a753b1`
+- Merge commit: `6db86f3b331334b555f32294487db780a7ee806e`
 
 ## Current version
 
-- currentVersion: v2.40
-- currentMilestone: Maturity checklist synced
+- currentVersion: v2.41
+- currentMilestone: Post-185 focus synced
 
-## PR #183 result
+## PR #186 result
 
-PR #183 added maturity checklist and updated README, vision intake map, and roadmap.
+PR #186 recorded post-185 focus and the next approved three-stage sequence:
 
-Status: diagnostic map only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
+1. controlled activation for `conversation_archive_librarian` manual discipline;
+2. hardening `margin_orchestra`;
+3. branch protection verification.
 
-## Current consistency check
-
-A manual knowledge / protocol consistency check is being recorded in `knowledge/07_operations/knowledge_protocol_consistency_check_2026-05-20.md`.
+Status: focus/state only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
 
 ## Next safe step
 
-Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or deeper knowledge/protocol consistency automation proposal.
+Start controlled activation for `conversation_archive_librarian` manual discipline.

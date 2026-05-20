@@ -6,39 +6,34 @@
 
 Book work remains paused.
 
+Book Fast Track is ignored for immediate next work until separate Sergey decision.
+
 ## Current milestone
 
-- currentVersion: v2.40
-- currentMilestone: Maturity checklist synced
-- lastMergedPr: PR #183 — Add maturity checklist
-- lastMergeCommit: `3169839e6365d52609b7c5a8d36db304a6a753b1`
+- currentVersion: v2.41
+- currentMilestone: Post-185 focus synced
+- lastMergedPr: PR #186 — Record post-185 focus
+- lastMergeCommit: `6db86f3b331334b555f32294487db780a7ee806e`
 
 ## Recent PR summary
 
-- PR #181 — Add architecture map.
-- PR #182 — Sync state after PR #181.
 - PR #183 — Add maturity checklist.
 - PR #184 — Sync state after PR #183.
+- PR #185 — Record consistency check.
+- PR #186 — Record post-185 focus.
 
 ## Status
 
-Maturity checklist is present in main.
+Post-185 focus and next approved three-stage sequence are recorded.
 
-Status: diagnostic map only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
+Status: focus/state only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
 
-## Current diagnostic pressure
+## Approved next sequence
 
-The next maturity risk is not missing more infrastructure. The risk is documentation, protocols, state and checks drifting apart while the project keeps serving its own machinery.
-
-## Immediate focus
-
-Per Sergey instruction, ignore Book Fast Track for now. Book remains paused until a separate later decision.
+1. controlled activation for `conversation_archive_librarian` manual discipline;
+2. hardening `margin_orchestra`;
+3. branch protection verification.
 
 ## Recommended next work item
 
-Choose one:
-
-1. controlled activation for `conversation_archive_librarian` manual discipline;
-2. harden `margin_orchestra` into protocol / tooling;
-3. branch protection verification;
-4. deeper knowledge / protocol consistency automation proposal.
+Start controlled activation for `conversation_archive_librarian` manual discipline.

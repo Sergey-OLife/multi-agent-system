@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.40",
-  "lastCompletedVersion": "v2.40",
-  "lastMergedPr": "PR #183 — Add maturity checklist",
-  "lastMergeCommit": "3169839e6365d52609b7c5a8d36db304a6a753b1",
-  "currentMilestone": "v2.40 Maturity checklist synced",
+  "currentVersion": "v2.41",
+  "lastCompletedVersion": "v2.41",
+  "lastMergedPr": "PR #186 — Record post-185 focus",
+  "lastMergeCommit": "6db86f3b331334b555f32294487db780a7ee806e",
+  "currentMilestone": "v2.41 Post-185 focus synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -40,16 +40,16 @@
     "v2.37 Critic manual preflight discipline synced",
     "v2.38 Archive librarian activation mechanics synced",
     "v2.39 Architecture map and documentation topology synced",
-    "v2.40 Maturity checklist synced"
+    "v2.40 Maturity checklist synced",
+    "v2.41 Post-185 focus synced"
   ],
   "recentPrs": [
-    "PR #178 — Sync state after PR #177",
-    "PR #179 — Add archive librarian activation mechanics",
-    "PR #180 — Sync state after PR #179",
     "PR #181 — Add architecture map",
     "PR #182 — Sync state after PR #181",
     "PR #183 — Add maturity checklist",
-    "PR #184 — Sync state after PR #183"
+    "PR #184 — Sync state after PR #183",
+    "PR #185 — Record consistency check",
+    "PR #186 — Record post-185 focus"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -66,6 +66,9 @@
     "current active mode is Agent Shipyard / Agent Queue",
     "PR #181 added README architecture map, documentation topology, vision intake map, and future runtime hypotheses map",
     "PR #183 added maturity checklist as diagnostic map only",
+    "PR #185 recorded manual knowledge/protocol consistency check",
+    "PR #186 recorded post-185 focus and next approved three-stage sequence",
+    "Approved next sequence: controlled activation for conversation_archive_librarian, hardening margin_orchestra, branch protection verification",
     "README now includes project purpose, current workflow, maturity checklist link and compact agent status table",
     "Current diagnostic pressure is preventing docs, protocols, state and checks from drifting apart while the project serves its own machinery",
     "Maturity mechanisms must prevent a real failure, not only decorate the system",
@@ -97,7 +100,7 @@
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or deeper knowledge/protocol consistency automation proposal.",
+  "nextAction": "Start controlled activation for conversation_archive_librarian manual discipline; then harden margin_orchestra; then verify branch protection.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -135,16 +138,16 @@
     "manualDisciplines": [
       "critic_margin_agent manual preflight"
     ],
-    "recommendedNextWorkItem": "Choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or deeper knowledge/protocol consistency automation proposal.",
+    "recommendedNextWorkItem": "Start controlled activation for conversation_archive_librarian manual discipline; then harden margin_orchestra; then verify branch protection.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "proposal plus activation mechanics; not activated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #183 — Add maturity checklist",
-      "latest_green_head": "6b04b4fa253cd70b008f905e6ec09b0ab8e12f5f",
-      "latest_green_merge_commit": "3169839e6365d52609b7c5a8d36db304a6a753b1",
+      "latest_green_pr": "PR #186 — Record post-185 focus",
+      "latest_green_head": "46aec654a5ea3d8ba4bc200c2d0e8b4968c518a4",
+      "latest_green_merge_commit": "6db86f3b331334b555f32294487db780a7ee806e",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
