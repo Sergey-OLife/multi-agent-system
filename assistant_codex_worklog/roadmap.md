@@ -10,30 +10,29 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.41
-- currentMilestone: Post-185 focus synced
-- lastMergedPr: PR #186 — Record post-185 focus
-- lastMergeCommit: `6db86f3b331334b555f32294487db780a7ee806e`
+- currentVersion: v2.42
+- currentMilestone: Archive librarian manual discipline active
+- lastMergedPr: PR #188 — Activate archive librarian manual discipline
+- lastMergeCommit: `9882209dfdc1697b182ea288c633969f12c9ae12`
 
 ## Recent PR summary
 
-- PR #183 — Add maturity checklist.
-- PR #184 — Sync state after PR #183.
 - PR #185 — Record consistency check.
 - PR #186 — Record post-185 focus.
+- PR #187 — Sync state after PR #186.
+- PR #188 — Activate archive librarian manual discipline.
 
 ## Status
 
-Post-185 focus and next approved three-stage sequence are recorded.
+`conversation_archive_librarian` is active as manual archive discipline only.
 
-Status: focus/state only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
+Status: manual discipline only. Routes, validators, hard guardrails, branch protection, runtime, registry status change, project-state sync, ChatGPT memory use and book work were not changed.
 
 ## Approved next sequence
 
-1. controlled activation for `conversation_archive_librarian` manual discipline;
-2. hardening `margin_orchestra`;
-3. branch protection verification.
+1. hardening `margin_orchestra`;
+2. branch protection verification.
 
 ## Recommended next work item
 
-Start controlled activation for `conversation_archive_librarian` manual discipline.
+Harden `margin_orchestra` into protocol / tooling.
