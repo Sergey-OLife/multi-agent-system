@@ -17,6 +17,16 @@ Current architecture:
 - TypeScript / JavaScript connect orchestration and scripts.
 - Scripts are edge automation, not a second core.
 
+## Target topology hypothesis
+
+If runtime architecture is approved later, the target is coordinator-centered orchestration with a task-local full-mesh module bus.
+
+- Coordinator owns workflow, assignment, routing, policy and final status.
+- Modules may communicate with each other through task-local channels.
+- Modules do not directly mutate global state.
+- Important peer outcomes must be committed back to the central source of truth.
+- This is not P2P anarchy: local collaboration is allowed, global authority remains centralized.
+
 ## Hypotheses held for later
 
 - Redis / Postgres shared state.
