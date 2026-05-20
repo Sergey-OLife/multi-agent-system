@@ -1,5 +1,7 @@
 # Project State
 
+This file is the human-readable mirror of `knowledge/00_manifest/project-state.json`.
+
 ## Current version
 
 - currentVersion: v2.35
