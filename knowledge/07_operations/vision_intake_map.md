@@ -58,6 +58,8 @@ Vision notes and archive entries can inspire decisions, but they are not impleme
 
 ### Future hypothesis
 
+See `knowledge/07_operations/future_runtime_hypotheses.md`.
+
 - Redis / Postgres shared state.
 - Event log and snapshots.
 - P2P task-local collaboration.
