@@ -46,9 +46,9 @@ Second-eyes work follows a similar coordinator-plus-instruments pattern.
 
 - `critic_margin_agent` is the coordinator voice for margin checks.
 - It may call for a specific second-eyes instrument when the risk needs it.
-- `margin_orchestra` is the design for that instrument set.
+- `margin_orchestra` is the manual second-eyes preflight pattern for margin points.
 - The critic does not become approval authority.
-- The orchestra does not become a separate runtime or committee.
+- The orchestra does not become a separate runtime, committee, validator, hard guardrail, branch protection, or registry status change.
 
 Currently this is manual protocol discipline only. It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
 
@@ -58,7 +58,7 @@ Currently this is manual protocol discipline only. It is not routing, validator,
 |---|---|---|
 | `critic_margin_agent` | active manual preflight discipline | not routed, not validator, not hard guardrail |
 | `conversation_archive_librarian` | active manual archive discipline | not routed, not validator, not hard guardrail |
-| `margin_orchestra` | design-only coordination pattern | not runtime, not committee, not authority |
+| `margin_orchestra` | active manual second-eyes preflight discipline | not routed, not runtime, not committee, not authority |
 | other registry agents | proposal/container unless merged PR says otherwise | not active by default |
 
 ## Archive rules
@@ -119,6 +119,6 @@ When applicable, PR readiness means both Sync Check and CI.
 
 Choose one:
 
-1. harden `margin_orchestra` into protocol / tooling;
-2. branch protection verification;
+1. branch protection verification;
+2. `margin_orchestra` tooling proposal, only after separate Sergey decision;
 3. deeper knowledge / protocol consistency automation proposal.
