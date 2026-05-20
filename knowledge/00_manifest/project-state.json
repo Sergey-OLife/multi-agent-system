@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.43",
-  "lastCompletedVersion": "v2.43",
-  "lastMergedPr": "PR #190 — Archive restart command and ship metaphor",
-  "lastMergeCommit": "ca0cbf1921d0953722c8867b8414f22eb709ca93",
-  "currentMilestone": "v2.43 Checkpoint full after restart archive",
+  "currentVersion": "v2.44",
+  "lastCompletedVersion": "v2.44",
+  "lastMergedPr": "PR #192 — Add command protocol",
+  "lastMergeCommit": "3a1e99ba38ec1268195cdffe2a718772bdb65659",
+  "currentMilestone": "v2.44 Restart command protocol synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -43,15 +43,16 @@
     "v2.40 Maturity checklist synced",
     "v2.41 Post-185 focus synced",
     "v2.42 Archive librarian manual discipline active",
-    "v2.43 Checkpoint full after restart archive"
+    "v2.43 Checkpoint full after restart archive",
+    "v2.44 Restart command protocol synced"
   ],
   "recentPrs": [
-    "PR #185 — Record consistency check",
-    "PR #186 — Record post-185 focus",
     "PR #187 — Sync state after PR #186",
     "PR #188 — Activate archive librarian manual discipline",
     "PR #189 — Sync state after PR #188",
-    "PR #190 — Archive restart command and ship metaphor"
+    "PR #190 — Archive restart command and ship metaphor",
+    "PR #191 — Update state",
+    "PR #192 — Add command protocol"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -68,9 +69,9 @@
     "current active mode is Agent Shipyard / Agent Queue",
     "PR #188 activated conversation_archive_librarian as manual archive discipline only",
     "PR #190 archived the restart command plan, tool blocker, parked branches, and ship metaphor correction",
+    "PR #192 implemented restart command protocol as GitHub-source-of-truth continuation command",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
-    "Next recovery path: add restart command protocol by a narrow PR, then update project instructions separately",
-    "After restart-command path, resume hardening margin_orchestra and then branch protection verification",
+    "After restart-command path, update project instructions separately, then resume hardening margin_orchestra and then branch protection verification",
     "The project ship carries cargo and passengers: reusable architecture and livable book worlds",
     "README is entrance map, not dumping ground",
     "Current architecture is GitHub-centered, not runtime-centered",
@@ -79,6 +80,7 @@
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "critic_margin_agent is not routed, not a hard guardrail and not an automated validator",
     "conversation_archive_librarian is not routed, not a validator, not a hard guardrail, not runtime, and not ChatGPT memory use",
+    "restart command does not write to GitHub, create PRs, merge PRs, update memory, start Book Fast Track, treat open PRs as implemented, or skip approval gates",
     "margin_orchestra remains design-only",
     "required PR verification layer includes Sync Check and CI when both apply",
     "branch protection remains not configured until explicitly verified",
@@ -90,7 +92,6 @@
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat conversation_archive_librarian manual discipline as route, validator, hard guardrail, branch protection, runtime, registry status change, project-state sync, ChatGPT memory use or book work",
-    "Do not treat restart command plan as implemented until a protocol PR is merged",
     "Do not treat project instruction update as done until Sergey separately applies it",
     "Do not treat parked branches record-restart-command-plan or record-pr-tool-blocker as implemented",
     "Do not treat maturity checklist as runtime, validators, observability, security tooling or branch protection",
@@ -101,7 +102,7 @@
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Add restart command protocol by a narrow PR; then update project instructions separately; then harden margin_orchestra; then verify branch protection.",
+  "nextAction": "Update project instructions for restart command separately; then harden margin_orchestra; then verify branch protection.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -111,6 +112,7 @@
     "assistant_codex_worklog/current-state.md",
     "assistant_codex_worklog/roadmap.md",
     "assistant_codex_worklog/restart-prompt.md",
+    "assistant_codex_worklog/protocol_addenda/restart_command.md",
     "assistant_codex_worklog/protocol_addenda/conversation_archive_librarian_manual_discipline.md",
     "assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md",
     "knowledge/08_conversation_archive/chat_archives/2026-05-20_restart-command-and-ship-metaphor.md",
@@ -144,16 +146,16 @@
       "critic_margin_agent manual preflight",
       "conversation_archive_librarian manual archive discipline"
     ],
-    "recommendedNextWorkItem": "Add restart command protocol by a narrow PR; then update project instructions separately; then harden margin_orchestra; then verify branch protection.",
+    "recommendedNextWorkItem": "Update project instructions for restart command separately; then harden margin_orchestra; then verify branch protection.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #190 — Archive restart command and ship metaphor",
-      "latest_green_head": "d7010c349cc180a9c5feb17eff5215aaa03f03b5",
-      "latest_green_merge_commit": "ca0cbf1921d0953722c8867b8414f22eb709ca93",
+      "latest_green_pr": "PR #192 — Add command protocol",
+      "latest_green_head": "8f84800eee24a8d7f3ad57dfeb3a192d472f03f2",
+      "latest_green_merge_commit": "3a1e99ba38ec1268195cdffe2a718772bdb65659",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
