@@ -49,7 +49,7 @@ Ruleset name: `Protect main`
 
 Observed result after creation: Rulesets list shows `Protect main`, active, targeting 1 branch.
 
-Configured intent from the reviewed setup screen:
+Configured result from the reviewed setup screen after correcting required check contexts:
 
 ```yaml
 ruleset:
@@ -61,8 +61,10 @@ ruleset:
   required_approvals: 0
   require_status_checks_to_pass: true
   required_status_checks:
-    - "CI"
-    - "Sync Check"
+    - "TypeScript / JavaScript / Go checks"
+    - "sync-check"
+  require_branches_to_be_up_to_date_before_merging: false
+  do_not_require_status_checks_on_creation: false
   block_force_pushes: true
   restrict_deletions: true
   require_linear_history: false
@@ -85,8 +87,8 @@ branch_protection_verification:
   protected: true
   required_checks: true
   required_checks_list:
-    - "CI"
-    - "Sync Check"
+    - "TypeScript / JavaScript / Go checks"
+    - "sync-check"
   required_review: false
   required_approvals: 0
   force_push_blocked_by_rule: true
@@ -100,7 +102,7 @@ branch_protection_verification:
 
 This is minimal protection, not a full production security setup.
 
-It enforces the project's existing PR workflow by requiring pull requests and the expected checks before merge.
+It enforces the project's existing PR workflow by requiring pull requests and the exact GitHub check contexts before merge.
 
 It does not turn manual disciplines into validators or hard guardrails.
 
