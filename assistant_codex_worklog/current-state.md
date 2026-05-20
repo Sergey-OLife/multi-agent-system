@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Date: 2026-05-19
+Date: 2026-05-20
 
 ## Working point
 
@@ -10,14 +10,14 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #167 — Add second-eyes preflight design
+- PR #170 — Sync registry for critic margin agent
 - Status: merged
-- Merge commit: `22bee4a9f5e0cacfa130fd41992651c780c9a578`
+- Merge commit: `a32983b15e8c53533f852cdb5787ae2ed614e28b`
 
 ## Current version
 
-- currentVersion: v2.33
-- currentMilestone: Second-eyes preflight design synced
+- currentVersion: v2.34
+- currentMilestone: Critic margin agent registry synced
 
 ## Open approval gates
 
@@ -30,45 +30,33 @@ No open PRs before this state sync PR.
 - PR #152
 - PR #162
 - PR #164
+- PR #169
 
-## PR #167 result
+## PR #170 result
 
-PR #167 added:
+PR #170 recorded `critic_margin_agent` in `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md`.
 
-- `knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md`
-- `knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md`
+Status: proposal only; not activated; not routed; not a hard guardrail; not an automated validator.
 
-Status:
-
-- proposal/design only;
-- `critic_margin_agent` is not activated;
-- `critic_margin_agent` is not in registry yet;
-- `margin_orchestra` is not a hard guardrail;
-- no validator or route change was added.
+The registry update was produced by request-driven Go-backed registry sync.
 
 ## Second-eyes preflight layer
 
-The second-eyes layer is a preflight design for margin points where hidden assumptions can break an otherwise correct step.
+`critic_margin_agent` exists as proposal and registry entry.
 
-Use it before:
+`margin_orchestra` remains design-only after PR #167.
 
-- registry sync;
-- agent activation;
-- route changes;
-- archive PR creation;
-- state sync;
-- workflow changes;
-- checkpoint full;
-- branch protection changes.
+Use the second-eyes design before margin-point operations.
 
 ## Registry sync request flow
 
 - PR #160 added `.github/workflows/registry-sync-request.yml`.
 - PR #161 added pull_request fallback trigger.
 - PR #163 extended `go-core/cmd/agent-registry-sync/main.go` and tests with `--insert-if-missing`.
-- PR #165 used the flow successfully for `conversation_archive_librarian`.
+- PR #165 used the flow for `conversation_archive_librarian`.
+- PR #170 used the flow for `critic_margin_agent`.
 
-Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 was closed unmerged for that reason.
+Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 and PR #169 were closed unmerged for that reason.
 
 ## CI and Sync Check
 
@@ -76,7 +64,7 @@ Known caveat: bot-generated registry commits may not trigger final-head CI autom
 - `.github/workflows/sync-check.yml` exists.
 - PR readiness means both Sync Check and CI when both apply.
 - Branch protection is not configured.
-- PR #167 had green CI and Sync Check before merge.
+- PR #170 had green CI and Sync Check before merge.
 
 ## Standing agent status
 
@@ -98,13 +86,6 @@ Proposal-only agents include:
 - `conversation_archive_librarian`
 - `critic_margin_agent`
 
-Active optional workflow layers:
-
-- `socratic_lantern_agent`
-- `ethical_persuasion_guard`
-- `cbt_thought_check_agent`
-- `source_intake_auditor`
-
 ## Next safe step
 
-Choose the next Agent Shipyard item: registry sync for `critic_margin_agent`, controlled activation proposal for `conversation_archive_librarian`, hardening `margin_orchestra` into protocol/tooling, README / architecture map, or branch protection verification.
+Choose the next Agent Shipyard item: controlled activation proposal for `conversation_archive_librarian`, controlled activation proposal for `critic_margin_agent`, hardening `margin_orchestra`, README / architecture map, or branch protection verification.

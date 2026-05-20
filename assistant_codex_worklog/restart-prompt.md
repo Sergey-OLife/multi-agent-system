@@ -40,32 +40,30 @@ GitHub — источник правды. Сначала открой:
 
 Актуальное состояние:
 
-- currentVersion: v2.33.
-- lastCompletedVersion: v2.33.
-- lastMergedPr: PR #167 — Add second-eyes preflight design.
-- lastMergeCommit: 22bee4a9f5e0cacfa130fd41992651c780c9a578.
-- currentMilestone: v2.33 Second-eyes preflight design synced.
+- currentVersion: v2.34.
+- lastCompletedVersion: v2.34.
+- lastMergedPr: PR #170 — Sync registry for critic margin agent.
+- lastMergeCommit: a32983b15e8c53533f852cdb5787ae2ed614e28b.
+- currentMilestone: v2.34 Critic margin agent registry synced.
 - Текущий режим: Agent Shipyard / Agent Queue.
 - Книга на паузе до отдельного решения Сергея.
 - Open PRs: none before this state sync PR.
-- Closed unmerged PRs that must not be treated as implemented: PR #141, PR #145, PR #152, PR #162, PR #164.
+- Closed unmerged PRs that must not be treated as implemented: PR #141, PR #145, PR #152, PR #162, PR #164, PR #169.
 
-PR #167 status:
+PR #170 status:
 
-- Added `knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md`.
-- Added `knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md`.
-- Status: proposal/design only.
-- `critic_margin_agent` is not activated.
-- `critic_margin_agent` is not routed.
-- `critic_margin_agent` is not recorded in `agent_container_registry.md` yet.
-- `margin_orchestra` is not a hard guardrail and not an automated validator.
+- Recorded `critic_margin_agent` in `knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md` as proposal-only.
+- Registry update was produced through request-driven Go-backed registry sync.
+- Agent activation was not done.
+- Routes were not changed.
+- Hard guardrail / validator was not created.
+- Runtime and book content were not changed.
 
 Second-eyes preflight:
 
-- `critic_margin_agent` is the proposed second-eyes voice.
-- `margin_orchestra` is the coordination pattern deciding when second-eyes preflight is required.
+- `critic_margin_agent` is now proposal + registry entry, but not activated.
+- `margin_orchestra` is design-only, not hard guardrail and not automated validator.
 - Use as design reference before registry sync, activation, route changes, archive PR creation, state sync, workflow changes, checkpoint full and branch protection changes.
-- This was added after the registry-sync incident where the old path assumed the target agent already existed in registry.
 
 Registry sync request flow:
 
@@ -73,8 +71,9 @@ Registry sync request flow:
 - PR #161 added pull_request fallback trigger.
 - PR #163 extended `go-core/cmd/agent-registry-sync/main.go` and tests with `--insert-if-missing`.
 - The Go command can mutate existing agent blocks and can insert missing proposal/container blocks only with explicit `--insert-if-missing` and required fields.
-- PR #165 used this flow successfully for `conversation_archive_librarian`.
-- Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 was closed unmerged for that reason.
+- PR #165 used this flow for `conversation_archive_librarian`.
+- PR #170 used this flow for `critic_margin_agent`.
+- Known caveat: bot-generated registry commits may not trigger final-head CI automatically. PR #164 and PR #169 were closed unmerged for that reason.
 
 Conversation archive librarian:
 
@@ -87,16 +86,8 @@ Required repository verification layer:
 - Sync Check workflow: `.github/workflows/sync-check.yml`, command `npm run sync-check`.
 - CI workflow: `.github/workflows/ci.yml`.
 - When both workflows apply, PR readiness means Sync Check + CI, not CI alone.
-- PR #167 had CI + Sync Check green before merge.
+- PR #170 had CI + Sync Check green before merge.
 - Branch protection remains not configured until explicitly verified and separately approved.
-
-Stable conversation archive commands:
-
-- `#архив чата` means draft archive entry, no GitHub write by default.
-- `#архив чата сохрани` means create an archive PR according to current archive mode.
-- `#архив_старт` means write-first cumulative archive command according to current archive mode.
-- New archive entries must include Origin block + Coverage check.
-- No archive entry may be treated as full-chat coverage unless it explicitly says `coverage_scope: full_chat` and names target in `Coverage applies to`.
 
 Operational protocol:
 
@@ -119,5 +110,5 @@ Rules:
 
 Следующий логичный шаг:
 
-Choose the next Agent Shipyard item: registry sync for `critic_margin_agent`, controlled activation proposal for `conversation_archive_librarian`, hardening `margin_orchestra` into protocol/tooling, README / architecture map, or branch protection verification.
+Choose the next Agent Shipyard item: controlled activation proposal for `conversation_archive_librarian`, controlled activation proposal for `critic_margin_agent`, hardening `margin_orchestra` into protocol/tooling, README / architecture map, or branch protection verification.
 ```
