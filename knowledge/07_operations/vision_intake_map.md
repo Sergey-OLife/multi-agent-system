@@ -17,6 +17,7 @@ Vision notes and archive entries can inspire decisions, but they are not impleme
 - Architecture: TS/JS plus Go division of responsibility.
 - TS/JS + Go challenges: contracts, runtime boundaries, observability, deployment complexity.
 - Archive reasoning: coverage scope, full-chat marker, implemented_elsewhere, corrective archive, parallel intake, consolidation.
+- Maturity pressure: project value versus infrastructure self-service, explicit workflow, role boundaries, negative tests, observability, reproducibility, security, evaluation and maintenance signals.
 
 ## Archive-derived rules
 
@@ -36,7 +37,8 @@ Vision notes and archive entries can inspire decisions, but they are not impleme
 - Sync Check and CI are required PR verification when applicable.
 - `critic_margin_agent` is active as manual preflight discipline only.
 - Archive coverage discipline exists in conversation archive protocols.
-- README / architecture map is being introduced by PR #181.
+- README / architecture map is introduced by PR #181.
+- State/worklog/restart were synced after PR #181 by PR #182.
 
 ### Accepted principle
 
@@ -47,13 +49,14 @@ Vision notes and archive entries can inspire decisions, but they are not impleme
 - README is the entry map, not a raw dump.
 - Architecture contract is a load-bearing wall; README is the entrance map.
 - A future runtime idea is not current architecture.
+- A maturity mechanism must prevent a real failure, not only decorate the system.
 
 ### Open loop
 
+- Knowledge / protocol consistency check.
 - Controlled activation for `conversation_archive_librarian` manual discipline.
 - Hardening `margin_orchestra` into protocol or tooling.
 - Branch protection verification.
-- Knowledge / protocol consistency check.
 - Vision notes need source cards or a fuller intake ledger if they become project decisions.
 
 ### Future hypothesis
@@ -65,6 +68,7 @@ See `knowledge/07_operations/future_runtime_hypotheses.md`.
 - P2P task-local collaboration.
 - Idempotency and race-control infrastructure.
 - Shared schema for TS and Go.
+- Runtime observability, security, reproducibility and evaluation suite.
 
 ### Do not implement without separate decision
 
@@ -84,6 +88,7 @@ See `knowledge/07_operations/future_runtime_hypotheses.md`.
 - CI exists, but it is not a lock on the door until branch protection is configured.
 - Protocol without checks becomes folklore.
 - Future project bugs are less about code bugs and more about source-of-truth drift.
+- The system must not keep checking its reflections instead of reality.
 
 ## Rule
 

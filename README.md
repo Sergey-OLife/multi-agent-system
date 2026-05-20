@@ -4,13 +4,24 @@ This repository is the GitHub source of truth for the book/project operating sys
 
 In plain language: this repo is the map of the ship. Chat can discuss, LLM can draft, but accepted project state must be visible in GitHub.
 
+## What this project solves
+
+This project keeps book work, agent design, decisions, archives, state and technical boundaries from being lost in chats or confused with implemented reality.
+
 ## Start here
 
 - Current state: `knowledge/00_manifest/project-state.json` and `knowledge/00_manifest/project-state.md`.
 - Resume files: `assistant_codex_worklog/current-state.md`, `assistant_codex_worklog/roadmap.md`, `assistant_codex_worklog/restart-prompt.md`.
 - Documentation topology: `knowledge/07_operations/documentation_topology.md`.
+- Maturity checklist: `knowledge/07_operations/maturity_checklist.md`.
 - Current mode: Agent Shipyard / Agent Queue.
 - Book work is paused until a separate Sergey decision.
+
+## Current workflow
+
+User command -> read GitHub source of truth -> apply manual preflight at margin points -> create PR -> wait for CI and Sync Check -> Sergey approval -> merge -> state sync when needed.
+
+Open PR is not implemented. Merged PR without state sync may still need a separate state-sync PR.
 
 ## Architecture in one page
 
@@ -41,16 +52,14 @@ Second-eyes work follows a similar coordinator-plus-instruments pattern.
 
 Currently this is manual protocol discipline only. It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
 
-## What is active now
+## Agent status
 
-- `critic_margin_agent` manual preflight is active only as a protocol discipline before high-risk GitHub margin operations.
-- It checks operation class, hidden assumption, hidden risk, approval gate, and next safe step.
-
-## What is not active yet
-
-- `conversation_archive_librarian`: proposal plus activation mechanics, not activated.
-- `margin_orchestra`: design-only coordination pattern for second-eyes voices and critic tools; not a separate authority and not runtime.
-- Other agents in registry remain proposal/container unless a merged PR says otherwise.
+| Agent / pattern | Current status | Boundary |
+|---|---|---|
+| `critic_margin_agent` | active manual preflight discipline | not routed, not validator, not hard guardrail |
+| `conversation_archive_librarian` | proposal plus activation mechanics | not activated |
+| `margin_orchestra` | design-only coordination pattern | not runtime, not committee, not authority |
+| other registry agents | proposal/container unless merged PR says otherwise | not active by default |
 
 ## Archive rules
 
@@ -109,7 +118,8 @@ When applicable, PR readiness means both Sync Check and CI.
 
 Choose one:
 
-1. controlled activation for `conversation_archive_librarian` manual discipline;
-2. harden `margin_orchestra` into protocol / tooling;
-3. branch protection verification;
-4. return to Book Fast Track by separate decision.
+1. knowledge / protocol consistency check;
+2. controlled activation for `conversation_archive_librarian` manual discipline;
+3. harden `margin_orchestra` into protocol / tooling;
+4. branch protection verification;
+5. return to Book Fast Track by separate decision.
