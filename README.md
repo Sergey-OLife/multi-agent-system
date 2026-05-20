@@ -30,7 +30,7 @@ It checks the operation class, hidden assumption, hidden risk, approval gate, an
 
 It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
 
-`margin_orchestra` is design-only. It is a coordination idea for second-eyes voices, not an automatic agent runtime.
+`margin_orchestra` is design-only. It is the critic's possible coordination pattern for second-eyes voices and local instruments, not a separate authority and not an automatic agent runtime.
 
 ## Archive layer
 
@@ -42,11 +42,23 @@ Archive commands must preserve meaning, not raw transcript dumps:
 - `#архив чата сохрани` prepares a GitHub PR for archive entry and index update when allowed.
 - `#архив_старт` is cumulative write-first archive work and must check coverage, previous checkpoint, full-chat marker, and gaps.
 
+No archive entry is a full-chat checkpoint unless it explicitly says `coverage_scope: full_chat`.
+
+If several archive PRs can conflict through `knowledge/08_conversation_archive/index.md`, use parallel intake or later consolidation instead of forcing a messy merge.
+
 `conversation_archive_librarian` has proposal and activation mechanics, but is not activated yet.
+
+## Implemented elsewhere / cleanup
+
+When an idea is implemented, do not leave it floating as a live wish.
+
+Mark where it landed: PR, file, protocol, agent, roadmap item, rejected note, or superseded note.
+
+This is how the project avoids repeating the same idea as if it were still unresolved.
 
 ## Vision intake
 
-Some project decisions came from Sergey vision notes: future bugs, architecture risks, idea lists, red flags, shared storage thoughts, and TS/JS + Go challenges.
+Some project decisions came from Sergey vision notes and archive entries: future bugs, architecture risks, idea lists, red flags, shared storage thoughts, TS/JS + Go challenges, and corrective archive notes.
 
 Those notes are not automatically implemented architecture. They must be classified as:
 
