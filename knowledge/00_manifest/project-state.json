@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.33",
-  "lastCompletedVersion": "v2.33",
-  "lastMergedPr": "PR #167 — Add second-eyes preflight design",
-  "lastMergeCommit": "22bee4a9f5e0cacfa130fd41992651c780c9a578",
-  "currentMilestone": "v2.33 Second-eyes preflight design synced",
+  "currentVersion": "v2.34",
+  "lastCompletedVersion": "v2.34",
+  "lastMergedPr": "PR #170 — Sync registry for critic margin agent",
+  "lastMergeCommit": "a32983b15e8c53533f852cdb5787ae2ed614e28b",
+  "currentMilestone": "v2.34 Critic margin agent registry synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -33,15 +33,16 @@
     "v2.30 Archive origin and parallel intake protocol synced",
     "v2.31 Conversation archive librarian proposal synced",
     "v2.32 Registry sync request flow and conversation archive librarian registry synced",
-    "v2.33 Second-eyes preflight design synced"
+    "v2.33 Second-eyes preflight design synced",
+    "v2.34 Critic margin agent registry synced"
   ],
   "recentPrs": [
-    "PR #160 — Add registry sync request workflow",
-    "PR #161 — Fix registry sync request trigger",
-    "PR #163 — Extend registry sync to insert missing agents",
     "PR #165 — Sync registry for conversation archive librarian",
     "PR #166 — Sync state after PR #165",
-    "PR #167 — Add second-eyes preflight design"
+    "PR #167 — Add second-eyes preflight design",
+    "PR #168 — Sync state after PR #167",
+    "PR #169 — closed unmerged; superseded by PR #170",
+    "PR #170 — Sync registry for critic margin agent"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -49,22 +50,19 @@
     "PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status",
     "PR #152 — closed unmerged after PR #153 made Origin / Coverage applies to discipline mandatory",
     "PR #162 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet",
-    "PR #164 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check"
+    "PR #164 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check",
+    "PR #169 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check; superseded by PR #170"
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
     "Book Fast Track remains paused until separate Sergey decision",
     "current active mode is Agent Shipyard / Agent Queue",
     "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
-    "repository architecture contract is implemented in knowledge/07_operations/repository_architecture_contract.md",
-    "knowledge consistency protocol is implemented in knowledge/07_operations/knowledge_consistency_protocol.md",
-    "archive origin protocol is implemented in knowledge/08_conversation_archive/archive_origin_protocol.md",
     "PR #158 added conversation_archive_librarian as proposal only, not activation",
     "PR #165 recorded conversation_archive_librarian in agent_container_registry as proposal-only through request-driven Go-backed registry sync",
     "PR #167 added critic_margin_agent proposal and margin_orchestra design as proposal/design only, not activation and not a hard guardrail",
-    "critic_margin_agent proposal is implemented at knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
-    "margin_orchestra design is implemented at knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
-    "critic_margin_agent is not activated, not routed and not recorded in agent_container_registry yet",
+    "PR #170 recorded critic_margin_agent in agent_container_registry as proposal-only through request-driven Go-backed registry sync",
+    "critic_margin_agent is not activated, not routed, and is not a hard guardrail",
     "margin_orchestra is a design pattern, not an automated validator and not branch protection",
     "registry sync request workflow is implemented in .github/workflows/registry-sync-request.yml",
     "agent-registry-sync can mutate existing agent blocks and can insert missing proposal/container blocks only with explicit --insert-if-missing and required fields",
@@ -80,21 +78,18 @@
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not activate proposal agents without controlled activation and separate approval",
     "Do not activate conversation_archive_librarian without controlled activation and separate approval",
-    "Do not activate critic_margin_agent without registry sync, controlled activation and separate approval",
+    "Do not activate critic_margin_agent without controlled activation and separate approval",
     "Do not treat margin_orchestra as hard guardrail or automated validator",
     "Do not create hard guardrails without separate approval and PR",
     "Do not treat branch protection as configured until it is explicitly verified",
-    "Do not treat PR #141, PR #145, PR #152, PR #162 or PR #164 as implemented",
-    "Do not update knowledge/08_conversation_archive/index.md from parallel archive PRs"
+    "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Decide the next Agent Shipyard item: registry sync for critic_margin_agent, controlled activation proposal for conversation_archive_librarian, hardening margin_orchestra into protocol/tooling, README / architecture map, or branch protection verification.",
+  "nextAction": "Decide the next Agent Shipyard item: controlled activation proposal for conversation_archive_librarian, controlled activation proposal for critic_margin_agent, hardening margin_orchestra into protocol/tooling, README / architecture map, or branch protection verification.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
     "assistant_codex_worklog/current-state.md",
     "assistant_codex_worklog/roadmap.md",
-    "assistant_codex_worklog/decision-log.md",
-    "assistant_codex_worklog/working-protocol.md",
     "assistant_codex_worklog/restart-prompt.md",
     "knowledge/00_manifest/project-state.json",
     "knowledge/00_manifest/project-state.md",
@@ -113,23 +108,7 @@
     "go-core/cmd/agent-registry-sync/main.go",
     "go-core/cmd/agent-registry-sync/main_test.go"
   ],
-  "chatWritingState": {
-    "chapterId": "chapter_00_preface",
-    "mode": "Book Fast Track paused",
-    "readerTitle": "От автора: перед входом",
-    "acceptedOpening": "Эта книга не обещает чудо — она даёт карту. И начинается с отказа.",
-    "acceptedFinanceLine": "Она не обещает, что вы быстро решите финансовые вопросы.",
-    "acceptedTrustLine": "В деле, где один человек приглашает другого идти рядом, доверие становится рабочей зоной ответственности.",
-    "currentRule": "Введение — морковка: сначала человек, узнавание и доверие; инструменты, термины и кухня MLM позже.",
-    "nextChatMove": "Only after Sergey returns to the book: continue from the first boundary of разумное сообщество toward the promise of the book."
-  },
   "agentState": {
-    "optionalWorkflowLayersActive": [
-      "socratic_lantern_agent",
-      "ethical_persuasion_guard",
-      "cbt_thought_check_agent",
-      "source_intake_auditor"
-    ],
     "proposalAgents": [
       "workflow_conductor_agent",
       "agent_registry_librarian",
@@ -147,39 +126,23 @@
       "conversation_archive_librarian",
       "critic_margin_agent"
     ],
-    "recommendedNextAgent": "critic_margin_agent registry sync or conversation_archive_librarian controlled activation",
-    "recommendedNextWorkItem": "Choose whether to record critic_margin_agent in registry as proposal-only or activate conversation_archive_librarian next.",
-    "repositoryHygiene": {
-      "status": "audit_mechanism_active_cleanup_needed",
-      "audit_command": "npm run hygiene:audit",
-      "ledger_issue": "#99 Repository hygiene ledger",
-      "branch_cleanup": "cleanup_needed_not_completed"
-    },
-    "conversationArchive": {
-      "status": "origin_protocol_synced_librarian_proposal_and_registry_synced",
-      "librarian_activation": "not_active",
-      "audit_command": "npm run archive:audit",
-      "current_chat_full_checkpoint": "missing; PR #146 records this as a coverage gap, not as full-chat coverage"
-    },
+    "recommendedNextWorkItem": "Choose between controlled activation for conversation_archive_librarian, controlled activation for critic_margin_agent, or hardening margin_orchestra into protocol/tooling.",
     "registrySync": {
       "request_workflow": ".github/workflows/registry-sync-request.yml",
       "go_command": "go-core/cmd/agent-registry-sync/main.go",
       "insert_if_missing": "available after PR #163",
-      "latest_registry_sync": "PR #165 — conversation_archive_librarian recorded as proposal-only",
+      "latest_registry_sync": "PR #170 — critic_margin_agent recorded as proposal-only",
       "known_caveat": "bot-generated registry commits may not trigger final-head CI automatically; if so, reopen / recreate PR on final head or add future workflow fallback"
     },
     "secondEyes": {
-      "critic_margin_agent": "proposal only after PR #167; not activated and not in registry yet",
-      "margin_orchestra": "design only after PR #167; not hard guardrail",
-      "recommended_use": "preflight before registry sync, activation, route changes, archive PR, state sync and workflow changes"
+      "critic_margin_agent": "proposal and registry entry after PR #170; not activated",
+      "margin_orchestra": "design only after PR #167; not hard guardrail"
     },
     "ciBaseline": {
-      "status": "green_after_pr_167_before_state_sync_after_pr_167",
-      "workflow": ".github/workflows/ci.yml",
-      "sync_check_workflow": ".github/workflows/sync-check.yml",
-      "latest_green_pr": "PR #167 — Add second-eyes preflight design",
-      "latest_green_head": "353c361d6ea9bb32b34ee951b8a8a326207879e5",
-      "latest_green_merge_commit": "22bee4a9f5e0cacfa130fd41992651c780c9a578",
+      "status": "green_after_pr_170_before_state_sync_after_pr_170",
+      "latest_green_pr": "PR #170 — Sync registry for critic margin agent",
+      "latest_green_head": "796f99c6c3de3b6fc038cc20fdc918d8b5f854ed",
+      "latest_green_merge_commit": "a32983b15e8c53533f852cdb5787ae2ed614e28b",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
