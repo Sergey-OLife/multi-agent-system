@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.45",
-  "lastCompletedVersion": "v2.45",
-  "lastMergedPr": "PR #194 — Harden margin orchestra manual preflight",
-  "lastMergeCommit": "37b2dee986407f2be705e30ffb12ad790f9ef381",
-  "currentMilestone": "v2.45 Margin orchestra manual preflight discipline synced",
+  "currentVersion": "v2.46",
+  "lastCompletedVersion": "v2.46",
+  "lastMergedPr": "PR #196 — Clarify external boundary and maturity status",
+  "lastMergeCommit": "946221e46dc4103b1d284533ea916fb74cdb04b1",
+  "currentMilestone": "v2.46 External assessment boundary synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -45,20 +45,20 @@
     "v2.42 Archive librarian manual discipline active",
     "v2.43 Checkpoint full after restart archive",
     "v2.44 Restart command protocol synced",
-    "v2.45 Margin orchestra manual preflight discipline synced"
+    "v2.45 Margin orchestra manual preflight discipline synced",
+    "v2.46 External assessment boundary synced"
   ],
   "recentPrs": [
-    "PR #189 — Sync state after PR #188",
-    "PR #190 — Archive restart command and ship metaphor",
-    "PR #191 — Update state",
     "PR #192 — Add command protocol",
-    "PR #194 — Harden margin orchestra manual preflight"
+    "PR #194 — Harden margin orchestra manual preflight",
+    "PR #195 — Sync state after margin orchestra manual preflight",
+    "PR #196 — Clarify external boundary and maturity status"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
     "PR #141 — closed unmerged after coverage-scope fix",
     "PR #145 — closed unmerged because it was thematic and did not verify full-chat checkpoint status",
-    "PR #152 — closed unmerged after PR #153 made Origin / Coverage applies to discipline mandatory",
+    "PR #152 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet",
     "PR #162 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet",
     "PR #164 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check",
     "PR #169 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check; superseded by PR #170"
@@ -69,11 +69,13 @@
     "current active mode is Agent Shipyard / Agent Queue",
     "PR #192 implemented restart command protocol as GitHub-source-of-truth continuation command",
     "PR #194 activated margin_orchestra as manual second-eyes preflight discipline only",
+    "PR #196 clarified external project boundary and recorded external assessment conclusions without runtime implementation",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
+    "The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform",
     "required PR verification layer includes Sync Check and CI when both apply",
-    "branch protection remains not configured until explicitly verified",
+    "branch protection remains not configured until explicitly verified and recorded",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
     "+++ means the nearest grounded safe action and does not bypass approval-gates"
@@ -83,10 +85,11 @@
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat manual disciplines as routes, validators, hard guardrails, branch protection, runtime, registry status changes, or project-state sync",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators or hard guardrails without separate approval",
-    "Do not treat branch protection as configured until verified",
+    "Do not treat branch protection as configured until verified and recorded",
+    "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Verify branch protection.",
+  "nextAction": "Verify branch protection and record the result.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -97,6 +100,8 @@
     "assistant_codex_worklog/roadmap.md",
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/working-protocol.md",
+    "knowledge/07_operations/external_assessment_notes_2026-05-20.md",
+    "knowledge/07_operations/maturity_checklist.md",
     "assistant_codex_worklog/protocol_addenda/restart_command.md",
     "assistant_codex_worklog/protocol_addenda/conversation_archive_librarian_manual_discipline.md",
     "assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md",
@@ -116,18 +121,18 @@
       "conversation_archive_librarian manual archive discipline",
       "margin_orchestra manual second-eyes preflight"
     ],
-    "recommendedNextWorkItem": "Verify branch protection.",
+    "recommendedNextWorkItem": "Verify branch protection and record the result.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "active manual second-eyes preflight discipline only; not routed and not automated"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #194 — Harden margin orchestra manual preflight",
-      "latest_green_head": "5dcb09a6d2eb48cb3b6cfcaf9ad9eaacb9b38f84",
-      "latest_green_merge_commit": "37b2dee986407f2be705e30ffb12ad790f9ef381",
+      "latest_green_pr": "PR #196 — Clarify external boundary and maturity status",
+      "latest_green_head": "7f024f9895939886bd699dafa11c16269556c719",
+      "latest_green_merge_commit": "946221e46dc4103b1d284533ea916fb74cdb04b1",
       "required_workflow_statuses": ["Sync Check", "CI"],
-      "branchProtection": "not_configured"
+      "branchProtection": "unverified"
     }
   }
 }
