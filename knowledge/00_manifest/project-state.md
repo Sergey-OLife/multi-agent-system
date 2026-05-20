@@ -44,7 +44,7 @@ Active manual discipline:
 
 - GitHub `main` is the source of truth for merged project state.
 - Current active mode is Agent Shipyard / Agent Queue.
-- Book Fast Track remains paused until separate Sergey decision.
+- Book Fast Track remains paused and is ignored for immediate next work until separate Sergey decision.
 - PR #183 added maturity checklist as diagnostic map only.
 - `conversation_archive_librarian` is not activated, routed, a validator, a hard guardrail, or ChatGPT memory use.
 - `critic_margin_agent` remains active only as manual protocol discipline.
@@ -53,6 +53,7 @@ Active manual discipline:
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
+- Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
 - Do not activate `conversation_archive_librarian` without controlled activation and separate approval.
 - Do not treat maturity checklist as runtime, validators, observability, security tooling or branch protection.
 - Do not treat architecture map or future runtime hypotheses as runtime implementation.
@@ -63,4 +64,4 @@ Active manual discipline:
 
 ## Next action
 
-Choose knowledge/protocol consistency check, controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or return to Book Fast Track by separate decision.
+Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or deeper knowledge/protocol consistency automation proposal.
