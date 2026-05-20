@@ -3,13 +3,13 @@
 ```text
 Продолжаем проект Sergey-OLife/multi-agent-system.
 
-GitHub main — источник правды. Сначала открой README, current-state, roadmap, project-state, documentation_topology, maturity_checklist, vision_intake_map, future_runtime_hypotheses, registry, working-protocol, protocol_addenda, margin_orchestra, margin_orchestra_manual_preflight, critic_margin_agent proposal, conversation_archive_librarian proposal, conversation_archive_librarian_manual_discipline, restart_command, CI and Sync Check workflows.
+GitHub main — источник правды. Сначала открой README, current-state, roadmap, project-state, documentation_topology, maturity_checklist, external_assessment_notes_2026-05-20, vision_intake_map, future_runtime_hypotheses, registry, working-protocol, protocol_addenda, margin_orchestra, margin_orchestra_manual_preflight, critic_margin_agent proposal, conversation_archive_librarian proposal, conversation_archive_librarian_manual_discipline, restart_command, CI and Sync Check workflows.
 
 Актуальное состояние:
 
-- currentVersion: v2.45.
-- lastMergedPr: PR #194 — Harden margin orchestra manual preflight.
-- lastMergeCommit: 37b2dee986407f2be705e30ffb12ad790f9ef381.
+- currentVersion: v2.46.
+- lastMergedPr: PR #196 — Clarify external boundary and maturity status.
+- lastMergeCommit: 946221e46dc4103b1d284533ea916fb74cdb04b1.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе.
 - Book Fast Track is ignored for immediate next work until Sergey separately resumes it.
@@ -17,9 +17,10 @@ GitHub main — источник правды. Сначала открой READM
 - critic_margin_agent is active as manual protocol discipline only.
 - margin_orchestra is active as manual second-eyes preflight discipline only.
 - `рестарт` is implemented as a GitHub-source-of-truth continuation command.
-- Branch protection remains not configured until verified.
+- External assessments are recorded without implementing premature runtime/platform work.
+- Branch protection remains unverified until a direct check is performed and recorded.
 
-Boundary: manual discipline is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change.
+Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform.
 
-Next: verify branch protection.
+Next: verify branch protection and record the result.
 ```
