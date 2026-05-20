@@ -28,11 +28,22 @@ Meaning: coordinator owns workflow, routing, assignment, policy and final status
 
 Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, message broker, branch protection, validators and hard guardrails require separate decisions before implementation.
 
+## Second-eyes topology
+
+Second-eyes work follows a similar coordinator-plus-instruments pattern.
+
+- `critic_margin_agent` is the coordinator voice for margin checks.
+- It may call for a specific second-eyes instrument when the risk needs it.
+- `margin_orchestra` is the design for that instrument set.
+- The critic does not become approval authority.
+- The orchestra does not become a separate runtime or committee.
+
+Currently this is manual protocol discipline only. It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
+
 ## What is active now
 
 - `critic_margin_agent` manual preflight is active only as a protocol discipline before high-risk GitHub margin operations.
 - It checks operation class, hidden assumption, hidden risk, approval gate, and next safe step.
-- It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
 
 ## What is not active yet
 
