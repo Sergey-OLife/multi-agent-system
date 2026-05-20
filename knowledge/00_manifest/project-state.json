@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.41",
-  "lastCompletedVersion": "v2.41",
-  "lastMergedPr": "PR #186 — Record post-185 focus",
-  "lastMergeCommit": "6db86f3b331334b555f32294487db780a7ee806e",
-  "currentMilestone": "v2.41 Post-185 focus synced",
+  "currentVersion": "v2.42",
+  "lastCompletedVersion": "v2.42",
+  "lastMergedPr": "PR #188 — Activate archive librarian manual discipline",
+  "lastMergeCommit": "9882209dfdc1697b182ea288c633969f12c9ae12",
+  "currentMilestone": "v2.42 Archive librarian manual discipline active",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -41,15 +41,16 @@
     "v2.38 Archive librarian activation mechanics synced",
     "v2.39 Architecture map and documentation topology synced",
     "v2.40 Maturity checklist synced",
-    "v2.41 Post-185 focus synced"
+    "v2.41 Post-185 focus synced",
+    "v2.42 Archive librarian manual discipline active"
   ],
   "recentPrs": [
-    "PR #181 — Add architecture map",
-    "PR #182 — Sync state after PR #181",
     "PR #183 — Add maturity checklist",
     "PR #184 — Sync state after PR #183",
     "PR #185 — Record consistency check",
-    "PR #186 — Record post-185 focus"
+    "PR #186 — Record post-185 focus",
+    "PR #187 — Sync state after PR #186",
+    "PR #188 — Activate archive librarian manual discipline"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -68,7 +69,9 @@
     "PR #183 added maturity checklist as diagnostic map only",
     "PR #185 recorded manual knowledge/protocol consistency check",
     "PR #186 recorded post-185 focus and next approved three-stage sequence",
-    "Approved next sequence: controlled activation for conversation_archive_librarian, hardening margin_orchestra, branch protection verification",
+    "PR #188 activated conversation_archive_librarian as manual archive discipline only",
+    "conversation_archive_librarian is active for archive commands and archive PR decisions only",
+    "Approved next sequence: hardening margin_orchestra, then branch protection verification",
     "README now includes project purpose, current workflow, maturity checklist link and compact agent status table",
     "Current diagnostic pressure is preventing docs, protocols, state and checks from drifting apart while the project serves its own machinery",
     "Maturity mechanisms must prevent a real failure, not only decorate the system",
@@ -80,7 +83,7 @@
     "Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators and hard guardrails require separate decisions",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "critic_margin_agent is not routed, not a hard guardrail and not an automated validator",
-    "conversation_archive_librarian has proposal and activation mechanics but is not activated",
+    "conversation_archive_librarian is not routed, not a validator, not a hard guardrail, not runtime, and not ChatGPT memory use",
     "margin_orchestra remains design-only",
     "required PR verification layer includes Sync Check and CI when both apply",
     "branch protection remains not configured until explicitly verified",
@@ -91,7 +94,7 @@
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
-    "Do not activate conversation_archive_librarian without controlled activation and separate approval",
+    "Do not treat conversation_archive_librarian manual discipline as route, validator, hard guardrail, branch protection, runtime, registry status change, project-state sync, ChatGPT memory use or book work",
     "Do not treat maturity checklist as runtime, validators, observability, security tooling or branch protection",
     "Do not treat architecture map or future runtime hypotheses as runtime implementation",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators or hard guardrails without separate approval",
@@ -100,7 +103,7 @@
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Start controlled activation for conversation_archive_librarian manual discipline; then harden margin_orchestra; then verify branch protection.",
+  "nextAction": "Harden margin_orchestra into protocol / tooling, then verify branch protection.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -110,6 +113,7 @@
     "assistant_codex_worklog/current-state.md",
     "assistant_codex_worklog/roadmap.md",
     "assistant_codex_worklog/restart-prompt.md",
+    "assistant_codex_worklog/protocol_addenda/conversation_archive_librarian_manual_discipline.md",
     "assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
@@ -136,18 +140,19 @@
       "critic_margin_agent"
     ],
     "manualDisciplines": [
-      "critic_margin_agent manual preflight"
+      "critic_margin_agent manual preflight",
+      "conversation_archive_librarian manual archive discipline"
     ],
-    "recommendedNextWorkItem": "Start controlled activation for conversation_archive_librarian manual discipline; then harden margin_orchestra; then verify branch protection.",
+    "recommendedNextWorkItem": "Harden margin_orchestra into protocol / tooling, then verify branch protection.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
-      "conversation_archive_librarian": "proposal plus activation mechanics; not activated",
+      "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #186 — Record post-185 focus",
-      "latest_green_head": "46aec654a5ea3d8ba4bc200c2d0e8b4968c518a4",
-      "latest_green_merge_commit": "6db86f3b331334b555f32294487db780a7ee806e",
+      "latest_green_pr": "PR #188 — Activate archive librarian manual discipline",
+      "latest_green_head": "b0ce46c9b4191c39dced5cd7e5ed99efd2942ba8",
+      "latest_green_merge_commit": "9882209dfdc1697b182ea288c633969f12c9ae12",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
