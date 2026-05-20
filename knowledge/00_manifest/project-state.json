@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.36",
-  "lastCompletedVersion": "v2.36",
-  "lastMergedPr": "PR #175 — Define critic activation mechanics",
-  "lastMergeCommit": "2798abab2ec739b15b5816ce7dbb0b01acc6377e",
-  "currentMilestone": "v2.36 Critic margin activation mechanics synced",
+  "currentVersion": "v2.37",
+  "lastCompletedVersion": "v2.37",
+  "lastMergedPr": "PR #177 — Activate critic manual preflight",
+  "lastMergeCommit": "f0ab82814b54fd64268764cdfccf3c171493b849",
+  "currentMilestone": "v2.37 Critic manual preflight discipline synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -36,15 +36,16 @@
     "v2.33 Second-eyes preflight design synced",
     "v2.34 Critic margin agent registry synced",
     "v2.35 Critic margin activation plan synced",
-    "v2.36 Critic margin activation mechanics synced"
+    "v2.36 Critic margin activation mechanics synced",
+    "v2.37 Critic manual preflight discipline synced"
   ],
   "recentPrs": [
-    "PR #170 — Sync registry for critic margin agent",
-    "PR #171 — Sync state after PR #170",
     "PR #172 — Add critic activation plan",
     "PR #173 — Sync state after PR 172",
     "PR #174 — Restore state detail after PR 173",
-    "PR #175 — Define critic activation mechanics"
+    "PR #175 — Define critic activation mechanics",
+    "PR #176 — Sync state after PR #175",
+    "PR #177 — Activate critic manual preflight"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -65,8 +66,10 @@
     "PR #170 recorded critic_margin_agent in registry as proposal-only",
     "PR #172 added critic_margin_activation_plan as plan-only",
     "PR #175 defined critic activation mechanics as manual preflight use only",
-    "critic_margin_agent is not activated, not routed, not a hard guardrail and not an automated validator",
-    "critic activation mechanics do not change routes, validators, registry status, branch protection or runtime",
+    "PR #177 activated critic manual preflight as protocol addendum only",
+    "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
+    "critic_margin_agent is not routed, not a hard guardrail and not an automated validator",
+    "critic manual preflight does not change routes, validators, registry status, branch protection or runtime",
     "conversation_archive_librarian is not activated or routed",
     "margin_orchestra remains design-only",
     "registry sync request workflow is implemented",
@@ -76,19 +79,18 @@
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
     "+++ means the nearest grounded safe action and does not bypass approval-gates",
-    "proposal agents remain proposal only until separate approval"
+    "proposal agents remain proposal only until separate approval unless explicitly activated as manual protocol discipline"
   ],
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not activate conversation_archive_librarian without controlled activation and separate approval",
-    "Do not activate critic_margin_agent without controlled activation and separate approval",
-    "Do not treat manual preflight mechanics as agent activation",
+    "Do not treat critic manual preflight as routes, validator, hard guardrail, registry status change, branch protection or runtime",
     "Do not treat margin_orchestra as hard guardrail or automated validator",
     "Do not create hard guardrails without separate approval and PR",
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Choose controlled activation for critic_margin_agent, controlled activation for conversation_archive_librarian, hardening margin_orchestra, README / architecture map, or branch protection verification.",
+  "nextAction": "Choose controlled activation for conversation_archive_librarian, hardening margin_orchestra, README / architecture map, or branch protection verification.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -97,6 +99,7 @@
     "assistant_codex_worklog/current-state.md",
     "assistant_codex_worklog/roadmap.md",
     "assistant_codex_worklog/restart-prompt.md",
+    "assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
     "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_plan.md",
@@ -131,7 +134,10 @@
       "conversation_archive_librarian",
       "critic_margin_agent"
     ],
-    "recommendedNextWorkItem": "Choose controlled activation for critic_margin_agent, controlled activation for conversation_archive_librarian, or hardening margin_orchestra into protocol/tooling.",
+    "manualDisciplines": [
+      "critic_margin_agent manual preflight"
+    ],
+    "recommendedNextWorkItem": "Choose controlled activation for conversation_archive_librarian, hardening margin_orchestra, README / architecture map, or branch protection verification.",
     "registrySync": {
       "request_workflow": ".github/workflows/registry-sync-request.yml",
       "go_command": "go-core/cmd/agent-registry-sync/main.go",
@@ -140,13 +146,13 @@
       "known_caveat": "bot-generated registry commits may not trigger final-head CI automatically"
     },
     "secondEyes": {
-      "critic_margin_agent": "proposal plus registry plus activation plan plus mechanics; not activated",
+      "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #175 — Define critic activation mechanics",
-      "latest_green_head": "8ae9e3af661fe7fb7bfcff6ee28e7d2dcfdfd25b",
-      "latest_green_merge_commit": "2798abab2ec739b15b5816ce7dbb0b01acc6377e",
+      "latest_green_pr": "PR #177 — Activate critic manual preflight",
+      "latest_green_head": "20eb2da15921359e6a7ea3abe187238757ff7c1a",
+      "latest_green_merge_commit": "f0ab82814b54fd64268764cdfccf3c171493b849",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
