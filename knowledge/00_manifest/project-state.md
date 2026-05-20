@@ -4,36 +4,38 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.37
-- lastCompletedVersion: v2.37
-- lastMergedPr: PR #177 — Activate critic manual preflight
-- lastMergeCommit: f0ab82814b54fd64268764cdfccf3c171493b849
-- currentMilestone: v2.37 Critic manual preflight discipline synced
+- currentVersion: v2.38
+- lastCompletedVersion: v2.38
+- lastMergedPr: PR #179 — Add archive librarian activation mechanics
+- lastMergeCommit: d3021b0f11109ca9b3ff47adb4777ce3a1247085
+- currentMilestone: v2.38 Archive librarian activation mechanics synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
 ## Recent PRs
 
-- PR #172 — Add critic activation plan
-- PR #173 — Sync state after PR 172
-- PR #174 — Restore state detail after PR 173
+- PR #174 — Restore state detail after PR #173
 - PR #175 — Define critic activation mechanics
 - PR #176 — Sync state after PR #175
 - PR #177 — Activate critic manual preflight
+- PR #178 — Sync state after PR #177
+- PR #179 — Add archive librarian activation mechanics
 
-## What changed in v2.37
+## What changed in v2.38
 
-PR #177 added:
+PR #179 added:
 
-- `assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md`
+- `knowledge/05_agent_memory/agent_shipyard/conversation_archive_librarian_activation_mechanics.md`
 
-Status: active manual discipline only. This is not routes, registry status change, validator, hard guardrail, branch protection, runtime, or book change.
+Status: mechanics only. This does not activate `conversation_archive_librarian`.
+
+Activation mechanics means manual discipline for archive commands and archive PR decisions. It does not mean routes, validator, hard guardrail, registry status change, branch protection, runtime, project-state sync, or ChatGPT memory use.
 
 ## Second-eyes preflight layer
 
-`critic_margin_agent` may now be used as a short manual preflight voice before high-risk GitHub margin operations.
+`critic_margin_agent` remains active as manual preflight discipline only.
 
-Call points include registry sync, agent activation, route change, archive PR, state sync, workflow change, checkpoint, branch protection check, and failed PR retry.
+`conversation_archive_librarian` has proposal and activation mechanics, but is not activated.
 
 `margin_orchestra` remains design-only after PR #167.
 
@@ -53,15 +55,15 @@ Active manual discipline:
 - GitHub `main` is the source of truth for merged project state.
 - Current active mode is Agent Shipyard / Agent Queue.
 - Book Fast Track remains paused until separate Sergey decision.
-- Required PR verification layer currently includes Sync Check and CI, not CI alone.
-- PR #177 activated manual preflight discipline only.
-- `critic_margin_agent` is not routed, not a hard guardrail, and not an automated validator.
-- Proposal agents remain proposal only unless explicitly activated as manual protocol discipline.
+- PR #179 added archive librarian activation mechanics only.
+- `conversation_archive_librarian` is not activated, routed, a validator, a hard guardrail, or ChatGPT memory use.
+- `critic_margin_agent` remains active only as manual protocol discipline.
 
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
 - Do not activate `conversation_archive_librarian` without controlled activation and separate approval.
+- Do not treat archive librarian mechanics as routes, validator, hard guardrail, registry status change, branch protection, runtime, project-state sync, or ChatGPT memory use.
 - Do not treat critic manual preflight as routes, validator, hard guardrail, registry status change, branch protection, or runtime.
 - Do not treat `margin_orchestra` as hard guardrail or automated validator.
 - Do not create hard guardrails without separate approval and PR.
@@ -70,4 +72,4 @@ Active manual discipline:
 
 ## Next action
 
-Choose controlled activation for `conversation_archive_librarian`, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
+Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
