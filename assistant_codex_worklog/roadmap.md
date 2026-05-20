@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.49
-- currentMilestone: State-sync drift detector proposal synced
-- lastMergedPr: PR #203 — Propose state sync drift detector
-- lastMergeCommit: `59a9c0715eee6429ebcce50c03bb801f2c256498`
+- currentVersion: v2.50
+- currentMilestone: Local drift detector implementation proposal synced
+- lastMergedPr: PR #205 — Propose local drift detector implementation
+- lastMergeCommit: `645c12a125728d1696eb971fb36a1444ce3c4a02`
 
 ## Recent PR summary
 
-- PR #200 — Sync state after branch protection ruleset activation.
-- PR #201 — Document required checks and merge gates.
 - PR #202 — Sync state after checks overview.
 - PR #203 — Propose state sync drift detector.
+- PR #204 — Sync state after drift detector proposal.
+- PR #205 — Propose local drift detector implementation.
 
 ## Status
 
@@ -41,15 +41,17 @@ Required check contexts are documented in `knowledge/07_operations/checks_overvi
 
 State-sync drift detector proposal is recorded in `knowledge/07_operations/state_sync_drift_detector_proposal.md`.
 
-It is proposal only, not a script, GitHub Action, validator, hard guardrail, runtime, route, branch protection change, or blocking rule.
+Local drift detector implementation proposal is recorded in `knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md`.
+
+It is implementation proposal only, not a script, package command, GitHub Action, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, releases, or production security tooling.
 
 ## Approved next sequence
 
-1. complete state sync after state-sync drift detector proposal;
-2. decide separately whether to implement a warning-only local script or CI-visible warning;
+1. complete state sync after local drift detector implementation proposal;
+2. decide separately whether to implement the warning-only local script;
 3. if Sergey separately approves, prepare a future runtime readiness checklist;
 4. if needed, perform a scripts/core boundary audit.
 
 ## Recommended next work item
 
-Complete state sync after state-sync drift detector proposal.
+Complete state sync after local drift detector implementation proposal.
