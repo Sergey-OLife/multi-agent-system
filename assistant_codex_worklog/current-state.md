@@ -12,27 +12,27 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #199 — Record branch protection ruleset activation
+- PR #201 — Document required checks and merge gates
 - Status: merged
-- Merge commit: `00f9bd45bb26803be65544b70d34076dc0c6dacf`
+- Merge commit: `5fb507895d137843be5885f9bc490dc89f397088`
 
 ## Current version
 
-- currentVersion: v2.47
-- currentMilestone: Minimal branch protection Ruleset active
+- currentVersion: v2.48
+- currentMilestone: Required checks and merge gates documented
 
-## PR #199 result
+## PR #201 result
 
-PR #199 recorded that Sergey enabled the minimal active GitHub Ruleset `Protect main` for `main` / default branch.
+PR #201 added `knowledge/07_operations/checks_overview.md` and linked it from README.
 
-The Ruleset requires pull requests before merge and requires exact GitHub check contexts:
+It documents the protected `main` merge gate and the exact GitHub required check contexts:
 
 - `TypeScript / JavaScript / Go checks`
 - `sync-check`
 
-It blocks force pushes and restricts deletions. Required approvals remain `0`. Branches are not required to be up to date before merging.
+It also records the distinction between workflow display names and required check contexts.
 
-Status: repository-level branch protection only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
+Status: operational documentation only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, routing, releases, or production security tooling.
 
 ## Current active manual disciplines
 
@@ -42,4 +42,6 @@ Status: repository-level branch protection only. It is not runtime security, pro
 
 ## Next safe step
 
-Consider a small checks overview for external readability, or pause for Sergey to choose the next work item.
+Complete short state sync after checks overview.
+
+After that, consider a state-sync drift detector proposal as a separate design step, not implementation.

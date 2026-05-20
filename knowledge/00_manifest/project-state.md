@@ -4,34 +4,33 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.47
-- lastCompletedVersion: v2.47
-- lastMergedPr: PR #199 — Record branch protection ruleset activation
-- lastMergeCommit: 00f9bd45bb26803be65544b70d34076dc0c6dacf
-- currentMilestone: v2.47 Minimal branch protection Ruleset active
+- currentVersion: v2.48
+- lastCompletedVersion: v2.48
+- lastMergedPr: PR #201 — Document required checks and merge gates
+- lastMergeCommit: 5fb507895d137843be5885f9bc490dc89f397088
+- currentMilestone: v2.48 Required checks and merge gates documented
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.47
+## What changed in v2.48
 
-PR #199 recorded that Sergey enabled the minimal active GitHub Ruleset `Protect main` for `main` / default branch.
+PR #201 added `knowledge/07_operations/checks_overview.md` and linked it from README.
 
-The Ruleset requires pull requests before merge and requires exact GitHub check contexts:
+The checks overview documents the protected `main` merge gate and the exact GitHub required check contexts:
 
 - `TypeScript / JavaScript / Go checks`
 - `sync-check`
 
-It blocks force pushes and restricts deletions. Required approvals remain `0`. Branches are not required to be up to date before merging.
+It also records the distinction between workflow display names and required check contexts.
 
-This is repository-level branch protection only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
+This is operational documentation only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, routing, releases, or production security tooling.
 
 ## Current recovery path
 
-1. Complete state sync after branch protection Ruleset activation.
-2. Consider a small checks overview if external readability remains weak.
+1. Complete short state sync after checks overview.
+2. Consider a state-sync drift detector proposal as a separate design step.
 3. Consider a future runtime readiness checklist only by separate decision.
 4. Consider a scripts/core boundary audit only if needed.
-5. Consider a warning-level detector for state-sync drift only by separate decision.
 
 ## Active decisions
 
@@ -45,6 +44,7 @@ This is repository-level branch protection only. It is not runtime security, pro
 - The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 - Minimal GitHub Ruleset `Protect main` is active for `main` / default branch.
 - Required branch-protection check contexts are `TypeScript / JavaScript / Go checks` and `sync-check`.
+- Required checks and merge gates are documented in `knowledge/07_operations/checks_overview.md`.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
 
 ## Paused tasks
@@ -58,4 +58,4 @@ This is repository-level branch protection only. It is not runtime security, pro
 
 ## Next action
 
-Complete state sync after branch protection Ruleset activation.
+Complete short state sync after checks overview.
