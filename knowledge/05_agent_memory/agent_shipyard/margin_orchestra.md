@@ -1,7 +1,9 @@
-# Margin Orchestra — second-eyes preflight design
+# Margin Orchestra — second-eyes preflight pattern
 
 Дата: 2026-05-19
-Статус: design / не hard guardrail
+Статус: active manual discipline / не hard guardrail / no automation
+
+Protocol addendum: `assistant_codex_worklog/protocol_addenda/margin_orchestra_manual_preflight.md`
 
 ## 1. Зачем нужен оркестр
 
@@ -31,7 +33,7 @@ Registry-sync incident показал это точно:
 - archive PR creation;
 - checkpoint full;
 - workflow change;
-- branch protection change;
+- branch protection verification or change;
 - закрытием / supersede PR;
 - повторением операции после failed attempt;
 - `+++`, если ближайшее действие может изменить repository state.
@@ -67,12 +69,13 @@ At margin point:
 
 ```yaml
 margin_orchestra:
-  margin_point: "registry_sync | activation | route_change | state_sync | archive_pr | workflow_change | checkpoint | other"
+  margin_point: "registry_sync | activation | route_change | state_sync | archive_pr | workflow_change | checkpoint | branch_protection | failed_retry | other"
   primary_action: "string"
-  critic_required: true
-  critic_status: "pass | block | split_required | needs_approval"
+  operation_class: "string"
   hidden_assumption_checked:
     - "string"
+  critic_status: "pass | block | split_required | needs_approval"
+  approval_gate: "none | plus_plus_required | separate_sergey_decision_required"
   next_safe_step: "string"
 ```
 
@@ -98,16 +101,19 @@ Correct future pattern:
 
 `margin_orchestra` operationalizes that rule. It does not make every step L3. It identifies the boundary where a short second look prevents a long correction chain.
 
-## 8. Not a hard guardrail yet
+## 8. Boundary
 
-This document is design only.
+This document and its protocol addendum create active manual discipline only.
 
 It does not:
 
-- activate `critic_margin_agent`;
-- add route logic;
+- create route logic;
 - create automated validator;
 - change branch protection;
-- block merges by itself.
+- create runtime;
+- create a committee;
+- create approval authority;
+- block merges by itself;
+- change registry status.
 
-Hardening this into tooling requires a separate PR and explicit approval.
+Further hardening into tooling requires a separate decision and separate PR.
