@@ -4,27 +4,29 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.45
-- lastCompletedVersion: v2.45
-- lastMergedPr: PR #194 — Harden margin orchestra manual preflight
-- lastMergeCommit: 37b2dee986407f2be705e30ffb12ad790f9ef381
-- currentMilestone: v2.45 Margin orchestra manual preflight discipline synced
+- currentVersion: v2.46
+- lastCompletedVersion: v2.46
+- lastMergedPr: PR #196 — Clarify external boundary and maturity status
+- lastMergeCommit: 946221e46dc4103b1d284533ea916fb74cdb04b1
+- currentMilestone: v2.46 External assessment boundary synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.45
+## What changed in v2.46
 
-PR #194 added `assistant_codex_worklog/protocol_addenda/margin_orchestra_manual_preflight.md`.
+PR #196 clarified the external project boundary in README and maturity checklist.
 
-`margin_orchestra` is now active manual second-eyes preflight discipline at high-risk project margins.
+The repository is now explicitly documented as a GitHub-centered book/project operating system, not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 
-It remains manual discipline only. It is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change.
+External assessment conclusions were recorded in `knowledge/07_operations/external_assessment_notes_2026-05-20.md` without implementing runtime, routing, validators, hard guardrails, branch protection, observability, releases, or production security tooling.
 
 ## Current recovery path
 
-1. Verify branch protection.
-2. Prepare a separate tooling proposal for `margin_orchestra` only if Sergey separately approves it.
-3. Continue deeper knowledge / protocol consistency automation proposal later if still useful.
+1. Verify branch protection and record the result.
+2. Consider a small checks overview if external readability remains weak.
+3. Consider a future runtime readiness checklist only by separate decision.
+4. Consider a scripts/core boundary audit only if needed.
+5. Consider a warning-level detector for state-sync drift only by separate decision.
 
 ## Active decisions
 
@@ -35,6 +37,7 @@ It remains manual discipline only. It is not runtime, routing, validator, hard g
 - `critic_margin_agent` remains active as manual protocol discipline.
 - `margin_orchestra` is active as manual second-eyes preflight discipline only.
 - The `рестарт` command is implemented as a continuation command from GitHub source of truth.
+- The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators and hard guardrails require separate decisions.
 
 ## Paused tasks
@@ -42,9 +45,10 @@ It remains manual discipline only. It is not runtime, routing, validator, hard g
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
 - Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
 - Do not treat manual disciplines as routes, validators, hard guardrails, branch protection, runtime, registry status changes, or project-state sync.
-- Do not treat branch protection as configured until it is explicitly verified.
+- Do not treat branch protection as configured until it is explicitly verified and recorded.
+- Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Verify branch protection.
+Verify branch protection and record the result.
