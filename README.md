@@ -4,14 +4,14 @@ This repository is the GitHub source of truth for the book/project operating sys
 
 In plain language: this repo is the map of the ship. Chat can discuss, LLM can draft, but accepted project state must be visible in GitHub.
 
-## Where we are now
+## Start here
 
-- Mode: Agent Shipyard / Agent Queue.
+- Current state: `knowledge/00_manifest/project-state.json` and `knowledge/00_manifest/project-state.md`.
+- Resume files: `assistant_codex_worklog/current-state.md`, `assistant_codex_worklog/roadmap.md`, `assistant_codex_worklog/restart-prompt.md`.
+- Current mode: Agent Shipyard / Agent Queue.
 - Book work is paused until a separate Sergey decision.
-- Current state is recorded in `knowledge/00_manifest/project-state.json` and mirrored in `knowledge/00_manifest/project-state.md`.
-- Resume from `assistant_codex_worklog/current-state.md`, `roadmap.md`, and `restart-prompt.md`.
 
-## Architecture spine
+## Architecture in one page
 
 - GitHub `main` records accepted state.
 - Go is the deterministic spine.
@@ -20,59 +20,41 @@ In plain language: this repo is the map of the ship. Chat can discuss, LLM can d
 - LLM reasons and drafts.
 - Sergey approves.
 
-This is not a P2P runtime. Global state and accepted decisions are centralized in GitHub. Any future Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, or branch protection change requires a separate decision.
+This is not a P2P runtime. Global state and accepted decisions are centralized in GitHub.
 
-## Second-eyes layer
+Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, message broker, branch protection, validators and hard guardrails require separate decisions before implementation.
 
-`critic_margin_agent` is active only as manual preflight discipline before high-risk GitHub margin operations.
+## What is active now
 
-It checks the operation class, hidden assumption, hidden risk, approval gate, and next safe step.
+- `critic_margin_agent` manual preflight is active only as a protocol discipline before high-risk GitHub margin operations.
+- It checks operation class, hidden assumption, hidden risk, approval gate, and next safe step.
+- It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
 
-It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
+## What is not active yet
 
-`margin_orchestra` is design-only. It is the critic's possible coordination pattern for second-eyes voices and local instruments, not a separate authority and not an automatic agent runtime.
+- `conversation_archive_librarian`: proposal plus activation mechanics, not activated.
+- `margin_orchestra`: design-only coordination pattern for second-eyes voices and critic tools; not a separate authority and not runtime.
+- Other agents in registry remain proposal/container unless a merged PR says otherwise.
 
-## Archive layer
+## Archive rules
 
 Conversation archive is not project-state and not ChatGPT memory.
 
-Archive commands must preserve meaning, not raw transcript dumps:
-
 - `#архив чата` prepares a draft archive entry.
 - `#архив чата сохрани` prepares a GitHub PR for archive entry and index update when allowed.
-- `#архив_старт` is cumulative write-first archive work and must check coverage, previous checkpoint, full-chat marker, and gaps.
-
-No archive entry is a full-chat checkpoint unless it explicitly says `coverage_scope: full_chat`.
-
-If several archive PRs can conflict through `knowledge/08_conversation_archive/index.md`, use parallel intake or later consolidation instead of forcing a messy merge.
-
-`conversation_archive_librarian` has proposal and activation mechanics, but is not activated yet.
-
-## Implemented elsewhere / cleanup
-
-When an idea is implemented, do not leave it floating as a live wish.
-
-Mark where it landed: PR, file, protocol, agent, roadmap item, rejected note, or superseded note.
-
-This is how the project avoids repeating the same idea as if it were still unresolved.
+- `#архив_старт` is cumulative write-first archive work, not last-topic-only.
+- No archive entry is a full-chat checkpoint unless it explicitly says `coverage_scope: full_chat`.
+- If several archive PRs can conflict through `knowledge/08_conversation_archive/index.md`, use parallel intake or later consolidation.
 
 ## Vision intake
 
-Some project decisions came from Sergey vision notes and archive entries: future bugs, architecture risks, idea lists, red flags, shared storage thoughts, TS/JS + Go challenges, and corrective archive notes.
+Sergey vision notes and archive reasoning are tracked as source material, not automatic architecture.
 
-Those notes are not automatically implemented architecture. They must be classified as:
+Use `knowledge/07_operations/vision_intake_map.md` to classify ideas as implemented, accepted principle, open loop, future hypothesis, or do-not-implement-without-separate-decision.
 
-- implemented;
-- accepted principle;
-- open loop;
-- future hypothesis;
-- do not implement without separate decision.
+When an idea is implemented, record where it landed: PR, file, protocol, agent, roadmap item, rejected note, or superseded note.
 
-See `knowledge/07_operations/vision_intake_map.md`.
-
-## Proposal / mechanics / activation
-
-Do not confuse lifecycle stages:
+## Lifecycle words
 
 - container: named possible agent, not written yet;
 - proposal: described agent, not active;
@@ -82,12 +64,9 @@ Do not confuse lifecycle stages:
 - validator: automated check;
 - hard guardrail: blocking rule.
 
-## Checks before merge
+## Merge discipline
 
-When applicable, PR readiness means both:
-
-- Sync Check;
-- CI.
+When applicable, PR readiness means both Sync Check and CI.
 
 `+` continues the next safe step. `++` approves the current clear approval-gate. `+++` performs the nearest grounded safe action without bypassing gates.
 
