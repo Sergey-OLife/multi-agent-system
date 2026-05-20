@@ -49,6 +49,16 @@
     "Do not treat closed-unmerged PRs as implemented"
   ],
   "nextAction": "Choose controlled activation for critic_margin_agent, controlled activation for conversation_archive_librarian, hardening margin_orchestra, README / architecture map, or branch protection verification.",
+  "manualChapterUpload": true,
+  "rawTextCommitted": false,
+  "importantPaths": [
+    "knowledge/00_manifest/project-state.json",
+    "knowledge/00_manifest/project-state.md",
+    "assistant_codex_worklog/current-state.md",
+    "assistant_codex_worklog/roadmap.md",
+    "assistant_codex_worklog/restart-prompt.md",
+    "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_plan.md"
+  ],
   "agentState": {
     "proposalAgents": [
       "conversation_archive_librarian",
