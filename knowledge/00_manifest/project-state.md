@@ -4,24 +4,23 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.40
-- lastCompletedVersion: v2.40
-- lastMergedPr: PR #183 — Add maturity checklist
-- lastMergeCommit: 3169839e6365d52609b7c5a8d36db304a6a753b1
-- currentMilestone: v2.40 Maturity checklist synced
+- currentVersion: v2.41
+- lastCompletedVersion: v2.41
+- lastMergedPr: PR #186 — Record post-185 focus
+- lastMergeCommit: 6db86f3b331334b555f32294487db780a7ee806e
+- currentMilestone: v2.41 Post-185 focus synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.40
+## What changed in v2.41
 
-PR #183 added / updated:
+PR #186 recorded post-185 focus and the next approved three-stage sequence:
 
-- `knowledge/07_operations/maturity_checklist.md`
-- `README.md`
-- `knowledge/07_operations/vision_intake_map.md`
-- `assistant_codex_worklog/roadmap.md`
+1. controlled activation for `conversation_archive_librarian` manual discipline;
+2. hardening `margin_orchestra`;
+3. branch protection verification.
 
-Status: diagnostic map only. This does not implement runtime, validators, observability, security tooling, branch protection, or book work.
+Book Fast Track remains paused and is not offered as immediate next work until separate Sergey decision.
 
 ## Current diagnostic pressure
 
@@ -45,7 +44,8 @@ Active manual discipline:
 - GitHub `main` is the source of truth for merged project state.
 - Current active mode is Agent Shipyard / Agent Queue.
 - Book Fast Track remains paused and is ignored for immediate next work until separate Sergey decision.
-- PR #183 added maturity checklist as diagnostic map only.
+- PR #185 recorded manual knowledge/protocol consistency check.
+- PR #186 recorded post-185 focus and next approved three-stage sequence.
 - `conversation_archive_librarian` is not activated, routed, a validator, a hard guardrail, or ChatGPT memory use.
 - `critic_margin_agent` remains active only as manual protocol discipline.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators and hard guardrails require separate decisions.
@@ -64,4 +64,4 @@ Active manual discipline:
 
 ## Next action
 
-Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or deeper knowledge/protocol consistency automation proposal.
+Start controlled activation for `conversation_archive_librarian` manual discipline; then harden `margin_orchestra`; then verify branch protection.
