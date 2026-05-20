@@ -1,7 +1,7 @@
 # Margin Orchestra — second-eyes preflight design
 
 Дата: 2026-05-19
-Статус: design / не hard guardrail
+Статус: design plus manual protocol
 
 ## 1. Зачем нужен оркестр
 
@@ -15,6 +15,8 @@ Registry-sync incident показал это точно:
 - но не был задан главный preflight-вопрос: целевой agent block уже есть в registry или его надо вставить?
 
 `margin_orchestra` нужен как coordination pattern для таких границ. Он не заменяет агентов и не превращает процесс в комитет. Он включает второй голос только там, где стоимость ошибки выше стоимости короткого preflight.
+
+Manual protocol hardening lives in `assistant_codex_worklog/protocol_addenda/margin_orchestra_protocol.md`.
 
 ## 2. Главная формула
 
@@ -100,14 +102,14 @@ Correct future pattern:
 
 ## 8. Not a hard guardrail yet
 
-This document is design only.
+This document is no longer design-only because PR-level manual protocol hardening exists in `assistant_codex_worklog/protocol_addenda/margin_orchestra_protocol.md` once merged.
 
-It does not:
+It still does not:
 
-- activate `critic_margin_agent`;
 - add route logic;
 - create automated validator;
 - change branch protection;
-- block merges by itself.
+- block merges by itself;
+- add runtime.
 
-Hardening this into tooling requires a separate PR and explicit approval.
+Tooling or hard guardrails require a separate PR and explicit approval.
