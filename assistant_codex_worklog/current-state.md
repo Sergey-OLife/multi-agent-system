@@ -10,20 +10,20 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #172 — Add critic activation plan
+- PR #175 — Define critic activation mechanics
 - Status: merged
-- Merge commit: `ef0d0117fa20f59f8016963443752a1077ed5cc8`
+- Merge commit: `2798abab2ec739b15b5816ce7dbb0b01acc6377e`
 
 ## Current version
 
-- currentVersion: v2.35
-- currentMilestone: Critic margin activation plan synced
+- currentVersion: v2.36
+- currentMilestone: Critic margin activation mechanics synced
 
-## PR #172 result
+## PR #175 result
 
-PR #172 added `knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_plan.md`.
+PR #175 added `knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_mechanics.md`.
 
-Status: plan only. `critic_margin_agent` is not activated, not routed, not a hard guardrail, and not an automated validator.
+Status: mechanics only. `critic_margin_agent` is not activated, not routed, not a hard guardrail, and not an automated validator.
 
 ## Next safe step
 

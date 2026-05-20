@@ -8,20 +8,21 @@ Book work remains paused.
 
 ## Current milestone
 
-- currentVersion: v2.35
-- currentMilestone: Critic margin activation plan synced
-- lastMergedPr: PR #172 — Add critic activation plan
-- lastMergeCommit: `ef0d0117fa20f59f8016963443752a1077ed5cc8`
+- currentVersion: v2.36
+- currentMilestone: Critic margin activation mechanics synced
+- lastMergedPr: PR #175 — Define critic activation mechanics
+- lastMergeCommit: `2798abab2ec739b15b5816ce7dbb0b01acc6377e`
 
 ## Recent PR summary
 
-- PR #170 — Sync registry for critic margin agent.
-- PR #171 — Sync state after PR #170.
 - PR #172 — Add critic activation plan.
+- PR #173 — Sync state after PR 172.
+- PR #174 — Restore state detail after PR 173.
+- PR #175 — Define critic activation mechanics.
 
 ## Status
 
-`critic_margin_agent` has proposal, registry entry, and activation plan.
+`critic_margin_agent` has proposal, registry entry, activation plan, and activation mechanics.
 
 It is not activated, not routed, not a hard guardrail, and not an automated validator.
 
