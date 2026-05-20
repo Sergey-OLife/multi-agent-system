@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.47
-- currentMilestone: Minimal branch protection Ruleset active
-- lastMergedPr: PR #199 — Record branch protection ruleset activation
-- lastMergeCommit: `00f9bd45bb26803be65544b70d34076dc0c6dacf`
+- currentVersion: v2.48
+- currentMilestone: Required checks and merge gates documented
+- lastMergedPr: PR #201 — Document required checks and merge gates
+- lastMergeCommit: `5fb507895d137843be5885f9bc490dc89f397088`
 
 ## Recent PR summary
 
-- PR #196 — Clarify external boundary and maturity status.
-- PR #197 — Sync state after external boundary clarification.
 - PR #198 — Record branch protection verification result.
 - PR #199 — Record branch protection ruleset activation.
+- PR #200 — Sync state after branch protection ruleset activation.
+- PR #201 — Document required checks and merge gates.
 
 ## Status
 
@@ -34,19 +34,18 @@ The repository is explicitly documented as a GitHub-centered book/project operat
 
 Minimal repository-level branch protection is active through GitHub Ruleset `Protect main` for `main` / default branch.
 
-Required check contexts:
+Required check contexts are documented in `knowledge/07_operations/checks_overview.md`:
 
 - `TypeScript / JavaScript / Go checks`
 - `sync-check`
 
 ## Approved next sequence
 
-1. sync state after branch protection Ruleset activation;
-2. if useful later, a small checks overview for external readability;
+1. complete short state sync after checks overview;
+2. consider a state-sync drift detector proposal as a separate design step;
 3. if Sergey separately approves, prepare a future runtime readiness checklist;
-4. if needed, perform a scripts/core boundary audit;
-5. if Sergey separately approves, prepare warning-level detector proposal for state-sync drift.
+4. if needed, perform a scripts/core boundary audit.
 
 ## Recommended next work item
 
-Complete state sync after branch protection Ruleset activation.
+Complete state sync after checks overview, then consider a state-sync drift detector proposal.
