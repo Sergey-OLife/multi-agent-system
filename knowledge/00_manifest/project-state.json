@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.42",
-  "lastCompletedVersion": "v2.42",
-  "lastMergedPr": "PR #188 — Activate archive librarian manual discipline",
-  "lastMergeCommit": "9882209dfdc1697b182ea288c633969f12c9ae12",
-  "currentMilestone": "v2.42 Archive librarian manual discipline active",
+  "currentVersion": "v2.43",
+  "lastCompletedVersion": "v2.43",
+  "lastMergedPr": "PR #190 — Archive restart command and ship metaphor",
+  "lastMergeCommit": "ca0cbf1921d0953722c8867b8414f22eb709ca93",
+  "currentMilestone": "v2.43 Checkpoint full after restart archive",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -42,15 +42,16 @@
     "v2.39 Architecture map and documentation topology synced",
     "v2.40 Maturity checklist synced",
     "v2.41 Post-185 focus synced",
-    "v2.42 Archive librarian manual discipline active"
+    "v2.42 Archive librarian manual discipline active",
+    "v2.43 Checkpoint full after restart archive"
   ],
   "recentPrs": [
-    "PR #183 — Add maturity checklist",
-    "PR #184 — Sync state after PR #183",
     "PR #185 — Record consistency check",
     "PR #186 — Record post-185 focus",
     "PR #187 — Sync state after PR #186",
-    "PR #188 — Activate archive librarian manual discipline"
+    "PR #188 — Activate archive librarian manual discipline",
+    "PR #189 — Sync state after PR #188",
+    "PR #190 — Archive restart command and ship metaphor"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -65,21 +66,15 @@
     "GitHub main is the source of truth for merged project state",
     "Book Fast Track remains paused until separate Sergey decision and is ignored for immediate next work",
     "current active mode is Agent Shipyard / Agent Queue",
-    "PR #181 added README architecture map, documentation topology, vision intake map, and future runtime hypotheses map",
-    "PR #183 added maturity checklist as diagnostic map only",
-    "PR #185 recorded manual knowledge/protocol consistency check",
-    "PR #186 recorded post-185 focus and next approved three-stage sequence",
     "PR #188 activated conversation_archive_librarian as manual archive discipline only",
+    "PR #190 archived the restart command plan, tool blocker, parked branches, and ship metaphor correction",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
-    "Approved next sequence: hardening margin_orchestra, then branch protection verification",
-    "README now includes project purpose, current workflow, maturity checklist link and compact agent status table",
-    "Current diagnostic pressure is preventing docs, protocols, state and checks from drifting apart while the project serves its own machinery",
-    "Maturity mechanisms must prevent a real failure, not only decorate the system",
+    "Next recovery path: add restart command protocol by a narrow PR, then update project instructions separately",
+    "After restart-command path, resume hardening margin_orchestra and then branch protection verification",
+    "The project ship carries cargo and passengers: reusable architecture and livable book worlds",
     "README is entrance map, not dumping ground",
-    "Documentation may expand through focused linked documents and later be optimized without deleting meaning",
     "Current architecture is GitHub-centered, not runtime-centered",
     "Future runtime target is coordinator-centered orchestration with task-local full-mesh module bus, only if separately approved",
-    "Second-eyes work mirrors coordinator-plus-instruments pattern as manual discipline only",
     "Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators and hard guardrails require separate decisions",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "critic_margin_agent is not routed, not a hard guardrail and not an automated validator",
@@ -95,6 +90,9 @@
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat conversation_archive_librarian manual discipline as route, validator, hard guardrail, branch protection, runtime, registry status change, project-state sync, ChatGPT memory use or book work",
+    "Do not treat restart command plan as implemented until a protocol PR is merged",
+    "Do not treat project instruction update as done until Sergey separately applies it",
+    "Do not treat parked branches record-restart-command-plan or record-pr-tool-blocker as implemented",
     "Do not treat maturity checklist as runtime, validators, observability, security tooling or branch protection",
     "Do not treat architecture map or future runtime hypotheses as runtime implementation",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators or hard guardrails without separate approval",
@@ -103,7 +101,7 @@
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Harden margin_orchestra into protocol / tooling, then verify branch protection.",
+  "nextAction": "Add restart command protocol by a narrow PR; then update project instructions separately; then harden margin_orchestra; then verify branch protection.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -115,6 +113,8 @@
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/protocol_addenda/conversation_archive_librarian_manual_discipline.md",
     "assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md",
+    "knowledge/08_conversation_archive/chat_archives/2026-05-20_restart-command-and-ship-metaphor.md",
+    "knowledge/08_conversation_archive/index.md",
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
     "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_plan.md",
@@ -137,22 +137,23 @@
   "agentState": {
     "proposalAgents": [
       "conversation_archive_librarian",
-      "critic_margin_agent"
+      "critic_margin_agent",
+      "author_style_memory_agent"
     ],
     "manualDisciplines": [
       "critic_margin_agent manual preflight",
       "conversation_archive_librarian manual archive discipline"
     ],
-    "recommendedNextWorkItem": "Harden margin_orchestra into protocol / tooling, then verify branch protection.",
+    "recommendedNextWorkItem": "Add restart command protocol by a narrow PR; then update project instructions separately; then harden margin_orchestra; then verify branch protection.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #188 — Activate archive librarian manual discipline",
-      "latest_green_head": "b0ce46c9b4191c39dced5cd7e5ed99efd2942ba8",
-      "latest_green_merge_commit": "9882209dfdc1697b182ea288c633969f12c9ae12",
+      "latest_green_pr": "PR #190 — Archive restart command and ship metaphor",
+      "latest_green_head": "d7010c349cc180a9c5feb17eff5215aaa03f03b5",
+      "latest_green_merge_commit": "ca0cbf1921d0953722c8867b8414f22eb709ca93",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
