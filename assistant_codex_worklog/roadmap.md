@@ -18,19 +18,24 @@ Book work remains paused.
 - PR #179 — Add archive librarian activation mechanics.
 - PR #180 — Sync state after PR #179.
 - PR #181 — Add architecture map.
+- PR #182 — Sync state after PR #181.
 
 ## Status
 
-README, documentation topology, vision intake map, and future runtime hypotheses map are now present in main.
+README, documentation topology, vision intake map, and future runtime hypotheses map are present in main.
 
-Status: map only. Runtime, routes, validators, hard guardrails, branch protection and book work were not changed.
+State/worklog/restart were synced after PR #181 by PR #182.
+
+## Current diagnostic pressure
+
+The next maturity risk is not missing more infrastructure. The risk is documentation, protocols, state and checks drifting apart while the project keeps serving its own machinery.
 
 ## Recommended next work item
 
 Choose one:
 
-1. controlled activation for `conversation_archive_librarian` manual discipline;
-2. harden `margin_orchestra` into protocol / tooling;
-3. branch protection verification;
-4. knowledge / protocol consistency check;
+1. knowledge / protocol consistency check;
+2. controlled activation for `conversation_archive_librarian` manual discipline;
+3. harden `margin_orchestra` into protocol / tooling;
+4. branch protection verification;
 5. return to Book Fast Track by separate decision.
