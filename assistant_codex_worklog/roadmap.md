@@ -10,31 +10,30 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.43
-- currentMilestone: Checkpoint full after restart archive
-- lastMergedPr: PR #190 — Archive restart command and ship metaphor
-- lastMergeCommit: `ca0cbf1921d0953722c8867b8414f22eb709ca93`
+- currentVersion: v2.44
+- currentMilestone: Restart command protocol synced
+- lastMergedPr: PR #192 — Add command protocol
+- lastMergeCommit: `3a1e99ba38ec1268195cdffe2a718772bdb65659`
 
 ## Recent PR summary
 
-- PR #187 — Sync state after PR #186.
-- PR #188 — Activate archive librarian manual discipline.
 - PR #189 — Sync state after PR #188.
 - PR #190 — Archive restart command and ship metaphor.
+- PR #191 — Update state.
+- PR #192 — Add command protocol.
 
 ## Status
 
-Restart-command plan and ship metaphor correction are archived.
+`рестарт` command protocol is implemented as a GitHub-source-of-truth continuation command.
 
-Status: checkpoint/state only. The restart command, project instruction update, runtime, validators, branch protection and book work were not changed.
+Status: command protocol only. It does not write to GitHub, create PRs, merge PRs, update memory, start Book Fast Track, treat open PRs as implemented, or skip approval gates.
 
 ## Approved next sequence
 
-1. add restart command protocol by a narrow PR;
-2. update project instructions separately;
-3. hardening `margin_orchestra`;
-4. branch protection verification.
+1. update project instructions for the `рестарт` command separately;
+2. hardening `margin_orchestra`;
+3. branch protection verification.
 
 ## Recommended next work item
 
-Add restart command protocol by a narrow PR.
+Update project instructions for the `рестарт` command separately.
