@@ -4,28 +4,28 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.49
-- lastCompletedVersion: v2.49
-- lastMergedPr: PR #203 — Propose state sync drift detector
-- lastMergeCommit: 59a9c0715eee6429ebcce50c03bb801f2c256498
-- currentMilestone: v2.49 State-sync drift detector proposal synced
+- currentVersion: v2.50
+- lastCompletedVersion: v2.50
+- lastMergedPr: PR #205 — Propose local drift detector implementation
+- lastMergeCommit: 645c12a125728d1696eb971fb36a1444ce3c4a02
+- currentMilestone: v2.50 Local drift detector implementation proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.49
+## What changed in v2.50
 
-PR #203 added `knowledge/07_operations/state_sync_drift_detector_proposal.md`.
+PR #205 added `knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md`.
 
-The document proposes a warning-level state-sync drift detector for state-sensitive PRs.
+The document defines the future first implementation shape for a warning-only local state-sync drift detector script.
 
-It defines the drift problem, candidate trigger paths, warning cases, safe output shape, maturity ladder and decisions needed before implementation.
+It chooses local manual warning first, not CI-visible warning, and defines input modes, warning rules, output contract, exit codes, acceptance criteria and hard boundaries.
 
-This is proposal only. It is not a script, GitHub Action, validator, hard guardrail, runtime, route, branch protection change, or blocking rule.
+This is implementation proposal only. It is not a script, package command, GitHub Action, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, releases, or production security tooling.
 
 ## Current recovery path
 
-1. Complete state sync after state-sync drift detector proposal.
-2. Decide separately whether to implement a warning-only local script or CI-visible warning.
+1. Complete state sync after local drift detector implementation proposal.
+2. Decide separately whether to implement the warning-only local script.
 3. Consider a future runtime readiness checklist only by separate decision.
 4. Consider a scripts/core boundary audit only if needed.
 
@@ -43,6 +43,7 @@ This is proposal only. It is not a script, GitHub Action, validator, hard guardr
 - Required branch-protection check contexts are `TypeScript / JavaScript / Go checks` and `sync-check`.
 - Required checks and merge gates are documented in `knowledge/07_operations/checks_overview.md`.
 - State-sync drift detector is proposal only in `knowledge/07_operations/state_sync_drift_detector_proposal.md`.
+- Local state-sync drift detector script implementation is proposal only in `knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md`.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
 
 ## Paused tasks
@@ -52,9 +53,10 @@ This is proposal only. It is not a script, GitHub Action, validator, hard guardr
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, or project-state sync.
 - Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 - Do not treat the state-sync drift detector proposal as implementation.
+- Do not treat the local drift detector implementation proposal as a script, command, GitHub Action, validator, hard guardrail, or blocking rule.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Complete state sync after state-sync drift detector proposal.
+Complete state sync after local drift detector implementation proposal.
