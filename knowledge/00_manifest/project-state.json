@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.46",
-  "lastCompletedVersion": "v2.46",
-  "lastMergedPr": "PR #196 — Clarify external boundary and maturity status",
-  "lastMergeCommit": "946221e46dc4103b1d284533ea916fb74cdb04b1",
-  "currentMilestone": "v2.46 External assessment boundary synced",
+  "currentVersion": "v2.47",
+  "lastCompletedVersion": "v2.47",
+  "lastMergedPr": "PR #199 — Record branch protection ruleset activation",
+  "lastMergeCommit": "00f9bd45bb26803be65544b70d34076dc0c6dacf",
+  "currentMilestone": "v2.47 Minimal branch protection Ruleset active",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -46,13 +46,14 @@
     "v2.43 Checkpoint full after restart archive",
     "v2.44 Restart command protocol synced",
     "v2.45 Margin orchestra manual preflight discipline synced",
-    "v2.46 External assessment boundary synced"
+    "v2.46 External assessment boundary synced",
+    "v2.47 Minimal branch protection Ruleset active"
   ],
   "recentPrs": [
-    "PR #192 — Add command protocol",
-    "PR #194 — Harden margin orchestra manual preflight",
-    "PR #195 — Sync state after margin orchestra manual preflight",
-    "PR #196 — Clarify external boundary and maturity status"
+    "PR #196 — Clarify external boundary and maturity status",
+    "PR #197 — Sync state after external boundary clarification",
+    "PR #198 — Record branch protection verification result",
+    "PR #199 — Record branch protection ruleset activation"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -70,12 +71,13 @@
     "PR #192 implemented restart command protocol as GitHub-source-of-truth continuation command",
     "PR #194 activated margin_orchestra as manual second-eyes preflight discipline only",
     "PR #196 clarified external project boundary and recorded external assessment conclusions without runtime implementation",
+    "PR #199 recorded minimal active branch protection Ruleset Protect main for main/default branch",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
     "The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform",
-    "required PR verification layer includes Sync Check and CI when both apply",
-    "branch protection remains not configured until explicitly verified and recorded",
+    "required branch-protection check contexts are TypeScript / JavaScript / Go checks and sync-check",
+    "Minimal branch protection is repository-level protection only and not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
     "+++ means the nearest grounded safe action and does not bypass approval-gates"
@@ -83,13 +85,13 @@
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
-    "Do not treat manual disciplines as routes, validators, hard guardrails, branch protection, runtime, registry status changes, or project-state sync",
-    "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators or hard guardrails without separate approval",
-    "Do not treat branch protection as configured until verified and recorded",
+    "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, or project-state sync",
+    "Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
+    "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators or hard guardrails without separate approval",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Verify branch protection and record the result.",
+  "nextAction": "Complete state sync after branch protection Ruleset activation.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -100,6 +102,7 @@
     "assistant_codex_worklog/roadmap.md",
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/working-protocol.md",
+    "knowledge/07_operations/branch_protection_verification_2026-05-20.md",
     "knowledge/07_operations/external_assessment_notes_2026-05-20.md",
     "knowledge/07_operations/maturity_checklist.md",
     "assistant_codex_worklog/protocol_addenda/restart_command.md",
@@ -121,18 +124,19 @@
       "conversation_archive_librarian manual archive discipline",
       "margin_orchestra manual second-eyes preflight"
     ],
-    "recommendedNextWorkItem": "Verify branch protection and record the result.",
+    "recommendedNextWorkItem": "Complete state sync after branch protection Ruleset activation.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "active manual second-eyes preflight discipline only; not routed and not automated"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #196 — Clarify external boundary and maturity status",
-      "latest_green_head": "7f024f9895939886bd699dafa11c16269556c719",
-      "latest_green_merge_commit": "946221e46dc4103b1d284533ea916fb74cdb04b1",
-      "required_workflow_statuses": ["Sync Check", "CI"],
-      "branchProtection": "unverified"
+      "latest_green_pr": "PR #199 — Record branch protection ruleset activation",
+      "latest_green_head": "3493a89db9e4a7b551d314832ab7c761f58b4eba",
+      "latest_green_merge_commit": "00f9bd45bb26803be65544b70d34076dc0c6dacf",
+      "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
+      "branchProtection": "minimal_ruleset_active",
+      "ruleset": "Protect main"
     }
   }
 }

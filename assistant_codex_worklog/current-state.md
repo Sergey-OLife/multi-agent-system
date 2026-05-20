@@ -12,20 +12,27 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #196 — Clarify external boundary and maturity status
+- PR #199 — Record branch protection ruleset activation
 - Status: merged
-- Merge commit: `946221e46dc4103b1d284533ea916fb74cdb04b1`
+- Merge commit: `00f9bd45bb26803be65544b70d34076dc0c6dacf`
 
 ## Current version
 
-- currentVersion: v2.46
-- currentMilestone: External assessment boundary synced
+- currentVersion: v2.47
+- currentMilestone: Minimal branch protection Ruleset active
 
-## PR #196 result
+## PR #199 result
 
-PR #196 clarified that the repository is a GitHub-centered book/project operating system, not a production multi-agent runtime, reusable public framework, or deployed agent platform.
+PR #199 recorded that Sergey enabled the minimal active GitHub Ruleset `Protect main` for `main` / default branch.
 
-It also recorded external assessment conclusions in `knowledge/07_operations/external_assessment_notes_2026-05-20.md` without implementing premature runtime, routing, validators, hard guardrails, branch protection, observability, releases, or production security tooling.
+The Ruleset requires pull requests before merge and requires exact GitHub check contexts:
+
+- `TypeScript / JavaScript / Go checks`
+- `sync-check`
+
+It blocks force pushes and restricts deletions. Required approvals remain `0`. Branches are not required to be up to date before merging.
+
+Status: repository-level branch protection only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 
 ## Current active manual disciplines
 
@@ -35,6 +42,4 @@ It also recorded external assessment conclusions in `knowledge/07_operations/ext
 
 ## Next safe step
 
-Verify branch protection and record the result.
-
-Branch protection must not be treated as configured until a direct check is performed and recorded.
+Consider a small checks overview for external readability, or pause for Sergey to choose the next work item.

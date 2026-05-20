@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.46
-- currentMilestone: External assessment boundary synced
-- lastMergedPr: PR #196 — Clarify external boundary and maturity status
-- lastMergeCommit: `946221e46dc4103b1d284533ea916fb74cdb04b1`
+- currentVersion: v2.47
+- currentMilestone: Minimal branch protection Ruleset active
+- lastMergedPr: PR #199 — Record branch protection ruleset activation
+- lastMergeCommit: `00f9bd45bb26803be65544b70d34076dc0c6dacf`
 
 ## Recent PR summary
 
-- PR #192 — Add command protocol.
-- PR #194 — Harden margin orchestra manual preflight.
-- PR #195 — Sync state after margin orchestra manual preflight.
 - PR #196 — Clarify external boundary and maturity status.
+- PR #197 — Sync state after external boundary clarification.
+- PR #198 — Record branch protection verification result.
+- PR #199 — Record branch protection ruleset activation.
 
 ## Status
 
@@ -32,9 +32,16 @@ External assessment conclusions are recorded in `knowledge/07_operations/externa
 
 The repository is explicitly documented as a GitHub-centered book/project operating system, not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 
+Minimal repository-level branch protection is active through GitHub Ruleset `Protect main` for `main` / default branch.
+
+Required check contexts:
+
+- `TypeScript / JavaScript / Go checks`
+- `sync-check`
+
 ## Approved next sequence
 
-1. branch protection verification and recorded result;
+1. sync state after branch protection Ruleset activation;
 2. if useful later, a small checks overview for external readability;
 3. if Sergey separately approves, prepare a future runtime readiness checklist;
 4. if needed, perform a scripts/core boundary audit;
@@ -42,4 +49,4 @@ The repository is explicitly documented as a GitHub-centered book/project operat
 
 ## Recommended next work item
 
-Verify branch protection and record the result.
+Complete state sync after branch protection Ruleset activation.
