@@ -57,7 +57,7 @@ Currently this is manual protocol discipline only. It is not routing, validator,
 | Agent / pattern | Current status | Boundary |
 |---|---|---|
 | `critic_margin_agent` | active manual preflight discipline | not routed, not validator, not hard guardrail |
-| `conversation_archive_librarian` | proposal plus activation mechanics | not activated |
+| `conversation_archive_librarian` | active manual archive discipline | not routed, not validator, not hard guardrail |
 | `margin_orchestra` | design-only coordination pattern | not runtime, not committee, not authority |
 | other registry agents | proposal/container unless merged PR says otherwise | not active by default |
 
@@ -68,6 +68,7 @@ Conversation archive is not project-state and not ChatGPT memory.
 - `#архив чата` prepares a draft archive entry.
 - `#архив чата сохрани` prepares a GitHub PR for archive entry and index update when allowed.
 - `#архив_старт` is cumulative write-first archive work, not last-topic-only.
+- `conversation_archive_librarian` manual discipline applies to archive commands and archive PR decisions.
 - No archive entry is a full-chat checkpoint unless it explicitly says `coverage_scope: full_chat`.
 - If several archive PRs can conflict through `knowledge/08_conversation_archive/index.md`, use parallel intake or later consolidation.
 
@@ -118,8 +119,6 @@ When applicable, PR readiness means both Sync Check and CI.
 
 Choose one:
 
-1. knowledge / protocol consistency check;
-2. controlled activation for `conversation_archive_librarian` manual discipline;
-3. harden `margin_orchestra` into protocol / tooling;
-4. branch protection verification;
-5. return to Book Fast Track by separate decision.
+1. harden `margin_orchestra` into protocol / tooling;
+2. branch protection verification;
+3. deeper knowledge / protocol consistency automation proposal.
