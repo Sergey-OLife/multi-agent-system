@@ -10,21 +10,21 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #179 — Add archive librarian activation mechanics
+- PR #181 — Add architecture map
 - Status: merged
-- Merge commit: `d3021b0f11109ca9b3ff47adb4777ce3a1247085`
+- Merge commit: `2c657ae6b46e06db06bd4ab02f7ae9ac50855495`
 
 ## Current version
 
-- currentVersion: v2.38
-- currentMilestone: Archive librarian activation mechanics synced
+- currentVersion: v2.39
+- currentMilestone: Architecture map and documentation topology synced
 
-## PR #179 result
+## PR #181 result
 
-PR #179 added `knowledge/05_agent_memory/agent_shipyard/conversation_archive_librarian_activation_mechanics.md`.
+PR #181 added README and documentation/vision/runtime map files.
 
-Status: mechanics only. `conversation_archive_librarian` is not activated, not routed, not a hard guardrail, and not an automated validator.
+Status: map only. Runtime, routes, validators, hard guardrails, branch protection and book work were not changed.
 
 ## Next safe step
 
-Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
+Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, knowledge/protocol consistency check, or return to Book Fast Track by separate decision.
