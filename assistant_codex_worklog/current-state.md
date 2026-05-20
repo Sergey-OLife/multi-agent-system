@@ -8,6 +8,8 @@ Mode: `Agent Shipyard / Agent Queue`.
 
 Book work remains paused until Sergey gives a separate decision.
 
+Book Fast Track is ignored for immediate next work per Sergey instruction.
+
 ## Latest merged PR
 
 - PR #183 — Add maturity checklist
@@ -25,6 +27,10 @@ PR #183 added maturity checklist and updated README, vision intake map, and road
 
 Status: diagnostic map only. Runtime, validators, observability, security tooling, branch protection and book work were not changed.
 
+## Current consistency check
+
+A manual knowledge / protocol consistency check is being recorded in `knowledge/07_operations/knowledge_protocol_consistency_check_2026-05-20.md`.
+
 ## Next safe step
 
-Choose knowledge/protocol consistency check, controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or return to Book Fast Track by separate decision.
+Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, branch protection verification, or deeper knowledge/protocol consistency automation proposal.

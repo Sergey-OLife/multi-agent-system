@@ -12,6 +12,7 @@ GitHub main — источник правды. Сначала открой READM
 - lastMergeCommit: 3169839e6365d52609b7c5a8d36db304a6a753b1.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе.
+- Book Fast Track is ignored for immediate next work until Sergey separately resumes it.
 - Maturity checklist is diagnostic map only.
 - Current diagnostic pressure: prevent docs, protocols, state and checks from drifting apart while the project serves its own machinery.
 - README is the entrance map, not a dumping ground.
@@ -23,5 +24,5 @@ GitHub main — источник правды. Сначала открой READM
 - margin_orchestra remains design-only.
 - Branch protection remains not configured until verified.
 
-Next: choose knowledge/protocol consistency check, controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or return to Book Fast Track by separate decision.
+Next: choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or deeper knowledge/protocol consistency automation proposal.
 ```

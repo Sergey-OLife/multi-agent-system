@@ -48,7 +48,8 @@
     "PR #180 — Sync state after PR #179",
     "PR #181 — Add architecture map",
     "PR #182 — Sync state after PR #181",
-    "PR #183 — Add maturity checklist"
+    "PR #183 — Add maturity checklist",
+    "PR #184 — Sync state after PR #183"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -61,7 +62,7 @@
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
-    "Book Fast Track remains paused until separate Sergey decision",
+    "Book Fast Track remains paused until separate Sergey decision and is ignored for immediate next work",
     "current active mode is Agent Shipyard / Agent Queue",
     "PR #181 added README architecture map, documentation topology, vision intake map, and future runtime hypotheses map",
     "PR #183 added maturity checklist as diagnostic map only",
@@ -86,6 +87,7 @@
   ],
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
+    "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not activate conversation_archive_librarian without controlled activation and separate approval",
     "Do not treat maturity checklist as runtime, validators, observability, security tooling or branch protection",
     "Do not treat architecture map or future runtime hypotheses as runtime implementation",
@@ -95,7 +97,7 @@
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Choose knowledge/protocol consistency check, controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or return to Book Fast Track by separate decision.",
+  "nextAction": "Choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or deeper knowledge/protocol consistency automation proposal.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -115,6 +117,7 @@
     "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
     "knowledge/07_operations/documentation_topology.md",
     "knowledge/07_operations/future_runtime_hypotheses.md",
+    "knowledge/07_operations/knowledge_protocol_consistency_check_2026-05-20.md",
     "knowledge/07_operations/maturity_checklist.md",
     "knowledge/07_operations/vision_intake_map.md",
     "knowledge/07_operations/review_depth_protocol.md",
@@ -132,7 +135,7 @@
     "manualDisciplines": [
       "critic_margin_agent manual preflight"
     ],
-    "recommendedNextWorkItem": "Choose knowledge/protocol consistency check, controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or return to Book Fast Track by separate decision.",
+    "recommendedNextWorkItem": "Choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, branch protection verification, or deeper knowledge/protocol consistency automation proposal.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "proposal plus activation mechanics; not activated",
