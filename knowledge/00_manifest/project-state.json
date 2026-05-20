@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.35",
-  "lastCompletedVersion": "v2.35",
-  "lastMergedPr": "PR #172 — Add critic activation plan",
-  "lastMergeCommit": "ef0d0117fa20f59f8016963443752a1077ed5cc8",
-  "currentMilestone": "v2.35 Critic margin activation plan synced",
+  "currentVersion": "v2.36",
+  "lastCompletedVersion": "v2.36",
+  "lastMergedPr": "PR #175 — Define critic activation mechanics",
+  "lastMergeCommit": "2798abab2ec739b15b5816ce7dbb0b01acc6377e",
+  "currentMilestone": "v2.36 Critic margin activation mechanics synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -35,15 +35,16 @@
     "v2.32 Registry sync request flow and conversation archive librarian registry synced",
     "v2.33 Second-eyes preflight design synced",
     "v2.34 Critic margin agent registry synced",
-    "v2.35 Critic margin activation plan synced"
+    "v2.35 Critic margin activation plan synced",
+    "v2.36 Critic margin activation mechanics synced"
   ],
   "recentPrs": [
-    "PR #167 — Add second-eyes preflight design",
-    "PR #168 — Sync state after PR #167",
-    "PR #169 — closed unmerged; superseded by PR #170",
     "PR #170 — Sync registry for critic margin agent",
     "PR #171 — Sync state after PR #170",
-    "PR #172 — Add critic activation plan"
+    "PR #172 — Add critic activation plan",
+    "PR #173 — Sync state after PR 172",
+    "PR #174 — Restore state detail after PR 173",
+    "PR #175 — Define critic activation mechanics"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -63,7 +64,9 @@
     "PR #167 added critic_margin_agent proposal and margin_orchestra design only",
     "PR #170 recorded critic_margin_agent in registry as proposal-only",
     "PR #172 added critic_margin_activation_plan as plan-only",
+    "PR #175 defined critic activation mechanics as manual preflight use only",
     "critic_margin_agent is not activated, not routed, not a hard guardrail and not an automated validator",
+    "critic activation mechanics do not change routes, validators, registry status, branch protection or runtime",
     "conversation_archive_librarian is not activated or routed",
     "margin_orchestra remains design-only",
     "registry sync request workflow is implemented",
@@ -79,6 +82,7 @@
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not activate conversation_archive_librarian without controlled activation and separate approval",
     "Do not activate critic_margin_agent without controlled activation and separate approval",
+    "Do not treat manual preflight mechanics as agent activation",
     "Do not treat margin_orchestra as hard guardrail or automated validator",
     "Do not create hard guardrails without separate approval and PR",
     "Do not treat branch protection as configured until verified",
@@ -96,6 +100,7 @@
     "knowledge/05_agent_memory/agent_shipyard/agent_container_registry.md",
     "knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
     "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_plan.md",
+    "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_mechanics.md",
     "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md",
     "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
     "knowledge/07_operations/review_depth_protocol.md",
@@ -135,13 +140,13 @@
       "known_caveat": "bot-generated registry commits may not trigger final-head CI automatically"
     },
     "secondEyes": {
-      "critic_margin_agent": "proposal plus registry plus activation plan; not activated",
+      "critic_margin_agent": "proposal plus registry plus activation plan plus mechanics; not activated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #172 — Add critic activation plan",
-      "latest_green_head": "3733b2aa5fb177255369eae777b32b5ca83c0784",
-      "latest_green_merge_commit": "ef0d0117fa20f59f8016963443752a1077ed5cc8",
+      "latest_green_pr": "PR #175 — Define critic activation mechanics",
+      "latest_green_head": "8ae9e3af661fe7fb7bfcff6ee28e7d2dcfdfd25b",
+      "latest_green_merge_commit": "2798abab2ec739b15b5816ce7dbb0b01acc6377e",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }
