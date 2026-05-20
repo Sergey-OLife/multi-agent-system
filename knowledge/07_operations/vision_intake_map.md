@@ -11,13 +11,14 @@ Vision notes and archive entries can inspire decisions, but they are not impleme
 ## Source groups
 
 - Future bugs: source-of-truth drift, infrastructure serving itself, scripts becoming hidden core, documentation drift.
-- Ideas: critic voice, conversation archive librarian, checkpoint behavior, parallel archive intake.
+- Ideas: critic voice, conversation archive librarian, checkpoint behavior, parallel archive intake, restart command.
 - Red flags: missing README, main protection, weak high-level map, scripts/core boundary, state authority risk.
 - Shared storage: Redis, Postgres, event log, snapshots, P2P, race control, idempotency.
 - Architecture: TS/JS plus Go division of responsibility.
 - TS/JS + Go challenges: contracts, runtime boundaries, observability, deployment complexity.
 - Archive reasoning: coverage scope, full-chat marker, implemented_elsewhere, corrective archive, parallel intake, consolidation.
 - Maturity pressure: project value versus infrastructure self-service, explicit workflow, role boundaries, negative tests, observability, reproducibility, security, evaluation and maintenance signals.
+- Ship metaphor: the project ship carries cargo and passengers; architecture must carry reusable multi-agent work and livable book worlds.
 
 ## Archive-derived rules
 
@@ -50,11 +51,15 @@ Vision notes and archive entries can inspire decisions, but they are not impleme
 - Architecture contract is a load-bearing wall; README is the entrance map.
 - A future runtime idea is not current architecture.
 - A maturity mechanism must prevent a real failure, not only decorate the system.
+- The ship needs hull and engine for cargo, but also cabins and details for passengers.
 
 ### Open loop
 
+- Restart command protocol.
+- Project instruction update for restart command handling.
+- Current chat archive before full checkpoint.
+- Full checkpoint after archive work.
 - Knowledge / protocol consistency check.
-- Controlled activation for `conversation_archive_librarian` manual discipline.
 - Hardening `margin_orchestra` into protocol or tooling.
 - Branch protection verification.
 - Vision notes need source cards or a fuller intake ledger if they become project decisions.
@@ -89,6 +94,7 @@ See `knowledge/07_operations/future_runtime_hypotheses.md`.
 - Protocol without checks becomes folklore.
 - Future project bugs are less about code bugs and more about source-of-truth drift.
 - The system must not keep checking its reflections instead of reality.
+- The ship carries cargo and passengers: cargo needs strength; passengers need cabins.
 
 ## Rule
 
