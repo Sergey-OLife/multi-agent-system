@@ -10,21 +10,21 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #175 — Define critic activation mechanics
+- PR #177 — Activate critic manual preflight
 - Status: merged
-- Merge commit: `2798abab2ec739b15b5816ce7dbb0b01acc6377e`
+- Merge commit: `f0ab82814b54fd64268764cdfccf3c171493b849`
 
 ## Current version
 
-- currentVersion: v2.36
-- currentMilestone: Critic margin activation mechanics synced
+- currentVersion: v2.37
+- currentMilestone: Critic manual preflight discipline synced
 
-## PR #175 result
+## PR #177 result
 
-PR #175 added `knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_mechanics.md`.
+PR #177 added `assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md`.
 
-Status: mechanics only. `critic_margin_agent` is not activated, not routed, not a hard guardrail, and not an automated validator.
+Status: active manual discipline only. `critic_margin_agent` is not routed, not a hard guardrail, and not an automated validator.
 
 ## Next safe step
 
-Choose controlled activation for `critic_margin_agent`, controlled activation for `conversation_archive_librarian`, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
+Choose controlled activation for `conversation_archive_librarian`, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
