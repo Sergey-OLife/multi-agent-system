@@ -8,6 +8,16 @@ In plain language: this repo is the map of the ship. Chat can discuss, LLM can d
 
 This project keeps book work, agent design, decisions, archives, state and technical boundaries from being lost in chats or confused with implemented reality.
 
+## What this project is not
+
+This repository is not a production multi-agent runtime, not a reusable public framework, and not a deployed agent platform.
+
+Current maturity is a GitHub-centered operating system for a book/project: state, protocols, agent design, archives, review discipline and future architecture decisions.
+
+Runtime orchestration, route automation, validators, hard guardrails, branch protection enforcement, databases, message brokers, observability and production security boundaries require separate decisions before implementation.
+
+Manual discipline is a real workflow layer, but it must not be described as automated safety.
+
 ## Start here
 
 - Current state: `knowledge/00_manifest/project-state.json` and `knowledge/00_manifest/project-state.md`.

@@ -20,6 +20,20 @@ The project has become an engineering platform with a harder state contour:
 
 Main risk: the system may start serving its own infrastructure instead of the book, product and user-facing value.
 
+## External assessment boundary
+
+External readers may mistake this repository for a production multi-agent framework because of the repository name, active agent language, Go/TypeScript tooling and CI workflows.
+
+Current status must be read more narrowly:
+
+- This is a GitHub-centered operating system for a book/project.
+- It is not a deployed multi-agent runtime.
+- It is not a reusable public framework yet.
+- Manual disciplines are workflow layers, not automated validators.
+- Missing runtime infrastructure is not a defect at this stage when the project is evaluated by its current scope.
+
+If the project later becomes a reusable runtime or framework, it will need a separate readiness checklist covering branch protection, release/versioning, runtime limits, retries, observability, security boundaries, prompt-injection resistance, evaluation scenarios and operational deployment.
+
 ## Checklist classification
 
 ### Implemented or mostly implemented
@@ -30,6 +44,7 @@ Main risk: the system may start serving its own infrastructure instead of the bo
 - GitHub main is the source of truth.
 - Agent lifecycle words are defined: proposal, mechanics, manual discipline, routed, validator, hard guardrail.
 - Security boundary at project level: no runtime, validators, hard guardrails, branch protection or databases without separate decision.
+- External boundary statement exists: README clarifies that this repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 
 ### Partial / needs strengthening
 
@@ -39,6 +54,7 @@ Main risk: the system may start serving its own infrastructure instead of the bo
 - Knowledge / protocol consistency checks.
 - Negative checks for failure patterns: missing source of truth, stale state, archive coverage gap, bot commit without final-head checks.
 - Maintenance signals: recent PRs and state are visible, but this is not yet summarized as a health panel.
+- Branch protection status remains unverified until a direct branch protection check is performed and recorded.
 
 ### Not yet applicable until runtime exists
 
