@@ -12,21 +12,21 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #190 — Archive restart command and ship metaphor
+- PR #192 — Add command protocol
 - Status: merged
-- Merge commit: `ca0cbf1921d0953722c8867b8414f22eb709ca93`
+- Merge commit: `3a1e99ba38ec1268195cdffe2a718772bdb65659`
 
 ## Current version
 
-- currentVersion: v2.43
-- currentMilestone: Checkpoint full after restart archive
+- currentVersion: v2.44
+- currentMilestone: Restart command protocol synced
 
-## PR #190 result
+## PR #192 result
 
-PR #190 archived the restart-command plan, PR creation tool blocker, parked branches, and ship metaphor correction.
+PR #192 implemented `рестарт` as a command protocol.
 
-Status: archive only. It did not implement the restart command, project instruction update, runtime, validators, branch protection or book work.
+Status: continuation command only. It reads GitHub source of truth and reports the current point. It does not write to GitHub, create PRs, merge PRs, update memory, start Book Fast Track, treat open PRs as implemented, or skip approval gates.
 
 ## Next safe step
 
-Add restart command protocol by a narrow PR.
+Update project instructions for the `рестарт` command separately.
