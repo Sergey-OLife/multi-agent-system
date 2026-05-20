@@ -10,21 +10,21 @@ Book work remains paused until Sergey gives a separate decision.
 
 ## Latest merged PR
 
-- PR #177 — Activate critic manual preflight
+- PR #179 — Add archive librarian activation mechanics
 - Status: merged
-- Merge commit: `f0ab82814b54fd64268764cdfccf3c171493b849`
+- Merge commit: `d3021b0f11109ca9b3ff47adb4777ce3a1247085`
 
 ## Current version
 
-- currentVersion: v2.37
-- currentMilestone: Critic manual preflight discipline synced
+- currentVersion: v2.38
+- currentMilestone: Archive librarian activation mechanics synced
 
-## PR #177 result
+## PR #179 result
 
-PR #177 added `assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md`.
+PR #179 added `knowledge/05_agent_memory/agent_shipyard/conversation_archive_librarian_activation_mechanics.md`.
 
-Status: active manual discipline only. `critic_margin_agent` is not routed, not a hard guardrail, and not an automated validator.
+Status: mechanics only. `conversation_archive_librarian` is not activated, not routed, not a hard guardrail, and not an automated validator.
 
 ## Next safe step
 
-Choose controlled activation for `conversation_archive_librarian`, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
+Choose controlled activation for `conversation_archive_librarian` manual discipline, hardening `margin_orchestra`, README / architecture map, or branch protection verification.
