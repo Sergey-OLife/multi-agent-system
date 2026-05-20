@@ -831,6 +831,19 @@ agent_container_registry:
       proposal_path: "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md"
       activation_risk: "medium"
       approval_gate: true
+
+    - agent_id: "critic_margin_agent"
+      working_name_ru: "Критик предпосылок"
+      group: "Управление кораблём"
+      status: "proposal"
+      ship_role: "watch"
+      why_needed: "Проверяет скрытые предпосылки перед margin-point операциями, где корректный ближайший шаг может опираться на неверную модель действия."
+      main_formula: "Вторые глаза смотрят на то, что первый исполнитель уже принял как само собой разумеющееся."
+      first_fill_priority: "P0"
+      next_action: "controlled_activation"
+      proposal_path: "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md"
+      activation_risk: "medium"
+      approval_gate: true
 ```
 
 ## Первое ядро заполнения
