@@ -24,6 +24,7 @@ GitHub — источник правды по коду, структуре, со
 - `chat_restart_prompt_length_limit.md` — чатовый restart prompt перед checkpoint должен быть до 6000 знаков с пробелами; лимит не относится к файлу `restart-prompt.md`;
 - `plus_approval_shorthand.md` — `+` означает продолжение без approval, `++` означает approval текущего понятного approval-gate;
 - `auto_mergeability_check.md` — перепроверка mergeability открытого PR не требует отдельного подтверждения.
+- `restart_command.md` — команда `рестарт` запускает продолжение из GitHub source of truth.
 
 ## Book Fast Track для глав книги
 
