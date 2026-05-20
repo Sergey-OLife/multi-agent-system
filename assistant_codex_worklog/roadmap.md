@@ -8,22 +8,22 @@ Book work remains paused.
 
 ## Current milestone
 
-- currentVersion: v2.38
-- currentMilestone: Archive librarian activation mechanics synced
-- lastMergedPr: PR #179 — Add archive librarian activation mechanics
-- lastMergeCommit: `d3021b0f11109ca9b3ff47adb4777ce3a1247085`
+- currentVersion: v2.39
+- currentMilestone: Architecture map and documentation topology synced
+- lastMergedPr: PR #181 — Add architecture map
+- lastMergeCommit: `2c657ae6b46e06db06bd4ab02f7ae9ac50855495`
 
 ## Recent PR summary
 
-- PR #177 — Activate critic manual preflight.
-- PR #178 — Sync state after PR #177.
 - PR #179 — Add archive librarian activation mechanics.
+- PR #180 — Sync state after PR #179.
+- PR #181 — Add architecture map.
 
 ## Status
 
-`conversation_archive_librarian` has proposal and activation mechanics.
+README, documentation topology, vision intake map, and future runtime hypotheses map are now present in main.
 
-It is not activated, not routed, not a hard guardrail, and not an automated validator.
+Status: map only. Runtime, routes, validators, hard guardrails, branch protection and book work were not changed.
 
 ## Recommended next work item
 
@@ -31,5 +31,6 @@ Choose one:
 
 1. controlled activation for `conversation_archive_librarian` manual discipline;
 2. harden `margin_orchestra` into protocol / tooling;
-3. README / architecture map;
-4. branch protection verification.
+3. branch protection verification;
+4. knowledge / protocol consistency check;
+5. return to Book Fast Track by separate decision.
