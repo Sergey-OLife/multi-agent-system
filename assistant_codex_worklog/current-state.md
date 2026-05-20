@@ -12,21 +12,21 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #188 — Activate archive librarian manual discipline
+- PR #190 — Archive restart command and ship metaphor
 - Status: merged
-- Merge commit: `9882209dfdc1697b182ea288c633969f12c9ae12`
+- Merge commit: `ca0cbf1921d0953722c8867b8414f22eb709ca93`
 
 ## Current version
 
-- currentVersion: v2.42
-- currentMilestone: Archive librarian manual discipline active
+- currentVersion: v2.43
+- currentMilestone: Checkpoint full after restart archive
 
-## PR #188 result
+## PR #190 result
 
-PR #188 activated `conversation_archive_librarian` as manual archive discipline only.
+PR #190 archived the restart-command plan, PR creation tool blocker, parked branches, and ship metaphor correction.
 
-Status: manual discipline only. Routes, validators, hard guardrails, branch protection, runtime, registry status change, project-state sync, ChatGPT memory use and book work were not changed.
+Status: archive only. It did not implement the restart command, project instruction update, runtime, validators, branch protection or book work.
 
 ## Next safe step
 
-Harden `margin_orchestra` into protocol / tooling.
+Add restart command protocol by a narrow PR.
