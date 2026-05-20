@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.37",
-  "lastCompletedVersion": "v2.37",
-  "lastMergedPr": "PR #177 — Activate critic manual preflight",
-  "lastMergeCommit": "f0ab82814b54fd64268764cdfccf3c171493b849",
-  "currentMilestone": "v2.37 Critic manual preflight discipline synced",
+  "currentVersion": "v2.38",
+  "lastCompletedVersion": "v2.38",
+  "lastMergedPr": "PR #179 — Add archive librarian activation mechanics",
+  "lastMergeCommit": "d3021b0f11109ca9b3ff47adb4777ce3a1247085",
+  "currentMilestone": "v2.38 Archive librarian activation mechanics synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -37,15 +37,16 @@
     "v2.34 Critic margin agent registry synced",
     "v2.35 Critic margin activation plan synced",
     "v2.36 Critic margin activation mechanics synced",
-    "v2.37 Critic manual preflight discipline synced"
+    "v2.37 Critic manual preflight discipline synced",
+    "v2.38 Archive librarian activation mechanics synced"
   ],
   "recentPrs": [
-    "PR #172 — Add critic activation plan",
-    "PR #173 — Sync state after PR 172",
-    "PR #174 — Restore state detail after PR 173",
+    "PR #174 — Restore state detail after PR #173",
     "PR #175 — Define critic activation mechanics",
     "PR #176 — Sync state after PR #175",
-    "PR #177 — Activate critic manual preflight"
+    "PR #177 — Activate critic manual preflight",
+    "PR #178 — Sync state after PR #177",
+    "PR #179 — Add archive librarian activation mechanics"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -60,37 +61,29 @@
     "GitHub main is the source of truth for merged project state",
     "Book Fast Track remains paused until separate Sergey decision",
     "current active mode is Agent Shipyard / Agent Queue",
-    "Go checks, TypeScript connects, LLM thinks, Sergey approves, GitHub records",
-    "PR #165 recorded conversation_archive_librarian in registry as proposal-only",
-    "PR #167 added critic_margin_agent proposal and margin_orchestra design only",
-    "PR #170 recorded critic_margin_agent in registry as proposal-only",
-    "PR #172 added critic_margin_activation_plan as plan-only",
-    "PR #175 defined critic activation mechanics as manual preflight use only",
     "PR #177 activated critic manual preflight as protocol addendum only",
+    "PR #179 added conversation_archive_librarian activation mechanics as mechanics-only",
+    "conversation_archive_librarian is not activated, not routed, not a validator, not a hard guardrail and not ChatGPT memory use",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "critic_margin_agent is not routed, not a hard guardrail and not an automated validator",
-    "critic manual preflight does not change routes, validators, registry status, branch protection or runtime",
-    "conversation_archive_librarian is not activated or routed",
     "margin_orchestra remains design-only",
-    "registry sync request workflow is implemented",
-    "agent-registry-sync can insert missing proposal/container blocks only with explicit --insert-if-missing",
     "required PR verification layer includes Sync Check and CI when both apply",
     "branch protection remains not configured until explicitly verified",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
-    "+++ means the nearest grounded safe action and does not bypass approval-gates",
-    "proposal agents remain proposal only until separate approval unless explicitly activated as manual protocol discipline"
+    "+++ means the nearest grounded safe action and does not bypass approval-gates"
   ],
   "pausedTasks": [
     "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
     "Do not activate conversation_archive_librarian without controlled activation and separate approval",
+    "Do not treat archive librarian mechanics as routes, validator, hard guardrail, registry status change, branch protection, runtime, project-state sync or ChatGPT memory use",
     "Do not treat critic manual preflight as routes, validator, hard guardrail, registry status change, branch protection or runtime",
     "Do not treat margin_orchestra as hard guardrail or automated validator",
     "Do not create hard guardrails without separate approval and PR",
     "Do not treat branch protection as configured until verified",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Choose controlled activation for conversation_archive_librarian, hardening margin_orchestra, README / architecture map, or branch protection verification.",
+  "nextAction": "Choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, README / architecture map, or branch protection verification.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -104,6 +97,7 @@
     "knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
     "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_plan.md",
     "knowledge/05_agent_memory/agent_shipyard/critic_margin_activation_mechanics.md",
+    "knowledge/05_agent_memory/agent_shipyard/conversation_archive_librarian_activation_mechanics.md",
     "knowledge/05_agent_memory/agent_proposals/conversation_archive_librarian.md",
     "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
     "knowledge/07_operations/review_depth_protocol.md",
@@ -118,41 +112,22 @@
   ],
   "agentState": {
     "proposalAgents": [
-      "workflow_conductor_agent",
-      "agent_registry_librarian",
-      "approval_gate_keeper",
-      "project_state_synchronizer",
-      "checkpoint_compressor_agent",
-      "source_card_builder",
-      "copyright_boundary_guard",
-      "svod_guard",
-      "contextologist_agent",
-      "sergey_interaction_profiler",
-      "author_style_memory_agent",
-      "banality_alarm_agent",
-      "anti_cliche_editor",
       "conversation_archive_librarian",
       "critic_margin_agent"
     ],
     "manualDisciplines": [
       "critic_margin_agent manual preflight"
     ],
-    "recommendedNextWorkItem": "Choose controlled activation for conversation_archive_librarian, hardening margin_orchestra, README / architecture map, or branch protection verification.",
-    "registrySync": {
-      "request_workflow": ".github/workflows/registry-sync-request.yml",
-      "go_command": "go-core/cmd/agent-registry-sync/main.go",
-      "insert_if_missing": "available after PR #163",
-      "latest_registry_sync": "PR #170 — critic_margin_agent recorded as proposal-only",
-      "known_caveat": "bot-generated registry commits may not trigger final-head CI automatically"
-    },
+    "recommendedNextWorkItem": "Choose controlled activation for conversation_archive_librarian manual discipline, hardening margin_orchestra, README / architecture map, or branch protection verification.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
+      "conversation_archive_librarian": "proposal plus activation mechanics; not activated",
       "margin_orchestra": "design only; not hard guardrail"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #177 — Activate critic manual preflight",
-      "latest_green_head": "20eb2da15921359e6a7ea3abe187238757ff7c1a",
-      "latest_green_merge_commit": "f0ab82814b54fd64268764cdfccf3c171493b849",
+      "latest_green_pr": "PR #179 — Add archive librarian activation mechanics",
+      "latest_green_head": "775df4a836e441f3c7a32ae321b4c3aa8d4fd1e1",
+      "latest_green_merge_commit": "d3021b0f11109ca9b3ff47adb4777ce3a1247085",
       "required_workflow_statuses": ["Sync Check", "CI"],
       "branchProtection": "not_configured"
     }

@@ -8,28 +8,28 @@ Book work remains paused.
 
 ## Current milestone
 
-- currentVersion: v2.37
-- currentMilestone: Critic manual preflight discipline synced
-- lastMergedPr: PR #177 — Activate critic manual preflight
-- lastMergeCommit: `f0ab82814b54fd64268764cdfccf3c171493b849`
+- currentVersion: v2.38
+- currentMilestone: Archive librarian activation mechanics synced
+- lastMergedPr: PR #179 — Add archive librarian activation mechanics
+- lastMergeCommit: `d3021b0f11109ca9b3ff47adb4777ce3a1247085`
 
 ## Recent PR summary
 
-- PR #175 — Define critic activation mechanics.
-- PR #176 — Sync state after PR #175.
 - PR #177 — Activate critic manual preflight.
+- PR #178 — Sync state after PR #177.
+- PR #179 — Add archive librarian activation mechanics.
 
 ## Status
 
-`critic_margin_agent` is active as manual protocol discipline only.
+`conversation_archive_librarian` has proposal and activation mechanics.
 
-It is not routed, not a hard guardrail, and not an automated validator.
+It is not activated, not routed, not a hard guardrail, and not an automated validator.
 
 ## Recommended next work item
 
 Choose one:
 
-1. controlled activation for `conversation_archive_librarian`;
+1. controlled activation for `conversation_archive_librarian` manual discipline;
 2. harden `margin_orchestra` into protocol / tooling;
 3. README / architecture map;
 4. branch protection verification.
