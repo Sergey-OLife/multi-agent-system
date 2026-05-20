@@ -24,6 +24,7 @@ Manual discipline is a real workflow layer, but it must not be described as auto
 - Resume files: `assistant_codex_worklog/current-state.md`, `assistant_codex_worklog/roadmap.md`, `assistant_codex_worklog/restart-prompt.md`.
 - Documentation topology: `knowledge/07_operations/documentation_topology.md`.
 - Maturity checklist: `knowledge/07_operations/maturity_checklist.md`.
+- Checks and merge gates: `knowledge/07_operations/checks_overview.md`.
 - Current mode: Agent Shipyard / Agent Queue.
 - Book work is paused until a separate Sergey decision.
 
@@ -112,6 +113,8 @@ Do not optimize by deleting meaning. Optimize by splitting, merging, marking imp
 
 When applicable, PR readiness means both Sync Check and CI.
 
+Required check contexts for protected `main` are documented in `knowledge/07_operations/checks_overview.md`.
+
 `+` continues the next safe step. `++` approves the current clear approval-gate. `+++` performs the nearest grounded safe action without bypassing gates.
 
 ## Do not confuse
@@ -129,6 +132,7 @@ When applicable, PR readiness means both Sync Check and CI.
 
 Choose one:
 
-1. branch protection verification;
-2. `margin_orchestra` tooling proposal, only after separate Sergey decision;
-3. deeper knowledge / protocol consistency automation proposal.
+1. checks overview state sync after merge;
+2. future runtime readiness checklist, only after separate Sergey decision;
+3. scripts/core boundary audit;
+4. state-sync drift detector proposal.
