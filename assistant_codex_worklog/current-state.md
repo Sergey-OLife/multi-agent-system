@@ -12,27 +12,22 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #201 — Document required checks and merge gates
+- PR #203 — Propose state sync drift detector
 - Status: merged
-- Merge commit: `5fb507895d137843be5885f9bc490dc89f397088`
+- Merge commit: `59a9c0715eee6429ebcce50c03bb801f2c256498`
 
 ## Current version
 
-- currentVersion: v2.48
-- currentMilestone: Required checks and merge gates documented
+- currentVersion: v2.49
+- currentMilestone: State-sync drift detector proposal synced
 
-## PR #201 result
+## PR #203 result
 
-PR #201 added `knowledge/07_operations/checks_overview.md` and linked it from README.
+PR #203 added `knowledge/07_operations/state_sync_drift_detector_proposal.md`.
 
-It documents the protected `main` merge gate and the exact GitHub required check contexts:
+It proposes a warning-level state-sync drift detector for state-sensitive PRs.
 
-- `TypeScript / JavaScript / Go checks`
-- `sync-check`
-
-It also records the distinction between workflow display names and required check contexts.
-
-Status: operational documentation only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, routing, releases, or production security tooling.
+Status: proposal only. It is not a script, GitHub Action, validator, hard guardrail, runtime, route, branch protection change, or blocking rule.
 
 ## Current active manual disciplines
 
@@ -42,6 +37,6 @@ Status: operational documentation only. It is not runtime security, prompt-injec
 
 ## Next safe step
 
-Complete short state sync after checks overview.
+Decide separately whether to implement a warning-only local script or CI-visible warning for state-sync drift.
 
-After that, consider a state-sync drift detector proposal as a separate design step, not implementation.
+Do not implement it without a separate Sergey decision.
