@@ -2,12 +2,14 @@
 
 This repository is the GitHub source of truth for the book/project operating system.
 
-## Current project point
+In plain language: this repo is the map of the ship. Chat can discuss, LLM can draft, but accepted project state must be visible in GitHub.
+
+## Where we are now
 
 - Mode: Agent Shipyard / Agent Queue.
-- Book work is paused until separate Sergey decision.
+- Book work is paused until a separate Sergey decision.
 - Current state is recorded in `knowledge/00_manifest/project-state.json` and mirrored in `knowledge/00_manifest/project-state.md`.
-- Use `assistant_codex_worklog/current-state.md`, `roadmap.md`, and `restart-prompt.md` to resume work.
+- Resume from `assistant_codex_worklog/current-state.md`, `roadmap.md`, and `restart-prompt.md`.
 
 ## Architecture spine
 
@@ -18,24 +20,62 @@ This repository is the GitHub source of truth for the book/project operating sys
 - LLM reasons and drafts.
 - Sergey approves.
 
-## Active manual disciplines
+This is not a P2P runtime. Global state and accepted decisions are centralized in GitHub. Any future Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, or branch protection change requires a separate decision.
 
-- `critic_margin_agent` manual preflight: active only as a protocol discipline before high-risk GitHub margin operations.
+## Second-eyes layer
+
+`critic_margin_agent` is active only as manual preflight discipline before high-risk GitHub margin operations.
+
+It checks the operation class, hidden assumption, hidden risk, approval gate, and next safe step.
 
 It is not routing, validator, hard guardrail, branch protection, registry status change, or runtime.
 
-## Proposal / not active
+`margin_orchestra` is design-only. It is a coordination idea for second-eyes voices, not an automatic agent runtime.
 
-- `conversation_archive_librarian`: proposal plus activation mechanics, not activated.
-- `margin_orchestra`: design-only, not a hard guardrail.
-- Other listed agents in registry remain proposal/container unless explicitly synced otherwise.
+## Archive layer
+
+Conversation archive is not project-state and not ChatGPT memory.
+
+Archive commands must preserve meaning, not raw transcript dumps:
+
+- `#архив чата` prepares a draft archive entry.
+- `#архив чата сохрани` prepares a GitHub PR for archive entry and index update when allowed.
+- `#архив_старт` is cumulative write-first archive work and must check coverage, previous checkpoint, full-chat marker, and gaps.
+
+`conversation_archive_librarian` has proposal and activation mechanics, but is not activated yet.
+
+## Vision intake
+
+Some project decisions came from Sergey vision notes: future bugs, architecture risks, idea lists, red flags, shared storage thoughts, and TS/JS + Go challenges.
+
+Those notes are not automatically implemented architecture. They must be classified as:
+
+- implemented;
+- accepted principle;
+- open loop;
+- future hypothesis;
+- do not implement without separate decision.
+
+See `knowledge/07_operations/vision_intake_map.md`.
+
+## Proposal / mechanics / activation
+
+Do not confuse lifecycle stages:
+
+- container: named possible agent, not written yet;
+- proposal: described agent, not active;
+- mechanics: activation meaning is defined, but not active;
+- manual discipline: active human/LLM protocol use, not automation;
+- routed: agent participates in routing;
+- validator: automated check;
+- hard guardrail: blocking rule.
 
 ## Checks before merge
 
 When applicable, PR readiness means both:
 
-- Sync Check
-- CI
+- Sync Check;
+- CI.
 
 `+` continues the next safe step. `++` approves the current clear approval-gate. `+++` performs the nearest grounded safe action without bypassing gates.
 
@@ -48,6 +88,7 @@ When applicable, PR readiness means both:
 - Closed-unmerged PR is not implemented.
 - Archive is not project-state.
 - ChatGPT memory is not the repository.
+- README is a map, not a dumping ground.
 
 ## Next useful work
 
