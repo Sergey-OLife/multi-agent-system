@@ -8,6 +8,7 @@ In plain language: this repo is the map of the ship. Chat can discuss, LLM can d
 
 - Current state: `knowledge/00_manifest/project-state.json` and `knowledge/00_manifest/project-state.md`.
 - Resume files: `assistant_codex_worklog/current-state.md`, `assistant_codex_worklog/roadmap.md`, `assistant_codex_worklog/restart-prompt.md`.
+- Documentation topology: `knowledge/07_operations/documentation_topology.md`.
 - Current mode: Agent Shipyard / Agent Queue.
 - Book work is paused until a separate Sergey decision.
 
@@ -68,6 +69,14 @@ Sergey vision notes and archive reasoning are tracked as source material, not au
 Use `knowledge/07_operations/vision_intake_map.md` to classify ideas as implemented, accepted principle, open loop, future hypothesis, or do-not-implement-without-separate-decision.
 
 When an idea is implemented, record where it landed: PR, file, protocol, agent, roadmap item, rejected note, or superseded note.
+
+## Documentation growth
+
+README is the entrance map, not the whole building.
+
+It may expand while clarity improves. When it becomes too dense, keep the headline rule here, move details into a focused document, and link to it.
+
+Do not optimize by deleting meaning. Optimize by splitting, merging, marking implemented_elsewhere, and replacing repeated explanations with links.
 
 ## Lifecycle words
 
