@@ -4,25 +4,30 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.46
-- lastCompletedVersion: v2.46
-- lastMergedPr: PR #196 — Clarify external boundary and maturity status
-- lastMergeCommit: 946221e46dc4103b1d284533ea916fb74cdb04b1
-- currentMilestone: v2.46 External assessment boundary synced
+- currentVersion: v2.47
+- lastCompletedVersion: v2.47
+- lastMergedPr: PR #199 — Record branch protection ruleset activation
+- lastMergeCommit: 00f9bd45bb26803be65544b70d34076dc0c6dacf
+- currentMilestone: v2.47 Minimal branch protection Ruleset active
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.46
+## What changed in v2.47
 
-PR #196 clarified the external project boundary in README and maturity checklist.
+PR #199 recorded that Sergey enabled the minimal active GitHub Ruleset `Protect main` for `main` / default branch.
 
-The repository is now explicitly documented as a GitHub-centered book/project operating system, not a production multi-agent runtime, reusable public framework, or deployed agent platform.
+The Ruleset requires pull requests before merge and requires exact GitHub check contexts:
 
-External assessment conclusions were recorded in `knowledge/07_operations/external_assessment_notes_2026-05-20.md` without implementing runtime, routing, validators, hard guardrails, branch protection, observability, releases, or production security tooling.
+- `TypeScript / JavaScript / Go checks`
+- `sync-check`
+
+It blocks force pushes and restricts deletions. Required approvals remain `0`. Branches are not required to be up to date before merging.
+
+This is repository-level branch protection only. It is not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 
 ## Current recovery path
 
-1. Verify branch protection and record the result.
+1. Complete state sync after branch protection Ruleset activation.
 2. Consider a small checks overview if external readability remains weak.
 3. Consider a future runtime readiness checklist only by separate decision.
 4. Consider a scripts/core boundary audit only if needed.
@@ -38,17 +43,19 @@ External assessment conclusions were recorded in `knowledge/07_operations/extern
 - `margin_orchestra` is active as manual second-eyes preflight discipline only.
 - The `рестарт` command is implemented as a continuation command from GitHub source of truth.
 - The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform.
-- Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, branch protection, validators and hard guardrails require separate decisions.
+- Minimal GitHub Ruleset `Protect main` is active for `main` / default branch.
+- Required branch-protection check contexts are `TypeScript / JavaScript / Go checks` and `sync-check`.
+- Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
 
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
 - Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
-- Do not treat manual disciplines as routes, validators, hard guardrails, branch protection, runtime, registry status changes, or project-state sync.
-- Do not treat branch protection as configured until it is explicitly verified and recorded.
+- Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, or project-state sync.
+- Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Verify branch protection and record the result.
+Complete state sync after branch protection Ruleset activation.
