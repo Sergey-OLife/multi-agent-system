@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.48",
-  "lastCompletedVersion": "v2.48",
-  "lastMergedPr": "PR #201 — Document required checks and merge gates",
-  "lastMergeCommit": "5fb507895d137843be5885f9bc490dc89f397088",
-  "currentMilestone": "v2.48 Required checks and merge gates documented",
+  "currentVersion": "v2.49",
+  "lastCompletedVersion": "v2.49",
+  "lastMergedPr": "PR #203 — Propose state sync drift detector",
+  "lastMergeCommit": "59a9c0715eee6429ebcce50c03bb801f2c256498",
+  "currentMilestone": "v2.49 State-sync drift detector proposal synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -48,13 +48,14 @@
     "v2.45 Margin orchestra manual preflight discipline synced",
     "v2.46 External assessment boundary synced",
     "v2.47 Minimal branch protection Ruleset active",
-    "v2.48 Required checks and merge gates documented"
+    "v2.48 Required checks and merge gates documented",
+    "v2.49 State-sync drift detector proposal synced"
   ],
   "recentPrs": [
-    "PR #198 — Record branch protection verification result",
-    "PR #199 — Record branch protection ruleset activation",
     "PR #200 — Sync state after branch protection ruleset activation",
-    "PR #201 — Document required checks and merge gates"
+    "PR #201 — Document required checks and merge gates",
+    "PR #202 — Sync state after checks overview",
+    "PR #203 — Propose state sync drift detector"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -74,12 +75,14 @@
     "PR #196 clarified external project boundary and recorded external assessment conclusions without runtime implementation",
     "PR #199 recorded minimal active branch protection Ruleset Protect main for main/default branch",
     "PR #201 documented required checks and merge gates in checks_overview.md",
+    "PR #203 added state-sync drift detector proposal only, not implementation",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
     "The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform",
     "required branch-protection check contexts are TypeScript / JavaScript / Go checks and sync-check",
     "Required checks and merge gates are documented in knowledge/07_operations/checks_overview.md",
+    "State-sync drift detector is proposal only in knowledge/07_operations/state_sync_drift_detector_proposal.md",
     "Minimal branch protection is repository-level protection only and not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
@@ -90,11 +93,12 @@
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, or project-state sync",
     "Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
+    "Do not treat the state-sync drift detector proposal as implementation",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators or hard guardrails without separate approval",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Complete short state sync after checks overview.",
+  "nextAction": "Complete state sync after state-sync drift detector proposal.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -106,6 +110,7 @@
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/working-protocol.md",
     "knowledge/07_operations/checks_overview.md",
+    "knowledge/07_operations/state_sync_drift_detector_proposal.md",
     "knowledge/07_operations/branch_protection_verification_2026-05-20.md",
     "knowledge/07_operations/external_assessment_notes_2026-05-20.md",
     "knowledge/07_operations/maturity_checklist.md",
@@ -128,20 +133,21 @@
       "conversation_archive_librarian manual archive discipline",
       "margin_orchestra manual second-eyes preflight"
     ],
-    "recommendedNextWorkItem": "Complete short state sync after checks overview.",
+    "recommendedNextWorkItem": "Complete state sync after state-sync drift detector proposal.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "active manual second-eyes preflight discipline only; not routed and not automated"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #201 — Document required checks and merge gates",
-      "latest_green_head": "9b1edad349129c3d6682885583aad4d481702c59",
-      "latest_green_merge_commit": "5fb507895d137843be5885f9bc490dc89f397088",
+      "latest_green_pr": "PR #203 — Propose state sync drift detector",
+      "latest_green_head": "4ca4db8b191b4feaaa66e5c6f6cddb3b0367ce84",
+      "latest_green_merge_commit": "59a9c0715eee6429ebcce50c03bb801f2c256498",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
-      "checksOverview": "knowledge/07_operations/checks_overview.md"
+      "checksOverview": "knowledge/07_operations/checks_overview.md",
+      "stateSyncDriftDetector": "proposal_only"
     }
   }
 }
