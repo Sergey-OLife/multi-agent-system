@@ -12,20 +12,24 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #250 — Add status trust matrix
+- PR #255 — Add registry status overlay note
 - Status: merged
-- Merge commit: `30a49d6255dd594ea40cf85c17d665f2c08970b5`
+- Merge commit: `d10be54144512238e3883f1e4a286497d6bdd861`
 
 ## Current version
 
-- currentVersion: v2.62
-- currentMilestone: Status trust matrix synced
+- currentVersion: v2.63
+- currentMilestone: Registry status overlay synced
 
-## Recent Agent Queue sequence
+## Recent closure / registry sequence
 
-PR #249 synced state after `agent_registry_librarian` advisory/manual activation.
+PR #252 archived the Agent Queue/status trust closure segment.
 
-PR #250 added `knowledge/07_operations/status_trust_matrix_2026-05-21.md`.
+PR #253 indexed that archive entry.
+
+PR #254 recorded a manual `agent_registry_librarian` hygiene pass and recommended a registry status overlay instead of another activation.
+
+PR #255 added the registry status overlay note.
 
 ## Current protocol result
 
@@ -39,9 +43,16 @@ PR #250 added `knowledge/07_operations/status_trust_matrix_2026-05-21.md`.
 
 `status_trust_matrix_2026-05-21.md` is documentation-only classification aid.
 
-It is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
+`registry_status_overlay_2026-05-21.md` is documentation-only explanation layer for registry lifecycle status vs operational trust status.
 
-`workflow_conductor_agent` remains a separate proposal.
+It explains:
+
+```text
+registry lifecycle status tells what the agent is in the registry.
+operational trust status tells how the project may use it now.
+```
+
+`workflow_conductor_agent` remains a separate proposal / future-only high-risk gate.
 
 README is the entrance map, not the live roadmap.
 
@@ -70,10 +81,9 @@ For the current next action, use:
 
 ## Next safe step
 
-Choose the next direction explicitly:
+Choose explicitly:
 
-1. run a manual registry hygiene pass using `agent_registry_librarian`;
-2. pause Agent Queue and return to book/product work;
-3. discuss `workflow_conductor_agent` as a separate high-risk gate.
+1. pause Agent Queue and return to book/product work;
+2. discuss `workflow_conductor_agent` as a separate high-risk gate.
 
-Do not treat the status trust matrix as enforcement.
+Do not activate another agent by default.
