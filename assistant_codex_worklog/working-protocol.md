@@ -26,6 +26,7 @@ GitHub — источник правды по коду, структуре, со
 - `auto_mergeability_check.md` — перепроверка mergeability открытого PR не требует отдельного подтверждения.
 - `restart_command.md` — команда `рестарт` запускает продолжение из GitHub source of truth.
 - `archive_status_indicator.md` — архивный индикатор `зеленый/желтый/красный`, порог `желтый_3` и delta-only archive discipline.
+- `bot_reviewer_comments.md` — обязательная проверка и классификация bot/reviewer comments перед `++`/merge.
 
 ## Book Fast Track для глав книги
 
