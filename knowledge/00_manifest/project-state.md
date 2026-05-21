@@ -4,27 +4,23 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.56
-- lastCompletedVersion: v2.56
-- lastMergedPr: PR #231 — Register bot reviewer comments addendum
-- lastMergeCommit: 25875d48d10cb94e940f9409e6afb49d69bdf3ed
-- currentMilestone: v2.56 Bot reviewer comments protocol registered
+- currentVersion: v2.57
+- lastCompletedVersion: v2.57
+- lastMergedPr: PR #233 — Sync state after bot reviewer protocol registration
+- lastMergeCommit: 6c9f97075fcccff1918948fdd8aec2f8dcef03b0
+- currentMilestone: v2.57 Checkpoint full after bot reviewer protocol state sync
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.56
+## What changed in v2.57
+
+This checkpoint records the stable state after PR #233 synced state/resume files following the bot reviewer comments protocol registration.
 
 PR #229 added `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` as a mandatory manual PR review discipline.
 
 PR #231 registered that addendum in the visible addenda list inside `assistant_codex_worklog/working-protocol.md`.
 
-The protocol requires PR comments, submitted reviews, inline review threads, unresolved review threads and `chatgpt-codex-connector` comments to be checked and classified before a PR is presented as ready for `++` or merged.
-
-Classification options:
-
-- `must_fix`;
-- `not_applicable`;
-- `future_followup`.
+PR #233 synced state/resume files to v2.56. This checkpoint completes the handoff layer after that sync.
 
 ## Boundary
 
@@ -43,6 +39,10 @@ It is not:
 - runtime behavior;
 - approval bypass.
 
+Lifecycle contracts v1 remains implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
+
+Scripts/core boundary audit scope remains a discussion note only, not audit result or implementation.
+
 ## Recent protocol and diagnostic state
 
 PR #228 added `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
@@ -53,7 +53,7 @@ PR #230 archived the bot reviewer protocol and scripts/core scope delta.
 
 PR #231 registered the bot reviewer comments addendum in `working-protocol.md`.
 
-Lifecycle contracts v1 remains implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
+PR #233 synced project state after bot reviewer protocol registration.
 
 The local drift audit script remains a manual warning-only diagnostic instrument and is not enforcement.
 
@@ -62,7 +62,7 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 1. Choose the next work explicitly.
 2. Return to `Карта будущего корабля` review when Sergey chooses it.
 3. Run the read-only scripts/core boundary audit only if Sergey selects it.
-4. Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
+4. Do not expand lifecycle contracts, bot reviewer comments protocol, or scripts/core audit scope toward policy layer, route automation, validators, CI enforcement, hard guardrails, runtime, or branch protection without separate approval.
 5. Consider a future runtime readiness checklist only by separate decision.
 
 ## Active decisions
