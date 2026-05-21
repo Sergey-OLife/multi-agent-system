@@ -4,28 +4,26 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.64
-- lastCompletedVersion: v2.64
-- lastMergedPr: PR #257 — Define workflow conductor advisory activation scope
-- lastMergeCommit: 7ab13a3a21730ba7ca0aba76c3d22e2442050608
-- currentMilestone: v2.64 Workflow conductor advisory activation scope synced
+- currentVersion: v2.65
+- lastCompletedVersion: v2.65
+- lastMergedPr: PR #259 — Add book and agent mode switch commands
+- lastMergeCommit: 630e8bda6180e79b6402ead5e8d311c97e0f0203
+- currentMilestone: v2.65 Mode switch commands synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.64
+## What changed in v2.65
 
-This state sync records PR #257 — Define workflow conductor advisory activation scope.
+This state sync records PR #259 — Add book and agent mode switch commands.
 
 The key result:
 
 ```text
-workflow_conductor_agent is active as advisory/manual orchestration planner only.
-workflow_conductor_agent is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail or policy layer.
+#книга switches conversation/workflow intent to Book/Product Mission Mode.
+#агент and #агенты switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode.
 ```
 
-The conductor may classify task mode, identify primary/supporting agents, propose sequence, detect conflicts, identify approval-gates and recommend the next safe step.
-
-The conductor does not switch the project into book/product mode by itself.
+These commands are intent/mode commands only. They do not change repository state by themselves.
 
 ## Boundary
 
@@ -47,7 +45,7 @@ It does not:
 - change registry status;
 - activate route/runtime agents;
 - change book workflow;
-- resume book/product mode.
+- resume book/product mode automatically.
 
 ## Current recovery path
 
@@ -58,13 +56,18 @@ It does not:
 5. Treat `workflow_conductor_agent` as advisory/manual orchestration planner only.
 6. Treat `critic_margin_agent` as advisory/manual second-eyes discipline only.
 7. Treat `agent_registry_librarian` as advisory/manual registry hygiene discipline only.
-8. Decide explicitly whether to switch to book/product mode.
+8. Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
 
 ## Active decisions
 
 - GitHub `main` is the source of truth for merged project state.
-- Current active mode is Agent Shipyard / Agent Queue.
+- Current durable project mode remains Agent Shipyard / Agent Queue until Sergey explicitly switches mode and state is synced if needed.
 - Book Fast Track remains paused until separate Sergey decision.
+- `#книга` switches conversation/workflow intent to Book/Product Mission Mode.
+- `#агент` and `#агенты` switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode.
+- Mode switch commands do not change repository state, project-state, registry, agent activation, approval-gates, PR workflow, runtime, validators, hard guardrails or workflow_conductor authority by themselves.
+- After `#книга`, first response should be an advisory book/product mission plan through `workflow_conductor_agent`.
+- After `#агент` / `#агенты`, first response should be an advisory agent-work plan through `workflow_conductor_agent` or `agent_registry_librarian`.
 - `workflow_conductor_agent` is active as advisory/manual orchestration planner only.
 - `workflow_conductor_agent` is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
 - `workflow_conductor_agent` may classify task mode, identify primary/supporting agents, propose sequence, detect conflict zones, identify approval-gates and recommend next safe step.
@@ -89,16 +92,20 @@ It does not:
 
 ## Active archive-level open loops
 
-- Book/product mode switch only by separate Sergey decision.
-- First book/product mission plan through conductor only after mode switch decision.
+- Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+- Durable book/product state switch only by separate Sergey decision and state sync if needed.
+- First book/product mission plan through conductor only after `#книга` or equivalent explicit mode decision.
 - Future runtime readiness checklist only by separate Sergey decision.
 - Lifecycle policy layer only by separate Sergey decision.
 - Further second-eyes tooling or mandatory preflight only by separate Sergey decision.
 
 ## Paused tasks
 
-- Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
+- Do not continue the book automatically while current durable mode is Agent Shipyard / Agent Queue unless Sergey uses `#книга` or otherwise explicitly switches mode.
 - Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
+- Do not treat `#книга` as approval to write chapters, change book files, bypass source checks, bypass PR workflow or change GitHub state automatically.
+- Do not treat `#агент` or `#агенты` as approval to activate agents, mutate registry, add routes, add validators, add hard guardrails, add runtime, add CI checks or bypass approval-gates.
+- Do not treat mode switch commands as project-state mutation; durable state changes still require PR/state sync when needed.
 - Do not treat `workflow_conductor_agent` advisory/manual activation as runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
 - Do not treat `critic_margin_agent` advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine.
@@ -119,8 +126,8 @@ It does not:
 
 ## Next action
 
-Decide explicitly whether to switch to book/product mode.
+Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
 
-If Sergey chooses book/product mode, use `workflow_conductor_agent` to create the first advisory mission plan before writing or product design.
+After `#книга`, `workflow_conductor_agent` should create the first advisory book/product mission plan.
 
-Do not let conductor switch modes by itself.
+After `#агент` / `#агенты`, `workflow_conductor_agent` or `agent_registry_librarian` should create the first advisory agent-work plan.
