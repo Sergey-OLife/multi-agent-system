@@ -4,30 +4,33 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.65
-- lastCompletedVersion: v2.65
-- lastMergedPr: PR #259 — Add book and agent mode switch commands
-- lastMergeCommit: 630e8bda6180e79b6402ead5e8d311c97e0f0203
-- currentMilestone: v2.65 Mode switch commands synced
+- currentVersion: v2.66
+- lastCompletedVersion: v2.66
+- lastMergedPr: PR #261 — Checkpoint full after mode switch commands
+- lastMergeCommit: a29f4dec0bb7348d6d0abd1004fee21eaeb620ae
+- currentMilestone: v2.66 Checkpoint full after mode switch commands
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.65
+## What changed in v2.66
 
-This state sync records PR #259 — Add book and agent mode switch commands.
+This checkpoint records the state after PR #260 synced mode switch commands and PR #261 merged the checkpoint.
 
 The key result:
 
 ```text
-#книга switches conversation/workflow intent to Book/Product Mission Mode.
-#агент and #агенты switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode.
+#книга, #агент and #агенты are active durable protocol context.
 ```
+
+`#книга` switches conversation/workflow intent to Book/Product Mission Mode.
+
+`#агент` and `#агенты` switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode.
 
 These commands are intent/mode commands only. They do not change repository state by themselves.
 
 ## Boundary
 
-This state sync is state/resume sync only.
+This correction aligns state records with the already-merged checkpoint.
 
 It does not:
 
@@ -112,14 +115,7 @@ It does not:
 - Do not treat `agent_registry_librarian` advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
 - Do not treat registry status overlay as registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority.
 - Do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
-- Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements.
-- Do not treat baseline audit takeaways as approval for v0.5 release, runtime readiness, blocking drift audit, maturity automation, validators, hard guardrails, policy layer or moving/deleting `book/`.
-- Do not treat bot reviewer comments protocol as automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass.
-- Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
-- Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule.
-- Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass.
 - Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change.
-- Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
 - Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
