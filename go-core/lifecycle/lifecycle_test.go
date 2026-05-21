@@ -54,7 +54,7 @@ func TestConfusions(t *testing.T) {
 	}{
 		{StageProposal, ConceptValidator},
 		{StageProposal, ConceptHardGuardrail},
-		{StageManualDiscipline, ConceptRouteAutomation},
+		{StageManualDiscipline, ConceptRouted},
 		{StageManualDiscipline, ConceptValidator},
 		{StageManualDiscipline, ConceptHardGuardrail},
 	}
@@ -62,6 +62,27 @@ func TestConfusions(t *testing.T) {
 		if ConfusionError(pair.stage, pair.concept) == nil {
 			t.Errorf("confusion should be reported: %s %s", pair.stage, pair.concept)
 		}
+	}
+}
+
+func TestRoutedVocabularyToken(t *testing.T) {
+	if StageRouted != Stage("routed") {
+		t.Errorf("StageRouted should use repository lifecycle token routed")
+	}
+	if ConceptRouted != Concept("routed") {
+		t.Errorf("ConceptRouted should use repository lifecycle token routed")
+	}
+}
+
+func TestUnknownStagesFail(t *testing.T) {
+	if _, err := AllowedEntityStage(EntityAgent, Stage("valdiator")); err == nil {
+		t.Errorf("unknown stage should return an error")
+	}
+	if _, err := ForbiddenEntityStage(EntityAgent, Stage("valdiator")); err == nil {
+		t.Errorf("unknown stage should return an error")
+	}
+	if err := ConfusionError(Stage("valdiator"), ConceptValidator); err == nil {
+		t.Errorf("unknown stage should return an error")
 	}
 }
 
@@ -74,5 +95,8 @@ func TestInputs(t *testing.T) {
 	}
 	if err := ConfusionError(StageProposal, ""); err == nil {
 		t.Errorf("empty concept should return an error")
+	}
+	if err := ConfusionError(StageProposal, Concept("unknown")); err == nil {
+		t.Errorf("unknown concept should return an error")
 	}
 }
