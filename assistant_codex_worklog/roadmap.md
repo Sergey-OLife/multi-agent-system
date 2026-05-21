@@ -10,20 +10,29 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.66
-- currentMilestone: Checkpoint full after mode switch commands
-- lastMergedPr: PR #261 — Checkpoint full after mode switch commands
-- lastMergeCommit: `a29f4dec0bb7348d6d0abd1004fee21eaeb620ae`
+- currentVersion: v2.67
+- currentMilestone: PR operation response footer synced
+- lastMergedPr: PR #263 — Add PR operation response footer protocol
+- lastMergeCommit: `10f65324336a636ecf7f037af2708b29737a9deb`
 
 ## Recent PR summary
 
-- PR #257 — Define workflow conductor advisory activation scope.
-- PR #258 — Sync state after workflow conductor advisory activation.
-- PR #259 — Add book and agent mode switch commands.
-- PR #260 — Sync state after mode switch commands.
 - PR #261 — Checkpoint full after mode switch commands.
+- PR #262 — Align checkpoint state records with v2.66.
+- PR #263 — Add PR operation response footer protocol.
 
 ## Status
+
+`pr_operation_response_footer.md` is active as mandatory protocol addendum.
+
+After PR / merge / state-sync / checkpoint operations, responses must include:
+
+```text
+Bot/reviewer comments: checked / not checked / not applicable.
+Archive status: зеленый_1 / зеленый_2 / желтый_1 / желтый_2 / желтый_3 / красный.
+```
+
+If bot/reviewer comments were not checked, ChatGPT must not call the point clean. `get_pr_info` alone is not enough.
 
 `рестарт` command protocol is implemented as a GitHub-source-of-truth continuation command.
 
@@ -40,29 +49,13 @@ After `#агент` / `#агенты`, `workflow_conductor_agent` or `agent_regi
 
 `workflow_conductor_agent` is active as advisory/manual orchestration planner only.
 
-`workflow_conductor_agent` may classify task mode, identify primary/supporting agents, propose sequence, detect conflict zones, identify approval-gates, recommend next safe step and state what must not be automated.
-
 `workflow_conductor_agent` is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
-
-`margin_orchestra` is active manual preflight discipline only.
 
 `critic_margin_agent` is active as advisory/manual second-eyes discipline.
 
-`critic_margin_agent` is not active as runtime/route validator, CI gate, approval authority, hard guardrail or policy engine.
-
 `agent_registry_librarian` is active as advisory/manual registry hygiene discipline.
 
-`agent_registry_librarian` is not active as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
-
-`status_trust_matrix_2026-05-21.md` is documentation-only classification aid. It is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
-
-`registry_status_overlay_2026-05-21.md` is documentation-only explanation layer. It clarifies that registry lifecycle status tells what the agent is in the registry, while operational trust status tells how the project may use it now.
-
 `bot_reviewer_comments` is active mandatory manual PR review discipline only.
-
-Before a PR is presented as ready for `++` or merged, PR comments, submitted reviews, inline review threads, unresolved review threads and `chatgpt-codex-connector` comments must be checked and classified.
-
-Classification options: `must_fix`, `not_applicable`, `future_followup`.
 
 The repository is explicitly documented as a GitHub-centered book/project operating system, not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 
@@ -75,7 +68,9 @@ Local state-sync drift audit script is implemented as warning-only local diagnos
 
 Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as a small pure Go contract vocabulary with unit tests, not enforcement.
 
-Mode switch commands are recorded in `assistant_codex_worklog/protocol_addenda/mode_switch_commands.md` and registered in `assistant_codex_worklog/working-protocol.md`.
+Mode switch commands are recorded in `assistant_codex_worklog/protocol_addenda/mode_switch_commands.md`.
+
+PR operation response footer is recorded in `assistant_codex_worklog/protocol_addenda/pr_operation_response_footer.md`.
 
 Workflow conductor advisory activation scope is recorded in `knowledge/07_operations/workflow_conductor_advisory_activation_scope_2026-05-21.md`.
 
@@ -92,10 +87,11 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 
 ## Approved next sequence
 
-1. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
-2. after `#книга`, give an advisory book/product mission plan before writing or product design;
-3. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
-4. do not treat mode command as GitHub state mutation or approval.
+1. merge this state sync after checks and approval;
+2. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
+3. after `#книга`, give an advisory book/product mission plan before writing or product design;
+4. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
+5. include the PR operation response footer after PR-related work.
 
 ## Recommended next work item
 
