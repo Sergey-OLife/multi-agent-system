@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.64",
-  "lastCompletedVersion": "v2.64",
-  "lastMergedPr": "PR #257 — Define workflow conductor advisory activation scope",
-  "lastMergeCommit": "7ab13a3a21730ba7ca0aba76c3d22e2442050608",
-  "currentMilestone": "v2.64 Workflow conductor advisory activation scope synced",
+  "currentVersion": "v2.65",
+  "lastCompletedVersion": "v2.65",
+  "lastMergedPr": "PR #259 — Add book and agent mode switch commands",
+  "lastMergeCommit": "630e8bda6180e79b6402ead5e8d311c97e0f0203",
+  "currentMilestone": "v2.65 Mode switch commands synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -64,15 +64,16 @@
     "v2.61 Agent registry librarian advisory activation scope synced",
     "v2.62 Status trust matrix synced",
     "v2.63 Registry status overlay synced",
-    "v2.64 Workflow conductor advisory activation scope synced"
+    "v2.64 Workflow conductor advisory activation scope synced",
+    "v2.65 Mode switch commands synced"
   ],
   "recentPrs": [
-    "PR #252 — Archive Agent Queue and status trust closure",
-    "PR #253 — Index Agent Queue status trust archive entry",
     "PR #254 — Record manual agent registry hygiene pass",
     "PR #255 — Add registry status overlay note",
     "PR #256 — Sync state after registry status overlay",
-    "PR #257 — Define workflow conductor advisory activation scope"
+    "PR #257 — Define workflow conductor advisory activation scope",
+    "PR #258 — Sync state after workflow conductor advisory activation",
+    "PR #259 — Add book and agent mode switch commands"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -86,7 +87,7 @@
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
     "Book Fast Track remains paused until separate Sergey decision and is ignored for immediate next work",
-    "current active mode is Agent Shipyard / Agent Queue",
+    "current durable project mode remains Agent Shipyard / Agent Queue until Sergey explicitly switches mode and state is synced if needed",
     "PR #192 implemented restart command protocol as GitHub-source-of-truth continuation command",
     "PR #194 activated margin_orchestra as manual second-eyes preflight discipline only",
     "PR #196 clarified external project boundary and recorded external assessment conclusions without runtime implementation",
@@ -124,6 +125,11 @@
     "PR #255 added registry status overlay explaining registry lifecycle status vs operational trust status",
     "PR #256 synced state/resume files after registry status overlay",
     "PR #257 defined workflow_conductor_agent activation scope as active advisory/manual orchestration planner, not runtime/governance authority",
+    "PR #258 synced state/resume files after workflow_conductor_agent advisory/manual activation",
+    "PR #259 added mode switch commands #книга, #агент and #агенты as mandatory protocol addendum and registered it in working-protocol",
+    "#книга switches conversation/workflow intent to Book/Product Mission Mode and first response should be an advisory mission plan through workflow_conductor_agent",
+    "#агент and #агенты switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode and first response should be an advisory plan through workflow_conductor_agent or agent_registry_librarian",
+    "mode switch commands are intent commands only and do not change repository state, project-state, registry, agent activation, approval-gates, PR workflow, runtime, validators, hard guardrails or workflow_conductor authority by themselves",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent is active as advisory/manual second-eyes discipline only and is not a runtime/route validator, CI gate, approval authority, hard guardrail or policy engine",
     "critic_margin_agent route/runtime form remains non-active unless separately approved",
@@ -131,7 +137,7 @@
     "agent_registry_librarian route/runtime or automation form remains non-active unless separately approved",
     "workflow_conductor_agent is active as advisory/manual orchestration planner only and is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail or policy layer",
     "workflow_conductor_agent may classify task mode, identify primary/supporting agents, propose sequence, detect conflicts, identify approval-gates and recommend next safe step",
-    "workflow_conductor_agent does not resume book/product mode by itself; mode switch still requires separate Sergey decision",
+    "workflow_conductor_agent does not resume book/product mode by itself; mode switch still requires Sergey command and any durable state change requires PR/state sync",
     "registry status overlay is a documentation-only explanation layer and is not registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority",
     "status trust matrix is a documentation-only classification aid and is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
@@ -144,6 +150,7 @@
     "Local state-sync drift audit script is implementation but not enforcement",
     "Archive status indicator protocol is recorded in assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "Conservative archive index cleanup is recorded in knowledge/08_conversation_archive/index.md",
+    "Mode switch commands are recorded in assistant_codex_worklog/protocol_addenda/mode_switch_commands.md",
     "Status trust matrix is recorded in knowledge/07_operations/status_trust_matrix_2026-05-21.md",
     "Manual agent registry hygiene pass is recorded in knowledge/07_operations/agent_registry_hygiene_pass_2026-05-21.md",
     "Registry status overlay is recorded in knowledge/07_operations/registry_status_overlay_2026-05-21.md",
@@ -157,12 +164,15 @@
     "+++ means the nearest grounded safe action and does not bypass approval-gates"
   ],
   "pausedTasks": [
-    "Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue",
+    "Do not continue the book automatically while current durable mode is Agent Shipyard / Agent Queue unless Sergey uses #книга or otherwise explicitly switches mode",
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
+    "Do not treat #книга as approval to write chapters, change book files, bypass source checks, bypass PR workflow or change GitHub state automatically",
+    "Do not treat #агент or #агенты as approval to activate agents, mutate registry, add routes, add validators, add hard guardrails, add runtime, add CI checks or bypass approval-gates",
+    "Do not treat mode switch commands as project-state mutation; durable state changes still require PR/state sync when needed",
+    "Do not treat workflow_conductor_agent advisory/manual activation as runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch",
     "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation",
     "Do not treat critic_margin_agent advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine",
     "Do not treat agent_registry_librarian advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
-    "Do not treat workflow_conductor_agent advisory/manual activation as runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch",
     "Do not treat registry status overlay as registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority",
     "Do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority",
     "Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements",
@@ -177,7 +187,7 @@
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Decide explicitly whether to switch to book/product mode. If Sergey chooses book/product mode, use workflow_conductor_agent to create the first advisory mission plan before writing or product design. Do not let conductor switch modes by itself.",
+  "nextAction": "Wait for Sergey to choose #книга, #агент or #агенты. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -189,6 +199,7 @@
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/decision-log.md",
     "assistant_codex_worklog/working-protocol.md",
+    "assistant_codex_worklog/protocol_addenda/mode_switch_commands.md",
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md",
     "knowledge/08_conversation_archive/index.md",
@@ -246,7 +257,12 @@
       "archive_status_indicator manual archive-pressure discipline",
       "bot_reviewer_comments manual PR review discipline"
     ],
-    "recommendedNextWorkItem": "Decide explicitly whether to switch to book/product mode. If Sergey chooses book/product mode, use workflow_conductor_agent to create the first advisory mission plan before writing or product design. Do not let conductor switch modes by itself.",
+    "recommendedNextWorkItem": "Wait for Sergey to choose #книга, #агент or #агенты. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
+    "modeSwitchCommands": {
+      "#книга": "switch intent to Book/Product Mission Mode; first response is workflow_conductor_agent advisory mission plan; no automatic GitHub state change",
+      "#агент": "switch intent to Agent Shipyard / Agent Queue Mode; first response is advisory agent-work plan; no automatic activation",
+      "#агенты": "alias of #агент"
+    },
     "workflowConductor": {
       "workflow_conductor_agent": "active advisory/manual orchestration planner only; not runtime, not route automation, not approval authority, not registry mutation authority, not project-state authority, not validator, not hard guardrail, not policy layer, not automatic book/product mode switch",
       "allowed_outputs": ["mode classification", "primary/supporting agent selection", "sequence proposal", "conflict zones", "approval-gates", "next safe step", "what must not be automated"]
@@ -265,9 +281,9 @@
       "registry_status_overlay": "documentation-only overlay explaining registry lifecycle status vs operational trust status; not registry mutation"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #257 — Define workflow conductor advisory activation scope",
-      "latest_green_head": "d39c64d91789f78d333b3b39bcbe4360624bc97b",
-      "latest_green_merge_commit": "7ab13a3a21730ba7ca0aba76c3d22e2442050608",
+      "latest_green_pr": "PR #259 — Add book and agent mode switch commands",
+      "latest_green_head": "98a719c55ba4d0dc30352e6b320cc8ead79027e0",
+      "latest_green_merge_commit": "630e8bda6180e79b6402ead5e8d311c97e0f0203",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
