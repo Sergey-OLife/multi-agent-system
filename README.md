@@ -14,7 +14,9 @@ This repository is not a production multi-agent runtime, not a reusable public f
 
 Current maturity is a GitHub-centered operating system for a book/project: state, protocols, agent design, archives, review discipline and future architecture decisions.
 
-Runtime orchestration, route automation, validators, hard guardrails, branch protection enforcement, databases, message brokers, observability and production security boundaries require separate decisions before implementation.
+Runtime orchestration, route automation, validators, hard guardrails, databases, message brokers, observability and production security boundaries require separate decisions before implementation.
+
+Minimal repository branch protection is active through the GitHub Ruleset documented in `knowledge/07_operations/branch_protection_verification_2026-05-20.md` and `knowledge/07_operations/checks_overview.md`. Further branch-protection strengthening remains a separate decision.
 
 Manual discipline is a real workflow layer, but it must not be described as automated safety.
 
@@ -49,7 +51,7 @@ Future runtime target, if separately approved: coordinator-centered orchestratio
 
 Meaning: coordinator owns workflow, routing, assignment, policy and final status. Modules may consult each other through task-local channels, but they do not mutate global state directly. Important peer outcomes must be committed back to the central source of truth.
 
-Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, message broker, branch protection, validators and hard guardrails require separate decisions before implementation.
+Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, message broker, validators and hard guardrails require separate decisions before implementation.
 
 ## Second-eyes topology
 
@@ -130,9 +132,12 @@ Required check contexts for protected `main` are documented in `knowledge/07_ope
 
 ## Next useful work
 
-Choose one:
+Do not treat this README as the live roadmap.
 
-1. checks overview state sync after merge;
-2. future runtime readiness checklist, only after separate Sergey decision;
-3. scripts/core boundary audit;
-4. state-sync drift detector proposal.
+For the current next action, read:
+
+- `knowledge/00_manifest/project-state.json`;
+- `assistant_codex_worklog/current-state.md`;
+- `assistant_codex_worklog/roadmap.md`.
+
+Recent operations review notes may also define the next selected discussion, but they do not replace project-state or worklog files.
