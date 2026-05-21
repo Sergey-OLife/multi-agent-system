@@ -12,33 +12,38 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #208 — Implement local state sync drift audit
+- PR #214 — Add archive status indicator protocol
 - Status: merged
-- Merge commit: `93d2d2c3587cf586e72f36ba182a6a53ac6122b0`
+- Merge commit: `abf04c8c03e15ca619ccc4aa6d17e0e8ebb99c45`
 
 ## Current version
 
-- currentVersion: v2.51
-- currentMilestone: Local state-sync drift audit script implemented
+- currentVersion: v2.52
+- currentMilestone: Archive status indicator protocol synced
 
-## PR #208 result
+## PR #214 result
 
-PR #208 added `scripts/state-sync-drift-audit.mjs` and `npm run state-sync:drift-audit`.
+PR #214 added `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md` and registered it in `assistant_codex_worklog/working-protocol.md`.
 
-It implements a warning-only local diagnostic script for structural state-sync drift patterns.
+It formalizes the archive status indicator, the `желтый_3` warning threshold and delta-only archive discipline.
 
-Status: local manual diagnostic tool only. It is not a GitHub Action, required check, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, release, or production security tooling.
-
-Warnings exit `0`; input errors exit `2`.
+Status: active manual protocol addendum only. It is not automation, routing, validation, branch protection, project-state sync, checkpoint logic, runtime behavior, CI, validator, hard guardrail, restart command semantic change, or book workflow change.
 
 ## Current active manual disciplines
 
 - `critic_margin_agent` manual preflight discipline;
 - `conversation_archive_librarian` manual archive discipline;
-- `margin_orchestra` manual second-eyes preflight discipline.
+- `margin_orchestra` manual second-eyes preflight discipline;
+- `archive_status_indicator` manual archive-pressure discipline.
+
+## Recent local drift audit result
+
+PR #212 recorded representative test results for `scripts/state-sync-drift-audit.mjs` in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
+
+The tool remains a local manual diagnostic instrument only, not enforcement.
 
 ## Next safe step
 
-Complete state sync after local drift audit script implementation.
+Complete state sync after archive status indicator protocol.
 
-After that, test the local script on a real changed-file set and keep it out of CI unless Sergey separately approves CI-visible warning later.
+After that, return to the selected next work without repeating already archived service information.
