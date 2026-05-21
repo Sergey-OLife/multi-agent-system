@@ -12,22 +12,26 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #237 — Clarify README documentation boundary
+- PR #238 — Sync state after README boundary review
 - Status: merged
-- Merge commit: `775c9d0c49d366ce0de18dd6e4c431b55c2a63ea`
+- Merge commit: `106c53e747a91b7c6ba3d0e54f69898ca07f6408`
 
 ## Current version
 
-- currentVersion: v2.58
-- currentMilestone: README and operations review sequence synced
+- currentVersion: v2.59
+- currentMilestone: Checkpoint full after README boundary state sync
 
-## Recent documentation review sequence
+## Checkpoint context
 
-PR #235 recorded the scripts/core boundary audit result as a documentation-only follow-up.
+PR #235 recorded the scripts/core boundary audit result as documentation-only follow-up.
 
 PR #236 recorded the full future ship map review with 34 classified points and the five declared classification buckets only.
 
 PR #237 recorded the README/documentation-topology boundary review and adjusted README so it no longer acts as the live roadmap.
+
+PR #238 synced project state/resume files after that documentation boundary sequence.
+
+This checkpoint records the stable handoff after PR #238.
 
 ## Current protocol result
 
@@ -39,7 +43,7 @@ For the current next action, use:
 - `assistant_codex_worklog/current-state.md`;
 - `assistant_codex_worklog/roadmap.md`.
 
-Operations review notes can guide discussion, but they do not replace project-state or worklog files.
+Operations review notes can guide discussion, but they do not replace project-state or worklog files and are not implementation mandates.
 
 ## Current active manual disciplines
 
@@ -58,6 +62,6 @@ Operations review notes can guide discussion, but they do not replace project-st
 
 ## Next safe step
 
-After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.
+Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.
 
-Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, or branch protection without separate approval.
+Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, branch protection, or book mode without separate approval.
