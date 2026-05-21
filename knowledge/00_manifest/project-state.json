@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.58",
-  "lastCompletedVersion": "v2.58",
-  "lastMergedPr": "PR #237 — Clarify README documentation boundary",
-  "lastMergeCommit": "775c9d0c49d366ce0de18dd6e4c431b55c2a63ea",
-  "currentMilestone": "v2.58 README and operations review sequence synced",
+  "currentVersion": "v2.59",
+  "lastCompletedVersion": "v2.59",
+  "lastMergedPr": "PR #238 — Sync state after README boundary review",
+  "lastMergeCommit": "106c53e747a91b7c6ba3d0e54f69898ca07f6408",
+  "currentMilestone": "v2.59 Checkpoint full after README boundary state sync",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -58,12 +58,14 @@
     "v2.55 Lifecycle contracts v1 implemented",
     "v2.56 Bot reviewer comments protocol registered",
     "v2.57 Checkpoint full after bot reviewer protocol state sync",
-    "v2.58 README and operations review sequence synced"
+    "v2.58 README and operations review sequence synced",
+    "v2.59 Checkpoint full after README boundary state sync"
   ],
   "recentPrs": [
     "PR #235 — Add scripts core boundary audit result",
     "PR #236 — Add future ship map review",
-    "PR #237 — Clarify README documentation boundary"
+    "PR #237 — Clarify README documentation boundary",
+    "PR #238 — Sync state after README boundary review"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -96,6 +98,7 @@
     "PR #235 recorded scripts/core boundary audit result as documentation-only follow-up",
     "PR #236 recorded full future ship map review classification with five declared buckets only",
     "PR #237 clarified README/documentation-topology boundary and replaced stale README next-work list with state/worklog pointers",
+    "PR #238 synced state/resume files after README/documentation-topology boundary review",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
@@ -140,7 +143,7 @@
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.",
+  "nextAction": "Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -191,7 +194,7 @@
       "archive_status_indicator manual archive-pressure discipline",
       "bot_reviewer_comments manual PR review discipline"
     ],
-    "recommendedNextWorkItem": "After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.",
+    "recommendedNextWorkItem": "Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
@@ -200,9 +203,9 @@
       "bot_reviewer_comments": "active manual PR review discipline only; not automated enforcement"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #237 — Clarify README documentation boundary",
-      "latest_green_head": "00d493c9db5a986ca289f12d8b48bb4875ed372f",
-      "latest_green_merge_commit": "775c9d0c49d366ce0de18dd6e4c431b55c2a63ea",
+      "latest_green_pr": "PR #238 — Sync state after README boundary review",
+      "latest_green_head": "77f1e21e9acd5e46c80216fd549935f02265893e",
+      "latest_green_merge_commit": "106c53e747a91b7c6ba3d0e54f69898ca07f6408",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
