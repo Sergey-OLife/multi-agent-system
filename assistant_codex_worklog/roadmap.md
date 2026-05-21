@@ -10,21 +10,24 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.63
-- currentMilestone: Registry status overlay synced
-- lastMergedPr: PR #255 — Add registry status overlay note
-- lastMergeCommit: `d10be54144512238e3883f1e4a286497d6bdd861`
+- currentVersion: v2.64
+- currentMilestone: Workflow conductor advisory activation scope synced
+- lastMergedPr: PR #257 — Define workflow conductor advisory activation scope
+- lastMergeCommit: `7ab13a3a21730ba7ca0aba76c3d22e2442050608`
 
 ## Recent PR summary
 
-- PR #252 — Archive Agent Queue and status trust closure.
-- PR #253 — Index Agent Queue status trust archive entry.
-- PR #254 — Record manual agent registry hygiene pass.
-- PR #255 — Add registry status overlay note.
+- PR #257 — Define workflow conductor advisory activation scope.
 
 ## Status
 
 `рестарт` command protocol is implemented as a GitHub-source-of-truth continuation command.
+
+`workflow_conductor_agent` is active as advisory/manual orchestration planner only.
+
+`workflow_conductor_agent` may classify task mode, identify primary/supporting agents, propose sequence, detect conflict zones, identify approval-gates, recommend next safe step and state what must not be automated.
+
+`workflow_conductor_agent` is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
 
 `margin_orchestra` is active manual preflight discipline only.
 
@@ -39,8 +42,6 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 `status_trust_matrix_2026-05-21.md` is documentation-only classification aid. It is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
 
 `registry_status_overlay_2026-05-21.md` is documentation-only explanation layer. It clarifies that registry lifecycle status tells what the agent is in the registry, while operational trust status tells how the project may use it now.
-
-`workflow_conductor_agent` remains a separate proposal / future-only high-risk gate and is not activated by critic/margin/registry-librarian work.
 
 `bot_reviewer_comments` is active mandatory manual PR review discipline only.
 
@@ -65,34 +66,32 @@ Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as a small pure Go
 
 It is implemented but not enforcement: no CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
 
-Agent Queue next candidate review is recorded in `knowledge/07_operations/agent_queue_next_candidate_review_2026-05-21.md`.
-
-Agent registry librarian activation scope is recorded in `knowledge/07_operations/agent_registry_librarian_activation_scope_2026-05-21.md`.
-
 Status trust matrix is recorded in `knowledge/07_operations/status_trust_matrix_2026-05-21.md`.
 
 Manual agent registry hygiene pass is recorded in `knowledge/07_operations/agent_registry_hygiene_pass_2026-05-21.md`.
 
 Registry status overlay is recorded in `knowledge/07_operations/registry_status_overlay_2026-05-21.md`.
 
+Workflow conductor advisory activation scope is recorded in `knowledge/07_operations/workflow_conductor_advisory_activation_scope_2026-05-21.md`.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
 
+- Book/product mode switch: only by separate Sergey decision.
+- First book/product mission plan through conductor: only after mode switch decision.
 - Lifecycle policy layer: future-only and requires separate Sergey decision.
 - Future runtime readiness checklist: only by separate Sergey decision.
-- Workflow conductor activation: only by separate Sergey decision.
 - Further second-eyes tooling or mandatory preflight: only by separate Sergey decision.
-- Book work remains paused until separate Sergey decision.
 
 ## Approved next sequence
 
 1. merge this state sync after checks and approval;
-2. choose explicitly between pausing Agent Queue for book/product work or discussing `workflow_conductor_agent` as a separate high-risk gate;
-3. do not activate another agent by default;
-4. do not treat registry status overlay as registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority;
-5. if Sergey separately resumes book work, switch modes explicitly and update state.
+2. decide explicitly whether to switch to book/product mode;
+3. if book/product mode is selected, use `workflow_conductor_agent` to create the first advisory mission plan before writing or product design;
+4. do not let conductor switch modes by itself;
+5. do not treat conductor output as approval or enforcement.
 
 ## Recommended next work item
 
-Choose explicitly: pause Agent Queue and return to book/product work, or discuss `workflow_conductor_agent` as a separate high-risk gate. Do not activate another agent by default.
+Decide explicitly whether to switch to book/product mode. If Sergey chooses book/product mode, use `workflow_conductor_agent` to create the first advisory mission plan before writing or product design.
