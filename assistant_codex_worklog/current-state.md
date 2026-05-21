@@ -6,26 +6,44 @@ Date: 2026-05-21
 
 Mode: `Agent Shipyard / Agent Queue`.
 
-Book work remains paused until Sergey gives a separate decision.
+Book work remains paused until Sergey uses `#книга` or gives a separate explicit mode decision.
 
 Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #257 — Define workflow conductor advisory activation scope
+- PR #259 — Add book and agent mode switch commands
 - Status: merged
-- Merge commit: `7ab13a3a21730ba7ca0aba76c3d22e2442050608`
+- Merge commit: `630e8bda6180e79b6402ead5e8d311c97e0f0203`
 
 ## Current version
 
-- currentVersion: v2.64
-- currentMilestone: Workflow conductor advisory activation scope synced
+- currentVersion: v2.65
+- currentMilestone: Mode switch commands synced
 
-## Recent Agent Queue sequence
+## Recent protocol sequence
 
 PR #257 defined `workflow_conductor_agent` as active advisory/manual orchestration planner only.
 
+PR #258 synced state after `workflow_conductor_agent` advisory/manual activation.
+
+PR #259 added mode switch commands:
+
+- `#книга`;
+- `#агент`;
+- `#агенты`.
+
 ## Current protocol result
+
+`#книга` switches conversation/workflow intent to Book/Product Mission Mode.
+
+After `#книга`, `workflow_conductor_agent` should create the first advisory book/product mission plan before writing or product design starts.
+
+`#агент` and `#агенты` switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode.
+
+After `#агент` / `#агенты`, `workflow_conductor_agent` or `agent_registry_librarian` should create the first advisory agent-work plan.
+
+Mode switch commands do not change repository state, project-state, registry, agent activation, approval-gates, PR workflow, runtime, validators, hard guardrails or workflow_conductor authority by themselves.
 
 `workflow_conductor_agent` is active as advisory/manual orchestration planner.
 
@@ -56,10 +74,6 @@ It is not:
 
 `agent_registry_librarian` is active as advisory/manual registry hygiene discipline.
 
-`status_trust_matrix_2026-05-21.md` is documentation-only classification aid.
-
-`registry_status_overlay_2026-05-21.md` is documentation-only explanation layer for registry lifecycle status vs operational trust status.
-
 README is the entrance map, not the live roadmap.
 
 For the current next action, use:
@@ -80,16 +94,17 @@ For the current next action, use:
 
 ## Active archive-level open loops
 
-- book/product mode switch only by separate Sergey decision;
-- first book/product mission plan through conductor only after mode switch decision;
+- wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
+- durable book/product state switch only by separate Sergey decision and state sync if needed;
+- first book/product mission plan through conductor only after `#книга` or equivalent explicit mode decision;
 - future runtime readiness checklist only by separate Sergey decision;
 - lifecycle policy layer only by separate Sergey decision;
 - further second-eyes tooling or mandatory preflight only by separate Sergey decision.
 
 ## Next safe step
 
-Decide explicitly whether to switch to book/product mode.
+Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
 
-If Sergey chooses book/product mode, use `workflow_conductor_agent` to create the first advisory mission plan before writing or product design.
+After `#книга`, `workflow_conductor_agent` should create the first advisory book/product mission plan.
 
-Do not let conductor switch modes by itself.
+After `#агент` / `#агенты`, `workflow_conductor_agent` or `agent_registry_librarian` should create the first advisory agent-work plan.
