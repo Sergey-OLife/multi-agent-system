@@ -573,3 +573,38 @@ Decision:
 - scripts/core boundary audit result, future ship map review and README boundary review remain documentation notes only;
 - no runtime readiness, lifecycle policy layer, hard guardrails, branch protection strengthening, README cleanup, or book-mode switch follows automatically;
 - after checkpoint v2.59, next work must be chosen explicitly.
+
+### 68. Advisory activations and mode switch commands
+
+PR #245 defined `critic_margin_agent` as active advisory/manual second-eyes discipline only.
+
+PR #248 defined `agent_registry_librarian` as active advisory/manual registry hygiene discipline only.
+
+PR #250 added the status trust matrix.
+
+PR #255 added the registry status overlay.
+
+PR #257 defined `workflow_conductor_agent` as active advisory/manual orchestration planner only.
+
+PR #259 added short mode switch commands and registered `mode_switch_commands.md` in the working protocol.
+
+Decision:
+
+- `critic_margin_agent`, `agent_registry_librarian` and `workflow_conductor_agent` are manual/advisory layers only;
+- none of them is runtime, route automation, validator, hard guardrail, approval authority, registry mutation authority or project-state authority;
+- `#книга` switches conversation/workflow intent to Book/Product Mission Mode, but does not write chapters, change GitHub state, bypass source checks or approve book work;
+- `#агент` and `#агенты` switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode, but do not activate agents, mutate registry, add routes, validators, hard guardrails, runtime or CI checks;
+- durable state changes still require PR/state sync where needed;
+- next work should wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+
+### 69. Checkpoint full after mode switch commands
+
+This checkpoint records v2.66 after PR #260 merged state/resume sync for mode switch commands.
+
+Decision:
+
+- current durable project mode remains `Agent Shipyard / Agent Queue`;
+- book remains paused until `#книга` or another explicit mode decision;
+- mode switch commands are active protocol context;
+- next safe step is to wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
+- this checkpoint does not activate agents, change registry, start book/product mode, add runtime, add validators or add hard guardrails.
