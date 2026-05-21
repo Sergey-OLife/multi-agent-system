@@ -12,20 +12,24 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #231 — Register bot reviewer comments addendum
+- PR #233 — Sync state after bot reviewer protocol registration
 - Status: merged
-- Merge commit: `25875d48d10cb94e940f9409e6afb49d69bdf3ed`
+- Merge commit: `6c9f97075fcccff1918948fdd8aec2f8dcef03b0`
 
 ## Current version
 
-- currentVersion: v2.56
-- currentMilestone: Bot reviewer comments protocol registered
+- currentVersion: v2.57
+- currentMilestone: Checkpoint full after bot reviewer protocol state sync
 
-## PR #231 result
+## Checkpoint context
 
-PR #231 registered `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` in the visible addenda list inside `assistant_codex_worklog/working-protocol.md`.
+PR #233 completed the state/resume sync after the working protocol change around `bot_reviewer_comments`.
 
-The addendum itself was added by PR #229 and is active as mandatory manual PR review discipline.
+This checkpoint records the stable handoff after that sync.
+
+## Current protocol result
+
+`assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` is active as mandatory manual PR review discipline.
 
 Before a PR is presented as ready for `++` or merged, PR comments, submitted reviews, inline review threads, unresolved review threads and `chatgpt-codex-connector` comments must be checked and classified.
 
