@@ -10,23 +10,31 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.59
-- currentMilestone: Checkpoint full after README boundary state sync
-- lastMergedPr: PR #238 — Sync state after README boundary review
-- lastMergeCommit: `106c53e747a91b7c6ba3d0e54f69898ca07f6408`
+- currentVersion: v2.60
+- currentMilestone: Critic margin advisor activation scope synced
+- lastMergedPr: PR #245 — Define critic margin advisor activation scope
+- lastMergeCommit: `b20f812fecb4da9bf0247a37df1badd8778ca553`
 
 ## Recent PR summary
 
-- PR #235 — Add scripts core boundary audit result.
-- PR #236 — Add future ship map review.
-- PR #237 — Clarify README documentation boundary.
-- PR #238 — Sync state after README boundary review.
+- PR #240 — Archive README boundary and operations review closure.
+- PR #241 — Review old architecture tails and close resolved archive loops.
+- PR #242 — Clarify second-eyes status boundaries.
+- PR #243 — Record baseline audit takeaways without runtime escalation.
+- PR #244 — Add second-eyes preflight card examples.
+- PR #245 — Define critic margin advisor activation scope.
 
 ## Status
 
 `рестарт` command protocol is implemented as a GitHub-source-of-truth continuation command.
 
 `margin_orchestra` is active manual preflight discipline only.
+
+`critic_margin_agent` is active as advisory/manual second-eyes discipline.
+
+`critic_margin_agent` is not active as runtime/route validator, CI gate, approval authority, hard guardrail or policy engine.
+
+`workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin work.
 
 `bot_reviewer_comments` is active mandatory manual PR review discipline only.
 
@@ -65,23 +73,35 @@ Future ship map review is recorded in `knowledge/07_operations/future_ship_map_r
 
 README/documentation-topology boundary review is recorded in `knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md`.
 
+Old architecture tails focused review is recorded in `knowledge/07_operations/old_architecture_tails_focused_review_2026-05-21.md`.
+
+Second-eyes status clarification is recorded in `knowledge/07_operations/second_eyes_status_clarification_2026-05-21.md`.
+
+Baseline audit takeaways are recorded in `knowledge/07_operations/baseline_audit_takeaways_2026-05-21.md`.
+
+Second-eyes preflight card examples are recorded in `knowledge/07_operations/second_eyes_preflight_card_examples_2026-05-21.md`.
+
+Critic margin agent activation scope is recorded in `knowledge/07_operations/critic_margin_agent_activation_scope_2026-05-21.md`.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
 
 - Lifecycle policy layer: future-only and requires separate Sergey decision.
 - Future runtime readiness checklist: only by separate Sergey decision.
-- README/documentation-topology boundary has been reviewed; further cleanup only if separately selected.
+- Workflow conductor activation: only by separate Sergey decision.
+- Further second-eyes tooling or mandatory preflight: only by separate Sergey decision.
 - Book work remains paused until separate Sergey decision.
 
 ## Approved next sequence
 
-1. choose the next work explicitly;
-2. do not treat README as the live roadmap;
-3. do not treat operations review notes as implementation mandates;
-4. do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, or branch protection without separate approval;
-5. if Sergey separately resumes book work, switch modes explicitly and update state.
+1. merge this state sync after checks and approval;
+2. choose the next Agent Queue step explicitly;
+3. do not treat critic_margin_agent advisory/manual activation as runtime activation;
+4. do not activate workflow_conductor_agent through critic/margin work;
+5. do not expand second-eyes examples into mandatory forms, validators, CI enforcement, hard guardrails or policy layer without separate approval;
+6. if Sergey separately resumes book work, switch modes explicitly and update state.
 
 ## Recommended next work item
 
-Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.
+After this state sync is merged, choose the next Agent Queue step explicitly; no runtime, route, validator, workflow_conductor activation, or mandatory second-eyes tooling follows automatically.
