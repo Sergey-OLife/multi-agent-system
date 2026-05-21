@@ -12,22 +12,24 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #216 — Clean up archive index open loops
+- PR #219 — Propose lifecycle contracts
 - Status: merged
-- Merge commit: `7e4d8c50efca90c8d805c0a7b1623f6c22660bd8`
+- Merge commit: `2f8083dd7ad877073ed115c1e2201d98d5dfe304`
 
 ## Current version
 
-- currentVersion: v2.53
-- currentMilestone: Conservative archive index cleanup synced
+- currentVersion: v2.54
+- currentMilestone: Lifecycle contracts proposal synced
 
-## PR #216 result
+## PR #219 result
 
-PR #216 updated `knowledge/08_conversation_archive/index.md` only.
+PR #219 added `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 
-It made archive navigation cleaner while preserving older unresolved material when no concrete implementation exists.
+It proposes a minimal contract layer for lifecycle statuses.
 
-Key rule: age alone is not a deletion signal. `implemented_elsewhere` should be used only when there is a concrete implementation location. Older unresolved archive value may remain as `needs_decision` or `long_lived_observation`.
+Status: proposal only. It is not code, package implementation, tests, runtime behavior, route automation, validator, hard guardrail, CI enforcement, branch protection change, approval bypass, or book workflow change.
+
+Implementation requires separate approval and a separate PR.
 
 ## Current active manual disciplines
 
@@ -46,6 +48,6 @@ Key rule: age alone is not a deletion signal. `implemented_elsewhere` should be 
 
 ## Next safe step
 
-Complete state sync after PR #216.
+Complete state sync after PR #219.
 
-After that, perform `#архив_старт` as requested, using delta-only archive discipline.
+After that, discuss/refine the lifecycle contracts proposal or choose the next work explicitly.

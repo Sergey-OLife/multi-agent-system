@@ -4,25 +4,23 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.53
-- lastCompletedVersion: v2.53
-- lastMergedPr: PR #216 — Clean up archive index open loops
-- lastMergeCommit: 7e4d8c50efca90c8d805c0a7b1623f6c22660bd8
-- currentMilestone: v2.53 Conservative archive index cleanup synced
+- currentVersion: v2.54
+- lastCompletedVersion: v2.54
+- lastMergedPr: PR #219 — Propose lifecycle contracts
+- lastMergeCommit: 2f8083dd7ad877073ed115c1e2201d98d5dfe304
+- currentMilestone: v2.54 Lifecycle contracts proposal synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.53
+## What changed in v2.54
 
-PR #216 updated `knowledge/08_conversation_archive/index.md` only.
+PR #219 added `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 
-The archive index cleanup is conservative.
+The document proposes a minimal contract layer for lifecycle statuses.
 
-Age alone is not a deletion signal. Older archive tails can be deferred value, not noise.
+It is proposal only. It is not code, package implementation, tests, runtime behavior, route automation, validator, hard guardrail, CI enforcement, branch protection change, approval bypass, or book workflow change.
 
-`implemented_elsewhere` should be used only when there is a concrete implementation location.
-
-Older unresolved archive value may remain as `needs_decision` or `long_lived_observation` until focused review decides what is implemented, stale, or still useful.
+Implementation requires separate approval and a separate PR.
 
 ## Recent protocol and diagnostic state
 
@@ -30,13 +28,15 @@ PR #214 added `assistant_codex_worklog/protocol_addenda/archive_status_indicator
 
 PR #212 added `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
 
+PR #216 cleaned archive index open-loop navigation conservatively.
+
 The local drift audit script remains a manual warning-only diagnostic instrument and is not enforcement.
 
 ## Current recovery path
 
-1. Complete state sync after PR #216.
-2. Perform `#архив_старт` as Sergey requested.
-3. Return to selected next work without repeating already archived service information.
+1. Complete state sync after PR #219.
+2. Discuss/refine the lifecycle contracts proposal or choose the next work explicitly.
+3. Do not implement lifecycle code without separate approval and separate PR.
 4. Return to `Карта будущего корабля` review when Sergey chooses it.
 5. Consider a future runtime readiness checklist only by separate decision.
 6. Consider a scripts/core boundary audit only if needed.
@@ -61,6 +61,7 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - Representative local drift audit test results are recorded in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
 - Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
 - Conservative archive index cleanup is recorded in `knowledge/08_conversation_archive/index.md`.
+- Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
 
 ## Active archive-level open loops
@@ -79,10 +80,11 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 - Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule.
 - Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass.
+- Do not treat lifecycle contracts proposal as implementation, code, tests, validator, hard guardrail, runtime, route, CI enforcement, branch protection, approval bypass, or book workflow change.
 - Do not treat old archive tails as stale only because they are old.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Complete state sync after PR #216, then perform `#архив_старт`.
+Complete state sync after PR #219.

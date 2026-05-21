@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.53
-- currentMilestone: Conservative archive index cleanup synced
-- lastMergedPr: PR #216 — Clean up archive index open loops
-- lastMergeCommit: `7e4d8c50efca90c8d805c0a7b1623f6c22660bd8`
+- currentVersion: v2.54
+- currentMilestone: Lifecycle contracts proposal synced
+- lastMergedPr: PR #219 — Propose lifecycle contracts
+- lastMergeCommit: `2f8083dd7ad877073ed115c1e2201d98d5dfe304`
 
 ## Recent PR summary
 
-- PR #212 — Record local drift audit test results.
 - PR #214 — Add archive status indicator protocol.
-- PR #215 — Sync state after archive status protocol.
 - PR #216 — Clean up archive index open loops.
+- PR #217 — Sync state after archive index cleanup.
+- PR #219 — Propose lifecycle contracts.
 
 ## Status
 
@@ -49,6 +49,10 @@ Archive status indicator protocol is recorded in `assistant_codex_worklog/protoc
 
 Archive index cleanup is conservative: age alone is not a deletion signal. Older unresolved archive value may remain as `needs_decision` or `long_lived_observation`. Use `implemented_elsewhere` only when there is a concrete implementation location.
 
+Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
+
+It is proposal only: no code, package implementation, tests, runtime behavior, route automation, validator, hard guardrail, CI enforcement, branch protection change, approval bypass, or book workflow change. Implementation requires separate approval and a separate PR.
+
 ## Active archive-level open loops
 
 - `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
@@ -59,13 +63,13 @@ Archive index cleanup is conservative: age alone is not a deletion signal. Older
 
 ## Approved next sequence
 
-1. complete state sync after PR #216;
-2. perform `#архив_старт` as Sergey requested;
-3. then discuss selected next work without repeating already archived service information;
+1. complete state sync after PR #219;
+2. discuss/refine the lifecycle contracts proposal or choose the next work explicitly;
+3. do not implement lifecycle code without separate approval and separate PR;
 4. return to `Карта будущего корабля` review when Sergey chooses it;
 5. if Sergey separately approves, prepare a future runtime readiness checklist;
 6. if needed, perform a scripts/core boundary audit.
 
 ## Recommended next work item
 
-Complete state sync after PR #216, then perform `#архив_старт`.
+Complete state sync after PR #219.
