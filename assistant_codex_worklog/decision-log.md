@@ -554,3 +554,22 @@ PR #233 выполнил короткий state sync после изменени
 - green checks и mergeability недостаточны, если есть неразобранные reviewer/bot comments;
 - bot reviewer comments protocol остаётся manual discipline only: не automation, не GitHub Action, не required check, не validator, не hard guardrail, не route automation, не policy engine, не branch protection change, не runtime behavior и не approval bypass;
 - после checkpoint v2.57 следующий шаг выбирается явно: `Карта будущего корабля` review или read-only scripts/core boundary audit.
+
+### 67. Documentation review sequence and README boundary
+
+PR #235 recorded the scripts/core boundary audit result as a documentation-only follow-up.
+
+PR #236 recorded the full future ship map review with 34 classified points and only five declared bucket values: `already_fixed`, `useful_now`, `true_but_future`, `not_appropriate_current`, `reframe`.
+
+PR #237 clarified the README/documentation-topology boundary and replaced stale README next-work list with project-state/current-state/roadmap pointers.
+
+PR #238 synced state/resume files after README boundary review.
+
+Decision:
+
+- README is entrance map, not live roadmap;
+- project-state/current-state/roadmap are used for current next action;
+- operations review notes are not implementation mandates;
+- scripts/core boundary audit result, future ship map review and README boundary review remain documentation notes only;
+- no runtime readiness, lifecycle policy layer, hard guardrails, branch protection strengthening, README cleanup, or book-mode switch follows automatically;
+- after checkpoint v2.59, next work must be chosen explicitly.
