@@ -4,33 +4,34 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.58
-- lastCompletedVersion: v2.58
-- lastMergedPr: PR #237 — Clarify README documentation boundary
-- lastMergeCommit: 775c9d0c49d366ce0de18dd6e4c431b55c2a63ea
-- currentMilestone: v2.58 README and operations review sequence synced
+- currentVersion: v2.59
+- lastCompletedVersion: v2.59
+- lastMergedPr: PR #238 — Sync state after README boundary review
+- lastMergeCommit: 106c53e747a91b7c6ba3d0e54f69898ca07f6408
+- currentMilestone: v2.59 Checkpoint full after README boundary state sync
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.58
+## What changed in v2.59
 
-This state sync records the documentation review sequence after:
+This checkpoint records the stable state after PR #238 synced project state following the README/documentation-topology boundary review.
+
+The documentation review sequence is now stable in main:
 
 - PR #235 — Add scripts core boundary audit result;
 - PR #236 — Add future ship map review;
-- PR #237 — Clarify README documentation boundary.
+- PR #237 — Clarify README documentation boundary;
+- PR #238 — Sync state after README boundary review.
 
-PR #235 recorded that current scripts remain edge automation / CI helpers, with an explicit boundary for `scripts/run-registry-sync.mjs`.
+README is the entrance map, not the live roadmap.
 
-PR #236 recorded a full 34-point classification of the external future-ship assessment using only the declared buckets: `already_fixed`, `useful_now`, `true_but_future`, `not_appropriate_current`, and `reframe`.
-
-PR #237 recorded the README/documentation-topology boundary review and adjusted README so it points to project-state/current-state/roadmap for live next work instead of carrying a stale static next-work list.
+For current next work, use project-state/current-state/roadmap rather than README.
 
 ## Boundary
 
-These PRs are documentation and state/resume sync only.
+This checkpoint is state/resume sync only.
 
-They do not:
+It does not:
 
 - implement code;
 - change scripts;
@@ -109,4 +110,4 @@ They do not:
 
 ## Next action
 
-After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.
+Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.
