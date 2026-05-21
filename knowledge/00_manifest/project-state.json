@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.57",
-  "lastCompletedVersion": "v2.57",
-  "lastMergedPr": "PR #233 — Sync state after bot reviewer protocol registration",
-  "lastMergeCommit": "6c9f97075fcccff1918948fdd8aec2f8dcef03b0",
-  "currentMilestone": "v2.57 Checkpoint full after bot reviewer protocol state sync",
+  "currentVersion": "v2.58",
+  "lastCompletedVersion": "v2.58",
+  "lastMergedPr": "PR #237 — Clarify README documentation boundary",
+  "lastMergeCommit": "775c9d0c49d366ce0de18dd6e4c431b55c2a63ea",
+  "currentMilestone": "v2.58 README and operations review sequence synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -57,13 +57,13 @@
     "v2.54 Lifecycle contracts proposal synced",
     "v2.55 Lifecycle contracts v1 implemented",
     "v2.56 Bot reviewer comments protocol registered",
-    "v2.57 Checkpoint full after bot reviewer protocol state sync"
+    "v2.57 Checkpoint full after bot reviewer protocol state sync",
+    "v2.58 README and operations review sequence synced"
   ],
   "recentPrs": [
-    "PR #229 — Add bot reviewer comments protocol",
-    "PR #230 — Archive bot reviewer protocol and scripts scope",
-    "PR #231 — Register bot reviewer comments addendum",
-    "PR #233 — Sync state after bot reviewer protocol registration"
+    "PR #235 — Add scripts core boundary audit result",
+    "PR #236 — Add future ship map review",
+    "PR #237 — Clarify README documentation boundary"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -93,6 +93,9 @@
     "PR #229 added bot_reviewer_comments as mandatory manual PR review discipline only",
     "PR #231 registered bot_reviewer_comments.md in the visible working-protocol addenda list",
     "PR #233 synced state/resume files after bot reviewer protocol registration",
+    "PR #235 recorded scripts/core boundary audit result as documentation-only follow-up",
+    "PR #236 recorded full future ship map review classification with five declared buckets only",
+    "PR #237 clarified README/documentation-topology boundary and replaced stale README next-work list with state/worklog pointers",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
@@ -106,6 +109,9 @@
     "Archive status indicator protocol is recorded in assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "Conservative archive index cleanup is recorded in knowledge/08_conversation_archive/index.md",
     "Scripts/core boundary audit scope is recorded in knowledge/07_operations/scripts_core_boundary_audit_scope.md",
+    "Scripts/core boundary audit result is recorded in knowledge/07_operations/scripts_core_boundary_audit_result_2026-05-21.md",
+    "Future ship map review is recorded in knowledge/07_operations/future_ship_map_review_2026-05-21.md",
+    "README/documentation-topology boundary review is recorded in knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md",
     "Lifecycle contracts proposal is recorded in knowledge/07_operations/lifecycle_contracts_proposal.md",
     "Lifecycle contracts v1 is implemented in go-core/lifecycle/",
     "Age alone is not a deletion signal for archive tails",
@@ -125,14 +131,16 @@
     "Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass",
     "Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change",
     "Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval",
-    "Do not treat scripts/core boundary audit scope as audit result, implementation, script rewrite, workflow change, validator, hard guardrail, state-sync automation, lifecycle policy layer, or repository restructure",
+    "Do not treat scripts/core boundary audit result as implementation, script rewrite, workflow change, validator, hard guardrail, state-sync automation, lifecycle policy layer, or repository restructure",
+    "Do not treat future ship map review as an implementation mandate",
+    "Do not treat README as live roadmap; use project-state/current-state/roadmap for next action",
     "Do not treat old archive tails as stale only because they are old",
     "Do not use implemented_elsewhere without a concrete implementation location",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators or hard guardrails without separate approval",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.",
+  "nextAction": "After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -153,11 +161,15 @@
     "knowledge/07_operations/checks_overview.md",
     "knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md",
     "knowledge/07_operations/scripts_core_boundary_audit_scope.md",
+    "knowledge/07_operations/scripts_core_boundary_audit_result_2026-05-21.md",
+    "knowledge/07_operations/future_ship_map_review_2026-05-21.md",
+    "knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md",
     "scripts/state-sync-drift-audit.mjs",
     "package.json",
     "knowledge/07_operations/branch_protection_verification_2026-05-20.md",
     "knowledge/07_operations/external_assessment_notes_2026-05-20.md",
     "knowledge/07_operations/maturity_checklist.md",
+    "knowledge/07_operations/documentation_topology.md",
     "assistant_codex_worklog/protocol_addenda/restart_command.md",
     "assistant_codex_worklog/protocol_addenda/conversation_archive_librarian_manual_discipline.md",
     "assistant_codex_worklog/protocol_addenda/critic_margin_manual_preflight.md",
@@ -179,7 +191,7 @@
       "archive_status_indicator manual archive-pressure discipline",
       "bot_reviewer_comments manual PR review discipline"
     ],
-    "recommendedNextWorkItem": "Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.",
+    "recommendedNextWorkItem": "After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
@@ -188,9 +200,9 @@
       "bot_reviewer_comments": "active manual PR review discipline only; not automated enforcement"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #233 — Sync state after bot reviewer protocol registration",
-      "latest_green_head": "b074610b6355d8e5b5ab933f7db141bfee6f768b",
-      "latest_green_merge_commit": "6c9f97075fcccff1918948fdd8aec2f8dcef03b0",
+      "latest_green_pr": "PR #237 — Clarify README documentation boundary",
+      "latest_green_head": "00d493c9db5a986ca289f12d8b48bb4875ed372f",
+      "latest_green_merge_commit": "775c9d0c49d366ce0de18dd6e4c431b55c2a63ea",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",

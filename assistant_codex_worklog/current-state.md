@@ -12,40 +12,34 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #233 — Sync state after bot reviewer protocol registration
+- PR #237 — Clarify README documentation boundary
 - Status: merged
-- Merge commit: `6c9f97075fcccff1918948fdd8aec2f8dcef03b0`
+- Merge commit: `775c9d0c49d366ce0de18dd6e4c431b55c2a63ea`
 
 ## Current version
 
-- currentVersion: v2.57
-- currentMilestone: Checkpoint full after bot reviewer protocol state sync
+- currentVersion: v2.58
+- currentMilestone: README and operations review sequence synced
 
-## Checkpoint context
+## Recent documentation review sequence
 
-PR #233 completed the state/resume sync after the working protocol change around `bot_reviewer_comments`.
+PR #235 recorded the scripts/core boundary audit result as a documentation-only follow-up.
 
-This checkpoint records the stable handoff after that sync.
+PR #236 recorded the full future ship map review with 34 classified points and the five declared classification buckets only.
+
+PR #237 recorded the README/documentation-topology boundary review and adjusted README so it no longer acts as the live roadmap.
 
 ## Current protocol result
 
-`assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` is active as mandatory manual PR review discipline.
+README is the entrance map, not the live roadmap.
 
-Before a PR is presented as ready for `++` or merged, PR comments, submitted reviews, inline review threads, unresolved review threads and `chatgpt-codex-connector` comments must be checked and classified.
+For the current next action, use:
 
-Allowed classifications:
+- `knowledge/00_manifest/project-state.json`;
+- `assistant_codex_worklog/current-state.md`;
+- `assistant_codex_worklog/roadmap.md`.
 
-- `must_fix`;
-- `not_applicable`;
-- `future_followup`.
-
-Important boundary: bot reviewer comments protocol is manual discipline only. It is not automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass.
-
-## Recent note
-
-PR #228 added `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
-
-That scope can be used for a future read-only scripts/core boundary audit if Sergey selects it.
+Operations review notes can guide discussion, but they do not replace project-state or worklog files.
 
 ## Current active manual disciplines
 
@@ -57,14 +51,13 @@ That scope can be used for a future read-only scripts/core boundary audit if Ser
 
 ## Active archive-level open loops
 
-- `Карта будущего корабля` review;
-- repository architecture contract value from older archives;
-- corrective margin/knowledge-consistency value from older archives;
 - future runtime readiness checklist only by separate Sergey decision;
-- scripts/core boundary audit only if selected after the new scope note.
+- lifecycle policy layer only by separate Sergey decision;
+- README/documentation-topology boundary has been reviewed; further cleanup only if separately selected;
+- book work remains paused until separate Sergey decision.
 
 ## Next safe step
 
-Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.
+After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.
 
-Do not expand lifecycle contracts, bot reviewer comments protocol, or scripts/core audit scope toward policy layer, route automation, validators, CI enforcement, hard guardrails, runtime, or branch protection without separate approval.
+Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, or branch protection without separate approval.

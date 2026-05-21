@@ -3,13 +3,13 @@
 ```text
 Продолжаем проект Sergey-OLife/multi-agent-system.
 
-GitHub main — источник правды. Сначала открой README, current-state, roadmap, project-state, documentation_topology, maturity_checklist, checks_overview, lifecycle_contracts_proposal, lifecycle Go package, state_sync_drift_audit_test_results_2026-05-21, external_assessment_notes_2026-05-20, branch_protection_verification_2026-05-20, scripts_core_boundary_audit_scope, vision_intake_map, future_runtime_hypotheses, registry, working-protocol, protocol_addenda, bot_reviewer_comments, archive_status_indicator, conversation archive index, margin_orchestra, margin_orchestra_manual_preflight, critic_margin_agent proposal, conversation_archive_librarian proposal, conversation_archive_librarian_manual_discipline, restart_command, CI and Sync Check workflows, package.json and scripts/state-sync-drift-audit.mjs.
+GitHub main — источник правды. Сначала открой README, project-state, current-state, roadmap, restart-prompt, documentation_topology, maturity_checklist, checks_overview, lifecycle_contracts_proposal, lifecycle Go package, state_sync_drift_audit_test_results_2026-05-21, scripts_core_boundary_audit_result_2026-05-21, future_ship_map_review_2026-05-21, readme_documentation_boundary_review_2026-05-21, external_assessment_notes_2026-05-20, branch_protection_verification_2026-05-20, registry, working-protocol, protocol_addenda, bot_reviewer_comments, archive_status_indicator, conversation archive index, margin_orchestra, margin_orchestra_manual_preflight, critic_margin_agent proposal, conversation_archive_librarian proposal, conversation_archive_librarian_manual_discipline, restart_command, CI and Sync Check workflows, package.json and scripts/state-sync-drift-audit.mjs.
 
 Актуальное состояние:
 
-- currentVersion: v2.57.
-- lastMergedPr: PR #233 — Sync state after bot reviewer protocol registration.
-- lastMergeCommit: 6c9f97075fcccff1918948fdd8aec2f8dcef03b0.
+- currentVersion: v2.58.
+- lastMergedPr: PR #237 — Clarify README documentation boundary.
+- lastMergeCommit: 775c9d0c49d366ce0de18dd6e4c431b55c2a63ea.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе.
 - Book Fast Track is ignored for immediate next work until Sergey separately resumes it.
@@ -22,17 +22,15 @@ GitHub main — источник правды. Сначала открой READM
 - Minimal GitHub Ruleset `Protect main` is active for `main` / default branch.
 - Required branch-protection check contexts are documented in `knowledge/07_operations/checks_overview.md`: `TypeScript / JavaScript / Go checks` and `sync-check`.
 - Local state-sync drift audit script is implemented as `scripts/state-sync-drift-audit.mjs` with package command `npm run state-sync:drift-audit`.
-- Representative local drift audit test results are recorded in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
-- Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
-- Bot reviewer comments protocol is recorded in `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` and registered in `assistant_codex_worklog/working-protocol.md`.
-- Scripts/core boundary audit scope is recorded in `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
-- Conservative archive index cleanup is recorded in `knowledge/08_conversation_archive/index.md`: age alone is not a deletion signal; use `implemented_elsewhere` only when there is a concrete implementation location.
-- Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
+- Scripts/core boundary audit result is recorded in `knowledge/07_operations/scripts_core_boundary_audit_result_2026-05-21.md`.
+- Future ship map review is recorded in `knowledge/07_operations/future_ship_map_review_2026-05-21.md` with only five declared classification buckets.
+- README/documentation-topology boundary review is recorded in `knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md`.
+- README is entrance map, not live roadmap. Use project-state/current-state/roadmap for next action.
 - Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as a small pure Go contract vocabulary with unit tests.
 
-Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. Local drift audit remains warning-only local diagnostic tool, not enforcement. Archive status indicator is manual discipline only, not automation, CI, validator, hard guardrail, project-state sync, checkpoint, or approval bypass. Bot reviewer comments protocol is manual discipline only, not automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass. Lifecycle contracts v1 is implemented but not enforcement: no CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
+Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. Local drift audit remains warning-only local diagnostic tool, not enforcement. Archive status indicator is manual discipline only, not automation, CI, validator, hard guardrail, project-state sync, checkpoint, or approval bypass. Bot reviewer comments protocol is manual discipline only, not automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass. Lifecycle contracts v1 is implemented but not enforcement: no CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change. Operations review notes are not implementation mandates.
 
-Active archive-level open loops: `Карта будущего корабля`; repository architecture contract value from older archives; corrective margin/knowledge-consistency value from older archives; lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; scripts/core boundary audit only if selected.
+Active open loops: lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; README/documentation-topology boundary has been reviewed and further cleanup requires separate selection; book work remains paused until separate Sergey decision.
 
-Next: choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it. Do not expand lifecycle contracts, bot reviewer comments protocol, or scripts/core audit scope toward policy layer, route automation, validators, CI enforcement, hard guardrails, runtime, or branch protection without separate approval.
+Next: after this state sync is merged, choose the next work explicitly. Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, branch protection, or book mode without separate approval.
 ```
