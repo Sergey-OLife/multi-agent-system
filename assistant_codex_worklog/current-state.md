@@ -12,32 +12,33 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #261 — Checkpoint full after mode switch commands
+- PR #263 — Add PR operation response footer protocol
 - Status: merged
-- Merge commit: `a29f4dec0bb7348d6d0abd1004fee21eaeb620ae`
+- Merge commit: `10f65324336a636ecf7f037af2708b29737a9deb`
 
 ## Current version
 
-- currentVersion: v2.66
-- currentMilestone: Checkpoint full after mode switch commands
+- currentVersion: v2.67
+- currentMilestone: PR operation response footer synced
 
 ## Recent protocol sequence
 
-PR #257 defined `workflow_conductor_agent` as active advisory/manual orchestration planner only.
-
-PR #258 synced state after `workflow_conductor_agent` advisory/manual activation.
-
-PR #259 added mode switch commands:
-
-- `#книга`;
-- `#агент`;
-- `#агенты`.
-
-PR #260 synced state/resume files after mode switch commands to v2.65.
-
 PR #261 created the full checkpoint after mode switch commands as v2.66.
 
+PR #262 corrected checkpoint state records to v2.66 / PR #261.
+
+PR #263 added `assistant_codex_worklog/protocol_addenda/pr_operation_response_footer.md`.
+
 ## Current protocol result
+
+After PR / merge / state-sync / checkpoint operations, responses must include:
+
+```text
+Bot/reviewer comments: checked / not checked / not applicable.
+Archive status: зеленый_1 / зеленый_2 / желтый_1 / желтый_2 / желтый_3 / красный.
+```
+
+If bot/reviewer comments were not checked, ChatGPT must not call the point clean. `get_pr_info` alone is not enough.
 
 `#книга` switches conversation/workflow intent to Book/Product Mission Mode.
 
@@ -51,28 +52,7 @@ Mode switch commands do not change repository state, project-state, registry, ag
 
 `workflow_conductor_agent` is active as advisory/manual orchestration planner.
 
-It may:
-
-- classify task mode;
-- identify primary/supporting agents;
-- propose sequence;
-- detect conflict zones;
-- identify approval-gates;
-- recommend the next safe step;
-- state what must not be automated.
-
-It is not:
-
-- runtime;
-- route automation;
-- approval authority;
-- registry mutation authority;
-- project-state authority;
-- validator;
-- hard guardrail;
-- policy layer;
-- book writer;
-- automatic mode switch.
+It is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer, or automatic mode switch.
 
 `critic_margin_agent` is active as advisory/manual second-eyes discipline.
 
@@ -94,7 +74,8 @@ For the current next action, use:
 - `conversation_archive_librarian` manual archive discipline;
 - `margin_orchestra` manual second-eyes preflight discipline;
 - `archive_status_indicator` manual archive-pressure discipline;
-- `bot_reviewer_comments` manual PR review discipline.
+- `bot_reviewer_comments` manual PR review discipline;
+- `pr_operation_response_footer` manual response footer discipline.
 
 ## Active archive-level open loops
 
