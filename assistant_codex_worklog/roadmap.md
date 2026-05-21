@@ -10,17 +10,16 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.57
-- currentMilestone: Checkpoint full after bot reviewer protocol state sync
-- lastMergedPr: PR #233 — Sync state after bot reviewer protocol registration
-- lastMergeCommit: `6c9f97075fcccff1918948fdd8aec2f8dcef03b0`
+- currentVersion: v2.58
+- currentMilestone: README and operations review sequence synced
+- lastMergedPr: PR #237 — Clarify README documentation boundary
+- lastMergeCommit: `775c9d0c49d366ce0de18dd6e4c431b55c2a63ea`
 
 ## Recent PR summary
 
-- PR #229 — Add bot reviewer comments protocol.
-- PR #230 — Archive bot reviewer protocol and scripts scope.
-- PR #231 — Register bot reviewer comments addendum.
-- PR #233 — Sync state after bot reviewer protocol registration.
+- PR #235 — Add scripts core boundary audit result.
+- PR #236 — Add future ship map review.
+- PR #237 — Clarify README documentation boundary.
 
 ## Status
 
@@ -59,25 +58,29 @@ It covers only selected high-risk entities: `agent`, `archive`, `state`, `script
 
 It is implemented but not enforcement: no CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
 
-Scripts/core boundary audit scope is recorded in `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
+Scripts/core boundary audit result is recorded in `knowledge/07_operations/scripts_core_boundary_audit_result_2026-05-21.md`.
+
+Future ship map review is recorded in `knowledge/07_operations/future_ship_map_review_2026-05-21.md`.
+
+README/documentation-topology boundary review is recorded in `knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md`.
+
+README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
 
-- `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
-- Repository architecture contract value from older archives: preserve until focused review.
-- Corrective margin/knowledge-consistency value from older archives: preserve until focused review.
-- Lifecycle policy layer: future-only and requires separate decision.
+- Lifecycle policy layer: future-only and requires separate Sergey decision.
 - Future runtime readiness checklist: only by separate Sergey decision.
-- Scripts/core boundary audit: only if selected after the new scope note.
+- README/documentation-topology boundary has been reviewed; further cleanup only if separately selected.
+- Book work remains paused until separate Sergey decision.
 
 ## Approved next sequence
 
 1. choose the next work explicitly;
-2. return to `Карта будущего корабля` review when Sergey chooses it;
-3. if Sergey selects it, run the read-only scripts/core boundary audit using `knowledge/07_operations/scripts_core_boundary_audit_scope.md`;
-4. do not expand lifecycle contracts, bot reviewer comments protocol, or scripts/core audit scope toward policy layer, route automation, validators, CI enforcement, hard guardrails, runtime, or branch protection without separate approval;
-5. if Sergey separately approves, prepare a future runtime readiness checklist.
+2. do not treat README as the live roadmap;
+3. do not treat operations review notes as implementation mandates;
+4. do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, or branch protection without separate approval;
+5. if Sergey separately resumes book work, switch modes explicitly and update state.
 
 ## Recommended next work item
 
-Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.
+After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.
