@@ -12,28 +12,41 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #238 — Sync state after README boundary review
+- PR #245 — Define critic margin advisor activation scope
 - Status: merged
-- Merge commit: `106c53e747a91b7c6ba3d0e54f69898ca07f6408`
+- Merge commit: `b20f812fecb4da9bf0247a37df1badd8778ca553`
 
 ## Current version
 
-- currentVersion: v2.59
-- currentMilestone: Checkpoint full after README boundary state sync
+- currentVersion: v2.60
+- currentMilestone: Critic margin advisor activation scope synced
 
-## Checkpoint context
+## Recent Agent Queue / second-eyes sequence
 
-PR #235 recorded the scripts/core boundary audit result as documentation-only follow-up.
+PR #240 archived the README boundary and operations review closure segment.
 
-PR #236 recorded the full future ship map review with 34 classified points and the five declared classification buckets only.
+PR #241 reviewed old architecture tails and closed resolved archive loops for current navigation.
 
-PR #237 recorded the README/documentation-topology boundary review and adjusted README so it no longer acts as the live roadmap.
+PR #242 clarified the second-eyes status boundaries:
 
-PR #238 synced project state/resume files after that documentation boundary sequence.
+- `critic_margin_agent` as agent = proposal;
+- `critic_margin_agent` as manual voice = active manual discipline;
+- `margin_orchestra` = active manual pattern;
+- `workflow_conductor_agent` = separate proposal.
 
-This checkpoint records the stable handoff after PR #238.
+PR #243 recorded baseline audit takeaways as semantic stabilization reference without runtime escalation.
+
+PR #244 added manual second-eyes preflight card examples.
+
+PR #245 defined `critic_margin_agent` activation scope as advisory/manual second-eyes discipline.
 
 ## Current protocol result
+
+`critic_margin_agent` is active as advisory/manual second-eyes discipline.
+
+`critic_margin_agent` is not active as runtime/route validator.
+
+`workflow_conductor_agent` remains a separate proposal.
 
 README is the entrance map, not the live roadmap.
 
@@ -47,7 +60,7 @@ Operations review notes can guide discussion, but they do not replace project-st
 
 ## Current active manual disciplines
 
-- `critic_margin_agent` manual preflight discipline;
+- `critic_margin_agent` advisory/manual second-eyes discipline;
 - `conversation_archive_librarian` manual archive discipline;
 - `margin_orchestra` manual second-eyes preflight discipline;
 - `archive_status_indicator` manual archive-pressure discipline;
@@ -57,11 +70,14 @@ Operations review notes can guide discussion, but they do not replace project-st
 
 - future runtime readiness checklist only by separate Sergey decision;
 - lifecycle policy layer only by separate Sergey decision;
-- README/documentation-topology boundary has been reviewed; further cleanup only if separately selected;
+- `workflow_conductor_agent` activation only by separate Sergey decision;
+- further second-eyes tooling or mandatory preflight only by separate Sergey decision;
 - book work remains paused until separate Sergey decision.
 
 ## Next safe step
 
-Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.
+After this state sync is merged, choose the next Agent Queue step explicitly.
 
-Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, branch protection, or book mode without separate approval.
+Do not treat `critic_margin_agent` advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine.
+
+Do not activate `workflow_conductor_agent` through critic/margin work.

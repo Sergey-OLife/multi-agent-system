@@ -4,32 +4,36 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.59
-- lastCompletedVersion: v2.59
-- lastMergedPr: PR #238 — Sync state after README boundary review
-- lastMergeCommit: 106c53e747a91b7c6ba3d0e54f69898ca07f6408
-- currentMilestone: v2.59 Checkpoint full after README boundary state sync
+- currentVersion: v2.60
+- lastCompletedVersion: v2.60
+- lastMergedPr: PR #245 — Define critic margin advisor activation scope
+- lastMergeCommit: b20f812fecb4da9bf0247a37df1badd8778ca553
+- currentMilestone: v2.60 Critic margin advisor activation scope synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.59
+## What changed in v2.60
 
-This checkpoint records the stable state after PR #238 synced project state following the README/documentation-topology boundary review.
+This state sync records the Agent Queue / second-eyes sequence after v2.59:
 
-The documentation review sequence is now stable in main:
+- PR #240 — Archive README boundary and operations review closure;
+- PR #241 — Review old architecture tails and close resolved archive loops;
+- PR #242 — Clarify second-eyes status boundaries;
+- PR #243 — Record baseline audit takeaways without runtime escalation;
+- PR #244 — Add second-eyes preflight card examples;
+- PR #245 — Define critic margin advisor activation scope.
 
-- PR #235 — Add scripts core boundary audit result;
-- PR #236 — Add future ship map review;
-- PR #237 — Clarify README documentation boundary;
-- PR #238 — Sync state after README boundary review.
+The key result:
 
-README is the entrance map, not the live roadmap.
-
-For current next work, use project-state/current-state/roadmap rather than README.
+```text
+critic_margin_agent is active as advisory/manual second-eyes discipline.
+critic_margin_agent is not active as runtime/route validator.
+workflow_conductor_agent remains a separate proposal.
+```
 
 ## Boundary
 
-This checkpoint is state/resume sync only.
+This state sync is state/resume sync only.
 
 It does not:
 
@@ -37,24 +41,25 @@ It does not:
 - change scripts;
 - change Go packages;
 - change workflows;
-- add GitHub labels;
+- add GitHub Actions;
 - add required checks;
 - add validators;
 - add hard guardrails;
 - add policy layer;
 - change branch protection settings;
 - change runtime behavior;
-- change book workflow;
-- rename `go-core`;
-- restructure README or archive index.
+- activate `workflow_conductor_agent`;
+- route `critic_margin_agent` as runtime agent;
+- change book workflow.
 
 ## Current recovery path
 
 1. Use GitHub `main` as the source of truth.
 2. Read project-state/current-state/roadmap/restart-prompt before selecting next work.
 3. Do not treat README as the live roadmap.
-4. Choose the next work explicitly.
-5. Do not treat any review note as an implementation mandate.
+4. Treat operations review notes as references, not implementation mandates.
+5. Treat `critic_margin_agent` as advisory/manual second-eyes discipline only.
+6. Choose the next Agent Queue step explicitly.
 
 ## Active decisions
 
@@ -62,8 +67,11 @@ It does not:
 - Current active mode is Agent Shipyard / Agent Queue.
 - Book Fast Track remains paused until separate Sergey decision.
 - `conversation_archive_librarian` is active as manual archive discipline only.
-- `critic_margin_agent` remains active as manual protocol discipline.
-- `margin_orchestra` is active as manual second-eyes preflight discipline only.
+- `critic_margin_agent` is active as advisory/manual second-eyes discipline only.
+- `critic_margin_agent` is not runtime, route validator, CI gate, approval authority, hard guardrail or policy engine.
+- `critic_margin_agent` route/runtime form remains non-active unless separately approved.
+- `margin_orchestra` is active as manual second-eyes preflight pattern only.
+- `workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin work.
 - `archive_status_indicator` is active as manual archive-pressure discipline only.
 - `bot_reviewer_comments` is active as manual PR review discipline only.
 - The `рестарт` command is implemented as a continuation command from GitHub source of truth.
@@ -72,14 +80,6 @@ It does not:
 - Required branch-protection check contexts are `TypeScript / JavaScript / Go checks` and `sync-check`.
 - Required checks and merge gates are documented in `knowledge/07_operations/checks_overview.md`.
 - Local state-sync drift audit script is implemented as warning-only local diagnostic tool.
-- Representative local drift audit test results are recorded in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
-- Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
-- Conservative archive index cleanup is recorded in `knowledge/08_conversation_archive/index.md`.
-- Scripts/core boundary audit scope is recorded in `knowledge/07_operations/scripts_core_boundary_audit_scope.md`.
-- Scripts/core boundary audit result is recorded in `knowledge/07_operations/scripts_core_boundary_audit_result_2026-05-21.md`.
-- Future ship map review is recorded in `knowledge/07_operations/future_ship_map_review_2026-05-21.md`.
-- README/documentation-topology boundary review is recorded in `knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md`.
-- Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 - Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
 
@@ -87,7 +87,8 @@ It does not:
 
 - Future runtime readiness checklist only by separate Sergey decision.
 - Lifecycle policy layer only by separate Sergey decision.
-- README/documentation-topology boundary has been reviewed; further cleanup only if separately selected.
+- Workflow conductor activation only by separate Sergey decision.
+- Further second-eyes tooling or mandatory preflight only by separate Sergey decision.
 - Book work remains paused until separate Sergey decision.
 
 ## Paused tasks
@@ -95,19 +96,21 @@ It does not:
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
 - Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
+- Do not treat `critic_margin_agent` advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine.
+- Do not activate `workflow_conductor_agent` through `critic_margin_agent` or `margin_orchestra` work.
+- Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements.
+- Do not treat baseline audit takeaways as approval for v0.5 release, runtime readiness, blocking drift audit, maturity automation, validators, hard guardrails, policy layer or moving/deleting `book/`.
 - Do not treat bot reviewer comments protocol as automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass.
 - Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 - Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule.
 - Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass.
 - Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change.
 - Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
-- Do not treat scripts/core boundary audit result as implementation, script rewrite, workflow change, validator, hard guardrail, state-sync automation, lifecycle policy layer, or repository restructure.
 - Do not treat future ship map review as an implementation mandate.
 - Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
-- Do not treat old archive tails as stale only because they are old.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.
+After this state sync is merged, choose the next Agent Queue step explicitly; critic_margin_agent advisory/manual activation is synced, but no runtime, route, validator or workflow_conductor activation follows automatically.
