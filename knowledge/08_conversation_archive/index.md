@@ -23,13 +23,14 @@ Cleanup rule is conservative: age alone is not a deletion signal. Старые �
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_state-sync-and-conservative-archive-cleanup.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, state_sync, archive_protocol, archive_index, conservative_cleanup | partial / PR #216, PR #217 | after merge: conversation mode; no new technical work unless selected |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-proposal-and-state-sync-pr.md` | implemented_elsewhere | 2026-06-04 | agent_shipyard, lifecycle_contracts, external_audit, state_sync, archive_protocol | PR #219, PR #220, PR #221 | closed: PR #220 merged after archive; lifecycle code still requires separate decision |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_final-lifecycle-state-sync-closure.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, lifecycle_contracts, state_sync, archive_protocol, closure | PR #219, PR #220, PR #221 | after merge: discussion/refinement mode; no open PRs expected |
-| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-v1-implementation-blocked-merge.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, lifecycle_contracts, implementation, blocked_merge, archive_protocol | partial / PR #223-open | PR #223 is green and mergeable but not merged because merge tool was blocked |
+| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-v1-implementation-blocked-merge.md` | implemented_elsewhere | 2026-06-04 | agent_shipyard, lifecycle_contracts, implementation, blocked_merge, archive_protocol | PR #223, PR #224 | closed: PR #223 and PR #224 merged manually |
+| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-v1-state-sync-pr.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, lifecycle_contracts, state_sync, archive_protocol | partial / PR #223, PR #224, PR #225-open | PR #225 is open for state sync after lifecycle v1 implementation |
 
 ## Current active archive-level open loops
 
-- PR #223 lifecycle contracts v1 implementation: open, green, mergeable; merge tool was blocked by platform safety, so manual merge may be required.
-- After PR #223 merge: state sync is required to record lifecycle contracts v1 as implemented but not enforcement.
-- Lifecycle policy layer remains future-only and requires separate decision.
+- PR #225 state sync after lifecycle contracts v1: open at archive capture time; merge only after `++`.
+- After PR #225 merge: state sync after lifecycle contracts v1 is complete.
+- Lifecycle policy layer remains future-only and requires separate Sergey decision.
 - `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
 - Repository architecture contract value from older archives: preserve until a focused review decides what is implemented, stale, or still useful.
 - Corrective margin/knowledge-consistency value from older archives: preserve until a focused review decides what is implemented, stale, or still useful.
