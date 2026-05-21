@@ -7,9 +7,9 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.56.
-- lastMergedPr: PR #231 — Register bot reviewer comments addendum.
-- lastMergeCommit: 25875d48d10cb94e940f9409e6afb49d69bdf3ed.
+- currentVersion: v2.57.
+- lastMergedPr: PR #233 — Sync state after bot reviewer protocol registration.
+- lastMergeCommit: 6c9f97075fcccff1918948fdd8aec2f8dcef03b0.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе.
 - Book Fast Track is ignored for immediate next work until Sergey separately resumes it.

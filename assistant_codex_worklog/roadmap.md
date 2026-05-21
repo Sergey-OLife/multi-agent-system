@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.56
-- currentMilestone: Bot reviewer comments protocol registered
-- lastMergedPr: PR #231 — Register bot reviewer comments addendum
-- lastMergeCommit: `25875d48d10cb94e940f9409e6afb49d69bdf3ed`
+- currentVersion: v2.57
+- currentMilestone: Checkpoint full after bot reviewer protocol state sync
+- lastMergedPr: PR #233 — Sync state after bot reviewer protocol registration
+- lastMergeCommit: `6c9f97075fcccff1918948fdd8aec2f8dcef03b0`
 
 ## Recent PR summary
 
-- PR #228 — Add scripts core boundary audit scope.
 - PR #229 — Add bot reviewer comments protocol.
 - PR #230 — Archive bot reviewer protocol and scripts scope.
 - PR #231 — Register bot reviewer comments addendum.
+- PR #233 — Sync state after bot reviewer protocol registration.
 
 ## Status
 

@@ -538,3 +538,19 @@ PR #103 подготовлен как checkpoint после PR #102.
 - repository hygiene audit активен как инструмент проверки;
 - branch cleanup остаётся cleanup_needed в issue #99;
 - следующий safe step — `sergey_interaction_profiler` proposal without activation.
+
+### 66. Bot reviewer comments protocol and checkpoint after state sync
+
+PR #229 добавил `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` как обязательную ручную PR-review discipline.
+
+PR #231 зарегистрировал этот addendum в видимом списке `working-protocol.md`.
+
+PR #233 выполнил короткий state sync после изменения рабочего протокола.
+
+Решение:
+
+- перед `++` или merge нужно проверять top-level PR comments, submitted reviews, inline review threads, unresolved review threads и comments from `chatgpt-codex-connector`;
+- каждый значимый comment классифицируется как `must_fix`, `not_applicable` или `future_followup`;
+- green checks и mergeability недостаточны, если есть неразобранные reviewer/bot comments;
+- bot reviewer comments protocol остаётся manual discipline only: не automation, не GitHub Action, не required check, не validator, не hard guardrail, не route automation, не policy engine, не branch protection change, не runtime behavior и не approval bypass;
+- после checkpoint v2.57 следующий шаг выбирается явно: `Карта будущего корабля` review или read-only scripts/core boundary audit.
