@@ -26,7 +26,7 @@ const (
 	StageProposal         Stage = "proposal"
 	StageMechanics        Stage = "mechanics"
 	StageManualDiscipline Stage = "manual_discipline"
-	StageRouteAutomation  Stage = "route_automation"
+	StageRouted           Stage = "routed"
 	StageValidator        Stage = "validator"
 	StageHardGuardrail    Stage = "hard_guardrail"
 	StageRuntimeEnforce   Stage = "runtime_enforcement"
@@ -49,9 +49,9 @@ const (
 type Concept string
 
 const (
+	ConceptRouted             Concept = "routed"
 	ConceptValidator          Concept = "validator"
 	ConceptHardGuardrail      Concept = "hard_guardrail"
-	ConceptRouteAutomation    Concept = "route_automation"
 	ConceptRuntimeEnforcement Concept = "runtime_enforcement"
 	ConceptCIEnforcement      Concept = "ci_enforcement"
 	ConceptProjectState       Concept = "project_state"
@@ -59,6 +59,33 @@ const (
 	ConceptFullSource         Concept = "full_source"
 	ConceptSourceReadProof    Concept = "source_read_proof"
 )
+
+var knownStages = map[Stage]bool{
+	StageProposal:         true,
+	StageMechanics:        true,
+	StageManualDiscipline: true,
+	StageRouted:           true,
+	StageValidator:        true,
+	StageHardGuardrail:    true,
+	StageRuntimeEnforce:   true,
+	StageCIEnforcement:    true,
+	StageProjectState:     true,
+	StageCheckpoint:       true,
+	StageFullSource:       true,
+	StageSourceReadProof:  true,
+}
+
+var knownConcepts = map[Concept]bool{
+	ConceptRouted:             true,
+	ConceptValidator:          true,
+	ConceptHardGuardrail:      true,
+	ConceptRuntimeEnforcement: true,
+	ConceptCIEnforcement:      true,
+	ConceptProjectState:       true,
+	ConceptCheckpoint:         true,
+	ConceptFullSource:         true,
+	ConceptSourceReadProof:    true,
+}
 
 var allowedEntityStages = map[EntityType]map[Stage]bool{
 	EntityAgent: {
@@ -82,10 +109,10 @@ var allowedEntityStages = map[EntityType]map[Stage]bool{
 
 var forbiddenEntityStages = map[EntityType]map[Stage]bool{
 	EntityArchive: {
-		StageProjectState:   true,
-		StageCheckpoint:     true,
-		StageValidator:      true,
-		StageHardGuardrail:  true,
+		StageProjectState:  true,
+		StageCheckpoint:    true,
+		StageValidator:     true,
+		StageHardGuardrail: true,
 	},
 	EntityState: {
 		StageProposal:       true,
@@ -93,9 +120,9 @@ var forbiddenEntityStages = map[EntityType]map[Stage]bool{
 		StageRuntimeEnforce: true,
 	},
 	EntityScript: {
-		StageValidator:      true,
-		StageCIEnforcement:  true,
-		StageHardGuardrail:  true,
+		StageValidator:     true,
+		StageCIEnforcement: true,
+		StageHardGuardrail: true,
 	},
 	EntitySourceCard: {
 		StageFullSource:      true,
@@ -110,26 +137,20 @@ var forbiddenStageConfusions = map[Stage]map[Concept]bool{
 		ConceptHardGuardrail: true,
 	},
 	StageManualDiscipline: {
-		ConceptRouteAutomation: true,
-		ConceptValidator:       true,
-		ConceptHardGuardrail:   true,
+		ConceptRouted:        true,
+		ConceptValidator:     true,
+		ConceptHardGuardrail: true,
 	},
 }
 
 // AllowedEntityStage reports whether an entity/stage pair is explicitly allowed
 // by the v1 contract vocabulary.
 func AllowedEntityStage(entity EntityType, stage Stage) (bool, error) {
-	if entity == "" {
-		return false, fmt.Errorf("entity type is required")
-	}
-	if stage == "" {
-		return false, fmt.Errorf("stage is required")
+	if err := checkEntityAndStage(entity, stage); err != nil {
+		return false, err
 	}
 
-	allowedStages, known := allowedEntityStages[entity]
-	if !known {
-		return false, fmt.Errorf("unknown entity type %q", entity)
-	}
+	allowedStages := allowedEntityStages[entity]
 	if isForbiddenEntityStage(entity, stage) {
 		return false, nil
 	}
@@ -139,14 +160,8 @@ func AllowedEntityStage(entity EntityType, stage Stage) (bool, error) {
 // ForbiddenEntityStage reports whether an entity/stage pair is explicitly
 // forbidden by the v1 contract vocabulary.
 func ForbiddenEntityStage(entity EntityType, stage Stage) (bool, error) {
-	if entity == "" {
-		return false, fmt.Errorf("entity type is required")
-	}
-	if stage == "" {
-		return false, fmt.Errorf("stage is required")
-	}
-	if _, known := allowedEntityStages[entity]; !known {
-		return false, fmt.Errorf("unknown entity type %q", entity)
+	if err := checkEntityAndStage(entity, stage); err != nil {
+		return false, err
 	}
 	return isForbiddenEntityStage(entity, stage), nil
 }
@@ -157,8 +172,14 @@ func ConfusionError(stage Stage, concept Concept) error {
 	if stage == "" {
 		return fmt.Errorf("stage is required")
 	}
+	if !knownStages[stage] {
+		return fmt.Errorf("unknown stage %q", stage)
+	}
 	if concept == "" {
 		return fmt.Errorf("concept is required")
+	}
+	if !knownConcepts[concept] {
+		return fmt.Errorf("unknown concept %q", concept)
 	}
 	if forbiddenStageConfusions[stage][concept] {
 		return fmt.Errorf("%s must not be treated as %s", stage, concept)
@@ -176,6 +197,22 @@ func IsConfusedWith(stage Stage, concept Concept) bool {
 // CI enforcement.
 func ScriptCanBeLocalDiagnostic(kind ScriptKind) bool {
 	return kind == ScriptKindLocalDiagnostic
+}
+
+func checkEntityAndStage(entity EntityType, stage Stage) error {
+	if entity == "" {
+		return fmt.Errorf("entity type is required")
+	}
+	if _, known := allowedEntityStages[entity]; !known {
+		return fmt.Errorf("unknown entity type %q", entity)
+	}
+	if stage == "" {
+		return fmt.Errorf("stage is required")
+	}
+	if !knownStages[stage] {
+		return fmt.Errorf("unknown stage %q", stage)
+	}
+	return nil
 }
 
 func isForbiddenEntityStage(entity EntityType, stage Stage) bool {
