@@ -25,6 +25,7 @@ GitHub — источник правды по коду, структуре, со
 - `plus_approval_shorthand.md` — `+` означает продолжение без approval, `++` означает approval текущего понятного approval-gate;
 - `auto_mergeability_check.md` — перепроверка mergeability открытого PR не требует отдельного подтверждения.
 - `restart_command.md` — команда `рестарт` запускает продолжение из GitHub source of truth.
+- `archive_status_indicator.md` — архивный индикатор `зеленый/желтый/красный`, порог `желтый_3` и delta-only archive discipline.
 
 ## Book Fast Track для глав книги
 
