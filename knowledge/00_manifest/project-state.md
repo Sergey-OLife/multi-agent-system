@@ -4,78 +4,66 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.55
-- lastCompletedVersion: v2.55
-- lastMergedPr: PR #223 — Implement lifecycle contracts v1
-- lastMergeCommit: c2bb5d5d04aef05c871b18f219c56a688c69cdfa
-- currentMilestone: v2.55 Lifecycle contracts v1 implemented
+- currentVersion: v2.56
+- lastCompletedVersion: v2.56
+- lastMergedPr: PR #231 — Register bot reviewer comments addendum
+- lastMergeCommit: 25875d48d10cb94e940f9409e6afb49d69bdf3ed
+- currentMilestone: v2.56 Bot reviewer comments protocol registered
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.55
+## What changed in v2.56
 
-PR #223 added `go-core/lifecycle/lifecycle.go` and `go-core/lifecycle/lifecycle_test.go`.
+PR #229 added `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` as a mandatory manual PR review discipline.
 
-Lifecycle contracts v1 is now implemented as a small pure Go contract vocabulary with unit tests.
+PR #231 registered that addendum in the visible addenda list inside `assistant_codex_worklog/working-protocol.md`.
 
-It covers only selected high-risk entity types:
+The protocol requires PR comments, submitted reviews, inline review threads, unresolved review threads and `chatgpt-codex-connector` comments to be checked and classified before a PR is presented as ready for `++` or merged.
 
-- `agent`;
-- `archive`;
-- `state`;
-- `script`;
-- `source_card`.
+Classification options:
 
-It checks the highest-risk status confusions and false labels, including:
-
-- proposal as validator or hard guardrail;
-- manual discipline as routed, validator or hard guardrail;
-- archive as project-state or checkpoint;
-- state as proposal, hard guardrail or runtime enforcement;
-- script as validator or CI enforcement;
-- source card as full source or source-read proof.
-
-It also uses the repository lifecycle token `routed` and rejects unknown stages/concepts instead of silently treating typos as merely not allowed.
+- `must_fix`;
+- `not_applicable`;
+- `future_followup`.
 
 ## Boundary
 
-Lifecycle contracts v1 is implemented but not enforcement.
+Bot reviewer comments protocol is manual PR review discipline only.
 
 It is not:
 
-- CLI;
+- automated review enforcement;
 - GitHub Action;
-- CI enforcement beyond existing tests;
-- route automation;
-- project-gate validator;
+- required check;
+- validator;
 - hard guardrail;
-- approval logic;
-- state-sync automation;
-- runtime behavior;
+- route automation;
+- policy engine;
 - branch protection change;
-- book workflow change.
-
-Any future lifecycle policy layer requires separate decision.
+- runtime behavior;
+- approval bypass.
 
 ## Recent protocol and diagnostic state
 
-PR #224 archived the blocked merge-tool path for PR #223. That archive is historical after PR #223 manual merge.
+PR #228 added `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
 
-PR #214 added `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md` and registered it in `assistant_codex_worklog/working-protocol.md`.
+PR #229 added the bot reviewer comments addendum.
 
-PR #212 added `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
+PR #230 archived the bot reviewer protocol and scripts/core scope delta.
 
-PR #216 cleaned archive index open-loop navigation conservatively.
+PR #231 registered the bot reviewer comments addendum in `working-protocol.md`.
+
+Lifecycle contracts v1 remains implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
 
 The local drift audit script remains a manual warning-only diagnostic instrument and is not enforcement.
 
 ## Current recovery path
 
-1. Complete state sync after PR #223.
-2. Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
-3. Return to `Карта будущего корабля` review when Sergey chooses it.
-4. Consider a future runtime readiness checklist only by separate decision.
-5. Consider a scripts/core boundary audit only if needed.
+1. Choose the next work explicitly.
+2. Return to `Карта будущего корабля` review when Sergey chooses it.
+3. Run the read-only scripts/core boundary audit only if Sergey selects it.
+4. Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
+5. Consider a future runtime readiness checklist only by separate decision.
 
 ## Active decisions
 
@@ -86,6 +74,7 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - `critic_margin_agent` remains active as manual protocol discipline.
 - `margin_orchestra` is active as manual second-eyes preflight discipline only.
 - `archive_status_indicator` is active as manual archive-pressure discipline only.
+- `bot_reviewer_comments` is active as manual PR review discipline only.
 - The `рестарт` command is implemented as a continuation command from GitHub source of truth.
 - The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 - Minimal GitHub Ruleset `Protect main` is active for `main` / default branch.
@@ -95,6 +84,7 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - Representative local drift audit test results are recorded in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
 - Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
 - Conservative archive index cleanup is recorded in `knowledge/08_conversation_archive/index.md`.
+- Scripts/core boundary audit scope is recorded in `knowledge/07_operations/scripts_core_boundary_audit_scope.md`.
 - Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 - Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
@@ -106,21 +96,23 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - Corrective margin/knowledge-consistency value from older archives.
 - Lifecycle policy layer only by separate Sergey decision.
 - Future runtime readiness checklist only by separate Sergey decision.
-- Scripts/core boundary audit only if needed after selected next work.
+- Scripts/core boundary audit only if selected after the new scope note.
 
 ## Paused tasks
 
 - Do not continue the book automatically while current mode is Agent Shipyard or Agent Queue.
 - Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
+- Do not treat bot reviewer comments protocol as automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass.
 - Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling.
 - Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule.
 - Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass.
 - Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change.
+- Do not treat scripts/core boundary audit scope as audit result, implementation, script rewrite, workflow change, validator, hard guardrail, state-sync automation, lifecycle policy layer, or repository restructure.
 - Do not treat old archive tails as stale only because they are old.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Complete state sync after PR #223.
+Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.

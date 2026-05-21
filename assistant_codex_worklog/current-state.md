@@ -12,43 +12,44 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #223 — Implement lifecycle contracts v1
+- PR #231 — Register bot reviewer comments addendum
 - Status: merged
-- Merge commit: `c2bb5d5d04aef05c871b18f219c56a688c69cdfa`
+- Merge commit: `25875d48d10cb94e940f9409e6afb49d69bdf3ed`
 
 ## Current version
 
-- currentVersion: v2.55
-- currentMilestone: Lifecycle contracts v1 implemented
+- currentVersion: v2.56
+- currentMilestone: Bot reviewer comments protocol registered
 
-## PR #223 result
+## PR #231 result
 
-PR #223 added `go-core/lifecycle/lifecycle.go` and `go-core/lifecycle/lifecycle_test.go`.
+PR #231 registered `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` in the visible addenda list inside `assistant_codex_worklog/working-protocol.md`.
 
-It implements lifecycle contracts v1 as a small pure Go contract vocabulary with unit tests for the highest-risk status confusions.
+The addendum itself was added by PR #229 and is active as mandatory manual PR review discipline.
 
-V1 covers selected entity types only:
+Before a PR is presented as ready for `++` or merged, PR comments, submitted reviews, inline review threads, unresolved review threads and `chatgpt-codex-connector` comments must be checked and classified.
 
-- `agent`;
-- `archive`;
-- `state`;
-- `script`;
-- `source_card`.
+Allowed classifications:
 
-It records forbidden status/confusion checks around proposal/validator, manual discipline/routed or stronger statuses, archive/project-state/checkpoint, script/CI enforcement, and source card/source proof confusion.
+- `must_fix`;
+- `not_applicable`;
+- `future_followup`.
 
-Important boundary: lifecycle contracts v1 is implemented, but it is not workflow enforcement. It is not CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
+Important boundary: bot reviewer comments protocol is manual discipline only. It is not automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass.
 
-## Recent archive note
+## Recent note
 
-PR #224 archived the blocked merge-tool path for PR #223. It was an archive only and did not implement lifecycle v1.
+PR #228 added `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
+
+That scope can be used for a future read-only scripts/core boundary audit if Sergey selects it.
 
 ## Current active manual disciplines
 
 - `critic_margin_agent` manual preflight discipline;
 - `conversation_archive_librarian` manual archive discipline;
 - `margin_orchestra` manual second-eyes preflight discipline;
-- `archive_status_indicator` manual archive-pressure discipline.
+- `archive_status_indicator` manual archive-pressure discipline;
+- `bot_reviewer_comments` manual PR review discipline.
 
 ## Active archive-level open loops
 
@@ -56,10 +57,10 @@ PR #224 archived the blocked merge-tool path for PR #223. It was an archive only
 - repository architecture contract value from older archives;
 - corrective margin/knowledge-consistency value from older archives;
 - future runtime readiness checklist only by separate Sergey decision;
-- scripts/core boundary audit only if needed after selected next work.
+- scripts/core boundary audit only if selected after the new scope note.
 
 ## Next safe step
 
-Complete state sync after PR #223.
+Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.
 
-After that, choose the next work explicitly. Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
+Do not expand lifecycle contracts, bot reviewer comments protocol, or scripts/core audit scope toward policy layer, route automation, validators, CI enforcement, hard guardrails, runtime, or branch protection without separate approval.
