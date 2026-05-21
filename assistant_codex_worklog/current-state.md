@@ -12,47 +12,53 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #255 — Add registry status overlay note
+- PR #257 — Define workflow conductor advisory activation scope
 - Status: merged
-- Merge commit: `d10be54144512238e3883f1e4a286497d6bdd861`
+- Merge commit: `7ab13a3a21730ba7ca0aba76c3d22e2442050608`
 
 ## Current version
 
-- currentVersion: v2.63
-- currentMilestone: Registry status overlay synced
+- currentVersion: v2.64
+- currentMilestone: Workflow conductor advisory activation scope synced
 
-## Recent closure / registry sequence
+## Recent Agent Queue sequence
 
-PR #252 archived the Agent Queue/status trust closure segment.
-
-PR #253 indexed that archive entry.
-
-PR #254 recorded a manual `agent_registry_librarian` hygiene pass and recommended a registry status overlay instead of another activation.
-
-PR #255 added the registry status overlay note.
+PR #257 defined `workflow_conductor_agent` as active advisory/manual orchestration planner only.
 
 ## Current protocol result
 
+`workflow_conductor_agent` is active as advisory/manual orchestration planner.
+
+It may:
+
+- classify task mode;
+- identify primary/supporting agents;
+- propose sequence;
+- detect conflict zones;
+- identify approval-gates;
+- recommend the next safe step;
+- state what must not be automated.
+
+It is not:
+
+- runtime;
+- route automation;
+- approval authority;
+- registry mutation authority;
+- project-state authority;
+- validator;
+- hard guardrail;
+- policy layer;
+- book writer;
+- automatic mode switch.
+
 `critic_margin_agent` is active as advisory/manual second-eyes discipline.
 
-`critic_margin_agent` is not active as runtime/route validator.
-
 `agent_registry_librarian` is active as advisory/manual registry hygiene discipline.
-
-`agent_registry_librarian` is not agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
 
 `status_trust_matrix_2026-05-21.md` is documentation-only classification aid.
 
 `registry_status_overlay_2026-05-21.md` is documentation-only explanation layer for registry lifecycle status vs operational trust status.
-
-It explains:
-
-```text
-registry lifecycle status tells what the agent is in the registry.
-operational trust status tells how the project may use it now.
-```
-
-`workflow_conductor_agent` remains a separate proposal / future-only high-risk gate.
 
 README is the entrance map, not the live roadmap.
 
@@ -64,6 +70,7 @@ For the current next action, use:
 
 ## Current active manual disciplines
 
+- `workflow_conductor_agent` advisory/manual orchestration planner;
 - `critic_margin_agent` advisory/manual second-eyes discipline;
 - `agent_registry_librarian` advisory/manual registry hygiene discipline;
 - `conversation_archive_librarian` manual archive discipline;
@@ -73,17 +80,16 @@ For the current next action, use:
 
 ## Active archive-level open loops
 
+- book/product mode switch only by separate Sergey decision;
+- first book/product mission plan through conductor only after mode switch decision;
 - future runtime readiness checklist only by separate Sergey decision;
 - lifecycle policy layer only by separate Sergey decision;
-- `workflow_conductor_agent` activation only by separate Sergey decision;
-- further second-eyes tooling or mandatory preflight only by separate Sergey decision;
-- book work remains paused until separate Sergey decision.
+- further second-eyes tooling or mandatory preflight only by separate Sergey decision.
 
 ## Next safe step
 
-Choose explicitly:
+Decide explicitly whether to switch to book/product mode.
 
-1. pause Agent Queue and return to book/product work;
-2. discuss `workflow_conductor_agent` as a separate high-risk gate.
+If Sergey chooses book/product mode, use `workflow_conductor_agent` to create the first advisory mission plan before writing or product design.
 
-Do not activate another agent by default.
+Do not let conductor switch modes by itself.
