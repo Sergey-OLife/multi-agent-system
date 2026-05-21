@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.62",
-  "lastCompletedVersion": "v2.62",
-  "lastMergedPr": "PR #250 — Add status trust matrix",
-  "lastMergeCommit": "30a49d6255dd594ea40cf85c17d665f2c08970b5",
-  "currentMilestone": "v2.62 Status trust matrix synced",
+  "currentVersion": "v2.63",
+  "lastCompletedVersion": "v2.63",
+  "lastMergedPr": "PR #255 — Add registry status overlay note",
+  "lastMergeCommit": "d10be54144512238e3883f1e4a286497d6bdd861",
+  "currentMilestone": "v2.63 Registry status overlay synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -62,15 +62,16 @@
     "v2.59 Checkpoint full after README boundary state sync",
     "v2.60 Critic margin advisor activation scope synced",
     "v2.61 Agent registry librarian advisory activation scope synced",
-    "v2.62 Status trust matrix synced"
+    "v2.62 Status trust matrix synced",
+    "v2.63 Registry status overlay synced"
   ],
   "recentPrs": [
-    "PR #245 — Define critic margin advisor activation scope",
-    "PR #246 — Sync state after critic margin advisor activation",
-    "PR #247 — Review next Agent Queue candidate",
-    "PR #248 — Define agent registry librarian advisory activation scope",
-    "PR #249 — Sync state after registry librarian advisory activation",
-    "PR #250 — Add status trust matrix"
+    "PR #250 — Add status trust matrix",
+    "PR #251 — Sync state after status trust matrix",
+    "PR #252 — Archive Agent Queue and status trust closure",
+    "PR #253 — Index Agent Queue status trust archive entry",
+    "PR #254 — Record manual agent registry hygiene pass",
+    "PR #255 — Add registry status overlay note"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -115,12 +116,18 @@
     "PR #248 defined agent_registry_librarian activation scope as active advisory/manual registry hygiene discipline, not registry authority or workflow conductor",
     "PR #249 synced state/resume files after agent_registry_librarian advisory/manual activation",
     "PR #250 added status trust matrix as documentation-only classification note for project layers and trust buckets",
+    "PR #251 synced state/resume files after status trust matrix",
+    "PR #252 archived Agent Queue/status trust closure segment",
+    "PR #253 indexed the Agent Queue/status trust archive entry",
+    "PR #254 recorded manual agent_registry_librarian hygiene pass and recommended registry status overlay instead of another activation",
+    "PR #255 added registry status overlay explaining registry lifecycle status vs operational trust status",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent is active as advisory/manual second-eyes discipline only and is not a runtime/route validator, CI gate, approval authority, hard guardrail or policy engine",
     "critic_margin_agent route/runtime form remains non-active unless separately approved",
     "agent_registry_librarian is active as advisory/manual registry hygiene discipline only and is not agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
     "agent_registry_librarian route/runtime or automation form remains non-active unless separately approved",
     "workflow_conductor_agent remains a separate proposal and is not activated by critic_margin_agent, margin_orchestra or agent_registry_librarian work",
+    "registry status overlay is a documentation-only explanation layer and is not registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority",
     "status trust matrix is a documentation-only classification aid and is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
     "archive_status_indicator is active manual archive-pressure discipline only and is not automation, routing, validation, branch protection, project-state sync, checkpoint logic, CI, validator, hard guardrail or approval bypass",
@@ -133,6 +140,8 @@
     "Archive status indicator protocol is recorded in assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "Conservative archive index cleanup is recorded in knowledge/08_conversation_archive/index.md",
     "Status trust matrix is recorded in knowledge/07_operations/status_trust_matrix_2026-05-21.md",
+    "Manual agent registry hygiene pass is recorded in knowledge/07_operations/agent_registry_hygiene_pass_2026-05-21.md",
+    "Registry status overlay is recorded in knowledge/07_operations/registry_status_overlay_2026-05-21.md",
     "Lifecycle contracts v1 is implemented in go-core/lifecycle/",
     "Age alone is not a deletion signal for archive tails",
     "implemented_elsewhere should be used only when there is a concrete implementation location",
@@ -147,6 +156,7 @@
     "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation",
     "Do not treat critic_margin_agent advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine",
     "Do not treat agent_registry_librarian advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
+    "Do not treat registry status overlay as registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority",
     "Do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority",
     "Do not activate workflow_conductor_agent through critic_margin_agent, margin_orchestra or agent_registry_librarian work",
     "Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements",
@@ -161,7 +171,7 @@
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Choose the next direction explicitly: either run a manual registry hygiene pass using agent_registry_librarian, pause Agent Queue and return to book/product work, or discuss workflow_conductor_agent as a separate high-risk gate.",
+  "nextAction": "Choose explicitly: pause Agent Queue and return to book/product work, or discuss workflow_conductor_agent as a separate high-risk gate. Do not activate another agent by default.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -176,7 +186,10 @@
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md",
     "knowledge/08_conversation_archive/index.md",
+    "knowledge/08_conversation_archive/chat_archives/2026-05-21_agent-queue-and-status-trust-closure.md",
     "knowledge/07_operations/status_trust_matrix_2026-05-21.md",
+    "knowledge/07_operations/agent_registry_hygiene_pass_2026-05-21.md",
+    "knowledge/07_operations/registry_status_overlay_2026-05-21.md",
     "knowledge/07_operations/lifecycle_contracts_proposal.md",
     "go-core/lifecycle/lifecycle.go",
     "go-core/lifecycle/lifecycle_test.go",
@@ -225,11 +238,11 @@
       "archive_status_indicator manual archive-pressure discipline",
       "bot_reviewer_comments manual PR review discipline"
     ],
-    "recommendedNextWorkItem": "Choose the next direction explicitly: either run a manual registry hygiene pass using agent_registry_librarian, pause Agent Queue and return to book/product work, or discuss workflow_conductor_agent as a separate high-risk gate.",
+    "recommendedNextWorkItem": "Choose explicitly: pause Agent Queue and return to book/product work, or discuss workflow_conductor_agent as a separate high-risk gate. Do not activate another agent by default.",
     "secondEyes": {
       "critic_margin_agent": "active advisory/manual second-eyes discipline only; not runtime, not route validator, not CI gate, not approval authority, not hard guardrail, not policy engine",
       "critic_margin_agent_runtime_route_form": "not active unless separately approved",
-      "workflow_conductor_agent": "separate proposal; not activated by critic_margin_agent, margin_orchestra or agent_registry_librarian work",
+      "workflow_conductor_agent": "separate proposal; future-only high-risk gate; not activated by critic_margin_agent, margin_orchestra or agent_registry_librarian work",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "active manual second-eyes preflight pattern only; not routed and not automated",
       "archive_status_indicator": "active manual archive-pressure discipline only; not routed and not automated",
@@ -237,12 +250,13 @@
     },
     "registryHygiene": {
       "agent_registry_librarian": "active advisory/manual registry hygiene discipline only; not registry mutation authority, not agent creation authority, not route automation, not validator, not workflow conductor, not automatic state sync",
-      "agent_registry_librarian_route_runtime_or_automation_form": "not active unless separately approved"
+      "agent_registry_librarian_route_runtime_or_automation_form": "not active unless separately approved",
+      "registry_status_overlay": "documentation-only overlay explaining registry lifecycle status vs operational trust status; not registry mutation"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #250 — Add status trust matrix",
-      "latest_green_head": "38b9a89e5f3c741045eb511855df569b67ec9906",
-      "latest_green_merge_commit": "30a49d6255dd594ea40cf85c17d665f2c08970b5",
+      "latest_green_pr": "PR #255 — Add registry status overlay note",
+      "latest_green_head": "fefd61c2068d37658aa911eee354726bf642e2f7",
+      "latest_green_merge_commit": "d10be54144512238e3883f1e4a286497d6bdd861",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",

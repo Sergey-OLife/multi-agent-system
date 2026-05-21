@@ -10,15 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.62
-- currentMilestone: Status trust matrix synced
-- lastMergedPr: PR #250 — Add status trust matrix
-- lastMergeCommit: `30a49d6255dd594ea40cf85c17d665f2c08970b5`
+- currentVersion: v2.63
+- currentMilestone: Registry status overlay synced
+- lastMergedPr: PR #255 — Add registry status overlay note
+- lastMergeCommit: `d10be54144512238e3883f1e4a286497d6bdd861`
 
 ## Recent PR summary
 
-- PR #249 — Sync state after registry librarian advisory activation.
-- PR #250 — Add status trust matrix.
+- PR #252 — Archive Agent Queue and status trust closure.
+- PR #253 — Index Agent Queue status trust archive entry.
+- PR #254 — Record manual agent registry hygiene pass.
+- PR #255 — Add registry status overlay note.
 
 ## Status
 
@@ -36,7 +38,9 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 `status_trust_matrix_2026-05-21.md` is documentation-only classification aid. It is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
 
-`workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin/registry-librarian work.
+`registry_status_overlay_2026-05-21.md` is documentation-only explanation layer. It clarifies that registry lifecycle status tells what the agent is in the registry, while operational trust status tells how the project may use it now.
+
+`workflow_conductor_agent` remains a separate proposal / future-only high-risk gate and is not activated by critic/margin/registry-librarian work.
 
 `bot_reviewer_comments` is active mandatory manual PR review discipline only.
 
@@ -67,6 +71,10 @@ Agent registry librarian activation scope is recorded in `knowledge/07_operation
 
 Status trust matrix is recorded in `knowledge/07_operations/status_trust_matrix_2026-05-21.md`.
 
+Manual agent registry hygiene pass is recorded in `knowledge/07_operations/agent_registry_hygiene_pass_2026-05-21.md`.
+
+Registry status overlay is recorded in `knowledge/07_operations/registry_status_overlay_2026-05-21.md`.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
@@ -80,11 +88,11 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 ## Approved next sequence
 
 1. merge this state sync after checks and approval;
-2. choose the next direction explicitly;
-3. do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority;
-4. do not activate workflow_conductor_agent through critic/margin/registry-librarian work;
+2. choose explicitly between pausing Agent Queue for book/product work or discussing `workflow_conductor_agent` as a separate high-risk gate;
+3. do not activate another agent by default;
+4. do not treat registry status overlay as registry mutation, activation, validator, CI check, hard guardrail, policy layer, route/runtime behavior or approval authority;
 5. if Sergey separately resumes book work, switch modes explicitly and update state.
 
 ## Recommended next work item
 
-Choose the next direction explicitly: either run a manual registry hygiene pass using `agent_registry_librarian`, pause Agent Queue and return to book/product work, or discuss `workflow_conductor_agent` as a separate high-risk gate.
+Choose explicitly: pause Agent Queue and return to book/product work, or discuss `workflow_conductor_agent` as a separate high-risk gate. Do not activate another agent by default.
