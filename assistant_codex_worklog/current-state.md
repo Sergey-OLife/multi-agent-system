@@ -12,14 +12,14 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #259 — Add book and agent mode switch commands
+- PR #261 — Checkpoint full after mode switch commands
 - Status: merged
-- Merge commit: `630e8bda6180e79b6402ead5e8d311c97e0f0203`
+- Merge commit: `a29f4dec0bb7348d6d0abd1004fee21eaeb620ae`
 
 ## Current version
 
-- currentVersion: v2.65
-- currentMilestone: Mode switch commands synced
+- currentVersion: v2.66
+- currentMilestone: Checkpoint full after mode switch commands
 
 ## Recent protocol sequence
 
@@ -32,6 +32,10 @@ PR #259 added mode switch commands:
 - `#книга`;
 - `#агент`;
 - `#агенты`.
+
+PR #260 synced state/resume files after mode switch commands to v2.65.
+
+PR #261 created the full checkpoint after mode switch commands as v2.66.
 
 ## Current protocol result
 
