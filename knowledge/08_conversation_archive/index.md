@@ -17,6 +17,7 @@
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_current-shipyard-ruleset-and-drift-detector.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, branch_protection, checks, state_sync, drift_detector, architecture_review, archive_protocol, implementation_proposal | partial / PR #198-#206 | implement warning-only local script only after separate decision; return to `Карта будущего корабля` review |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_local-drift-audit-and-archive-cadence.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, state_sync, drift_detector, local_tooling, archive_protocol, archive_cadence | partial / PR #208-#209 | test local drift audit script; decide whether to formalize archive status indicator |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_yellow-three-rule-and-post-210-archive.md` | draft_archive_entry | 2026-06-04 | archive_protocol, archive_cadence, status_indicator, agent_shipyard, drift_detector | partial / PR #210 | test local drift audit script; consider protocol addendum for yellow_3 rule |
+| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_delta-only-archive-discipline.md` | draft_archive_entry | 2026-06-04 | archive_protocol, archive_cadence, delta_archive, cleanup, agent_shipyard | partial / PR #212 | add protocol addendum for yellow_3 and delta-only archive discipline; later cleanup stale archive loops |
 
 ## Status legend
 
@@ -27,6 +28,8 @@
 - `long_lived_observation` — наблюдение о стиле, противоречии или проектной логике, которое стоит хранить дольше 14 дней.
 - `stale` — запись устарела и может быть закрыта.
 - `superseded` — заменена более точным документом.
+- `not_relevant_now` — верно, но не активно для текущего рабочего сегмента.
+- `closed` — resolved and no longer needs attention.
 
 ## Cleanup rule
 
@@ -39,4 +42,7 @@
 - перенести в issue/proposal/state;
 - отметить `implemented_elsewhere`;
 - отметить `stale`;
+- отметить `superseded`;
+- отметить `not_relevant_now`;
+- отметить `closed`;
 - удалить отдельным cleanup PR.
