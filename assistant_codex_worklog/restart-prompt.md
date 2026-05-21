@@ -7,9 +7,9 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.58.
-- lastMergedPr: PR #237 — Clarify README documentation boundary.
-- lastMergeCommit: 775c9d0c49d366ce0de18dd6e4c431b55c2a63ea.
+- currentVersion: v2.59.
+- lastMergedPr: PR #238 — Sync state after README boundary review.
+- lastMergeCommit: 106c53e747a91b7c6ba3d0e54f69898ca07f6408.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе.
 - Book Fast Track is ignored for immediate next work until Sergey separately resumes it.
@@ -32,5 +32,5 @@ Boundary: this repo is a GitHub-centered book/project operating system, not prod
 
 Active open loops: lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; README/documentation-topology boundary has been reviewed and further cleanup requires separate selection; book work remains paused until separate Sergey decision.
 
-Next: after this state sync is merged, choose the next work explicitly. Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, branch protection, or book mode without separate approval.
+Next: choose the next work explicitly. Do not expand lifecycle contracts, operations review notes, README cleanup, runtime readiness, validators, CI enforcement, hard guardrails, branch protection, or book mode without separate approval.
 ```
