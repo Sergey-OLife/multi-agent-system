@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.54",
-  "lastCompletedVersion": "v2.54",
-  "lastMergedPr": "PR #219 — Propose lifecycle contracts",
-  "lastMergeCommit": "2f8083dd7ad877073ed115c1e2201d98d5dfe304",
-  "currentMilestone": "v2.54 Lifecycle contracts proposal synced",
+  "currentVersion": "v2.55",
+  "lastCompletedVersion": "v2.55",
+  "lastMergedPr": "PR #223 — Implement lifecycle contracts v1",
+  "lastMergeCommit": "c2bb5d5d04aef05c871b18f219c56a688c69cdfa",
+  "currentMilestone": "v2.55 Lifecycle contracts v1 implemented",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -54,13 +54,14 @@
     "v2.51 Local state-sync drift audit script implemented",
     "v2.52 Archive status indicator protocol synced",
     "v2.53 Conservative archive index cleanup synced",
-    "v2.54 Lifecycle contracts proposal synced"
+    "v2.54 Lifecycle contracts proposal synced",
+    "v2.55 Lifecycle contracts v1 implemented"
   ],
   "recentPrs": [
-    "PR #216 — Clean up archive index open loops",
-    "PR #217 — Sync state after archive index cleanup",
-    "PR #218 — Archive state sync and conservative cleanup",
-    "PR #219 — Propose lifecycle contracts"
+    "PR #220 — Sync state after lifecycle contracts proposal",
+    "PR #222 — Archive final lifecycle state sync closure",
+    "PR #224 — Archive lifecycle v1 implementation blocked merge",
+    "PR #223 — Implement lifecycle contracts v1"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -84,12 +85,13 @@
     "PR #212 recorded representative local drift audit test results",
     "PR #214 added archive status indicator protocol as manual discipline only",
     "PR #216 cleaned archive index open-loop navigation conservatively",
-    "PR #219 added lifecycle contracts proposal only",
+    "PR #219 added lifecycle contracts proposal",
+    "PR #223 implemented lifecycle contracts v1 as pure Go contract vocabulary with unit tests only",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
     "archive_status_indicator is active manual archive-pressure discipline only and is not automation, routing, validation, branch protection, project-state sync, checkpoint logic, CI, validator, hard guardrail or approval bypass",
-    "lifecycle contracts proposal is proposal only and is not code, package implementation, tests, runtime behavior, route automation, validator, hard guardrail, CI enforcement, branch protection change, approval bypass, or book workflow change",
+    "lifecycle contracts v1 is implemented but not enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change",
     "The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform",
     "required branch-protection check contexts are TypeScript / JavaScript / Go checks and sync-check",
     "Required checks and merge gates are documented in knowledge/07_operations/checks_overview.md",
@@ -97,6 +99,7 @@
     "Archive status indicator protocol is recorded in assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "Conservative archive index cleanup is recorded in knowledge/08_conversation_archive/index.md",
     "Lifecycle contracts proposal is recorded in knowledge/07_operations/lifecycle_contracts_proposal.md",
+    "Lifecycle contracts v1 is implemented in go-core/lifecycle/",
     "Age alone is not a deletion signal for archive tails",
     "implemented_elsewhere should be used only when there is a concrete implementation location",
     "Minimal branch protection is repository-level protection only and not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
@@ -111,15 +114,15 @@
     "Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
     "Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule",
     "Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass",
-    "Do not treat lifecycle contracts proposal as implementation, code, tests, validator, hard guardrail, runtime, route, CI enforcement, branch protection, approval bypass, or book workflow change",
-    "Do not implement lifecycle code without separate approval and a separate PR",
+    "Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change",
+    "Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval",
     "Do not treat old archive tails as stale only because they are old",
     "Do not use implemented_elsewhere without a concrete implementation location",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators or hard guardrails without separate approval",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Complete state sync after PR #219.",
+  "nextAction": "Complete state sync after PR #223.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -133,6 +136,8 @@
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "knowledge/08_conversation_archive/index.md",
     "knowledge/07_operations/lifecycle_contracts_proposal.md",
+    "go-core/lifecycle/lifecycle.go",
+    "go-core/lifecycle/lifecycle_test.go",
     "knowledge/07_operations/checks_overview.md",
     "knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md",
     "scripts/state-sync-drift-audit.mjs",
@@ -160,7 +165,7 @@
       "margin_orchestra manual second-eyes preflight",
       "archive_status_indicator manual archive-pressure discipline"
     ],
-    "recommendedNextWorkItem": "Complete state sync after PR #219.",
+    "recommendedNextWorkItem": "Complete state sync after PR #223.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
@@ -168,9 +173,9 @@
       "archive_status_indicator": "active manual archive-pressure discipline only; not routed and not automated"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #219 — Propose lifecycle contracts",
-      "latest_green_head": "cf91075dbe695c04d6775aa5c4017d448bba0e32",
-      "latest_green_merge_commit": "2f8083dd7ad877073ed115c1e2201d98d5dfe304",
+      "latest_green_pr": "PR #223 — Implement lifecycle contracts v1",
+      "latest_green_head": "ab1dd4b08c67e74cbe1981af8d3aaa5c6ed02dce",
+      "latest_green_merge_commit": "c2bb5d5d04aef05c871b18f219c56a688c69cdfa",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",

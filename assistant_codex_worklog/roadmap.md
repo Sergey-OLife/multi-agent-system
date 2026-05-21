@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.54
-- currentMilestone: Lifecycle contracts proposal synced
-- lastMergedPr: PR #219 — Propose lifecycle contracts
-- lastMergeCommit: `2f8083dd7ad877073ed115c1e2201d98d5dfe304`
+- currentVersion: v2.55
+- currentMilestone: Lifecycle contracts v1 implemented
+- lastMergedPr: PR #223 — Implement lifecycle contracts v1
+- lastMergeCommit: `c2bb5d5d04aef05c871b18f219c56a688c69cdfa`
 
 ## Recent PR summary
 
-- PR #214 — Add archive status indicator protocol.
-- PR #216 — Clean up archive index open loops.
-- PR #217 — Sync state after archive index cleanup.
 - PR #219 — Propose lifecycle contracts.
+- PR #220 — Sync state after lifecycle contracts proposal.
+- PR #224 — Archive lifecycle v1 implementation blocked merge.
+- PR #223 — Implement lifecycle contracts v1.
 
 ## Status
 
@@ -51,25 +51,29 @@ Archive index cleanup is conservative: age alone is not a deletion signal. Older
 
 Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 
-It is proposal only: no code, package implementation, tests, runtime behavior, route automation, validator, hard guardrail, CI enforcement, branch protection change, approval bypass, or book workflow change. Implementation requires separate approval and a separate PR.
+Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as a small pure Go contract vocabulary with unit tests.
+
+It covers only selected high-risk entities: `agent`, `archive`, `state`, `script`, and `source_card`.
+
+It is implemented but not enforcement: no CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
 
 ## Active archive-level open loops
 
 - `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
 - Repository architecture contract value from older archives: preserve until focused review.
 - Corrective margin/knowledge-consistency value from older archives: preserve until focused review.
+- Lifecycle policy layer: future-only and requires separate decision.
 - Future runtime readiness checklist: only by separate Sergey decision.
 - Scripts/core boundary audit: only if needed after selected next work.
 
 ## Approved next sequence
 
-1. complete state sync after PR #219;
-2. discuss/refine the lifecycle contracts proposal or choose the next work explicitly;
-3. do not implement lifecycle code without separate approval and separate PR;
-4. return to `Карта будущего корабля` review when Sergey chooses it;
-5. if Sergey separately approves, prepare a future runtime readiness checklist;
-6. if needed, perform a scripts/core boundary audit.
+1. complete state sync after PR #223;
+2. do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval;
+3. return to `Карта будущего корабля` review when Sergey chooses it;
+4. if Sergey separately approves, prepare a future runtime readiness checklist;
+5. if needed, perform a scripts/core boundary audit.
 
 ## Recommended next work item
 
-Complete state sync after PR #219.
+Complete state sync after PR #223.

@@ -12,24 +12,36 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #219 — Propose lifecycle contracts
+- PR #223 — Implement lifecycle contracts v1
 - Status: merged
-- Merge commit: `2f8083dd7ad877073ed115c1e2201d98d5dfe304`
+- Merge commit: `c2bb5d5d04aef05c871b18f219c56a688c69cdfa`
 
 ## Current version
 
-- currentVersion: v2.54
-- currentMilestone: Lifecycle contracts proposal synced
+- currentVersion: v2.55
+- currentMilestone: Lifecycle contracts v1 implemented
 
-## PR #219 result
+## PR #223 result
 
-PR #219 added `knowledge/07_operations/lifecycle_contracts_proposal.md`.
+PR #223 added `go-core/lifecycle/lifecycle.go` and `go-core/lifecycle/lifecycle_test.go`.
 
-It proposes a minimal contract layer for lifecycle statuses.
+It implements lifecycle contracts v1 as a small pure Go contract vocabulary with unit tests for the highest-risk status confusions.
 
-Status: proposal only. It is not code, package implementation, tests, runtime behavior, route automation, validator, hard guardrail, CI enforcement, branch protection change, approval bypass, or book workflow change.
+V1 covers selected entity types only:
 
-Implementation requires separate approval and a separate PR.
+- `agent`;
+- `archive`;
+- `state`;
+- `script`;
+- `source_card`.
+
+It records forbidden status/confusion checks around proposal/validator, manual discipline/routed or stronger statuses, archive/project-state/checkpoint, script/CI enforcement, and source card/source proof confusion.
+
+Important boundary: lifecycle contracts v1 is implemented, but it is not workflow enforcement. It is not CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
+
+## Recent archive note
+
+PR #224 archived the blocked merge-tool path for PR #223. It was an archive only and did not implement lifecycle v1.
 
 ## Current active manual disciplines
 
@@ -48,6 +60,6 @@ Implementation requires separate approval and a separate PR.
 
 ## Next safe step
 
-Complete state sync after PR #219.
+Complete state sync after PR #223.
 
-After that, discuss/refine the lifecycle contracts proposal or choose the next work explicitly.
+After that, choose the next work explicitly. Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
