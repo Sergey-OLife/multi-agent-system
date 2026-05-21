@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.50",
-  "lastCompletedVersion": "v2.50",
-  "lastMergedPr": "PR #205 — Propose local drift detector implementation",
-  "lastMergeCommit": "645c12a125728d1696eb971fb36a1444ce3c4a02",
-  "currentMilestone": "v2.50 Local drift detector implementation proposal synced",
+  "currentVersion": "v2.51",
+  "lastCompletedVersion": "v2.51",
+  "lastMergedPr": "PR #208 — Implement local state sync drift audit",
+  "lastMergeCommit": "93d2d2c3587cf586e72f36ba182a6a53ac6122b0",
+  "currentMilestone": "v2.51 Local state-sync drift audit script implemented",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -50,13 +50,14 @@
     "v2.47 Minimal branch protection Ruleset active",
     "v2.48 Required checks and merge gates documented",
     "v2.49 State-sync drift detector proposal synced",
-    "v2.50 Local drift detector implementation proposal synced"
+    "v2.50 Local drift detector implementation proposal synced",
+    "v2.51 Local state-sync drift audit script implemented"
   ],
   "recentPrs": [
-    "PR #202 — Sync state after checks overview",
-    "PR #203 — Propose state sync drift detector",
-    "PR #204 — Sync state after drift detector proposal",
-    "PR #205 — Propose local drift detector implementation"
+    "PR #205 — Propose local drift detector implementation",
+    "PR #206 — Sync state after local drift detector proposal",
+    "PR #207 — Archive current shipyard ruleset and drift detector work",
+    "PR #208 — Implement local state sync drift audit"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -78,6 +79,7 @@
     "PR #201 documented required checks and merge gates in checks_overview.md",
     "PR #203 added state-sync drift detector proposal only, not implementation",
     "PR #205 added local drift detector implementation proposal only, not implementation",
+    "PR #208 implemented local state-sync drift audit script as warning-only local diagnostic tool",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
@@ -86,6 +88,7 @@
     "Required checks and merge gates are documented in knowledge/07_operations/checks_overview.md",
     "State-sync drift detector is proposal only in knowledge/07_operations/state_sync_drift_detector_proposal.md",
     "Local drift detector implementation proposal is proposal only in knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md",
+    "Local state-sync drift audit script is implementation but not enforcement",
     "Minimal branch protection is repository-level protection only and not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
@@ -96,13 +99,12 @@
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, or project-state sync",
     "Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
-    "Do not treat the state-sync drift detector proposal as implementation",
-    "Do not treat the local drift detector implementation proposal as a script, command, GitHub Action, validator, hard guardrail, or blocking rule",
+    "Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators or hard guardrails without separate approval",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Complete state sync after local drift detector implementation proposal.",
+  "nextAction": "Complete state sync after local drift audit script implementation.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -116,6 +118,8 @@
     "knowledge/07_operations/checks_overview.md",
     "knowledge/07_operations/state_sync_drift_detector_proposal.md",
     "knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md",
+    "scripts/state-sync-drift-audit.mjs",
+    "package.json",
     "knowledge/07_operations/branch_protection_verification_2026-05-20.md",
     "knowledge/07_operations/external_assessment_notes_2026-05-20.md",
     "knowledge/07_operations/maturity_checklist.md",
@@ -138,21 +142,21 @@
       "conversation_archive_librarian manual archive discipline",
       "margin_orchestra manual second-eyes preflight"
     ],
-    "recommendedNextWorkItem": "Complete state sync after local drift detector implementation proposal.",
+    "recommendedNextWorkItem": "Complete state sync after local drift audit script implementation.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "active manual second-eyes preflight discipline only; not routed and not automated"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #205 — Propose local drift detector implementation",
-      "latest_green_head": "baec9b687914e267cfb2428f030dcf4255bd141d",
-      "latest_green_merge_commit": "645c12a125728d1696eb971fb36a1444ce3c4a02",
+      "latest_green_pr": "PR #208 — Implement local state sync drift audit",
+      "latest_green_head": "0ccaace1b1e516a4c2883f5757d27d9f5f3577c2",
+      "latest_green_merge_commit": "93d2d2c3587cf586e72f36ba182a6a53ac6122b0",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
       "checksOverview": "knowledge/07_operations/checks_overview.md",
-      "stateSyncDriftDetector": "implementation_proposal_only"
+      "stateSyncDriftDetector": "warning_only_local_diagnostic_tool"
     }
   }
 }

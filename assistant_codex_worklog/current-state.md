@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Date: 2026-05-20
+Date: 2026-05-21
 
 ## Working point
 
@@ -12,22 +12,24 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #205 — Propose local drift detector implementation
+- PR #208 — Implement local state sync drift audit
 - Status: merged
-- Merge commit: `645c12a125728d1696eb971fb36a1444ce3c4a02`
+- Merge commit: `93d2d2c3587cf586e72f36ba182a6a53ac6122b0`
 
 ## Current version
 
-- currentVersion: v2.50
-- currentMilestone: Local drift detector implementation proposal synced
+- currentVersion: v2.51
+- currentMilestone: Local state-sync drift audit script implemented
 
-## PR #205 result
+## PR #208 result
 
-PR #205 added `knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md`.
+PR #208 added `scripts/state-sync-drift-audit.mjs` and `npm run state-sync:drift-audit`.
 
-It defines the future first implementation shape for a warning-only local state-sync drift detector script.
+It implements a warning-only local diagnostic script for structural state-sync drift patterns.
 
-Status: implementation proposal only. It is not a script, package command, GitHub Action, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, releases, or production security tooling.
+Status: local manual diagnostic tool only. It is not a GitHub Action, required check, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, release, or production security tooling.
+
+Warnings exit `0`; input errors exit `2`.
 
 ## Current active manual disciplines
 
@@ -37,6 +39,6 @@ Status: implementation proposal only. It is not a script, package command, GitHu
 
 ## Next safe step
 
-Complete state sync after local drift detector implementation proposal.
+Complete state sync after local drift audit script implementation.
 
-After that, decide separately whether to implement the warning-only local script.
+After that, test the local script on a real changed-file set and keep it out of CI unless Sergey separately approves CI-visible warning later.
