@@ -21,9 +21,12 @@ Cleanup rule is conservative: age alone is not a deletion signal. Старые �
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_yellow-three-rule-and-post-210-archive.md` | implemented_elsewhere | 2026-06-04 | archive_protocol, archive_cadence, status_indicator, agent_shipyard, drift_detector | partial / PR #210, PR #214 | closed: `yellow_3` rule is formalized in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md` |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_delta-only-archive-discipline.md` | implemented_elsewhere | 2026-06-04 | archive_protocol, archive_cadence, delta_archive, cleanup, agent_shipyard | partial / PR #212, PR #214 | closed: delta-only archive discipline is formalized in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md` |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_state-sync-and-conservative-archive-cleanup.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, state_sync, archive_protocol, archive_index, conservative_cleanup | partial / PR #216, PR #217 | after merge: conversation mode; no new technical work unless selected |
+| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-proposal-and-state-sync-pr.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, lifecycle_contracts, external_audit, state_sync, archive_protocol | partial / PR #219, PR #220-open | merge PR #220 after approval; lifecycle code still requires separate decision |
 
 ## Current active archive-level open loops
 
+- PR #220 state sync after lifecycle contracts proposal: open at archive capture time; merge only after `++`.
+- Lifecycle contracts proposal: discuss/refine or separately approve a future implementation PR.
 - `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
 - Repository architecture contract value from older archives: preserve until a focused review decides what is implemented, stale, or still useful.
 - Corrective margin/knowledge-consistency value from older archives: preserve until a focused review decides what is implemented, stale, or still useful.
