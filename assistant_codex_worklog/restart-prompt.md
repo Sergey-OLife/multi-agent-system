@@ -7,9 +7,9 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.65.
-- lastMergedPr: PR #259 — Add book and agent mode switch commands.
-- lastMergeCommit: 630e8bda6180e79b6402ead5e8d311c97e0f0203.
+- currentVersion: v2.66.
+- lastMergedPr: PR #261 — Checkpoint full after mode switch commands.
+- lastMergeCommit: a29f4dec0bb7348d6d0abd1004fee21eaeb620ae.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного явного mode decision.
 - Mode switch commands are active protocol: `#книга`, `#агент`, `#агенты`.
