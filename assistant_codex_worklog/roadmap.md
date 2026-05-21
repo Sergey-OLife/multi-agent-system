@@ -10,16 +10,18 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.65
-- currentMilestone: Mode switch commands synced
-- lastMergedPr: PR #259 — Add book and agent mode switch commands
-- lastMergeCommit: `630e8bda6180e79b6402ead5e8d311c97e0f0203`
+- currentVersion: v2.66
+- currentMilestone: Checkpoint full after mode switch commands
+- lastMergedPr: PR #261 — Checkpoint full after mode switch commands
+- lastMergeCommit: `a29f4dec0bb7348d6d0abd1004fee21eaeb620ae`
 
 ## Recent PR summary
 
 - PR #257 — Define workflow conductor advisory activation scope.
 - PR #258 — Sync state after workflow conductor advisory activation.
 - PR #259 — Add book and agent mode switch commands.
+- PR #260 — Sync state after mode switch commands.
+- PR #261 — Checkpoint full after mode switch commands.
 
 ## Status
 
@@ -64,20 +66,14 @@ Classification options: `must_fix`, `not_applicable`, `future_followup`.
 
 The repository is explicitly documented as a GitHub-centered book/project operating system, not a production multi-agent runtime, reusable public framework, or deployed agent platform.
 
-Minimal repository-level branch protection is active through GitHub Ruleset `Protect main` for `main` / default branch.
-
 Required check contexts are documented in `knowledge/07_operations/checks_overview.md`:
 
 - `TypeScript / JavaScript / Go checks`
 - `sync-check`
 
-Local state-sync drift audit script is implemented as `scripts/state-sync-drift-audit.mjs` with package command `npm run state-sync:drift-audit`.
+Local state-sync drift audit script is implemented as warning-only local diagnostic tool.
 
-It is a warning-only local diagnostic tool, not a GitHub Action, required check, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, release, or production security tooling.
-
-Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as a small pure Go contract vocabulary with unit tests.
-
-It is implemented but not enforcement: no CLI, GitHub Action, CI enforcement beyond existing tests, route automation, project-gate validator, hard guardrail, approval logic, state-sync automation, runtime behavior, branch protection change, or book workflow change.
+Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as a small pure Go contract vocabulary with unit tests, not enforcement.
 
 Mode switch commands are recorded in `assistant_codex_worklog/protocol_addenda/mode_switch_commands.md` and registered in `assistant_codex_worklog/working-protocol.md`.
 
@@ -96,11 +92,10 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 
 ## Approved next sequence
 
-1. merge this state sync after checks and approval;
-2. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
-3. after `#книга`, give an advisory book/product mission plan before writing or product design;
-4. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
-5. do not treat mode command as GitHub state mutation or approval.
+1. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
+2. after `#книга`, give an advisory book/product mission plan before writing or product design;
+3. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
+4. do not treat mode command as GitHub state mutation or approval.
 
 ## Recommended next work item
 
