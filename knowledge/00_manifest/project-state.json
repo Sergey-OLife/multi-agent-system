@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.56",
-  "lastCompletedVersion": "v2.56",
-  "lastMergedPr": "PR #231 — Register bot reviewer comments addendum",
-  "lastMergeCommit": "25875d48d10cb94e940f9409e6afb49d69bdf3ed",
-  "currentMilestone": "v2.56 Bot reviewer comments protocol registered",
+  "currentVersion": "v2.57",
+  "lastCompletedVersion": "v2.57",
+  "lastMergedPr": "PR #233 — Sync state after bot reviewer protocol registration",
+  "lastMergeCommit": "6c9f97075fcccff1918948fdd8aec2f8dcef03b0",
+  "currentMilestone": "v2.57 Checkpoint full after bot reviewer protocol state sync",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -56,13 +56,14 @@
     "v2.53 Conservative archive index cleanup synced",
     "v2.54 Lifecycle contracts proposal synced",
     "v2.55 Lifecycle contracts v1 implemented",
-    "v2.56 Bot reviewer comments protocol registered"
+    "v2.56 Bot reviewer comments protocol registered",
+    "v2.57 Checkpoint full after bot reviewer protocol state sync"
   ],
   "recentPrs": [
-    "PR #228 — Add scripts core boundary audit scope",
     "PR #229 — Add bot reviewer comments protocol",
     "PR #230 — Archive bot reviewer protocol and scripts scope",
-    "PR #231 — Register bot reviewer comments addendum"
+    "PR #231 — Register bot reviewer comments addendum",
+    "PR #233 — Sync state after bot reviewer protocol registration"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -91,6 +92,7 @@
     "PR #228 added scripts/core boundary audit scope as a discussion note only",
     "PR #229 added bot_reviewer_comments as mandatory manual PR review discipline only",
     "PR #231 registered bot_reviewer_comments.md in the visible working-protocol addenda list",
+    "PR #233 synced state/resume files after bot reviewer protocol registration",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
@@ -140,6 +142,7 @@
     "assistant_codex_worklog/current-state.md",
     "assistant_codex_worklog/roadmap.md",
     "assistant_codex_worklog/restart-prompt.md",
+    "assistant_codex_worklog/decision-log.md",
     "assistant_codex_worklog/working-protocol.md",
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md",
@@ -185,9 +188,9 @@
       "bot_reviewer_comments": "active manual PR review discipline only; not automated enforcement"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #231 — Register bot reviewer comments addendum",
-      "latest_green_head": "231303b87268022c7bcf7fce67006525c1ad68e0",
-      "latest_green_merge_commit": "25875d48d10cb94e940f9409e6afb49d69bdf3ed",
+      "latest_green_pr": "PR #233 — Sync state after bot reviewer protocol registration",
+      "latest_green_head": "b074610b6355d8e5b5ab933f7db141bfee6f768b",
+      "latest_green_merge_commit": "6c9f97075fcccff1918948fdd8aec2f8dcef03b0",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
