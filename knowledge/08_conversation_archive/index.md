@@ -26,9 +26,13 @@ Cleanup rule is conservative: age alone is not a deletion signal. Старые �
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-v1-implementation-blocked-merge.md` | implemented_elsewhere | 2026-06-04 | agent_shipyard, lifecycle_contracts, implementation, blocked_merge, archive_protocol | PR #223, PR #224 | closed: PR #223 and PR #224 merged manually |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_lifecycle-v1-state-sync-pr.md` | implemented_elsewhere | 2026-06-04 | agent_shipyard, lifecycle_contracts, state_sync, archive_protocol | PR #223, PR #224, PR #225, PR #226 | closed: PR #225 and PR #226 merged |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_final-lifecycle-v1-state-sync-closure.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, lifecycle_contracts, state_sync, archive_protocol, closure | PR #223, PR #225, PR #226 | after merge: lifecycle v1 implementation/state-sync/archive arc closed; choose next work explicitly |
+| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_bot-reviewer-protocol-and-scripts-scope.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, pr_workflow, bot_comments, scripts_core_boundary, archive_protocol | partial / PR #228, PR #229-open | PR #229 open for bot reviewer comments protocol; PR #228 merged |
 
 ## Current active archive-level open loops
 
+- PR #229 bot reviewer comments protocol: open at archive capture time; requires checks, comment review and approval before merge.
+- If PR #229 merges, consider whether to explicitly register it in `working-protocol.md` addenda list unless amended before merge.
+- Future read-only scripts/core boundary audit can use `knowledge/07_operations/scripts_core_boundary_audit_scope.md`.
 - Lifecycle policy layer remains future-only and requires separate Sergey decision.
 - `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
 - Repository architecture contract value from older archives: preserve until a focused review decides what is implemented, stale, or still useful.
