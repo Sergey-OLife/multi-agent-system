@@ -4,29 +4,37 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.61
-- lastCompletedVersion: v2.61
-- lastMergedPr: PR #248 — Define agent registry librarian advisory activation scope
-- lastMergeCommit: 1580184179d0f2e882486b04fe9d90cb43b70ea7
-- currentMilestone: v2.61 Agent registry librarian advisory activation scope synced
+- currentVersion: v2.62
+- lastCompletedVersion: v2.62
+- lastMergedPr: PR #250 — Add status trust matrix
+- lastMergeCommit: 30a49d6255dd594ea40cf85c17d665f2c08970b5
+- currentMilestone: v2.62 Status trust matrix synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.61
+## What changed in v2.62
 
-This state sync records the Agent Queue / registry hygiene sequence after v2.60:
-
-- PR #246 — Sync state after critic margin advisor activation;
-- PR #247 — Review next Agent Queue candidate;
-- PR #248 — Define agent registry librarian advisory activation scope.
+This state sync records PR #250 — Add status trust matrix.
 
 The key result:
 
 ```text
-critic_margin_agent is active as advisory/manual second-eyes discipline.
-agent_registry_librarian is active as advisory/manual registry hygiene discipline.
-workflow_conductor_agent remains a separate proposal.
+status trust matrix is available as documentation-only classification aid.
+status trust matrix is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
 ```
+
+The matrix classifies layers such as:
+
+- authoritative;
+- resume anchor;
+- navigation map;
+- manual discipline;
+- proposal;
+- operations note;
+- advisory example;
+- future-only;
+- rejected-for-now;
+- implemented elsewhere.
 
 ## Boundary
 
@@ -45,9 +53,8 @@ It does not:
 - add policy layer;
 - change branch protection settings;
 - change runtime behavior;
-- activate `workflow_conductor_agent`;
-- give `agent_registry_librarian` registry mutation authority;
-- give `agent_registry_librarian` agent creation authority;
+- change registry status;
+- activate agents;
 - change book workflow.
 
 ## Current recovery path
@@ -55,10 +62,10 @@ It does not:
 1. Use GitHub `main` as the source of truth.
 2. Read project-state/current-state/roadmap/restart-prompt before selecting next work.
 3. Do not treat README as the live roadmap.
-4. Treat operations review notes as references, not implementation mandates.
+4. Use status trust matrix to classify artifacts before treating them as authoritative.
 5. Treat `critic_margin_agent` as advisory/manual second-eyes discipline only.
 6. Treat `agent_registry_librarian` as advisory/manual registry hygiene discipline only.
-7. Create status trust matrix next unless Sergey redirects.
+7. Choose the next direction explicitly.
 
 ## Active decisions
 
@@ -70,6 +77,7 @@ It does not:
 - `critic_margin_agent` is not runtime, route validator, CI gate, approval authority, hard guardrail or policy engine.
 - `agent_registry_librarian` is active as advisory/manual registry hygiene discipline only.
 - `agent_registry_librarian` is not agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
+- `status_trust_matrix_2026-05-21.md` is a documentation-only classification aid.
 - `margin_orchestra` is active as manual second-eyes preflight pattern only.
 - `workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin/registry-librarian work.
 - `archive_status_indicator` is active as manual archive-pressure discipline only.
@@ -85,7 +93,6 @@ It does not:
 
 ## Active archive-level open loops
 
-- Status trust matrix: next useful documentation-only step unless Sergey redirects.
 - Future runtime readiness checklist only by separate Sergey decision.
 - Lifecycle policy layer only by separate Sergey decision.
 - Workflow conductor activation only by separate Sergey decision.
@@ -99,6 +106,7 @@ It does not:
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
 - Do not treat `critic_margin_agent` advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine.
 - Do not treat `agent_registry_librarian` advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
+- Do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
 - Do not activate `workflow_conductor_agent` through `critic_margin_agent`, `margin_orchestra` or `agent_registry_librarian` work.
 - Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements.
 - Do not treat baseline audit takeaways as approval for v0.5 release, runtime readiness, blocking drift audit, maturity automation, validators, hard guardrails, policy layer or moving/deleting `book/`.
@@ -108,11 +116,10 @@ It does not:
 - Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass.
 - Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change.
 - Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
-- Do not treat future ship map review as an implementation mandate.
 - Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-After this state sync is merged, create a small status trust matrix note to classify authoritative, derived, continuity, manual discipline, proposal, future-only and rejected-for-now layers without changing runtime or enforcement.
+Choose the next direction explicitly: either run a manual registry hygiene pass using `agent_registry_librarian`, pause Agent Queue and return to book/product work, or discuss `workflow_conductor_agent` as a separate high-risk gate.

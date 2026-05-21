@@ -10,16 +10,15 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.61
-- currentMilestone: Agent registry librarian advisory activation scope synced
-- lastMergedPr: PR #248 — Define agent registry librarian advisory activation scope
-- lastMergeCommit: `1580184179d0f2e882486b04fe9d90cb43b70ea7`
+- currentVersion: v2.62
+- currentMilestone: Status trust matrix synced
+- lastMergedPr: PR #250 — Add status trust matrix
+- lastMergeCommit: `30a49d6255dd594ea40cf85c17d665f2c08970b5`
 
 ## Recent PR summary
 
-- PR #246 — Sync state after critic margin advisor activation.
-- PR #247 — Review next Agent Queue candidate.
-- PR #248 — Define agent registry librarian advisory activation scope.
+- PR #249 — Sync state after registry librarian advisory activation.
+- PR #250 — Add status trust matrix.
 
 ## Status
 
@@ -34,6 +33,8 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 `agent_registry_librarian` is active as advisory/manual registry hygiene discipline.
 
 `agent_registry_librarian` is not active as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
+
+`status_trust_matrix_2026-05-21.md` is documentation-only classification aid. It is not automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
 
 `workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin/registry-librarian work.
 
@@ -64,11 +65,12 @@ Agent Queue next candidate review is recorded in `knowledge/07_operations/agent_
 
 Agent registry librarian activation scope is recorded in `knowledge/07_operations/agent_registry_librarian_activation_scope_2026-05-21.md`.
 
+Status trust matrix is recorded in `knowledge/07_operations/status_trust_matrix_2026-05-21.md`.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
 
-- Status trust matrix: next useful documentation-only step unless Sergey redirects.
 - Lifecycle policy layer: future-only and requires separate Sergey decision.
 - Future runtime readiness checklist: only by separate Sergey decision.
 - Workflow conductor activation: only by separate Sergey decision.
@@ -78,11 +80,11 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 ## Approved next sequence
 
 1. merge this state sync after checks and approval;
-2. create a small status trust matrix note;
+2. choose the next direction explicitly;
 3. do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority;
 4. do not activate workflow_conductor_agent through critic/margin/registry-librarian work;
 5. if Sergey separately resumes book work, switch modes explicitly and update state.
 
 ## Recommended next work item
 
-After this state sync is merged, create a small status trust matrix note to classify authoritative, derived, continuity, manual discipline, proposal, future-only and rejected-for-now layers without changing runtime or enforcement.
+Choose the next direction explicitly: either run a manual registry hygiene pass using `agent_registry_librarian`, pause Agent Queue and return to book/product work, or discuss `workflow_conductor_agent` as a separate high-risk gate.
