@@ -12,22 +12,22 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #214 — Add archive status indicator protocol
+- PR #216 — Clean up archive index open loops
 - Status: merged
-- Merge commit: `abf04c8c03e15ca619ccc4aa6d17e0e8ebb99c45`
+- Merge commit: `7e4d8c50efca90c8d805c0a7b1623f6c22660bd8`
 
 ## Current version
 
-- currentVersion: v2.52
-- currentMilestone: Archive status indicator protocol synced
+- currentVersion: v2.53
+- currentMilestone: Conservative archive index cleanup synced
 
-## PR #214 result
+## PR #216 result
 
-PR #214 added `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md` and registered it in `assistant_codex_worklog/working-protocol.md`.
+PR #216 updated `knowledge/08_conversation_archive/index.md` only.
 
-It formalizes the archive status indicator, the `желтый_3` warning threshold and delta-only archive discipline.
+It made archive navigation cleaner while preserving older unresolved material when no concrete implementation exists.
 
-Status: active manual protocol addendum only. It is not automation, routing, validation, branch protection, project-state sync, checkpoint logic, runtime behavior, CI, validator, hard guardrail, restart command semantic change, or book workflow change.
+Key rule: age alone is not a deletion signal. `implemented_elsewhere` should be used only when there is a concrete implementation location. Older unresolved archive value may remain as `needs_decision` or `long_lived_observation`.
 
 ## Current active manual disciplines
 
@@ -36,14 +36,16 @@ Status: active manual protocol addendum only. It is not automation, routing, val
 - `margin_orchestra` manual second-eyes preflight discipline;
 - `archive_status_indicator` manual archive-pressure discipline.
 
-## Recent local drift audit result
+## Active archive-level open loops
 
-PR #212 recorded representative test results for `scripts/state-sync-drift-audit.mjs` in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
-
-The tool remains a local manual diagnostic instrument only, not enforcement.
+- `Карта будущего корабля` review;
+- repository architecture contract value from older archives;
+- corrective margin/knowledge-consistency value from older archives;
+- future runtime readiness checklist only by separate Sergey decision;
+- scripts/core boundary audit only if needed after selected next work.
 
 ## Next safe step
 
-Complete state sync after archive status indicator protocol.
+Complete state sync after PR #216.
 
-After that, return to the selected next work without repeating already archived service information.
+After that, perform `#архив_старт` as requested, using delta-only archive discipline.

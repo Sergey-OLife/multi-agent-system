@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.52",
-  "lastCompletedVersion": "v2.52",
-  "lastMergedPr": "PR #214 — Add archive status indicator protocol",
-  "lastMergeCommit": "abf04c8c03e15ca619ccc4aa6d17e0e8ebb99c45",
-  "currentMilestone": "v2.52 Archive status indicator protocol synced",
+  "currentVersion": "v2.53",
+  "lastCompletedVersion": "v2.53",
+  "lastMergedPr": "PR #216 — Clean up archive index open loops",
+  "lastMergeCommit": "7e4d8c50efca90c8d805c0a7b1623f6c22660bd8",
+  "currentMilestone": "v2.53 Conservative archive index cleanup synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -52,13 +52,14 @@
     "v2.49 State-sync drift detector proposal synced",
     "v2.50 Local drift detector implementation proposal synced",
     "v2.51 Local state-sync drift audit script implemented",
-    "v2.52 Archive status indicator protocol synced"
+    "v2.52 Archive status indicator protocol synced",
+    "v2.53 Conservative archive index cleanup synced"
   ],
   "recentPrs": [
-    "PR #209 — Sync state after local drift audit script",
     "PR #212 — Record local drift audit test results",
-    "PR #213 — Archive delta-only archive discipline clarification",
-    "PR #214 — Add archive status indicator protocol"
+    "PR #214 — Add archive status indicator protocol",
+    "PR #215 — Sync state after archive status protocol",
+    "PR #216 — Clean up archive index open loops"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -78,11 +79,10 @@
     "PR #196 clarified external project boundary and recorded external assessment conclusions without runtime implementation",
     "PR #199 recorded minimal active branch protection Ruleset Protect main for main/default branch",
     "PR #201 documented required checks and merge gates in checks_overview.md",
-    "PR #203 added state-sync drift detector proposal only, not implementation",
-    "PR #205 added local drift detector implementation proposal only, not implementation",
     "PR #208 implemented local state-sync drift audit script as warning-only local diagnostic tool",
     "PR #212 recorded representative local drift audit test results",
     "PR #214 added archive status indicator protocol as manual discipline only",
+    "PR #216 cleaned archive index open-loop navigation conservatively",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent may be used as active manual preflight discipline before high-risk GitHub margin operations",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
@@ -90,10 +90,11 @@
     "The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform",
     "required branch-protection check contexts are TypeScript / JavaScript / Go checks and sync-check",
     "Required checks and merge gates are documented in knowledge/07_operations/checks_overview.md",
-    "State-sync drift detector is proposal only in knowledge/07_operations/state_sync_drift_detector_proposal.md",
-    "Local drift detector implementation proposal is proposal only in knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md",
     "Local state-sync drift audit script is implementation but not enforcement",
     "Archive status indicator protocol is recorded in assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
+    "Conservative archive index cleanup is recorded in knowledge/08_conversation_archive/index.md",
+    "Age alone is not a deletion signal for archive tails",
+    "implemented_elsewhere should be used only when there is a concrete implementation location",
     "Minimal branch protection is repository-level protection only and not runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
@@ -106,11 +107,13 @@
     "Do not treat repository-level branch protection as runtime security, prompt-injection protection, observability, code validator, agent hard guardrail, or production security tooling",
     "Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule",
     "Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass",
+    "Do not treat old archive tails as stale only because they are old",
+    "Do not use implemented_elsewhere without a concrete implementation location",
     "Do not implement Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators or hard guardrails without separate approval",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "Complete state sync after archive status indicator protocol.",
+  "nextAction": "Complete state sync after PR #216, then perform #архив_старт.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -122,9 +125,8 @@
     "assistant_codex_worklog/restart-prompt.md",
     "assistant_codex_worklog/working-protocol.md",
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
+    "knowledge/08_conversation_archive/index.md",
     "knowledge/07_operations/checks_overview.md",
-    "knowledge/07_operations/state_sync_drift_detector_proposal.md",
-    "knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md",
     "knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md",
     "scripts/state-sync-drift-audit.mjs",
     "package.json",
@@ -151,7 +153,7 @@
       "margin_orchestra manual second-eyes preflight",
       "archive_status_indicator manual archive-pressure discipline"
     ],
-    "recommendedNextWorkItem": "Complete state sync after archive status indicator protocol.",
+    "recommendedNextWorkItem": "Complete state sync after PR #216, then perform #архив_старт.",
     "secondEyes": {
       "critic_margin_agent": "active manual preflight discipline only; not routed and not automated",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
@@ -159,9 +161,9 @@
       "archive_status_indicator": "active manual archive-pressure discipline only; not routed and not automated"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #214 — Add archive status indicator protocol",
-      "latest_green_head": "53ea2db17559afe539c0e05185484972e88dcab4",
-      "latest_green_merge_commit": "abf04c8c03e15ca619ccc4aa6d17e0e8ebb99c45",
+      "latest_green_pr": "PR #216 — Clean up archive index open loops",
+      "latest_green_head": "0fc1e738c16f09b2a477d3476883aed5d3048c03",
+      "latest_green_merge_commit": "7e4d8c50efca90c8d805c0a7b1623f6c22660bd8",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",

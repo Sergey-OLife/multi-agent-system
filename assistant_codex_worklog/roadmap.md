@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.52
-- currentMilestone: Archive status indicator protocol synced
-- lastMergedPr: PR #214 — Add archive status indicator protocol
-- lastMergeCommit: `abf04c8c03e15ca619ccc4aa6d17e0e8ebb99c45`
+- currentVersion: v2.53
+- currentMilestone: Conservative archive index cleanup synced
+- lastMergedPr: PR #216 — Clean up archive index open loops
+- lastMergeCommit: `7e4d8c50efca90c8d805c0a7b1623f6c22660bd8`
 
 ## Recent PR summary
 
-- PR #208 — Implement local state sync drift audit.
-- PR #209 — Sync state after local drift audit script.
 - PR #212 — Record local drift audit test results.
 - PR #214 — Add archive status indicator protocol.
+- PR #215 — Sync state after archive status protocol.
+- PR #216 — Clean up archive index open loops.
 
 ## Status
 
@@ -39,10 +39,6 @@ Required check contexts are documented in `knowledge/07_operations/checks_overvi
 - `TypeScript / JavaScript / Go checks`
 - `sync-check`
 
-State-sync drift detector proposal is recorded in `knowledge/07_operations/state_sync_drift_detector_proposal.md`.
-
-Local drift detector implementation proposal is recorded in `knowledge/07_operations/state_sync_drift_detector_implementation_proposal.md`.
-
 Local state-sync drift audit script is implemented as `scripts/state-sync-drift-audit.mjs` with package command `npm run state-sync:drift-audit`.
 
 It is a warning-only local diagnostic tool, not a GitHub Action, required check, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, release, or production security tooling.
@@ -51,17 +47,25 @@ Representative test results for the local drift audit script are recorded in `kn
 
 Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
 
-It is active manual discipline only, not automation, routing, validation, branch protection, project-state sync, checkpoint logic, runtime behavior, CI, validator, hard guardrail, restart command semantic change, or book workflow change.
+Archive index cleanup is conservative: age alone is not a deletion signal. Older unresolved archive value may remain as `needs_decision` or `long_lived_observation`. Use `implemented_elsewhere` only when there is a concrete implementation location.
+
+## Active archive-level open loops
+
+- `Карта будущего корабля` review: classify external assessment points as `already fixed`, `true but future`, `useful now`, or `not appropriate`.
+- Repository architecture contract value from older archives: preserve until focused review.
+- Corrective margin/knowledge-consistency value from older archives: preserve until focused review.
+- Future runtime readiness checklist: only by separate Sergey decision.
+- Scripts/core boundary audit: only if needed after selected next work.
 
 ## Approved next sequence
 
-1. complete state sync after archive status indicator protocol;
-2. return to selected next work without repeating already archived service information;
-3. use the archive status indicator and delta-only archive discipline during further project operations;
-4. return to `Карта будущего корабля` review when this protocol/state-sync segment is stable;
+1. complete state sync after PR #216;
+2. perform `#архив_старт` as Sergey requested;
+3. then discuss selected next work without repeating already archived service information;
+4. return to `Карта будущего корабля` review when Sergey chooses it;
 5. if Sergey separately approves, prepare a future runtime readiness checklist;
 6. if needed, perform a scripts/core boundary audit.
 
 ## Recommended next work item
 
-Complete state sync after archive status indicator protocol.
+Complete state sync after PR #216, then perform `#архив_старт`.
