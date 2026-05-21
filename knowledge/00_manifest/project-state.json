@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.60",
-  "lastCompletedVersion": "v2.60",
-  "lastMergedPr": "PR #245 — Define critic margin advisor activation scope",
-  "lastMergeCommit": "b20f812fecb4da9bf0247a37df1badd8778ca553",
-  "currentMilestone": "v2.60 Critic margin advisor activation scope synced",
+  "currentVersion": "v2.61",
+  "lastCompletedVersion": "v2.61",
+  "lastMergedPr": "PR #248 — Define agent registry librarian advisory activation scope",
+  "lastMergeCommit": "1580184179d0f2e882486b04fe9d90cb43b70ea7",
+  "currentMilestone": "v2.61 Agent registry librarian advisory activation scope synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -60,15 +60,16 @@
     "v2.57 Checkpoint full after bot reviewer protocol state sync",
     "v2.58 README and operations review sequence synced",
     "v2.59 Checkpoint full after README boundary state sync",
-    "v2.60 Critic margin advisor activation scope synced"
+    "v2.60 Critic margin advisor activation scope synced",
+    "v2.61 Agent registry librarian advisory activation scope synced"
   ],
   "recentPrs": [
-    "PR #240 — Archive README boundary and operations review closure",
-    "PR #241 — Review old architecture tails and close resolved archive loops",
-    "PR #242 — Clarify second-eyes status boundaries",
     "PR #243 — Record baseline audit takeaways without runtime escalation",
     "PR #244 — Add second-eyes preflight card examples",
-    "PR #245 — Define critic margin advisor activation scope"
+    "PR #245 — Define critic margin advisor activation scope",
+    "PR #246 — Sync state after critic margin advisor activation",
+    "PR #247 — Review next Agent Queue candidate",
+    "PR #248 — Define agent registry librarian advisory activation scope"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -108,10 +109,15 @@
     "PR #243 recorded baseline audit takeaways as semantic stabilization reference without runtime escalation",
     "PR #244 added manual second-eyes preflight card examples as optional, non-blocking operational examples",
     "PR #245 defined critic_margin_agent activation scope as active advisory/manual second-eyes discipline, not runtime/route validator",
+    "PR #246 synced state/resume files after critic_margin_agent advisory/manual activation",
+    "PR #247 reviewed the next Agent Queue candidate and recommended agent_registry_librarian as next controlled activation candidate",
+    "PR #248 defined agent_registry_librarian activation scope as active advisory/manual registry hygiene discipline, not registry authority or workflow conductor",
     "conversation_archive_librarian is active for archive commands and archive PR decisions only",
     "critic_margin_agent is active as advisory/manual second-eyes discipline only and is not a runtime/route validator, CI gate, approval authority, hard guardrail or policy engine",
     "critic_margin_agent route/runtime form remains non-active unless separately approved",
-    "workflow_conductor_agent remains a separate proposal and is not activated by critic_margin_agent or margin_orchestra work",
+    "agent_registry_librarian is active as advisory/manual registry hygiene discipline only and is not agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
+    "agent_registry_librarian route/runtime or automation form remains non-active unless separately approved",
+    "workflow_conductor_agent remains a separate proposal and is not activated by critic_margin_agent, margin_orchestra or agent_registry_librarian work",
     "margin_orchestra is active manual discipline only and is not runtime, routing, validator, hard guardrail, branch protection, committee, approval authority, or registry status change",
     "archive_status_indicator is active manual archive-pressure discipline only and is not automation, routing, validation, branch protection, project-state sync, checkpoint logic, CI, validator, hard guardrail or approval bypass",
     "bot_reviewer_comments is active manual PR review discipline only and is not automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass",
@@ -131,6 +137,8 @@
     "Baseline audit takeaways are recorded in knowledge/07_operations/baseline_audit_takeaways_2026-05-21.md",
     "Second-eyes preflight card examples are recorded in knowledge/07_operations/second_eyes_preflight_card_examples_2026-05-21.md",
     "Critic margin agent activation scope is recorded in knowledge/07_operations/critic_margin_agent_activation_scope_2026-05-21.md",
+    "Agent Queue next candidate review is recorded in knowledge/07_operations/agent_queue_next_candidate_review_2026-05-21.md",
+    "Agent registry librarian activation scope is recorded in knowledge/07_operations/agent_registry_librarian_activation_scope_2026-05-21.md",
     "Lifecycle contracts proposal is recorded in knowledge/07_operations/lifecycle_contracts_proposal.md",
     "Lifecycle contracts v1 is implemented in go-core/lifecycle/",
     "Age alone is not a deletion signal for archive tails",
@@ -145,7 +153,8 @@
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation",
     "Do not treat critic_margin_agent advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine",
-    "Do not activate workflow_conductor_agent through critic_margin_agent or margin_orchestra work",
+    "Do not treat agent_registry_librarian advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
+    "Do not activate workflow_conductor_agent through critic_margin_agent, margin_orchestra or agent_registry_librarian work",
     "Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements",
     "Do not treat baseline audit takeaways as approval for v0.5 release, runtime readiness, blocking drift audit, maturity automation, validators, hard guardrails, policy layer or moving/deleting book/",
     "Do not treat bot reviewer comments protocol as automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass",
@@ -163,7 +172,7 @@
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
   ],
-  "nextAction": "After this state sync is merged, choose the next Agent Queue step explicitly; critic_margin_agent advisory/manual activation is synced, but no runtime, route, validator or workflow_conductor activation follows automatically.",
+  "nextAction": "After this state sync is merged, create a small status trust matrix note to classify authoritative, derived, continuity, manual discipline, proposal, future-only and rejected-for-now layers without changing runtime or enforcement.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -192,6 +201,8 @@
     "knowledge/07_operations/baseline_audit_takeaways_2026-05-21.md",
     "knowledge/07_operations/second_eyes_preflight_card_examples_2026-05-21.md",
     "knowledge/07_operations/critic_margin_agent_activation_scope_2026-05-21.md",
+    "knowledge/07_operations/agent_queue_next_candidate_review_2026-05-21.md",
+    "knowledge/07_operations/agent_registry_librarian_activation_scope_2026-05-21.md",
     "scripts/state-sync-drift-audit.mjs",
     "package.json",
     "knowledge/07_operations/branch_protection_verification_2026-05-20.md",
@@ -204,6 +215,7 @@
     "assistant_codex_worklog/protocol_addenda/margin_orchestra_manual_preflight.md",
     "knowledge/05_agent_memory/agent_shipyard/margin_orchestra.md",
     "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
+    "knowledge/05_agent_memory/agent_proposals/agent_registry_librarian.md",
     ".github/workflows/sync-check.yml",
     ".github/workflows/ci.yml"
   ],
@@ -211,30 +223,36 @@
     "proposalAgents": [
       "conversation_archive_librarian",
       "critic_margin_agent runtime/route form",
+      "agent_registry_librarian route/runtime or automation form",
       "workflow_conductor_agent",
       "author_style_memory_agent"
     ],
     "manualDisciplines": [
       "critic_margin_agent advisory/manual second-eyes discipline",
+      "agent_registry_librarian advisory/manual registry hygiene discipline",
       "conversation_archive_librarian manual archive discipline",
       "margin_orchestra manual second-eyes preflight",
       "archive_status_indicator manual archive-pressure discipline",
       "bot_reviewer_comments manual PR review discipline"
     ],
-    "recommendedNextWorkItem": "After this state sync is merged, choose the next Agent Queue step explicitly; critic_margin_agent advisory/manual activation is synced, but no runtime, route, validator or workflow_conductor activation follows automatically.",
+    "recommendedNextWorkItem": "After this state sync is merged, create a small status trust matrix note to classify authoritative, derived, continuity, manual discipline, proposal, future-only and rejected-for-now layers without changing runtime or enforcement.",
     "secondEyes": {
       "critic_margin_agent": "active advisory/manual second-eyes discipline only; not runtime, not route validator, not CI gate, not approval authority, not hard guardrail, not policy engine",
       "critic_margin_agent_runtime_route_form": "not active unless separately approved",
-      "workflow_conductor_agent": "separate proposal; not activated by critic_margin_agent or margin_orchestra work",
+      "workflow_conductor_agent": "separate proposal; not activated by critic_margin_agent, margin_orchestra or agent_registry_librarian work",
       "conversation_archive_librarian": "active manual archive discipline only; not routed and not automated",
       "margin_orchestra": "active manual second-eyes preflight pattern only; not routed and not automated",
       "archive_status_indicator": "active manual archive-pressure discipline only; not routed and not automated",
       "bot_reviewer_comments": "active manual PR review discipline only; not automated enforcement"
     },
+    "registryHygiene": {
+      "agent_registry_librarian": "active advisory/manual registry hygiene discipline only; not registry mutation authority, not agent creation authority, not route automation, not validator, not workflow conductor, not automatic state sync",
+      "agent_registry_librarian_route_runtime_or_automation_form": "not active unless separately approved"
+    },
     "ciBaseline": {
-      "latest_green_pr": "PR #245 — Define critic margin advisor activation scope",
-      "latest_green_head": "fe54106d6b65794085b6d163c13b3c0ffcaaaa1d",
-      "latest_green_merge_commit": "b20f812fecb4da9bf0247a37df1badd8778ca553",
+      "latest_green_pr": "PR #248 — Define agent registry librarian advisory activation scope",
+      "latest_green_head": "fc969d76dce9c229527ecff358ac8366e85145fb",
+      "latest_green_merge_commit": "1580184179d0f2e882486b04fe9d90cb43b70ea7",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
