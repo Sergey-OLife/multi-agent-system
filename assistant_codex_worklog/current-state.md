@@ -12,39 +12,32 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #245 — Define critic margin advisor activation scope
+- PR #248 — Define agent registry librarian advisory activation scope
 - Status: merged
-- Merge commit: `b20f812fecb4da9bf0247a37df1badd8778ca553`
+- Merge commit: `1580184179d0f2e882486b04fe9d90cb43b70ea7`
 
 ## Current version
 
-- currentVersion: v2.60
-- currentMilestone: Critic margin advisor activation scope synced
+- currentVersion: v2.61
+- currentMilestone: Agent registry librarian advisory activation scope synced
 
-## Recent Agent Queue / second-eyes sequence
+## Recent Agent Queue sequence
 
-PR #240 archived the README boundary and operations review closure segment.
+PR #246 synced state after `critic_margin_agent` advisory/manual activation.
 
-PR #241 reviewed old architecture tails and closed resolved archive loops for current navigation.
+PR #247 reviewed Agent Queue next candidates and recommended `agent_registry_librarian` as next controlled activation candidate.
 
-PR #242 clarified the second-eyes status boundaries:
-
-- `critic_margin_agent` as agent = proposal;
-- `critic_margin_agent` as manual voice = active manual discipline;
-- `margin_orchestra` = active manual pattern;
-- `workflow_conductor_agent` = separate proposal.
-
-PR #243 recorded baseline audit takeaways as semantic stabilization reference without runtime escalation.
-
-PR #244 added manual second-eyes preflight card examples.
-
-PR #245 defined `critic_margin_agent` activation scope as advisory/manual second-eyes discipline.
+PR #248 defined `agent_registry_librarian` activation scope as advisory/manual registry hygiene discipline.
 
 ## Current protocol result
 
 `critic_margin_agent` is active as advisory/manual second-eyes discipline.
 
 `critic_margin_agent` is not active as runtime/route validator.
+
+`agent_registry_librarian` is active as advisory/manual registry hygiene discipline.
+
+`agent_registry_librarian` is not agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
 
 `workflow_conductor_agent` remains a separate proposal.
 
@@ -61,6 +54,7 @@ Operations review notes can guide discussion, but they do not replace project-st
 ## Current active manual disciplines
 
 - `critic_margin_agent` advisory/manual second-eyes discipline;
+- `agent_registry_librarian` advisory/manual registry hygiene discipline;
 - `conversation_archive_librarian` manual archive discipline;
 - `margin_orchestra` manual second-eyes preflight discipline;
 - `archive_status_indicator` manual archive-pressure discipline;
@@ -68,6 +62,7 @@ Operations review notes can guide discussion, but they do not replace project-st
 
 ## Active archive-level open loops
 
+- status trust matrix next unless Sergey redirects;
 - future runtime readiness checklist only by separate Sergey decision;
 - lifecycle policy layer only by separate Sergey decision;
 - `workflow_conductor_agent` activation only by separate Sergey decision;
@@ -76,8 +71,6 @@ Operations review notes can guide discussion, but they do not replace project-st
 
 ## Next safe step
 
-After this state sync is merged, choose the next Agent Queue step explicitly.
+After this state sync is merged, create a small status trust matrix note.
 
-Do not treat `critic_margin_agent` advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine.
-
-Do not activate `workflow_conductor_agent` through critic/margin work.
+Do not treat status trust matrix as automation, validator, CI check, policy layer, runtime behavior, registry mutation or approval authority.
