@@ -10,17 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.51
-- currentMilestone: Local state-sync drift audit script implemented
-- lastMergedPr: PR #208 — Implement local state sync drift audit
-- lastMergeCommit: `93d2d2c3587cf586e72f36ba182a6a53ac6122b0`
+- currentVersion: v2.52
+- currentMilestone: Archive status indicator protocol synced
+- lastMergedPr: PR #214 — Add archive status indicator protocol
+- lastMergeCommit: `abf04c8c03e15ca619ccc4aa6d17e0e8ebb99c45`
 
 ## Recent PR summary
 
-- PR #205 — Propose local drift detector implementation.
-- PR #206 — Sync state after local drift detector proposal.
-- PR #207 — Archive current shipyard ruleset and drift detector work.
 - PR #208 — Implement local state sync drift audit.
+- PR #209 — Sync state after local drift audit script.
+- PR #212 — Record local drift audit test results.
+- PR #214 — Add archive status indicator protocol.
 
 ## Status
 
@@ -47,15 +47,21 @@ Local state-sync drift audit script is implemented as `scripts/state-sync-drift-
 
 It is a warning-only local diagnostic tool, not a GitHub Action, required check, validator, hard guardrail, runtime, route, branch protection change, blocking rule, observability, release, or production security tooling.
 
+Representative test results for the local drift audit script are recorded in `knowledge/07_operations/state_sync_drift_audit_test_results_2026-05-21.md`.
+
+Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
+
+It is active manual discipline only, not automation, routing, validation, branch protection, project-state sync, checkpoint logic, runtime behavior, CI, validator, hard guardrail, restart command semantic change, or book workflow change.
+
 ## Approved next sequence
 
-1. complete state sync after local drift audit script implementation;
-2. test the local script on real changed-file sets;
-3. keep it out of CI unless Sergey separately approves CI-visible warning later;
-4. return to `Карта будущего корабля` review when the planned implementation/state-sync segment is stable;
+1. complete state sync after archive status indicator protocol;
+2. return to selected next work without repeating already archived service information;
+3. use the archive status indicator and delta-only archive discipline during further project operations;
+4. return to `Карта будущего корабля` review when this protocol/state-sync segment is stable;
 5. if Sergey separately approves, prepare a future runtime readiness checklist;
 6. if needed, perform a scripts/core boundary audit.
 
 ## Recommended next work item
 
-Complete state sync after local drift audit script implementation.
+Complete state sync after archive status indicator protocol.
