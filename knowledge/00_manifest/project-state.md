@@ -4,30 +4,27 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.60
-- lastCompletedVersion: v2.60
-- lastMergedPr: PR #245 — Define critic margin advisor activation scope
-- lastMergeCommit: b20f812fecb4da9bf0247a37df1badd8778ca553
-- currentMilestone: v2.60 Critic margin advisor activation scope synced
+- currentVersion: v2.61
+- lastCompletedVersion: v2.61
+- lastMergedPr: PR #248 — Define agent registry librarian advisory activation scope
+- lastMergeCommit: 1580184179d0f2e882486b04fe9d90cb43b70ea7
+- currentMilestone: v2.61 Agent registry librarian advisory activation scope synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.60
+## What changed in v2.61
 
-This state sync records the Agent Queue / second-eyes sequence after v2.59:
+This state sync records the Agent Queue / registry hygiene sequence after v2.60:
 
-- PR #240 — Archive README boundary and operations review closure;
-- PR #241 — Review old architecture tails and close resolved archive loops;
-- PR #242 — Clarify second-eyes status boundaries;
-- PR #243 — Record baseline audit takeaways without runtime escalation;
-- PR #244 — Add second-eyes preflight card examples;
-- PR #245 — Define critic margin advisor activation scope.
+- PR #246 — Sync state after critic margin advisor activation;
+- PR #247 — Review next Agent Queue candidate;
+- PR #248 — Define agent registry librarian advisory activation scope.
 
 The key result:
 
 ```text
 critic_margin_agent is active as advisory/manual second-eyes discipline.
-critic_margin_agent is not active as runtime/route validator.
+agent_registry_librarian is active as advisory/manual registry hygiene discipline.
 workflow_conductor_agent remains a separate proposal.
 ```
 
@@ -49,7 +46,8 @@ It does not:
 - change branch protection settings;
 - change runtime behavior;
 - activate `workflow_conductor_agent`;
-- route `critic_margin_agent` as runtime agent;
+- give `agent_registry_librarian` registry mutation authority;
+- give `agent_registry_librarian` agent creation authority;
 - change book workflow.
 
 ## Current recovery path
@@ -59,7 +57,8 @@ It does not:
 3. Do not treat README as the live roadmap.
 4. Treat operations review notes as references, not implementation mandates.
 5. Treat `critic_margin_agent` as advisory/manual second-eyes discipline only.
-6. Choose the next Agent Queue step explicitly.
+6. Treat `agent_registry_librarian` as advisory/manual registry hygiene discipline only.
+7. Create status trust matrix next unless Sergey redirects.
 
 ## Active decisions
 
@@ -69,9 +68,10 @@ It does not:
 - `conversation_archive_librarian` is active as manual archive discipline only.
 - `critic_margin_agent` is active as advisory/manual second-eyes discipline only.
 - `critic_margin_agent` is not runtime, route validator, CI gate, approval authority, hard guardrail or policy engine.
-- `critic_margin_agent` route/runtime form remains non-active unless separately approved.
+- `agent_registry_librarian` is active as advisory/manual registry hygiene discipline only.
+- `agent_registry_librarian` is not agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
 - `margin_orchestra` is active as manual second-eyes preflight pattern only.
-- `workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin work.
+- `workflow_conductor_agent` remains a separate proposal and is not activated by critic/margin/registry-librarian work.
 - `archive_status_indicator` is active as manual archive-pressure discipline only.
 - `bot_reviewer_comments` is active as manual PR review discipline only.
 - The `рестарт` command is implemented as a continuation command from GitHub source of truth.
@@ -85,6 +85,7 @@ It does not:
 
 ## Active archive-level open loops
 
+- Status trust matrix: next useful documentation-only step unless Sergey redirects.
 - Future runtime readiness checklist only by separate Sergey decision.
 - Lifecycle policy layer only by separate Sergey decision.
 - Workflow conductor activation only by separate Sergey decision.
@@ -97,7 +98,8 @@ It does not:
 - Do not offer Book Fast Track as immediate next work until Sergey separately resumes it.
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
 - Do not treat `critic_margin_agent` advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine.
-- Do not activate `workflow_conductor_agent` through `critic_margin_agent` or `margin_orchestra` work.
+- Do not treat `agent_registry_librarian` advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync.
+- Do not activate `workflow_conductor_agent` through `critic_margin_agent`, `margin_orchestra` or `agent_registry_librarian` work.
 - Do not treat second-eyes preflight card examples as mandatory forms, validators, GitHub Actions, hard guardrails or approval replacements.
 - Do not treat baseline audit takeaways as approval for v0.5 release, runtime readiness, blocking drift audit, maturity automation, validators, hard guardrails, policy layer or moving/deleting `book/`.
 - Do not treat bot reviewer comments protocol as automated review enforcement, GitHub Action, required check, validator, hard guardrail, route automation, policy engine, branch protection change, runtime behavior, or approval bypass.
@@ -113,4 +115,4 @@ It does not:
 
 ## Next action
 
-After this state sync is merged, choose the next Agent Queue step explicitly; critic_margin_agent advisory/manual activation is synced, but no runtime, route, validator or workflow_conductor activation follows automatically.
+After this state sync is merged, create a small status trust matrix note to classify authoritative, derived, continuity, manual discipline, proposal, future-only and rejected-for-now layers without changing runtime or enforcement.
