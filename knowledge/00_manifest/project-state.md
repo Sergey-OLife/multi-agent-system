@@ -4,66 +4,56 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.57
-- lastCompletedVersion: v2.57
-- lastMergedPr: PR #233 — Sync state after bot reviewer protocol registration
-- lastMergeCommit: 6c9f97075fcccff1918948fdd8aec2f8dcef03b0
-- currentMilestone: v2.57 Checkpoint full after bot reviewer protocol state sync
+- currentVersion: v2.58
+- lastCompletedVersion: v2.58
+- lastMergedPr: PR #237 — Clarify README documentation boundary
+- lastMergeCommit: 775c9d0c49d366ce0de18dd6e4c431b55c2a63ea
+- currentMilestone: v2.58 README and operations review sequence synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.57
+## What changed in v2.58
 
-This checkpoint records the stable state after PR #233 synced state/resume files following the bot reviewer comments protocol registration.
+This state sync records the documentation review sequence after:
 
-PR #229 added `assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md` as a mandatory manual PR review discipline.
+- PR #235 — Add scripts core boundary audit result;
+- PR #236 — Add future ship map review;
+- PR #237 — Clarify README documentation boundary.
 
-PR #231 registered that addendum in the visible addenda list inside `assistant_codex_worklog/working-protocol.md`.
+PR #235 recorded that current scripts remain edge automation / CI helpers, with an explicit boundary for `scripts/run-registry-sync.mjs`.
 
-PR #233 synced state/resume files to v2.56. This checkpoint completes the handoff layer after that sync.
+PR #236 recorded a full 34-point classification of the external future-ship assessment using only the declared buckets: `already_fixed`, `useful_now`, `true_but_future`, `not_appropriate_current`, and `reframe`.
+
+PR #237 recorded the README/documentation-topology boundary review and adjusted README so it points to project-state/current-state/roadmap for live next work instead of carrying a stale static next-work list.
 
 ## Boundary
 
-Bot reviewer comments protocol is manual PR review discipline only.
+These PRs are documentation and state/resume sync only.
 
-It is not:
+They do not:
 
-- automated review enforcement;
-- GitHub Action;
-- required check;
-- validator;
-- hard guardrail;
-- route automation;
-- policy engine;
-- branch protection change;
-- runtime behavior;
-- approval bypass.
-
-Lifecycle contracts v1 remains implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
-
-Scripts/core boundary audit scope remains a discussion note only, not audit result or implementation.
-
-## Recent protocol and diagnostic state
-
-PR #228 added `knowledge/07_operations/scripts_core_boundary_audit_scope.md` as a discussion note only.
-
-PR #229 added the bot reviewer comments addendum.
-
-PR #230 archived the bot reviewer protocol and scripts/core scope delta.
-
-PR #231 registered the bot reviewer comments addendum in `working-protocol.md`.
-
-PR #233 synced project state after bot reviewer protocol registration.
-
-The local drift audit script remains a manual warning-only diagnostic instrument and is not enforcement.
+- implement code;
+- change scripts;
+- change Go packages;
+- change workflows;
+- add GitHub labels;
+- add required checks;
+- add validators;
+- add hard guardrails;
+- add policy layer;
+- change branch protection settings;
+- change runtime behavior;
+- change book workflow;
+- rename `go-core`;
+- restructure README or archive index.
 
 ## Current recovery path
 
-1. Choose the next work explicitly.
-2. Return to `Карта будущего корабля` review when Sergey chooses it.
-3. Run the read-only scripts/core boundary audit only if Sergey selects it.
-4. Do not expand lifecycle contracts, bot reviewer comments protocol, or scripts/core audit scope toward policy layer, route automation, validators, CI enforcement, hard guardrails, runtime, or branch protection without separate approval.
-5. Consider a future runtime readiness checklist only by separate decision.
+1. Use GitHub `main` as the source of truth.
+2. Read project-state/current-state/roadmap/restart-prompt before selecting next work.
+3. Do not treat README as the live roadmap.
+4. Choose the next work explicitly.
+5. Do not treat any review note as an implementation mandate.
 
 ## Active decisions
 
@@ -85,18 +75,19 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - Archive status indicator protocol is recorded in `assistant_codex_worklog/protocol_addenda/archive_status_indicator.md`.
 - Conservative archive index cleanup is recorded in `knowledge/08_conversation_archive/index.md`.
 - Scripts/core boundary audit scope is recorded in `knowledge/07_operations/scripts_core_boundary_audit_scope.md`.
+- Scripts/core boundary audit result is recorded in `knowledge/07_operations/scripts_core_boundary_audit_result_2026-05-21.md`.
+- Future ship map review is recorded in `knowledge/07_operations/future_ship_map_review_2026-05-21.md`.
+- README/documentation-topology boundary review is recorded in `knowledge/07_operations/readme_documentation_boundary_review_2026-05-21.md`.
 - Lifecycle contracts proposal is recorded in `knowledge/07_operations/lifecycle_contracts_proposal.md`.
 - Lifecycle contracts v1 is implemented in `go-core/lifecycle/` as pure contract vocabulary with unit tests, not enforcement.
 - Redis, Postgres, P2P runtime, OpenAPI/gRPC, observability stack, broker, validators and hard guardrails require separate decisions.
 
 ## Active archive-level open loops
 
-- `Карта будущего корабля` review.
-- Repository architecture contract value from older archives.
-- Corrective margin/knowledge-consistency value from older archives.
-- Lifecycle policy layer only by separate Sergey decision.
 - Future runtime readiness checklist only by separate Sergey decision.
-- Scripts/core boundary audit only if selected after the new scope note.
+- Lifecycle policy layer only by separate Sergey decision.
+- README/documentation-topology boundary has been reviewed; further cleanup only if separately selected.
+- Book work remains paused until separate Sergey decision.
 
 ## Paused tasks
 
@@ -108,11 +99,14 @@ The local drift audit script remains a manual warning-only diagnostic instrument
 - Do not treat the local state-sync drift audit script as GitHub Action, required check, validator, hard guardrail, route, runtime, or blocking rule.
 - Do not treat the archive status indicator as automation, CI, validator, route, hard guardrail, project-state sync, checkpoint, or approval bypass.
 - Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change.
-- Do not treat scripts/core boundary audit scope as audit result, implementation, script rewrite, workflow change, validator, hard guardrail, state-sync automation, lifecycle policy layer, or repository restructure.
+- Do not expand lifecycle contracts toward policy layer, route automation, validators, CI enforcement, or hard guardrails without separate approval.
+- Do not treat scripts/core boundary audit result as implementation, script rewrite, workflow change, validator, hard guardrail, state-sync automation, lifecycle policy layer, or repository restructure.
+- Do not treat future ship map review as an implementation mandate.
+- Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
 - Do not treat old archive tails as stale only because they are old.
 - Do not implement runtime readiness items from external assessments without separate decision.
 - Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented.
 
 ## Next action
 
-Choose the next work explicitly: return to `Карта будущего корабля` review, or run the read-only scripts/core boundary audit if Sergey selects it.
+After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.
