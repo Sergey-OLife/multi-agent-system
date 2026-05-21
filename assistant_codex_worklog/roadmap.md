@@ -10,16 +10,17 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.58
-- currentMilestone: README and operations review sequence synced
-- lastMergedPr: PR #237 — Clarify README documentation boundary
-- lastMergeCommit: `775c9d0c49d366ce0de18dd6e4c431b55c2a63ea`
+- currentVersion: v2.59
+- currentMilestone: Checkpoint full after README boundary state sync
+- lastMergedPr: PR #238 — Sync state after README boundary review
+- lastMergeCommit: `106c53e747a91b7c6ba3d0e54f69898ca07f6408`
 
 ## Recent PR summary
 
 - PR #235 — Add scripts core boundary audit result.
 - PR #236 — Add future ship map review.
 - PR #237 — Clarify README documentation boundary.
+- PR #238 — Sync state after README boundary review.
 
 ## Status
 
@@ -83,4 +84,4 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 
 ## Recommended next work item
 
-After this state sync is merged, choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review.
+Choose the next work explicitly; no implementation follows automatically from the README/documentation-topology review or this checkpoint.
