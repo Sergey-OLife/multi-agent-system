@@ -15,6 +15,7 @@
 | 2026-05-19 | `knowledge/08_conversation_archive/chat_archives/2026-05-19_current-chat-origin-protocol-and-state-tail.md` | draft_archive_entry | 2026-06-02 | archive_protocol, origin_protocol, state_sync, open_loop, failure_pattern, command_protocol, agent_shipyard | partial / PR #153, PR #154, PR #155-open | resolve PR #155, then create conversation_archive_librarian |
 | 2026-05-20 | `knowledge/08_conversation_archive/chat_archives/2026-05-20_restart-command-and-ship-metaphor.md` | draft_archive_entry | 2026-06-03 | agent_shipyard, command_protocol, checkpoint, restart, archive_protocol, metaphor, open_loop, failure_pattern | partial / PR #188, PR #189 | full checkpoint, restart command protocol, then margin_orchestra |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_current-shipyard-ruleset-and-drift-detector.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, branch_protection, checks, state_sync, drift_detector, architecture_review, archive_protocol, implementation_proposal | partial / PR #198-#206 | implement warning-only local script only after separate decision; return to `Карта будущего корабля` review |
+| 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_local-drift-audit-and-archive-cadence.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, state_sync, drift_detector, local_tooling, archive_protocol, archive_cadence | partial / PR #208-#209 | test local drift audit script; decide whether to formalize archive status indicator |
 
 ## Status legend
 
