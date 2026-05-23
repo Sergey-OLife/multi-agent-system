@@ -108,8 +108,6 @@ When documents conflict, project-state and README contracts take priority until 
 
 ## 4. Implemented elsewhere
 
-## 4. Implemented elsewhere
-
 - PR #270 — recorded the reasonable community balancing map operations note.
 - PR #271 — clarified checks vs manual invariants in `checks_overview.md`.
 - PR #272 — added archive structure validator candidate/spec.
