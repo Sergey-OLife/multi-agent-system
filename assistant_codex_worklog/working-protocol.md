@@ -28,6 +28,7 @@ GitHub — источник правды по коду, структуре, со
 - `archive_status_indicator.md` — архивный индикатор `зеленый/желтый/красный`, порог `желтый_3` и delta-only archive discipline.
 - `bot_reviewer_comments.md` — обязательная проверка и классификация bot/reviewer comments перед `++`/merge.
 - `mode_switch_commands.md` — команды `#книга`, `#агент` и `#агенты` задают режим намерения разговора без автоматического изменения GitHub state.
+- `state_sync_additive_patch_discipline.md` — state/resume sync делается additive-by-default; Codex получает patch-map, а не широкую команду переписать state.
 
 ## Book Fast Track для глав книги
 
