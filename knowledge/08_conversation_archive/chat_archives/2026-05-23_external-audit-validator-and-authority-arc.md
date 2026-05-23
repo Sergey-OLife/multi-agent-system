@@ -3,7 +3,7 @@
 Дата: 2026-05-23
 Статус: draft_archive_entry
 Срок пересмотра: 2026-06-06
-Implemented elsewhere: partial / PR #270, PR #271, PR #272, PR #273, PR #275; PR #274 closed unmerged as duplicate
+Implemented elsewhere: partial / PR #270, PR #271, PR #272, PR #273, PR #275, PR #278; PR #274 closed unmerged as duplicate
 
 ## 0. Origin
 
@@ -13,14 +13,14 @@ Implemented elsewhere: partial / PR #270, PR #271, PR #272, PR #273, PR #275; PR
 - Source scope: current_visible_segment
 - Capture command: #архив_старт
 - Captured from: current chat
-- Related PRs: PR #270, PR #271, PR #272, PR #273, PR #274, PR #275
+- Related PRs: PR #270, PR #271, PR #272, PR #273, PR #274, PR #275, PR #278
 - Related archive entries: `knowledge/08_conversation_archive/chat_archives/2026-05-23_hundred-mutations-and-archive-reading-discipline.md`
 
 ## 1. Coverage check
 
 - Coverage scope: full_chat
 - Coverage applies to: current_visible_segment = chat-2026-05-23-audit-validator-authority-arc
-- Previous checkpoint: latest indexed thematic entry `2026-05-23_hundred-mutations-and-archive-reading-discipline.md`; later merged PRs #270-#275 form the new operational arc
+- Previous checkpoint: latest indexed thematic entry `2026-05-23_hundred-mutations-and-archive-reading-discipline.md`; later merged PRs #270-#278 form the new operational arc
 - Previous checkpoint coverage scope: thematic
 - Previous archive/state coverage status: partial
 - Full-chat marker present: no for previous thematic entry; yes for this current visible segment only
@@ -108,12 +108,15 @@ When documents conflict, project-state and README contracts take priority until 
 
 ## 4. Implemented elsewhere
 
+## 4. Implemented elsewhere
+
 - PR #270 — recorded the reasonable community balancing map operations note.
 - PR #271 — clarified checks vs manual invariants in `checks_overview.md`.
 - PR #272 — added archive structure validator candidate/spec.
 - PR #273 — implemented advisory local archive structure check and npm script.
 - PR #274 — closed unmerged as stale duplicate of PR #271.
 - PR #275 — added document authority layers to `documentation_topology.md`.
+- PR #278 — corrected empty-index handling in `scripts/archive-structure-check.mjs`.
 
 Do not duplicate those files here. This archive keeps the reasoning arc and failure patterns.
 
