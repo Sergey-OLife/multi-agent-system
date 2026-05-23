@@ -4,25 +4,45 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.67
-- lastCompletedVersion: v2.67
-- lastMergedPr: PR #263 — Add PR operation response footer protocol
-- lastMergeCommit: 10f65324336a636ecf7f037af2708b29737a9deb
-- currentMilestone: v2.67 PR operation response footer synced
+- currentVersion: v2.68
+- lastCompletedVersion: v2.68
+- lastMergedPr: PR #277 — Archive external audit validator and authority arc
+- lastMergeCommit: e3f153b69c46e75813b3e5614e14df6531164215
+- currentMilestone: v2.68 External-audit/archive-structure/document-authority arc synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.67
+## What changed in v2.68
 
-This state sync records PR #263 — Add PR operation response footer protocol.
+This state sync records the completed external-audit / archive-structure / document-authority arc.
+
+Merged arc:
+
+- PR #270 — Add reasonable community balancing map.
+- PR #271 — Clarify checks vs manual invariants.
+- PR #272 — Add archive structure validator candidate.
+- PR #273 — Add archive structure advisory check.
+- PR #275 — Clarify document authority layers.
+- PR #277 — Archive external audit validator and authority arc.
+- PR #278 — Adjust archive structure index handling.
+
+Closed unmerged:
+
+- PR #274 — stale duplicate of PR #271.
+- PR #276 — superseded by PR #278.
+- PR #279 — duplicate of PR #275.
 
 The key result:
 
 ```text
-After PR / merge / state-sync / checkpoint operations, ChatGPT must include footer lines for bot/reviewer comments and archive status.
+The archive structure check exists only as local advisory / warning-only diagnostics unless Sergey separately approves CI/gate promotion.
 ```
 
-Required footer shape:
+## What remains from v2.67
+
+PR #263 added `pr_operation_response_footer.md` as mandatory protocol addendum.
+
+Required footer shape after PR / merge / state-sync / checkpoint operations:
 
 ```text
 Bot/reviewer comments: checked / not checked / not applicable.
@@ -38,8 +58,7 @@ This state sync is state/resume sync only.
 It does not:
 
 - implement code;
-- change scripts;
-- change Go packages;
+- change runtime behavior;
 - change workflows;
 - add GitHub Actions;
 - add required checks;
@@ -47,8 +66,8 @@ It does not:
 - add hard guardrails;
 - add policy layer;
 - change branch protection settings;
-- change runtime behavior;
-- change registry status;
+- change archive protocol;
+- mutate registry status;
 - activate route/runtime agents;
 - change book workflow;
 - resume book/product mode automatically.
@@ -68,13 +87,20 @@ It does not:
 - Current durable project mode remains Agent Shipyard / Agent Queue until Sergey explicitly switches mode and state is synced if needed.
 - Book Fast Track remains paused until separate Sergey decision.
 - PR #263 added `pr_operation_response_footer.md` as mandatory protocol addendum.
+- PR #270 added the reasonable community balancing map as an operations note only.
+- PR #271 clarified checks vs manual invariants.
+- PR #272 added archive structure validator candidate/spec only.
+- PR #273 added a local advisory archive structure check and npm script.
+- PR #275 clarified documentation authority layers.
+- PR #277 archived the external-audit / validator / authority arc.
+- PR #278 corrected empty-index handling in the advisory archive structure check.
+- Advisory checks remain warning-only/manual unless Sergey separately approves CI/gate promotion.
 - After PR, merge, state-sync, checkpoint, archive PR, correction PR, reviewer/bot handling or PR workflow status responses, ChatGPT must include footer lines for bot/reviewer comments and archive status.
 - If bot/reviewer comments were not checked, ChatGPT must not say `clean point` / `чистая точка`; `get_pr_info` alone is not enough.
 - `#книга` switches conversation/workflow intent to Book/Product Mission Mode.
 - `#агент` and `#агенты` switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode.
 - Mode switch commands do not change repository state, project-state, registry, agent activation, approval-gates, PR workflow, runtime, validators, hard guardrails or workflow_conductor authority by themselves.
 - `workflow_conductor_agent` is active as advisory/manual orchestration planner only.
-- `workflow_conductor_agent` is not runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
 - `critic_margin_agent` is active as advisory/manual second-eyes discipline only.
 - `agent_registry_librarian` is active as advisory/manual registry hygiene discipline only.
 - The repository is not a production multi-agent runtime, reusable public framework, or deployed agent platform.
@@ -87,6 +113,8 @@ It does not:
 - Future runtime readiness checklist only by separate Sergey decision.
 - Lifecycle policy layer only by separate Sergey decision.
 - Further second-eyes tooling or mandatory preflight only by separate Sergey decision.
+- Archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision.
+- Bot/reviewer comment readiness may be a future validator candidate, not an automatic gate.
 
 ## Paused tasks
 
@@ -98,6 +126,15 @@ It does not:
 - Do not treat `workflow_conductor_agent` advisory/manual activation as runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
 - Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
+- Do not treat PR #274, PR #276 or PR #279 as implemented.
+
+## Resume pointers
+
+- `knowledge/00_manifest/project-state.json`
+- `knowledge/00_manifest/project-state.md`
+- `assistant_codex_worklog/current-state.md`
+- `assistant_codex_worklog/roadmap.md`
+- `assistant_codex_worklog/restart-prompt.md`
 
 ## Next action
 

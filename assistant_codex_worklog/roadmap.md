@@ -10,16 +10,29 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.67
-- currentMilestone: PR operation response footer synced
-- lastMergedPr: PR #263 — Add PR operation response footer protocol
-- lastMergeCommit: `10f65324336a636ecf7f037af2708b29737a9deb`
+- currentVersion: v2.68
+- currentMilestone: External-audit/archive-structure/document-authority arc synced
+- lastMergedPr: PR #277 — Archive external audit validator and authority arc
+- lastMergeCommit: `e3f153b69c46e75813b3e5614e14df6531164215`
 
 ## Recent PR summary
 
 - PR #261 — Checkpoint full after mode switch commands.
 - PR #262 — Align checkpoint state records with v2.66.
 - PR #263 — Add PR operation response footer protocol.
+- PR #270 — Add reasonable community balancing map.
+- PR #271 — Clarify checks vs manual invariants.
+- PR #272 — Add archive structure validator candidate.
+- PR #273 — Add archive structure advisory check.
+- PR #275 — Clarify document authority layers.
+- PR #277 — Archive external audit validator and authority arc.
+- PR #278 — Adjust archive structure index handling.
+
+Closed unmerged in this arc:
+
+- PR #274 — stale duplicate of PR #271.
+- PR #276 — superseded by PR #278.
+- PR #279 — duplicate of PR #275.
 
 ## Status
 
@@ -74,6 +87,8 @@ PR operation response footer is recorded in `assistant_codex_worklog/protocol_ad
 
 Workflow conductor advisory activation scope is recorded in `knowledge/07_operations/workflow_conductor_advisory_activation_scope_2026-05-21.md`.
 
+Advisory archive structure check is warning-only/manual unless Sergey separately approves CI/gate promotion.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
@@ -84,14 +99,20 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 - Lifecycle policy layer: future-only and requires separate Sergey decision.
 - Future runtime readiness checklist: only by separate Sergey decision.
 - Further second-eyes tooling or mandatory preflight: only by separate Sergey decision.
+- Archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision.
+- Bot/reviewer comment readiness may be a future validator candidate, not an automatic gate.
 
 ## Approved next sequence
 
-1. merge this state sync after checks and approval;
+1. merge this state sync only after checks, comments review and explicit approval;
 2. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
 3. after `#книга`, give an advisory book/product mission plan before writing or product design;
 4. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
 5. include the PR operation response footer after PR-related work.
+
+## State-sync boundaries
+
+This roadmap entry is state/resume sync only and does not change runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry, or durable mode.
 
 ## Recommended next work item
 

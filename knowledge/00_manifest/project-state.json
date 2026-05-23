@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.67",
-  "lastCompletedVersion": "v2.67",
-  "lastMergedPr": "PR #263 — Add PR operation response footer protocol",
-  "lastMergeCommit": "10f65324336a636ecf7f037af2708b29737a9deb",
-  "currentMilestone": "v2.67 PR operation response footer synced",
+  "currentVersion": "v2.68",
+  "lastCompletedVersion": "v2.68",
+  "lastMergedPr": "PR #277 — Archive external audit validator and authority arc",
+  "lastMergeCommit": "e3f153b69c46e75813b3e5614e14df6531164215",
+  "currentMilestone": "v2.68 External-audit/archive-structure/document-authority arc synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -67,7 +67,8 @@
     "v2.64 Workflow conductor advisory activation scope synced",
     "v2.65 Mode switch commands synced",
     "v2.66 Checkpoint full after mode switch commands",
-    "v2.67 PR operation response footer synced"
+    "v2.67 PR operation response footer synced",
+    "v2.68 External-audit/archive-structure/document-authority arc synced"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -75,7 +76,23 @@
     "PR #260 — Sync state after mode switch commands",
     "PR #261 — Checkpoint full after mode switch commands",
     "PR #262 — Align checkpoint state records with v2.66",
-    "PR #263 — Add PR operation response footer protocol"
+    "PR #263 — Add PR operation response footer protocol",
+    "PR #270 — Add reasonable community balancing map",
+    "PR #271 — Clarify checks vs manual invariants",
+    "PR #272 — Add archive structure validator candidate",
+    "PR #273 — Add archive structure advisory check",
+    "PR #275 — Clarify document authority layers",
+    "PR #277 — Archive external audit validator and authority arc",
+    "PR #278 — Adjust archive structure index handling"
+  ],
+  "mergedArcPrs": [
+    "PR #270 — Add reasonable community balancing map",
+    "PR #271 — Clarify checks vs manual invariants",
+    "PR #272 — Add archive structure validator candidate",
+    "PR #273 — Add archive structure advisory check",
+    "PR #275 — Clarify document authority layers",
+    "PR #277 — Archive external audit validator and authority arc",
+    "PR #278 — Adjust archive structure index handling"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -84,7 +101,10 @@
     "PR #152 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet",
     "PR #162 — closed unmerged because registry sync trigger worked but Go sync could not insert missing agent blocks yet",
     "PR #164 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check",
-    "PR #169 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check; superseded by PR #170"
+    "PR #169 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check; superseded by PR #170",
+    "PR #274 — closed unmerged as stale duplicate of PR #271",
+    "PR #276 — closed unmerged after empty-index fix was superseded by PR #278",
+    "PR #279 — closed unmerged as duplicate of PR #275"
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
@@ -95,6 +115,14 @@
     "PR #261 is the v2.66 checkpoint full after mode switch commands",
     "PR #262 corrected checkpoint state records to v2.66 / PR #261",
     "PR #263 added pr_operation_response_footer.md as mandatory protocol addendum",
+    "PR #270 added the reasonable community balancing map as an operations note only",
+    "PR #271 clarified that checks are gates only where explicitly required; manual invariants remain manual unless separately promoted",
+    "PR #272 added an archive structure validator candidate/spec only",
+    "PR #273 added a local advisory archive structure check and npm script, warning-only and not CI or hard gate",
+    "PR #275 clarified documentation authority layers in documentation_topology.md",
+    "PR #277 archived the external-audit / validator / authority arc",
+    "PR #278 corrected empty-index handling in the advisory archive structure check",
+    "Advisory checks remain warning-only/manual unless Sergey separately approves CI/gate promotion",
     "After PR, merge, state-sync, checkpoint, archive PR, correction PR, reviewer/bot handling or PR workflow status responses, ChatGPT must include footer lines for bot/reviewer comments and archive status",
     "If bot/reviewer comments were not checked, ChatGPT must not call the point clean; get_pr_info alone is not enough",
     "#книга switches conversation/workflow intent to Book/Product Mission Mode and first response should be an advisory mission plan through workflow_conductor_agent",
@@ -127,9 +155,10 @@
     "Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change",
     "Do not treat README as live roadmap; use project-state/current-state/roadmap for next action",
     "Do not implement runtime readiness items from external assessments without separate decision",
-    "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164 or PR #169 as implemented"
+    "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164, PR #169, PR #274, PR #276 or PR #279 as implemented",
+    "Do not treat archive structure advisory check as CI, required check, hard gate, branch protection, runtime behavior or automatic archive fixer without separate Sergey approval"
   ],
-  "nextAction": "Wait for Sergey to choose #книга, #агент or #агенты. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
+  "nextAction": "Wait for Sergey to choose #книга, #агент or #агенты. Keep advisory checks warning-only/manual until separate Sergey approval for CI/gate promotion. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -146,6 +175,13 @@
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md",
     "knowledge/08_conversation_archive/index.md",
+    "knowledge/08_conversation_archive/chat_archives/2026-05-23_external-audit-validator-and-authority-arc.md",
+    "knowledge/07_operations/reasonable_community_balancing_map_2026-05-23.md",
+    "knowledge/07_operations/archive_structure_validator_candidate_2026-05-23.md",
+    "knowledge/07_operations/documentation_topology.md",
+    "knowledge/07_operations/checks_overview.md",
+    "scripts/archive-structure-check.mjs",
+    "package.json",
     "knowledge/07_operations/status_trust_matrix_2026-05-21.md",
     "knowledge/07_operations/agent_registry_hygiene_pass_2026-05-21.md",
     "knowledge/07_operations/registry_status_overlay_2026-05-21.md",

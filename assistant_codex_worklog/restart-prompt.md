@@ -7,9 +7,9 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.67.
-- lastMergedPr: PR #263 — Add PR operation response footer protocol.
-- lastMergeCommit: 10f65324336a636ecf7f037af2708b29737a9deb.
+- currentVersion: v2.68.
+- lastMergedPr: PR #277 — Archive external audit validator and authority arc.
+- lastMergeCommit: e3f153b69c46e75813b3e5614e14df6531164215.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного явного mode decision.
 - `pr_operation_response_footer.md` is active mandatory protocol addendum.
@@ -31,10 +31,15 @@ GitHub main — источник правды. Сначала открой READM
 - Required branch-protection check contexts are documented in `knowledge/07_operations/checks_overview.md`: `TypeScript / JavaScript / Go checks` and `sync-check`.
 - Local state-sync drift audit script is warning-only local diagnostic tooling.
 - Lifecycle contracts v1 is implemented but not enforcement.
+- Merged external-audit/archive-structure/document-authority arc: PR #270, #271, #272, #273, #275, #277, #278.
+- Closed unmerged in this arc: PR #274, #276, #279.
+- PR #273 added advisory archive structure check.
+- PR #278 corrected empty-index handling in that advisory check.
+- Advisory archive structure check remains warning-only/manual unless Sergey separately approves CI/gate promotion.
 
-Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. PR operation response footer is manual response discipline only: not automation, not CI check, not validator, not hard guardrail, not archive-state mutation and not approval gate. Mode switch commands are not approval and not GitHub state mutation.
+Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. PR operation response footer is manual response discipline only: not automation, not CI check, not validator, not hard guardrail, not archive-state mutation and not approval gate. Mode switch commands are not approval and not GitHub state mutation. This v2.68 state sync is state/resume sync only: no runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry mutation or book mode resume.
 
-Active open loops: wait for Sergey to choose `#книга`, `#агент` or `#агенты`; durable book/product state switch only by separate Sergey decision and state sync if needed; lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; further second-eyes tooling or mandatory preflight only by separate Sergey decision.
+Active open loops: wait for Sergey to choose `#книга`, `#агент` or `#агенты`; durable book/product state switch only by separate Sergey decision and state sync if needed; lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; further second-eyes tooling or mandatory preflight only by separate Sergey decision; archive structure advisory check promotion only by separate Sergey decision.
 
 Next: wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
 ```
