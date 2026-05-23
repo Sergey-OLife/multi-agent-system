@@ -40,7 +40,7 @@ function isInside(childPath, parentPath) {
 
 function extractArchiveReferences(indexText) {
   const refs = new Set();
-  const pattern = /knowledge\/08_conversation_archive\/chat_archives\/[^`\s)|]+\.md/g;
+  const pattern = /knowledge\/08_conversation_archive\/chat_archives\/[^`\s)|]+/g;
   for (const match of indexText.matchAll(pattern)) refs.add(match[0]);
   return [...refs].sort();
 }
@@ -54,6 +54,8 @@ if (!fs.existsSync(archiveRoot)) {
   const entryFiles = listMarkdownFiles(entriesDir);
   const entryRelSet = new Set(entryFiles.map(relative));
   const indexText = fs.existsSync(indexPath) ? readText(indexPath) : '';
+  const indexReferences = extractArchiveReferences(indexText);
+  const indexReferenceSet = new Set(indexReferences);
 
   if (!fs.existsSync(entriesDir)) {
     add('warning', 'entries_dir_missing', 'knowledge/08_conversation_archive/chat_archives is missing.');
@@ -87,21 +89,35 @@ if (!fs.existsSync(archiveRoot)) {
   if (indexText) {
     for (const entry of entryFiles) {
       const rel = relative(entry);
-      if (!indexText.includes(rel)) {
+      if (!indexReferenceSet.has(rel)) {
         add(
           'warning',
           'archive_index_reference_missing',
-          `${rel} is not referenced in knowledge/08_conversation_archive/index.md.`,
+          `${rel} is not referenced exactly in knowledge/08_conversation_archive/index.md.`,
           {
             file: rel,
             index: 'knowledge/08_conversation_archive/index.md',
-            suggestedFix: 'Add one matching row or reference for this archive entry in the archive index.',
+            suggestedFix: 'Add one exact matching path reference for this archive entry in the archive index.',
           },
         );
       }
     }
 
-    for (const ref of extractArchiveReferences(indexText)) {
+    for (const ref of indexReferences) {
+      if (!ref.endsWith('.md')) {
+        add(
+          'warning',
+          'archive_index_reference_extension_invalid',
+          `knowledge/08_conversation_archive/index.md references a non-.md archive path: ${ref}.`,
+          {
+            file: ref,
+            index: 'knowledge/08_conversation_archive/index.md',
+            suggestedFix: 'Correct the archive index reference so it points to an existing .md archive entry.',
+          },
+        );
+        continue;
+      }
+
       if (!entryRelSet.has(ref)) {
         add(
           'warning',
