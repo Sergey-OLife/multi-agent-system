@@ -53,7 +53,8 @@ if (!fs.existsSync(archiveRoot)) {
   const allArchiveMarkdown = listMarkdownFiles(archiveRoot);
   const entryFiles = listMarkdownFiles(entriesDir);
   const entryRelSet = new Set(entryFiles.map(relative));
-  const indexText = fs.existsSync(indexPath) ? readText(indexPath) : '';
+  const indexExists = fs.existsSync(indexPath);
+  const indexText = indexExists ? readText(indexPath) : '';
   const indexReferences = extractArchiveReferences(indexText);
   const indexReferenceSet = new Set(indexReferences);
 
@@ -61,7 +62,7 @@ if (!fs.existsSync(archiveRoot)) {
     add('warning', 'entries_dir_missing', 'knowledge/08_conversation_archive/chat_archives is missing.');
   }
 
-  if (!fs.existsSync(indexPath)) {
+  if (!indexExists) {
     add('warning', 'archive_index_missing', 'knowledge/08_conversation_archive/index.md is missing.');
   }
 
@@ -86,7 +87,7 @@ if (!fs.existsSync(archiveRoot)) {
     }
   }
 
-  if (indexText) {
+  if (indexExists) {
     for (const entry of entryFiles) {
       const rel = relative(entry);
       if (!indexReferenceSet.has(rel)) {
