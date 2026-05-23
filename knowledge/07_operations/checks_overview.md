@@ -8,6 +8,14 @@ This document prevents confusion between workflow names, job names and GitHub re
 
 The confusion already appeared once after `Protect main` was enabled: the intended checks were first described as `CI` and `Sync Check`, but GitHub Rulesets required the exact check contexts produced by jobs.
 
+## Gate vs advisory boundary
+
+Checks are repository merge gates only when they are explicitly listed as required check contexts.
+
+CI and Sync Check cover a subset of project invariants.
+
+Lifecycle status, archive discipline, source-of-truth reading, manual second-eyes, reviewer comment handling and mode boundaries still rely on explicit review discipline unless a separate Sergey decision promotes a specific check to validator or hard gate.
+
 ## Protected branch gate
 
 `main` / default branch is protected by GitHub Ruleset `Protect main`.
