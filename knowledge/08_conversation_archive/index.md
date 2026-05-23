@@ -30,6 +30,7 @@ Cleanup rule is conservative: age alone is not a deletion signal. Старые �
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_bot-reviewer-addendum-registered.md` | implemented_elsewhere | 2026-06-04 | agent_shipyard, pr_workflow, bot_comments, archive_protocol, closure | PR #229, PR #230, PR #231, PR #233, PR #234 | closed: bot reviewer comments protocol registration/state-sync/checkpoint arc closed through v2.57 |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_readme-boundary-and-operations-review-closure.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, state_sync, documentation_topology, operations_review, checkpoint, archive_protocol | PR #231, PR #233, PR #234, PR #235, PR #236, PR #237, PR #238, PR #239 | after merge: visible segment archived; next work must be chosen explicitly from v2.59 state |
 | 2026-05-21 | `knowledge/08_conversation_archive/chat_archives/2026-05-21_agent-queue-and-status-trust-closure.md` | draft_archive_entry | 2026-06-04 | agent_shipyard, agent_queue, second_eyes, registry_hygiene, external_audit, status_trust, state_sync, archive_protocol | PR #241, PR #242, PR #243, PR #244, PR #245, PR #246, PR #247, PR #248, PR #249, PR #250, PR #251, PR #252 | after merge: segment archived; choose next direction explicitly from v2.62 state |
+| 2026-05-23 | `knowledge/08_conversation_archive/chat_archives/2026-05-23_book-agent-and-writing-stack-recalibration.md` | draft_archive_entry | 2026-06-06 | agent_shipyard, book_agent, portable_workspace, mode_commands, failure_pattern, writing_stack, book_quality | PR #257-#264 | open loops: decide whether to create operations notes for Book Agent portable workspace and one-voice-first writing stack recalibration |
 
 ## Current active archive-level open loops
 
@@ -37,6 +38,8 @@ Cleanup rule is conservative: age alone is not a deletion signal. Старые �
 - Lifecycle policy layer remains future-only and requires separate Sergey decision.
 - README/documentation-topology boundary has been reviewed; further cleanup only if separately selected.
 - Book work remains paused until separate Sergey decision.
+- Book Agent portable workspace architecture: needs decision before any implementation or PR note.
+- Book-writing agent stack recalibration: needs decision before returning to book mode; avoid committee writing.
 
 ## Status legend
 
