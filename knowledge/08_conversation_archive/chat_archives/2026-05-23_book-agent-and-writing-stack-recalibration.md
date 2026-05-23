@@ -1,8 +1,9 @@
 # Archive — Book Agent and writing stack recalibration
 
-Status: draft_archive_entry
-Date: 2026-05-23
-Review after: 2026-06-06
+Статус: draft_archive_entry
+Дата: 2026-05-23
+Срок пересмотра: 2026-06-06
+Implemented elsewhere: partial / PR #257-#264
 
 ## 0. Origin
 
