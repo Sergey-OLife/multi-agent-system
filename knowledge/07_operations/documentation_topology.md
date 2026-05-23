@@ -8,6 +8,23 @@ README is the entrance map. It must stay clear enough for fast orientation, but 
 
 When README starts getting too dense, expand through linked documents instead of turning it into a dump.
 
+This file explains how repository documents relate to each other so continuity notes, proposals, archive entries and current state are not accidentally treated as the same layer.
+
+## Authority layers
+
+| Layer | Role | Authoritativeness |
+|---|---|---|
+| README | Entrance map and contract layer | High for mode, boundaries and navigation contracts |
+| Project state | Current accepted state | Highest for accepted state and resume diagnostics |
+| Worklog / roadmap | Continuity, sequencing and working intent | Derived from accepted state; not the state source by itself |
+| Operations docs | Stable protocols and architecture rules | Operational; authoritative for their explicit scope |
+| Vision intake | Proposal, hypothesis and idea capture | Non-authoritative unless linked to an accepted PR, project-state update or explicit approved decision |
+| Archive | Historical record, corrections, open loops and strong formulas | Not project-state and not checkpoint unless explicitly marked |
+| Checks overview | Advisory and gate semantics for repository checks | Operational; only explicit required check contexts are merge gates |
+| Future hypotheses | Possible architecture directions | Future-only until separately approved |
+
+If documents appear to conflict, project-state files and README contracts take priority until a later state-sync or correction PR changes that.
+
 ## Layers
 
 - README: entrance map, current status, active boundaries, links to deeper maps.
