@@ -14,6 +14,7 @@
     "lint:boundaries": "node scripts/check-boundaries.mjs",
     "hygiene:audit": "node scripts/hygiene-audit.mjs",
     "archive:audit": "node scripts/archive-audit.mjs",
+    "archive:structure-check": "node scripts/archive-structure-check.mjs",
     "state-sync:drift-audit": "node scripts/state-sync-drift-audit.mjs",
     "test": "npm run lint:boundaries --silent && npm run build --silent && node --test dist/tests/*.test.js",
     "test:core": "cd go-core && go test ./...",
