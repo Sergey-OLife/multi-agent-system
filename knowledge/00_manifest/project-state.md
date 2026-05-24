@@ -46,7 +46,11 @@ Closed unmerged:
 - PR #276 — superseded by PR #278.
 - PR #279 — duplicate of PR #275.
 
+The key result:
+
+```text
 The archive structure check exists only as local advisory / warning-only diagnostics unless Sergey separately approves CI/gate promotion.
+```
 
 ## What remains from v2.67
 
@@ -67,7 +71,7 @@ This state sync is state/resume sync only.
 
 It does not:
 
-- implement runtime code;
+- implement code;
 - change runtime behavior;
 - change workflows;
 - add GitHub Actions;
