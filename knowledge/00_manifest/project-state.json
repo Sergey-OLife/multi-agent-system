@@ -123,7 +123,8 @@
     "Human core invariants are constitutional documentation, not runtime, validator, hard guardrail, CI gate, policy engine or agent activation",
     "Plotnikov full pass map is an extraction framework for the future 50-chapter pass, not a summary layer or book rewrite",
     "Degradation patterns registry is an operational anthropology registry for recurring mechanisms, not enforcement or automated classification",
-    "The next grounded content step is to run the first 5-7 Plotnikov chapters through the extraction framework before broadening the full pass",
+    "Agent Shipyard / Agent Queue may run non-final extraction and creative sandbox work over Plotnikov chapters when explicitly requested by Sergey; such outputs are candidate material only, not accepted book content",
+    "Saving extraction outputs as accepted chapter text, changing book files, durable book/product mode switching, or treating candidate fragments as final requires explicit Sergey approval and the appropriate book workflow",
     "PR #257 defined workflow_conductor_agent activation scope as active advisory/manual orchestration planner, not runtime/governance authority",
     "PR #259 added mode switch commands #книга, #агент and #агенты as mandatory protocol addendum and registered it in working-protocol",
     "PR #261 is the v2.66 checkpoint full after mode switch commands",
@@ -162,7 +163,9 @@
     "+++ means the nearest grounded safe action and does not bypass approval-gates"
   ],
   "pausedTasks": [
-    "Do not continue the book automatically while current durable mode is Agent Shipyard / Agent Queue unless Sergey uses #книга or otherwise explicitly switches mode",
+    "Do not continue accepted book-work automatically while current durable mode is Agent Shipyard / Agent Queue unless Sergey uses #книга or otherwise explicitly switches mode",
+    "Do not treat agent-side extraction or creative sandbox outputs as accepted book content",
+    "Do not save candidate fragments into book files without explicit Sergey approval and the appropriate book workflow",
     "Do not offer Book Fast Track as immediate next work until Sergey separately resumes it",
     "Do not treat #книга as approval to write chapters, change book files, bypass source checks, bypass PR workflow or change GitHub state automatically",
     "Do not treat #агент or #агенты as approval to activate agents, mutate registry, add routes, add validators, add hard guardrails, add runtime, add CI checks or bypass approval-gates",
@@ -184,7 +187,7 @@
     "Do not let Codex rewrite or compact state/resume files; state-sync is additive by default",
     "Do not treat runtime_readiness_checklist_2026-05-24.md as runtime implementation, route automation, validator, hard guardrail, policy layer, infrastructure approval or deployment plan"
   ],
-  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a limited extraction test. Keep human_core_invariants_v0.1.md and degradation_patterns_registry.md documentation/advisory only. Do not broaden to full 50-chapter extraction until the first pass confirms the framework preserves Plotnikovsky Motor, practical tension and scene-level concreteness.",
+  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a non-final Agent Queue extraction/creative sandbox. Outputs are candidate material only unless Sergey explicitly approves saving them as accepted book content through the appropriate book workflow. Keep human_core_invariants_v0.1.md and degradation_patterns_registry.md documentation/advisory only.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -241,7 +244,7 @@
       "pr_operation_response_footer manual response footer discipline",
       "state_sync_additive_patch_discipline manual state-sync discipline"
     ],
-    "recommendedNextWorkItem": "Run the first 5-7 Plotnikov chapters through the merged extraction framework before broadening the full 50-chapter pass.",
+    "recommendedNextWorkItem": "Run the first 5-7 Plotnikov chapters through the merged extraction framework as a non-final Agent Queue extraction/creative sandbox before broadening the full 50-chapter pass.",
     "modeSwitchCommands": {
       "#книга": "switch intent to Book/Product Mission Mode; first response is workflow_conductor_agent advisory mission plan; no automatic GitHub state change",
       "#агент": "switch intent to Agent Shipyard / Agent Queue Mode; first response is advisory agent-work plan; no automatic activation",
