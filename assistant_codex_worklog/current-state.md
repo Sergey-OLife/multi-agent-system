@@ -8,56 +8,69 @@ Mode: `Agent Shipyard / Agent Queue`.
 
 Book work remains paused until Sergey uses `#книга` or gives a separate explicit mode decision.
 
-Book Fast Track is ignored for immediate next work per Sergey instruction.
-
 ## Latest merged PR
 
-- PR #284 — State sync after operations readiness note
+- PR #286 — Add human core invariants and extraction framework
 - Status: merged
-- Merge commit: `a66449b57c2bdb164cd304225b8de28e05ab6c7b`
+- Merge commit: `98f52a1ca4b69421d813c87b74ca0e34ecd3fb5f`
 
 ## Current version
 
-- currentVersion: v2.71
-- currentMilestone: Checkpoint full after runtime readiness state sync
+- currentVersion: v2.72
+- currentMilestone: State sync after human core invariants extraction framework
 
-## Recent protocol sequence
+## Human-core extraction layer
 
-PR #261 created the full checkpoint after mode switch commands as v2.66.
+PR #286 introduced:
 
-PR #262 corrected checkpoint state records to v2.66 / PR #261.
+- `human_core_invariants_v0.1.md`
+- `plotnikov_full_pass_map.md`
+- `degradation_patterns_registry.md`
 
-PR #263 added `assistant_codex_worklog/protocol_addenda/pr_operation_response_footer.md`.
+These documents establish:
 
-## External-audit / archive-structure / authority arc
+- constitutional human boundaries;
+- operational anthropology extraction logic;
+- recurring degradation-pattern tracking.
 
-Merged arc: PR #270, PR #271, PR #272, PR #273, PR #275, PR #277, PR #278.
+All layers remain documentation/advisory only.
 
-Closed unmerged: PR #274, PR #276, PR #279.
+They are not:
 
-PR #273 added a local advisory archive structure check. PR #278 corrected empty-index handling in that advisory check. The advisory check remains warning-only/manual unless Sergey separately approves CI/gate promotion.
+- runtime;
+- validator system;
+- hard guardrails;
+- policy engine;
+- orchestration enforcement.
 
-PR #280 synced the project-state/worklog files after that arc.
+## Current extraction direction
 
-## State-sync additive discipline
+The extraction framework exists to identify:
 
-PR #281 added `assistant_codex_worklog/protocol_addenda/state_sync_additive_patch_discipline.md` and registered it in `assistant_codex_worklog/working-protocol.md`.
+- recurring human conflicts;
+- self-deception patterns;
+- influence distortions;
+- degradation mechanisms;
+- maturity conditions.
 
-State/resume sync is additive by default. Codex may assist, but should receive a patch-map, not a broad state rewrite task.
+The next practical validation step:
 
-Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
+```text
+Run the first 5-7 Plotnikov chapters through the extraction framework.
+```
 
-## Runtime readiness note
+The extraction framework must preserve:
 
-PR #283 added `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations readiness note.
+- Plotnikovsky Motor;
+- practical tension;
+- scenes and conflict;
+- human concreteness.
 
-PR #284 synced state/resume after PR #283 and recorded the note in project-state/worklog.
+It must not:
 
-The runtime readiness checklist is a manual planning map only.
-
-It does not implement runtime, route automation, validators, hard guardrails, policy layer, infrastructure, CI, branch protection, registry mutation, archive protocol changes, state-sync rewrite or book workflow changes.
-
-Use it only when future Agent Shipyard / Agent Queue work approaches runtime language.
+- academicize the book;
+- replace scenes with abstraction;
+- kill narrative energy.
 
 ## Current protocol result
 
@@ -67,29 +80,6 @@ After PR / merge / state-sync / checkpoint operations, responses must include:
 Bot/reviewer comments: checked / not checked / not applicable.
 Archive status: зеленый_1 / зеленый_2 / желтый_1 / желтый_2 / желтый_3 / красный.
 ```
-
-If bot/reviewer comments were not checked, ChatGPT must not call the point clean. `get_pr_info` alone is not enough.
-
-Mode switch commands are active:
-
-- `#книга` switches conversation/workflow intent to Book/Product Mission Mode. First response should be an advisory book/product mission plan before writing or product design starts.
-- `#агент` and `#агенты` switch conversation/workflow intent to Agent Shipyard / Agent Queue Mode. First response should be an advisory agent-work plan.
-
-Mode switch commands do not change repository state, project-state, registry, activation status, approval-gates, PR workflow, runtime, validators, hard guardrails or workflow_conductor authority by themselves.
-
-`workflow_conductor_agent` is active as advisory/manual orchestration planner.
-
-`critic_margin_agent` is active as advisory/manual second-eyes discipline.
-
-`agent_registry_librarian` is active as advisory/manual registry hygiene discipline.
-
-README is the entrance map, not the live roadmap.
-
-For the current next action, use:
-
-- `knowledge/00_manifest/project-state.json`;
-- `assistant_codex_worklog/current-state.md`;
-- `assistant_codex_worklog/roadmap.md`.
 
 ## Current active manual disciplines
 
@@ -103,25 +93,19 @@ For the current next action, use:
 - `pr_operation_response_footer` manual response footer discipline;
 - `state_sync_additive_patch_discipline` manual state-sync discipline.
 
-## Active archive-level open loops
-
-- wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
-- durable book/product state switch only by separate Sergey decision and state sync if needed;
-- first book/product mission plan through conductor only after `#книга` or equivalent explicit mode decision;
-- lifecycle policy layer only by separate Sergey decision;
-- further second-eyes tooling or mandatory preflight only by separate Sergey decision;
-- archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision;
-- bot/reviewer comment readiness may be a future validator candidate, not an automatic gate;
-- future runtime readiness implementation remains blocked unless Sergey separately approves a scoped runtime decision.
-
 ## State-sync boundaries
 
-This v2.71 checkpoint is state/resume sync only.
+This v2.72 state sync is documentation/state alignment only.
 
-It records PR #284 as merged and preserves the runtime readiness checklist boundary.
+It does not:
 
-It does not change runtime behavior, add validators, add gates, change CI, change branch protection, change archive protocol, mutate registry, or resume book mode.
+- implement runtime;
+- add validators;
+- add hard gates;
+- change CI;
+- mutate registry authority;
+- resume book mode.
 
 ## Next safe step
 
-Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+Run the first 5-7 Plotnikov chapters through the extraction framework and test whether the framework survives real material without losing practical force.
