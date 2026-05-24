@@ -10,10 +10,10 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.69
-- currentMilestone: State-sync additive patch discipline synced
-- lastMergedPr: PR #281 — Add state-sync additive patch discipline
-- lastMergeCommit: `2ac0db1cbb0ff3e71144454d7c07e58d1e25496f`
+- currentVersion: v2.70
+- currentMilestone: Runtime readiness checklist note synced
+- lastMergedPr: PR #283 — Add operations readiness note
+- lastMergeCommit: `0da803f36660d0b6b65ef7199b2c0f7a73d0544c`
 
 ## Recent PR summary
 
@@ -29,6 +29,7 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 - PR #278 — Adjust archive structure index handling.
 - PR #280 — State sync: external-audit / archive-structure / authority arc resume update.
 - PR #281 — Add state-sync additive patch discipline.
+- PR #283 — Add operations readiness note.
 
 Closed unmerged in this arc:
 
@@ -97,6 +98,10 @@ Workflow conductor advisory activation scope is recorded in `knowledge/07_operat
 
 Advisory archive structure check is warning-only/manual unless Sergey separately approves CI/gate promotion.
 
+`knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` is a documentation-only readiness map for future runtime discussions.
+
+The runtime readiness checklist does not implement runtime, route automation, validators, hard guardrails, policy layer, infrastructure, CI, branch protection, registry mutation, archive protocol changes, state-sync rewrite or book workflow changes.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
@@ -105,7 +110,7 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 - Durable book/product state switch: only by separate Sergey decision and state sync if needed.
 - First book/product mission plan through conductor: only after `#книга` or equivalent explicit mode decision.
 - Lifecycle policy layer: future-only and requires separate Sergey decision.
-- Future runtime readiness checklist: only by separate Sergey decision.
+- Future runtime readiness implementation: only by separate scoped Sergey decision.
 - Further second-eyes tooling or mandatory preflight: only by separate Sergey decision.
 - Archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision.
 - Bot/reviewer comment readiness may be a future validator candidate, not an automatic gate.
