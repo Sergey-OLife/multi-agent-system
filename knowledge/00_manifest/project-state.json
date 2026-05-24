@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.69",
-  "lastCompletedVersion": "v2.69",
-  "lastMergedPr": "PR #281 — Add state-sync additive patch discipline",
-  "lastMergeCommit": "2ac0db1cbb0ff3e71144454d7c07e58d1e25496f",
-  "currentMilestone": "v2.69 State-sync additive patch discipline synced",
+  "currentVersion": "v2.70",
+  "lastCompletedVersion": "v2.70",
+  "lastMergedPr": "PR #283 — Add operations readiness note",
+  "lastMergeCommit": "0da803f36660d0b6b65ef7199b2c0f7a73d0544c",
+  "currentMilestone": "v2.70 Runtime readiness checklist synced",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -69,7 +69,8 @@
     "v2.66 Checkpoint full after mode switch commands",
     "v2.67 PR operation response footer synced",
     "v2.68 External-audit/archive-structure/document-authority arc synced",
-    "v2.69 State-sync additive patch discipline synced"
+    "v2.69 State-sync additive patch discipline synced",
+    "v2.70 Runtime readiness checklist synced"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -86,7 +87,9 @@
     "PR #277 — Archive external audit validator and authority arc",
     "PR #278 — Adjust archive structure index handling",
     "PR #280 — State sync: external-audit / archive-structure / authority arc resume update",
-    "PR #281 — Add state-sync additive patch discipline"
+    "PR #281 — Add state-sync additive patch discipline",
+    "PR #282 — State sync after additive patch discipline",
+    "PR #283 — Add operations readiness note"
   ],
   "mergedArcPrs": [
     "PR #270 — Add reasonable community balancing map",
@@ -127,6 +130,9 @@
     "PR #278 corrected empty-index handling in the advisory archive structure check",
     "PR #280 synced state/resume after the external-audit / archive-structure / authority arc without changing runtime, CI, branch protection, validators, registry or archive protocol",
     "PR #281 added state_sync_additive_patch_discipline.md as mandatory manual protocol addendum",
+    "PR #282 synced state/worklog after the additive patch discipline without changing runtime, CI, branch protection, validators, registry or archive protocol",
+    "PR #283 added knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md as a documentation-only operations note and readiness map",
+    "Runtime readiness checklist is not runtime implementation, route automation, validator, hard guardrail, policy layer, CI gate, branch protection, registry mutation, archive protocol change, state-sync rewrite or book mode resume",
     "State/resume sync is additive by default; Codex receives a patch-map, not a broad state rewrite task",
     "Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub",
     "Advisory checks remain warning-only/manual unless Sergey separately approves CI/gate promotion",
@@ -160,13 +166,14 @@
     "Do not treat critic_margin_agent advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine",
     "Do not treat agent_registry_librarian advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
     "Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change",
+    "Do not treat runtime_readiness_checklist_2026-05-24.md as runtime implementation, validator, policy layer, CI gate, branch protection, registry mutation, archive protocol change or approval to implement infrastructure",
     "Do not treat README as live roadmap; use project-state/current-state/roadmap for next action",
     "Do not implement runtime readiness items from external assessments without separate decision",
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164, PR #169, PR #274, PR #276 or PR #279 as implemented",
     "Do not treat archive structure advisory check as CI, required check, hard gate, branch protection, runtime behavior or automatic archive fixer without separate Sergey approval",
     "Do not let Codex rewrite or compact state/resume files; state-sync is additive by default"
   ],
-  "nextAction": "Wait for Sergey to choose #книга, #агент or #агенты. Keep advisory checks warning-only/manual until separate Sergey approval for CI/gate promotion. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
+  "nextAction": "Continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer, or switch to #книга by explicit Sergey command. Keep runtime readiness as documentation-only unless Sergey separately approves scoped runtime discussion or implementation.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -187,6 +194,7 @@
     "knowledge/08_conversation_archive/chat_archives/2026-05-23_external-audit-validator-and-authority-arc.md",
     "knowledge/07_operations/reasonable_community_balancing_map_2026-05-23.md",
     "knowledge/07_operations/archive_structure_validator_candidate_2026-05-23.md",
+    "knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md",
     "knowledge/07_operations/documentation_topology.md",
     "knowledge/07_operations/checks_overview.md",
     "scripts/archive-structure-check.mjs",
@@ -219,7 +227,7 @@
       "pr_operation_response_footer manual response footer discipline",
       "state_sync_additive_patch_discipline manual state-sync discipline"
     ],
-    "recommendedNextWorkItem": "Wait for Sergey to choose #книга, #агент or #агенты. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
+    "recommendedNextWorkItem": "Continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer, or switch to #книга by explicit Sergey command. Runtime readiness remains documentation-only unless separately approved for scoped implementation.",
     "modeSwitchCommands": {
       "#книга": "switch intent to Book/Product Mission Mode; first response is workflow_conductor_agent advisory mission plan; no automatic GitHub state change",
       "#агент": "switch intent to Agent Shipyard / Agent Queue Mode; first response is advisory agent-work plan; no automatic activation",
@@ -234,9 +242,9 @@
       "workflow_conductor_agent": "active advisory/manual orchestration planner only; not runtime, not route automation, not approval authority, not registry mutation authority, not project-state authority, not validator, not hard guardrail, not policy layer, not automatic book/product mode switch"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #281 — Add state-sync additive patch discipline",
-      "latest_green_head": "bbe397bf5fba02e7dfaca6083efd5a5100dfd6d7",
-      "latest_green_merge_commit": "2ac0db1cbb0ff3e71144454d7c07e58d1e25496f",
+      "latest_green_pr": "PR #283 — Add operations readiness note",
+      "latest_green_head": "ed54b7ed1703272b07f41fb13053082a970f565f",
+      "latest_green_merge_commit": "0da803f36660d0b6b65ef7199b2c0f7a73d0544c",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
