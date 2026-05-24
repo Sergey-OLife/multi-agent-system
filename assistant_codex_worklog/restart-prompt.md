@@ -7,9 +7,9 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.69.
-- lastMergedPr: PR #281 — Add state-sync additive patch discipline.
-- lastMergeCommit: 2ac0db1cbb0ff3e71144454d7c07e58d1e25496f.
+- currentVersion: v2.70.
+- lastMergedPr: PR #283 — Add operations readiness note.
+- lastMergeCommit: 0da803f36660d0b6b65ef7199b2c0f7a73d0544c.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного явного mode decision.
 - `pr_operation_response_footer.md` is active mandatory protocol addendum.
@@ -38,13 +38,15 @@ GitHub main — источник правды. Сначала открой READM
 - Closed unmerged in this arc: PR #274, #276, #279.
 - PR #280 synced state/resume after that arc.
 - PR #281 added state-sync additive patch discipline.
+- PR #283 added `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations readiness note.
+- Runtime readiness checklist is a manual planning map only and does not implement runtime, route automation, validators, hard guardrails, policy layer, infrastructure, CI, branch protection, registry mutation, archive protocol changes, state-sync rewrite or book workflow changes.
 - PR #273 added advisory archive structure check.
 - PR #278 corrected empty-index handling in that advisory check.
 - Advisory archive structure check remains warning-only/manual unless Sergey separately approves CI/gate promotion.
 
-Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. PR operation response footer is manual response discipline only: not automation, not CI check, not validator, not hard guardrail, not archive-state mutation and not approval gate. State-sync additive patch discipline is manual protocol only: not CI, not hard gate, not branch protection, not parser change, not runtime. Mode switch commands are not approval and not GitHub state mutation. This v2.69 state sync is state/resume sync only: no runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry mutation or book mode resume.
+Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. PR operation response footer is manual response discipline only: not automation, not CI check, not validator, not hard guardrail, not archive-state mutation and not approval gate. State-sync additive patch discipline is manual protocol only: not CI, not hard gate, not branch protection, not parser change, not runtime. Mode switch commands are not approval and not GitHub state mutation. Runtime readiness checklist is documentation-only planning map, not implementation. This v2.70 state sync is state/resume sync only: no runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry mutation or book mode resume.
 
-Active open loops: wait for Sergey to choose `#книга`, `#агент` or `#агенты`; durable book/product state switch only by separate Sergey decision and state sync if needed; lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; further second-eyes tooling or mandatory preflight only by separate Sergey decision; archive structure advisory check promotion only by separate Sergey decision.
+Active open loops: wait for Sergey to choose `#книга`, `#агент` or `#агенты`; durable book/product state switch only by separate Sergey decision and state sync if needed; lifecycle policy layer only by separate Sergey decision; future runtime readiness implementation only by separate scoped Sergey decision; further second-eyes tooling or mandatory preflight only by separate Sergey decision; archive structure advisory check promotion only by separate Sergey decision.
 
 Next: wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
 ```
