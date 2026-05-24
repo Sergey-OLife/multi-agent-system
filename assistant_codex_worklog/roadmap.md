@@ -10,10 +10,10 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.70
-- currentMilestone: Runtime readiness checklist note synced
-- lastMergedPr: PR #283 — Add operations readiness note
-- lastMergeCommit: `0da803f36660d0b6b65ef7199b2c0f7a73d0544c`
+- currentVersion: v2.71
+- currentMilestone: Checkpoint full after runtime readiness state sync
+- lastMergedPr: PR #284 — State sync after operations readiness note
+- lastMergeCommit: `a66449b57c2bdb164cd304225b8de28e05ab6c7b`
 
 ## Recent PR summary
 
@@ -30,6 +30,7 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 - PR #280 — State sync: external-audit / archive-structure / authority arc resume update.
 - PR #281 — Add state-sync additive patch discipline.
 - PR #283 — Add operations readiness note.
+- PR #284 — State sync after operations readiness note.
 
 Closed unmerged in this arc:
 
@@ -100,6 +101,8 @@ Advisory archive structure check is warning-only/manual unless Sergey separately
 
 `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` is a documentation-only readiness map for future runtime discussions.
 
+PR #284 synced that runtime readiness note into state/worklog.
+
 The runtime readiness checklist does not implement runtime, route automation, validators, hard guardrails, policy layer, infrastructure, CI, branch protection, registry mutation, archive protocol changes, state-sync rewrite or book workflow changes.
 
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
@@ -117,7 +120,7 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 
 ## Approved next sequence
 
-1. merge this state sync only after checks, comments review and explicit approval;
+1. merge this checkpoint state sync only after checks, comments review and explicit approval;
 2. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
 3. after `#книга`, give an advisory book/product mission plan before writing or product design;
 4. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
@@ -125,7 +128,7 @@ README is the entrance map, not the live roadmap. Use project-state/current-stat
 
 ## State-sync boundaries
 
-This roadmap entry is state/resume sync only and does not change runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry, or durable mode.
+This roadmap entry is checkpoint/state-resume sync only and does not change runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry, or durable mode.
 
 ## Recommended next work item
 

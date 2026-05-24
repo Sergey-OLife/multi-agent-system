@@ -4,13 +4,25 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.70
-- lastCompletedVersion: v2.70
-- lastMergedPr: PR #283 — Add operations readiness note
-- lastMergeCommit: 0da803f36660d0b6b65ef7199b2c0f7a73d0544c
-- currentMilestone: v2.70 Runtime readiness checklist note synced
+- currentVersion: v2.71
+- lastCompletedVersion: v2.71
+- lastMergedPr: PR #284 — State sync after operations readiness note
+- lastMergeCommit: a66449b57c2bdb164cd304225b8de28e05ab6c7b
+- currentMilestone: v2.71 Checkpoint full after runtime readiness state sync
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
+
+## What changed in v2.71
+
+This checkpoint records PR #284 — State sync after operations readiness note.
+
+The key result:
+
+```text
+Runtime readiness is now synced into state/worklog as documentation-only planning context, not implementation or enforcement.
+```
+
+PR #284 synced state/resume after PR #283 and preserved the boundary that `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` is a manual planning map only.
 
 ## What changed in v2.70
 
@@ -42,48 +54,9 @@ PR #281 added `assistant_codex_worklog/protocol_addenda/state_sync_additive_patc
 
 The discipline preserves Codex as a tool while preventing recurrence of the PR #280 destructive state rewrite failure pattern.
 
-## What changed in v2.68
-
-This state sync records the completed external-audit / archive-structure / document-authority arc.
-
-Merged arc:
-
-- PR #270 — Add reasonable community balancing map.
-- PR #271 — Clarify checks vs manual invariants.
-- PR #272 — Add archive structure validator candidate.
-- PR #273 — Add archive structure advisory check.
-- PR #275 — Clarify document authority layers.
-- PR #277 — Archive external audit validator and authority arc.
-- PR #278 — Adjust archive structure index handling.
-
-Closed unmerged:
-
-- PR #274 — stale duplicate of PR #271.
-- PR #276 — superseded by PR #278.
-- PR #279 — duplicate of PR #275.
-
-The key result:
-
-```text
-The archive structure check exists only as local advisory / warning-only diagnostics unless Sergey separately approves CI/gate promotion.
-```
-
-## What remains from v2.67
-
-PR #263 added `pr_operation_response_footer.md` as mandatory protocol addendum.
-
-Required footer shape after PR / merge / state-sync / checkpoint operations:
-
-```text
-Bot/reviewer comments: checked / not checked / not applicable.
-Archive status: зеленый_1 / зеленый_2 / желтый_1 / желтый_2 / желтый_3 / красный.
-```
-
-If bot/reviewer comments were not checked, ChatGPT must not call the point clean. `get_pr_info` alone is not enough.
-
 ## Boundary
 
-This state sync is state/resume sync only.
+This checkpoint/state sync is state/resume sync only.
 
 It does not:
 
@@ -117,17 +90,9 @@ It does not:
 - GitHub `main` is the source of truth for merged project state.
 - Current durable project mode remains Agent Shipyard / Agent Queue until Sergey explicitly switches mode and state is synced if needed.
 - Book Fast Track remains paused until separate Sergey decision.
-- PR #263 added `pr_operation_response_footer.md` as mandatory protocol addendum.
-- PR #270 added the reasonable community balancing map as an operations note only.
-- PR #271 clarified checks vs manual invariants.
-- PR #272 added archive structure validator candidate/spec only.
-- PR #273 added a local advisory archive structure check and npm script.
-- PR #275 clarified documentation authority layers.
-- PR #277 archived the external-audit / validator / authority arc.
-- PR #278 corrected empty-index handling in the advisory archive structure check.
-- PR #280 synced state/resume after the external-audit / archive-structure / authority arc without changing runtime, CI, branch protection, validators, registry or archive protocol.
 - PR #281 added state_sync_additive_patch_discipline.md as mandatory manual protocol addendum.
 - PR #283 added `runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations readiness note.
+- PR #284 synced state/resume after PR #283 and recorded runtime readiness as documentation-only planning map.
 - Runtime readiness checklist is a manual planning map only and does not implement runtime, route automation, validators, hard guardrails, policy layer, CI, branch protection, registry mutation, archive protocol change or book workflow change.
 - State/resume sync is additive by default; Codex receives a patch-map, not a broad state rewrite task.
 - Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.

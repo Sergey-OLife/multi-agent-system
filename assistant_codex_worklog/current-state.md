@@ -12,14 +12,14 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #283 — Add operations readiness note
+- PR #284 — State sync after operations readiness note
 - Status: merged
-- Merge commit: `0da803f36660d0b6b65ef7199b2c0f7a73d0544c`
+- Merge commit: `a66449b57c2bdb164cd304225b8de28e05ab6c7b`
 
 ## Current version
 
-- currentVersion: v2.70
-- currentMilestone: Runtime readiness checklist note synced
+- currentVersion: v2.71
+- currentMilestone: Checkpoint full after runtime readiness state sync
 
 ## Recent protocol sequence
 
@@ -50,6 +50,8 @@ Codex local commits, done reports and PR-helper reports are not source-of-truth 
 ## Runtime readiness note
 
 PR #283 added `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations readiness note.
+
+PR #284 synced state/resume after PR #283 and recorded the note in project-state/worklog.
 
 The runtime readiness checklist is a manual planning map only.
 
@@ -114,9 +116,9 @@ For the current next action, use:
 
 ## State-sync boundaries
 
-This v2.70 update is state/resume sync only.
+This v2.71 checkpoint is state/resume sync only.
 
-It records PR #283 and the runtime readiness checklist note.
+It records PR #284 as merged and preserves the runtime readiness checklist boundary.
 
 It does not change runtime behavior, add validators, add gates, change CI, change branch protection, change archive protocol, mutate registry, or resume book mode.
 
