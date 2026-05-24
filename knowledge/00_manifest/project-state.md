@@ -4,13 +4,25 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.69
-- lastCompletedVersion: v2.69
-- lastMergedPr: PR #281 — Add state-sync additive patch discipline
-- lastMergeCommit: 2ac0db1cbb0ff3e71144454d7c07e58d1e25496f
-- currentMilestone: v2.69 State-sync additive patch discipline synced
+- currentVersion: v2.70
+- lastCompletedVersion: v2.70
+- lastMergedPr: PR #283 — Add operations readiness note
+- lastMergeCommit: 0da803f36660d0b6b65ef7199b2c0f7a73d0544c
+- currentMilestone: v2.70 Runtime readiness checklist synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
+
+## What changed in v2.70
+
+This state sync records PR #283 — Add operations readiness note.
+
+The key result:
+
+```text
+knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md is a documentation-only readiness map for future runtime discussions.
+```
+
+The runtime readiness checklist is not runtime implementation, route automation, validator, hard guardrail, policy layer, CI gate, branch protection, registry mutation, archive protocol change, state-sync rewrite or book mode resume.
 
 ## What changed in v2.69
 
@@ -93,7 +105,7 @@ It does not:
 3. Read protocol addenda, especially `pr_operation_response_footer.md`, `bot_reviewer_comments.md`, `archive_status_indicator.md`, `mode_switch_commands.md` and `state_sync_additive_patch_discipline.md`.
 4. Do not treat README as the live roadmap.
 5. Treat `workflow_conductor_agent` as advisory/manual orchestration planner only.
-6. Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+6. Continue Agent Shipyard / Agent Queue with the next advisory open loop, or switch to `#книга` by explicit Sergey command.
 
 ## Active decisions
 
@@ -110,6 +122,9 @@ It does not:
 - PR #278 corrected empty-index handling in the advisory archive structure check.
 - PR #280 synced state/resume after the external-audit / archive-structure / authority arc without changing runtime, CI, branch protection, validators, registry or archive protocol.
 - PR #281 added state_sync_additive_patch_discipline.md as mandatory manual protocol addendum.
+- PR #282 synced state/worklog after the additive patch discipline without changing runtime, CI, branch protection, validators, registry or archive protocol.
+- PR #283 added `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations note and readiness map.
+- Runtime readiness checklist is not runtime implementation, route automation, validator, hard guardrail, policy layer, CI gate, branch protection, registry mutation, archive protocol change, state-sync rewrite or book mode resume.
 - State/resume sync is additive by default; Codex receives a patch-map, not a broad state rewrite task.
 - Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
 - Advisory checks remain warning-only/manual unless Sergey separately approves CI/gate promotion.
@@ -125,14 +140,14 @@ It does not:
 
 ## Active archive-level open loops
 
-- Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+- Continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer.
 - Durable book/product state switch only by separate Sergey decision and state sync if needed.
 - First book/product mission plan through conductor only after `#книга` or equivalent explicit mode decision.
-- Future runtime readiness checklist only by separate Sergey decision.
 - Lifecycle policy layer only by separate Sergey decision.
 - Further second-eyes tooling or mandatory preflight only by separate Sergey decision.
 - Archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision.
 - Bot/reviewer comment readiness may be a future validator candidate, not an automatic gate.
+- Runtime readiness remains documentation-only unless Sergey separately approves scoped runtime discussion or implementation.
 
 ## Paused tasks
 
@@ -144,6 +159,7 @@ It does not:
 - Do not treat `workflow_conductor_agent` advisory/manual activation as runtime, route automation, approval authority, registry mutation authority, project-state authority, validator, hard guardrail, policy layer, book writer or automatic mode switch.
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
 - Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
+- Do not treat `runtime_readiness_checklist_2026-05-24.md` as runtime implementation, validator, policy layer, CI gate, branch protection, registry mutation, archive protocol change or approval to implement infrastructure.
 - Do not treat PR #274, PR #276 or PR #279 as implemented.
 - Do not let Codex rewrite or compact state/resume files; state-sync is additive by default.
 
@@ -155,11 +171,10 @@ It does not:
 - `assistant_codex_worklog/roadmap.md`
 - `assistant_codex_worklog/restart-prompt.md`
 - `assistant_codex_worklog/protocol_addenda/state_sync_additive_patch_discipline.md`
+- `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md`
 
 ## Next action
 
-Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+Continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer, or switch to `#книга` by explicit Sergey command.
 
-After `#книга`, `workflow_conductor_agent` should create the first advisory book/product mission plan.
-
-After `#агент` / `#агенты`, `workflow_conductor_agent` or `agent_registry_librarian` should create the first advisory agent-work plan.
+Runtime readiness remains documentation-only unless Sergey separately approves scoped runtime discussion or implementation.
