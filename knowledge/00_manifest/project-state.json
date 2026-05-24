@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.71",
-  "lastCompletedVersion": "v2.71",
-  "lastMergedPr": "PR #284 — State sync after operations readiness note",
-  "lastMergeCommit": "a66449b57c2bdb164cd304225b8de28e05ab6c7b",
-  "currentMilestone": "v2.71 Checkpoint full after runtime readiness state sync",
+  "currentVersion": "v2.72",
+  "lastCompletedVersion": "v2.72",
+  "lastMergedPr": "PR #286 — Add human core invariants and extraction framework",
+  "lastMergeCommit": "98f52a1ca4b69421d813c87b74ca0e34ecd3fb5f",
+  "currentMilestone": "v2.72 State sync after human core invariants extraction framework",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -71,7 +71,8 @@
     "v2.68 External-audit/archive-structure/document-authority arc synced",
     "v2.69 State-sync additive patch discipline synced",
     "v2.70 Runtime readiness checklist note synced",
-    "v2.71 Checkpoint full after runtime readiness state sync"
+    "v2.71 Checkpoint full after runtime readiness state sync",
+    "v2.72 Human core invariants and extraction framework synced"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -90,7 +91,8 @@
     "PR #280 — State sync: external-audit / archive-structure / authority arc resume update",
     "PR #281 — Add state-sync additive patch discipline",
     "PR #283 — Add operations readiness note",
-    "PR #284 — State sync after operations readiness note"
+    "PR #284 — State sync after operations readiness note",
+    "PR #286 — Add human core invariants and extraction framework"
   ],
   "mergedArcPrs": [
     "PR #270 — Add reasonable community balancing map",
@@ -117,6 +119,11 @@
     "GitHub main is the source of truth for merged project state",
     "Book Fast Track remains paused until separate Sergey decision and is ignored for immediate next work",
     "current durable project mode remains Agent Shipyard / Agent Queue until Sergey explicitly switches mode and state is synced if needed",
+    "PR #286 added human_core_invariants_v0.1.md, plotnikov_full_pass_map.md and degradation_patterns_registry.md as documentation/advisory project layers",
+    "Human core invariants are constitutional documentation, not runtime, validator, hard guardrail, CI gate, policy engine or agent activation",
+    "Plotnikov full pass map is an extraction framework for the future 50-chapter pass, not a summary layer or book rewrite",
+    "Degradation patterns registry is an operational anthropology registry for recurring mechanisms, not enforcement or automated classification",
+    "The next grounded content step is to run the first 5-7 Plotnikov chapters through the extraction framework before broadening the full pass",
     "PR #257 defined workflow_conductor_agent activation scope as active advisory/manual orchestration planner, not runtime/governance authority",
     "PR #259 added mode switch commands #книга, #агент and #агенты as mandatory protocol addendum and registered it in working-protocol",
     "PR #261 is the v2.66 checkpoint full after mode switch commands",
@@ -166,6 +173,9 @@
     "Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation",
     "Do not treat critic_margin_agent advisory/manual activation as runtime activation, route automation, validator, CI gate, approval authority, hard guardrail or policy engine",
     "Do not treat agent_registry_librarian advisory/manual activation as agent creation authority, registry mutation authority, route automation, validator, hard guardrail, workflow conductor, approval authority, runtime behavior or automatic state sync",
+    "Do not treat human_core_invariants_v0.1.md as runtime, validator, hard guardrail, CI gate, policy engine or automatic scoring system",
+    "Do not treat plotnikov_full_pass_map.md as a summary layer, book rewrite mandate, implemented full pass or automatic extraction engine",
+    "Do not treat degradation_patterns_registry.md as enforcement, automated classification, validator or authority",
     "Do not treat lifecycle contracts v1 as enforcement, validator, hard guardrail, route automation, CI enforcement, runtime, branch protection, approval bypass, policy layer or book workflow change",
     "Do not treat README as live roadmap; use project-state/current-state/roadmap for next action",
     "Do not implement runtime readiness items from external assessments without separate decision",
@@ -174,7 +184,7 @@
     "Do not let Codex rewrite or compact state/resume files; state-sync is additive by default",
     "Do not treat runtime_readiness_checklist_2026-05-24.md as runtime implementation, route automation, validator, hard guardrail, policy layer, infrastructure approval or deployment plan"
   ],
-  "nextAction": "Wait for Sergey to choose #книга, #агент or #агенты. Keep advisory checks warning-only/manual until separate Sergey approval for CI/gate promotion. Runtime readiness checklist is available as documentation-only planning map if future Agent Queue work approaches runtime language. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
+  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a limited extraction test. Keep human_core_invariants_v0.1.md and degradation_patterns_registry.md documentation/advisory only. Do not broaden to full 50-chapter extraction until the first pass confirms the framework preserves Plotnikovsky Motor, practical tension and scene-level concreteness.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -191,6 +201,9 @@
     "assistant_codex_worklog/protocol_addenda/archive_status_indicator.md",
     "assistant_codex_worklog/protocol_addenda/bot_reviewer_comments.md",
     "assistant_codex_worklog/protocol_addenda/state_sync_additive_patch_discipline.md",
+    "knowledge/07_operations/human_core_invariants_v0.1.md",
+    "knowledge/07_operations/plotnikov_full_pass_map.md",
+    "knowledge/07_operations/degradation_patterns_registry.md",
     "knowledge/08_conversation_archive/index.md",
     "knowledge/08_conversation_archive/chat_archives/2026-05-23_external-audit-validator-and-authority-arc.md",
     "knowledge/07_operations/reasonable_community_balancing_map_2026-05-23.md",
@@ -228,7 +241,7 @@
       "pr_operation_response_footer manual response footer discipline",
       "state_sync_additive_patch_discipline manual state-sync discipline"
     ],
-    "recommendedNextWorkItem": "Wait for Sergey to choose #книга, #агент or #агенты. Runtime readiness checklist is available only as documentation-only planning map if future Agent Queue work approaches runtime language. After #книга, workflow_conductor_agent should create the first advisory book/product mission plan. After #агент/#агенты, workflow_conductor_agent or agent_registry_librarian should create the first advisory agent-work plan.",
+    "recommendedNextWorkItem": "Run the first 5-7 Plotnikov chapters through the merged extraction framework before broadening the full 50-chapter pass.",
     "modeSwitchCommands": {
       "#книга": "switch intent to Book/Product Mission Mode; first response is workflow_conductor_agent advisory mission plan; no automatic GitHub state change",
       "#агент": "switch intent to Agent Shipyard / Agent Queue Mode; first response is advisory agent-work plan; no automatic activation",
