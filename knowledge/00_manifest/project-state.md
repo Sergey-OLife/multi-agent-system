@@ -4,13 +4,27 @@ This file is the human-readable mirror of `knowledge/00_manifest/project-state.j
 
 ## Current version
 
-- currentVersion: v2.68
-- lastCompletedVersion: v2.68
-- lastMergedPr: PR #277 — Archive external audit validator and authority arc
-- lastMergeCommit: e3f153b69c46e75813b3e5614e14df6531164215
-- currentMilestone: v2.68 External-audit/archive-structure/document-authority arc synced
+- currentVersion: v2.69
+- lastCompletedVersion: v2.69
+- lastMergedPr: PR #281 — Add state-sync additive patch discipline
+- lastMergeCommit: 2ac0db1cbb0ff3e71144454d7c07e58d1e25496f
+- currentMilestone: v2.69 State-sync additive patch discipline synced
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
+
+## What changed in v2.69
+
+This state sync records PR #281 — Add state-sync additive patch discipline.
+
+The key result:
+
+```text
+State/resume sync is additive by default. Codex may assist, but receives a patch-map, not a broad rewrite task.
+```
+
+PR #281 added `assistant_codex_worklog/protocol_addenda/state_sync_additive_patch_discipline.md` and registered it in `assistant_codex_worklog/working-protocol.md`.
+
+The discipline preserves Codex as a tool while preventing recurrence of the PR #280 destructive state rewrite failure pattern.
 
 ## What changed in v2.68
 
@@ -76,7 +90,7 @@ It does not:
 
 1. Use GitHub `main` as the source of truth.
 2. Read project-state/current-state/roadmap/restart-prompt before selecting next work.
-3. Read protocol addenda, especially `pr_operation_response_footer.md`, `bot_reviewer_comments.md`, `archive_status_indicator.md` and `mode_switch_commands.md`.
+3. Read protocol addenda, especially `pr_operation_response_footer.md`, `bot_reviewer_comments.md`, `archive_status_indicator.md`, `mode_switch_commands.md` and `state_sync_additive_patch_discipline.md`.
 4. Do not treat README as the live roadmap.
 5. Treat `workflow_conductor_agent` as advisory/manual orchestration planner only.
 6. Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
@@ -94,6 +108,10 @@ It does not:
 - PR #275 clarified documentation authority layers.
 - PR #277 archived the external-audit / validator / authority arc.
 - PR #278 corrected empty-index handling in the advisory archive structure check.
+- PR #280 synced state/resume after the external-audit / archive-structure / authority arc without changing runtime, CI, branch protection, validators, registry or archive protocol.
+- PR #281 added state_sync_additive_patch_discipline.md as mandatory manual protocol addendum.
+- State/resume sync is additive by default; Codex receives a patch-map, not a broad state rewrite task.
+- Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
 - Advisory checks remain warning-only/manual unless Sergey separately approves CI/gate promotion.
 - After PR, merge, state-sync, checkpoint, archive PR, correction PR, reviewer/bot handling or PR workflow status responses, ChatGPT must include footer lines for bot/reviewer comments and archive status.
 - If bot/reviewer comments were not checked, ChatGPT must not say `clean point` / `чистая точка`; `get_pr_info` alone is not enough.
@@ -127,6 +145,7 @@ It does not:
 - Do not treat manual disciplines as routes, validators, hard guardrails, runtime, registry status changes, project-state sync or automation.
 - Do not treat README as live roadmap; use project-state/current-state/roadmap for next action.
 - Do not treat PR #274, PR #276 or PR #279 as implemented.
+- Do not let Codex rewrite or compact state/resume files; state-sync is additive by default.
 
 ## Resume pointers
 
@@ -135,6 +154,7 @@ It does not:
 - `assistant_codex_worklog/current-state.md`
 - `assistant_codex_worklog/roadmap.md`
 - `assistant_codex_worklog/restart-prompt.md`
+- `assistant_codex_worklog/protocol_addenda/state_sync_additive_patch_discipline.md`
 
 ## Next action
 
