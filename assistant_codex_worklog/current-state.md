@@ -12,14 +12,14 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #277 — Archive external audit validator and authority arc
+- PR #281 — Add state-sync additive patch discipline
 - Status: merged
-- Merge commit: `e3f153b69c46e75813b3e5614e14df6531164215`
+- Merge commit: `2ac0db1cbb0ff3e71144454d7c07e58d1e25496f`
 
 ## Current version
 
-- currentVersion: v2.68
-- currentMilestone: External-audit/archive-structure/document-authority arc synced
+- currentVersion: v2.69
+- currentMilestone: State-sync additive patch discipline synced
 
 ## Recent protocol sequence
 
@@ -36,6 +36,16 @@ Merged arc: PR #270, PR #271, PR #272, PR #273, PR #275, PR #277, PR #278.
 Closed unmerged: PR #274, PR #276, PR #279.
 
 PR #273 added a local advisory archive structure check. PR #278 corrected empty-index handling in that advisory check. The advisory check remains warning-only/manual unless Sergey separately approves CI/gate promotion.
+
+PR #280 synced the project-state/worklog files after that arc.
+
+## State-sync additive discipline
+
+PR #281 added `assistant_codex_worklog/protocol_addenda/state_sync_additive_patch_discipline.md` and registered it in `assistant_codex_worklog/working-protocol.md`.
+
+State/resume sync is additive by default. Codex may assist, but should receive a patch-map, not a broad state rewrite task.
+
+Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
 
 ## Current protocol result
 
@@ -78,7 +88,8 @@ For the current next action, use:
 - `margin_orchestra` manual second-eyes preflight discipline;
 - `archive_status_indicator` manual archive-pressure discipline;
 - `bot_reviewer_comments` manual PR review discipline;
-- `pr_operation_response_footer` manual response footer discipline.
+- `pr_operation_response_footer` manual response footer discipline;
+- `state_sync_additive_patch_discipline` manual state-sync discipline.
 
 ## Active archive-level open loops
 
@@ -93,7 +104,7 @@ For the current next action, use:
 
 ## State-sync boundaries
 
-This v2.68 update is state/resume sync only.
+This v2.69 update is state/resume sync only.
 
 It does not change runtime behavior, add validators, add gates, change CI, change branch protection, change archive protocol, mutate registry, or resume book mode.
 
