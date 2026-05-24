@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Date: 2026-05-23
+Date: 2026-05-24
 
 ## Working point
 
@@ -12,14 +12,14 @@ Book Fast Track is ignored for immediate next work per Sergey instruction.
 
 ## Latest merged PR
 
-- PR #281 — Add state-sync additive patch discipline
+- PR #283 — Add operations readiness note
 - Status: merged
-- Merge commit: `2ac0db1cbb0ff3e71144454d7c07e58d1e25496f`
+- Merge commit: `0da803f36660d0b6b65ef7199b2c0f7a73d0544c`
 
 ## Current version
 
-- currentVersion: v2.69
-- currentMilestone: State-sync additive patch discipline synced
+- currentVersion: v2.70
+- currentMilestone: Runtime readiness checklist note synced
 
 ## Recent protocol sequence
 
@@ -46,6 +46,16 @@ PR #281 added `assistant_codex_worklog/protocol_addenda/state_sync_additive_patc
 State/resume sync is additive by default. Codex may assist, but should receive a patch-map, not a broad state rewrite task.
 
 Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
+
+## Runtime readiness note
+
+PR #283 added `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations readiness note.
+
+The runtime readiness checklist is a manual planning map only.
+
+It does not implement runtime, route automation, validators, hard guardrails, policy layer, infrastructure, CI, branch protection, registry mutation, archive protocol changes, state-sync rewrite or book workflow changes.
+
+Use it only when future Agent Shipyard / Agent Queue work approaches runtime language.
 
 ## Current protocol result
 
@@ -96,15 +106,17 @@ For the current next action, use:
 - wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
 - durable book/product state switch only by separate Sergey decision and state sync if needed;
 - first book/product mission plan through conductor only after `#книга` or equivalent explicit mode decision;
-- future runtime readiness checklist only by separate Sergey decision;
 - lifecycle policy layer only by separate Sergey decision;
 - further second-eyes tooling or mandatory preflight only by separate Sergey decision;
 - archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision;
-- bot/reviewer comment readiness may be a future validator candidate, not an automatic gate.
+- bot/reviewer comment readiness may be a future validator candidate, not an automatic gate;
+- future runtime readiness implementation remains blocked unless Sergey separately approves a scoped runtime decision.
 
 ## State-sync boundaries
 
-This v2.69 update is state/resume sync only.
+This v2.70 update is state/resume sync only.
+
+It records PR #283 and the runtime readiness checklist note.
 
 It does not change runtime behavior, add validators, add gates, change CI, change branch protection, change archive protocol, mutate registry, or resume book mode.
 
