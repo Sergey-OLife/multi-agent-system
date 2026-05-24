@@ -10,10 +10,10 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.68
-- currentMilestone: External-audit/archive-structure/document-authority arc synced
-- lastMergedPr: PR #277 — Archive external audit validator and authority arc
-- lastMergeCommit: `e3f153b69c46e75813b3e5614e14df6531164215`
+- currentVersion: v2.69
+- currentMilestone: State-sync additive patch discipline synced
+- lastMergedPr: PR #281 — Add state-sync additive patch discipline
+- lastMergeCommit: `2ac0db1cbb0ff3e71144454d7c07e58d1e25496f`
 
 ## Recent PR summary
 
@@ -27,6 +27,8 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 - PR #275 — Clarify document authority layers.
 - PR #277 — Archive external audit validator and authority arc.
 - PR #278 — Adjust archive structure index handling.
+- PR #280 — State sync: external-audit / archive-structure / authority arc resume update.
+- PR #281 — Add state-sync additive patch discipline.
 
 Closed unmerged in this arc:
 
@@ -46,6 +48,12 @@ Archive status: зеленый_1 / зеленый_2 / желтый_1 / желт�
 ```
 
 If bot/reviewer comments were not checked, ChatGPT must not call the point clean. `get_pr_info` alone is not enough.
+
+`state_sync_additive_patch_discipline.md` is active as mandatory manual protocol addendum.
+
+State/resume sync is additive by default. Codex may assist, but should receive a patch-map, not a broad state rewrite task.
+
+Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
 
 `рестарт` command protocol is implemented as a GitHub-source-of-truth continuation command.
 
