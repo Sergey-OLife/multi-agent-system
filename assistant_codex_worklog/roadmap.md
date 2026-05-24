@@ -10,10 +10,10 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 
 ## Current milestone
 
-- currentVersion: v2.69
-- currentMilestone: State-sync additive patch discipline synced
-- lastMergedPr: PR #281 — Add state-sync additive patch discipline
-- lastMergeCommit: `2ac0db1cbb0ff3e71144454d7c07e58d1e25496f`
+- currentVersion: v2.70
+- currentMilestone: Runtime readiness checklist synced
+- lastMergedPr: PR #283 — Add operations readiness note
+- lastMergeCommit: `0da803f36660d0b6b65ef7199b2c0f7a73d0544c`
 
 ## Recent PR summary
 
@@ -29,6 +29,8 @@ Book Fast Track is ignored for immediate next work until separate Sergey decisio
 - PR #278 — Adjust archive structure index handling.
 - PR #280 — State sync: external-audit / archive-structure / authority arc resume update.
 - PR #281 — Add state-sync additive patch discipline.
+- PR #282 — State sync after additive patch discipline.
+- PR #283 — Add operations readiness note.
 
 Closed unmerged in this arc:
 
@@ -97,23 +99,25 @@ Workflow conductor advisory activation scope is recorded in `knowledge/07_operat
 
 Advisory archive structure check is warning-only/manual unless Sergey separately approves CI/gate promotion.
 
+Runtime readiness checklist is recorded in `knowledge/07_operations/runtime_readiness_checklist_2026-05-24.md` as a documentation-only operations note and readiness map.
+
 README is the entrance map, not the live roadmap. Use project-state/current-state/roadmap for next action.
 
 ## Active archive-level open loops
 
-- Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+- Continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer.
 - Durable book/product state switch: only by separate Sergey decision and state sync if needed.
 - First book/product mission plan through conductor: only after `#книга` or equivalent explicit mode decision.
 - Lifecycle policy layer: future-only and requires separate Sergey decision.
-- Future runtime readiness checklist: only by separate Sergey decision.
 - Further second-eyes tooling or mandatory preflight: only by separate Sergey decision.
 - Archive structure advisory check promotion beyond local warning-only diagnostics requires separate Sergey decision.
 - Bot/reviewer comment readiness may be a future validator candidate, not an automatic gate.
+- Runtime readiness remains documentation-only unless Sergey separately approves scoped runtime discussion or implementation.
 
 ## Approved next sequence
 
 1. merge this state sync only after checks, comments review and explicit approval;
-2. wait for Sergey to choose `#книга`, `#агент` or `#агенты`;
+2. continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer, or switch to `#книга` by explicit Sergey command;
 3. after `#книга`, give an advisory book/product mission plan before writing or product design;
 4. after `#агент` / `#агенты`, give an advisory agent-work plan before PR changes;
 5. include the PR operation response footer after PR-related work.
@@ -124,4 +128,4 @@ This roadmap entry is state/resume sync only and does not change runtime behavio
 
 ## Recommended next work item
 
-Wait for Sergey to choose `#книга`, `#агент` or `#агенты`.
+Continue Agent Shipyard / Agent Queue with the next advisory open loop, likely lifecycle policy layer, or switch to `#книга` by explicit Sergey command.
