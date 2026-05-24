@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.70",
-  "lastCompletedVersion": "v2.70",
-  "lastMergedPr": "PR #283 — Add operations readiness note",
-  "lastMergeCommit": "0da803f36660d0b6b65ef7199b2c0f7a73d0544c",
-  "currentMilestone": "v2.70 Runtime readiness checklist note synced",
+  "currentVersion": "v2.71",
+  "lastCompletedVersion": "v2.71",
+  "lastMergedPr": "PR #284 — State sync after operations readiness note",
+  "lastMergeCommit": "a66449b57c2bdb164cd304225b8de28e05ab6c7b",
+  "currentMilestone": "v2.71 Checkpoint full after runtime readiness state sync",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -70,7 +70,8 @@
     "v2.67 PR operation response footer synced",
     "v2.68 External-audit/archive-structure/document-authority arc synced",
     "v2.69 State-sync additive patch discipline synced",
-    "v2.70 Runtime readiness checklist note synced"
+    "v2.70 Runtime readiness checklist note synced",
+    "v2.71 Checkpoint full after runtime readiness state sync"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -88,7 +89,8 @@
     "PR #278 — Adjust archive structure index handling",
     "PR #280 — State sync: external-audit / archive-structure / authority arc resume update",
     "PR #281 — Add state-sync additive patch discipline",
-    "PR #283 — Add operations readiness note"
+    "PR #283 — Add operations readiness note",
+    "PR #284 — State sync after operations readiness note"
   ],
   "mergedArcPrs": [
     "PR #270 — Add reasonable community balancing map",
@@ -130,6 +132,7 @@
     "PR #280 synced state/resume after the external-audit / archive-structure / authority arc without changing runtime, CI, branch protection, validators, registry or archive protocol",
     "PR #281 added state_sync_additive_patch_discipline.md as mandatory manual protocol addendum",
     "PR #283 added runtime_readiness_checklist_2026-05-24.md as a documentation-only operations readiness note",
+    "PR #284 synced state/resume after PR #283 and recorded runtime readiness as documentation-only planning map",
     "Runtime readiness checklist is a manual planning map only and does not implement runtime, route automation, validators, hard guardrails, policy layer, CI, branch protection, registry mutation, archive protocol change or book workflow change",
     "State/resume sync is additive by default; Codex receives a patch-map, not a broad state rewrite task",
     "Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub",
@@ -240,9 +243,9 @@
       "workflow_conductor_agent": "active advisory/manual orchestration planner only; not runtime, not route automation, not approval authority, not registry mutation authority, not project-state authority, not validator, not hard guardrail, not policy layer, not automatic book/product mode switch"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #283 — Add operations readiness note",
-      "latest_green_head": "ed54b7ed1703272b07f41fb13053082a970f565f",
-      "latest_green_merge_commit": "0da803f36660d0b6b65ef7199b2c0f7a73d0544c",
+      "latest_green_pr": "PR #284 — State sync after operations readiness note",
+      "latest_green_head": "06272540fb59fc4fc7e785fbbfa7ea56609561ed",
+      "latest_green_merge_commit": "a66449b57c2bdb164cd304225b8de28e05ab6c7b",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
