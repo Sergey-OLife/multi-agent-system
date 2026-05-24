@@ -7,12 +7,15 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.68.
-- lastMergedPr: PR #277 — Archive external audit validator and authority arc.
-- lastMergeCommit: e3f153b69c46e75813b3e5614e14df6531164215.
+- currentVersion: v2.69.
+- lastMergedPr: PR #281 — Add state-sync additive patch discipline.
+- lastMergeCommit: 2ac0db1cbb0ff3e71144454d7c07e58d1e25496f.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного явного mode decision.
 - `pr_operation_response_footer.md` is active mandatory protocol addendum.
+- `state_sync_additive_patch_discipline.md` is active mandatory manual protocol addendum.
+- State/resume sync is additive by default. Codex may assist, but should receive a patch-map, not a broad state rewrite task.
+- Codex local commits, done reports and PR-helper reports are not source-of-truth facts unless visible in GitHub.
 - After PR / merge / state-sync / checkpoint operations, responses must include:
   - Bot/reviewer comments: checked / not checked / not applicable.
   - Archive status: зеленый_1 / зеленый_2 / желтый_1 / желтый_2 / желтый_3 / красный.
@@ -33,11 +36,13 @@ GitHub main — источник правды. Сначала открой READM
 - Lifecycle contracts v1 is implemented but not enforcement.
 - Merged external-audit/archive-structure/document-authority arc: PR #270, #271, #272, #273, #275, #277, #278.
 - Closed unmerged in this arc: PR #274, #276, #279.
+- PR #280 synced state/resume after that arc.
+- PR #281 added state-sync additive patch discipline.
 - PR #273 added advisory archive structure check.
 - PR #278 corrected empty-index handling in that advisory check.
 - Advisory archive structure check remains warning-only/manual unless Sergey separately approves CI/gate promotion.
 
-Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. PR operation response footer is manual response discipline only: not automation, not CI check, not validator, not hard guardrail, not archive-state mutation and not approval gate. Mode switch commands are not approval and not GitHub state mutation. This v2.68 state sync is state/resume sync only: no runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry mutation or book mode resume.
+Boundary: this repo is a GitHub-centered book/project operating system, not production multi-agent runtime, reusable public framework, or deployed agent platform. PR operation response footer is manual response discipline only: not automation, not CI check, not validator, not hard guardrail, not archive-state mutation and not approval gate. State-sync additive patch discipline is manual protocol only: not CI, not hard gate, not branch protection, not parser change, not runtime. Mode switch commands are not approval and not GitHub state mutation. This v2.69 state sync is state/resume sync only: no runtime behavior, validators, hard gates, CI, branch protection, archive protocol, registry mutation or book mode resume.
 
 Active open loops: wait for Sergey to choose `#книга`, `#агент` or `#агенты`; durable book/product state switch only by separate Sergey decision and state sync if needed; lifecycle policy layer only by separate Sergey decision; future runtime readiness checklist only by separate Sergey decision; further second-eyes tooling or mandatory preflight only by separate Sergey decision; archive structure advisory check promotion only by separate Sergey decision.
 
