@@ -29,43 +29,49 @@ This order clarifies priority. It does not collapse the files into one source an
 
 ## Current version
 
-- currentVersion: v2.72
-- lastCompletedVersion: v2.72
-- lastMergedPr: PR #286 — Add human core invariants and extraction framework
-- lastMergeCommit: 98f52a1ca4b69421d813c87b74ca0e34ecd3fb5f
-- currentMilestone: v2.72 State sync after human core invariants extraction framework
+- currentVersion: v2.73
+- lastCompletedVersion: v2.73
+- lastMergedPr: PR #292 — Clarify resume authority and manual discipline scope
+- lastMergeCommit: caad29e450b193d5e5314ba6e1d36dd31625d40d
+- currentMilestone: v2.73 State sync after opening candidate and resume authority clarification
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
-## What changed in v2.72
+## What changed in v2.73
 
-This state sync records PR #286 — Add human core invariants and extraction framework.
+This state sync records:
 
-The key result:
+- PR #291 — Add opening author note candidate
+- PR #292 — Clarify resume authority and manual discipline scope
 
-```text
-The project now contains a constitutional human-core layer and an extraction framework for the future Plotnikov full-pass.
-```
+PR #291 preserved an opening / `От автора` candidate working layer.
 
-PR #286 added:
+Boundary:
 
-- `knowledge/07_operations/human_core_invariants_v0.1.md`
-- `knowledge/07_operations/plotnikov_full_pass_map.md`
-- `knowledge/07_operations/degradation_patterns_registry.md`
+- candidate material only;
+- not final approved book content;
+- no project-state change in that PR;
+- no runtime, validator, CI, branch protection or registry changes.
 
-These layers are documentation/advisory only.
+PR #292 clarified:
 
-They do not:
+- resume authority and source-of-truth basis;
+- manual discipline scope;
+- archive/worklog/vision notes as continuity/source-material layers;
+- blocking vs advisory vs manual check layers;
+- `knowledge/00_manifest/resume-order.md` as an operational manifest note.
+
+PR #292 did not:
 
 - implement runtime;
 - add validators;
 - add hard guardrails;
-- add orchestration enforcement;
-- activate agents;
-- mutate registry authority;
-- change CI or branch protection.
+- change CI;
+- change branch protection;
+- change registry;
+- change book files.
 
-## Extraction framework boundary
+## Existing extraction framework boundary
 
 The Plotnikov extraction framework exists to identify:
 
@@ -82,7 +88,7 @@ It is not:
 - a runtime extraction engine;
 - a book replacement system.
 
-The next grounded test step is:
+The next grounded test step remains:
 
 ```text
 Run the first 5-7 Plotnikov chapters through the extraction framework before broadening the full 50-chapter pass.
@@ -90,7 +96,7 @@ Run the first 5-7 Plotnikov chapters through the extraction framework before bro
 
 ## Boundary
 
-This checkpoint/state sync is state/resume sync only.
+This state sync is state/resume sync only.
 
 It does not:
 
@@ -102,19 +108,25 @@ It does not:
 - add CI gates;
 - change branch protection;
 - activate route/runtime agents;
-- resume book mode automatically.
+- resume book mode automatically;
+- approve candidate book content as final.
 
 ## Current recovery path
 
 1. Use GitHub `main` as source of truth.
 2. Read project-state/current-state/roadmap/restart-prompt before selecting next work.
-3. Treat human-core and extraction documents as documentation/advisory only.
-4. Do not confuse extraction-framework with runtime automation.
-5. Preserve Plotnikovsky Motor and scene-level practical tension during extraction passes.
+3. Use `knowledge/00_manifest/resume-order.md` as the restart/source reading order note.
+4. Treat human-core and extraction documents as documentation/advisory only.
+5. Treat PR #291 opening material as candidate only, not final book content.
+6. Do not confuse extraction-framework with runtime automation.
+7. Preserve Plotnikovsky Motor and scene-level practical tension during extraction passes.
 
 ## Active decisions
 
 - GitHub `main` is the source of truth for merged project state.
+- PR #291 opening / `От автора` material is candidate material only, not final approved book content.
+- PR #292 clarified resume authority and manual discipline scope as documentation-only.
+- `resume-order.md` is an operational manifest note, not automation or a replacement for project-state.
 - Human-core invariants are constitutional documentation, not runtime or enforcement.
 - Degradation registry tracks recurring human/systemic degradation patterns only.
 - Plotnikov extraction framework is intended to preserve practical tension, not academicize the book.
@@ -130,6 +142,8 @@ It does not:
 
 ## Paused tasks
 
+- Do not treat PR #291 opening material as final approved book content.
+- Do not treat resume-order.md or resume-order sections as automation, validator, hard guardrail, CI gate or replacement for project-state.json.
 - Do not treat human_core_invariants_v0.1.md as runtime, validator, policy engine or automatic scoring system.
 - Do not treat degradation_patterns_registry.md as enforcement or automatic classification.
 - Do not treat plotnikov_full_pass_map.md as implemented extraction automation.
@@ -137,8 +151,10 @@ It does not:
 
 ## Resume pointers
 
+- `README.md`
 - `knowledge/00_manifest/project-state.json`
 - `knowledge/00_manifest/project-state.md`
+- `knowledge/00_manifest/resume-order.md`
 - `assistant_codex_worklog/current-state.md`
 - `assistant_codex_worklog/roadmap.md`
 - `assistant_codex_worklog/restart-prompt.md`
