@@ -44,6 +44,136 @@ Required correction:
 - make the main object of the chapter the list of goals, the pen, the phone, the chat and the question of direction;
 - keep the human/ethical check, but place it after goal formulation, not instead of it.
 
+## Instrument integration gate
+
+The second draft failed because it treated Chapter 1 as a normal essay chapter and did not activate the already designed book instruments.
+
+This must not repeat.
+
+Chapter 1 is the introduction of the book’s road instruments.
+
+Required reader-facing instrument layer:
+
+1. `Внутренний совет` — the inner command center where Specialist, Manager, Entrepreneur and Quiet Master respond to the chapter’s conflict.
+2. `Проверка мысли` / automatic thought check — used only as a living micro-tool, not therapy jargon.
+3. `Квадрат Декарта` — a decision board showing the price of action and the price of inaction.
+4. `Матрица Эйзенхауэра` — a priority board distinguishing business-building action from noise, chat pressure and avoidance.
+5. `Квест` / practice — the concrete 24-hour reader action.
+6. `MVP bridge` — how this chapter can later become an app/workbook interaction, without turning the prose into product documentation.
+
+Internal formula to preserve:
+
+```text
+Внутри — диалог.
+Снаружи — оценочная панель.
+В конце — действие.
+```
+
+## How instruments enter Chapter 1
+
+Do not dump all instruments as a manual.
+
+They should appear as road instruments after the reader has felt the problem of speed without direction.
+
+Suggested order:
+
+1. Scene: the reader writes goals and notices borrowed desires.
+2. Inner conflict: one part wants to act immediately; another wants order; another wants scale; another asks about human cost.
+3. Introduce `Внутренний совет` as the way the book will show this inner conflict.
+4. Show one small `Проверка мысли`: after fear/refusal/awkwardness, do not give the wheel to the loudest first thought.
+5. Use `Квадрат Декарта` on the core decision: enter MLM consciously or drift / quit / imitate.
+6. Use `Эйзенхауэр` on the first week: what is important, what is just urgent noise.
+7. End with the practice block and 24-hour action.
+
+## Chapter 1 instrument examples
+
+### Внутренний совет
+
+Situation:
+
+The person has a list of goals, a phone, a chat and the first uncomfortable action.
+
+- Specialist asks: what exactly do we do today?
+- Manager asks: where are time, money, boundaries, repeatability and safety?
+- Entrepreneur asks: what system, reputation and future is this building?
+- Quiet Master asks: whom can we lose if we do this crookedly?
+
+Rule:
+
+The Inner Council does not replace the decision. It prevents a blind decision.
+
+### Проверка мысли
+
+Use in Chapter 1 around first fear or first refusal.
+
+Example:
+
+Fact:
+
+```text
+A person did not answer my message.
+```
+
+First thought:
+
+```text
+I am annoying. This is shameful. I am not made for this.
+```
+
+More exact thought:
+
+```text
+One person did not answer one message. That is not a verdict on me, the product, or the whole business. I need to check the message, the relationship, the timing and the next appropriate action.
+```
+
+Reader-facing rule:
+
+```text
+Не отдавайте руль первой мысли только потому, что она пришла громче всех.
+```
+
+### Квадрат Декарта
+
+Use it on the chapter’s real choice:
+
+```text
+Will I enter MLM with a conscious reason and map, or will I move on borrowed excitement?
+```
+
+Questions:
+
+1. What will happen if I go forward consciously?
+2. What will happen if I do not go forward consciously?
+3. What will I lose if I go forward consciously?
+4. What will I lose if I do not go forward consciously?
+
+Conclusion must name the price of action and the price of inaction.
+
+### Матрица Эйзенхауэра
+
+Use it on the first week of a newcomer.
+
+Possible categories:
+
+- Important and urgent: understand product basics, clarify first honest step, set one safe action.
+- Important but not urgent: write goals, build schedule, study, practice communication, clarify boundaries.
+- Urgent but not important: respond to every chat emotion, chase every notification, imitate team noise.
+- Not urgent and not important: consume motivation instead of action, compare oneself with leaders, polish a list forever.
+
+Conclusion must show where business is built and where the person hides in activity.
+
+## Instrument placement rule
+
+Each chapter draft must now include:
+
+1. Reader text.
+2. Instrument map.
+3. Which tools are visible in the chapter.
+4. Which tools are only prepared for later.
+5. How this becomes a workbook/app interaction.
+
+If the draft contains only prose, it is incomplete.
+
 ## Practical block title
 
 Rejected:
@@ -160,11 +290,12 @@ It is a direction that survives ordinary pressure and does not permit the person
 
 ## Next safe step
 
-Produce a surgical revised reader-facing draft of Chapter 1:
+Produce a revised reader-facing draft of Chapter 1 that includes both prose and the instrument layer:
 
 - remove the repeated box block;
 - restore the goal-writing ladder;
 - include SMART;
+- introduce the road instruments of the book;
 - keep the sufficient-reason nerve;
 - preserve desire for MLM as a strong opportunity;
 - keep the human boundary: a dream must not become a reason to pressure people.
