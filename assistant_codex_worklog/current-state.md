@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Date: 2026-05-24
+Date: 2026-05-25
 
 ## Source of Truth Basis
 
@@ -20,14 +20,44 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 
 ## Latest merged PR
 
-- PR #286 — Add human core invariants and extraction framework
+- PR #292 — Clarify resume authority and manual discipline scope
 - Status: merged
-- Merge commit: `98f52a1ca4b69421d813c87b74ca0e34ecd3fb5f`
+- Merge commit: `caad29e450b193d5e5314ba6e1d36dd31625d40d`
 
 ## Current version
 
-- currentVersion: v2.72
-- currentMilestone: State sync after human core invariants extraction framework
+- currentVersion: v2.73
+- currentMilestone: State sync after opening candidate and resume authority clarification
+
+## Recently merged context
+
+PR #291 preserved an opening / `От автора` candidate working layer.
+
+Boundary:
+
+- candidate material only;
+- not final approved book content;
+- no runtime, validator, CI, branch protection or registry changes.
+
+PR #292 clarified:
+
+- resume authority and source-of-truth basis;
+- manual discipline scope;
+- archive/worklog/vision notes as continuity/source-material layers;
+- blocking vs advisory vs manual check layers;
+- `knowledge/00_manifest/resume-order.md` as an operational manifest note.
+
+PR #292 remains documentation-only.
+
+It does not:
+
+- implement runtime;
+- add validators;
+- add hard guardrails;
+- change CI;
+- change branch protection;
+- change registry;
+- change book files.
 
 ## Human-core extraction layer
 
@@ -63,7 +93,7 @@ The extraction framework exists to identify:
 - degradation mechanisms;
 - maturity conditions.
 
-The next practical validation step:
+The next practical validation step remains:
 
 ```text
 Run the first 5-7 Plotnikov chapters through the extraction framework.
@@ -105,7 +135,7 @@ Archive status: зеленый_1 / зеленый_2 / желтый_1 / желт�
 
 ## State-sync boundaries
 
-This v2.72 state sync is documentation/state alignment only.
+This v2.73 state sync is documentation/state alignment only.
 
 It does not:
 
@@ -114,7 +144,8 @@ It does not:
 - add hard gates;
 - change CI;
 - mutate registry authority;
-- resume book mode.
+- resume book mode;
+- approve candidate book content as final.
 
 ## Next safe step
 
