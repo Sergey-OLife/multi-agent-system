@@ -16,6 +16,16 @@ CI and Sync Check cover a subset of project invariants.
 
 Lifecycle status, archive discipline, source-of-truth reading, manual second-eyes, reviewer comment handling and mode boundaries still rely on explicit review discipline unless a separate Sergey decision promotes a specific check to validator or hard gate.
 
+## Blocking, advisory and manual layers
+
+| Layer | Current examples | Effect |
+|---|---|---|
+| Blocking repository gates | `TypeScript / JavaScript / Go checks`, `sync-check` | Required by the `Protect main` Ruleset before merge into `main`. |
+| Advisory / local checks | archive structure check, state-sync drift audit and similar warning-only diagnostics | Help detect drift or inconsistency; do not block merge unless Sergey separately promotes a specific check. |
+| Manual disciplines | source-of-truth reading, manual second-eyes, archive discipline, bot/reviewer comment classification, mode-boundary review | Require conscious human/LLM operator intent; no automated enforcement exists if they are skipped. |
+
+Do not describe advisory checks or manual disciplines as validators, hard guardrails, CI gates, policy layer, runtime behavior or branch protection unless a later explicit decision changes their status.
+
 ## Protected branch gate
 
 `main` / default branch is protected by GitHub Ruleset `Protect main`.
