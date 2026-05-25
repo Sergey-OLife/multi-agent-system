@@ -2,6 +2,16 @@
 
 Date: 2026-05-24
 
+## Source of Truth Basis
+
+GitHub `main` is the accepted source of truth for merged project state.
+
+Primary resume diagnostics start from `knowledge/00_manifest/project-state.json` and its human-readable mirror `knowledge/00_manifest/project-state.md`.
+
+This file is a continuity/resume layer. It summarizes the working point for Assistant × Codex, but it does not override project-state, accepted code, or explicitly accepted project documents.
+
+Archive entries, worklog notes and vision notes remain source material unless their decisions are reflected in project-state, code, or an explicitly accepted document.
+
 ## Working point
 
 Mode: `Agent Shipyard / Agent Queue`.

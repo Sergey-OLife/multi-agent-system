@@ -2,6 +2,31 @@
 
 This file is the human-readable mirror of `knowledge/00_manifest/project-state.json`, which is the machine-readable single source of truth for project resume diagnostics. Use these project-state files before relying on prior conversation memory.
 
+## Source of truth basis
+
+GitHub `main` remains the accepted source of truth for merged project state.
+
+`knowledge/00_manifest/project-state.json` is the machine-readable resume diagnostic source. This markdown file mirrors it for human reading.
+
+Worklog, restart prompts, archive entries and vision notes are continuity or source-material layers. They help resume work, but they do not become active project state unless reflected in project-state, code, or an explicitly accepted document.
+
+## Resume order
+
+When restarting or selecting the next grounded action, read sources in this order:
+
+1. `README.md`
+2. `knowledge/00_manifest/project-state.json`
+3. `knowledge/00_manifest/project-state.md`
+4. `assistant_codex_worklog/current-state.md`
+5. `assistant_codex_worklog/roadmap.md`
+6. `assistant_codex_worklog/restart-prompt.md`
+7. `assistant_codex_worklog/working-protocol.md`
+8. `assistant_codex_worklog/protocol_addenda/*.md`
+9. Any framework or operation file explicitly referenced by the state/current-state files.
+10. Open PR list and relevant PR discussion/review comments when PR workflow is involved.
+
+This order clarifies priority. It does not collapse the files into one source and does not turn worklog or archive into project-state.
+
 ## Current version
 
 - currentVersion: v2.72
