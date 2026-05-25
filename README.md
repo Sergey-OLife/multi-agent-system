@@ -18,7 +18,7 @@ Runtime orchestration, route automation, validators, hard guardrails, databases,
 
 Minimal repository branch protection is active through the GitHub Ruleset documented in `knowledge/07_operations/branch_protection_verification_2026-05-20.md` and `knowledge/07_operations/checks_overview.md`. Further branch-protection strengthening remains a separate decision.
 
-Manual discipline is a real workflow layer, but it must not be described as automated safety.
+Manual discipline is a real workflow layer, but it must not be described as automated safety. Manual discipline requires conscious operator intent; there is no automated enforcement if it is skipped.
 
 ## Start here
 
@@ -84,6 +84,8 @@ Conversation archive is not project-state and not ChatGPT memory.
 - `conversation_archive_librarian` manual discipline applies to archive commands and archive PR decisions.
 - No archive entry is a full-chat checkpoint unless it explicitly says `coverage_scope: full_chat`.
 - If several archive PRs can conflict through `knowledge/08_conversation_archive/index.md`, use parallel intake or later consolidation.
+
+Archive, worklog and vision notes are continuity or source-material layers. Accepted decisions must be reflected in project-state, code, or an explicitly accepted document before they are treated as active project state.
 
 ## Vision intake
 
