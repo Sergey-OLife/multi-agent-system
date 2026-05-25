@@ -8,12 +8,23 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 
 ## Current milestone
 
-- currentVersion: v2.72
-- currentMilestone: State sync after human core invariants extraction framework
-- lastMergedPr: PR #286 — Add human core invariants and extraction framework
-- lastMergeCommit: `98f52a1ca4b69421d813c87b74ca0e34ecd3fb5f`
+- currentVersion: v2.73
+- currentMilestone: State sync after opening candidate and resume authority clarification
+- lastMergedPr: PR #292 — Clarify resume authority and manual discipline scope
+- lastMergeCommit: `caad29e450b193d5e5314ba6e1d36dd31625d40d`
 
 ## Current arc
+
+The current arc remains Agent Shipyard / Agent Queue with two recent documentation-only additions:
+
+- PR #291 preserved an opening / `От автора` candidate working layer;
+- PR #292 clarified resume authority, manual discipline scope and blocking/advisory/manual check layers.
+
+PR #291 material is candidate only. It is not final approved book content and does not resume book mode.
+
+PR #292 adds clarity around source-of-truth and continuity layers. It does not add runtime, validators, hard guardrails, CI gates, registry changes or branch-protection changes.
+
+## Existing extraction framework layer
 
 PR #286 established the first constitutional/extraction framework layer for the project.
 
@@ -23,7 +34,7 @@ Merged documents:
 - `knowledge/07_operations/plotnikov_full_pass_map.md`
 - `knowledge/07_operations/degradation_patterns_registry.md`
 
-The new layer defines:
+The layer defines:
 
 - non-automatable human boundaries;
 - operational anthropology extraction logic;
@@ -31,13 +42,13 @@ The new layer defines:
 
 ## Important boundaries
 
-The merged framework remains:
+The merged framework and the later resume-authority clarification remain:
 
 - documentation-only;
 - advisory/manual;
 - non-runtime.
 
-It does not:
+They do not:
 
 - implement extraction automation;
 - add validators;
@@ -45,11 +56,12 @@ It does not:
 - add CI gates;
 - mutate registry authority;
 - activate agents;
-- enforce orchestration.
+- enforce orchestration;
+- approve candidate book content as final.
 
 ## Extraction framework direction
 
-The next practical milestone:
+The next practical milestone remains:
 
 ```text
 Run the first 5-7 Plotnikov chapters through the extraction framework.
@@ -82,7 +94,7 @@ MLM is treated not as the sole topic, but as a pressure-environment that amplifi
 
 ## Approved next sequence
 
-1. complete v2.72 state sync;
+1. complete v2.73 state sync after PR #291 and PR #292;
 2. merge state-sync PR after review/checks;
 3. run extraction pass for first 5-7 Plotnikov chapters;
 4. expand degradation registry only from recurring mechanisms;
@@ -99,7 +111,8 @@ No:
 - CI changes;
 - branch protection changes;
 - policy enforcement;
-- book-mode activation.
+- book-mode activation;
+- candidate chapter approval.
 
 ## Recommended next work item
 
