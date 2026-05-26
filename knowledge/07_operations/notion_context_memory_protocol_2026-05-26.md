@@ -5,9 +5,9 @@ Boundary: documentation-only; not project-state, not roadmap, not checkpoint, no
 
 ## Purpose
 
-This note records Sergey’s decision to use a Notion page as a shared continuity memory for the project `Пишем книгу`.
+This note records Sergey’s decision to use project-linked Notion pages as shared continuity memory for the project `Пишем книгу`.
 
-The Notion memory page is intended to help current and future chats recover semantic context when a working arc becomes dense.
+The Notion memory layer is intended to help current and future chats recover semantic context when a working arc becomes dense.
 
 Primary Notion memory page:
 
@@ -21,9 +21,17 @@ Related Notion protocol page:
 https://www.notion.so/36c9b5f9df51813ab404c6262b1ea27d
 ```
 
+Related auto-send clarification page:
+
+```text
+https://www.notion.so/36c9b5f9df5181768ecafaaab795cb94
+```
+
 ## Rule
 
-When a conversation arc reaches a context-critical state, the assistant should add a new dated block to the Notion memory page without asking Sergey for a separate confirmation.
+When a conversation arc reaches a context-critical state, the assistant should add a new dated block to the Notion memory layer without asking Sergey for a separate confirmation.
+
+In an active chat with Notion tool access, Sergey should not have to manually process Notion-save requests. The assistant should send the delta to Notion and then briefly report what was saved.
 
 This does not bypass GitHub workflow.
 
@@ -55,11 +63,52 @@ Do not rewrite the whole Notion page unless Sergey explicitly asks.
 
 ## How future chats should use it
 
-Future or existing chats in the project may open the Notion memory page to recover semantic context.
+Future or existing chats in the project may open project-linked Notion memory pages to recover semantic context.
 
 They may also append new dated blocks when their own arc becomes context-critical.
 
 However, for GitHub-dependent work they must still read GitHub `main` as the source of truth before making factual project-state claims or performing PR operations.
+
+## Project-linked Notion page scope
+
+The continuity rule is not limited to the single page created by one chat.
+
+The project Notion memory layer includes:
+
+- the primary Notion memory page;
+- child pages created under it for dated deltas, protocols, clarifications, and recovery notes;
+- project Notion pages explicitly linked from the primary memory page or from GitHub operations notes;
+- future Notion pages intentionally created as part of this continuity-memory structure.
+
+Future chats may consult these project-linked Notion pages when they have Notion tool access and the page is relevant to context recovery.
+
+Do not infer access to unrelated Notion material. The scope is project-linked continuity material, not every page in the workspace.
+
+## Agent use of Notion memory
+
+Manual/advisory project agents may use project-linked Notion memory pages through the active chat/tool context when their work requires semantic recovery.
+
+Examples:
+
+- `workflow_conductor_agent` may consult Notion memory when planning a dense book/product/agent arc;
+- `conversation_archive_librarian` may consult it to avoid losing prior continuity notes;
+- `chapter_rehydration_agent` may consult it as proposal/manual preparation context when reconstructing chapter intent;
+- `agent_registry_librarian` may consult it for context, but not as registry authority.
+
+This is context consultation only.
+
+It does not make any agent:
+
+- autonomous runtime;
+- routed worker;
+- validator;
+- hard guardrail;
+- project-state authority;
+- registry mutation authority;
+- approval authority;
+- Notion background watcher.
+
+Agents do not monitor Notion in the background. They can use it only when invoked inside an active chat/session with available Notion access.
 
 ## README / sensitive-file density use
 
@@ -103,7 +152,7 @@ Therefore a GitHub file may link to a Notion instruction for extended context, b
 
 ## Boundaries
 
-The Notion memory page is not:
+The Notion memory layer is not:
 
 - GitHub source of truth;
 - project-state;
@@ -118,7 +167,9 @@ The Notion memory page is not:
 - hard guardrail;
 - CI gate;
 - branch protection;
-- approval bypass.
+- approval bypass;
+- background automation;
+- workspace access policy.
 
 ## Current related arc
 
@@ -137,5 +188,5 @@ Run the first limited extraction pass over the first 5–7 Plotnikov chapters, w
 ## Short instruction for future chats
 
 ```text
-Open the Notion memory page for semantic recovery, but read GitHub main for technical truth. If this chat creates new important decisions, formulas, open loops, or architecture corrections and the arc becomes context-critical, append a dated delta block to the same Notion memory page without asking Sergey again.
+Open the project-linked Notion memory pages for semantic recovery when relevant, but read GitHub main for technical truth. If this chat creates new important decisions, formulas, open loops, or architecture corrections and the arc becomes context-critical, append a dated delta block to the same Notion memory structure without asking Sergey again.
 ```
