@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Date: 2026-05-25
+Date: 2026-05-26
 
 ## Source of Truth Basis
 
@@ -10,7 +10,7 @@ Primary resume diagnostics start from `knowledge/00_manifest/project-state.json`
 
 This file is a continuity/resume layer. It summarizes the working point for Assistant × Codex, but it does not override project-state, accepted code, or explicitly accepted project documents.
 
-Archive entries, worklog notes and vision notes remain source material unless their decisions are reflected in project-state, code, or an explicitly accepted document.
+Archive entries, worklog notes, audit notes and vision notes remain source material unless their decisions are reflected in project-state, code, or an explicitly accepted document.
 
 ## Working point
 
@@ -18,46 +18,58 @@ Mode: `Agent Shipyard / Agent Queue`.
 
 Book work remains paused until Sergey uses `#книга` or gives a separate explicit mode decision.
 
-## Latest merged PR
+## Latest merged PRs now being synced
 
-- PR #292 — Clarify resume authority and manual discipline scope
+- PR #294 — Add chapter rehydration agent proposal
+- PR #296 — Add GitHub-centered current-state audit
+- PR #295 — Clarify registry sync script boundary
+
+Latest merged PR before this state sync:
+
+- PR #295 — Clarify registry sync script boundary
 - Status: merged
-- Merge commit: `caad29e450b193d5e5314ba6e1d36dd31625d40d`
+- Merge commit: `d1948546eb35db7cd25797dbc83782f4f2220164`
 
-## Current version
+## Current version target
 
-- currentVersion: v2.73
-- currentMilestone: State sync after opening candidate and resume authority clarification
+- currentVersion: v2.74
+- currentMilestone: State sync after chapter rehydration proposal and audit boundary notes
 
 ## Recently merged context
 
-PR #291 preserved an opening / `От автора` candidate working layer.
+PR #294 added `chapter_rehydration_agent` as a proposal-only manual/advisory chapter-preparation layer.
 
 Boundary:
 
-- candidate material only;
-- not final approved book content;
-- no runtime, validator, CI, branch protection or registry changes.
+- proposal only;
+- not activation;
+- no registry mutation;
+- no route automation;
+- no runtime behavior;
+- no validator or hard guardrail;
+- no book-content approval;
+- no book-mode activation.
 
-PR #292 clarified:
+PR #296 added `knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md` as an operations-note external audit.
 
-- resume authority and source-of-truth basis;
-- manual discipline scope;
-- archive/worklog/vision notes as continuity/source-material layers;
-- blocking vs advisory vs manual check layers;
-- `knowledge/00_manifest/resume-order.md` as an operational manifest note.
+Boundary:
 
-PR #292 remains documentation-only.
+- documentation-only;
+- not project-state;
+- not roadmap;
+- not implementation mandate;
+- no runtime, validator, hard guardrail, CI, branch-protection or agent activation change.
 
-It does not:
+PR #295 added an inline boundary note to `scripts/run-registry-sync.mjs`.
 
-- implement runtime;
-- add validators;
-- add hard guardrails;
-- change CI;
-- change branch protection;
-- change registry;
-- change book files.
+Boundary:
+
+- comment-only clarification;
+- no runtime behavior change;
+- no registry mutation;
+- no agent activation;
+- no validator, hard guardrail, CI or branch-protection change;
+- the script remains technical edge automation only.
 
 ## Human-core extraction layer
 
@@ -112,6 +124,19 @@ It must not:
 - replace scenes with abstraction;
 - kill narrative energy.
 
+`chapter_rehydration_agent` may be used only as proposal/manual preparation logic unless separately activated through the appropriate workflow.
+
+## Current audit/watch items
+
+The current-state audit preserved in PR #296 identifies watch items only:
+
+- README density;
+- status language drift;
+- conductor scope creep;
+- continuity-layer overreach.
+
+These are documentation-only watch items. They are not runtime work, validator work, hard-guardrail work, roadmap approval or implementation mandate.
+
 ## Current protocol result
 
 After PR / merge / state-sync / checkpoint operations, responses must include:
@@ -135,7 +160,7 @@ Archive status: зеленый_1 / зеленый_2 / желтый_1 / желт�
 
 ## State-sync boundaries
 
-This v2.73 state sync is documentation/state alignment only.
+This v2.74 state sync is documentation/state alignment only.
 
 It does not:
 
@@ -145,8 +170,9 @@ It does not:
 - change CI;
 - mutate registry authority;
 - resume book mode;
-- approve candidate book content as final.
+- approve candidate book content as final;
+- activate `chapter_rehydration_agent`.
 
 ## Next safe step
 
-Run the first 5-7 Plotnikov chapters through the extraction framework and test whether the framework survives real material without losing practical force.
+Run the first 5-7 Plotnikov chapters through the extraction framework and test whether the framework survives real material without losing practical force. Use `chapter_rehydration_agent` only as proposal/manual preparation logic unless separately activated.

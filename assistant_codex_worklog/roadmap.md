@@ -8,21 +8,24 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 
 ## Current milestone
 
-- currentVersion: v2.73
-- currentMilestone: State sync after opening candidate and resume authority clarification
-- lastMergedPr: PR #292 — Clarify resume authority and manual discipline scope
-- lastMergeCommit: `caad29e450b193d5e5314ba6e1d36dd31625d40d`
+- currentVersion: v2.74
+- currentMilestone: State sync after chapter rehydration proposal and audit boundary notes
+- lastMergedPr: PR #295 — Clarify registry sync script boundary
+- lastMergeCommit: `d1948546eb35db7cd25797dbc83782f4f2220164`
 
 ## Current arc
 
-The current arc remains Agent Shipyard / Agent Queue with two recent documentation-only additions:
+The current arc remains Agent Shipyard / Agent Queue with three recent documentation-only additions:
 
-- PR #291 preserved an opening / `От автора` candidate working layer;
-- PR #292 clarified resume authority, manual discipline scope and blocking/advisory/manual check layers.
+- PR #294 added `chapter_rehydration_agent` as a proposal-only chapter-preparation layer;
+- PR #296 preserved `github_centered_current_state_audit_2026-05-26.md` as a documentation-only operations note;
+- PR #295 added an inline boundary note to `scripts/run-registry-sync.mjs`.
 
-PR #291 material is candidate only. It is not final approved book content and does not resume book mode.
+PR #294 is proposal-only. It is not activation, registry mutation, routing, runtime behavior, validator, hard guardrail, book-content approval or book-mode activation.
 
-PR #292 adds clarity around source-of-truth and continuity layers. It does not add runtime, validators, hard guardrails, CI gates, registry changes or branch-protection changes.
+PR #296 is an audit note only. It is not project-state, roadmap, implementation mandate, runtime, validator, hard guardrail, CI, branch-protection or agent activation change.
+
+PR #295 is a boundary-comment clarification only. It does not change script behavior or authority.
 
 ## Existing extraction framework layer
 
@@ -42,7 +45,7 @@ The layer defines:
 
 ## Important boundaries
 
-The merged framework and the later resume-authority clarification remain:
+The merged framework and the later documentation additions remain:
 
 - documentation-only;
 - advisory/manual;
@@ -75,6 +78,8 @@ Purpose:
 - avoid academic abstraction;
 - identify recurring human degradation patterns.
 
+`chapter_rehydration_agent` may assist as proposal/manual preparation logic where useful, but it must not be treated as active, routed, validator, runtime or hard guardrail.
+
 ## Current strategic insight
 
 The project direction increasingly converges around:
@@ -92,9 +97,20 @@ MLM is treated not as the sole topic, but as a pressure-environment that amplifi
 - maturity conditions;
 - relationship ethics.
 
+## Watch items from current-state audit
+
+The current-state audit records watch items, not implementation mandates:
+
+- README density;
+- status language drift;
+- conductor scope creep;
+- continuity-layer overreach.
+
+These should be handled only through narrow documentation-only PRs if and when they become concrete.
+
 ## Approved next sequence
 
-1. complete v2.73 state sync after PR #291 and PR #292;
+1. complete v2.74 state sync after PR #294, PR #296 and PR #295;
 2. merge state-sync PR after review/checks;
 3. run extraction pass for first 5-7 Plotnikov chapters;
 4. expand degradation registry only from recurring mechanisms;
@@ -112,7 +128,8 @@ No:
 - branch protection changes;
 - policy enforcement;
 - book-mode activation;
-- candidate chapter approval.
+- candidate chapter approval;
+- chapter_rehydration_agent activation.
 
 ## Recommended next work item
 
