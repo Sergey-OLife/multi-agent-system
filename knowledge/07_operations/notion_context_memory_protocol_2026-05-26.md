@@ -61,6 +61,46 @@ They may also append new dated blocks when their own arc becomes context-critica
 
 However, for GitHub-dependent work they must still read GitHub `main` as the source of truth before making factual project-state claims or performing PR operations.
 
+## README / sensitive-file density use
+
+Sergey’s additional direction:
+
+```text
+Notion memory can help keep README and other line-sensitive files lighter by storing long instructions in Notion and linking to them from GitHub docs.
+```
+
+This is allowed as a continuity and density-management pattern, but only with clear authority boundaries.
+
+Appropriate use:
+
+- keep README and other resume-sensitive files as short maps;
+- place long explanatory guidance, reminders, working instructions, and recovery notes in Notion when they would otherwise overload GitHub docs;
+- link from GitHub docs to the relevant Notion page when the instruction is useful for humans/chats but not required as machine-readable project-state;
+- use Notion to preserve rich context that does not need to be parsed by CI, Go-core, TypeScript checks, or source-of-truth diagnostics.
+
+Do not use Notion links to hide or externalize material that must remain in GitHub:
+
+- project-state facts;
+- parser-sensitive schema;
+- required protocol addenda;
+- accepted source cards;
+- agent registry entries;
+- workflow gates;
+- code behavior;
+- CI/check definitions;
+- branch-protection facts;
+- final accepted book files;
+- anything that must be reviewable, diffable, and durable through PR workflow.
+
+Working rule:
+
+```text
+GitHub keeps the authoritative map and reviewable facts.
+Notion may keep the long human-readable memory and recovery context.
+```
+
+Therefore a GitHub file may link to a Notion instruction for extended context, but it must still state the operational boundary in GitHub clearly enough that the project does not depend on an external page for source-of-truth facts.
+
 ## Boundaries
 
 The Notion memory page is not:
