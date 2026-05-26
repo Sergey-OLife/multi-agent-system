@@ -7,46 +7,50 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.73.
-- lastMergedPr: PR #292 — Clarify resume authority and manual discipline scope.
-- lastMergeCommit: caad29e450b193d5e5314ba6e1d36dd31625d40d.
+- currentVersion: v2.74.
+- lastMergedPr: PR #295 — Clarify registry sync script boundary.
+- lastMergeCommit: d1948546eb35db7cd25797dbc83782f4f2220164.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного explicit mode decision.
 
 Недавние merged PR:
 
-- PR #291 — Add opening author note candidate.
-- PR #292 — Clarify resume authority and manual discipline scope.
+- PR #294 — Add chapter rehydration agent proposal.
+- PR #296 — Add GitHub-centered current-state audit.
+- PR #295 — Clarify registry sync script boundary.
 
-PR #291 preserved an opening / `От автора` candidate working layer.
-
-Boundary:
-
-- candidate material only;
-- not final approved book content;
-- no runtime, validator, CI, branch protection or registry changes.
-
-PR #292 clarified:
-
-- resume authority and source-of-truth basis;
-- manual discipline scope;
-- archive/worklog/vision notes as continuity/source-material layers;
-- blocking vs advisory vs manual check layers;
-- `knowledge/00_manifest/resume-order.md` as an operational manifest note.
+PR #294 added `chapter_rehydration_agent` as proposal-only manual/advisory chapter-preparation layer.
 
 Boundary:
 
-PR #292 is documentation-only.
+- proposal only;
+- not activation;
+- no registry mutation;
+- no route automation;
+- no runtime behavior;
+- no validator or hard guardrail;
+- no book-content approval;
+- no book-mode activation.
 
-It does NOT:
+PR #296 added `knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md` as documentation-only operations note.
 
-- implement runtime;
-- add validators;
-- add hard guardrails;
-- change CI;
-- change branch protection;
-- change registry;
-- change book files.
+Boundary:
+
+- not project-state;
+- not roadmap;
+- not implementation mandate;
+- no runtime, validator, hard guardrail, CI, branch-protection or agent activation change.
+
+PR #295 added an inline boundary note to `scripts/run-registry-sync.mjs`.
+
+Boundary:
+
+- comment-only clarification;
+- no runtime behavior change;
+- no registry mutation;
+- no agent activation;
+- no validator, hard guardrail, CI or branch-protection change;
+- the script remains technical edge automation only.
 
 Existing framework documents:
 
@@ -54,17 +58,21 @@ Existing framework documents:
 - `knowledge/07_operations/plotnikov_full_pass_map.md`
 - `knowledge/07_operations/degradation_patterns_registry.md`
 - `knowledge/00_manifest/resume-order.md`
+- `knowledge/05_agent_memory/agent_proposals/chapter_rehydration_agent.md`
+- `knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md`
 
-Назначение framework documents:
+Назначение framework / operations documents:
 
 - constitutional human-core boundaries;
 - operational anthropology extraction framework;
 - recurring degradation-pattern tracking;
-- restart/source reading order clarity.
+- restart/source reading order clarity;
+- proposal-only chapter rehydration preparation;
+- current-state audit watch items.
 
 Boundary:
 
-Эти документы documentation/advisory only.
+Эти документы documentation/advisory only unless separately promoted through explicit workflow.
 
 Они НЕ:
 
@@ -73,7 +81,8 @@ Boundary:
 - hard guardrails;
 - policy engine;
 - extraction automation;
-- orchestration enforcement.
+- orchestration enforcement;
+- approval bypass.
 
 Следующий practical validation step:
 
@@ -104,6 +113,9 @@ Framework НЕ должен:
 - proposal != activation.
 - manual discipline != runtime.
 - candidate book material != final approved book content.
+- chapter_rehydration_agent != activation.
+- current-state audit note != roadmap / implementation mandate.
+- run-registry-sync.mjs != registry authority / validator / CI gate.
 - human_core_invariants != enforcement.
 - degradation registry != validator.
 - extraction framework != automation.
@@ -111,6 +123,6 @@ Framework НЕ должен:
 
 Текущий следующий шаг:
 
-- merge v2.73 state-sync PR after review/checks;
+- merge v2.74 state-sync PR after review/checks;
 - run first limited extraction pass.
 ```
