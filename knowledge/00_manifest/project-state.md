@@ -29,11 +29,11 @@ This order clarifies priority. It does not collapse the files into one source an
 
 ## Current version
 
-- currentVersion: v2.75
-- lastCompletedVersion: v2.75
-- lastMergedPr: PR #302 — Clarify project Notion memory access
-- lastMergeCommit: `6e3e7f1b42d33868d2c885383adbba21373efe86`
-- currentMilestone: v2.75 Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc
+- currentVersion: v2.76
+- lastCompletedVersion: v2.76
+- lastMergedPr: PR #305 — Clarify project Notion memory access
+- lastMergeCommit: `bd77d56fb4c9b0fc4d51391a9246ff5af219acc5`
+- currentMilestone: v2.76 State sync after PR #305 status correction and reasonable start 12 checks layer
 - currentMode: Agent Shipyard / Agent Queue
 - bookPaused: true
 
