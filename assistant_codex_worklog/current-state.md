@@ -2,15 +2,13 @@
 
 Date: 2026-05-26
 
-## Source of Truth Basis
+## Source of truth basis
 
 GitHub `main` is the accepted source of truth for merged project state.
 
 Primary resume diagnostics start from `knowledge/00_manifest/project-state.json` and its human-readable mirror `knowledge/00_manifest/project-state.md`.
 
 This file is a continuity/resume layer. It summarizes the working point for Assistant × Codex, but it does not override project-state, accepted code, or explicitly accepted project documents.
-
-Archive entries, worklog notes, audit notes and vision notes remain source material unless their decisions are reflected in project-state, code, or an explicitly accepted document.
 
 ## Working point
 
@@ -20,90 +18,49 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 
 ## Latest merged PRs now being synced
 
-- PR #294 — Add chapter rehydration agent proposal
-- PR #296 — Add GitHub-centered current-state audit
-- PR #295 — Clarify registry sync script boundary
+- PR #299 — Add Plotnikov book architecture map
+- PR #300 — Archive chapter rehydration audit state sync chat
+- PR #301 — Add Notion context memory protocol
+- PR #302 — Clarify project Notion memory access
 
-Latest merged PR before this state sync:
+Latest merged PR before this sync:
 
-- PR #295 — Clarify registry sync script boundary
+- PR #302 — Clarify project Notion memory access
 - Status: merged
-- Merge commit: `d1948546eb35db7cd25797dbc83782f4f2220164`
+- Merge commit: `6e3e7f1b42d33868d2c885383adbba21373efe86`
 
 ## Current version target
 
-- currentVersion: v2.74
-- currentMilestone: State sync after chapter rehydration proposal and audit boundary notes
+- currentVersion: v2.75
+- currentMilestone: Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc
 
 ## Recently merged context
 
-PR #294 added `chapter_rehydration_agent` as a proposal-only manual/advisory chapter-preparation layer.
+PR #299 added `knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md` as a documentation-only operations note.
 
-Boundary:
+It records the whole-book architecture rule for the Plotnikov arc:
 
-- proposal only;
-- not activation;
-- no registry mutation;
-- no route automation;
-- no runtime behavior;
-- no validator or hard guardrail;
-- no book-content approval;
-- no book-mode activation.
+- Chapter 1 carries only the seed that personal reason becomes climate;
+- the larger community / stronger-people / durable-income thesis belongs later in team, group and leadership zones;
+- directional ideas should be placed in architecture before they are embedded into chapter prose.
 
-PR #296 added `knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md` as an operations-note external audit.
+PR #300 archived the chapter rehydration / audit / state-sync chat arc as archive only.
 
-Boundary:
+PR #301 added `knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md` as documentation-only continuity protocol.
 
-- documentation-only;
-- not project-state;
-- not roadmap;
-- not implementation mandate;
-- no runtime, validator, hard guardrail, CI, branch-protection or agent activation change.
+PR #302 clarified that project-linked Notion pages may be consulted by future chats and manual/advisory agent layers when active Notion tool access exists.
 
-PR #295 added an inline boundary note to `scripts/run-registry-sync.mjs`.
+## Notion memory boundary
 
-Boundary:
+Notion memory may store long human-readable memory and recovery context.
 
-- comment-only clarification;
-- no runtime behavior change;
-- no registry mutation;
-- no agent activation;
-- no validator, hard guardrail, CI or branch-protection change;
-- the script remains technical edge automation only.
+GitHub keeps the authoritative map and reviewable facts.
 
-## Human-core extraction layer
+Notion memory is not project-state, roadmap, checkpoint, approval, accepted book text, runtime, validator, hard guardrail, registry authority, CI gate, branch protection, approval bypass, background automation or workspace access policy.
 
-PR #286 introduced:
-
-- `human_core_invariants_v0.1.md`
-- `plotnikov_full_pass_map.md`
-- `degradation_patterns_registry.md`
-
-These documents establish:
-
-- constitutional human boundaries;
-- operational anthropology extraction logic;
-- recurring degradation-pattern tracking.
-
-All layers remain documentation/advisory only.
-
-They are not:
-
-- runtime;
-- validator system;
-- hard guardrails;
-- policy engine;
-- orchestration enforcement.
+Manual/advisory agents may consult project-linked Notion pages only through an active chat/tool context. This does not create autonomous runtime, routing, validation, hard guardrails, project-state authority, registry mutation authority, approval authority or Notion background monitoring.
 
 ## Current extraction direction
-
-The extraction framework exists to identify:
-
-- recurring human conflicts;
-- self-deception patterns;
-- influence distortions;
-- degradation mechanisms;
-- maturity conditions.
 
 The next practical validation step remains:
 
@@ -128,14 +85,15 @@ It must not:
 
 ## Current audit/watch items
 
-The current-state audit preserved in PR #296 identifies watch items only:
+The current watch items remain documentation-only:
 
 - README density;
 - status language drift;
 - conductor scope creep;
-- continuity-layer overreach.
+- continuity-layer overreach;
+- Notion/GitHub authority confusion.
 
-These are documentation-only watch items. They are not runtime work, validator work, hard-guardrail work, roadmap approval or implementation mandate.
+These are not runtime work, validator work, hard-guardrail work, roadmap approval or implementation mandate.
 
 ## Current protocol result
 
@@ -160,7 +118,7 @@ Archive status: зеленый_1 / зеленый_2 / желтый_1 / желт�
 
 ## State-sync boundaries
 
-This v2.74 state sync is documentation/state alignment only.
+This v2.75 compact sync is documentation/state alignment only.
 
 It does not:
 
@@ -168,10 +126,12 @@ It does not:
 - add validators;
 - add hard gates;
 - change CI;
+- change branch protection;
 - mutate registry authority;
 - resume book mode;
 - approve candidate book content as final;
-- activate `chapter_rehydration_agent`.
+- activate `chapter_rehydration_agent`;
+- turn Notion memory into source of truth or background automation.
 
 ## Next safe step
 

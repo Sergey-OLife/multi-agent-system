@@ -8,24 +8,42 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 
 ## Current milestone
 
-- currentVersion: v2.74
-- currentMilestone: State sync after chapter rehydration proposal and audit boundary notes
-- lastMergedPr: PR #295 — Clarify registry sync script boundary
-- lastMergeCommit: `d1948546eb35db7cd25797dbc83782f4f2220164`
+- currentVersion: v2.75
+- currentMilestone: Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc
+- lastMergedPr: PR #302 — Clarify project Notion memory access
+- lastMergeCommit: `6e3e7f1b42d33868d2c885383adbba21373efe86`
 
 ## Current arc
 
-The current arc remains Agent Shipyard / Agent Queue with three recent documentation-only additions:
+The current arc remains Agent Shipyard / Agent Queue with four recent merged documentation/continuity additions:
 
-- PR #294 added `chapter_rehydration_agent` as a proposal-only chapter-preparation layer;
-- PR #296 preserved `github_centered_current_state_audit_2026-05-26.md` as a documentation-only operations note;
-- PR #295 added an inline boundary note to `scripts/run-registry-sync.mjs`.
+- PR #299 added `plotnikov_book_architecture_map_2026-05-26.md` as a documentation-only operations note;
+- PR #300 archived the chapter rehydration / audit / state-sync chat arc;
+- PR #301 added `notion_context_memory_protocol_2026-05-26.md` as documentation-only continuity protocol;
+- PR #302 clarified project-linked Notion memory access for future chats and manual/advisory agents.
 
-PR #294 is proposal-only. It is not activation, registry mutation, routing, runtime behavior, validator, hard guardrail, book-content approval or book-mode activation.
+## Important boundaries
 
-PR #296 is an audit note only. It is not project-state, roadmap, implementation mandate, runtime, validator, hard guardrail, CI, branch-protection or agent activation change.
+PR #299 is architecture mapping, not accepted book content and not permission to rewrite chapter files.
 
-PR #295 is a boundary-comment clarification only. It does not change script behavior or authority.
+PR #300 is archive only, not checkpoint or project-state.
+
+PR #301 and PR #302 make Notion memory a continuity layer, not source-of-truth replacement.
+
+Project-linked Notion pages may be consulted by future chats and manual/advisory agents when active Notion tool access exists, but only as semantic recovery context.
+
+Notion memory does not create:
+
+- project-state authority;
+- approval authority;
+- runtime behavior;
+- route automation;
+- validators;
+- hard guardrails;
+- registry mutation authority;
+- CI or branch-protection changes;
+- background Notion monitoring;
+- workspace-wide Notion access policy.
 
 ## Existing extraction framework layer
 
@@ -43,24 +61,7 @@ The layer defines:
 - operational anthropology extraction logic;
 - recurring degradation-pattern tracking.
 
-## Important boundaries
-
-The merged framework and the later documentation additions remain:
-
-- documentation-only;
-- advisory/manual;
-- non-runtime.
-
-They do not:
-
-- implement extraction automation;
-- add validators;
-- add hard guardrails;
-- add CI gates;
-- mutate registry authority;
-- activate agents;
-- enforce orchestration;
-- approve candidate book content as final.
+The layer remains documentation/advisory only.
 
 ## Extraction framework direction
 
@@ -76,7 +77,8 @@ Purpose:
 - preserve Plotnikovsky Motor;
 - preserve scenes and pressure;
 - avoid academic abstraction;
-- identify recurring human degradation patterns.
+- identify recurring human degradation patterns;
+- test whether the architecture map helps without prematurely forcing later-community concepts into Chapter 1.
 
 `chapter_rehydration_agent` may assist as proposal/manual preparation logic where useful, but it must not be treated as active, routed, validator, runtime or hard guardrail.
 
@@ -95,26 +97,28 @@ MLM is treated not as the sole topic, but as a pressure-environment that amplifi
 - recognition hunger;
 - manipulation risk;
 - maturity conditions;
-- relationship ethics.
+- relationship ethics;
+- community norms created by private actions.
 
-## Watch items from current-state audit
+## Watch items
 
-The current-state audit records watch items, not implementation mandates:
+The current watch items are documentation-only:
 
 - README density;
 - status language drift;
 - conductor scope creep;
-- continuity-layer overreach.
+- continuity-layer overreach;
+- Notion/GitHub authority confusion.
 
 These should be handled only through narrow documentation-only PRs if and when they become concrete.
 
 ## Approved next sequence
 
-1. complete v2.74 state sync after PR #294, PR #296 and PR #295;
-2. merge state-sync PR after review/checks;
-3. run extraction pass for first 5-7 Plotnikov chapters;
-4. expand degradation registry only from recurring mechanisms;
-5. expand human-core invariants only from stable extracted laws.
+1. Complete this compact v2.75 state/restart sync after PR #299-302.
+2. Merge the state-sync PR after review/checks and Sergey approval.
+3. Run extraction pass for first 5-7 Plotnikov chapters.
+4. Expand degradation registry only from recurring mechanisms.
+5. Expand human-core invariants only from stable extracted laws.
 
 ## State-sync boundaries
 
@@ -129,7 +133,8 @@ No:
 - policy enforcement;
 - book-mode activation;
 - candidate chapter approval;
-- chapter_rehydration_agent activation.
+- chapter_rehydration_agent activation;
+- Notion source-of-truth promotion.
 
 ## Recommended next work item
 

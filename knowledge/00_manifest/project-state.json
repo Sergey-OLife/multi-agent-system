@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.74",
-  "lastCompletedVersion": "v2.74",
-  "lastMergedPr": "PR #295 — Clarify registry sync script boundary",
-  "lastMergeCommit": "d1948546eb35db7cd25797dbc83782f4f2220164",
-  "currentMilestone": "v2.74 State sync after chapter rehydration proposal and audit boundary notes",
+  "currentVersion": "v2.75",
+  "lastCompletedVersion": "v2.75",
+  "lastMergedPr": "PR #302 — Clarify project Notion memory access",
+  "lastMergeCommit": "6e3e7f1b42d33868d2c885383adbba21373efe86",
+  "currentMilestone": "v2.75 Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -74,7 +74,8 @@
     "v2.71 Checkpoint full after runtime readiness state sync",
     "v2.72 Human core invariants and extraction framework synced",
     "v2.73 State sync after opening candidate and resume authority clarification",
-    "v2.74 State sync after chapter rehydration proposal and audit boundary notes"
+    "v2.74 State sync after chapter rehydration proposal and audit boundary notes",
+    "v2.75 Compact state/restart sync after PR #299-302"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -99,7 +100,11 @@
     "PR #292 — Clarify resume authority and manual discipline scope",
     "PR #294 — Add chapter rehydration agent proposal",
     "PR #296 — Add GitHub-centered current-state audit",
-    "PR #295 — Clarify registry sync script boundary"
+    "PR #295 — Clarify registry sync script boundary",
+    "PR #299 — Add Plotnikov book architecture map",
+    "PR #300 — Archive chapter rehydration audit state sync chat",
+    "PR #301 — Add Notion context memory protocol",
+    "PR #302 — Clarify project Notion memory access"
   ],
   "mergedArcPrs": [
     "PR #270 — Add reasonable community balancing map",
@@ -108,7 +113,11 @@
     "PR #273 — Add archive structure advisory check",
     "PR #275 — Clarify document authority layers",
     "PR #277 — Archive external-audit / validator / authority arc",
-    "PR #278 — Adjust archive structure index handling"
+    "PR #278 — Adjust archive structure index handling",
+    "PR #299 — Add Plotnikov book architecture map",
+    "PR #300 — Archive chapter rehydration audit state sync chat",
+    "PR #301 — Add Notion context memory protocol",
+    "PR #302 — Clarify project Notion memory access"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -173,7 +182,17 @@
     "Local state-sync drift audit script is implementation but not enforcement",
     "+ means continue the next safe step, not approval",
     "++ means approval for the current clear approval-gate only",
-    "+++ means the nearest grounded safe action and does not bypass approval-gates"
+    "+++ means the nearest grounded safe action and does not bypass approval-gates",
+    "PR #299 added Plotnikov book architecture map as documentation-only operations note; it is not project-state, roadmap, checkpoint, book-mode activation, accepted book content, agent activation, registry mutation, runtime, validator, hard guardrail, CI or branch-protection change",
+    "PR #299 records that Chapter 1 should carry only the seed that personal reason becomes climate; heavier community / stronger-people / durable-income thesis belongs in later team, group and leadership zones",
+    "PR #300 archived the chapter rehydration / audit / state-sync chat arc as archive only; it is not checkpoint, project-state, runtime, validator, hard guardrail, CI, branch protection, registry mutation, agent activation, book-mode activation or book-content approval",
+    "PR #301 added Notion context memory protocol as documentation-only continuity protocol: Notion may hold long human-readable memory and recovery context, while GitHub keeps authoritative map and reviewable facts",
+    "PR #302 clarified project-linked Notion memory scope: future chats may consult project-linked Notion pages when they have Notion tool access; manual/advisory agents may consult them through active chat/tool context only",
+    "Notion memory is not GitHub source of truth, project-state, roadmap, checkpoint, approval, accepted book text, agent activation, registry mutation, runtime, validator, hard guardrail, CI gate, branch protection, approval bypass, background automation or workspace access policy",
+    "Agent use of Notion memory is context consultation only; it does not create autonomous runtime, routed workers, validators, hard guardrails, project-state authority, registry mutation authority, approval authority or Notion background watchers",
+    "README and other line-sensitive files may stay as short maps and link to Notion for long human-readable instructions, but GitHub must still contain operational boundaries and all reviewable/source-of-truth facts",
+    "The next practical validation step remains: run the first 5-7 Plotnikov chapters through the extraction framework before broadening the full 50-chapter pass",
+    "Extraction outputs remain candidate material only; saving accepted chapter text, changing book files, durable book/product mode switching, or treating candidate fragments as final requires explicit Sergey approval and appropriate book workflow"
   ],
   "pausedTasks": [
     "Do not continue accepted book-work automatically while current durable mode is Agent Shipyard / Agent Queue unless Sergey uses #книга or otherwise explicitly switches mode",
@@ -203,9 +222,14 @@
     "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164, PR #169, PR #274, PR #276 or PR #279 as implemented",
     "Do not treat archive structure advisory check as CI, required check, hard gate, branch protection, runtime behavior or automatic archive fixer without separate Sergey approval",
     "Do not let Codex rewrite or compact state/resume files; state-sync is additive by default",
-    "Do not treat runtime_readiness_checklist_2026-05-24.md as runtime implementation, route automation, validator, hard guardrail, policy layer, infrastructure approval or deployment plan"
+    "Do not treat runtime_readiness_checklist_2026-05-24.md as runtime implementation, route automation, validator, hard guardrail, policy layer, infrastructure approval or deployment plan",
+    "Do not treat PR #299 Plotnikov architecture map as final approved book content or permission to rewrite chapter files",
+    "Do not treat PR #301 or PR #302 as permission to move source-of-truth facts out of GitHub into Notion",
+    "Do not treat Notion memory as project-state, checkpoint, roadmap, approval, runtime or registry authority",
+    "Do not treat manual/advisory agents consulting Notion as agent activation, route automation, validator, hard guardrail or background watcher",
+    "Do not compact project-state.json by deleting historical completedVersions, activeDecisions, pausedTasks, importantPaths or agentState entries during state-sync"
   ],
-  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a non-final Agent Queue extraction/creative sandbox, using chapter_rehydration_agent as proposal-only/manual preparation logic where useful. Outputs are candidate material only unless Sergey explicitly approves saving them as accepted book content through the appropriate book workflow. Keep human_core_invariants_v0.1.md and degradation_patterns_registry.md documentation/advisory only.",
+  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a non-final Agent Queue extraction/creative sandbox, using chapter_rehydration_agent as proposal-only/manual preparation logic where useful. Outputs are candidate material only unless Sergey explicitly approves saving them as accepted book content through the appropriate book workflow. Keep human_core_invariants_v0.1.md, degradation_patterns_registry.md and Notion memory protocol documentation/advisory only.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -245,6 +269,8 @@
     "knowledge/05_agent_memory/agent_proposals/workflow_conductor_agent.md",
     "knowledge/05_agent_memory/agent_proposals/critic_margin_agent.md",
     "knowledge/05_agent_memory/agent_proposals/agent_registry_librarian.md",
+    "knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md",
+    "knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md",
     ".github/workflows/sync-check.yml",
     ".github/workflows/ci.yml"
   ],
@@ -281,10 +307,15 @@
     "workflowConductor": {
       "workflow_conductor_agent": "active advisory/manual orchestration planner only; not runtime, not route automation, not approval authority, not registry mutation authority, not project-state authority, not validator, not hard guardrail, not policy layer, not automatic book/product mode switch"
     },
+    "notionMemory": {
+      "scope": "project-linked continuity pages only",
+      "authority": "semantic recovery context only; not source of truth",
+      "agentUse": "manual/advisory agents may consult only through active chat/tool context; no background watcher"
+    },
     "ciBaseline": {
-      "latest_green_pr": "PR #295 — Clarify registry sync script boundary",
-      "latest_green_head": "3abd9ac444ee79ce023485bb6b2d3f98ddd7a0e5",
-      "latest_green_merge_commit": "d1948546eb35db7cd25797dbc83782f4f2220164",
+      "latest_green_pr": "PR #302 — Clarify project Notion memory access",
+      "latest_green_head": "42815d2b221349f302e47538e934af4680319578",
+      "latest_green_merge_commit": "6e3e7f1b42d33868d2c885383adbba21373efe86",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",

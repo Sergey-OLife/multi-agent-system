@@ -7,88 +7,62 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.74.
-- lastMergedPr: PR #295 — Clarify registry sync script boundary.
-- lastMergeCommit: d1948546eb35db7cd25797dbc83782f4f2220164.
+- currentVersion: v2.75.
+- lastMergedPr: PR #302 — Clarify project Notion memory access.
+- lastMergeCommit: 6e3e7f1b42d33868d2c885383adbba21373efe86.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного explicit mode decision.
 
 Недавние merged PR:
 
-- PR #294 — Add chapter rehydration agent proposal.
-- PR #296 — Add GitHub-centered current-state audit.
-- PR #295 — Clarify registry sync script boundary.
+- PR #299 — Add Plotnikov book architecture map.
+- PR #300 — Archive chapter rehydration audit state sync chat.
+- PR #301 — Add Notion context memory protocol.
+- PR #302 — Clarify project Notion memory access.
 
-PR #294 added `chapter_rehydration_agent` as proposal-only manual/advisory chapter-preparation layer.
+PR #299 added `knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md` as documentation-only operations note.
 
-Boundary:
+Key content boundary:
 
-- proposal only;
-- not activation;
-- no registry mutation;
-- no route automation;
-- no runtime behavior;
-- no validator or hard guardrail;
-- no book-content approval;
-- no book-mode activation.
+- Chapter 1 should carry only the seed that personal reason becomes climate.
+- The larger community / stronger-people / durable-income thesis belongs later in team, group and leadership zones.
+- Directional ideas should first be placed in architecture before being embedded into chapter prose.
 
-PR #296 added `knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md` as documentation-only operations note.
+PR #300 is archive only, not checkpoint or project-state.
 
-Boundary:
+PR #301 added `knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md` as documentation-only continuity protocol.
 
-- not project-state;
-- not roadmap;
-- not implementation mandate;
-- no runtime, validator, hard guardrail, CI, branch-protection or agent activation change.
+PR #302 clarified project-linked Notion memory access:
 
-PR #295 added an inline boundary note to `scripts/run-registry-sync.mjs`.
+- future chats may consult project-linked Notion pages when they have Notion tool access;
+- manual/advisory project agents may consult project-linked Notion pages through active chat/tool context;
+- this is semantic recovery only.
 
-Boundary:
+Notion memory boundary:
 
-- comment-only clarification;
-- no runtime behavior change;
-- no registry mutation;
-- no agent activation;
-- no validator, hard guardrail, CI or branch-protection change;
-- the script remains technical edge automation only.
+- Notion may hold long human-readable memory and recovery context.
+- GitHub keeps the authoritative map and reviewable facts.
+- Notion is not project-state, roadmap, checkpoint, approval, accepted book text, runtime, validator, hard guardrail, CI gate, branch protection, registry authority, approval bypass, background automation or workspace access policy.
+- Agent use of Notion memory does not create autonomous runtime, route automation, validator, hard guardrail, project-state authority, registry mutation authority, approval authority or background watcher.
 
 Existing framework documents:
 
 - `knowledge/07_operations/human_core_invariants_v0.1.md`
 - `knowledge/07_operations/plotnikov_full_pass_map.md`
 - `knowledge/07_operations/degradation_patterns_registry.md`
-- `knowledge/00_manifest/resume-order.md`
+- `knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md`
+- `knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md`
 - `knowledge/05_agent_memory/agent_proposals/chapter_rehydration_agent.md`
-- `knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md`
-
-Назначение framework / operations documents:
-
-- constitutional human-core boundaries;
-- operational anthropology extraction framework;
-- recurring degradation-pattern tracking;
-- restart/source reading order clarity;
-- proposal-only chapter rehydration preparation;
-- current-state audit watch items.
 
 Boundary:
 
-Эти документы documentation/advisory only unless separately promoted through explicit workflow.
+These documents are documentation/advisory only unless separately promoted through explicit workflow.
 
-Они НЕ:
-
-- runtime;
-- validators;
-- hard guardrails;
-- policy engine;
-- extraction automation;
-- orchestration enforcement;
-- approval bypass.
+They are NOT runtime, validators, hard guardrails, policy engine, extraction automation, orchestration enforcement, source-of-truth replacement, book-content approval, or approval bypass.
 
 Следующий practical validation step:
 
-```text
 Run the first 5-7 Plotnikov chapters through the extraction framework.
-```
 
 Главная проверка:
 
@@ -97,15 +71,17 @@ Framework должен:
 - усиливать ясность;
 - сохранять Plotnikovsky Motor;
 - сохранять сцены и практическое напряжение;
-- сохранять человеческую конкретику.
+- сохранять человеческую конкретику;
+- не перетаскивать позднюю community architecture в Chapter 1 раньше времени.
 
 Framework НЕ должен:
 
 - academicize the book;
 - replace scenes with abstraction;
-- kill narrative energy.
+- kill narrative energy;
+- turn candidate material into accepted book text.
 
-Сохраняются все прежние boundaries:
+Сохраняются boundaries:
 
 - GitHub main — source of truth.
 - README — entrance map, not live roadmap.
@@ -114,15 +90,10 @@ Framework НЕ должен:
 - manual discipline != runtime.
 - candidate book material != final approved book content.
 - chapter_rehydration_agent != activation.
-- current-state audit note != roadmap / implementation mandate.
-- run-registry-sync.mjs != registry authority / validator / CI gate.
-- human_core_invariants != enforcement.
-- degradation registry != validator.
-- extraction framework != automation.
-- resume-order != validator/hard guardrail/replacement for project-state.json.
+- Notion memory != source of truth / project-state / background automation.
 
 Текущий следующий шаг:
 
-- merge v2.74 state-sync PR after review/checks;
-- run first limited extraction pass.
+- merge compact v2.75 state/restart sync PR after review/checks and Sergey approval;
+- then run first limited extraction pass.
 ```
