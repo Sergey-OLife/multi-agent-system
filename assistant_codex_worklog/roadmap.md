@@ -9,15 +9,16 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 ## Current milestone
 
 - currentVersion: v2.76
-- currentMilestone: State sync after reasonable start 12 checks layer
-- lastMergedPr: PR #306 — Add reasonable start 12 checks layer
-- lastMergeCommit: `2976500fc6b211c5895d59c77ab625ab07432b1a`
+- currentMilestone: State sync after PR #305 status correction and reasonable start 12 checks layer
+- lastMergedPr: PR #305 — Clarify project Notion memory access
+- lastMergeCommit: `bd77d56fb4c9b0fc4d51391a9246ff5af219acc5`
 
 ## Current arc
 
-The current arc remains Agent Shipyard / Agent Queue with a new merged documentation-only book/product/MVP diagnostic layer:
+The current arc remains Agent Shipyard / Agent Queue with two recently relevant merged documentation-only facts:
 
-- PR #306 added `knowledge/07_operations/reasonable_start_12_checks_layer.md`.
+- PR #305 is the actual latest main tip for this state sync and clarified project Notion memory access as documentation-only status correction.
+- PR #306 added `knowledge/07_operations/reasonable_start_12_checks_layer.md` as a documentation-only book/product/MVP diagnostic layer.
 
 The layer adapts a twelve-angle financial/mindset prompt structure into the language of `Разумное сообщество`:
 
@@ -35,6 +36,8 @@ The layer adapts a twelve-angle financial/mindset prompt structure into the lang
 - weekly route.
 
 ## Important boundaries
+
+PR #305 is documentation-only status correction and does not create runtime, route automation, validators, hard guardrails, CI or branch-protection change, agent activation, registry mutation, background Notion monitoring or workspace-wide Notion access policy.
 
 PR #306 is documentation/advisory only.
 
@@ -131,7 +134,7 @@ These should be handled only through narrow documentation-only PRs if and when t
 
 ## Approved next sequence
 
-1. Complete this v2.76 state/restart sync after PR #306.
+1. Complete this v2.76 state/restart sync after PR #305 and PR #306.
 2. Merge the state-sync PR after review/checks and Sergey approval.
 3. Run extraction pass for first 5-7 Plotnikov chapters.
 4. Optionally test the 12 checks layer on a novice scene or first-action case.
