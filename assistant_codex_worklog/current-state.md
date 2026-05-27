@@ -16,22 +16,28 @@ Mode: `Agent Shipyard / Agent Queue`.
 
 Book work remains paused until Sergey uses `#книга` or gives a separate explicit mode decision.
 
-## Latest merged PR now being synced
+## Actual latest main tip now being recorded
 
-- PR #306 — Add reasonable start 12 checks layer
+- PR #305 — Clarify project Notion memory access
+- Status: merged
+- Merge commit: `bd77d56fb4c9b0fc4d51391a9246ff5af219acc5`
 
-Latest merged PR before this sync:
+## Documentation layer being synced
 
 - PR #306 — Add reasonable start 12 checks layer
 - Status: merged
 - Merge commit: `2976500fc6b211c5895d59c77ab625ab07432b1a`
 
+PR #305 is the actual latest main tip for this state sync. PR #306 remains the merged documentation-only layer being recorded in the v2.76 state/restart sync.
+
 ## Current version target
 
 - currentVersion: v2.76
-- currentMilestone: State sync after reasonable start 12 checks layer
+- currentMilestone: State sync after PR #305 status correction and reasonable start 12 checks layer
 
 ## Recently merged context
+
+PR #305 clarified project Notion memory access as a documentation-only status correction. It does not promote Notion to source of truth or add background Notion automation.
 
 PR #306 added `knowledge/07_operations/reasonable_start_12_checks_layer.md` as a documentation-only book/product/MVP diagnostic layer.
 
