@@ -1,9 +1,9 @@
 {
-  "currentVersion": "v2.75",
-  "lastCompletedVersion": "v2.75",
-  "lastMergedPr": "PR #302 — Clarify project Notion memory access",
-  "lastMergeCommit": "6e3e7f1b42d33868d2c885383adbba21373efe86",
-  "currentMilestone": "v2.75 Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc",
+  "currentVersion": "v2.76",
+  "lastCompletedVersion": "v2.76",
+  "lastMergedPr": "PR #306 — Add reasonable start 12 checks layer",
+  "lastMergeCommit": "2976500fc6b211c5895d59c77ab625ab07432b1a",
+  "currentMilestone": "v2.76 State sync after reasonable start 12 checks layer",
   "currentMode": "Agent Shipyard / Agent Queue",
   "bookPaused": true,
   "completedVersions": [
@@ -75,7 +75,8 @@
     "v2.72 Human core invariants and extraction framework synced",
     "v2.73 State sync after opening candidate and resume authority clarification",
     "v2.74 State sync after chapter rehydration proposal and audit boundary notes",
-    "v2.75 Compact state/restart sync after PR #299-302"
+    "v2.75 Compact state/restart sync after PR #299-302",
+    "v2.76 State sync after reasonable start 12 checks layer"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -104,7 +105,8 @@
     "PR #299 — Add Plotnikov book architecture map",
     "PR #300 — Archive chapter rehydration audit state sync chat",
     "PR #301 — Add Notion context memory protocol",
-    "PR #302 — Clarify project Notion memory access"
+    "PR #302 — Clarify project Notion memory access",
+    "PR #306 — Add reasonable start 12 checks layer"
   ],
   "mergedArcPrs": [
     "PR #270 — Add reasonable community balancing map",
@@ -117,7 +119,8 @@
     "PR #299 — Add Plotnikov book architecture map",
     "PR #300 — Archive chapter rehydration audit state sync chat",
     "PR #301 — Add Notion context memory protocol",
-    "PR #302 — Clarify project Notion memory access"
+    "PR #302 — Clarify project Notion memory access",
+    "PR #306 — Add reasonable start 12 checks layer"
   ],
   "openPrs": [],
   "closedUnmergedPrs": [
@@ -129,7 +132,8 @@
     "PR #169 — closed unmerged because bot registry commit did not receive final-head CI / Sync Check; superseded by PR #170",
     "PR #274 — closed unmerged as stale duplicate of PR #271",
     "PR #276 — closed unmerged after empty-index fix was superseded by PR #278",
-    "PR #279 — closed unmerged as duplicate of PR #275"
+    "PR #279 — closed unmerged as duplicate of PR #275",
+    "PR #303 — closed unmerged as stale duplicate superseded by merged PR #301 and state sync PR #304"
   ],
   "activeDecisions": [
     "GitHub main is the source of truth for merged project state",
@@ -192,7 +196,10 @@
     "Agent use of Notion memory is context consultation only; it does not create autonomous runtime, routed workers, validators, hard guardrails, project-state authority, registry mutation authority, approval authority or Notion background watchers",
     "README and other line-sensitive files may stay as short maps and link to Notion for long human-readable instructions, but GitHub must still contain operational boundaries and all reviewable/source-of-truth facts",
     "The next practical validation step remains: run the first 5-7 Plotnikov chapters through the extraction framework before broadening the full 50-chapter pass",
-    "Extraction outputs remain candidate material only; saving accepted chapter text, changing book files, durable book/product mode switching, or treating candidate fragments as final requires explicit Sergey approval and appropriate book workflow"
+    "Extraction outputs remain candidate material only; saving accepted chapter text, changing book files, durable book/product mode switching, or treating candidate fragments as final requires explicit Sergey approval and appropriate book workflow",
+    "PR #306 added reasonable_start_12_checks_layer.md as a documentation-only book/product/MVP diagnostic layer for novice-route work",
+    "PR #306 records reasonable_start_navigator_agent only as a future agent seed / proposal candidate, not as agent activation, registry mutation, route automation, runtime, validator or hard guardrail",
+    "The 12 checks layer may inform book, brochure and MVP candidate work, but it is not accepted chapter text, MVP implementation, wealth-coaching promise or therapeutic protocol"
   ],
   "pausedTasks": [
     "Do not continue accepted book-work automatically while current durable mode is Agent Shipyard / Agent Queue unless Sergey uses #книга or otherwise explicitly switches mode",
@@ -219,7 +226,7 @@
     "Do not treat README as live roadmap; use project-state/current-state/roadmap for next action",
     "Do not treat resume-order.md or resume-order sections as automation, validator, hard guardrail, CI gate or replacement for project-state.json",
     "Do not implement runtime readiness items from external assessments without separate decision",
-    "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164, PR #169, PR #274, PR #276 or PR #279 as implemented",
+    "Do not treat PR #141, PR #145, PR #152, PR #162, PR #164, PR #169, PR #274, PR #276, PR #279 or PR #303 as implemented",
     "Do not treat archive structure advisory check as CI, required check, hard gate, branch protection, runtime behavior or automatic archive fixer without separate Sergey approval",
     "Do not let Codex rewrite or compact state/resume files; state-sync is additive by default",
     "Do not treat runtime_readiness_checklist_2026-05-24.md as runtime implementation, route automation, validator, hard guardrail, policy layer, infrastructure approval or deployment plan",
@@ -227,9 +234,11 @@
     "Do not treat PR #301 or PR #302 as permission to move source-of-truth facts out of GitHub into Notion",
     "Do not treat Notion memory as project-state, checkpoint, roadmap, approval, runtime or registry authority",
     "Do not treat manual/advisory agents consulting Notion as agent activation, route automation, validator, hard guardrail or background watcher",
-    "Do not compact project-state.json by deleting historical completedVersions, activeDecisions, pausedTasks, importantPaths or agentState entries during state-sync"
+    "Do not compact project-state.json by deleting historical completedVersions, activeDecisions, pausedTasks, importantPaths or agentState entries during state-sync",
+    "Do not treat reasonable_start_12_checks_layer.md as agent activation, registry mutation, runtime, route automation, validator, hard guardrail, accepted chapter text, MVP implementation, wealth-coaching promise or therapeutic protocol",
+    "Do not treat the Notion page for 12 checks as source of truth, project-state, checkpoint, approval or accepted book text"
   ],
-  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a non-final Agent Queue extraction/creative sandbox, using chapter_rehydration_agent as proposal-only/manual preparation logic where useful. Outputs are candidate material only unless Sergey explicitly approves saving them as accepted book content through the appropriate book workflow. Keep human_core_invariants_v0.1.md, degradation_patterns_registry.md and Notion memory protocol documentation/advisory only.",
+  "nextAction": "Run the first 5-7 Plotnikov chapters through knowledge/07_operations/plotnikov_full_pass_map.md as a non-final Agent Queue extraction/creative sandbox, using chapter_rehydration_agent as proposal-only/manual preparation logic where useful and reasonable_start_12_checks_layer.md as an optional documentation-only novice-route diagnostic lens. Outputs are candidate material only unless Sergey explicitly approves saving them as accepted book content through the appropriate book workflow. Keep human_core_invariants_v0.1.md, degradation_patterns_registry.md, reasonable_start_12_checks_layer.md and Notion memory protocol documentation/advisory only.",
   "manualChapterUpload": true,
   "rawTextCommitted": false,
   "importantPaths": [
@@ -250,6 +259,7 @@
     "knowledge/07_operations/human_core_invariants_v0.1.md",
     "knowledge/07_operations/plotnikov_full_pass_map.md",
     "knowledge/07_operations/degradation_patterns_registry.md",
+    "knowledge/07_operations/reasonable_start_12_checks_layer.md",
     "knowledge/05_agent_memory/agent_proposals/chapter_rehydration_agent.md",
     "knowledge/07_operations/github_centered_current_state_audit_2026-05-26.md",
     "scripts/run-registry-sync.mjs",
@@ -293,7 +303,10 @@
       "pr_operation_response_footer manual response footer discipline",
       "state_sync_additive_patch_discipline manual state-sync discipline"
     ],
-    "recommendedNextWorkItem": "Run the first 5-7 Plotnikov chapters through the merged extraction framework as a non-final Agent Queue extraction/creative sandbox, with chapter_rehydration_agent available only as proposal/manual preparation logic unless separately activated.",
+    "candidateAgentSeeds": [
+      "reasonable_start_navigator_agent — future proposal candidate only from PR #306; not proposal file, not activation, not registry entry"
+    ],
+    "recommendedNextWorkItem": "Run the first 5-7 Plotnikov chapters through the merged extraction framework as a non-final Agent Queue extraction/creative sandbox, with chapter_rehydration_agent available only as proposal/manual preparation logic and reasonable_start_12_checks_layer.md available only as optional documentation/advisory novice-route diagnostic lens.",
     "modeSwitchCommands": {
       "#книга": "switch intent to Book/Product Mission Mode; first response is workflow_conductor_agent advisory mission plan; no automatic GitHub state change",
       "#агент": "switch intent to Agent Shipyard / Agent Queue Mode; first response is advisory agent-work plan; no automatic activation",
@@ -313,9 +326,9 @@
       "agentUse": "manual/advisory agents may consult only through active chat/tool context; no background watcher"
     },
     "ciBaseline": {
-      "latest_green_pr": "PR #302 — Clarify project Notion memory access",
-      "latest_green_head": "42815d2b221349f302e47538e934af4680319578",
-      "latest_green_merge_commit": "6e3e7f1b42d33868d2c885383adbba21373efe86",
+      "latest_green_pr": "PR #306 — Add reasonable start 12 checks layer",
+      "latest_green_head": "89d92d2c32312a2595aa8a1f241f52b19e302ec5",
+      "latest_green_merge_commit": "2976500fc6b211c5895d59c77ab625ab07432b1a",
       "required_workflow_statuses": ["TypeScript / JavaScript / Go checks", "sync-check"],
       "branchProtection": "minimal_ruleset_active",
       "ruleset": "Protect main",
