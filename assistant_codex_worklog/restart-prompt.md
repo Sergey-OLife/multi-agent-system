@@ -7,43 +7,62 @@ GitHub main — источник правды. Сначала открой READM
 
 Актуальное состояние:
 
-- currentVersion: v2.75.
-- lastMergedPr: PR #302 — Clarify project Notion memory access.
-- lastMergeCommit: 6e3e7f1b42d33868d2c885383adbba21373efe86.
+- currentVersion: v2.76.
+- lastMergedPr: PR #306 — Add reasonable start 12 checks layer.
+- lastMergeCommit: 2976500fc6b211c5895d59c77ab625ab07432b1a.
 - currentMode: Agent Shipyard / Agent Queue.
 - Книга на паузе до команды `#книга` или отдельного explicit mode decision.
 
-Недавние merged PR:
+Недавний merged PR:
 
-- PR #299 — Add Plotnikov book architecture map.
-- PR #300 — Archive chapter rehydration audit state sync chat.
-- PR #301 — Add Notion context memory protocol.
-- PR #302 — Clarify project Notion memory access.
+- PR #306 — Add reasonable start 12 checks layer.
 
-PR #299 added `knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md` as documentation-only operations note.
+PR #306 added `knowledge/07_operations/reasonable_start_12_checks_layer.md` as documentation-only book/product/MVP diagnostic layer.
 
-Key content boundary:
+Layer purpose:
 
-- Chapter 1 should carry only the seed that personal reason becomes climate.
-- The larger community / stronger-people / durable-income thesis belongs later in team, group and leadership zones.
-- Directional ideas should first be placed in architecture before being embedded into chapter prose.
+- translate a twelve-angle financial/mindset prompt structure into `Разумное сообщество` novice-route language;
+- preserve ambition without turning people into material;
+- support book, brochure and future MVP candidate work;
+- keep the center on result + product + discipline + service + boundaries + human trace.
 
-PR #300 is archive only, not checkpoint or project-state.
+The twelve checks:
 
-PR #301 added `knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md` as documentation-only continuity protocol.
+- clear reason;
+- circle of sobriety;
+- novice competence map;
+- inner noise;
+- cost of postponement;
+- rhythm without hysteria;
+- problem as service entry;
+- normality ceiling;
+- working hypothesis;
+- relational identity;
+- first safe action;
+- weekly route.
 
-PR #302 clarified project-linked Notion memory access:
+Boundary:
 
-- future chats may consult project-linked Notion pages when they have Notion tool access;
-- manual/advisory project agents may consult project-linked Notion pages through active chat/tool context;
-- this is semantic recovery only.
+`reasonable_start_12_checks_layer.md` is documentation/advisory only.
 
-Notion memory boundary:
+It is NOT:
 
-- Notion may hold long human-readable memory and recovery context.
-- GitHub keeps the authoritative map and reviewable facts.
-- Notion is not project-state, roadmap, checkpoint, approval, accepted book text, runtime, validator, hard guardrail, CI gate, branch protection, registry authority, approval bypass, background automation or workspace access policy.
-- Agent use of Notion memory does not create autonomous runtime, route automation, validator, hard guardrail, project-state authority, registry mutation authority, approval authority or background watcher.
+- agent activation;
+- registry mutation;
+- route automation;
+- runtime;
+- validator;
+- hard guardrail;
+- CI or branch-protection change;
+- book-mode activation;
+- accepted chapter text;
+- MVP implementation;
+- wealth-coaching promise;
+- therapeutic protocol.
+
+`reasonable_start_navigator_agent` is only a future seed / proposal candidate inside the layer. It is not a proposal file, not registry entry and not active agent.
+
+The related Notion page is auxiliary continuity memory only. GitHub remains source of truth.
 
 Existing framework documents:
 
@@ -52,6 +71,7 @@ Existing framework documents:
 - `knowledge/07_operations/degradation_patterns_registry.md`
 - `knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md`
 - `knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md`
+- `knowledge/07_operations/reasonable_start_12_checks_layer.md`
 - `knowledge/05_agent_memory/agent_proposals/chapter_rehydration_agent.md`
 
 Boundary:
@@ -72,14 +92,16 @@ Framework должен:
 - сохранять Plotnikovsky Motor;
 - сохранять сцены и практическое напряжение;
 - сохранять человеческую конкретику;
-- не перетаскивать позднюю community architecture в Chapter 1 раньше времени.
+- не перетаскивать позднюю community architecture в Chapter 1 раньше времени;
+- использовать 12 checks layer только как optional novice-route diagnostic lens, если это усиливает действие и не даёт motivational plastic.
 
 Framework НЕ должен:
 
 - academicize the book;
 - replace scenes with abstraction;
 - kill narrative energy;
-- turn candidate material into accepted book text.
+- turn candidate material into accepted book text;
+- turn the 12 checks layer into an agent, Skill, MCP tool or MVP feature without separate workflow.
 
 Сохраняются boundaries:
 
@@ -90,10 +112,12 @@ Framework НЕ должен:
 - manual discipline != runtime.
 - candidate book material != final approved book content.
 - chapter_rehydration_agent != activation.
+- reasonable_start_navigator_agent != activation.
+- reasonable_start_12_checks_layer != accepted chapter text / MVP implementation / validator.
 - Notion memory != source of truth / project-state / background automation.
 
 Текущий следующий шаг:
 
-- merge compact v2.75 state/restart sync PR after review/checks and Sergey approval;
+- merge v2.76 state/restart sync PR after review/checks and Sergey approval;
 - then run first limited extraction pass.
 ```
