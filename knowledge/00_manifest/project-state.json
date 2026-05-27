@@ -76,7 +76,7 @@
     "v2.73 State sync after opening candidate and resume authority clarification",
     "v2.74 State sync after chapter rehydration proposal and audit boundary notes",
     "v2.75 Compact state/restart sync after PR #299-302",
-    "v2.76 State sync after reasonable start 12 checks layer"
+    "v2.76 State sync after PR #305 status correction and reasonable start 12 checks layer"
   ],
   "recentPrs": [
     "PR #258 — Sync state after workflow conductor advisory activation",
@@ -106,6 +106,7 @@
     "PR #300 — Archive chapter rehydration audit state sync chat",
     "PR #301 — Add Notion context memory protocol",
     "PR #302 — Clarify project Notion memory access",
+    "PR #305 — Clarify project Notion memory access",
     "PR #306 — Add reasonable start 12 checks layer"
   ],
   "mergedArcPrs": [
@@ -120,6 +121,7 @@
     "PR #300 — Archive chapter rehydration audit state sync chat",
     "PR #301 — Add Notion context memory protocol",
     "PR #302 — Clarify project Notion memory access",
+    "PR #305 — Clarify project Notion memory access status correction",
     "PR #306 — Add reasonable start 12 checks layer"
   ],
   "openPrs": [],
@@ -197,6 +199,7 @@
     "README and other line-sensitive files may stay as short maps and link to Notion for long human-readable instructions, but GitHub must still contain operational boundaries and all reviewable/source-of-truth facts",
     "The next practical validation step remains: run the first 5-7 Plotnikov chapters through the extraction framework before broadening the full 50-chapter pass",
     "Extraction outputs remain candidate material only; saving accepted chapter text, changing book files, durable book/product mode switching, or treating candidate fragments as final requires explicit Sergey approval and appropriate book workflow",
+    "PR #305 clarified project Notion memory access as the actual latest main commit before v2.76 state sync; its effective facts are already reflected in the Notion memory protocol/state arc and it does not promote Notion to source of truth",
     "PR #306 added reasonable_start_12_checks_layer.md as a documentation-only book/product/MVP diagnostic layer for novice-route work",
     "PR #306 records reasonable_start_navigator_agent only as a future agent seed / proposal candidate, not as agent activation, registry mutation, route automation, runtime, validator or hard guardrail",
     "The 12 checks layer may inform book, brochure and MVP candidate work, but it is not accepted chapter text, MVP implementation, wealth-coaching promise or therapeutic protocol"
