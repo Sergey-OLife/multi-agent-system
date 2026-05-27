@@ -1,6 +1,6 @@
 # Current State — Assistant × Codex
 
-Date: 2026-05-26
+Date: 2026-05-27
 
 ## Source of truth basis
 
@@ -16,39 +16,64 @@ Mode: `Agent Shipyard / Agent Queue`.
 
 Book work remains paused until Sergey uses `#книга` or gives a separate explicit mode decision.
 
-## Latest merged PRs now being synced
+## Latest merged PR now being synced
 
-- PR #299 — Add Plotnikov book architecture map
-- PR #300 — Archive chapter rehydration audit state sync chat
-- PR #301 — Add Notion context memory protocol
-- PR #302 — Clarify project Notion memory access
+- PR #306 — Add reasonable start 12 checks layer
 
 Latest merged PR before this sync:
 
-- PR #302 — Clarify project Notion memory access
+- PR #306 — Add reasonable start 12 checks layer
 - Status: merged
-- Merge commit: `6e3e7f1b42d33868d2c885383adbba21373efe86`
+- Merge commit: `2976500fc6b211c5895d59c77ab625ab07432b1a`
 
 ## Current version target
 
-- currentVersion: v2.75
-- currentMilestone: Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc
+- currentVersion: v2.76
+- currentMilestone: State sync after reasonable start 12 checks layer
 
 ## Recently merged context
 
-PR #299 added `knowledge/07_operations/plotnikov_book_architecture_map_2026-05-26.md` as a documentation-only operations note.
+PR #306 added `knowledge/07_operations/reasonable_start_12_checks_layer.md` as a documentation-only book/product/MVP diagnostic layer.
 
-It records the whole-book architecture rule for the Plotnikov arc:
+It translates a twelve-angle financial/mindset prompt structure into the book's novice-route language:
 
-- Chapter 1 carries only the seed that personal reason becomes climate;
-- the larger community / stronger-people / durable-income thesis belongs later in team, group and leadership zones;
-- directional ideas should be placed in architecture before they are embedded into chapter prose.
+- clear reason;
+- circle of sobriety;
+- novice competence map;
+- inner noise;
+- cost of postponement;
+- rhythm without hysteria;
+- problem as service entry;
+- normality ceiling;
+- working hypothesis;
+- relational identity;
+- first safe action;
+- weekly route.
 
-PR #300 archived the chapter rehydration / audit / state-sync chat arc as archive only.
+The layer may support book, brochure and future MVP candidate work. It is not accepted chapter text and not MVP implementation.
 
-PR #301 added `knowledge/07_operations/notion_context_memory_protocol_2026-05-26.md` as documentation-only continuity protocol.
+The Notion page for this layer exists as auxiliary continuity memory only. GitHub remains source of truth.
 
-PR #302 clarified that project-linked Notion pages may be consulted by future chats and manual/advisory agent layers when active Notion tool access exists.
+## Reasonable start layer boundary
+
+`reasonable_start_12_checks_layer.md` is documentation/advisory only.
+
+It is not:
+
+- agent activation;
+- registry mutation;
+- route automation;
+- runtime behavior;
+- validator;
+- hard guardrail;
+- CI or branch-protection change;
+- book-mode activation;
+- accepted chapter text;
+- MVP implementation;
+- wealth-coaching promise;
+- therapeutic protocol.
+
+`reasonable_start_navigator_agent` is recorded only as a possible future agent seed / proposal candidate. No proposal file exists yet, and no agent is active.
 
 ## Notion memory boundary
 
@@ -83,6 +108,8 @@ It must not:
 
 `chapter_rehydration_agent` may be used only as proposal/manual preparation logic unless separately activated through the appropriate workflow.
 
+`reasonable_start_12_checks_layer.md` may be used only as optional documentation/advisory novice-route diagnostic lens unless separately promoted through the appropriate workflow.
+
 ## Current audit/watch items
 
 The current watch items remain documentation-only:
@@ -91,7 +118,8 @@ The current watch items remain documentation-only:
 - status language drift;
 - conductor scope creep;
 - continuity-layer overreach;
-- Notion/GitHub authority confusion.
+- Notion/GitHub authority confusion;
+- whether the 12 checks layer stays practical and avoids motivational plastic.
 
 These are not runtime work, validator work, hard-guardrail work, roadmap approval or implementation mandate.
 
@@ -118,7 +146,7 @@ Archive status: зеленый_1 / зеленый_2 / желтый_1 / желт�
 
 ## State-sync boundaries
 
-This v2.75 compact sync is documentation/state alignment only.
+This v2.76 sync is documentation/state alignment only.
 
 It does not:
 
@@ -131,8 +159,10 @@ It does not:
 - resume book mode;
 - approve candidate book content as final;
 - activate `chapter_rehydration_agent`;
-- turn Notion memory into source of truth or background automation.
+- activate `reasonable_start_navigator_agent`;
+- turn Notion memory into source of truth or background automation;
+- turn the 12 checks layer into a skill, MCP tool, accepted chapter text or MVP feature.
 
 ## Next safe step
 
-Run the first 5-7 Plotnikov chapters through the extraction framework and test whether the framework survives real material without losing practical force. Use `chapter_rehydration_agent` only as proposal/manual preparation logic unless separately activated.
+Run the first 5-7 Plotnikov chapters through the extraction framework and test whether the framework survives real material without losing practical force. Use `chapter_rehydration_agent` only as proposal/manual preparation logic unless separately activated. Use `reasonable_start_12_checks_layer.md` only as optional documentation/advisory novice-route diagnostic lens unless separately promoted.
