@@ -8,42 +8,54 @@ Book work remains paused until Sergey uses `#книга` or gives a separate exp
 
 ## Current milestone
 
-- currentVersion: v2.75
-- currentMilestone: Compact state/restart sync after Plotnikov architecture and Notion memory protocol arc
-- lastMergedPr: PR #302 — Clarify project Notion memory access
-- lastMergeCommit: `6e3e7f1b42d33868d2c885383adbba21373efe86`
+- currentVersion: v2.76
+- currentMilestone: State sync after reasonable start 12 checks layer
+- lastMergedPr: PR #306 — Add reasonable start 12 checks layer
+- lastMergeCommit: `2976500fc6b211c5895d59c77ab625ab07432b1a`
 
 ## Current arc
 
-The current arc remains Agent Shipyard / Agent Queue with four recent merged documentation/continuity additions:
+The current arc remains Agent Shipyard / Agent Queue with a new merged documentation-only book/product/MVP diagnostic layer:
 
-- PR #299 added `plotnikov_book_architecture_map_2026-05-26.md` as a documentation-only operations note;
-- PR #300 archived the chapter rehydration / audit / state-sync chat arc;
-- PR #301 added `notion_context_memory_protocol_2026-05-26.md` as documentation-only continuity protocol;
-- PR #302 clarified project-linked Notion memory access for future chats and manual/advisory agents.
+- PR #306 added `knowledge/07_operations/reasonable_start_12_checks_layer.md`.
+
+The layer adapts a twelve-angle financial/mindset prompt structure into the language of `Разумное сообщество`:
+
+- clear reason;
+- circle of sobriety;
+- novice competence map;
+- inner noise;
+- cost of postponement;
+- rhythm without hysteria;
+- problem as service entry;
+- normality ceiling;
+- working hypothesis;
+- relational identity;
+- first safe action;
+- weekly route.
 
 ## Important boundaries
 
-PR #299 is architecture mapping, not accepted book content and not permission to rewrite chapter files.
+PR #306 is documentation/advisory only.
 
-PR #300 is archive only, not checkpoint or project-state.
+It does not create:
 
-PR #301 and PR #302 make Notion memory a continuity layer, not source-of-truth replacement.
-
-Project-linked Notion pages may be consulted by future chats and manual/advisory agents when active Notion tool access exists, but only as semantic recovery context.
-
-Notion memory does not create:
-
-- project-state authority;
-- approval authority;
-- runtime behavior;
+- accepted chapter text;
+- book-mode activation;
+- MVP implementation;
+- agent activation;
+- registry mutation;
 - route automation;
 - validators;
 - hard guardrails;
-- registry mutation authority;
 - CI or branch-protection changes;
-- background Notion monitoring;
-- workspace-wide Notion access policy.
+- runtime behavior;
+- wealth-coaching promise;
+- therapeutic protocol.
+
+`reasonable_start_navigator_agent` is only a future seed / proposal candidate recorded in the layer. It is not a proposal file, registry entry or active agent.
+
+The related Notion page is auxiliary continuity memory only. GitHub remains source of truth.
 
 ## Existing extraction framework layer
 
@@ -78,9 +90,12 @@ Purpose:
 - preserve scenes and pressure;
 - avoid academic abstraction;
 - identify recurring human degradation patterns;
-- test whether the architecture map helps without prematurely forcing later-community concepts into Chapter 1.
+- test whether the architecture map helps without prematurely forcing later-community concepts into Chapter 1;
+- test whether the 12 checks layer helps novice-route practice without motivational plastic.
 
 `chapter_rehydration_agent` may assist as proposal/manual preparation logic where useful, but it must not be treated as active, routed, validator, runtime or hard guardrail.
+
+`reasonable_start_12_checks_layer.md` may assist as optional documentation/advisory novice-route diagnostic lens where useful, but it must not be treated as accepted chapter text, MVP implementation, Skill, MCP tool or active agent.
 
 ## Current strategic insight
 
@@ -98,7 +113,8 @@ MLM is treated not as the sole topic, but as a pressure-environment that amplifi
 - manipulation risk;
 - maturity conditions;
 - relationship ethics;
-- community norms created by private actions.
+- community norms created by private actions;
+- the gap between desire for result and responsibility for people.
 
 ## Watch items
 
@@ -108,17 +124,20 @@ The current watch items are documentation-only:
 - status language drift;
 - conductor scope creep;
 - continuity-layer overreach;
-- Notion/GitHub authority confusion.
+- Notion/GitHub authority confusion;
+- whether the 12 checks layer stays practical and avoids motivational plastic.
 
 These should be handled only through narrow documentation-only PRs if and when they become concrete.
 
 ## Approved next sequence
 
-1. Complete this compact v2.75 state/restart sync after PR #299-302.
+1. Complete this v2.76 state/restart sync after PR #306.
 2. Merge the state-sync PR after review/checks and Sergey approval.
 3. Run extraction pass for first 5-7 Plotnikov chapters.
-4. Expand degradation registry only from recurring mechanisms.
-5. Expand human-core invariants only from stable extracted laws.
+4. Optionally test the 12 checks layer on a novice scene or first-action case.
+5. Expand degradation registry only from recurring mechanisms.
+6. Expand human-core invariants only from stable extracted laws.
+7. Promote `reasonable_start_navigator_agent`, a Skill or MCP flow only through separate explicit workflow if the layer survives practical tests.
 
 ## State-sync boundaries
 
@@ -134,8 +153,10 @@ No:
 - book-mode activation;
 - candidate chapter approval;
 - chapter_rehydration_agent activation;
-- Notion source-of-truth promotion.
+- reasonable_start_navigator_agent activation;
+- Notion source-of-truth promotion;
+- Skill or MCP implementation.
 
 ## Recommended next work item
 
-Run the first limited extraction pass and verify that the framework strengthens clarity without destroying narrative life.
+Run the first limited extraction pass and verify that the framework strengthens clarity without destroying narrative life. Use the 12 checks layer only as an optional novice-route diagnostic lens until tested.
